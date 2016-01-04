@@ -1,0 +1,95 @@
+# Site navigation links
+en:
+  home:
+    title: "Bitcoin Core"
+    url:   "/"
+  about:
+    title: "About"
+    url:   "/en/about/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"
+de:
+  home:
+    title: "Bitcoin Core"
+    url:   "/de"
+  about:
+    title: "About"
+    url:   "/en/about/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"
+  about:
+    title: "About"
+    url:   "/en/about/"
+es:
+  home:
+    title: "Bitcoin Core"
+    url:   "/"
+  about:
+    title: "About"
+    url:   "/en/about/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"
+fr:
+  home:
+    title: "Bitcoin Core"
+    url:   "/fr/"
+  about:
+    title: "à propos"
+    url:   "/fr/a-propos/"
+  blog:
+    title: "blog"
+    url:   "/fr/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"
+ru:
+  home:
+    title: "Bitcoin Core"
+    url:   "/"
+  about:
+    title: "about"
+    url:   "/en/about/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"
+zh_CN:
+  home:
+    title: "Bitcoin Core"
+    url:   "/"
+  about:
+    title: "About"
+    url:   "/en/about/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"
+zh_TW:
+  home:
+    title: "Bitcoin Core"
+    url:   "/"
+  about:
+    title: "about"
+    url:   "/en/about/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"

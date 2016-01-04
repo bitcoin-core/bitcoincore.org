@@ -1,0 +1,230 @@
+# Site wide configuration
+
+title:            Bitcoin Core
+#locale:           en_US
+url:
+social_url: http://bitcoinco.re
+
+# Jekyll configuration
+
+permalink:   /:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+# Site owner
+owner:
+  name: Bitcoin Core
+  avatar: bio-photo.jpg
+  bio: ""
+  email:
+  disqus-shortname:
+  twitter: #username
+  facebook: #username
+  google:
+    plus: #username
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: #username
+  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+  linkedin: #username
+  xing: #username
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: #username
+  soundcloud: #username
+  weibo: #username
+  flickr: #username
+  codepen: #username
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      lang: en
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/en
+    values:
+      lang: "en"
+  -
+    scope:
+      path: _posts/de
+    values:
+      lang: de
+  -
+    scope:
+      path: _posts/es
+    values:
+      lang: es
+  -
+    scope:
+      path: _posts/fr
+    values:
+      lang: fr
+  -
+    scope:
+      path: _posts/ru
+    values:
+      lang: ru
+  -
+    scope:
+      path: _posts/zh_CN
+    values:
+      lang: zh_CN
+  -
+    scope:
+      path: _posts/zh_TW
+    values:
+      lang: zh_TW
+  -
+    scope:
+      path: _posts/en/pages
+    values:
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/de/pages
+    values:
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/es/pages
+    values:
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/fr/pages
+    values:
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/ru/pages
+    values:
+      type: pages
+  -
+    scope:
+      path: _posts/zh_CN/pages
+    values:
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/zh_TW/pages
+    values:
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/en/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/de/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/es/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/fr/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/ru/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/zh_CN/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/zh_TW/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/en/releases
+    values:
+      layout: page
+      type: releases
+  -
+    scope:
+      path: _posts/de/releases
+    values:
+      layout: page
+      type: releases
+  -
+    scope:
+      path: _posts/es/releases
+    values:
+      layout: page
+      type: releases
+  -
+    scope:
+      path: _posts/fr/releases
+    values:
+      layout: page
+      type: releases
+  -
+    scope:
+      path: _posts/ru/releases
+    values:
+      layout: page
+      type: releases
+  -
+    scope:
+      path: _posts/zh_CN/releases
+    values:
+      layout: page
+      type: releases
+  -
+    scope:
+      path: _posts/zh_TW/releases
+    values:
+      layout: page
+      type: releases

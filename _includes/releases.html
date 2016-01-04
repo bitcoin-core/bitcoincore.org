@@ -1,0 +1,11 @@
+<ul class="releases">
+  {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'releases' %}
+  {% for post in posts %}
+  <li>
+    <a href="{{ post.url }}">
+      <h3 class="title">{{ post.title | replace: '<br/>', '' }}</h3>
+      <div class="desc">{{ post.desc }}</div>
+     </a>
+   </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,9 @@
+---
+layout:
+permalink: /robots.txt
+---
+User-agent: ia-archive
+Disallow: /
+
+User-agent: *
+Disallow: /

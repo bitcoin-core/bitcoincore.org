@@ -1,0 +1,55 @@
+en:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  related: "Recommended"
+  viewallposts: "View all posts"
+
+de:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  related: "Recommended"
+  viewallposts: "View all posts"
+
+es:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  related: "Recommended"
+  viewallposts: "View all posts"
+
+fr:
+  created: "Publié le"
+  author: "par"
+  description: "Site Bitcoin Core"
+  footer: "Bitcoin Core project"
+  recommended: "Recommended"
+  viewallposts: "View all posts"
+
+ru:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  recommended: "Recommended"
+  viewallposts: "View all posts"
+
+zh_CH:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  recommended: "Recommended"
+  viewallposts: "View all posts"
+
+zh_TW:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  recommended: "Recommended"
+  viewallposts: "View all posts"
