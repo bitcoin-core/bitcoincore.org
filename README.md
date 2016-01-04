@@ -21,12 +21,14 @@ The following `Front Matter` is required for the multilingual setup in all files
   - `permalink:` the ML permalink must include the language code, e.g. `/en/2015/10/report`. Permalinks should be translated.
   - `title:`     the translated title of the article
 
-    ---
-    name: short-title
-    id: en-short-title
-    permalink: /en/short-title
-    title: Short Title
-    ---
+```
+---
+name: short-title
+id: en-short-title
+permalink: /en/short-title
+title: Short Title
+---
+```
 
 The system will default to `layout:` type of `post`, `page`, `releases` corresponding to the relevant folders. There is no need
 to specify `layout:` for these files. Default locations are added in the `_config.yml`.
