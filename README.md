@@ -30,7 +30,7 @@ title: Short Title
 
 ## Building
 
-This website is based on Jekyll. To build locally, [install Ruby 2.1.1](https://gorails.com/setup) or greater.
+This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater.
 
     gem install bundle
     gem install github-pages
