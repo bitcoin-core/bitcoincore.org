@@ -18,4 +18,4 @@ Core計劃內為可擴展性工作多年，認為這是最可以延續我們一�
 如果你想參與連署，請到[#1165](https://github.com/bitcoin-dot-org/bitcoin.org/pull/1165)。
 
 [1]: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html
-[FAQ]: /en/2015/12/23/capacity-increases-faq
+[FAQ]: /zh_TW/2015/12/21/系統擴展常見問題解答

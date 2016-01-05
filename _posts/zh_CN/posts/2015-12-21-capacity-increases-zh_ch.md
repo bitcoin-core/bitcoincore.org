@@ -18,4 +18,4 @@ permalink: /zh_CN/2015/12/21/比特币系统扩展
 
 
 [1]: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html
-[FAQ]: /en/2015/12/23/capacity-increases-faq
+[FAQ]: /zh_CN/2015/12/21/系统扩展常见问题解答
