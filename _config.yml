@@ -2,7 +2,6 @@
 
 title:            Bitcoin Core
 #locale:           en_US
-url:
 social_url: http://bitcoinco.re
 
 # Jekyll configuration
@@ -72,7 +71,7 @@ defaults:
     scope:
       path: _posts/en
     values:
-      lang: "en"
+      lang: en
   -
     scope:
       path: _posts/de

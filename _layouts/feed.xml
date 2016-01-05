@@ -10,7 +10,7 @@
         <uri>{{ site.url }}/</uri>
         {% if site.owner.email %}<email>{{ site.owner.email }}</email>{% endif %}
     </author>
-    {% assign posts=site.posts | where:"lang", page.lang | where:"type", posts %}
+    {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
     {% for post in posts limit:20 %}
     {% if post.author %}
     {% assign author = site.data.authors[post.author] %}
