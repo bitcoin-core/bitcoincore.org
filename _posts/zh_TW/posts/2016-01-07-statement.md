@@ -3,7 +3,7 @@ layout: post
 name: bitcoin-core-2016-01-07-statement
 id: zh_tw-bitcoin-core-2016-01-07-statement
 title: Bitcoin Core 聲明 -- 2016-01-07
-permalink: /zh_TW/bitcoin-core-聲明
+permalink: /zh_TW/2016/01/07/bitcoin-core-聲明
 ---
 
 比特幣是「點對點電子貨幣，無需經過任何金融機構，就可以在網上由一人直接付款給另一人」。我們的理想，是把比特幣系統的靈活性擴充至可以有效處理極大規模的交易，而同時保障安全以及去中心化的核心性質，因為這是令比特幣獨一無二的要素。
