@@ -345,7 +345,7 @@ To get specific suggestions on how you can help, please join the
 [BIP68]: https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki
 [BIP112]: https://github.com/bitcoin/bips/blob/master/bip-0112.mediawiki
 [BIP113]: https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki
-[bitcoin core contributor]: /en/bitcoin-core/
+[bitcoin core contributor]: https://bitcoin.org/en/bitcoin-core/
 [Bitcoin relay network]: http://bitcoinrelaynetwork.org/
 [code review]: https://bitcoin.org/en/development#code-review
 [estimated savings]: https://www.reddit.com/r/bitcoinxt/comments/3w1i6b/i_attended_scaling_bitcoin_hong_kong_these_are_my/cxtkaih
