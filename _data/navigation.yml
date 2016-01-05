@@ -15,32 +15,32 @@ en:
 de:
   home:
     title: "Bitcoin Core"
-    url:   "/de"
+    url:   "/de/"
   about:
     title: "About"
-    url:   "/en/about/"
+    url:   "/de/about/"
   blog:
     title: "blog"
-    url:   "/en/blog/"
+    url:   "/de/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/de/releases/"
   about:
     title: "About"
     url:   "/en/about/"
 es:
   home:
     title: "Bitcoin Core"
-    url:   "/"
+    url:   "/es/"
   about:
     title: "About"
-    url:   "/en/about/"
+    url:   "/es/about/"
   blog:
     title: "blog"
-    url:   "/en/blog/"
+    url:   "/es/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/es/releases/"
 fr:
   home:
     title: "Bitcoin Core"
@@ -53,43 +53,43 @@ fr:
     url:   "/fr/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/fr/releases/"
 ru:
   home:
     title: "Bitcoin Core"
-    url:   "/"
+    url:   "/ru/"
   about:
     title: "about"
-    url:   "/en/about/"
+    url:   "/ru/about/"
   blog:
     title: "blog"
-    url:   "/en/blog/"
+    url:   "/ru/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/ru/releases/"
 zh_CN:
   home:
     title: "Bitcoin Core"
-    url:   "/"
+    url:   "/zh_CN/"
   about:
     title: "About"
-    url:   "/en/about/"
+    url:   "/zh_CN/about/"
   blog:
     title: "blog"
-    url:   "/en/blog/"
+    url:   "/zh_CN/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/zh_CN/releases/"
 zh_TW:
   home:
     title: "Bitcoin Core"
-    url:   "/"
+    url:   "/zh_TW/"
   about:
     title: "about"
-    url:   "/en/about/"
+    url:   "/zh_TW/about/"
   blog:
     title: "blog"
-    url:   "/en/blog/"
+    url:   "/zh_TW/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/zh_TW/releases/"

@@ -30,7 +30,8 @@
     {% include _author-bio.html %}
   </div>
   <div id="index">
-    <h3><a href="{{ site.url}}/posts/">Recent Posts</a></h3>
+    {% assign navigation = site.data.navigation[page.lang] %}
+    <h3><a href="{{ site.url }}/{{ navigation[1].blog }}">Recent Posts</a></h3>
       {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
       {% for post in posts limit:5 %}
     <article>

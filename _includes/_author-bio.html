@@ -10,12 +10,15 @@
     {% assign remoteavatar = false %}
 {% endif %}
 
+{% assign authorname = author.name %}
+{% if author.name == '' %}{% assign authorname = 'bio-photo' %}{% endif %}
+
 {% if author != empty and author.avatar != empty and remoteavatar == true %}
-	<img src="{{ author.avatar }}" class="bio-photo" alt="{{ author.name }}">
+	<img src="{{ author.avatar }}" class="bio-photo" alt="{{ authorname }}">
 {% elsif author != empty and author.avatar != empty and remoteavatar == false %}
-	<img src="{{ site.url }}/assets/images/{{ author.avatar }}" class="bio-photo" alt="{{ author.name }}">
+	<img src="{{ site.url }}/assets/images/{{ author.avatar }}" class="bio-photo" alt="{{ authorname }}">
 {% else %}
-    <img src="{{ site.url }}/assets/images/bio-blank.jpg" class="bio-photo" alt="{{ author.name }}">
+    <img src="{{ site.url }}/assets/images/bio-blank.jpg" class="bio-photo" alt="bio-blank">
 {% endif %}
 
   <h3 itemprop="name">{{ author.name }}</h3>
