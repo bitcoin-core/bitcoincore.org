@@ -9,7 +9,7 @@ permalink: /zh_TW/2015/12/21/比特幣系統擴展
 我們連署支持[比特幣系統擴展][1]路線圖。我們已在Bitcoin
 Core計劃內為可擴展性工作多年，認為這是最可以延續我們一直以來努力的方向。
 
-有關更多詳情請參閱 [常見問題解答][FAQ]，中文版本正在準備中。
+有關更多詳情請參閱 [常見問題解答][FAQ]。
 
 {% include posts/capability-increases-sigs.md %}
 

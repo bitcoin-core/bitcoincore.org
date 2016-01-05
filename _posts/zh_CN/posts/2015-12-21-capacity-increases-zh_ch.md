@@ -8,7 +8,7 @@ permalink: /zh_CN/2015/12/21/比特币系统扩展
 
 我们连署支持 [比特币系统扩展][1] 路线图。我们已在Bitcoin Core计划内为可扩展性工作多年，认为这是最可以延续我们一直以来努力的方向。
 
-有关更多详情请参阅 [常见问题解答][FAQ]，中文版本正在准备中。
+有关更多详情请参阅 [常见问题解答][FAQ]。
 
 {% include posts/capability-increases-sigs.md %}
 
