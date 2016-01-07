@@ -12,6 +12,9 @@ en:
   releases:
     title: "releases"
     url:   "/en/releases/"
+  contribute:
+    title: "contribute"
+    url:   "/en/contribute/"
 de:
   home:
     title: "Bitcoin Core"
@@ -25,9 +28,9 @@ de:
   releases:
     title: "releases"
     url:   "/de/releases/"
-  about:
-    title: "About"
-    url:   "/en/about/"
+  contribute:
+    title: "contribute"
+    url:   "/en/contribute/"
 es:
   home:
     title: "Bitcoin Core"
@@ -41,6 +44,9 @@ es:
   releases:
     title: "releases"
     url:   "/es/releases/"
+  contribute:
+    title: "contribute"
+    url:   "/en/contribute/"
 fr:
   home:
     title: "Bitcoin Core"
@@ -54,6 +60,9 @@ fr:
   releases:
     title: "releases"
     url:   "/fr/releases/"
+  contribute:
+    title: "contribute"
+    url:   "/en/contribute/"
 ru:
   home:
     title: "Bitcoin Core"
@@ -67,6 +76,9 @@ ru:
   releases:
     title: "releases"
     url:   "/ru/releases/"
+  contribute:
+    title: "contribute"
+    url:   "/en/contribute/"
 zh_CN:
   home:
     title: "Bitcoin Core"
@@ -80,6 +92,9 @@ zh_CN:
   releases:
     title: "releases"
     url:   "/zh_CN/releases/"
+  contribute:
+    title: "contribute"
+    url:   "/en/contribute/"
 zh_TW:
   home:
     title: "Bitcoin Core"
@@ -93,3 +108,6 @@ zh_TW:
   releases:
     title: "releases"
     url:   "/zh_TW/releases/"
+  contribute:
+    title: "contribute"
+    url:   "/en/contribute/"
