@@ -41,5 +41,5 @@ To generate the site run:
 
 ## Contributing
 
-Contributions welcome. Please see [CONTRIBUTING.md](/CONTIBUTING.md) for details.
+Contributions welcome. Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for details.
 
