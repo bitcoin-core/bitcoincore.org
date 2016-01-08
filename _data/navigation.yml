@@ -84,30 +84,30 @@ zh_CN:
     title: "Bitcoin Core"
     url:   "/zh_CN/"
   about:
-    title: "About"
+    title: "关于我们"
     url:   "/zh_CN/about/"
   blog:
-    title: "blog"
+    title: "博客"
     url:   "/zh_CN/blog/"
   releases:
-    title: "releases"
+    title: "软件发行"
     url:   "/zh_CN/releases/"
   contribute:
-    title: "contribute"
+    title: "贡献"
     url:   "/zh_CN/contribute/"
 zh_TW:
   home:
     title: "Bitcoin Core"
     url:   "/zh_TW/"
   about:
-    title: "about"
+    title: "關於我們"
     url:   "/zh_TW/about/"
   blog:
-    title: "blog"
+    title: "網誌"
     url:   "/zh_TW/blog/"
   releases:
-    title: "releases"
+    title: "軟件發行"
     url:   "/zh_TW/releases/"
   contribute:
-    title: "contribute"
+    title: "貢獻"
     url:   "/zh_TW/contribute/"
