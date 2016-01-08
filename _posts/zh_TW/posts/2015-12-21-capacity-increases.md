@@ -4,6 +4,7 @@ id: zh_tw-capacity-increases
 name: capacity-increases
 title: 比特幣系統擴展
 permalink: /zh_TW/2015/12/21/比特幣系統擴展
+version: 1
 ---
 
 我們連署支持[比特幣系統擴展][1]路線圖。我們已在Bitcoin

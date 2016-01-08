@@ -4,6 +4,7 @@ id: en-capacity-increases
 name: capacity-increases
 title: Capacity increases for the Bitcoin system
 permalink: /en/2015/12/21/capacity-increase
+version: 1
 ---
 We, the undersigned, support the roadmap in [Capacity increases for the
 Bitcoin system.][1]  We have been working on

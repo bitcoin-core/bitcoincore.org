@@ -32,6 +32,7 @@
   <div id="index">
     {% assign navigation = site.data.navigation[page.lang] %}
     <h3><a href="{{ site.url }}/{{ navigation[1].blog }}">Recent Posts</a></h3>
+    <!-- h3><a href="{{ navigation.blog.url }}">Recent Posts</a></h3 -->
       {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
       {% for post in posts limit:5 %}
     <article>

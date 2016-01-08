@@ -1,11 +1,12 @@
 ---
 title: How Can I Contribute?
 name: contribute
-id: en-contribute
-permalink: /en/contribute
+id: ru-contribute
+permalink: /ru/contribute
 layout: page
 share: false
 version: 1
+translated: false
 ---
 
 You're welcome to contribute to the project! There are several aspects you can help on:

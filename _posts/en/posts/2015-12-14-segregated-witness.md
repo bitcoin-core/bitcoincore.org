@@ -7,6 +7,7 @@ permalink: /en/2015/12/14/segregated-witness
 author: sipa
 related: false
 tags: [scalability]
+version: 1
 ---
 
 This is the extended presentation of Segregated Witness by Pieter Wuille.

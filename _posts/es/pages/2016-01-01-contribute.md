@@ -1,8 +1,8 @@
 ---
 title: How Can I Contribute?
 name: contribute
-id: en-contribute
-permalink: /en/contribute
+id: es-contribute
+permalink: /es/contribute
 layout: page
 share: false
 version: 1

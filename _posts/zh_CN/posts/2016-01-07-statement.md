@@ -4,6 +4,7 @@ id: zh_cn-bitcoin-core-2016-01-07-statement
 name: bitcoin-core-2016-01-07-statement
 title: Bitcoin Core 声明 -- 2016-01-07
 permalink: /zh_CN/2016/01/07/bitcoin-core-声明
+version: 1
 ---
 
 比特币是「点对点电子货币，无需经过任何金融机构，就可以在网上由一人直接付款给另一人」。我们的理想，是把比特币系统的灵活性扩充至可以有效处理极大规模的交易，而同时保障安全以及去中心化的核心性质，因为这是令比特币独一无二的要素。
