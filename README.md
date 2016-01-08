@@ -10,6 +10,14 @@ This repository is the source code of the Bitcoin Core project website built wit
 
 File names *must* be in the format `Y/m/d-title.md`, e.g. `2015-12-31-title.md`. File names can be translated.
 
+## Translations
+
+Menu and miscellaneous translations can be found in:
+
+  - `_data/lanaguges.yml`
+  - `_data/navgation.yml`
+  - `_data/translations.yml`
+  
 ## Front Matter notes
 
 The following `Front Matter` is required for the multilingual setup in all files. The required fields are as follows:
@@ -30,14 +38,22 @@ title: Short Title
 
 ## Building
 
-This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater.
+This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater:
 
     gem install bundle
     gem install github-pages
+    
+For testing:
+    
+    gen install html-proofer
 
-To generate the site run:
+To generate the site:
 
     jekyll serve
+    
+To test the site:
+
+    jekyll build && htmlproof ./_site
 
 ## Contributing
 
