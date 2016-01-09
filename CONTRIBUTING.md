@@ -3,13 +3,8 @@ Contributing
 
  - Fork it
  - Create a topic branch
- - Submit patch
+ - Commit patches
  - Create pull request
-
-## Translations
-
-Translations should be made from the English source. The English source has a `version:` field in the Front Matter which should be updated if on the rare
-occasion the English text is updated. Translated text should remove `translated: false` from the Front Matter.
 
 ## Process
 
@@ -27,3 +22,8 @@ that has a direct impact on Bitcoin Core software. This can include research, pr
 
 Where proposed content is about Bitcoin Core project policy, there should rough consensus of the Bitcoin Core project maintainers as a minimum bar
 and final decision is with the Bitcoin Core project lead.
+
+## Translations
+
+Translations should be made from the English source. The English source has a `version:` field in the Front Matter which should be updated if on the rare
+occasion the English text is updated. Translated text should remove `translated: false` from the Front Matter.
