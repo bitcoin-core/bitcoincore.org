@@ -38,22 +38,23 @@ title: Short Title
 
 ## Building
 
-This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater:
+This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater
+and then run the following commands:
 
     gem install bundle
-    gem install github-pages
+    bundle install
     
-For testing:
-    
-    gen install html-proofer
+To preview the site (this will launch a tiny webserver on port 4000):
 
-To generate the site:
+    bundle exec jekyll server
 
-    jekyll serve
+To simply build the site (output placed in the `_site` directory):
+
+    bundle exec jekyll build
     
 To test the site:
 
-    jekyll build && htmlproof ./_site
+    bundle exec jekyll build && bundle exec htmlproof ./_site
 
 ## Contributing
 
