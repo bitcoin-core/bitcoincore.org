@@ -1,7 +1,7 @@
 Contributing
 ============
 
- - Fork it
+ - [Fork it](https://github.com/bitcoin-core/website)
  - Create a topic branch
  - Commit patches
  - Create pull request
