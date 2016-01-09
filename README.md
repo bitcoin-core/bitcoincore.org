@@ -1,4 +1,4 @@
-#bitcoinco.re [![Build Status](https://travis-ci.org/btcdrak/website.svg?branch=gh-pages)](https://travis-ci.org/btcdrak/website)
+#bitcoinco.re [![Build Status](https://travis-ci.org/bitcoin-core/website.svg?branch=gh-pages)](https://travis-ci.org/bitcoin-core/website)
 
 This repository is the source code of the Bitcoin Core project website built with Jekyll.
 
