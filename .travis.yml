@@ -1,20 +1,19 @@
 language: ruby
 rvm:
-- 2.2.2
-- 2.2.3
+  - "2.2.2"
 
-install:
-  - gem install bundle
-  - gem install github-pages html-proofer
+## Allows use of docker-based containers, which are more available than
+## the xen-based (or whatever) VMs, so builds tend to happen sooner
+sudo: false
 
-script: jekyll build && htmlproof ./_site
+## Save bundler deps.  Requires sudo: false
+cache: bundler
 
-# branch whitelist
-branches:
-  only:
-  - gh-pages     # test the gh-pages branch
-  - /pages-(.*)/ # test every branch which starts with "pages-"
+## Disable external link checking to prevent spurious failures because
+## of other people's downtime. This can also avoid wasting their
+## bandwidth.
+script: bundle exec jekyll build && bundle exec htmlproof --disable-external ./_site
 
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer

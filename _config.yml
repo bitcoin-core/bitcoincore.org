@@ -56,7 +56,13 @@ owner:
   flickr: #username
   codepen: #username
 
-exclude: ["_config.yml", "LICENSE", "README.md", "CONTRIBUTING.md", "CNAME"]
+exclude:
+  - _config.yml
+  - LICENSE
+  - README.md
+  - CONTRIBUTING.md
+  - CNAME
+  - vendor  # Travis CI creates a vendor/ dir with files we shouldn't render
 
 defaults:
   -
