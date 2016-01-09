@@ -16,7 +16,7 @@ You're welcome to contribute to the project! There are several aspects you can h
   - participate on the mailing lists
   - improving our UIs
   - coding (fix open issues or implement new features)
-  - translate or contribute to this [website][website]
+  - translate or contribute to this [website][website-contrib]
 
 Our main source code repository is hosted on Github: [https://github.com/bitcoin/bitcoin/](https://github.com/bitcoin/bitcoin/)
 
@@ -40,4 +40,4 @@ Mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev].
 [CONTRIBUTING]: https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
-[website]: https://github.com/bitcoin-core/website/pulls
+[website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
