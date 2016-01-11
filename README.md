@@ -8,7 +8,7 @@ This repository is the source code of the Bitcoin Core project website built wit
   - `_posts/<lang>/pages` for static pages.
   - `_posts/<lang>/releases` for Bitcoin Core release notes
 
-File names *must* be in the format `Y/m/d-title.md`, e.g. `2015-12-31-title.md`. File names can be translated.
+File names *must* be in the format `Y-m-d-title.md`, e.g. `2015-12-31-title.md`. File names can be translated.
 
 ## Translations
 
