@@ -29,6 +29,8 @@ Please check the [contribution guidelines][CONTRIBUTING] to understand our workf
 
 IRC channels on irc.freenode.net is `#bitcoin-core-dev`
 
+Join us on [Bitcoin Core Slack][slack] (request an [invitation][invite]).
+
 Mailing list for general Bitcoin discussion [bitcoin-discuss][bitcoin-discuss].
 
 Mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev].
@@ -42,3 +44,5 @@ Mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev].
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
+[Slack]: https://bitcoincore.slack.com/
+[invite]: https://slack.bitcoinco.re/
