@@ -11,7 +11,7 @@ version: 1
 You are welcome to contribute to the project!
 Our main source code repository is [hosted on GitHub](https://github.com/bitcoin/bitcoin/) and there are several aspects you can help on:
 
-  - Improving our documentation (see [README.md][README.md] and [doc folder][doc]),
+  - Improving our documentation (see [README.md][README.md] and [doc folder][doc])
   - [Translations][translation_process.md]
   - Testing code, testing releases
   - Participate on the mailing lists
