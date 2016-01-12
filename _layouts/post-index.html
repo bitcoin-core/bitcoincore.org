@@ -32,8 +32,13 @@
   <div id="index">
     <h1>{{ page.title }}</h1>
     {% capture written_year %}'None'{% endcapture %}
-    {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
-    {% for post in posts %}
+    {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'posts' %}
+    {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
+    {% for default_post in english_posts %}
+      {% assign post=default_post %}
+      {% for tpost in translated_posts %}
+        {% if tpost.name == post.name %}{% assign found=true %}{% assign post=tpost %}{% break %}{% endif %}
+      {% endfor %}
       {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
       {% if year != written_year %}
         <h3 class="year">{{ year }}</h3>
