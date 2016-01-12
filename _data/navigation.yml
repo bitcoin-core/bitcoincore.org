@@ -74,6 +74,22 @@ fr:
   contribute:
     title: "contribute"
     url:   "/fr/contribute/"
+it:
+  home:
+    title: "Bitcoin Core"
+    url:   "/it/"
+  about:
+    title: "About"
+    url:   "/it/about/"
+  blog:
+    title: "blog"
+    url:   "/it/blog/"
+  releases:
+    title: "releases"
+    url:   "/it/releases/"
+  contribute:
+    title: "contribute"
+    url:   "/it/contribute/"
 ru:
   home:
     title: "Bitcoin Core"

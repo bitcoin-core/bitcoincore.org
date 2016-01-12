@@ -34,6 +34,15 @@ fr:
   viewallposts: "View all posts"
   nottranslated: "Note: this page has not been translated"
 
+it:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  related: "Recommended"
+  viewallposts: "View all posts"
+  nottranslated: "Note: this page has not been translated"
+
 ru:
   created: "Published on the"
   author: "by"

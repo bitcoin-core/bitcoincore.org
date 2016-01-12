@@ -94,6 +94,11 @@ defaults:
       lang: fr
   -
     scope:
+      path: _posts/it
+    values:
+      lang: it
+  -
+    scope:
       path: _posts/ru
     values:
       lang: ru
@@ -128,6 +133,12 @@ defaults:
   -
     scope:
       path: _posts/fr/pages
+    values:
+      layout: page
+      type: pages
+  -
+    scope:
+      path: _posts/it/pages
     values:
       layout: page
       type: pages
@@ -169,6 +180,12 @@ defaults:
   -
     scope:
       path: _posts/fr/posts
+    values:
+      layout: post
+      type: posts
+  -
+    scope:
+      path: _posts/it/posts
     values:
       layout: post
       type: posts
