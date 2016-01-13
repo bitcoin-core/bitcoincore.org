@@ -5,6 +5,7 @@ name: development-visualisation-2015
 title: Core Development Visualisation for 2015
 permalink: /en/2016/01/13/development-visualisation-2015
 version: 1
+excerpt: The following video shows commit activity in the Bitcoin Core repository during 2015.
 ---
 The following video shows commit activity in the [Bitcoin Core repository][repository] during 2015. A full list of code contributors during this period can be found [here][activity].
 

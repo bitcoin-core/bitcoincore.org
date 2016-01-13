@@ -8,6 +8,7 @@ author: sipa
 related: false
 tags: [scalability]
 version: 1
+excerpt: This is the extended presentation of Segregated Witness by Pieter Wuille.
 ---
 
 This is the extended presentation of Segregated Witness by Pieter Wuille.
