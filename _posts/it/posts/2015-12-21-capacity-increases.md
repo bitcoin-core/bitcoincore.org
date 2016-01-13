@@ -12,7 +12,7 @@ molti anni all'interno del progetto Bitcoin Core e consideriamo
 questa la migliore possibile continuazione dei nostri sforzi.
 
 Per maggiori informazione prego consultare
-[FAQ](/it/bitcoin-core/capacity-increases-faq).
+[FAQ](/it/2015/12/23/capacity-increases-faq).
 
 {% include posts/capability-increases-sigs.md %}
 

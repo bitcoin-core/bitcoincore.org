@@ -14,7 +14,7 @@ body {
 
 .navigation-wrapper {
 	@include container;
-	padding: 2em 0 1em;
+	padding: 0.3em 0 1em;
 	font-family: $heading-font;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -27,6 +27,7 @@ body {
 	@include prefix(12,1);
 	@include suffix(12,1);
 	margin-bottom: 1em;
+	padding-top: 0.57em;
 	float: none;
 	display: block;
 	@include font-rem(24);
@@ -164,6 +165,9 @@ $button-size: 1.5rem;
 		transform: rotate3d(0,0,1,-45deg);
 	}
 }
+.nav {
+	padding-top: 1.5em;
+}
 // Style the toggle menu link and hide it
 .nav .navtoggle {
 	@include font-rem(18);
@@ -221,6 +225,7 @@ $button-size: 1.5rem;
 	counter-reset: captions;
 	@include container;
 	@include clearfix;
+	line-height: 1.5em;
 	clear: both;
 	margin-top: 2em;
 	h1 {
