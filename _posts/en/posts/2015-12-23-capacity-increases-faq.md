@@ -335,7 +335,7 @@ To get specific suggestions on how you can help, please join the
 
 [#bitcoin-dev]: https://webchat.freenode.net/?channels=bitcoin-dev&amp;uio=d4
 [actively studied]: http://diyhpl.us/wiki/transcripts/scalingbitcoin/bitcoin-block-propagation-iblt-rusty-russell/
-[bip-segwit]: https://github.com/CodeShark/bips/blob/segwit/bip-codeshark-jl2012-segwit.mediawiki
+[bip-segwit]: https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
 [BIP16]: https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
 [BIP30]: https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki
