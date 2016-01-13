@@ -3,9 +3,9 @@
   {% for post in posts %}
   <li>
     <a href="{{ post.url }}">
-      <h3 class="title">{{ post.title | replace: '<br/>', '' }}</h3>
-      <div class="desc">{{ post.desc }}</div>
-     </a>
-   </li>
+      {{ post.title | replace: '<br/>', '' }}
+    </a>
+    <div class="desc">{{ post.desc }}</div>
+  </li>
   {% endfor %}
 </ul>

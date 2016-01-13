@@ -233,6 +233,12 @@ defaults:
       type: releases
   -
     scope:
+      path: _posts/it/releases
+    values:
+      layout: page
+      type: releases
+  -
+    scope:
       path: _posts/ru/releases
     values:
       layout: page
