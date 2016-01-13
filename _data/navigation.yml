@@ -26,6 +26,9 @@ en:
   contribute:
     title: "contribute"
     url:   "/en/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/en/meetings/"
 de:
   home:
     title: "Bitcoin Core"
@@ -42,6 +45,9 @@ de:
   contribute:
     title: "contribute"
     url:   "/de/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/de/meetings/"
 es:
   home:
     title: "Bitcoin Core"
@@ -58,6 +64,9 @@ es:
   contribute:
     title: "contribute"
     url:   "/es/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/es/meetings/"
 fr:
   home:
     title: "Bitcoin Core"
@@ -74,6 +83,9 @@ fr:
   contribute:
     title: "contribute"
     url:   "/fr/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/fr/meetings/"
 it:
   home:
     title: "Bitcoin Core"
@@ -90,6 +102,9 @@ it:
   contribute:
     title: "contribute"
     url:   "/it/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/it/meetings/"
 ru:
   home:
     title: "Bitcoin Core"
@@ -106,6 +121,9 @@ ru:
   contribute:
     title: "contribute"
     url:   "/ru/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/ru/meetings/"
 zh_CN:
   home:
     title: "Bitcoin Core"
@@ -122,6 +140,9 @@ zh_CN:
   contribute:
     title: "贡献"
     url:   "/zh_CN/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/zh_CN/meetings/"
 zh_TW:
   home:
     title: "Bitcoin Core"
@@ -138,3 +159,6 @@ zh_TW:
   contribute:
     title: "貢獻"
     url:   "/zh_TW/contribute/"
+  meetings:
+    title: "meetings"
+    url:   "/zh_TW/meetings/"
