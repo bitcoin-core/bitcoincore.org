@@ -1,0 +1,15 @@
+<ul class="meeting">
+  {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'meeting' | sort:'post.date' %}
+  {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'meeting' %}
+  {% for post in english_posts %}
+    {% for t_post in translated_posts %}
+      {% if t_post.name == post.name %}{% assign post=t_post %}{% break %}{% endif %}
+    {% endfor %}
+  <li>
+    <a href="{{ post.url }}">
+      {{ post.title | replace: '<br/>', '' }}
+    </a>
+    <div class="desc">{{ post.desc }}</div>
+  </li>
+  {% endfor %}
+</ul>
