@@ -15,7 +15,7 @@
                     {% if link[0] != 'home' and link[1].submenu != true and link[1].disabled != true %}
                       <li><a href="{{ domain }}{{ link[1].url }}">{{ link[1].title }}</a></li>
                     {% elsif link[1].submenu == true and link[1].disabled != true %}
-                      <li><a href="">{{ link[1].title }}</a>
+                      <li><a href="javascript:;">{{ link[1].title }}</a>
                           <ul>
                           {% for sublink in link[1].tree %}
                             <li><a href="{{ domain }}{{ sublink[1].url }}">{{ sublink[1].title }}</a></li>
@@ -26,12 +26,13 @@
                 {% endfor %}
                 {% assign posts=site.posts | where:"name", page.name | sort: 'path' %}
 
-                <li id="langselect" class="lang"><a href="">{{ site.data.languages[page.lang] }}</a>                    
-                    <ul>
+                <li id="langselect" class="lang">
+                    <select onchange="window.location=this.value;">
+                        <option value="{{ post.url }}">{{ site.data.languages[page.lang] }}</option>
                         {% for post in posts %}
-                        {% if post.lang != page.lang %}<li><a href="{{ post.url }}">{{ site.data.languages[post.lang] }}</a></li>{% endif %}
+                        {% if post.lang != page.lang %}<option value="{{ post.url }}">{{ site.data.languages[post.lang] }}</option>{% endif %}
                         {% endfor %}
-                    </ul>
+                    </select>
                 </li>
                 <!--<li class="lang">-->
                     <!--<li><a>{{ site.data.languages[page.lang] }}</a>-->

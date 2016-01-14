@@ -209,18 +209,6 @@ $button-size: 1.5rem;
 	}
 }
 
-.nav #langselect {
-	display: none;
-	
-	@media #{$small} {
-		display: block;
-		float:right;
-		font-weight: normal;
-		color: $white;
-		margin-right: 2em;
-	}
-}
-
 .nav li:hover ul {
 	display: block;
 }
