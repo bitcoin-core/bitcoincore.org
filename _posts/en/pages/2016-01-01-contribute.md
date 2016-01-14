@@ -23,8 +23,7 @@ please check the [contribution guidelines][CONTRIBUTING] to understand our workf
 
 **Discussion**
 
-Bitcoin Core related discussion happens in the IRC channels on irc.freenode.net `#bitcoin-core-dev`. There is also a mailing list for general Bitcoin discussion [bitcoin-discuss][bitcoin-discuss] and a mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev].
-
+Most Bitcoin Core related discussion happens in the IRC channels on irc.freenode.net `#bitcoin-core-dev`. There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev] and a general Bitcoin discussion [bitcoin-discuss][bitcoin-discuss]. We also have [Slack][slack] (request an [invitation][invite]).
 
 **Contribute to this website**
 
@@ -39,3 +38,5 @@ You can also translate or contribute to this [website][website-contrib].
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
+[Slack]: https://bitcoincore.slack.com/
+[invite]: https://slack.bitcoinco.re/
