@@ -19,6 +19,30 @@ body {
 	font-weight: 700;
 	text-transform: uppercase;
 	@include clearfix;
+	background-color: $black;
+	background-image: url("/assets/images/nav_background.png");
+	background-position: left bottom;
+	background-size: 1px 100px;
+	background-repeat: repeat-x;
+	color: $white;
+	a {
+		text-decoration: none;
+		color: $navlink-color;
+		&:visited {
+			color: $navlinkcolor;
+		}
+		&:hover {
+			color: $navlinkcolorhover;
+		}
+		&:focus {
+			outline: thin dotted;
+			color: $navlinkcolorfocus;
+		}
+		&:hover,
+		&:active {
+			outline: 0;
+		}
+	}
 }
 
 /* Site name */
@@ -27,20 +51,28 @@ body {
 	@include prefix(12,1);
 	@include suffix(12,1);
 	margin-bottom: 1em;
-	padding-top: 0.57em;
+	padding-top: 1.15em;
 	float: none;
 	display: block;
 	@include font-rem(24);
 	@media #{$small} {
-		@include grid(12,2);
-		@include prefix(12,0.5);
-		@include suffix(12,0.5);
+		text-align: right;
+		@include grid(12,2.6);
+		@include prefix(12,0);
+		@include suffix(12,0.4);
 		@include font-rem(16);
 	}
 	@media #{$x-large} {
-		@include grid(12,1.5);
-		@include prefix(12,2);
+		text-align: right;
+		@include grid(12,3.6);
+		@include prefix(12,0);
+		@include suffix(12,0.4);
 	}
+}
+
+.site-name img {
+	width:100%;
+	max-width:180px;
 }
 
 /* Top navigation links */
@@ -182,6 +214,7 @@ $button-size: 1.5rem;
 	display: inline-block;
 	width: inherit;
 	display: none;
+	background-color: $black;
 	@media #{$small} {
 		position: absolute;
 		margin-left: -0.2em;
@@ -222,30 +255,36 @@ $button-size: 1.5rem;
 .nav li:hover {
 	background-color: transparent;
 	a {
-		color: $black;
+		color: $white;
 		&:visited, &:hover, &:focus, &:hover, &:active {
-			color: $black;
+			color: $white;
 		}
 	}
 	@media #{$small} {
-		background-color: $black;
+		background-color: $white;
 		a {
-			color: $white;
+			color: $black;
 			&:visited, &:hover, &:focus, &:hover, &:active {
-				color: $white;
+				color: $black;
 			}
 		}
 	}
 }
 
 li.lang:hover {
-	background-color: $white;
+	background-color: transparent;
 }
 
 .nav li ul li, .nav li:hover ul li {
 	background-color: $white;
 	display: block;
 	color: $white;
+	a {
+		color: $black;
+		&:visited, &:hover, &:focus, &:hover, &:active {
+			color: $black;
+		}
+	}
 }
 	
 // Style the toggle menu link and hide it
