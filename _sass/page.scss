@@ -173,16 +173,18 @@ $button-size: 1.5rem;
 	border-bottom: none;
 	padding-left: 1em;
 	@media #{$small} {
-		padding-left: 0;
+		padding: 0.2em;
 		display: inline-block;
 	}
 }
-	
-.nav li ul {
+
+.nav li ul, .nav li:hover ul {
 	display: inline-block;
 	width: inherit;
+	display: none;
 	@media #{$small} {
 		position: absolute;
+		margin-left: -0.2em;
 		display: none;
 		width: inherit;
 		background-color: $white;
@@ -213,8 +215,37 @@ $button-size: 1.5rem;
 	display: block;
 }
 
-.nav li ul li {
+.nav li:hover a {
+	color: $link-color;
+}
+
+.nav li:hover {
+	background-color: transparent;
+	a {
+		color: $black;
+		&:visited, &:hover, &:focus, &:hover, &:active {
+			color: $black;
+		}
+	}
+	@media #{$small} {
+		background-color: $black;
+		a {
+			color: $white;
+			&:visited, &:hover, &:focus, &:hover, &:active {
+				color: $white;
+			}
+		}
+	}
+}
+
+li.lang:hover {
+	background-color: $white;
+}
+
+.nav li ul li, .nav li:hover ul li {
+	background-color: $white;
 	display: block;
+	color: $white;
 }
 	
 // Style the toggle menu link and hide it
