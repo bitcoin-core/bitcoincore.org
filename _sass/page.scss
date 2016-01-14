@@ -262,6 +262,7 @@ $button-size: 1.5rem;
 	}
 	@media #{$small} {
 		background-color: $white;
+		@include rounded(3px);
 		a {
 			color: $black;
 			&:visited, &:hover, &:focus, &:hover, &:active {
