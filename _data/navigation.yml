@@ -7,7 +7,6 @@ en:
     title: "About"
     url:   "/en/about/"
   test: # this is temporary structure to show how to do nested menus
-    disabled: true # disable from rendering
     title: "Nested"
     submenu: true
     tree: # menus go here

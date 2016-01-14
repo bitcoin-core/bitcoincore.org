@@ -12,25 +12,26 @@
 				        {% else %}
 				        {% assign domain = site.url %}
 				    {% endif %}
-
                     {% if link[0] != 'home' and link[1].submenu != true and link[1].disabled != true %}
                       <li><a href="{{ domain }}{{ link[1].url }}">{{ link[1].title }}</a></li>
                     {% elsif link[1].submenu == true and link[1].disabled != true %}
-                      <a>{{ link[1].title }}</a>
-                      {% for sublink in link[1].tree %}
-                        <li><a href="{{ domain }}{{ sublink[1].url }}">{{ sublink[1].title }}</a></li>
-                      {% endfor %}
+                      <li><a href="">{{ link[1].title }}</a>
+                          <ul>
+                          {% for sublink in link[1].tree %}
+                            <li><a href="{{ domain }}{{ sublink[1].url }}">{{ sublink[1].title }}</a></li>
+                          {% endfor %}
+                          </ul>
+                      </li>
                     {% endif %}
- 				{% endfor %}
+                {% endfor %}
                 {% assign posts=site.posts | where:"name", page.name | sort: 'path' %}
 
-                <li id="langselect" class="lang">
-                    <select onchange="window.location=this.value;">
-                        <option value="{{ post.url }}">{{ site.data.languages[page.lang] }}</option>
+                <li id="langselect" class="lang"><a href="">{{ site.data.languages[page.lang] }}</a>                    
+                    <ul>
                         {% for post in posts %}
-                        {% if post.lang != page.lang %}<option value="{{ post.url }}">{{ site.data.languages[post.lang] }}</option>{% endif %}
+                        {% if post.lang != page.lang %}<li><a href="{{ post.url }}">{{ site.data.languages[post.lang] }}</a></li>{% endif %}
                         {% endfor %}
-                    </select>
+                    </ul>
                 </li>
                 <!--<li class="lang">-->
                     <!--<li><a>{{ site.data.languages[page.lang] }}</a>-->

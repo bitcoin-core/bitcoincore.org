@@ -168,6 +168,67 @@ $button-size: 1.5rem;
 .nav {
 	padding-top: 1.5em;
 }
+
+.nav li {
+	border-bottom: none;
+	padding-left: 1em;
+	@media #{$small} {
+		padding-left: 0;
+		display: inline-block;
+	}
+}
+	
+.nav li ul {
+	display: inline-block;
+	width: inherit;
+	@media #{$small} {
+		position: absolute;
+		display: none;
+		width: inherit;
+		background-color: $white;
+		border: 1px solid #eee;
+		padding: 0.3em;
+		a {
+			text-decoration: none;
+			color: $link-color;
+			&:visited {
+				color: $linkcolor;
+			}
+			&:hover {
+				color: $linkcolorhover;
+			}
+			&:focus {
+				outline: thin dotted;
+				color: $linkcolorfocus;
+			}
+			&:hover,
+			&:active {
+				outline: 0;
+			}
+		}
+	}
+}
+
+.nav #langselect {
+	display: none;
+	
+	@media #{$small} {
+		display: block;
+		float:right;
+		font-weight: normal;
+		color: $white;
+		margin-right: 2em;
+	}
+}
+
+.nav li:hover ul {
+	display: block;
+}
+
+.nav li ul li {
+	display: block;
+}
+	
 // Style the toggle menu link and hide it
 .nav .navtoggle {
 	@include font-rem(18);
@@ -210,7 +271,7 @@ $button-size: 1.5rem;
 	}
 }
 // Displaying the menu when the user has clicked on the button
-.js .nav .active + ul {
+.js .nav .active + ul, .js .nav .active + ul li ul {
 	max-height: 30em;
 	overflow: hidden;
 	-webkit-transition: max-height .4s;
