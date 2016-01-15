@@ -18,7 +18,7 @@ $alt-font: $base-font;
    Colors
    ========================================================================== */
 
-$bodycolor      : #fff;
+$bodycolor      : lighten(#111,90);
 $body-color     : $bodycolor;
 $textcolor      : #333332;
 $text-color     : $textcolor;
