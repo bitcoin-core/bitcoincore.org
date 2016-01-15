@@ -48,6 +48,9 @@ en:
       bips:
         title: "Supported BIPs"
         url:   "/en/bips"
+      bips:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
 de:
   home:
     title: "Bitcoin Core"
