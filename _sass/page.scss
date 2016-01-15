@@ -342,12 +342,13 @@ li.lang:hover {
 
 /* Main content */
 #main {
+	background-color: darken($white, 1);
 	counter-reset: captions;
 	@include container;
 	@include clearfix;
 	line-height: 1.5em;
 	clear: both;
-	margin-top: 2em;
+	padding-top: 2em;
 	h1 {
 		margin-top: 0;
 	}
@@ -758,6 +759,9 @@ li.lang:hover {
 
 /* Footer wrapper */
 .footer-wrap {
+	background-color: lighten($black,90);
+	border-top: 1px solid lighten($black,70);
+	color: lighten($black,60);
 	@include container;
 	@include clearfix;
 	clear: both;
@@ -770,10 +774,10 @@ li.lang:hover {
 	h5,
 	h6,
 	span {
-		@include font-rem(14);
+		@include font-rem(16);
 	}
 	footer {
-  	border-top: 3px solid lighten($black,70);
+		padding-top: 0.5em;
 		@include grid(12,10);
 		@include prefix(12,1);
 		@include suffix(12,1);
@@ -787,6 +791,41 @@ li.lang:hover {
 			@include prefix(12,4);
 			@include suffix(12,3.5);
 		}
+	}
+	footer div {
+		@include grid(12,6);
+		&:last-child {
+			text-align: right;
+		}
+	}
+	a {
+		color: lighten($black,60);
+		&:visited, &:focus, &:hover, &:active {
+			color: lighten($black,60);
+		}
+		&:hover {
+			color: $black;
+		}
+	}
+	.copyright {
+		@include font-rem(11);
+	}
+}
+
+.footer-link {
+	display: block;
+	margin-bottom: 0.3em;
+  &:visited {
+    color: $black;
+  }
+  &:hover {
+    @include scale(1.05);
+  }
+  &:active {
+    @include translate(0, 2px);
+  }
+  .fa {
+		margin-right: 5px;
 	}
 }
 
