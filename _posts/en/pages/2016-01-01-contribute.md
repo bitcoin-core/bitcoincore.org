@@ -39,4 +39,4 @@ You can also translate or contribute to this [website][website-contrib].
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
 [Slack]: https://bitcoincore.slack.com/
-[invite]: https://slack.bitcoinco.re/
+[invite]: https://slack.bitcoincore.org/
