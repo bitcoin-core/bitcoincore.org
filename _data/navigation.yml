@@ -6,29 +6,25 @@ en:
   about:
     title: "About"
     url:   "/en/about/"
-  test: # this is temporary structure to show how to do nested menus
-    disabled: true # disable from rendering
-    title: "Nested"
-    submenu: true
-    tree: # menus go here
-      first:
-        title: "first"
-        url: "/first"
-      second:
-        title: "second"
-        url: "/second"
   blog:
     title: "blog"
     url:   "/en/blog/"
   releases:
     title: "releases"
     url:   "/en/releases/"
-  contribute:
-    title: "contribute"
-    url:   "/en/contribute/"
-  meetings:
-    title: "meetings"
-    url:   "/en/meetings/"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "contribute"
+        url:   "/en/contribute/"
+      segwit:
+        title: "SegWit Adoption"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "meetings"
+        url:   "/en/meetings/"
 de:
   home:
     title: "Bitcoin Core"
