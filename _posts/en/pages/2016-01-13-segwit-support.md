@@ -31,4 +31,4 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 
 To add your company or service, please ACK ticket [#30] with company/service name.
 
-[#30]: https://github.com/bitcoin-core/website/pull/fixme
+[#30]: https://github.com/bitcoin-core/website/pull/30
