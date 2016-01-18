@@ -30,4 +30,4 @@ occasion the English text is updated. Translated text should remove `translated:
 
 ## License
 
-By contribution to this project you agree to release your contribution under the [MIT License](/LICENSE).
+By contributing to this project you agree to release your contribution under the [MIT License](/LICENSE).
