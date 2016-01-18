@@ -25,6 +25,9 @@ en:
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
+      bips:
+        title: "Supported BIPs"
+        url:   "/en/bips"
 de:
   home:
     title: "Bitcoin Core"
