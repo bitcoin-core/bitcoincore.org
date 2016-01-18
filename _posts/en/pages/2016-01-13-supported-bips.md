@@ -5,7 +5,7 @@ type: page
 permalink: /en/bips
 share: false
 ---
-Bitcoin Core supports the following [BIPs](https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki).
+Bitcoin Core 0.12 supports the following [BIPs](https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki).
 
 | BIP| Title|
 |----|------|
