@@ -68,6 +68,9 @@
   <footer>
     {% include _footer.html %}
   </footer>
+  {% if page.footer_show_supporters != false %}
+      {% include _supporters_short.html %}
+  {% endif %}
 </div><!-- /.footer-wrap -->
 
 {% include _scripts.html %}
