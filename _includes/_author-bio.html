@@ -17,8 +17,6 @@
 	<img src="{{ author.avatar }}" class="bio-photo" alt="{{ authorname }}">
 {% elsif author != empty and author.avatar != empty and remoteavatar == false %}
 	<img src="{{ site.url }}/assets/images/{{ author.avatar }}" class="bio-photo" alt="{{ authorname }}">
-{% else %}
-    <img src="{{ site.url }}/assets/images/bio-blank.jpg" class="bio-photo" alt="bio-blank">
 {% endif %}
 
   <h3 itemprop="name">{{ author.name }}</h3>
