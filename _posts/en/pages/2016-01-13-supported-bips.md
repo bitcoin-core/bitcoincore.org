@@ -50,7 +50,7 @@ Bitcoin Core 0.12 supports the following [BIPs](https://github.com/bitcoin/bips/
 [66]: https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 [70]: https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki
 [71]: https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki
-[72]: https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki
+[72]: https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki
 [111]: https://github.com/bitcoin/bips/blob/master/bip-0111.mediawiki
 [125]: https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki
 [130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
