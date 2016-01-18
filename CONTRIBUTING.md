@@ -27,3 +27,7 @@ and final decision is with the Bitcoin Core project lead.
 
 Translations should be made from the English source. The English source has a `version:` field in the Front Matter which should be updated if on the rare
 occasion the English text is updated. Translated text should remove `translated: false` from the Front Matter.
+
+## License
+
+By contribution to this project you agree to release your contribution under the [MIT License](/LICENSE).
