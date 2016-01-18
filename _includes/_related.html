@@ -3,7 +3,7 @@
 <div class="related-articles">
     {% assign translations = site.data.translations[page.lang] %}
     {% assign navigation = site.data.navigation[page.lang] %}
-    <h4>{{ translations.related }} <small class="pull-right">(<a href="{{ site.url }}/{{ navigation[1].blog }}">{{ site.data.translations.viewallposts }}</a>)</small></h4>
+    <h4>{{ translations.related }} <small class="pull-right">(<a href="{{ site.url }}/{{ site.data.navigation[1].blog }}">{{ translations.viewallposts }}</a>)</small></h4>
     <ul>
         {% for post in related_posts limit:3 %}
         <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>

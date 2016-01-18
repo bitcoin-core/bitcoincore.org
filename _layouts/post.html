@@ -49,10 +49,10 @@
     <section id="disqus_thread"></section><!-- /#disqus_thread -->
   {% endif %}
   </article>
+  {% if page.related != false %}{% include _related.html %}{% endif %}
 </div><!-- /#main -->
 
 <div class="footer-wrap">
-  {% if page.related != false %}{% include _related.html %}{% endif %}
   <footer>
     {% include _footer.html %}
   </footer>
