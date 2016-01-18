@@ -6,6 +6,9 @@ en:
   about:
     title: "About"
     url:   "/en/about/"
+  supporters:
+    title: "Supporters"
+    url:   "/en/supporters/"
   blog:
     title: "blog"
     url:   "/en/blog/"
