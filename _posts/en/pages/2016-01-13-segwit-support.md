@@ -28,6 +28,7 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |15|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|
 |16|[EI8HT](http://ei8.ht/)|yes|no|wallet|
 |17|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet|
+|18|[Electrum](https://electrum.org/)|yes|no|wallet|
 
 To add your company or service, please ACK ticket [#30] with company/service name.
 
