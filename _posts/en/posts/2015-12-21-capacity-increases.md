@@ -18,6 +18,6 @@ For more information, please see the
 
 ---
 
-Signatures may be added to Bitcoin.org pull request [#1165](https://github.com/bitcoin-dot-org/bitcoin.org/pull/1165)
+Signatures may be added to bitcoincore.org pull request [#53](https://github.com/bitcoin-core/website/issues/53)
 
 [1]: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html

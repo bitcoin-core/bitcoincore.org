@@ -15,7 +15,7 @@ version: 1
 
 ---
 
-如果你想参与连署，请到[#1165](https://github.com/bitcoin-dot-org/bitcoin.org/pull/1165)。
+如果你想参与连署，请到[#53](https://github.com/bitcoin-core/website/issues/53))。
 
 
 [1]: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html
