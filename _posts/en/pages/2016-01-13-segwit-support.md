@@ -26,10 +26,13 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |13|[libbtc](https://github.com/libbtc)|yes|no|library|
 |14|[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library|
 |15|[mSIGNA](https://ciphrex.com/)|yes|yes|wallet|
-|16|NBitcoin|yes|no|library|
-|17|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet|
-|18|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|
-|19|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet|
+|16|[Mycelium](https://mycelium.com/)|yes|no|wallet|
+|17|NBitcoin|yes|no|library|
+|18|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet|
+|19|[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library|
+|20|[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|
+|21|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|
+|22|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet|
 
 To add your company or service, please ACK ticket [#30] with company/service name.
 
