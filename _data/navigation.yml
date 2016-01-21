@@ -19,6 +19,13 @@ en:
   releases:
     title: "releases"
     url:   "/en/releases/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/en/faq/optin_rbf"
   dev:
     title: "Development"
     submenu: true
