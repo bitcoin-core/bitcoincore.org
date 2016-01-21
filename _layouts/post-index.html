@@ -54,15 +54,14 @@
       </article>
     {% endfor %}
   </div><!-- /#index -->
+    {% include _supporters_short.html %}
 </div><!-- /#main -->
 
 <div class="footer-wrap">
   <footer>
     {% include _footer.html %}
   </footer>
-    {% if page.footer_show_supporters != false %}
-      {% include _supporters_short.html %}
-    {% endif %}
+
 </div><!-- /.footer-wrap -->
 
 {% include _scripts.html %}

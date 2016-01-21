@@ -5,7 +5,14 @@ en:
     url:   "/"
   about:
     title: "About"
-    url:   "/en/about/"
+    submenu: true
+    tree:
+      about:
+        title: "About Us"
+        url:   "/en/about/"
+      supporters:
+        title: "Supporters"
+        url:   "/en/supporters"
   supporters:
     title: "Supporters"
     url:   "/en/supporters/"
