@@ -15,7 +15,7 @@ New educational content about Bitcoin was added to Bitcoin.org over time, but th
 
 As of Dec 2015, Bitcoin.org has 876 pages in 25 different languages, but fewer than 100 of those pages relate to Bitcoin Core. The Bitcoin Core project has no control over those non-Core pages or any policies enacted on them. Likewise, content provided through the Bitcoin Core pages is not necessarily endorsed or supported by the Bitcoin.org contributors.
 
-As of January 2016, Bitcoin Core opened it's own project website to further help separate concerns. Our timeline was accelerated because of the delisting of Coinbase on Bitcoin.org.
+As of January 2016, Bitcoin Core opened its own project website to further help separate concerns. Our timeline was accelerated because of the delisting of Coinbase on Bitcoin.org.
 
 Likewise, the "r/bitcoin" subreddit is not under the control of the Bitcoin Core project and their policies are their own. We recognise that large public forums do require some moderation policies but they have been too heavy handed. For development work, Bitcoin Core mainly uses IRC `#bitcoin-core-dev`, [Github](https://github.com/bitcoin/bitcoin) and [mailing list](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/) for communications. We also recently opened an community Slack group (request an invitation [here](https://slack.bitcoincore.org)) although this is not a developer channel, we have found it useful in enabling the greater Bitcoin community to connect with Bitcoin Core.
 
