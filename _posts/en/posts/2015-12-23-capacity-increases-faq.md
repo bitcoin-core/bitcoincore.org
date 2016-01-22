@@ -192,7 +192,7 @@ For example,
   network to function well with fewer full nodes than it can under
   currently-deployed technology.
 
-The actual effect of these technologies is unknown, but scaling now with
+The actual affect of these technologies is unknown, but scaling now with
 a soft fork that has wide consensus allows us to obtain the immediate
 gains, test and measure the mid-term possibilities, and use that data to
 formulate long-term plans.
@@ -302,9 +302,9 @@ either. For example,
 
 The [BIP66][] (strict DER) soft fork which activated in July 2015 will
 soon be providing reduced processing time by making it possible to
-switch to libsecp256k1 for validation as described elsewhere is this
+switch to libsecp256k1 for validation as described elsewhere in this
 FAQ. The reduced validation time makes it uncommon among soft
-forks in providing direct benefits to miners.
+forks that it provides direct benefits to miners.
 
 What segregated witness (segwit) does is provide several major benefits
 to anyone who uses it to create transactions:

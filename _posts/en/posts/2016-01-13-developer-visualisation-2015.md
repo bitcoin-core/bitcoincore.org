@@ -11,12 +11,12 @@ The following video shows commit activity in the [Bitcoin Core repository][repos
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FIt7GLxxIpY" frameborder="0" allowfullscreen> </iframe>
 
-In 2015, the Bitcoin Core project released 2 major versions of it's software together with a further 5 maintenance releases. 
+In 2015, the Bitcoin Core project released 2 major versions of it's software together with 5 further maintenance releases. 
 Additionally, two soft forks upgrades were deployed and successfully activated. The first, [BIP66], fixed a potentially serious security vulnerability introduced by openssl; and the second, [BIP65], added a new opcode CHECKLOCKTIMEVERIFY to the Bitcoin scripting language.
 
-The project also completed the bulk of the work for the next major release, [0.12], scheduled for release in February. [0.12] will include [libsecp256k1] which has been in development for the last [two and a half years][secp_contributors], and brings a 7 fold increase to signature validation speeds which is a essential for increasing scalability going forward. 
+The project also completed the bulk of the work for the next major release, [0.12], scheduled for release in February. [0.12] will include [libsecp256k1] which has been in development for the last [two and a half years][secp_contributors], and brings a 7 fold increase to signature validation speeds which is essential for increasing scalability going forward. 
 
-Please note that commit activity represents only a part of the overall developer activity and does not record the activity of peer reviewers, code reviewers, integration testers and translators. It also does not accurately reflected the amount of time that goes into research, discussion and development before being accepted into the codebase.
+Please note that commit activity represents only a part of the overall developer activity and does not record the activity of peer reviewers, code reviewers, integration testers and translators. It also does not accurately reflect the amount of time that goes into research, discussion and development before being accepted into the codebase.
 
 We would also like to take this opportunity to thank everyone who has been involved so far in contributing to Bitcoin Core and helping make Bitcoin better for everyone.
 
