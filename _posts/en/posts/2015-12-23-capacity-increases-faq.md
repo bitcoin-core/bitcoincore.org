@@ -304,7 +304,7 @@ The [BIP66][] (strict DER) soft fork which activated in July 2015 will
 soon be providing reduced processing time by making it possible to
 switch to libsecp256k1 for validation as described elsewhere in this
 FAQ. The reduced validation time makes it uncommon among soft
-forks that it provides direct benefits to miners.
+forks in that it provides direct benefits to miners.
 
 What segregated witness (segwit) does is provide several major benefits
 to anyone who uses it to create transactions:
