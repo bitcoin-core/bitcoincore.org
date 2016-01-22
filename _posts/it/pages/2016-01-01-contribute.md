@@ -8,26 +8,28 @@ share: false
 version: 1
 ---
 
-You are welcome to contribute to the project!
-Our main source code repository is [hosted on GitHub](https://github.com/bitcoin/bitcoin/) and there are several aspects you can help on:
+Siete i benvenuti nel contribuire al progetto:
+Il nostro repository principale è [ospitato su GitHub](https://github.com/bitcoin/bitcoin/)
+e ci sono molti aspetti in cui potete essere di aiuto:
+  - Migliorando la nostra documentazione (see [README.md][README.md] and [La directory doc][doc])
+  - [Traduzioni][translation_process.md]
+  - Testando il codice, testando i rilasci
+  - Partecipando alle mailing lists
+  - Migliorando la nostra interfaccia utente
+  - Scrivendo codice (risolvendo problemi o realizzando nuove funzionalità)
 
-  - Improving our documentation (see [README.md][README.md] and [doc folder][doc])
-  - [Translations][translation_process.md]
-  - Testing code, testing releases
-  - Participate on the mailing lists
-  - Improving our UIs
-  - Coding (fix open issues or implement new features)
+Sentitevi liberi di segnalare [problemi][issues] e di aprire [pull requests][pulls], ma
+per favore  controllate le nostre [guidelines per i contributi][CONTRIBUTING] per capire il nostro flusso di lavoro.
 
-Feel free to report [issues][issues] and open [pull requests][pulls], but
-please check the [contribution guidelines][CONTRIBUTING] to understand our workflow.
+**Discussione**
 
-**Discussion**
+La maggior parte delle discussioni legate a Bitcoin Core avvengono nel canale
+IRC `#bitcoin-core-dev` su irc.freenode.net.
+C'è anche una mialing list per le discussioni sul protocollo Bitcoin [bitcoin-dev][bitcoin-dev] e una per la discussione su Bitcoin in generale su [bitcoin-discuss][bitcoin-discuss]. Abbiamo anche una [Slack][slack] (richiedi un [invito][invite]).
 
-Most Bitcoin Core related discussion happens in the IRC channels on irc.freenode.net `#bitcoin-core-dev`. There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev] and a general Bitcoin discussion [bitcoin-discuss][bitcoin-discuss]. We also have [Slack][slack] (request an [invitation][invite]).
+**Cotribuire a questo sito web**
 
-**Contribute to this website**
-
-You can also translate or contribute to this [website][website-contrib].
+Puoi anche tradurre o contribuire a questo [sito web][website-contrib].
 
 [README.md]: https://github.com/bitcoin/bitcoin/blob/master/README.md
 [doc]: https://github.com/bitcoin/bitcoin/tree/master/doc
