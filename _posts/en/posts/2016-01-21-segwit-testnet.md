@@ -65,7 +65,6 @@ Once compiled, add `-segnet` to the standard `bitcoind` and `bitcoin-cli` comman
 - [Analysis of segwit benefits](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-January/012248.html)
 - [Hard Forks vs. Soft Forks](https://petertodd.org/2016/soft-forks-are-safer-than-hard-forks)
 - [Early Exploration of “Non-contentious” Hard Fork Research](https://scalingbitcoin.org/hongkong2015/presentations/DAY1/1_overview_1_timon.pdf)
-- [Technical analysis of the "Capacity Increases" roadmap](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-January/012248.html)
 
 [FAQ]: https://bitcoincore.org/en/2015/12/23/capacity-increases-faq
 [roadmap]: http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html
