@@ -100,9 +100,9 @@ P2WSH is another new standard script defined in BIP141. Similar to P2SH, it allo
 
 To spend a P2WSH output, the <code>scriptSig</code> MUST be empty, and the witness is:
 
-<pre><code>witness: <...> <...> <...> < witnessRedeemScript ></code></pre>
+<pre><code>witness: <...> <...> <...> < witnessScript ></code></pre>
 
-where the <code>RIPEMD160(SHA256(witnessRedeemScript))</code> is equal to the <code>32-byte-script-hash</code> in scriptPubKey. The <code>witnessRedeemScript</code> is deserialized and evaluated with the remaining data in the <code>witness</code>.
+where the <code>RIPEMD160(SHA256(witnessScript))</code> is equal to the <code>32-byte-script-hash</code> in scriptPubKey. The <code>witnessScript</code> is deserialized and evaluated with the remaining data in the <code>witness</code>.
 
 
 #### P2WSH in P2SH (P2SH-P2WSH)
@@ -113,9 +113,9 @@ P2SH-P2WPKH is using a P2WSH script as the <code>redeemScript</code> for P2SH. T
 To spend a P2SH-P2WPKH output, the <code>scriptSig</code> MUST contain a push of the <code>redeemScript</code> and nothing else and the <code>witness</code> is same as P2WSH:
 
 <pre><code>scriptSig (35 bytes): < OP_0 < 32-byte-script-hash > > \
-witness: <...> <...> <...> < witnessRedeemScript ></code></pre>
+witness: <...> <...> <...> < witnessScript ></code></pre>
 
-where the <code>SHA256(witnessRedeemScript)</code> is equal to the <code>32-byte-script-hash</code>, and <code>RIPEMD160(0x0020{32-byte-pubkey-hash})</code> is equal to the <code>20-byte-script-hash</code>.
+where the <code>SHA256(witnessScript)</code> is equal to the <code>32-byte-script-hash</code>, and <code>RIPEMD160(0x0020{32-byte-pubkey-hash})</code> is equal to the <code>20-byte-script-hash</code>.
 
 ### New signing algorithm
 To spend a witness program output, a new signing algorithm MUST be used when producing the ECDSA signature. A step-by-step example could be found in BIP143.
