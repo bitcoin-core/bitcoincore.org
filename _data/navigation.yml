@@ -13,9 +13,6 @@ en:
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
-  supporters:
-    title: "Supporters"
-    url:   "/en/supporters/"
   blog:
     title: "blog"
     url:   "/en/blog/"
