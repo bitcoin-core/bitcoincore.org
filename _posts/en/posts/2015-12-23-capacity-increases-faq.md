@@ -192,7 +192,7 @@ For example,
   network to function well with fewer full nodes than it can under
   currently-deployed technology.
 
-The actual affect of these technologies is unknown, but scaling now with
+The actual effect of these technologies is unknown, but scaling now with
 a soft fork that has wide consensus allows us to obtain the immediate
 gains, test and measure the mid-term possibilities, and use that data to
 formulate long-term plans.
