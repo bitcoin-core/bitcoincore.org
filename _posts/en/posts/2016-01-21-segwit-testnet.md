@@ -5,9 +5,10 @@ name: segwit-testnet
 title: Launch of Segregated Witness Testnet
 permalink: /en/2016/01/21/launch_segwit_testnet
 version: 1
+excerpt: We are extremely pleased and excited to announce the release of the Segregated Witness Testnet
 ---
 
-We are extremely pleased and excited to announce the release of the [Bitcoin Segregated Witness](https://github.com/sipa/bitcoin/commits/segwit) implementation to the Segwit Testnet! All developers are encouraged to help begin testing and integration right away.
+We are extremely pleased and excited to announce the [Segregated Witness Testnet](https://github.com/sipa/bitcoin/commits/segwit)! All developers are encouraged to help begin testing and integration right away.
 
 This represents one of the most hotly anticipated and exciting developments to date, an important foundation for many future improvements and innovations. Segregated Witness frees up space on the Bitcoin blockchain by securely moving transaction signature data to a specially delegated “Segregated Witness” data structure outside of the transaction block.
 
