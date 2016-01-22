@@ -10,9 +10,9 @@ excerpt: We are extremely pleased and excited to announce the release of the Seg
 
 We are extremely pleased and excited to announce the [Segregated Witness Testnet](https://github.com/sipa/bitcoin/commits/segwit)! All developers are encouraged to help begin testing and integration right away.
 
-This represents one of the most hotly anticipated and exciting developments to date, an important foundation for many future improvements and innovations. Segregated Witness frees up space on the Bitcoin blockchain by securely moving transaction signature data to a specially delegated “Segregated Witness” data structure outside of the transaction block.
+This represents one of the most hotly anticipated and exciting developments to date that is an important foundation for many future improvements and innovations. Segregated Witness frees up space on the Bitcoin blockchain by securely moving transaction signature data to a specially delegated “Segregated Witness” data structure outside of the transaction block.
 
-This significant innovation leads to dramatically more efficient use of the Bitcoin blockchain, while simultaneously opening up exciting new possibilities and opportunities for the broader Bitcoin ecosystem, particularly around smart contract applications and dramatically faster transactions, while providing the groundwork for more advanced features and possibilities in the future.
+This significant innovation leads to dramatically more efficient use of the Bitcoin blockchain, while simultaneously opening up exciting new possibilities and opportunities for the broader Bitcoin ecosystem, particularly around smart contract applications and dramatically faster transactions, while also providing the groundwork for more advanced features and possibilities in the future.
 
 This development began with a research effort by Bitcoin Core developer, Dr. Pieter Wuille, initially focused on addressing transaction malleability, a longstanding and well-known concern and priority. However, in the process of this research, and in the narrowing toward a solution, additional properties of the solution were discovered that allow for increasing the block size while also simultaneously opening up some incredibly exciting secondary benefits.
 

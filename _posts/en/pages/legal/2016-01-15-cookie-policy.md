@@ -8,7 +8,7 @@ version: 1
 ---
 ## Introduction
 
-A cookies is a small text file which can be sent by a web-server to your web-browser when you request a page. This file is stored on your computer and it sent back to the website when you make another page request. Only the sending website can access it's cookies. 
+A cookie is a small text file which can be sent by a web-server to your web-browser when you request a page. This file is stored on your computer and it sent back to the website when you make another page request. Only the sending website can access it's cookies. 
 
 Session cookies are deleted from your browser when you close your browser window or tab. Persistent cookies are deleted automatically by your browser when their expiry date is reached.
 

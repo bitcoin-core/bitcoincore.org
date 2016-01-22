@@ -8,7 +8,7 @@ version: 1
 ---
 ## Introduction
 
-By visiting this website or are otherwise providing your personal information to us via any other means, you are accepting and consenting to the practices described in this Policy. Unless specified otherwise, the term “visitor” includes everyone whether you upload information to our website, download information, or are merely visiting.
+By visiting this website or otherwise providing your personal information to us via any other means, you are accepting and consenting to the practices described in this Policy. Unless specified otherwise, the term “visitor” includes everyone whether you upload information to our website, download information, or are merely visiting.
 
 This privacy policy will govern our use of your information, regardless of what information we collect.
 
@@ -16,7 +16,7 @@ This privacy policy will govern our use of your information, regardless of what 
 
 We collect basic usage information in the form of logs from all visitors. When you visit our website, our server logs your IP address, the time and duration of your visit, and the time and duration of the pages on our website you view. We may also capture information about your computer system, such as your browser type and operating system.
 
-We will likely place a cookie on your hard drive during the web visit. If you do not wish cookies to be placed on your computer, then they can be disabled in your web browser. However, please note that disabling cookies in your browser may prevent this website from working correctly. We may use third party DDOS protection services and they may also use cookies to deliver their services.
+We will likely place a cookie on your hard drive during the web visit. If you do not want cookies to be placed on your computer, then they can be disabled in your web browser. However, please note that disabling cookies in your browser may prevent this website from working correctly. We may use third party DDOS protection services and they may also use cookies to deliver their services.
 
 ## What do we use this information for?
 
