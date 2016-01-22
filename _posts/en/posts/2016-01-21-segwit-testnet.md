@@ -30,11 +30,11 @@ Early previews of third party wallet support are available at:
 
 ## How to get involved
 
-If you are a wallet user interested in following the status of your wallet’s implementation, please [follow their progress][segwit_adoption] which will be regularly updated. The testing period will proceed according to the Bitcoin Core roadmap. If you would also like to list your wallet or library support, you can do so [here](https://github.com/bitcoin-core/website/pull/30).
+Please join the `segwit-dev` IRC channel on irc.freenode.net.
 
-If you are a wallet provider, and interested in instructions for how to upgrade to a segwit-compatible wallet, please read the [migration guide](/en/segwit_wallet_dev)
+Wallet providers should read the [migration guide](/en/segwit_wallet_dev).
 
-There is also an IRC channel `segwit-dev` available on irc.freenode.net.
+If you are a wallet user interested in following the status of your wallet’s implementation, please [follow their progress][segwit_adoption] which will be regularly updated. 
 
 ## Testing
 
