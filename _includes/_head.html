@@ -14,7 +14,10 @@
 
 {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
 <link rel="canonical" href="{{ canonical }}">
-<link href="{{ site.url }}/{{ page.lang }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+
+<link href="{{ site.url }}/{{ page.lang }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Blog XML Feed">
+<link href="{{ site.url }}/{{ page.lang }}/rss.xml" type="application/rss+xml" rel="alternate" title="{{ site.title }} Blog RSS Feed">
+<link href="{{ site.url }}/{{ page.lang }}/meetingrss.xml" type="application/rss+xml" rel="alternate" title="{{ site.title }} Meeting RSS Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
