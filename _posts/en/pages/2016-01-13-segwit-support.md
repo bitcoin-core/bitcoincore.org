@@ -13,7 +13,7 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |-|----|-------|-----|-----|-------|
 |1|[BitcoinJ](https://bitcoinj.github.io/)|yes|no|library|n/a|
 |2|[Bitcoinjs](http://bitcoinjs.org/)|yes|no|library|n/a|
-|3|[BitGo](https://www.bitgo.com/)*|yes|no|wallet|bitcoinj, bitcoinjs |
+|3|[BitGo](https://www.bitgo.com/)*|yes|no|wallet|bitcoinj, bitcoinjs|
 |4|[Blocktrail](https://www.blocktrail.com/)|yes|no|wallet, block explorer||
 |5|[BreadWallet](http://breadwallet.com/)|yes|no|wallet||
 |6|[Coinfloor](https://www.coinfloor.co.uk/)|yes|no|exchange||
@@ -22,21 +22,25 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |8|[Digitalbitbox](https://digitalbitbox.com/)|yes|no|hardware wallet||
 |9|[EI8HT](http://ei8.ht/)|yes|no|wallet||
 |10|[Electrum](https://electrum.org/)|yes|no|wallet||
-|11|[GreenAddress](https://greenaddress.it/)|yes|no|wallet||
-|12|[GreenBits](https://www.greenbits.com/)|yes|no|wallet| bitcoinj, bitcoinjs|
-|13|[Ledger](https://www.ledgerwallet.com/)|yes|no|hardware wallet||
+|11|[GreenAddress](https://greenaddress.it/)*|yes|no|wallet|pycoin, bitcoinjs|
+|12|[GreenBits](https://www.greenbits.com/)|yes|no|wallet|bitcoinj|
+|13|[Ledger](https://www.ledgerwallet.com/)|yes|no|hardware wallet|bitcoinjs*|
 |14|[libbtc](https://github.com/libbtc)|yes|no|library||
 |15|[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library||
 |16|[mSIGNA](https://ciphrex.com/)|yes|yes|wallet||
 |17|[Mycelium](https://mycelium.com/)|yes|no|wallet||
-|18|NBitcoin|yes|no|library||
+|18|NBitcoin|yes|no|library|n/a|
 |19|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet||
 |20|[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library||
-|21|[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library||
-|22|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet||
+|21|[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
+|22|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|bitcoinj|
 |23|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet||
 
-* BitGo provides wallet services to large exchanges such as Bitfinex, Bitstamp and Kraken. 
+* BitGo provides wallet services to large exchanges such as Bitfinex, Bitstamp and Kraken.
+
+* GreenAddress provides wallet services to TheRockTrading exchange, BitBoat and CoinBR.
+
+* Only the Ledger Chrome app depends bitcoinjs, not necessarily required by third party apps supporting the hardware.
 
 To add your company or service, please ACK ticket [#30] with company/service name.
 
