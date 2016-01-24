@@ -57,6 +57,7 @@ P2SH address).
  * [MtGox Malleability issues](http://www.coindesk.com/bitcoin-bug-guide-transaction-malleability/)
  * [Coin Telegraph article on 2015 Malleability attack](http://cointelegraph.com/news/115374/the-ongoing-bitcoin-malleability-attack)
  * [Bitcoin Magazine article on 2015 Malleability attack](https://bitcoinmagazine.com/articles/the-who-what-why-and-how-of-the-ongoing-transaction-malleability-attack-1444253640)
+ * ["Overview of BIPs necessary for Lightning" transcript](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/overview-of-bips-necessary-for-lightning/)
  * [BIP 62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki)
  * [BIP 140](https://github.com/bitcoin/bips/blob/master/bip-0140.mediawiki)
 
