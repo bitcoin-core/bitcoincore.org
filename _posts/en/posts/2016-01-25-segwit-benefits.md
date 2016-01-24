@@ -206,3 +206,20 @@ which will potentially greatly increase the security of the bitcoin
 network as a whole, as well as reduce the ways in which individual users
 can be attacked.
 
+## Signature pruning
+
+For old transactions, signatures may be less interesting -- for example,
+some SPV clients simply don't check signatures, trusting that miners
+have already done that; and bitcoin core does not check signatures for
+transactions prior to the most recent checkpoint. At present, however,
+signature data is an integral part of the transaction, and must be
+present in order to calculate the transaction hash.
+
+Segregating the signature data allows nodes that aren't interested in
+signature data to prune it from the disk, or never download it in the
+first place, saving resources.
+
+#### Who benefits?
+
+People running pruned or SPV nodes, with limited bandwidth or disk space.
+
