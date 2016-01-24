@@ -255,3 +255,51 @@ defaults:
     values:
       layout: page
       type: releases
+  -
+    scope:
+      path: _posts/en/releases
+    values:
+      layout: page
+      type: meetings
+  -
+    scope:
+      path: _posts/de/releases
+    values:
+      layout: page
+      type: meetings
+  -
+    scope:
+      path: _posts/es/releases
+    values:
+      layout: page
+      type: meetings
+  -
+    scope:
+      path: _posts/fr/releases
+    values:
+      layout: page
+      type: meetings
+  -
+    scope:
+      path: _posts/it/releases
+    values:
+      layout: page
+      type: meetings
+  -
+    scope:
+      path: _posts/ru/releases
+    values:
+      layout: page
+      type: meetings
+  -
+    scope:
+      path: _posts/zh_CN/releases
+    values:
+      layout: page
+      type: meetings
+  -
+    scope:
+      path: _posts/zh_TW/releases
+    values:
+      layout: page
+      type: meetings
