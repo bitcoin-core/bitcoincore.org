@@ -110,7 +110,7 @@ being spent was.
 
 #### Who benefits?
 
-Manufactures and users of hardware wallets are the obvious beneficiaries;
+Manufacturers and users of hardware wallets are the obvious beneficiaries;
 however this likely also makes it much easier to safely use bitcoin in
 small embedded devices for "Internet of things" applications.
 
