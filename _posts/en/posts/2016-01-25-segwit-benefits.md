@@ -90,6 +90,8 @@ services.
 
  * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
  * [Blog post by Rusty Russell on the 25s transaction](http://rusty.ozlabs.org/?p=522)
+ * [CVE 2013-2292 on Bitcoin wiki](https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2292)
+ * [Proposal to limit transactions to 100kB](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-July/009494.html)
 
 ## Signing of input values
 
