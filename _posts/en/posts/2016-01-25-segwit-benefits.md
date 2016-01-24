@@ -251,13 +251,13 @@ It is not possible to solve this problem without either a hardfork,
 or substantially decreasing the block size, so as a consequence segwit
 addresses this issue by not making it worse, rather than actually
 improving the situation: in particular, segwit's newly introduced limit
-on the new concept of witness data is implemented as a linear combination
+on the new concept of witness data is implemented as a weighted sum
 of the existing block size and the new witness data.
 
 #### Who benefits?
 
 A future hardfork that changes the block capacity limit to be a single
-linear combination of parameters, eg:
+weighted sum of parameters, eg:
 
 > 50\*sigops + 4\*basedata + 1\*witnessdata < 10M
 
@@ -271,4 +271,5 @@ to be mined.
  * [Knapsack problem](https://en.wikipedia.org/wiki/Knapsack_problem)
  * [Sigop attack discussion on bitcointalk in Aug 2015](https://bitcointalk.org/index.php?topic=1166928.0;all)
  * [Gregory Maxwell on bitcoin-dev on witness limits](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011870.html)
+ * ["Validation Cost Metric" transcript](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/validation-cost-metric/)
 
