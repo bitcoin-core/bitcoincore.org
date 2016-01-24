@@ -259,7 +259,7 @@ of the existing block size and the new witness data.
 A future hardfork that changes the block capacity limit to be a single
 linear combination of parameters, eg:
 
-  50*sigops + 4*basedata + 1*witnessdata < 10M
+> 50\*sigops + 4\*basedata + 1\*witnessdata < 10M
 
 will benefit miners by allowing them to easily and accurately fill blocks
 while maximising fee income, and that will benefit users by allowing them
