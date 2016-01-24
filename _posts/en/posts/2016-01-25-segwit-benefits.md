@@ -87,6 +87,10 @@ transaction sizes allows bitcoin to continue to support payments to and
 from large groups, such as payments of mining rewards or crowdfunding
 services.
 
+The modified hash only applies to signature operations initiated from
+witness data, so signature operations from the base block will continue
+to require lower limits.
+
 #### Further information
 
  * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
@@ -116,6 +120,9 @@ Manufacturers and users of hardware wallets are the obvious beneficiaries;
 however this likely also makes it much easier to safely use bitcoin in
 small embedded devices for "Internet of things" applications.
 
+This benefit is only available when spending transactions sent to segwit
+enabled addresses (or segwit-via-P2SH addresses).
+
 #### Further information
 
  * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
@@ -137,8 +144,8 @@ single public key (where this sort of attack is useless), while using
 
 #### Who benefits?
 
-Everyone using multisig or smart contracts via segwit benefits from the
-extra security provided for scripts.
+Everyone paying to multisig or smart contracts via segwit benefits from
+the extra security provided for scripts.
 
 #### Further information
 
@@ -217,6 +224,10 @@ which will potentially greatly increase the security of the bitcoin
 network as a whole, as well as reduce the ways in which individual users
 can be attacked.
 
+These fraud proofs can be added to the witness data structure as part
+of a future soft-fork. Transactions do not need to make use of segwit
+features to enable fraud proofs, however.
+
 ## Signature pruning
 
 For old transactions, signatures may be less interesting -- for example,
@@ -232,7 +243,8 @@ first place, saving resources.
 
 #### Who benefits?
 
-People running pruned or SPV nodes, with limited bandwidth or disk space.
+As more transactions use segwit addresses, people running pruned or SPV
+nodes, will be able to operate with less bandwidth and disk space.
 
 ## Moving towards a single combined block limit
 
