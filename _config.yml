@@ -257,49 +257,49 @@ defaults:
       type: releases
   -
     scope:
-      path: _posts/en/releases
+      path: _posts/en/meetings
     values:
       layout: page
       type: meetings
   -
     scope:
-      path: _posts/de/releases
+      path: _posts/de/meetings
     values:
       layout: page
       type: meetings
   -
     scope:
-      path: _posts/es/releases
+      path: _posts/es/meetings
     values:
       layout: page
       type: meetings
   -
     scope:
-      path: _posts/fr/releases
+      path: _posts/fr/meetings
     values:
       layout: page
       type: meetings
   -
     scope:
-      path: _posts/it/releases
+      path: _posts/it/meetings
     values:
       layout: page
       type: meetings
   -
     scope:
-      path: _posts/ru/releases
+      path: _posts/ru/meetings
     values:
       layout: page
       type: meetings
   -
     scope:
-      path: _posts/zh_CN/releases
+      path: _posts/zh_CN/meetings
     values:
       layout: page
       type: meetings
   -
     scope:
-      path: _posts/zh_TW/releases
+      path: _posts/zh_TW/meetings
     values:
       layout: page
       type: meetings
