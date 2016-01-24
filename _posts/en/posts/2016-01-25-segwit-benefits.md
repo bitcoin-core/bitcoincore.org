@@ -2,7 +2,7 @@
 layout: post
 name: segwit-benefits
 id: en-segwit-benefits
-title: Segregated Witness Features
+title: Segregated Witness Benefits
 permalink: /en/2016/01/25/segwit-benefits
 version: 1
 ---
