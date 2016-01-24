@@ -75,8 +75,8 @@ Segwit resolves this by changing the calculation of the transaction hash
 for signatures so that each byte of a transaction only needs to be hashed
 at most twice. This provides the same functionality more efficiently,
 so that large transactions can still be generated without running into
-problems due to signature hashing, even if they are generated maliciously,
-or larged transactions are supported.
+problems due to signature hashing, even if they are generated maliciously
+or much larger blocks (and transactions) are supported.
 
 #### Who benefits?
 
