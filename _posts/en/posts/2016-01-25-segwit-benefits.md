@@ -32,18 +32,20 @@ malleable parts of the transaction into the transaction witness, and
 segregating that witness so that changes to the witness does not affect
 calculation of the transaction's hash.
 
-Previous attempts to reduce malleability have included BIP66 (strict
-DER encoding for signatures) and BIP62 ("dealing with malleability",
-withdrawn).
+Previous attempts to reduce malleability have included BIP62 ("dealing
+with malleability", withdrawn, but partially implemented as standardness
+checks), and BIP140 ("normalized txid").
 
 #### Who benefits?
 
 Avoiding transaction malleability is helpful for anyone monitoring a
 transaction to determine when it is confirmed. Transaction malleability
 also causes problems for spending unconfirmed transactions, or when
-building smart contracts between mutually untrusting users. The lightning
-network requires a fix for third-party transaction malleability before
-it can be safely deployed.
+building smart contracts between mutually untrusting users. The Lightning
+Network requires a fix for third-party transaction malleability before
+it can be safely deployed, and a general fix to malleability allows for
+trustlessly outsourcing some checks and thus more lightweight Lightning
+clients.
 
 Segwit transactions only avoid malleability if all their inputs are
 segwit spends (either directly, or via a backwards compatible segwit
@@ -55,6 +57,8 @@ P2SH address).
  * [MtGox Malleability issues](http://www.coindesk.com/bitcoin-bug-guide-transaction-malleability/)
  * [Coin Telegraph article on 2015 Malleability attack](http://cointelegraph.com/news/115374/the-ongoing-bitcoin-malleability-attack)
  * [Bitcoin Magazine article on 2015 Malleability attack](https://bitcoinmagazine.com/articles/the-who-what-why-and-how-of-the-ongoing-transaction-malleability-attack-1444253640)
+ * [BIP 62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki)
+ * [BIP 140](https://github.com/bitcoin/bips/blob/master/bip-0140.mediawiki)
 
 ## Linear scaling of sighash operations
 
