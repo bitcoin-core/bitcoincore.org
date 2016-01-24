@@ -40,12 +40,12 @@ checks), and BIP140 ("normalized txid").
 
 Avoiding transaction malleability is helpful for anyone monitoring a
 transaction to determine when it is confirmed. Transaction malleability
-also causes problems for spending unconfirmed transactions, or when
-building smart contracts between mutually untrusting users. The Lightning
-Network requires a fix for third-party transaction malleability before
-it can be safely deployed, and a general fix to malleability allows for
-trustlessly outsourcing some checks and thus more lightweight Lightning
-clients.
+also causes problems for spending unconfirmed transactions, or
+when building smart contracts between mutually untrusting users.
+With malleability fixed, the Lightning Network is less complicated and
+significantly more efficient in its use of space on the blockchain, and
+it becomes possible to run lightweight Lightning clients that outsource
+monitoring the blockchain.
 
 Segwit transactions only avoid malleability if all their inputs are
 segwit spends (either directly, or via a backwards compatible segwit
