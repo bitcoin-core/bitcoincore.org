@@ -121,18 +121,22 @@ small embedded devices for "Internet of things" applications.
 ## Increased security for multisig via Pay-to-script-hash
 
 Multisig payments currently use P2SH which is secured by the 160-bit
-HASH160 algorithm (RIPEMD of SHA256). However, a collision can be found
-with only 80-bits (2<sup>80</sup>) worth of work, which is already within
-the realm of possibility for an extremely well-resourced attacker.
+HASH160 algorithm (RIPEMD of SHA256). However, if one of the signers
+wishes to steal all the funds, they can find a collision between a valid
+address as part of a multisig script and a script that simply pays them
+all the funds with only 80-bits (2<sup>80</sup>) worth of work, which is
+already within the realm of possibility for an extremely well-resourced
+attacker. (For comparison, at a sustained 1 exahash/second, the bitcoin
+mining network does 80-bits worth of work every two weeks)
 
 Segwit resolves this by using HASH160 only for payments direct to a
-single public key, while using 256-bit SHA256 hashes for payments to a
-script hash.
+single public key (where this sort of attack is useless), while using
+256-bit SHA256 hashes for payments to a script hash.
 
 #### Who benefits?
 
 Everyone using multisig or smart contracts via segwit benefits from the
-extra security provided for scripts here.
+extra security provided for scripts.
 
 #### Further information
 
@@ -141,7 +145,6 @@ extra security provided for scripts here.
  * [Rusty Russell calculating costs of performing an attack](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-January/012227.html)
  * [Anthony Towns applying the cycle finding algorithm to exploit transactions](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-January/012218.html)
  * [Gavin Andresen summarising the thread](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-January/012234.html)
-
 
 ## Script versioning
 
