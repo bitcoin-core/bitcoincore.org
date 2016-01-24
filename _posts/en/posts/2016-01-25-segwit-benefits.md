@@ -234,3 +234,41 @@ first place, saving resources.
 
 People running pruned or SPV nodes, with limited bandwidth or disk space.
 
+## Moving towards a single combined block limit
+
+Currently there are two consensus-enforced limits on blocksize: the
+block can be no larger than 1MB, and, independently, there can be no
+more than 20000 signature checks performed across the transactions in
+the block. Finding the most profitable set of transactions to include
+in the blockchain given a single limit is an instance of the knapsack
+problem, which can be easily solved almost perfectly with a simple
+greedy algorithm. However adding the second constraint makes finding a
+good solution very hard in some cases, and this theoretical problem has
+been exploited in practice to force blocks to be mined at a size well
+below capacity.
+
+It is not possible to solve this problem without either a hardfork,
+or substantially decreasing the block size, so as a consequence segwit
+addresses this issue by not making it worse, rather than actually
+improving the situation: in particular, segwit's newly introduced limit
+on the new concept of witness data is implemented as a linear combination
+of the existing block size and the new witness data.
+
+#### Who benefits?
+
+A future hardfork that changes the block capacity limit to be a single
+linear combination of parameters, eg:
+
+  50*sigops + 4*basedata + 1*witnessdata < 10M
+
+will benefit miners by allowing them to easily and accurately fill blocks
+while maximising fee income, and that will benefit users by allowing them
+to reliably calculate the appropriate fee needed for their transaction
+to be mined.
+
+#### Further information
+
+ * [Knapsack problem](https://en.wikipedia.org/wiki/Knapsack_problem)
+ * [Sigop attack discussion on bitcointalk in Aug 2015](https://bitcointalk.org/index.php?topic=1166928.0;all)
+ * [Gregory Maxwell on bitcoin-dev on witness limits](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011870.html)
+
