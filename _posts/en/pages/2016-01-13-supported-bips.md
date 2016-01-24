@@ -23,7 +23,7 @@ Bitcoin Core 0.12 supports the following [BIPs](https://github.com/bitcoin/bips/
 |[37] | v0.8.0        |[Bloom filtering][37]|
 |[42] | v0.9.2        |[A finite monetary supply for Bitcoin][42]|
 |[61] | v0.9.0        |["reject" P2P message][61]|
-|[65] | v0.12.0       |[OP_CHECKLOCKTIMEVERIFY][65]|
+|[65] | v0.10.0       |[OP_CHECKLOCKTIMEVERIFY][65]|
 |[66] | v0.10.0       |[Strict DER signatures][66]|
 |[70] | v0.9.0        |[Payment protocol][70]|
 |[71] | v0.9.0        |[Payment protocol MIME types][71]|
