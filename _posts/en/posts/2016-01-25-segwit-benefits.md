@@ -25,21 +25,26 @@ will be able to spend the results of the transaction.  Unfortunately,
 the way the hash is calculated allows anyone to make small
 modifications to the transaction that will not change its meaning,
 but will change the hash.  This is called third-party malleability.
+Another type of malleability is possible if one of the signers of the
+transaction revises their signature; again the the transaction remains
+valid and pays the same amounts to the same addresses, but as the
+transaction hash incorporates the signature, the hash changes. This is
+signer malleability.
 
 For example, you could submit a transaction with hash
 ef74...c309 to the
-network, but instead find that the network confirms that transaction under
+network, but instead find that a node or miner on the network modifies the transaction slightly, and that the transaction is confirmed under
 the hash 683f...8bfa
 instead.
 
-Segwit prevents third-party malleability by allowing Bitcoin users to move the
+Segwit prevents third-party and signer malleability by allowing Bitcoin users to move the
 malleable parts of the transaction into something called a *transaction witness,* and
 segregating that witness so that changes to the witness does not affect
 calculation of the transaction's hash.
 
 Previous attempts to reduce malleability have included BIP62 ("dealing
 with malleability", which was partially implemented as standardness
-checks but is now withdrawn) and BIP140 ("normalized txid").
+checks) and BIP140 ("normalized txid").
 
 ### Who benefits?
 
@@ -57,12 +62,16 @@ checks but is now withdrawn) and BIP140 ("normalized txid").
     If Bob is honest, he will reissue the payment to Charlie; but if he
     isn't, he can keep those bitcoins for himself.
 
+- **The Lightning Network:** with third-party and signer malleability
+  fixed, the Lightning Network is less complicated to implement and
+  significantly more efficient in its use of space on the blockchain.
+  With signer malleability removed, it becomes possible to run lightweight
+  Lightning clients that outsource monitoring the blockchain, instead of
+  each Lightning client needing to also be a full Bitcoin node.
+
 - **Anyone using the block chain:** smart contracts today, such as
-  micropayment channels, and anticipated new smart contracts, such as
-  Lightning network channels, can use smaller transactions if they don't
-  need to worry about third-party malleability, which saves block space
-  for other users.  These smart contracts also become less complicated
-  to design, understand, and monitor.
+  micropayment channels, and anticipated new smart contracts, become less
+  complicated to design, understand, and monitor.
 
 Note: segwit transactions only avoid malleability if all their inputs are
 segwit spends (either directly, or via a backwards compatible segwit
