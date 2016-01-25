@@ -226,18 +226,20 @@ at least one UTXO entry of their own and will prefer having multiple
 entries to help improve their privacy and flexibility, or to provide as
 backing for payment channels or other smart contracts.
 
-Segwit improves the situation here by reducing the amount of data per UTXO
-when segwit transactions are used, due to witness data being irrelevant
-for maintaining the UTXO set. It also provides an economic incentive for
-reducing UTXO growth in the longer term by providing a 75% discount for
-data that can be excluded from the UTXO set, versus data required for
-the UTXO set.
+Segwit improves the situation here by making signature data, which does
+not impact the UTXO set size, cost 75% less than data that does impact
+the UTXO set size. This is expected to encourage users to favour the
+use of transactions that minimise impact on the UTXO set in order to
+minimise fees, and to encourage developers to design smart contracts and
+new features in a way that will also minimise the impact on the UTXO set.
 
 ### Who benefits?
 
 Reduced UTXO growth will benefit miners, businesses, and users who run full nodes,
 which in turn helps maintain the current security of the Bitcoin network
-as more users enter the system.
+as more users enter the system. Users and developers who help minimise the
+growth of the UTXO set will benefit from lower fees compared to those who
+ignore the impact of their transactions on UTXO growth.
 
 ## Compact fraud proofs
 
