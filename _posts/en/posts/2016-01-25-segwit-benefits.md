@@ -52,8 +52,8 @@ calculation of the transaction's hash.
 
 ### Who benefits?
 
-- **Anyone monitoring unconfirmed transactions:** it's easiest to
-  monitor the status of your own transactions by looking them up by txid.  But in
+- **Wallet authors tracking spent bitcoins:** it's easiest to
+  monitor the status of your own outgoing transactions by simply looking them up by txid.  But in
   a system with third-party malleability, wallets must implement extra
   code to be able to deal with changed txids (hashes).
 
