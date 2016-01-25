@@ -221,7 +221,10 @@ $button-size: 1.5rem;
 		display: none;
 		width: inherit;
 		background-color: $white;
-		border: 1px solid #eee;
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		@include border-radius(0,3px,3px,0);
 		padding: 0.3em;
 		a {
 			text-decoration: none;
@@ -246,6 +249,8 @@ $button-size: 1.5rem;
 
 .nav li:hover ul {
 	display: block;
+	padding:0;
+	padding-top: 0.3em;
 }
 
 .nav li:hover a {
@@ -284,6 +289,31 @@ li.lang:hover {
 		color: $black;
 		&:visited, &:hover, &:focus, &:hover, &:active {
 			color: $black;
+		}
+	}
+}
+
+.nav li:hover ul li
+{
+	width:100%;
+	padding-left:0.6em;
+	padding-right:0.3em;
+}
+
+.nav li:hover ul li:hover {
+	@include rounded(0px);
+	background-color: $black;
+	display: block;
+	color: $white;
+	a {
+		color: $white;
+	}
+	@media #{$small} {
+		background-color: $black;
+		display: block;
+		color: $white;
+		a {
+			color: $white;
 		}
 	}
 }
