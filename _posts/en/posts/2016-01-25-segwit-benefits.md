@@ -233,6 +233,9 @@ use of transactions that minimise impact on the UTXO set in order to
 minimise fees, and to encourage developers to design smart contracts and
 new features in a way that will also minimise the impact on the UTXO set.
 
+Because segwit is a soft-forking change and does not increase the base
+blocksize, the worst case growth rate of the UTXO set stays the same.
+
 ### Who benefits?
 
 Reduced UTXO growth will benefit miners, businesses, and users who run full nodes,
@@ -240,6 +243,10 @@ which in turn helps maintain the current security of the Bitcoin network
 as more users enter the system. Users and developers who help minimise the
 growth of the UTXO set will benefit from lower fees compared to those who
 ignore the impact of their transactions on UTXO growth.
+
+### Further information
+
+ * [Statoshi UTXO dashboard](http://statoshi.info/dashboard/db/unspent-transaction-output-set)
 
 ## Compact fraud proofs
 
