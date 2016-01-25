@@ -24,23 +24,23 @@ which is based on both the coins being spent and on who
 will be able to spend the results of the transaction.
 
 Unfortunately,
-the way the hash is calculated allows anyone to make small
+the way the txid is calculated allows anyone to make small
 modifications to the transaction that will not change its meaning,
-but will change the hash.  This is called third-party malleability.
+but will change the txid.  This is called third-party malleability.
 BIP62 ("dealing with malleability") attempted to
 address these issues in a piecemeal manner, but was too complicated to
 implement as consensus checks and has been withdrawn.
 
-For example, you could submit a transaction with hash ef74...c309 to
+For example, you could submit a transaction with txid ef74...c309 to
 the network, but instead find that a third-party, such as a node on
 the network relaying your transaction, or the miner who includes your
 transaction in a block, modifies the transaction slightly, resulting in
 your transaction still spending the same coins and paying the same addresses,
-but being confirmed under the completely different hash 683f...8bfa instead.
+but being confirmed under the completely different txid 683f...8bfa instead.
 
 More generally, if one or more of the signers of the transaction revise
 their signatures then the transaction remains valid and pays the same
-amounts to the same addresses, but the transaction hash changes completely
+amounts to the same addresses, but the txid changes completely
 because it incorporates the signatures. The general case of changes to
 signature data (but not the outputs or choice of inputs) modifying the
 transaction is called scriptSig malleability.
@@ -48,14 +48,14 @@ transaction is called scriptSig malleability.
 Segwit prevents third-party and scriptSig malleability by allowing Bitcoin users to move the
 malleable parts of the transaction into the *transaction witness,* and
 segregating that witness so that changes to the witness does not affect
-calculation of the transaction's hash.
+calculation of the txid.
 
 ### Who benefits?
 
 - **Wallet authors tracking spent bitcoins:** it's easiest to
   monitor the status of your own outgoing transactions by simply looking them up by txid.  But in
   a system with third-party malleability, wallets must implement extra
-  code to be able to deal with changed txids (hashes).
+  code to be able to deal with changed txids.
 
 - **Anyone spending unconfirmed transactions:** if Alice pays Bob in
   transaction 1, Bob uses that payment to pay Charlie in transaction 2, and then Alice's
