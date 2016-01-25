@@ -49,7 +49,7 @@ checks) and BIP140 ("normalized txid").
 ### Who benefits?
 
 - **Anyone monitoring unconfirmed transactions:** it's easiest to
-  monitor the status of a transaction by looking it up by txid.  But in
+  monitor the status of your own transactions by looking them up by txid.  But in
   a system with third-party malleability, wallets must implement extra
   code to be able to deal with changed txids (hashes).
 
