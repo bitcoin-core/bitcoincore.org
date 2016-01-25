@@ -20,6 +20,7 @@ specific improvements described in the [roadmap][].
 | Mar 2016\* | 0.12.x | Deploy OP_CHECKSEQUENCEVERIFY (BIPs [68][BIP68] & [112][BIP112]) + [BIP113][] as first [BIP9][] versionbits soft fork |
 | April 2016\* |  0.12.x |  Deploy segregated witness |
 | 2016 | | Weak blocks, IBLTs, or both |
+| Q1 2017 | | Hardfork to increase MAX_BLOCK_SIZE (specific BIP TBD) |
 
 \* Dates with an asterisk are when we expect to release soft fork-ready code. The code will not be released until it has been well reviewed, and the actual fork will take time to activate ([BIP66][] activated in July 2015 after a few months; [BIP65][] activated in Dec 2015 after only 5 weeks).
 
@@ -56,6 +57,12 @@ specific improvements described in the [roadmap][].
   improvement is accomplished by spreading bandwidth usage out over time
   for full nodes, which means IBLT and weak blocks may allow for safer
   future increases to the max block size.
+
+- **Hardfork to increase MAX_BLOCK_SIZE:** at some point the capacity
+  increases from the above may not be enough. Delivery on relay improvements,
+  segwit fraud proofs, dynamic block size controls, and other advances in 
+  technology will reduce the risk and therefore controversy around moderate 
+  block size increase proposals (such as 2/4/8 rescaled to respect segwit's increase).
 
 ## Is the segregated witness soft fork equivalent to a 4MB block size increase, a 2MB increase, a 1.75MB increase, or what? I keep hearing different numbers.  {#segwit-size}
 
