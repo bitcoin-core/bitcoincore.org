@@ -6,9 +6,7 @@ title: 系統擴展常見問題解答
 permalink: /zh_TW/2015/12/21/系統擴展常見問題解答
 version: 1
 ---
-
-1. toc
-{:toc}
+{% include _toc.html %}
 
 ## 路線圖包括什麼新技術，預期在什麼時候可以使用？  {#roadmap-dates}
 

@@ -6,6 +6,7 @@ en:
   related: "Recommended"
   viewallposts: "View all posts"
   nottranslated: "Note: this page has not been translated"
+  tocoverview: "Overview"
 
 de:
   created: "Published on the"
@@ -15,6 +16,7 @@ de:
   related: "Recommended"
   viewallposts: "View all posts"
   nottranslated: "Note: this page has not been translated"
+  tocoverview: "Overview"
 
 es:
   created: "Published on the"
@@ -24,6 +26,7 @@ es:
   related: "Recommended"
   viewallposts: "View all posts"
   nottranslated: "Note: this page has not been translated"
+  tocoverview: "Overview"
 
 fr:
   created: "Publié le"
@@ -33,6 +36,7 @@ fr:
   recommended: "Recommended"
   viewallposts: "View all posts"
   nottranslated: "Note: this page has not been translated"
+  tocoverview: "Overview"
 
 it:
   created: "Published on the"
@@ -42,6 +46,7 @@ it:
   related: "Recommended"
   viewallposts: "View all posts"
   nottranslated: "Note: this page has not been translated"
+  tocoverview: "Overview"
 
 ru:
   created: "Published on the"
@@ -51,6 +56,7 @@ ru:
   recommended: "Recommended"
   viewallposts: "View all posts"
   nottranslated: "Note: this page has not been translated"
+  tocoverview: "Overview"
 
 zh_CH:
   created: "发表于"
@@ -60,6 +66,7 @@ zh_CH:
   recommended: "推荐阅读"
   viewallposts: "顯示所有文章"
   nottranslated: "注意：本页未被翻译"
+  tocoverview: "Overview"
 
 zh_TW:
   created: "發表於"
@@ -69,3 +76,4 @@ zh_TW:
   recommended: "推薦閱讀"
   viewallposts: "显示所有文章"
   nottranslated: "注意：本頁未被翻譯"
+  tocoverview: "Overview"

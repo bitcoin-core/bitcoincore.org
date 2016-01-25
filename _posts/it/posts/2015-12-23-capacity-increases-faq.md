@@ -6,8 +6,7 @@ title: FAQ sugli Aumenti di capacità  — Bitcoin Core
 permalink: /it/2015/12/23/capacity-increases-faq
 version: 1
 ---
-1. Indice
-{:toc}
+{% include _toc.html %}
 
 ## Quali tecnologie specifiche sono incluse nella roadmap, e per quando possiamo aspettarcele? {#roadmap-dates}
 
