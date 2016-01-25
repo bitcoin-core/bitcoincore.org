@@ -21,30 +21,33 @@ the capacity of the block chain.
 Bitcoin transactions are identified by a 64-digit hexadecimal hash
 called a transaction identifier (txid)
 which is based on both the coins being spent and on who
-will be able to spend the results of the transaction.  Unfortunately,
+will be able to spend the results of the transaction.
+
+Unfortunately,
 the way the hash is calculated allows anyone to make small
 modifications to the transaction that will not change its meaning,
 but will change the hash.  This is called third-party malleability.
-Another type of malleability is possible if one of the signers of the
-transaction revises their signature; again the the transaction remains
-valid and pays the same amounts to the same addresses, but as the
-transaction hash incorporates the signature, the hash changes. This is
-signer malleability.
+BIP62 ("dealing with malleability") attempted to
+address these issues in a piecemeal manner, but was too complicated to
+implement as consensus checks and has been withdrawn.
 
-For example, you could submit a transaction with hash
-ef74...c309 to the
-network, but instead find that a node or miner on the network modifies the transaction slightly, and that the transaction is confirmed under
-the hash 683f...8bfa
-instead.
+For example, you could submit a transaction with hash ef74...c309 to
+the network, but instead find that a third-party, such as a node on
+the network relaying your transaction, or the miner who includes your
+transaction in a block, modifies the transaction slightly, resulting in
+your transaction being confirmed under the completely different hash 683f...8bfa instead.
 
-Segwit prevents third-party and signer malleability by allowing Bitcoin users to move the
-malleable parts of the transaction into something called a *transaction witness,* and
+More generally, if one or more of the signers of the transaction revise
+their signatures then the transaction remains valid and pays the same
+amounts to the same addresses, but the transaction hash changes completely
+because it incorporates the signatures. The general case of changes to
+signature data (but not the outputs or choice of inputs) modifying the
+transaction is called scriptSig malleability.
+
+Segwit prevents third-party and scriptSig malleability by allowing Bitcoin users to move the
+malleable parts of the transaction into the *transaction witness,* and
 segregating that witness so that changes to the witness does not affect
 calculation of the transaction's hash.
-
-Previous attempts to reduce malleability have included BIP62 ("dealing
-with malleability", which was partially implemented as standardness
-checks) and BIP140 ("normalized txid").
 
 ### Who benefits?
 
@@ -62,10 +65,10 @@ checks) and BIP140 ("normalized txid").
     If Bob is honest, he will reissue the payment to Charlie; but if he
     isn't, he can keep those bitcoins for himself.
 
-- **The Lightning Network:** with third-party and signer malleability
+- **The Lightning Network:** with third-party and scriptSig malleability
   fixed, the Lightning Network is less complicated to implement and
   significantly more efficient in its use of space on the blockchain.
-  With signer malleability removed, it becomes possible to run lightweight
+  With scriptSig malleability removed, it also becomes possible to run lightweight
   Lightning clients that outsource monitoring the blockchain, instead of
   each Lightning client needing to also be a full Bitcoin node.
 
@@ -85,7 +88,8 @@ P2SH address).
  * [Bitcoin Magazine article on 2015 Malleability attack](https://bitcoinmagazine.com/articles/the-who-what-why-and-how-of-the-ongoing-transaction-malleability-attack-1444253640)
  * ["Overview of BIPs necessary for Lightning" transcript](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/overview-of-bips-necessary-for-lightning/)
  * [BIP 62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki)
- * [BIP 140](https://github.com/bitcoin/bips/blob/master/bip-0140.mediawiki)
+ * [BIP 140 -- alternative approach to malleability fixes](https://github.com/bitcoin/bips/blob/master/bip-0140.mediawiki)
+ * [Stack exchange answer regarding 683f...8bfa transaction](http://bitcoin.stackexchange.com/questions/22051/transaction-malleability-in-the-blockchain/22058#22058)
 
 ## Linear scaling of sighash operations
 
