@@ -5,53 +5,70 @@ id: en-segwit-benefits
 title: Segregated Witness Benefits
 permalink: /en/2016/01/25/segwit-benefits
 version: 1
+excerpt: >
+  This page summarises some of the benefits of segregated witness that
+  go beyond simply increasing the capacity of the block chain.
 ---
-1. toc
-{:toc}
+{% include _toc.html %}
 
 The Segregated Witness soft-fork (segwit) includes a wide range of
 features, many of which are highly technical. This page summarises
 some of the benefits of those features that go beyond simply increasing
-the capacity.
+the capacity of the block chain.
 
 ## Malleability Fixes
 
-Bitcoin transactions are identified by a 64-digit hexidecimal hash,
-which is based on both the previous coins being spent, and on who
-will be able to spend the results of the transaction. Unfortunately,
+Bitcoin transactions are identified by a 64-digit hexadecimal hash
+called a transaction identifier (txid)
+which is based on both the coins being spent and on who
+will be able to spend the results of the transaction.  Unfortunately,
 the way the hash is calculated allows anyone to make small
 modifications to the transaction that will not change its meaning,
-but will change the hash. So you could submit a transaction with hash
-ef74c1cbf0003fc4e96a87a59838f7dd3da488d9d83fec3f270b0d3d7c2bc309 to the
+but will change the hash.  This is called third-party malleability.
+
+For example, you could submit a transaction with hash
+ef74...c309 to the
 network, but instead find that the network confirms that transaction under
-the hash 683f45578328242a06bc5c54acbcbe6e70a5435b4561fc8b0570a59ab09f8bfa
+the hash 683f...8bfa
 instead.
 
-Segwit prevents malleability by allowing bitcoin users to move the
-malleable parts of the transaction into the transaction witness, and
+Segwit prevents third-party malleability by allowing Bitcoin users to move the
+malleable parts of the transaction into something called a *transaction witness,* and
 segregating that witness so that changes to the witness does not affect
 calculation of the transaction's hash.
 
 Previous attempts to reduce malleability have included BIP62 ("dealing
-with malleability", withdrawn, but partially implemented as standardness
-checks), and BIP140 ("normalized txid").
+with malleability", which was partially implemented as standardness
+checks but is now withdrawn) and BIP140 ("normalized txid").
 
-#### Who benefits?
+### Who benefits?
 
-Avoiding transaction malleability is helpful for anyone monitoring a
-transaction to determine when it is confirmed. Transaction malleability
-also causes problems for spending unconfirmed transactions, or
-when building smart contracts between mutually untrusting users.
-With malleability fixed, the Lightning Network is less complicated and
-significantly more efficient in its use of space on the blockchain, and
-it becomes possible to run lightweight Lightning clients that outsource
-monitoring the blockchain.
+- **Anyone monitoring unconfirmed transactions:** it's easiest to
+  monitor the status of a transaction by looking it up by txid.  But in
+  a system with third-party malleability, wallets must implement extra
+  code to be able to deal with changed txids (hashes).
 
-Segwit transactions only avoid malleability if all their inputs are
+- **Anyone spending unconfirmed transactions:** if Alice pays Bob in
+  transaction 1, Bob pays Charlie in transaction 2, and then Alice's
+  payment gets malleated and confirmed with a different txid, Bob's
+  payment is now invalid and Bob gets all of the bitcoins he paid
+  Charlie back.
+
+    If Bob is honest, he will reissue the payment to Charlie; but if he
+    isn't, he can keep those bitcoins for himself.
+
+- **Anyone using the block chain:** smart contracts today, such as
+  micropayment channels, and anticipated new smart contracts, such as
+  Lightning network channels, can use smaller transactions if they don't
+  need to worry about third-party malleability, which saves block space
+  for other users.  These smart contracts also become less complicated
+  to design, understand, and monitor.
+
+Note: segwit transactions only avoid malleability if all their inputs are
 segwit spends (either directly, or via a backwards compatible segwit
 P2SH address).
 
-#### Further information
+### Further information
 
  * [Bitcoin Wiki on Malleability](https://en.bitcoin.it/wiki/Transaction_Malleability)
  * [MtGox Malleability issues](http://www.coindesk.com/bitcoin-bug-guide-transaction-malleability/)
@@ -63,9 +80,13 @@ P2SH address).
 
 ## Linear scaling of sighash operations
 
-A major problem with simple approaches to increasing the bitcoin blocksize
+A major problem with simple approaches to increasing the Bitcoin blocksize
 is that for certain transactions, signature-hashing scales quadratically
-rather than linearly -- in essence, doubling the size of a transaction
+rather than linearly.
+
+![Linear versus quadratic](/assets/images/linear-quad-scale.png)
+
+In essence, doubling the size of a transaction
 increases can double both the number of signature operations, and the
 amount of data that has to be hashed for each of those signatures to
 be verified. This has been seen in the wild, where an individual block
@@ -77,21 +98,21 @@ for signatures so that each byte of a transaction only needs to be hashed
 at most twice. This provides the same functionality more efficiently,
 so that large transactions can still be generated without running into
 problems due to signature hashing, even if they are generated maliciously
-or much larger blocks (and transactions) are supported.
+or much larger blocks (and therefore larger transactions) are supported.
 
-#### Who benefits?
+### Who benefits?
 
 Removing the quadratic scaling of hashed data for verifying signatures
 makes increasing the block size safer. Doing that without also limiting
-transaction sizes allows bitcoin to continue to support payments to and
-from large groups, such as payments of mining rewards or crowdfunding
+transaction sizes allows Bitcoin to continue to support payments that go to or
+come from large groups, such as payments of mining rewards or crowdfunding
 services.
 
 The modified hash only applies to signature operations initiated from
 witness data, so signature operations from the base block will continue
 to require lower limits.
 
-#### Further information
+### Further information
 
  * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
  * [Blog post by Rusty Russell on the 25s transaction](http://rusty.ozlabs.org/?p=522)
@@ -114,20 +135,20 @@ and value (and told what public key was used), and can safely sign the
 spending transaction, no matter how large or complicated the transaction
 being spent was.
 
-#### Who benefits?
+### Who benefits?
 
 Manufacturers and users of hardware wallets are the obvious beneficiaries;
-however this likely also makes it much easier to safely use bitcoin in
+however this likely also makes it much easier to safely use Bitcoin in
 small embedded devices for "Internet of things" applications.
 
 This benefit is only available when spending transactions sent to segwit
 enabled addresses (or segwit-via-P2SH addresses).
 
-#### Further information
+### Further information
 
  * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
 
-## Increased security for multisig via Pay-to-script-hash
+## Increased security for multisig via pay-to-script-hash (P2SH)
 
 Multisig payments currently use P2SH which is secured by the 160-bit
 HASH160 algorithm (RIPEMD of SHA256). However, if one of the signers
@@ -135,19 +156,19 @@ wishes to steal all the funds, they can find a collision between a valid
 address as part of a multisig script and a script that simply pays them
 all the funds with only 80-bits (2<sup>80</sup>) worth of work, which is
 already within the realm of possibility for an extremely well-resourced
-attacker. (For comparison, at a sustained 1 exahash/second, the bitcoin
+attacker. (For comparison, at a sustained 1 exahash/second, the Bitcoin
 mining network does 80-bits worth of work every two weeks)
 
 Segwit resolves this by using HASH160 only for payments direct to a
 single public key (where this sort of attack is useless), while using
 256-bit SHA256 hashes for payments to a script hash.
 
-#### Who benefits?
+### Who benefits?
 
 Everyone paying to multisig or smart contracts via segwit benefits from
 the extra security provided for scripts.
 
-#### Further information
+### Further information
 
  * [Gavin Andresen asking if 80-bit attacks are worth worrying about](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-January/012198.html)
  * [Ethan Heilman describing a cycle finding algorithm](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-January/012202.html)
@@ -157,102 +178,107 @@ the extra security provided for scripts.
 
 ## Script versioning
 
-Changes to bitcoin's script allow for both improved security and
+Changes to Bitcoin's script allow for both improved security and
 improved functionality. However, the design of script only allows
 backwards-compatible (soft-forking) changes to be implemented by replacing
-an OP\_NOP with a new opcode that conditionally fails the script,
-but otherwise does nothing. This is sufficient for many changes --
-such as introducing a new signature method, or features like OP\_CLTV,
-but is both slightly hacky (OP\_CLTV usuaully has to be accompanied by
-an OP\_DROP) and does not allow for many operations, even ones as simple
+one of the ten extra OP\_NOP opcodes with a new opcode that can conditionally fail the script,
+but which otherwise does nothing. This is sufficient for many changes --
+such as introducing a new signature method or a feature like OP\_CLTV,
+but it is both slightly hacky (for example, OP\_CLTV usually has to be accompanied by
+an OP\_DROP) and cannot be used to enable even features as simple
 as joining two strings.
 
 Segwit resolves this by including a version number for scripts, so that
 additional opcodes that would have required a hard-fork to be used
-in non-segwit transactions, can instead be supported by bumping the
+in non-segwit transactions can instead be supported by simply increasing the
 script version.
 
-#### Who benefits?
+### Who benefits?
 
-Easier changes to script opcodes will make advanced scripting in bitcoin
-easier; which includes changes like introducing Schnorr signatures,
+Easier changes to script opcodes will make advanced scripting in Bitcoin
+easier. This includes changes such as introducing Schnorr signatures,
 using key recovery to shrink signature sizes, supporting sidechains,
-or creating even smarter contracts by using merklized abstract syntax
-trees and other research-level ideas.
+or creating even smarter contracts by using Merklized Abstract Syntax
+Trees (MAST) and other research-level ideas.
 
 ## Reducing UTXO growth
 
-The unspent transaction output (UTXO) database is maintained by each
-validating bitcoin node in order to determine whether new transactions are
+The Unspent Transaction Output (UTXO) database is maintained by each
+validating Bitcoin node in order to determine whether new transactions are
 valid or fraudulent. For efficient operation of the network, this database
-needs to be very quick to query and modify, and thus keeping the database
-as small as possible is valuable. This becomes more difficult as bitcoin
-grows, as each new user must have UTXO entries of their own, and holding
-multiple UTXO entries per user is often valuable for reasons related to
-privacy, flexibility and to reduce the number of transactions on-chain.
+needs to be very quick to query and modify, and should ideally be able
+to fit in main memory (RAM), so keeping the database's
+byte size as small as possible is valuable.
 
-Segwit improves the situation here by reducing the amount of data per
-UTXO due to witness data being irrelevant for maintaining the UTXO set,
-and providing an economic incentive for reducing UTXO growth by providing
-a 75% discount for data that can be excluded from the UTXO set, versus
-data required for the UTXO set.
+This becomes more difficult as Bitcoin grows, as each new user must have
+at least one UTXO entry of their own and will prefer having multiple
+entries so that they can use techniques that help improve their privacy
+and flexibility, as well as to use techniques such as Lightning that
+don't require putting all of their data on the block chain.
 
-#### Who benefits?
+Segwit improves the situation here by providing a 75% byte-size discount
+to people who create their transactions in a way that reduces the amount
+of UTXO space they use so that we store a greater number of UTXO entries
+in each megabyte of data.
 
-Reduced UTXO growth will benefit miners and others who run full nodes,
-which in turn helps maintain the current security of the bitcoin network,
-despite growth in bitcoin usage.
+### Who benefits?
+
+Reduced UTXO growth will benefit miners, businesses, and users who run full nodes,
+which in turn helps maintain the current security of the Bitcoin network
+as more users enter the system.
 
 ## Compact fraud proofs
 
-As the bitcoin userbase expands, validating the entire blockchain
+As the Bitcoin userbase expands, validating the entire blockchain
 naturally becomes more expensive. To maintain the decentralised, trustless
-nature of bitcoin, it is important to allow those who cannot afford to
+nature of Bitcoin, it is important to allow those who cannot afford to
 validate the entire blockchain to at least be able to cheaply validate
 as much of it as they can afford.
 
 Segwit improves the situation here by allowing a future soft-fork to
-extend the witness structure to include commitment data allowing SPV
+extend the witness structure to include commitment data, which will allow lightweight (SPV)
 clients to enforce consensus rules such such as the number of bitcoins
 introduced in a block, the size of a block, and the number of sigops
 used in a block.
 
-#### Who benefits?
+### Who benefits?
 
-Fraud proofs allow SPV users to help enforce bitcoin's consensus rules,
-which will potentially greatly increase the security of the bitcoin
+Fraud proofs allow SPV users to help enforce Bitcoin's consensus rules,
+which will potentially greatly increase the security of the Bitcoin
 network as a whole, as well as reduce the ways in which individual users
 can be attacked.
 
 These fraud proofs can be added to the witness data structure as part
-of a future soft-fork. Transactions do not need to make use of segwit
-features to enable fraud proofs, however.
+of a future soft-fork, and they'll help SPV clients enforce the rules
+even on transactions that don't make use of the segwit features.
 
 ## Signature pruning
 
 For old transactions, signatures may be less interesting -- for example,
 some SPV clients simply don't check signatures, trusting that miners
-have already done that; and bitcoin core does not check signatures for
+have already done that.  Even Bitcoin Core does not check signatures for
 transactions prior to the most recent checkpoint. At present, however,
-signature data is an integral part of the transaction, and must be
+signature data is an integral part of the transaction and must be
 present in order to calculate the transaction hash.
 
 Segregating the signature data allows nodes that aren't interested in
 signature data to prune it from the disk, or never download it in the
 first place, saving resources.
 
-#### Who benefits?
+### Who benefits?
 
 As more transactions use segwit addresses, people running pruned or SPV
-nodes, will be able to operate with less bandwidth and disk space.
+nodes will be able to operate with less bandwidth and disk space.
 
 ## Moving towards a single combined block limit
 
 Currently there are two consensus-enforced limits on blocksize: the
-block can be no larger than 1MB, and, independently, there can be no
-more than 20000 signature checks performed across the transactions in
-the block. Finding the most profitable set of transactions to include
-in the blockchain given a single limit is an instance of the knapsack
+block can be no larger than 1MB and, independently, there can be no
+more than 20,000 signature checks performed across the transactions in
+the block.
+
+Finding the most profitable set of transactions to include
+in a block given a single limit is an instance of the knapsack
 problem, which can be easily solved almost perfectly with a simple
 greedy algorithm. However adding the second constraint makes finding a
 good solution very hard in some cases, and this theoretical problem has
@@ -260,25 +286,24 @@ been exploited in practice to force blocks to be mined at a size well
 below capacity.
 
 It is not possible to solve this problem without either a hardfork,
-or substantially decreasing the block size, so as a consequence segwit
-addresses this issue by not making it worse, rather than actually
-improving the situation: in particular, segwit's newly introduced limit
+or substantially decreasing the block size.  Since segwit can't fix the
+problem, it settles on not making it worse: in particular, segwit's newly introduced limit
 on the new concept of witness data is implemented as a weighted sum
 of the existing block size and the new witness data.
 
-#### Who benefits?
+## Who benefits?
 
-A future hardfork that changes the block capacity limit to be a single
-weighted sum of parameters, eg:
+Ultimately miners will benefit if a future hardfork that changes the block capacity limit to be a single
+weighted sum of parameters. For example:
 
-> 50\*sigops + 4\*basedata + 1\*witnessdata < 10M
+    50*sigops + 4*basedata + 1*witnessdata < 10M
 
-will benefit miners by allowing them to easily and accurately fill blocks
+This lets miners easily and accurately fill blocks
 while maximising fee income, and that will benefit users by allowing them
-to reliably calculate the appropriate fee needed for their transaction
+to more reliably calculate the appropriate fee needed for their transaction
 to be mined.
 
-#### Further information
+### Further information
 
  * [Knapsack problem](https://en.wikipedia.org/wiki/Knapsack_problem)
  * [Sigop attack discussion on bitcointalk in Aug 2015](https://bitcointalk.org/index.php?topic=1166928.0;all)
