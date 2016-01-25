@@ -27,7 +27,7 @@ Unfortunately,
 the way the txid is calculated allows anyone to make small
 modifications to the transaction that will not change its meaning,
 but will change the txid.  This is called third-party malleability.
-BIP62 ("dealing with malleability") attempted to
+BIP 62 ("dealing with malleability") attempted to
 address these issues in a piecemeal manner, but was too complicated to
 implement as consensus checks and has been withdrawn.
 
@@ -219,18 +219,19 @@ validating Bitcoin node in order to determine whether new transactions are
 valid or fraudulent. For efficient operation of the network, this database
 needs to be very quick to query and modify, and should ideally be able
 to fit in main memory (RAM), so keeping the database's
-byte size as small as possible is valuable.
+size in bytes as small as possible is valuable.
 
 This becomes more difficult as Bitcoin grows, as each new user must have
 at least one UTXO entry of their own and will prefer having multiple
-entries so that they can use techniques that help improve their privacy
-and flexibility, as well as to use techniques such as Lightning that
-don't require putting all of their data on the block chain.
+entries to help improve their privacy and flexibility, or to provide as
+backing for payment channels or other smart contracts.
 
-Segwit improves the situation here by providing a 75% byte-size discount
-to people who create their transactions in a way that reduces the amount
-of UTXO space they use so that we store a greater number of UTXO entries
-in each megabyte of data.
+Segwit improves the situation here by reducing the amount of data per UTXO
+when segwit transactions are used, due to witness data being irrelevant
+for maintaining the UTXO set. It also provides an economic incentive for
+reducing UTXO growth in the longer term by providing a 75% discount for
+data that can be excluded from the UTXO set, versus data required for
+the UTXO set.
 
 ### Who benefits?
 
