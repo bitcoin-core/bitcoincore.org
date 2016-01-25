@@ -56,7 +56,6 @@ Once compiled, add `-segnet` to the standard `bitcoind` and `bitcoin-cli` comman
 ### SegWit BIPs
 
 - [BIP141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki): An overview of the segregated witness soft fork, and a discussion on its benefits, backwards compatibility, consensus limits, and deployment.
-- [BIP142](https://github.com/bitcoin/bips/blob/master/bip-0142.mediawiki): The description of the new payment address format for segregated witness transactions.
 - [BIP143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki): The definition of a new digest algorithm for signature verification used in segregated witness transactions.
 - [BIP144](https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki): The new message types and serialization formats for segregated witness transactions.
 
