@@ -261,17 +261,17 @@ These fraud proofs can be added to the witness data structure as part
 of a future soft-fork, and they'll help SPV clients enforce the rules
 even on transactions that don't make use of the segwit features.
 
-## Signature pruning
+## Discarding signatures
 
 For old transactions, signatures may be less interesting -- for example,
 some SPV clients simply don't check signatures, trusting that miners
 have already done that.  Even Bitcoin Core does not check signatures for
-transactions prior to the most recent checkpoint. At present, however,
+transactions prior to the most recent checkpoint by default. At present, however,
 signature data is an integral part of the transaction and must be
 present in order to calculate the transaction hash.
 
 Segregating the signature data allows nodes that aren't interested in
-signature data to prune it from the disk, or never download it in the
+signature data to prune it from the disk, or to avoid downloading it in the
 first place, saving resources.
 
 ### Who benefits?
