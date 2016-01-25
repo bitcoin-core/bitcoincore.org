@@ -119,6 +119,3 @@ where the <code>SHA256(witnessScript)</code> is equal to the <code>32-byte-scrip
 
 ### New signing algorithm
 To spend a witness program output, a new signing algorithm MUST be used when producing the ECDSA signature. A step-by-step example could be found in BIP143.
-
-### New payment address
-Two new payment address types are defined. The full specification with example could be found in BIP142.
