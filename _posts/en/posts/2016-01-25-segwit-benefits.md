@@ -58,13 +58,11 @@ calculation of the transaction's hash.
   code to be able to deal with changed txids (hashes).
 
 - **Anyone spending unconfirmed transactions:** if Alice pays Bob in
-  transaction 1, Bob pays Charlie in transaction 2, and then Alice's
-  payment gets malleated and confirmed with a different txid, Bob's
-  payment is now invalid and Bob gets all of the bitcoins he paid
-  Charlie back.
-
-    If Bob is honest, he will reissue the payment to Charlie; but if he
-    isn't, he can keep those bitcoins for himself.
+  transaction 1, Bob uses that payment to pay Charlie in transaction 2, and then Alice's
+  payment gets malleated and confirmed with a different txid, then transaction
+  2 is now invalid and Charlie has not been paid.
+  If Bob is trustworthy, he will reissue the payment to Charlie; but if he
+  isn't, he can simply keep those bitcoins for himself.
 
 - **The Lightning Network:** with third-party and scriptSig malleability
   fixed, the Lightning Network is less complicated to implement and
