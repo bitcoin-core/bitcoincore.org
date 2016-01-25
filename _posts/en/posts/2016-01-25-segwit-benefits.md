@@ -296,9 +296,11 @@ below capacity.
 
 It is not possible to solve this problem without either a hardfork,
 or substantially decreasing the block size.  Since segwit can't fix the
-problem, it settles on not making it worse: in particular, segwit's newly introduced limit
-on the new concept of witness data is implemented as a weighted sum
-of the existing block size and the new witness data.
+problem, it settles on not making it worse: in particular, rather than
+introducing an independent limit for the segregated witness data,
+instead a single limit is applied to the weighted sum
+of the UTXO data and the witness data, allowing both to be
+limited simultaneously as a combined entity.
 
 ## Who benefits?
 
