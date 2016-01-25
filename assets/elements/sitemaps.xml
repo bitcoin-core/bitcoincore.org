@@ -3,17 +3,19 @@ layout:
 permalink: /sitemaps.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  {% for post in site.posts %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {% assign en_posts=site.posts | where:"lang", 'en' %}
+  {% for post in en_posts %}
     {% if post.id contains "404" %}{% else %}
       <url>
-        <loc>{{site.base}}{{ post.url }}</loc>
-        {% assign versions=site.posts | where:"date", post.date %}
-        {% for version in versions %}
-          <xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{site.base}}{{ version.url }}" />
+        <loc>{{ site.sitemap_url }}{{ post.url }}</loc>
+        {% assign langs=site.posts | where:"name", post.name %}{% for version in langs %}
+          {% if version.lang != 'en' %}<xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{ site.sitemap_url }}{{ version.url }}" />{% endif %}
         {% endfor %}
         <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-        <changefreq>weekly</changefreq>
+        {% if page.changefreq != null %}<changefreq>{{ page.changefreq }}</changefreq>{% endif %}
+        {% if page.priority != null %}<priority>{{ page.priority }}</priority>{% endif %}
       </url>
     {% endif %}
   {% endfor %}

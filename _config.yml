@@ -3,6 +3,7 @@
 title:            Bitcoin Core
 #locale:           en_US
 social_url: https://bitcoincore.org
+sitemap_url: https://bitcoincore.org
 
 # Jekyll configuration
 
