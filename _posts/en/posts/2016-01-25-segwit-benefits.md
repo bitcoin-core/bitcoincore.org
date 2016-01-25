@@ -35,7 +35,8 @@ For example, you could submit a transaction with hash ef74...c309 to
 the network, but instead find that a third-party, such as a node on
 the network relaying your transaction, or the miner who includes your
 transaction in a block, modifies the transaction slightly, resulting in
-your transaction being confirmed under the completely different hash 683f...8bfa instead.
+your transaction still spending the same coins and paying the same addresses,
+but being confirmed under the completely different hash 683f...8bfa instead.
 
 More generally, if one or more of the signers of the transaction revise
 their signatures then the transaction remains valid and pays the same
