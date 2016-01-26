@@ -23,6 +23,9 @@ en:
      title: "FAQs"
      submenu: true
      tree:
+       segwit-faq:
+         title: "Segwit"
+         url: "/en/2015/12/23/capacity-increases-faq"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
