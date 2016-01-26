@@ -34,8 +34,7 @@ Segwit prevents third-party and scriptSig malleability by allowing Bitcoin users
 
 - **Anyone using the block chain:** smart contracts today, such as micropayment channels, and anticipated new smart contracts, become less complicated to design, understand, and monitor.
 
-Note: segwit transactions only avoid malleability if all their inputs are segwit spends (either directly, or via a backwards compatible segwit
-P2SH address).
+Note: segwit transactions only avoid malleability if all their inputs are segwit spends (either directly, or via a backwards compatible segwit P2SH address).
 
 ### Further information
 
