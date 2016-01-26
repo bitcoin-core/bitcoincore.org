@@ -17,24 +17,24 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |4|[Blocktrail](https://www.blocktrail.com/)|yes|no|wallet, block explorer||
 |5|[BreadWallet](http://breadwallet.com/)|yes|no|wallet||
 |6|[Coinfloor](https://www.coinfloor.co.uk/)|yes|no|exchange||
-|6|[Coinkite](https://coinkite.com/)|yes|no|wallet, hardware wallet||
-|7|[Coinomi](https://coinomi.com/)|yes|no|wallet||
-|8|[Digitalbitbox](https://digitalbitbox.com/)|yes|no|hardware wallet||
-|9|[EI8HT](http://ei8.ht/)|yes|no|wallet||
-|10|[Electrum](https://electrum.org/)|yes|no|wallet||
-|11|[GreenAddress](https://greenaddress.it/)*|yes|no|wallet|pycoin, bitcoinjs|
-|12|[GreenBits](https://www.greenbits.com/)|yes|no|wallet|bitcoinj|
-|13|[Ledger](https://www.ledgerwallet.com/)|yes|no|hardware wallet|bitcoinjs*|
-|14|[libbtc](https://github.com/libbtc)|yes|no|library||
-|15|[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library||
-|16|[mSIGNA](https://ciphrex.com/)|yes|yes|wallet||
-|17|[Mycelium](https://mycelium.com/)|yes|no|wallet||
-|18|NBitcoin|yes|no|library|n/a|
-|19|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet||
-|20|[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library||
-|21|[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
-|22|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|bitcoinj|
-|23|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet||
+|7|[Coinkite](https://coinkite.com/)|yes|no|wallet, hardware wallet||
+|8|[Coinomi](https://coinomi.com/)|yes|no|wallet||
+|9|[Digitalbitbox](https://digitalbitbox.com/)|yes|no|hardware wallet||
+|10|[EI8HT](http://ei8.ht/)|yes|no|wallet||
+|11|[Electrum](https://electrum.org/)|yes|no|wallet||
+|12|[GreenAddress](https://greenaddress.it/)*|yes|no|wallet|pycoin, bitcoinjs|
+|13|[GreenBits](https://www.greenbits.com/)|yes|no|wallet|bitcoinj|
+|14|[Ledger](https://www.ledgerwallet.com/)|yes|no|hardware wallet|bitcoinjs*|
+|15|[libbtc](https://github.com/libbtc)|yes|no|library||
+|16|[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library||
+|17|[mSIGNA](https://ciphrex.com/)|yes|yes|wallet||
+|18|[Mycelium](https://mycelium.com/)|yes|no|wallet||
+|19|NBitcoin|yes|no|library|n/a|
+|20|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet||
+|21|[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library||
+|22|[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
+|23|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|bitcoinj|
+|24|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet||
 
 * BitGo provides wallet services to large exchanges such as Bitfinex, Bitstamp and Kraken.
 
