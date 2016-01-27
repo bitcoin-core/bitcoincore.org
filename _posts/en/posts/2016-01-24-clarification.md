@@ -5,9 +5,9 @@ type: post
 permalink: /en/2015/01/24/clarification
 share: true
 ---
-The Bitcoin Core team would like to address some recent misunderstandings about the relationship between Bitcoin Core and public venues for information and discussion about Bitcoin itself.
+The BitcoinCore.org website is now the official website for the Bitcoin Core project. Other sites may also host information about Bitcoin Core, but they are not under the control of the Bitcoin Core project. We know that the Bitcoin ecosystem can be confusing, and we are working hard to make these relationships more clear.
 
-We encourage the Bitcoin community to civilly discuss and critique any and all changes to the system. However, we also recognize that venues have specific purposes and policies that must be respected. Our wider community can become extremely excited and heated when it comes to discussing Bitcoin. At the same time, there is universal agreement to not engage in brigading, to reject participation in denial-of-service attacks, and to assume good faith in absence of reason to believe otherwise.
+For development work, Bitcoin Core mainly uses `#bitcoin-core-dev` IRC channel on Freenode, [Github](https://github.com/bitcoin/bitcoin) and [mailing list](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/). We also recently opened an community Slack group (request an invitation [here](https://slack.bitcoincore.org)) although this is not a developer channel, we have found it useful in enabling the greater Bitcoin community to connect with Bitcoin Core.
 
 Historically, Bitcoin.org was originally used by Satoshi Nakamoto to host his [Bitcoin paper](https://bitcoin.org/bitcoin.pdf). Soon after, it began linking to downloadable versions of the original Bitcoin software, making it the homepage for the [Bitcoin program](https://bitcoin.org/en/download).
 
@@ -17,9 +17,7 @@ As of Dec 2015, Bitcoin.org has 876 pages in 25 different languages, but fewer t
 
 As of January 2016, Bitcoin Core opened its own project website to further help separate concerns. Our timeline was accelerated because of the delisting of Coinbase on Bitcoin.org.
 
-Likewise, the "r/bitcoin" subreddit is not under the control of the Bitcoin Core project and their policies are their own. We recognise that large public forums do require some moderation policies but they have been too heavy handed. For development work, Bitcoin Core mainly uses IRC `#bitcoin-core-dev`, [Github](https://github.com/bitcoin/bitcoin) and [mailing list](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/) for communications. We also recently opened an community Slack group (request an invitation [here](https://slack.bitcoincore.org)) although this is not a developer channel, we have found it useful in enabling the greater Bitcoin community to connect with Bitcoin Core.
+Likewise, the "r/bitcoin" subreddit is not under the control of the Bitcoin Core project and their policies are their own. We recognise that large public forums do require some moderation policies but may have been too heavy handed.
 
-We created bitcoincore.org to make it more clear what exactly we control. The bitcoincore.org website is now the official website for the Bitcoin Core project. We know that the Bitcoin ecosystem can be confusing, and we are working hard to make these relationships more clear.
-
-
+We encourage the Bitcoin community to civilly discuss and critique any and all changes to the system, we believe discussion of rule changes to Bitcoin to  should happen freely in public forums. However, we also recognize that different venues have specific purposes and policies that must be respected. The wider community can become extremely excited and heated when it comes to discussing Bitcoin; although it is generally considered wrong to engage in brigading or denial-of-service attacks, and best to assume good faith in absence of reason to believe otherwise.
 
