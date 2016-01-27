@@ -7,7 +7,7 @@ share: true
 ---
 The BitcoinCore.org website is now the official website for the Bitcoin Core project. Other sites may also host information about Bitcoin Core, but they are not under the control of the Bitcoin Core project. We know that the Bitcoin ecosystem can be confusing, and we are working hard to make these relationships more clear.
 
-For development work, Bitcoin Core mainly uses `#bitcoin-core-dev` IRC channel on Freenode, [Github](https://github.com/bitcoin/bitcoin) and [mailing list](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/). We also recently opened an community Slack group (request an invitation [here](https://slack.bitcoincore.org)) although this is not a developer channel, we have found it useful in enabling the greater Bitcoin community to connect with Bitcoin Core.
+For development work, Bitcoin Core mainly uses `#bitcoin-core-dev` IRC channel on Freenode, [Github](https://github.com/bitcoin/bitcoin) and [the bitcoin-dev mailing list](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/). We also recently created a community Slack group (request an invitation [here](https://slack.bitcoincore.org)) which is not meant to be a developer channel, but to enable the greater Bitcoin community to connect with Bitcoin Core developers and contributors more easily.
 
 Historically, Bitcoin.org was originally used by Satoshi Nakamoto to host his [Bitcoin paper](https://bitcoin.org/bitcoin.pdf). Soon after, it began linking to downloadable versions of the original Bitcoin software, making it the homepage for the [Bitcoin program](https://bitcoin.org/en/download).
 
