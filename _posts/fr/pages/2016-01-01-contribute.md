@@ -19,8 +19,7 @@ Our main source code repository is [hosted on GitHub](https://github.com/bitcoin
   - Improving our UIs
   - Coding (fix open issues or implement new features)
 
-Feel free to report [issues][issues] and open [pull requests][pulls], but
-please check the [contribution guidelines][CONTRIBUTING] to understand our workflow.
+Feel free to report [issues][issues] and open [pull requests][pulls], but please check the [contribution guidelines][CONTRIBUTING] to understand our workflow.
 
 **Discussion**
 
