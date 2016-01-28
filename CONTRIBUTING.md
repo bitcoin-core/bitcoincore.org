@@ -31,7 +31,7 @@ Each document has a header called "Front Matter", which looks something like thi
     name: clarifying-communications
     id: en-clarifying-communications
     layout: post
-    permalink: /en/2016/01/28/my_example
+    permalink: /en/2016/01/28/clarification
     share: true
     ---
 
@@ -45,5 +45,7 @@ Translators should only translate the `title:` field, and change the language co
     permalink: /zh_CN/2016/01/28/clarification
     share: true
     ---
+
+Notice the remaining fields are left untranslated, however in Transifiex, you must copy these fields as translations (without actually translating them).
 
 Please note that [translations.yml](https://github.com/bitcoin-core/website/blob/gh-pages/_data/translations.yml) and [navigation.yml](https://github.com/bitcoin-core/website/blob/gh-pages/_data/navigation.yml) should be translated and submitted as normal pull-requests because they are not compatible with Transifex at this time.
