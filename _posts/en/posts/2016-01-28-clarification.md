@@ -1,7 +1,8 @@
 ---
 title: Clarifying Communications
 name: clarifying-communications
-type: post
+id: en-clarifying-communications
+layout: post
 permalink: /en/2016/01/28/clarification
 share: true
 ---
