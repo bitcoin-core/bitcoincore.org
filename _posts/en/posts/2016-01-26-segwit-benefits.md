@@ -25,8 +25,7 @@ Segwit prevents third-party and scriptSig malleability by allowing Bitcoin users
 
 ### Who benefits?
 
-- **Wallet authors tracking spent bitcoins:** it's easiest to monitor the status of your own outgoing transactions by simply looking them up by txid.  But in
-  a system with third-party malleability, wallets must implement extra code to be able to deal with changed txids.
+- **Wallet authors tracking spent bitcoins:** it's easiest to monitor the status of your own outgoing transactions by simply looking them up by txid.  But in a system with third-party malleability, wallets must implement extra code to be able to deal with changed txids.
 
 - **Anyone spending unconfirmed transactions:** if Alice pays Bob in transaction 1, Bob uses that payment to pay Charlie in transaction 2, and then Alice's payment gets malleated and confirmed with a different txid, then transaction 2 is now invalid and Charlie has not been paid. If Bob is trustworthy, he will reissue the payment to Charlie; but if he isn't, he can simply keep those bitcoins for himself.
 
