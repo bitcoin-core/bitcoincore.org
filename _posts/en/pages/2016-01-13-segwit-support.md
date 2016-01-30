@@ -16,31 +16,32 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |3|[BitcoinJ](https://bitcoinj.github.io/)|yes|no|library|n/a|
 |4|[Bitcoinjs](http://bitcoinjs.org/)|yes|wip|library|n/a|
 |5|[BitGo](https://www.bitgo.com/)*|yes|no|wallet|bitcoinj, bitcoinjs|
-|6|[BitWasp](https://github.com/Bit-Wasp/bitcoin-php)|yes|wip|wallet||
-|7|[Blocktrail](https://www.blocktrail.com/)|yes|no|wallet, block explorer||
-|8|[BreadWallet](http://breadwallet.com/)|yes|no|wallet||
-|9|[Coinfloor](https://www.coinfloor.co.uk/)|yes|no|exchange||
-|10|[Coinkite](https://coinkite.com/)|yes|no|wallet, hardware wallet||
-|11|[Coinomi](https://coinomi.com/)|yes|no|wallet||
-|12|[Digitalbitbox](https://digitalbitbox.com/)|yes|no|hardware wallet||
-|13|[EI8HT](http://ei8.ht/)|yes|no|wallet||
-|14|[Electrum](https://electrum.org/)|yes|no|wallet||
-|15|[Eloipool](https://github.com/luke-jr/eloipool)|yes|no|pool software|n/a|
-|16|[GreenAddress](https://greenaddress.it/)*|yes|wip|wallet|pycoin, bitcoinjs|
-|17|[GreenBits](https://www.greenbits.com/)|yes|no|wallet|bitcoinj|
-|18|[Ledger](https://www.ledgerwallet.com/)|yes|no|hardware wallet|bitcoinjs*|
-|19|[libbtc](https://github.com/libbtc)|yes|no|library||
-|20|[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library||
-|21|[libblkmaker](https://github.com/bitcoin/libblkmaker)|yes|yes|mining library|n/a|
-|22|[mSIGNA](https://ciphrex.com/)|yes|yes|wallet||
-|23|[Multibit HD](https://multibit.org/)|yes|no|wallet|bitcoinj|
-|24|[Mycelium](https://mycelium.com/)|yes|no|wallet||
-|25|NBitcoin|yes|no|library|n/a|
-|26|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet||
-|27|[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library||
-|28|[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
-|29|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|bitcoinj|
-|30|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet||
+|6|[Bither Wallet](https://bither.net/)|yes|no|wallet||
+|7|[BitWasp](https://github.com/Bit-Wasp/bitcoin-php)|yes|wip|wallet||
+|8|[Blocktrail](https://www.blocktrail.com/)|yes|no|wallet, block explorer||
+|9|[BreadWallet](http://breadwallet.com/)|yes|no|wallet||
+|10|[Coinfloor](https://www.coinfloor.co.uk/)|yes|no|exchange||
+|11|[Coinkite](https://coinkite.com/)|yes|no|wallet, hardware wallet||
+|12|[Coinomi](https://coinomi.com/)|yes|no|wallet||
+|13|[Digitalbitbox](https://digitalbitbox.com/)|yes|no|hardware wallet||
+|14|[EI8HT](http://ei8.ht/)|yes|no|wallet|bitcoin core, bitcoinjs|
+|15|[Electrum](https://electrum.org/)|yes|no|wallet||
+|16|[Eloipool](https://github.com/luke-jr/eloipool)|yes|yes|pool software|n/a|
+|17|[GreenAddress](https://greenaddress.it/)*|yes|wip|wallet|pycoin, bitcoinjs|
+|18|[GreenBits](https://www.greenbits.com/)|yes|no|wallet|bitcoinj|
+|19|[Ledger](https://www.ledgerwallet.com/)|yes|no|hardware wallet|bitcoinjs*|
+|20|[libbtc](https://github.com/libbtc)|yes|no|library||
+|21|[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library||
+|22|[libblkmaker](https://github.com/bitcoin/libblkmaker)|yes|yes|mining library|n/a|
+|23|[mSIGNA](https://ciphrex.com/)|yes|yes|wallet||
+|24|[Multibit HD](https://multibit.org/)|yes|no|wallet|bitcoinj|
+|25|[Mycelium](https://mycelium.com/)|yes|no|wallet||
+|26|NBitcoin|yes|no|library|n/a|
+|27|[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet||
+|28|[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library||
+|29|[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
+|30|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|bitcoinj|
+|31|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet||
 
 \* BitGo provides wallet services to large exchanges such as Bitfinex, Bitstamp and Kraken.
 
@@ -53,3 +54,4 @@ wip: work-in-progress
 To add your company or service, please ACK ticket [#30] with company/service name.
 
 [#30]: https://github.com/bitcoin-core/website/pull/30
+{% comment %}updated to https://github.com/bitcoin-core/website/pull/30#issuecomment-177012065{% endcomment %}
