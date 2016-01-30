@@ -23,7 +23,7 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |4|[Bitcoinjs](http://bitcoinjs.org/)|yes|wip|library|n/a|
 |5|[BitGo](https://www.bitgo.com/)*|yes|no|wallet|bitcoinj, bitcoinjs|
 |6|[Bither Wallet](https://bither.net/)|yes|no|wallet||
-|7|[BitWasp](https://github.com/Bit-Wasp/bitcoin-php)|yes|wip|wallet||
+|7|[BitWasp](https://github.com/Bit-Wasp/bitcoin-php)|yes|wip|library||
 |8|[Blocktrail](https://www.blocktrail.com/)|yes|no|wallet, block explorer||
 |9|[BreadWallet](http://breadwallet.com/)|yes|no|wallet||
 |10|[Coinfloor](https://www.coinfloor.co.uk/)|yes|no|exchange||
