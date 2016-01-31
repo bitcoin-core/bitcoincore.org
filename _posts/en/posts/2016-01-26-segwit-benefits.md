@@ -7,11 +7,11 @@ id: en-segwit-benefits
 title: Segregated Witness Benefits
 permalink: /en/2016/01/26/segwit-benefits/
 version: 1
-excerpt: This page summarises some of the benefits of segregated witness that go beyond simply increasing the capacity of the block chain.
+excerpt: This page summarises some of the benefits of segregated witness.
 ---
 {% include _toc.html %}
 
-The Segregated Witness soft-fork (segwit) includes a wide range of features, many of which are highly technical. This page summarises some of the benefits of those features that go beyond simply increasing the capacity of the block chain.
+The Segregated Witness soft-fork (segwit) includes a wide range of features, many of which are highly technical. This page summarises some of the benefits of those features.
 
 ## Malleability Fixes
 
@@ -154,6 +154,15 @@ Segregating the signature data allows nodes that aren't interested in signature 
 ### Who benefits?
 
 As more transactions use segwit addresses, people running pruned or SPV nodes will be able to operate with less bandwidth and disk space.
+
+## Block capacity/size increase
+
+Since old nodes will only download the witness-stripped block, they only enforce the 1 MB block size limit rule on that data.
+New nodes, which understand the full block with witness data, are therefore free to replace this limit with a new one, allowing for larger block sizes. Segregated witness therefore takes advantage of this opportunity to raise the block size limit to nearly 4 MB, and adds a new cost limit to ensure blocks remain balanced in their resource use (this effectively results in an effective limit closer to 1.6 to 2 MB).
+
+### Who benefits?
+
+People who run upgraded wallets will be able to take advantage of the increased block size by moving signatures to the witness section of the transaction.
 
 ## Moving towards a single combined block limit
 
