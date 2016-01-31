@@ -11,6 +11,18 @@ excerpt: This page summarises some of the benefits of segregated witness that go
 
 The Segregated Witness soft-fork (segwit) includes a wide range of features, many of which are highly technical. This page summarises some of the benefits of those features that go beyond simply increasing the capacity of the block chain.
 
+## Table of Contents
+
+* [Malleability Fixes][]
+* [Linear scaling of sighash operations][]
+* [Signing of input values][]
+* [Increased security for multisig via pay-to-script-hash (P2SH)][]
+* [Script versioning][]
+* [Reducing UTXO growth][]
+* [Compact fraud proofs][]
+* [Efficiency gains when not verifying signatures][]
+* [Moving towards a single combined block limit][]
+
 ## Malleability Fixes
 
 Bitcoin transactions are identified by a 64-digit hexadecimal hash called a transaction identifier (txid) which is based on both the coins being spent and on who will be able to spend the results of the transaction.
