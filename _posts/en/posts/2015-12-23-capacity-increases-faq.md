@@ -19,7 +19,7 @@ New technology will be deployed when it is ready and has been tested. However, w
 | Feb 2016 | | Segregated witness feature complete & ready for general review |
 | Mar 2016\* | 0.12.x | Deploy OP_CHECKSEQUENCEVERIFY (BIPs [68][BIP68] & [112][BIP112]) + [BIP113][] as first [BIP9][] versionbits soft fork |
 | April 2016\* |  0.12.x |  Deploy segregated witness (including block size increase) |
-| 2016 | | Weak blocks, IBLTs, or both |
+| 2016 | | Weak blocks and IBLT, Lightning, or both |
 
 \* Dates with an asterisk are when we expect to release soft fork-ready code. The code will not be released until it has been well reviewed, and the actual fork will take time to activate ([BIP66][] activated in July 2015 after a few months; [BIP65][] activated in Dec 2015 after only 5 weeks).
 
@@ -42,6 +42,7 @@ The [current proposal][] for soft fork segregated witness (segwit) replaces the 
 However, blocks are not expected to consist entirely of witness data, so blocks near 4 MB in size would be unlikely.
 
 According to some [calculations][] performed by Anthony Towns, a block filled with standard single-signature P2PKH transactions would be about 1.6 MB and a block filled with 2-of-2 multisignature transactions would be about 2.0 MB.
+It is further likely that future scaling improvements, such as Lightning, may slightly improve the ratio such that filled blocks become larger than 2 MB.
 
 [current proposal]: https://youtu.be/fst1IK_mrng?t=2234
 [calculations]: http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011869.html
