@@ -48,7 +48,7 @@ According to some [calculations][] performed by Anthony Towns, a block filled wi
 
 Some ideas are easy to explain but hard to execute. Other ideas are easy to execute but hard to explain. Segregated witness (segwit) seems to be the latter.
 
-Segwit can be deployed incrementally without breaking compatibility, so no significant preparation of the ecosystem is necessary. Developers who want immediate hands-on experience with segwit can begin to test their software on the segwit testnet being deployed in Dec 2015.
+Segwit can be deployed incrementally without breaking compatibility, so no significant preparation of the ecosystem is necessary. Developers who want immediate hands-on experience with segwit have begun to test their software on the segwit testnet deployed Dec 2015.
 
 Initially, only miners who wish to support it need to upgrade in order to activate it and enforce it on the mainnet. Existing applications only need to change if they wish to take advantage of the new features and additional block space.
 
