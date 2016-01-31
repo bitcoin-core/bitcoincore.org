@@ -33,13 +33,13 @@ New technology will be deployed when it is ready and has been tested. However, w
 
 - **IBLTs and weak blocks:** 90% or more reduction in critical bandwidth to relay blocks created by miners who want their blocks to propagate quickly with a modest [increase in total bandwidth][], bringing many of the benefits of the [Bitcoin Relay Network][] to all full nodes. This improvement is accomplished by spreading bandwidth usage out over time for full nodes, which means IBLT and weak blocks may allow for safer future increases to the max block size.
 
-## Is the segregated witness soft fork equivalent to a 4MB block size increase, a 2MB increase, a 1.75MB increase, or what? I keep hearing different numbers.  {#segwit-size}
+## Is the segregated witness soft fork equivalent to a 4 MB block size increase, a 2 MB increase, a 1.75 MB increase, or what? I keep hearing different numbers.  {#segwit-size}
 
-The [current proposal][] for soft fork segregated witness (segwit) replaces the block size limit with a new block *cost* limit, counting each byte of witness data as 1 unit of cost and UTXO transaction data as 4 units; as a result, the maximum size of a block becomes just under 4MB.
+The [current proposal][] for soft fork segregated witness (segwit) replaces the block size limit with a new block *cost* limit, counting each byte of witness data as 1 unit of cost and UTXO transaction data as 4 units; as a result, the maximum size of a block becomes just under 4 MB.
 
-However, blocks are not expected to consist entirely of witness data, so blocks near 4MB in size would be unlikely.
+However, blocks are not expected to consist entirely of witness data, so blocks near 4 MB in size would be unlikely.
 
-According to some [calculations][] performed by Anthony Towns, a block filled with standard single-signature P2PKH transactions would be about 1.6MB and a block filled with 2-of-2 multisignature transactions would be about 2.0MB.
+According to some [calculations][] performed by Anthony Towns, a block filled with standard single-signature P2PKH transactions would be about 1.6 MB and a block filled with 2-of-2 multisignature transactions would be about 2.0 MB.
 
 [current proposal]: https://youtu.be/fst1IK_mrng?t=2234
 [calculations]: http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011869.html
@@ -56,7 +56,7 @@ Segregated witness transactions will require lower fees, will afford much greate
 
 ## Segregated witness still sounds complicated. Why not simply raise the maximum block size?  {#size-bump}
 
-There's a [single line of code][max_block_size] in Bitcoin Core that says the maximum block size is 1,000,000 bytes (1MB). The simplest code modification would be a hard fork to update that line to say, for example, 2,000,000 bytes (2MB).
+There's a [single line of code][max_block_size] in Bitcoin Core that says the maximum block size is 1,000,000 bytes (1 MB). The simplest code modification would be a hard fork to update that line to say, for example, 2,000,000 bytes (2 MB).
 
 However, hard forks are anything but simple:
 
@@ -66,7 +66,7 @@ However, hard forks are anything but simple:
 
 - **Upgrades required:** Hard forks require all full nodes to upgrade or everyone who uses that node may lose money. This includes the node operator, if they use it to protect their wallet, as well as lightweight clients who get their data from the node.
 
-- **Other changes required:** Even a single-line change such as increasing the maximum block size has effects on other parts of the code, some of which are undesirable. For example, right now it's possible to construct a transaction that takes up almost 1MB of space and which takes 30 seconds or more to validate on a modern computer (blocks containing such transactions have been mined). In 2MB blocks, a 2MB transaction can be constructed that may take over 10 minutes to validate which opens up dangerous denial-of-service attack vectors.  Other lines of code would need to be changed to prevent these problems.
+- **Other changes required:** Even a single-line change such as increasing the maximum block size has effects on other parts of the code, some of which are undesirable. For example, right now it's possible to construct a transaction that takes up almost 1 MB of space and which takes 30 seconds or more to validate on a modern computer (blocks containing such transactions have been mined). In 2 MB blocks, a 2 MB transaction can be constructed that may take over 10 minutes to validate which opens up dangerous denial-of-service attack vectors.  Other lines of code would need to be changed to prevent these problems.
 
 Despite these considerable complications, with sufficient precautions, none of them is fatal to a hard fork, and we do expect to make hard forks in the future. But with segregated witness (segwit) we have a soft fork, similar to other soft forks we've performed and gained experience in deploying, that provides us with many benefits in addition to allowing more transactions to be added to the blockchain.
 
