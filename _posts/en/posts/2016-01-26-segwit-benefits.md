@@ -161,7 +161,7 @@ Finding the most profitable set of transactions to include in a block given a si
 
 It is not possible to solve this problem without either a hardfork, or substantially decreasing the block size.  Since segwit can't fix the problem, it settles on not making it worse: in particular, rather than introducing an independent limit for the segregated witness data, instead a single limit is applied to the weighted sum of the UTXO data and the witness data, allowing both to be limited simultaneously as a combined entity.
 
-## Who benefits?
+### Who benefits?
 
 Ultimately miners will benefit if a future hardfork that changes the block capacity limit to be a single weighted sum of parameters. For example:
 
