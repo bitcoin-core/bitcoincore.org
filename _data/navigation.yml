@@ -92,19 +92,49 @@ fr:
     url:   "/fr/"
   about:
     title: "à propos"
-    url:   "/fr/about/"
+    submenu: true
+    tree:
+      about:
+        title: "à propos de nous"
+        url:   "/fr/about/"
+      supporters:
+        title: "soutiens"
+        url:   "/en/supporters"
   blog:
     title: "blog"
     url:   "/fr/blog/"
   releases:
-    title: "releases"
+    title: "livraisons"
     url:   "/fr/releases/"
-  contribute:
-    title: "contribute"
-    url:   "/fr/contribute/"
-  meetings:
-    title: "meetings"
-    url:   "/fr/meetings/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       capacity-faq:
+         title: "Augmentation de la capacité"
+         url: "/en/2015/12/23/capacity-increases-faq/"
+       segwit-faq:
+         title: "Segwit"
+         url: "/fr/2016/01/26/segwit-benefits/"
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/fr/faq/optin_rbf"
+  dev:
+    title: "Développment"
+    submenu: true
+    tree:
+      contribute:
+        title: "contribuer"
+        url:   "/fr/contribute/"
+      segwit:
+        title: "Adoption de SegWit"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "réunions"
+        url:   "/fr/meetings/"
+      bips:
+        title: "BIPs supportées"
+        url:   "/en/bips"
 it:
   home:
     title: "Bitcoin Core"
