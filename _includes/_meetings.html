@@ -1,7 +1,8 @@
 <ul class="meeting">
   {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'meetings' | sort:'post.date' %}
   {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'meetings' %}
-  {% for post in english_posts %}
+  {% for default_post in english_posts %}
+    {% assign post=default_post %}
     {% for t_post in translated_posts %}
       {% if t_post.name == post.name %}{% assign post=t_post %}{% break %}{% endif %}
     {% endfor %}
