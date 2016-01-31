@@ -16,7 +16,7 @@ New technology will be deployed when it is ready and has been tested. However, w
 | Feb 2016 | 0.12.0 | [libsecp256k1 verification][] |
 | Feb 2016 | | Segregated witness feature complete & ready for general review |
 | Mar 2016\* | 0.12.x | Deploy OP_CHECKSEQUENCEVERIFY (BIPs [68][BIP68] & [112][BIP112]) + [BIP113][] as first [BIP9][] versionbits soft fork |
-| April 2016\* |  0.12.x |  Deploy segregated witness |
+| April 2016\* |  0.12.x |  Deploy segregated witness (including block size increase) |
 | 2016 | | Weak blocks, IBLTs, or both |
 
 \* Dates with an asterisk are when we expect to release soft fork-ready code. The code will not be released until it has been well reviewed, and the actual fork will take time to activate ([BIP66][] activated in July 2015 after a few months; [BIP65][] activated in Dec 2015 after only 5 weeks).
@@ -35,9 +35,9 @@ New technology will be deployed when it is ready and has been tested. However, w
 
 ## Is the segregated witness soft fork equivalent to a 4MB block size increase, a 2MB increase, a 1.75MB increase, or what? I keep hearing different numbers.  {#segwit-size}
 
-The [current proposal][] for soft fork segregated witness (segwit) counts each byte in a witness as 0.25 bytes towards the maximum block size limit, meaning the maximum size of a block is just under 4MB.
+The [current proposal][] for soft fork segregated witness (segwit) replaces the block size limit with a new block *cost* limit, counting each byte of witness data as 1 unit of cost and UTXO transaction data as 4 units; as a result, the maximum size of a block becomes just under 4MB.
 
-However, blocks are not expected to consist entirely of witness data and each non-witness byte is counted as 1.00 bytes towards the maximum block size limit, so blocks near 4MB in size would be unlikely.
+However, blocks are not expected to consist entirely of witness data, so blocks near 4MB in size would be unlikely.
 
 According to some [calculations][] performed by Anthony Towns, a block filled with standard single-signature P2PKH transactions would be about 1.6MB and a block filled with 2-of-2 multisignature transactions would be about 2.0MB.
 
@@ -50,17 +50,17 @@ Some ideas are easy to explain but hard to execute. Other ideas are easy to exec
 
 Segwit can be deployed incrementally without breaking compatibility, so no significant preparation of the ecosystem is necessary. Developers who want immediate hands-on experience with segwit can begin to test their software on the segwit testnet being deployed in Dec 2015.
 
-Initially, only miners who wish to support it need to upgrade in order to activate it and enforce it on the mainnet. Existing applications only need to change if they wish to take advantage of the new features.
+Initially, only miners who wish to support it need to upgrade in order to activate it and enforce it on the mainnet. Existing applications only need to change if they wish to take advantage of the new features and additional block space.
 
 Segregated witness transactions will require lower fees, will afford much greater performance optimizations, and can support multistage smart contracts and protocols such as bi-directional payment channels that can scale without writing extra data to the blockchain. Wallets are strongly encouraged to upgrade but can continue to operate without modification as the deployment does not break backwards compatibility.
 
 ## Segregated witness still sounds complicated. Why not simply raise the maximum block size?  {#size-bump}
 
-There's a [single line of code][max_block_size] in Bitcoin Core that says the maximum block size is 1,000,000 bytes (1MB). The simplest change would be a hard fork to update that line to say, for example, 2,000,000 bytes (2MB).
+There's a [single line of code][max_block_size] in Bitcoin Core that says the maximum block size is 1,000,000 bytes (1MB). The simplest code modification would be a hard fork to update that line to say, for example, 2,000,000 bytes (2MB).
 
-Hard forks are anything but simple:
+However, hard forks are anything but simple:
 
-- **We don't have experience:** Miners, merchants, developers, and users have never deployed a hard fork, so techniques for safely deploying them have not been tested.
+- **We don't have experience:** Miners, merchants, developers, and users have never deployed a non-emergency hard fork, so techniques for safely deploying them have not been tested.
 
     This is unlike soft forks, whose deployments were initially managed by Nakamoto, where we gained experience from the complications in the [BIP16][] deployment, where we refined our technique in the [BIP34][] deployment, and where we've gained enough experience with BIPs [66][BIP66] and [65][BIP65] to begin managing multiple soft forks with [BIP9][] version bits in the future.
 
