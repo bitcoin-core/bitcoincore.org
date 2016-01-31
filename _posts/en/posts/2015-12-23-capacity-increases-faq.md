@@ -18,6 +18,7 @@ New technology will be deployed when it is ready and has been tested. However, w
 | Mar 2016\* | 0.12.x | Deploy OP_CHECKSEQUENCEVERIFY (BIPs [68][BIP68] & [112][BIP112]) + [BIP113][] as first [BIP9][] versionbits soft fork |
 | April 2016\* |  0.12.x |  Deploy segregated witness (including block size increase) |
 | 2016 | | Weak blocks and IBLT, Lightning, or both |
+| 2017 | | Prepare for hardfork |
 
 \* Dates with an asterisk are when we expect to release soft fork-ready code. The code will not be released until it has been well reviewed, and the actual fork will take time to activate ([BIP66][] activated in July 2015 after a few months; [BIP65][] activated in Dec 2015 after only 5 weeks).
 
