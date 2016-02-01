@@ -5,8 +5,9 @@ en:
   footer: "Bitcoin Core project"
   related: "Recommended"
   viewallposts: "View all posts"
-  nottranslated: "Note: this page has not been translated"
+  not_translated: "Note: this page has not been translated"
   tocoverview: "Overview"
+  translation_outdated: "This translation may be out of date. Please compare with the English version."
 
 de:
   created: "Published on the"
@@ -15,8 +16,9 @@ de:
   footer: "Bitcoin Core project"
   related: "Recommended"
   viewallposts: "View all posts"
-  nottranslated: "Note: this page has not been translated"
+  not_translated: "Hinweis: Diese Seite wurde nicht übersetzt"
   tocoverview: "Overview"
+  translation_outdated: "Diese Übersetzung kann veraltet sein. Vergleichen Sie bitte mit der englischen Version."
 
 es:
   created: "Publicado el"
@@ -25,8 +27,9 @@ es:
   footer: "Proyecto Bitcoin Core"
   related: "Recomendado"
   viewallposts: "Ver todas las entradas"
-  nottranslated: "Nota: esta página no ha sido traducida"
+  not_translated: "Nota: esta página no ha sido traducida"
   tocoverview: "Overview"
+  translation_outdated: "Esta traducción se puede estar fuera de fecha. Por favor compare con la versión Inglés."
 
 fr:
   created: "Publié le"
@@ -35,8 +38,9 @@ fr:
   footer: "Projet Bitcoin Core"
   related: "Recommandé"
   viewallposts: "Voir tout"
-  nottranslated: "Note: cette page n'a pas encore été traduite"
+  not_translated: "Note: cette page n'a pas encore été traduite"
   tocoverview: "Sommaire"
+  translation_outdated: "Cette traduction peut être obsolète. S'il vous plaît de comparer avec la version anglaise."
 
 it:
   created: "Published on the"
@@ -45,8 +49,9 @@ it:
   footer: "Bitcoin Core project"
   related: "Recommended"
   viewallposts: "View all posts"
-  nottranslated: "Note: this page has not been translated"
+  not_translated: "Nota: questa pagina non è stato tradotto"
   tocoverview: "Overview"
+  translation_outdated: "Questa traduzione può essere aggiornato. Si prega di confrontare con la versione inglese."
 
 ru:
   created: "Published on the"
@@ -55,8 +60,9 @@ ru:
   footer: "Bitcoin Core project"
   recommended: "Recommended"
   viewallposts: "View all posts"
-  nottranslated: "Note: this page has not been translated"
+  not_translated: "Примечание: Эта страница не была переведена"
   tocoverview: "Overview"
+  translation_outdated: "Этот перевод может быть устаревшим. Пожалуйста, сравните с английской версией."
 
 zh_CH:
   created: "发表于"
@@ -65,8 +71,9 @@ zh_CH:
   footer: "Bitcoin Core 计划"
   recommended: "推荐阅读"
   viewallposts: "顯示所有文章"
-  nottranslated: "注意：本页未被翻译"
+  not_translated: "注意：本页未被翻译"
   tocoverview: "Overview"
+  translation_outdated: "This translation may be out of date compared to the English version"
 
 zh_TW:
   created: "發表於"
@@ -75,5 +82,6 @@ zh_TW:
   footer: "Bitcoin Core 計劃"
   recommended: "推薦閱讀"
   viewallposts: "显示所有文章"
-  nottranslated: "注意：本頁未被翻譯"
+  not_translated: "注意：本頁未被翻譯"
   tocoverview: "Overview"
+  translation_outdated: "This translation may be out of date compared to the English version"

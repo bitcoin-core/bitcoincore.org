@@ -4,6 +4,7 @@ name: supported-bips
 type: page
 permalink: /en/bips
 share: false
+version: 1
 ---
 Bitcoin Core 0.12 supports the following [BIPs](https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki).
 

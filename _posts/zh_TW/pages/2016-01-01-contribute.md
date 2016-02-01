@@ -5,8 +5,7 @@ id: zn_tw-contribute
 permalink: /zh_TW/contribute
 layout: page
 share: false
-version: 1
-translated: false
+version: 0
 ---
 
 You are welcome to contribute to the project!

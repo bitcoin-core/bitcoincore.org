@@ -1,0 +1,9 @@
+{% assign t=site.data.translations[page.lang] %}
+{% assign en_post=site.posts |where:"lang", 'en' |where:"name", page.name %}
+{% if page.lang != 'en' %}
+  {% if page.version == 0 %}<p><strong><a href="{{ site.transifex_url }}">{{ t.not_translated }}</a></strong></p>
+  {% elsif page.version != 0 and page.version != en_post.version %}<p><strong>{{ t.translation_outdated }} <a href="{{ en_post.link }}">{{ en_post.link }}</a></strong></p>
+  {% endif %}
+{% endif %}
+
+

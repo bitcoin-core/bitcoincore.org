@@ -3,6 +3,7 @@ title: Segregated Witness Support
 name: segwit-support
 type: page
 permalink: /en/segwit_adoption
+version: 1
 ---
 
 The following is a list of companies and projects which have stated they will support segregated witness.

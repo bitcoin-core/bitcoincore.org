@@ -5,7 +5,7 @@ id: en-contribute
 permalink: /it/contribute
 layout: page
 share: false
-version: 1
+version: 0
 ---
 
 You are welcome to contribute to the project!

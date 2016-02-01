@@ -5,8 +5,7 @@ id: de-contribute
 permalink: /de/contribute
 layout: page
 share: false
-version: 1
-translated: false
+version: 0
 ---
 
 You are welcome to contribute to the project!
