@@ -72,19 +72,19 @@ es:
     title: "Bitcoin Core"
     url:   "/es/"
   about:
-    title: "About"
+    title: "Acerca de"
     url:   "/es/about/"
   blog:
     title: "blog"
     url:   "/es/blog/"
   releases:
-    title: "releases"
+    title: "distribuciones"
     url:   "/es/releases/"
   contribute:
-    title: "contribute"
+    title: "contribuir"
     url:   "/es/contribute/"
   meetings:
-    title: "meetings"
+    title: "encuentros"
     url:   "/es/meetings/"
 fr:
   home:
