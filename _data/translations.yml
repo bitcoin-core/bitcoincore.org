@@ -32,11 +32,11 @@ fr:
   created: "Publié le"
   author: "par"
   description: "Site Bitcoin Core"
-  footer: "Bitcoin Core project"
-  recommended: "Recommended"
-  viewallposts: "View all posts"
-  nottranslated: "Note: this page has not been translated"
-  tocoverview: "Overview"
+  footer: "Projet Bitcoin Core"
+  related: "Recommandé"
+  viewallposts: "Voir tout"
+  nottranslated: "Note: cette page n'a pas encore été traduite"
+  tocoverview: "Sommaire"
 
 it:
   created: "Published on the"
