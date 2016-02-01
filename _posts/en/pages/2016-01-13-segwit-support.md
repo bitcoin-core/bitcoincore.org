@@ -5,7 +5,7 @@ type: page
 permalink: /en/segwit_adoption
 ---
 
-The follow is a list of companies and projects which have stated they will support segregated witness.
+The following is a list of companies and projects which have stated they will support segregated witness.
 
 **_NEW!_** (SegWit testnet services):
 
