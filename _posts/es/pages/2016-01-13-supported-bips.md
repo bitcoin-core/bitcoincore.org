@@ -2,9 +2,9 @@
 title: Bitcoin Core Supported BIPs
 name: supported-bips
 type: page
-permalink: /en/bips
+permalink: /es/bips
 share: false
-version: 1
+version: 0
 ---
 Bitcoin Core supports the following [BIPs][BIPS-link].
 
