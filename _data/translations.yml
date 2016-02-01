@@ -19,13 +19,13 @@ de:
   tocoverview: "Overview"
 
 es:
-  created: "Published on the"
-  author: "by"
-  description: "Bitcoin Core website"
-  footer: "Bitcoin Core project"
-  related: "Recommended"
-  viewallposts: "View all posts"
-  nottranslated: "Note: this page has not been translated"
+  created: "Publicado el"
+  author: "por"
+  description: "Sitio Web de Bitcoin Core"
+  footer: "Proyecto Bitcoin Core"
+  related: "Recomendado"
+  viewallposts: "Ver todas las entradas"
+  nottranslated: "Nota: esta página no ha sido traducida"
   tocoverview: "Overview"
 
 fr:
