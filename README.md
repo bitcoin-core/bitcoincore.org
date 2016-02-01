@@ -1,4 +1,4 @@
-#bitcoincore.org [![Build Status](https://travis-ci.org/bitcoin-core/website.svg?branch=gh-pages)](https://travis-ci.org/bitcoin-core/website)
+# [bitcoincore.org](https://bitcoincore.org) [![Build Status](https://travis-ci.org/bitcoin-core/website.svg?branch=gh-pages)](https://travis-ci.org/bitcoin-core/website)
 
 This repository is the source code of the Bitcoin Core project website built with Jekyll.
 
@@ -17,7 +17,7 @@ Menu and miscellaneous translations can be found in:
   - `_data/lanaguges.yml`
   - `_data/navgation.yml`
   - `_data/translations.yml`
-  
+
 ## Front Matter notes
 
 The following `Front Matter` is required for the multilingual setup in all files. The required fields are as follows:
@@ -43,7 +43,7 @@ and then run the following commands:
 
     gem install bundle
     bundle install
-    
+
 To preview the site (this will launch a tiny webserver on port 4000):
 
     bundle exec jekyll server
@@ -51,7 +51,7 @@ To preview the site (this will launch a tiny webserver on port 4000):
 To simply build the site (output placed in the `_site` directory):
 
     bundle exec jekyll build
-    
+
 To test the site:
 
     bundle exec jekyll build && bundle exec htmlproof ./_site
@@ -59,4 +59,3 @@ To test the site:
 ## Contributing
 
 Contributions welcome. Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for details.
-
