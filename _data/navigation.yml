@@ -54,38 +54,98 @@ de:
     url:   "/de/"
   about:
     title: "About"
-    url:   "/de/about/"
+    submenu: true
+    tree:
+      about:
+        title: "About Us"
+        url:   "/de/about/"
+      supporters:
+        title: "Supporters"
+        url:   "/en/supporters"
   blog:
     title: "blog"
     url:   "/de/blog/"
   releases:
     title: "releases"
     url:   "/de/releases/"
-  contribute:
-    title: "contribute"
-    url:   "/de/contribute/"
-  meetings:
-    title: "meetings"
-    url:   "/de/meetings/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       capacity-faq:
+         title: "Capacity Increases"
+         url: "/en/2015/12/23/capacity-increases-faq/"
+       segwit-faq:
+         title: "Segwit"
+         url: "/en/2016/01/26/segwit-benefits/"
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/en/faq/optin_rbf"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "contribute"
+        url:   "/de/contribute/"
+      segwit:
+        title: "SegWit Adoption"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "meetings"
+        url:   "/de/meetings/"
+      bips:
+        title: "Supported BIPs"
+        url:   "/en/bips"
 es:
   home:
     title: "Bitcoin Core"
     url:   "/es/"
   about:
     title: "Acerca de"
-    url:   "/es/about/"
+    submenu: true
+    tree:
+      about:
+        title: "About Us"
+        url:   "/es/about/"
+      supporters:
+        title: "Supporters"
+        url:   "/en/supporters"
   blog:
     title: "blog"
     url:   "/es/blog/"
   releases:
     title: "distribuciones"
     url:   "/es/releases/"
-  contribute:
-    title: "contribuir"
-    url:   "/es/contribute/"
-  meetings:
-    title: "encuentros"
-    url:   "/es/meetings/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       capacity-faq:
+         title: "Capacity Increases"
+         url: "/en/2015/12/23/capacity-increases-faq/"
+       segwit-faq:
+         title: "Segwit"
+         url: "/en/2016/01/26/segwit-benefits/"
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/en/faq/optin_rbf"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "contribuir"
+        url:   "/es/contribute/"
+      segwit:
+        title: "SegWit Adoption"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "encuentros"
+        url:   "/es/meetings/"
+      bips:
+        title: "Supported BIPs"
+        url:   "/en/bips"
 fr:
   home:
     title: "Bitcoin Core"
@@ -115,19 +175,19 @@ fr:
          url: "/en/2015/12/23/capacity-increases-faq/"
        segwit-faq:
          title: "Segwit"
-         url: "/fr/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits/"
        optin-rbf:
          title: "Opt-in RBF"
-         url: "/fr/faq/optin_rbf"
+         url: "/en/faq/optin_rbf"
   dev:
-    title: "Développment"
+    title: "Development"
     submenu: true
     tree:
       contribute:
         title: "contribuer"
         url:   "/fr/contribute/"
       segwit:
-        title: "Adoption de SegWit"
+        title: "SegWit Adoption"
         url:   "/en/segwit_adoption/"
       meetings:
         title: "réunions"
@@ -141,73 +201,195 @@ it:
     url:   "/it/"
   about:
     title: "About"
-    url:   "/it/about/"
+    submenu: true
+    tree:
+      about:
+        title: "About Us"
+        url:   "/it/about/"
+      supporters:
+        title: "Supporters"
+        url:   "/en/supporters"
   blog:
     title: "blog"
     url:   "/it/blog/"
   releases:
     title: "releases"
     url:   "/it/releases/"
-  contribute:
-    title: "contribute"
-    url:   "/it/contribute/"
-  meetings:
-    title: "meetings"
-    url:   "/it/meetings/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       capacity-faq:
+         title: "Capacity Increases"
+         url: "/en/2015/12/23/capacity-increases-faq/"
+       segwit-faq:
+         title: "Segwit"
+         url: "/en/2016/01/26/segwit-benefits/"
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/en/faq/optin_rbf"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "contribute"
+        url:   "/it/contribute/"
+      segwit:
+        title: "SegWit Adoption"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "meetings"
+        url:   "/en/meetings/"
+      bips:
+        title: "Supported BIPs"
+        url:   "/en/bips"
 ru:
   home:
     title: "Bitcoin Core"
     url:   "/ru/"
   about:
-    title: "about"
-    url:   "/ru/about/"
+    title: "About"
+    submenu: true
+    tree:
+      about:
+        title: "About Us"
+        url:   "/ru/about/"
+      supporters:
+        title: "Supporters"
+        url:   "/en/supporters"
   blog:
     title: "blog"
     url:   "/ru/blog/"
   releases:
     title: "releases"
     url:   "/ru/releases/"
-  contribute:
-    title: "contribute"
-    url:   "/ru/contribute/"
-  meetings:
-    title: "meetings"
-    url:   "/ru/meetings/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       capacity-faq:
+         title: "Capacity Increases"
+         url: "/en/2015/12/23/capacity-increases-faq/"
+       segwit-faq:
+         title: "Segwit"
+         url: "/en/2016/01/26/segwit-benefits/"
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/en/faq/optin_rbf"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "contribute"
+        url:   "/ru/contribute/"
+      segwit:
+        title: "SegWit Adoption"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "meetings"
+        url:   "/ru/meetings/"
+      bips:
+        title: "Supported BIPs"
+        url:   "/en/bips"
 zh_CN:
   home:
     title: "Bitcoin Core"
     url:   "/zh_CN/"
   about:
     title: "关于我们"
-    url:   "/zh_CN/about/"
+    submenu: true
+    tree:
+      about:
+        title: "About Us"
+        url:   "/zh_CN/about/"
+      supporters:
+        title: "Supporters"
+        url:   "/en/supporters"
   blog:
     title: "博客"
     url:   "/zh_CN/blog/"
   releases:
     title: "软件发行"
     url:   "/zh_CN/releases/"
-  contribute:
-    title: "贡献"
-    url:   "/zh_CN/contribute/"
-  meetings:
-    title: "meetings"
-    url:   "/zh_CN/meetings/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       capacity-faq:
+         title: "Capacity Increases"
+         url: "/en/2015/12/23/capacity-increases-faq/"
+       segwit-faq:
+         title: "Segwit"
+         url: "/en/2016/01/26/segwit-benefits/"
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/en/faq/optin_rbf"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "貢獻"
+        url:   "/zh_CN/contribute/"
+      segwit:
+        title: "SegWit Adoption"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "meetings"
+        url:   "/zh_CN/meetings/"
+      bips:
+        title: "Supported BIPs"
+        url:   "/en/bips"
+
 zh_TW:
   home:
     title: "Bitcoin Core"
     url:   "/zh_TW/"
   about:
     title: "關於我們"
-    url:   "/zh_TW/about/"
+    submenu: true
+    tree:
+      about:
+        title: "About Us"
+        url:   "/zh_TW/about/"
+      supporters:
+        title: "Supporters"
+        url:   "/en/supporters"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
   releases:
     title: "軟件發行"
     url:   "/zh_TW/releases/"
-  contribute:
-    title: "貢獻"
-    url:   "/zh_TW/contribute/"
-  meetings:
-    title: "meetings"
-    url:   "/zh_TW/meetings/"
+  faq:
+     title: "FAQs"
+     submenu: true
+     tree:
+       capacity-faq:
+         title: "Capacity Increases"
+         url: "/en/2015/12/23/capacity-increases-faq/"
+       segwit-faq:
+         title: "Segwit"
+         url: "/en/2016/01/26/segwit-benefits/"
+       optin-rbf:
+         title: "Opt-in RBF"
+         url: "/en/faq/optin_rbf"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "貢獻"
+        url:   "/zh_TW/contribute/"
+      segwit:
+        title: "SegWit Adoption"
+        url:   "/en/segwit_adoption/"
+      meetings:
+        title: "meetings"
+        url:   "/zh_CN/meetings/"
+      bips:
+        title: "Supported BIPs"
+        url:   "/en/bips"
+
