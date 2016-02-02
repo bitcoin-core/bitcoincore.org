@@ -4,7 +4,7 @@ name: supporters
 type: pages
 layout: page
 lang: en
-permalink: /en/supporters
+permalink: /en/supporters/
 share: false
 version: 1
 ---

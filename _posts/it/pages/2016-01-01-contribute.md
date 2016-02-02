@@ -2,7 +2,7 @@
 title: How Can I Contribute?
 name: contribute
 id: en-contribute
-permalink: /it/contribute
+permalink: /it/contribute/
 layout: page
 type: pages
 lang: it

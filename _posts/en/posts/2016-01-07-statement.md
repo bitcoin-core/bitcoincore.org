@@ -4,7 +4,7 @@ layout: post
 lang: en
 id: en-bitcoin-core-2016-01-07-statement
 name: bitcoin-core-2016-01-07-statement
-title: Statement from Bitcoin Core -- 2016-01-07
+title: Statement from Bitcoin Core -- 2016-01-07/
 permalink: /en/2016/01/07/statement
 version: 1
 ---

@@ -4,7 +4,7 @@ name: supported-bips
 type: page
 type: pages
 lang: ru
-permalink: /ry/bips
+permalink: /ru/bips/
 share: false
 version: 0
 ---

@@ -5,7 +5,7 @@ lang: it
 name: bitcoin-core-capacity-increases-faq
 id: it-bitcoin-core-capacity-increases-faq
 title: FAQ sugli Aumenti di capacità  — Bitcoin Core
-permalink: /it/2015/12/23/capacity-increases-faq
+permalink: /it/2015/12/23/capacity-increases-faq/
 version: 1
 ---
 {% include _toc.html %}

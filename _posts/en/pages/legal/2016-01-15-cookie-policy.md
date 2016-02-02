@@ -1,7 +1,7 @@
 ---
 title: Cookie Policy
 name: legal-cookie
-permalink: /en/legal/cookie
+permalink: /en/legal/cookie/
 type: pages
 layout: page
 lang: en

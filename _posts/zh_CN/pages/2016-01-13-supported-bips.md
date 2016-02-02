@@ -4,7 +4,7 @@ name: supported-bips
 type: page
 type: pages
 lang: zh_CN
-permalink: /zh_CN/bips
+permalink: /zh_CN/bips/
 share: false
 version: 0
 ---

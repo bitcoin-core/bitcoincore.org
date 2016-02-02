@@ -5,7 +5,7 @@ lang: zh_TW
 name: bitcoin-core-capacity-increases-faq
 id: zh_tw-bitcoin-core-capacity-increases-faq
 title: 系統擴展常見問題解答
-permalink: /zh_TW/2015/12/21/系統擴展常見問題解答
+permalink: /zh_TW/2015/12/21/系統擴展常見問題解答/
 version: 1
 ---
 {% include _toc.html %}

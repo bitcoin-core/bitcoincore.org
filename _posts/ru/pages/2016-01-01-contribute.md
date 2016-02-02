@@ -2,7 +2,7 @@
 title: How Can I Contribute?
 name: contribute
 id: ru-contribute
-permalink: /ru/contribute
+permalink: /ru/contribute/
 layout: page
 type: pages
 lang: ru

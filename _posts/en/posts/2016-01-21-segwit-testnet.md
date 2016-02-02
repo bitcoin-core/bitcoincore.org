@@ -5,7 +5,7 @@ lang: en
 id: en-segwit-testnet
 name: segwit-testnet
 title: Launch of Segregated Witness Testnet
-permalink: /en/2016/01/21/launch_segwit_testnet
+permalink: /en/2016/01/21/launch_segwit_testnet/
 version: 1
 excerpt: We are extremely pleased and excited to announce the release of the Segregated Witness Testnet
 ---

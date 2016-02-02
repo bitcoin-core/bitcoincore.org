@@ -5,7 +5,7 @@ lang: it
 id: it-capacity-increases
 name: capacity-increases
 title: Aumenti di capacità per il sistema Bitcoin -- Bitcoin Core
-permalink: /it/2015/12/21/capacity-increase
+permalink: /it/2015/12/21/capacity-increase/
 version: 1
 ---
 Noi, i firmatari, supportiamo la roadmap in [Capacity increases for the

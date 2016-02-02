@@ -4,7 +4,7 @@ name: segwit-support
 type: pages
 layout: page
 lang: en
-permalink: /en/segwit_adoption
+permalink: /en/segwit_adoption/
 version: 1
 ---
 

@@ -4,7 +4,7 @@ name: supported-bips
 type: pages
 layout: page
 lang: en
-permalink: /en/bips
+permalink: /en/bips/
 share: false
 version: 1
 ---

@@ -2,7 +2,7 @@
 title: How Can I Contribute?
 name: contribute
 id: zn_tw-contribute
-permalink: /zh_TW/contribute
+permalink: /zh_TW/contribute/
 layout: page
 type: pages
 lang: zh_TW

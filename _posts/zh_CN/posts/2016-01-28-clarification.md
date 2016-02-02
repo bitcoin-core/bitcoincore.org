@@ -4,7 +4,7 @@ name: clarifying-communications
 type: post
 type: posts
 lang: zh_CN
-permalink: /zh_CN/2016/01/28/clarification
+permalink: /zh_CN/2016/01/28/clarification/
 share: true
 ---
 最初，bitcoin.org是用作放置[比特币白皮书](https://bitcoin.org/bitcoin.pdf)，并成为[比特币软件](https://bitcoin.org/en/download)的主页。后来，这网站提供了比特币教育资讯，但这与现时的Bitcoin Core计划[并无关系](https://bitcoin.org/en/bitcoin-core/about-site)。 Bitcoin Core的正式网站是bitcoincore.org，而虽然其它网站仍会提供有关Bitcoin Core的资讯，他们的观点并不代表Bitcoin Core。我们明白这可能令人感到混淆，因此我们正在努力地清楚说明这些关系。

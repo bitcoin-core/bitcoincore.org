@@ -5,7 +5,7 @@ lang: fr
 id: fr-development-visualisation-2015
 name: development-visualisation-2015
 title: Visualisation du développement de Core pour 2015
-permalink: /fr/2016/01/13/development-visualisation-2015
+permalink: /fr/2016/01/13/development-visualisation-2015/
 version: 1
 excerpt: La vidéo suivante présente l'activité de 'commit' dans le référentiel Bitcoin Core au cours de l'année 2015.
 ---

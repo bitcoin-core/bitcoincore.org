@@ -4,7 +4,7 @@ name: supported-bips
 layout: page
 type: pages
 lang: fr
-permalink: /fr/bips
+permalink: /fr/bips/
 share: false
 version: 0
 ---

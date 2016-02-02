@@ -2,7 +2,7 @@
 title: Comment puis-je participer ?
 name: contribute
 id: fr-contribute
-permalink: /fr/contribute
+permalink: /fr/contribute/
 layout: page
 type: pages
 lang: fr

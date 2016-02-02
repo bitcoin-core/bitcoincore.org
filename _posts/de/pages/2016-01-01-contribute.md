@@ -2,7 +2,7 @@
 title: How Can I Contribute?
 name: contribute
 id: de-contribute
-permalink: /de/contribute
+permalink: /de/contribute/
 layout: page
 type: pages
 lang: de

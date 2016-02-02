@@ -5,7 +5,7 @@ name: segwit-wallet-dev
 type: pages
 layout: page
 lang: en
-permalink: /en/segwit_wallet_dev
+permalink: /en/segwit_wallet_dev/
 ---
 
 ### Witness program

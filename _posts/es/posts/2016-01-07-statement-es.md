@@ -2,7 +2,7 @@
 name: bitcoin-core-2016-01-07-statement
 id: es-bitcoin-core-2016-01-07-statement
 title: Declaración de Bitcoin Core -- 2016-01-07
-permalink: /es/2016/01/07/declaración
+permalink: /es/2016/01/07/declaración/
 type: posts
 layout: post
 lang: es

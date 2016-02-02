@@ -5,7 +5,7 @@ id: fr-clarifying-communications
 layout: post
 type: posts
 lang: fr
-permalink: /fr/2016/01/28/clarification
+permalink: /fr/2016/01/28/clarification/
 share: true
 excerpt: >
   Où trouver la documentation officielle au sujet de Bitcoin Core et comment interagir

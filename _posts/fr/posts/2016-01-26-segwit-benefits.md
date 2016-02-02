@@ -5,7 +5,7 @@ lang: fr
 name: segwit-benefits
 id: fr-segwit-benefits
 title: Avantages de "Segregated Witness"
-permalink: /fr/2016/01/26/segwit-benefits
+permalink: /fr/2016/01/26/segwit-benefits/
 version: 1
 excerpt: Cette page récapitule tous les avantages apportés par "segregated witness" qui vont bien au-delà d'une simple augmentation de la capacité de la blockchain.
 ---
