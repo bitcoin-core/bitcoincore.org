@@ -164,7 +164,7 @@ fr:
     title: "blog"
     url:   "/fr/blog/"
   releases:
-    title: "livraisons"
+    title: "versions"
     url:   "/fr/releases/"
   faq:
      title: "FAQs"
@@ -174,27 +174,27 @@ fr:
          title: "Augmentation de la capacité"
          url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
-         title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits"
+         title: "SegWit"
+         url: "/fr/2016/01/26/segwit-benefits"
        optin-rbf:
-         title: "Opt-in RBF"
-         url: "/en/faq/optin_rbf"
+         title: "opt-in RBF"
+         url: "/fr/faq/optin_rbf"
   dev:
-    title: "Development"
+    title: "Développment"
     submenu: true
     tree:
       contribute:
         title: "contribuer"
         url:   "/fr/contribute"
       segwit:
-        title: "SegWit Adoption"
+        title: "adoption de SegWit"
         url:   "/en/segwit_adoption"
       meetings:
         title: "réunions"
         url:   "/fr/meetings/"
       bips:
         title: "BIPs supportées"
-        url:   "/en/bips"
+        url:   "/fr/bips"
 it:
   home:
     title: "Bitcoin Core"
