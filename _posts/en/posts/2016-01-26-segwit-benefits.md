@@ -5,7 +5,7 @@ lang: en
 name: segwit-benefits
 id: en-segwit-benefits
 title: Segregated Witness Benefits
-permalink: /en/2016/01/26/segwit-benefits
+permalink: /en/2016/01/26/segwit-benefits/
 version: 1
 excerpt: This page summarises some of the benefits of segregated witness that go beyond simply increasing the capacity of the block chain.
 ---
