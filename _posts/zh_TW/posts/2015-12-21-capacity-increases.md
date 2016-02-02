@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: zh_TW
 id: zh_tw-capacity-increases
 name: capacity-increases
 title: 比特幣系統擴展

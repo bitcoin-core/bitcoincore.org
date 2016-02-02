@@ -3,6 +3,8 @@ title: Clarifier la communication
 name: clarifying-communications
 id: fr-clarifying-communications
 layout: post
+type: posts
+lang: fr
 permalink: /fr/2016/01/28/clarification
 share: true
 excerpt: >

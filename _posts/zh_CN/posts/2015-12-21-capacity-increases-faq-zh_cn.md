@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: zh_CN
 name: bitcoin-core-capacity-increases-faq
 id: zh_cn-bitcoin-core-capacity-increases-faq
 title: 比特币系统扩展

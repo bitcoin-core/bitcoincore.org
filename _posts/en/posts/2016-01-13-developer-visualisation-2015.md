@@ -1,5 +1,7 @@
 ---
+type: posts
 layout: post
+lang: en
 id: en-development-visualisation-2015
 name: development-visualisation-2015
 title: Core Development Visualisation for 2015

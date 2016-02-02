@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: zh_CN
 id: zh_cn-bitcoin-core-2016-01-07-statement
 name: bitcoin-core-2016-01-07-statement
 title: Bitcoin Core 声明 -- 2016-01-07

@@ -2,6 +2,8 @@
 title: 有关Bitcoin Core沟通渠道的澄清
 name: clarifying-communications
 type: post
+type: posts
+lang: zh_CN
 permalink: /zh_CN/2016/01/28/clarification
 share: true
 ---

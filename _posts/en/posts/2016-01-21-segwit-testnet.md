@@ -1,5 +1,7 @@
 ---
+type: posts
 layout: post
+lang: en
 id: en-segwit-testnet
 name: segwit-testnet
 title: Launch of Segregated Witness Testnet

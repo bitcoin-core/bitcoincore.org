@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: ru
 name: bitcoin-core-2016-01-07-statement
 id: ru-bitcoin-core-2016-01-07-statement
 title: Сообщение от Bitcoin Core -- 2016-01-07

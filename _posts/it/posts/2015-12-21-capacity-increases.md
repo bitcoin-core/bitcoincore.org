@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: it
 id: it-capacity-increases
 name: capacity-increases
 title: Aumenti di capacità per il sistema Bitcoin -- Bitcoin Core

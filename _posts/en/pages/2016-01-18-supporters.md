@@ -1,7 +1,9 @@
 ---
 title: Bitcoin Core Supporters
 name: supporters
-type: page
+type: pages
+layout: page
+lang: en
 permalink: /en/supporters
 share: false
 version: 1

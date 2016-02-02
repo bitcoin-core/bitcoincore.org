@@ -2,7 +2,9 @@
 title: Clarifying Communications
 name: clarifying-communications
 id: en-clarifying-communications
+type: posts
 layout: post
+lang: en
 permalink: /en/2016/01/28/clarification
 share: true
 version: 1

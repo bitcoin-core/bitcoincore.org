@@ -1,5 +1,7 @@
 ---
+type: posts
 layout: post
+lang: en
 id: en-segregated-witness
 name: segregated-witness
 title: Segregated Witness Video Presentation

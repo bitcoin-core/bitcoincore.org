@@ -4,6 +4,8 @@ name: contribute
 id: ru-contribute
 permalink: /ru/contribute
 layout: page
+type: pages
+lang: ru
 share: false
 version: 0
 ---

@@ -1,5 +1,7 @@
 ---
+type: posts
 layout: post
+lang: en
 name: segwit-benefits
 id: en-segwit-benefits
 title: Segregated Witness Benefits

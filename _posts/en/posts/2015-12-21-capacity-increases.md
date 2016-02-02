@@ -1,5 +1,7 @@
 ---
+type: posts
 layout: post
+lang: en
 id: en-capacity-increases
 name: capacity-increases
 title: Capacity increases for the Bitcoin system

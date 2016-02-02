@@ -1,5 +1,6 @@
 ---
 layout: rss
+type: rss
 sitemap: false
 lang: ru
 permalink: /ru/rss.xml

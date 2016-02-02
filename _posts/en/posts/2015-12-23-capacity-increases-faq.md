@@ -1,5 +1,7 @@
 ---
+type: posts
 layout: post
+lang: en
 name: bitcoin-core-capacity-increases-faq
 id: en-bitcoin-core-capacity-increases-faq
 title: Bitcoin Capacity Increases FAQ

@@ -4,6 +4,8 @@ name: contribute
 id: de-contribute
 permalink: /de/contribute
 layout: page
+type: pages
+lang: de
 share: false
 version: 0
 ---

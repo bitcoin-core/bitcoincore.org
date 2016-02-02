@@ -3,7 +3,9 @@ title: How Can I Contribute?
 name: contribute
 id: en-contribute
 permalink: /en/contribute
+type: pages
 layout: page
+lang: en
 share: false
 version: 1
 ---

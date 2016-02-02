@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: fr
 name: segwit-benefits
 id: fr-segwit-benefits
 title: Avantages de "Segregated Witness"

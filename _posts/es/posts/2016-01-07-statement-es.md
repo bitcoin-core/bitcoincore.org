@@ -3,6 +3,9 @@ name: bitcoin-core-2016-01-07-statement
 id: es-bitcoin-core-2016-01-07-statement
 title: Declaración de Bitcoin Core -- 2016-01-07
 permalink: /es/2016/01/07/declaración
+type: posts
+layout: post
+lang: es
 ---
 Bitcoin es una «versión peer-to-peer de efectivo electrónico que permite mandar pagos online directamente entre personas sin necesidad de utilizar una institución financiera». Nuestra visión para Bitcoin es aumentar la flexibilidad del sistema para que funcione eficientemente a escala masiva mientras manteniendo la seguridad y las propiedades básicas de decentralización que distinguen a Bitcoin.
 

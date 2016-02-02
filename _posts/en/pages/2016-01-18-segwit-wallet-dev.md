@@ -2,7 +2,9 @@
 version: 1
 title: Segregated Witness Wallet Development Guide
 name: segwit-wallet-dev
-type: page
+type: pages
+layout: page
+lang: en
 permalink: /en/segwit_wallet_dev
 ---
 

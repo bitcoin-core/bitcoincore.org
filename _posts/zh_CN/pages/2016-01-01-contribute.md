@@ -4,6 +4,8 @@ name: contribute
 id: zh_cn-contribute
 permalink: /zh_CN/contribute
 layout: page
+type: pages
+lang: zh_CN
 share: false
 version: 0
 ---

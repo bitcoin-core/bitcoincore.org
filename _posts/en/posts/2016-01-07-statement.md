@@ -1,5 +1,7 @@
 ---
+type: posts
 layout: post
+lang: en
 id: en-bitcoin-core-2016-01-07-statement
 name: bitcoin-core-2016-01-07-statement
 title: Statement from Bitcoin Core -- 2016-01-07

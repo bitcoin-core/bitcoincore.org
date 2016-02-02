@@ -2,6 +2,8 @@
 title: Bitcoin Core Supported BIPs
 name: supported-bips
 type: page
+type: pages
+lang: ru
 permalink: /ry/bips
 share: false
 version: 0

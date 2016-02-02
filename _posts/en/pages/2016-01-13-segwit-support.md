@@ -1,7 +1,9 @@
 ---
 title: Segregated Witness Support
 name: segwit-support
-type: page
+type: pages
+layout: page
+lang: en
 permalink: /en/segwit_adoption
 version: 1
 ---

@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: fr
 id: fr-development-visualisation-2015
 name: development-visualisation-2015
 title: Visualisation du développement de Core pour 2015

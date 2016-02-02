@@ -1,5 +1,7 @@
 ---
 layout: post
+type: posts
+lang: zh_CN
 name: capacity-increases
 id: zh_cn-capacity-increases-zh_ch
 title: 比特币系统扩展
