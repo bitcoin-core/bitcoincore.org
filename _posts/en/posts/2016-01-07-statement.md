@@ -4,8 +4,8 @@ layout: post
 lang: en
 id: en-bitcoin-core-2016-01-07-statement
 name: bitcoin-core-2016-01-07-statement
-title: Statement from Bitcoin Core -- 2016-01-07/
-permalink: /en/2016/01/07/statement
+title: Statement from Bitcoin Core -- 2016-01-07
+permalink: /en/2016/01/07/statement/
 version: 1
 ---
 Bitcoin is a "peer-to-peer version of electronic cash that allows online payments to be sent directly from one party to another without going through a financial institution". Our vision for Bitcoin is to expand the flexibility of the system to work efficiently at extremely high scale, while at the same time maintaining security and the core properties of decentralization that make Bitcoin unique.
