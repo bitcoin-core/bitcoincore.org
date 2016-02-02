@@ -24,15 +24,21 @@ The following `Front Matter` is required for the multilingual setup in all files
 
   - `name:`      group name for unique article. Each translation must share the same group name, e.g. `october15-report`
   - `id:`        each article translation must have a unique ID. Use the language code + `-name` field. e.g. `en-october15-report`
-  - `permalink:` the ML permalink must include the language code, e.g. `/en/2015/12/31/report`. Permalinks should be translated.
+  - `permalink:` the ML permalink must include the language code, e.g. `/en/2015/12/31/report`.
   - `title:`     the translated title of the article
+  - `type:`      the content type (`pages`, `posts`, `releases`, `meetings`, etc.)
+  - `layout:`    the layout template (`page`, `post`, etc.)
+  - `lang:`      the language code (`en`, `fr`, etc.)
 
 ```
 ---
+title: Short Title
 name: short-title
+layout: post
+type: posts
+lang: en
 id: en-short-title
 permalink: /en/2016/01/01/short-title
-title: Short Title
 ---
 ```
 
