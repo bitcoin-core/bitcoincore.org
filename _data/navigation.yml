@@ -25,10 +25,10 @@ en:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -38,10 +38,10 @@ en:
     tree:
       contribute:
         title: "contribute"
-        url:   "/en/contribute/"
+        url:   "/en/contribute"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
@@ -74,10 +74,10 @@ de:
      tree:
        capacity-faq:
          title: "Erhöhung der Kapazität"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Vorteile von Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -87,10 +87,10 @@ de:
     tree:
       contribute:
         title: "Mitmachen"
-        url:   "/de/contribute/"
+        url:   "/de/contribute"
       segwit:
         title: "SegWit Übernahme"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "Besprechungen"
         url:   "/de/meetings/"
@@ -123,10 +123,10 @@ es:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -136,10 +136,10 @@ es:
     tree:
       contribute:
         title: "contribuir"
-        url:   "/es/contribute/"
+        url:   "/es/contribute"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "encuentros"
         url:   "/es/meetings/"
@@ -172,10 +172,10 @@ fr:
      tree:
        capacity-faq:
          title: "Augmentation de la capacité"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -185,10 +185,10 @@ fr:
     tree:
       contribute:
         title: "contribuer"
-        url:   "/fr/contribute/"
+        url:   "/fr/contribute"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "réunions"
         url:   "/fr/meetings/"
@@ -221,10 +221,10 @@ it:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -234,10 +234,10 @@ it:
     tree:
       contribute:
         title: "contribute"
-        url:   "/it/contribute/"
+        url:   "/it/contribute"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
@@ -270,10 +270,10 @@ ru:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -283,10 +283,10 @@ ru:
     tree:
       contribute:
         title: "contribute"
-        url:   "/ru/contribute/"
+        url:   "/ru/contribute"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "meetings"
         url:   "/ru/meetings/"
@@ -319,10 +319,10 @@ zh_CN:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -332,10 +332,10 @@ zh_CN:
     tree:
       contribute:
         title: "貢獻"
-        url:   "/zh_CN/contribute/"
+        url:   "/zh_CN/contribute"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "meetings"
         url:   "/zh_CN/meetings/"
@@ -369,10 +369,10 @@ zh_TW:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
@@ -382,10 +382,10 @@ zh_TW:
     tree:
       contribute:
         title: "貢獻"
-        url:   "/zh_TW/contribute/"
+        url:   "/zh_TW/contribute"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
+        url:   "/en/segwit_adoption"
       meetings:
         title: "meetings"
         url:   "/zh_CN/meetings/"
