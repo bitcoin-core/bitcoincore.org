@@ -30,19 +30,24 @@ Each document has a header called "Front Matter", which looks something like thi
     title: Clarifying Communications of the Bitcoin Core project
     name: clarifying-communications
     id: en-clarifying-communications
-    layout: post
+    lang: en
     permalink: /en/2016/01/28/clarification
+    layout: post
+    type: post
+    layout: post
     share: true
     ---
 
-Translators should only translate the `title:` field, and change the language code in the `id:` field. For example the above would become:
+Translators should only translate the `title:` field, and change the language code in the `id:`, `lang:` and `permalink:` fields. For example the above would be translated for `zh_CN` as:
  
     ---
     title: 有关Bitcoin Core沟通渠道的澄清
     name: clarifying-communications
     id: zh_cn-clarifying-communications
-    type: post
+    lang: zn_CN
     permalink: /zh_CN/2016/01/28/clarification
+    type: post
+    layout: post
     share: true
     ---
 
