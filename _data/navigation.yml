@@ -106,10 +106,10 @@ es:
     submenu: true
     tree:
       about:
-        title: "About Us"
+        title: "Sobre Nosotros"
         url:   "/es/about/"
       supporters:
-        title: "Supporters"
+        title: "Desarrolladores"
         url:   "/en/supporters"
   blog:
     title: "blog"
@@ -122,7 +122,7 @@ es:
      submenu: true
      tree:
        capacity-faq:
-         title: "Capacity Increases"
+         title: "Incrementos de Capacidad"
          url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "Segwit"
@@ -131,20 +131,20 @@ es:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
   dev:
-    title: "Development"
+    title: "Programación"
     submenu: true
     tree:
       contribute:
         title: "contribuir"
         url:   "/es/contribute"
       segwit:
-        title: "SegWit Adoption"
+        title: "Adopción de SegWit"
         url:   "/en/segwit_adoption"
       meetings:
         title: "encuentros"
         url:   "/es/meetings/"
       bips:
-        title: "Supported BIPs"
+        title: "BIPs Soportados"
         url:   "/en/bips"
 fr:
   home:
