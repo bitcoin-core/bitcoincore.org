@@ -35,7 +35,7 @@ To add your company or service, please ACK ticket [#30] with company/service nam
 |13|[Digitalbitbox](https://digitalbitbox.com/)|yes|no|hardware wallet||
 |14|[EI8HT](http://ei8.ht/)|yes|no|wallet|bitcoin core, bitcoinjs|
 |15|[Electrum](https://electrum.org/)|yes|no|wallet||
-|16|[Eloipool](https://github.com/luke-jr/eloipool)|yes|yes|pool software|n/a|
+|16|[Eloipool](https://github.com/luke-jr/eloipool)|yes|wip|pool software|n/a|
 |17|[GreenAddress](https://greenaddress.it/)*|yes|wip|wallet|pycoin, bitcoinjs|
 |18|[GreenBits](https://www.greenbits.com/)|yes|no|wallet|bitcoinj|
 |19|[Ledger](https://www.ledgerwallet.com/)|yes|no|hardware wallet|bitcoinjs*|

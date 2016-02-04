@@ -5,6 +5,7 @@ http://opensource.org/licenses/MIT.
 
 - [Adam Back](https://github.com/adam3us)
 - [Alex Morcos](https://github.com/morcos)
+- [Andrew Poelstra](https://github.com/apoelstra)
 - [Ben Davenport](https://github.com/bpdavenport)
 - [Ben Gorlick](https://github.com/bgorlick)
 - [Bram Cohen](https://github.com/bramcohen)
@@ -28,6 +29,7 @@ http://opensource.org/licenses/MIT.
 - [Gregory Maxwell](https://github.com/gmaxwell)
 - [Gregory Sanders](https://github.com/instagibbs)
 - [James Hilliard](https://github.com/jameshilliard)
+- [Kawal Singh](https://github.com/bityogi)
 - [Johnathan Corgan](https://github.com/jmcorgan)
 - [Johnson Lau](https://github.com/jl2012)
 - [Jonas Schnelli](https://github.com/jonasschnelli)
@@ -45,6 +47,7 @@ http://opensource.org/licenses/MIT.
 - [Nicolas Bacca](https://github.com/btchip)
 - [Nicolas Dorier](https://github.com/NicolasDorier)
 - [Obi Nwosu](https://github.com/obi)
+- [Paul Sztorc](https://github.com/psztorc)
 - [Patrick Strateman](https://github.com/pstratem)
 - [Pavel Janik](https://github.com/paveljanik)
 - [Pieter Wuille](https://github.com/sipa)
