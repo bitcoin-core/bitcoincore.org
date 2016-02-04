@@ -2,7 +2,7 @@
 title: Software Life Cycle
 name: software-life-cycle
 id: en-software-life-cycle
-permalink: /en/lifecycle
+permalink: /en/lifecycle/
 layout: page
 type: pages
 lang: en
