@@ -205,7 +205,7 @@ fr:
         title: "BIPs supportées"
         url:   "/fr/bips"
       eol:
-        title: "Lifecycle"
+        title: "Cycle de vie"
         url:   "/fr/lifecycle"
 it:
   home:
