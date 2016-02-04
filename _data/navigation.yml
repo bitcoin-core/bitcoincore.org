@@ -48,7 +48,7 @@ en:
       bips:
         title: "Supported BIPs"
         url:   "/en/bips"
-      bips:
+      eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
 de:
@@ -100,6 +100,9 @@ de:
       bips:
         title: "Unterstützte BIPs"
         url:   "/en/bips"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
 es:
   home:
     title: "Bitcoin Core"
@@ -149,6 +152,9 @@ es:
       bips:
         title: "BIPs Soportados"
         url:   "/en/bips"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
 fr:
   home:
     title: "Bitcoin Core"
@@ -198,6 +204,9 @@ fr:
       bips:
         title: "BIPs supportées"
         url:   "/fr/bips"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
 it:
   home:
     title: "Bitcoin Core"
@@ -247,6 +256,9 @@ it:
       bips:
         title: "Supported BIPs"
         url:   "/en/bips"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
 ru:
   home:
     title: "Bitcoin Core"
@@ -296,6 +308,9 @@ ru:
       bips:
         title: "Supported BIPs"
         url:   "/en/bips"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
 zh_CN:
   home:
     title: "Bitcoin Core"
@@ -345,7 +360,9 @@ zh_CN:
       bips:
         title: "Supported BIPs"
         url:   "/en/bips"
-
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
 zh_TW:
   home:
     title: "Bitcoin Core"
@@ -395,4 +412,6 @@ zh_TW:
       bips:
         title: "Supported BIPs"
         url:   "/en/bips"
-
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
