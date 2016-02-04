@@ -31,7 +31,7 @@ Each document has a header called "Front Matter", which looks something like thi
     name: clarifying-communications
     id: en-clarifying-communications
     lang: en
-    permalink: /en/2016/01/28/clarification
+    permalink: /en/2016/01/28/clarification/
     layout: post
     type: post
     layout: post
@@ -45,7 +45,7 @@ Translators should only translate the `title:` field, and change the language co
     name: clarifying-communications
     id: zh_cn-clarifying-communications
     lang: zn_CN
-    permalink: /zh_CN/2016/01/28/clarification
+    permalink: /zh_CN/2016/01/28/clarification/
     type: post
     layout: post
     share: true
