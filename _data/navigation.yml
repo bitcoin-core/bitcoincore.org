@@ -181,7 +181,7 @@ fr:
      tree:
        capacity-faq:
          title: "Augmentation de la capacité"
-         url: "/en/2015/12/23/capacity-increases-faq"
+         url: "/fr/2015/12/23/capacity-increases-faq"
        segwit-faq:
          title: "SegWit"
          url: "/fr/2016/01/26/segwit-benefits"
@@ -206,7 +206,7 @@ fr:
         url:   "/fr/bips"
       eol:
         title: "Lifecycle"
-        url:   "/en/lifecycle"
+        url:   "/fr/lifecycle"
 it:
   home:
     title: "Bitcoin Core"

@@ -10,7 +10,7 @@ version: 1
 ---
 Nous, soussignés, soutenons la feuille de route pour [l'augmentation de la capacité du système Bitcoin][1].  Nous avons travaillé ensemble au sein du projet Bitcoin Core sur les problématiques de scalabilité depuis plusieurs années et nous considérons qu'elle représente la meilleure façon de poursuivre les efforts déjà réalisés.
 
-Pour plus d'information, consultez la [FAQ](/en/2015/12/23/capacity-increases-faq).
+Pour plus d'information, consultez la [FAQ](/fr/2015/12/23/capacity-increases-faq).
 
 {% include posts/capability-increases-sigs.md %}
 
