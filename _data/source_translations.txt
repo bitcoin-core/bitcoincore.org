@@ -1,0 +1,10 @@
+en:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core website"
+  footer: "Bitcoin Core project"
+  related: "Recommended"
+  viewallposts: "View all posts"
+  not_translated: "Note: this page has not been translated"
+  tocoverview: "Overview"
+  translation_outdated: "This translation may be out of date. Please compare with the English version."
