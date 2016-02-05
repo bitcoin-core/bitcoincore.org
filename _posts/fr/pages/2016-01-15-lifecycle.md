@@ -5,7 +5,7 @@ id: fr-software-life-cycle
 permalink: /fr/lifecycle/
 layout: page
 type: pages
-lang: en
+lang: fr
 share: false
 version: 1
 ---
