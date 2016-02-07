@@ -11,7 +11,7 @@ version: 1
 ---
 This document describes the life-cycle of the Bitcoin Core software package released by the Bitcoin Core project. It is in line with standard maintenance policy across commercial software.  
 
-We aim to make a major release every 6-7 month, These will be numbered 0.11, 0.12 etc.
+We aim to make a major release every 6-7 months, These will be numbered 0.11, 0.12 etc.
 
 We will provide maintenance "minor releases" that fix bugs within the major releases. We may add minor features to point releases where necessary, for example when back-porting consensus rule changes such as soft forks. Minor releases will be numbered 0.11.1, 0.11.2, 0.12.1, 0.12.2 etc.
 
@@ -26,5 +26,9 @@ Once EOL is reached, you will need to upgrade to a newer version.
 | Version | Release Date | Maintenance End | End of Life |
 |---------|--------------|-----------------|-------------|
 {% include posts/_maintenance-table.md %}
+
+\* _We aim to make a major release every 6-7 months_
+
+_TBA: to be announced_
 
 [bitcoin-transifex-link]: https://www.transifex.com/bitcoin/bitcoin/
