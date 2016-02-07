@@ -8,7 +8,7 @@
 		    <ul>
 		        {% for link in site.data.navigation[page.lang] %}
                     {% if link[0] != 'home' and link[1].submenu != true and link[1].disabled != true %}
-                      <li><a href="{{{ link[1].url }}">{{ link[1].title }}</a></li>
+                      <li><a href="{{ link[1].url }}">{{ link[1].title }}</a></li>
                     {% elsif link[1].submenu == true and link[1].disabled != true %}
                       <li><a href="javascript:;">{{ link[1].title }}</a>
                           <ul>
