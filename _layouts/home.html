@@ -31,7 +31,7 @@
   </div>
   <div id="index">
     {% assign navigation = site.data.navigation[page.lang] %}
-    <h3><a href="{{ site.url }}/{{ navigation[1].blog }}">Recent Posts</a></h3>
+    <h3><a href="{{ navigation.blog.url }}">Recent Posts</a></h3>
     <!-- h3><a href="{{ navigation.blog.url }}">Recent Posts</a></h3 -->
       {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'posts' %}
       {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
@@ -42,9 +42,9 @@
       {% endfor %}
     <article>
       {% if post.link %}
-        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h2>
+        <h2 class="link-post"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h2>
       {% else %}
-        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+        <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
         <p>{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
       {% endif %}
     </article>

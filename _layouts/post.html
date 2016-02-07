@@ -34,7 +34,7 @@
       {% if page.link %}
         <h1 class="p-name"><a href="{{ page.link }}">{{ page.title }}</a></h1>
       {% else %}
-        <h1 class="p-name"><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
+        <h1 class="p-name"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
       {% endif %}
       {% if page.author %}
         {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = "" %}
