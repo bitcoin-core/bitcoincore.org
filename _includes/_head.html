@@ -17,6 +17,7 @@
 {% if site.owner.bing-verify %}<meta name="msvalidate.01" content="{{ site.owner.bing-verify }}">{% endif %}
 
 {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
+{% if page.canonical != null %}{% assign canonical=page.canonical %}{% endif %}
 <link rel="canonical" href="{{ canonical }}">
 
 <link href="{{ site.url }}/{{ page.lang }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Blog XML Feed">
