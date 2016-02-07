@@ -1,9 +1,7 @@
 # Site wide configuration
 
-title:            Bitcoin Core
-#locale:           en_US
-social_url: https://bitcoincore.org
-sitemap_url: https://bitcoincore.org
+title: Bitcoin Core
+url: https://bitcoincore.org
 transifex_url: https://www.transifex.com/bitcoincore/bitcoincoreorg
 
 # Jekyll configuration

@@ -7,18 +7,13 @@
 		<nav role="navigation" id="site-nav" class="nav">
 		    <ul>
 		        {% for link in site.data.navigation[page.lang] %}
-				    {% if link.url contains 'http' %}
-				        {% assign domain = '' %}
-				        {% else %}
-				        {% assign domain = site.url %}
-				    {% endif %}
                     {% if link[0] != 'home' and link[1].submenu != true and link[1].disabled != true %}
-                      <li><a href="{{ domain }}{{ link[1].url }}">{{ link[1].title }}</a></li>
+                      <li><a href="{{{ link[1].url }}">{{ link[1].title }}</a></li>
                     {% elsif link[1].submenu == true and link[1].disabled != true %}
                       <li><a href="javascript:;">{{ link[1].title }}</a>
                           <ul>
                           {% for sublink in link[1].tree %}
-                            <li><a href="{{ domain }}{{ sublink[1].url }}">{{ sublink[1].title }}</a></li>
+                            <li><a href="{{ sublink[1].url }}">{{ sublink[1].title }}</a></li>
                           {% endfor %}
                           </ul>
                       </li>
