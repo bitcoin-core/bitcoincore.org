@@ -50,7 +50,7 @@ This completes the vision of "alerts" described in the "Simplified Payment Verif
 The design has numerous other features like making further enhancements safer and eliminating signature malleability 
 problems. If widely used this proposal gives a 2x capacity increase (more if multisig is widely used), but most importantly it makes that additional capacity--and future capacity beyond it--safer by increasing efficiency and allowing more trade-offs (in particular, you can use much less bandwidth in exchange for a strong non-partitioning assumption).
 
-There is a working implementation (though it doesn't yet have the fraud proofs) at [https://github.com/sipa/bitcoin/commits/segwit]().
+There is a working implementation (though it doesn't yet have the fraud proofs) at <https://github.com/sipa/bitcoin/commits/segwit>.
 
 (Pieter's talk is at: [transcript](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/segregated-witness-and-its-impact-on-scalability/), [slides](https://prezi.com/lyghixkrguao/segregated-witness-and-deploying-it-for-bitcoin/), [Video](https://www.youtube.com/watch?v=fst1IK_mrng#t=36m)).
 
@@ -67,14 +67,14 @@ Critically, these approaches strike right at the heart of the capacity vs autoto
 Further Bitcoin protocol improvements for non-bandwidth scaling are in the works: Many of these proposals really want anti-malleability fixes (which would be provided by segwit), and there are checksig flag improvements already tendered and more being worked on, which would be much easier to deploy with segwit.
 I expect that within six months we could have considerably more features ready for deployment to enable these techniques. Even without them I believe we’ll be in an acceptable position with respect to capacity in the near term, but it’s important to enable them for the future.
 
-[http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/overview-of-bips-necessary-for-lightning]() is a relevant talk for some of the wanted network features for Lightning, a bidirectional payment channel proposal which many parties are working on right now; other non-bandwidth improvements discussed in the past include transaction cut-through, which I consider a must-read for the basic intuition about how transaction capacity can be greater than blockchain capacity: [https://bitcointalk.org/index.php?topic=281848.0](), though there are many others.)
+<http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/overview-of-bips-necessary-for-lightning> is a relevant talk for some of the wanted network features for Lightning, a bidirectional payment channel proposal which many parties are working on right now; other non-bandwidth improvements discussed in the past include transaction cut-through, which I consider a must-read for the basic intuition about how transaction capacity can be greater than blockchain capacity: <https://bitcointalk.org/index.php?topic=281848.0>, though there are many others.)
 
 Further out, there are several proposals related to flex caps or incentive-aligned dynamic block size controls based on allowing miners to produce larger blocks at some cost.
 These proposals help preserve the alignment of incentives between miners and general node operators, and prevent defection between the miners from undermining the fee market behavior that will eventually fund security.
 I think that right now capacity is high enough and the needed capacity is low enough that we don't immediately need these proposals, but they will be critically important long term.
 I'm planning to help out and drive towards a more concrete direction out of these proposals in the following months.
 
-(Relevant talks include [http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/a-flexible-limit-trading-subsidy-for-larger-blocks/]()).
+(Relevant talks include <http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/a-flexible-limit-trading-subsidy-for-larger-blocks/>.
 
 Finally--at some point the capacity increases from the above may not be enough.
 Delivery on relay improvements, segwit fraud proofs, dynamic block size controls, and other advances in technology will reduce the risk and therefore controversy around moderate block size increase proposals (such as 2/4/8 rescaled to respect segwit's increase).
@@ -90,4 +90,4 @@ Further work will prepare Bitcoin for further increases, which will become possi
 
 Thanks for your time,
 
-Originally posted to the bitcoin-dev mailing list at [https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html](), by Gregory Maxwell on 2015-12-07.
+_Originally posted to the bitcoin-dev mailing list at <https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html>, by Gregory Maxwell on 2015-12-07_
