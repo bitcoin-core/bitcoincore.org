@@ -103,6 +103,8 @@ Manuel Araoz
 
 Ruben de Vries
 
+**Further signatures can be found at [change.org](https://www.change.org/p/the-community-an-open-letter-to-the-bitcoin-community).**
+
 _This letter was originally published in Bitcoin Magazine on 1st September 2015 at <https://bitcoinmagazine.com/articles/open-letter-bitcoin-community-developers-1441146317>._
 
 [1]: https://github.com/bitcoin/bitcoin/tree/master/doc/release-notes
