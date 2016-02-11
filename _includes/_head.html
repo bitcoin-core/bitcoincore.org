@@ -17,11 +17,8 @@
 {% if site.owner.bing-verify %}<meta name="msvalidate.01" content="{{ site.owner.bing-verify }}">{% endif %}
 
 {% assign posts=site.posts |where:"name", page.name %}
-{% for hrefpost in posts %}
-<link rel="alternate" hreflang="{{ hrefpost.lang }}" href="{{ site.url }}{{ hrefpost.permalink }}" />
-{% endfor %}
+{% for hrefpost in posts %}<link rel="alternate" hreflang="{{ hrefpost.lang }}" href="{{ site.url }}{{ hrefpost.permalink }}" />{% endfor %}
 {% if page.canonical != null %}<link rel="canonical" href="{{ page.canonical }}">{% else %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}
-
 <link href="{{ site.url }}/{{ page.lang }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Blog XML Feed">
 <link href="{{ site.url }}/{{ page.lang }}/rss.xml" type="application/rss+xml" rel="alternate" title="{{ site.title }} Blog RSS Feed">
 <link href="{{ site.url }}/{{ page.lang }}/meetingrss.xml" type="application/rss+xml" rel="alternate" title="{{ site.title }} Meeting RSS Feed">
@@ -33,7 +30,6 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-
 <meta http-equiv="cleartype" content="on">
 
 <!-- HTML5 Shiv and Media Query Support -->
@@ -48,15 +44,9 @@
 <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
 
 <!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="/assets/images/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="/assets/images/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="/assets/images/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="shortcut icon" href="/assets/images/favicon.ico"><!-- 16x16 -->
+<link rel="shortcut icon" href="/assets/images/favicon.png"><!-- 32x32 -->
+<link rel="apple-touch-icon-precomposed" href="/assets/images/apple-touch-icon-precomposed.png"><!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/apple-touch-icon-72x72-precomposed.png"><!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/apple-touch-icon-114x114-precomposed.png"><!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-144x144-precomposed.png"><!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
