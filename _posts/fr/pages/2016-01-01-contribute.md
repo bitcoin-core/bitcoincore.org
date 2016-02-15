@@ -20,7 +20,7 @@ Notre principal référentiel de code source est [hébergé chez GitHub](https:/
   - Améliorer les interfaces utilisateurs
   - Coder (corriger les bugs ouverts ou implémenter de nouvelles fonctionnalités)
 
-N'hésitez pas à signaler des [problèmes][issues] et à ouvrir des [pull requests][pulls], mais veuillez consulter les [règles de contribution][CONTRIBUTING] pour comprendre notre organisation de travail.
+N'hésitez pas à signaler des [problèmes][issues] et à ouvrir des [pull requests][pulls], mais veuillez consulter les [règles de contribution](/en/faq/contributing-code) pour comprendre notre organisation de travail.
 
 **Discussion**
 
@@ -35,7 +35,6 @@ Vous pouvez également traduire ou contribuer à ce [site web][website-contrib].
 [translation_process.md]: https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md
 [issues]: https://github.com/bitcoin/bitcoin/issues
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
-[CONTRIBUTING]: https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md

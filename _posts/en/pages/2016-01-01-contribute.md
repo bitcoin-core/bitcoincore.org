@@ -7,7 +7,7 @@ type: pages
 layout: page
 lang: en
 share: false
-version: 1
+version: 2
 ---
 
 You are welcome to contribute to the project!
@@ -20,7 +20,7 @@ Our main source code repository is [hosted on GitHub](https://github.com/bitcoin
   - Improving our UIs
   - Coding (fix open issues or implement new features)
 
-Feel free to report [issues][issues] and open [pull requests][pulls], but please check the [contribution guidelines][CONTRIBUTING] to understand our workflow.
+Feel free to report [issues][issues] and open [pull requests][pulls], but please check the [contribution guidelines](/en/faq/contributing-code) to understand our workflow.
 
 **Discussion**
 
@@ -35,7 +35,6 @@ You can also translate or contribute to this [website][website-contrib].
 [translation_process.md]: https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md
 [issues]: https://github.com/bitcoin/bitcoin/issues
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
-[CONTRIBUTING]: https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
