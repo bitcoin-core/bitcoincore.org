@@ -39,6 +39,9 @@ en:
       contribute:
         title: "contribute"
         url:   "/en/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -91,6 +94,9 @@ de:
       contribute:
         title: "Mitmachen"
         url:   "/de/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "SegWit Übernahme"
         url:   "/en/segwit_adoption"
@@ -143,6 +149,9 @@ es:
       contribute:
         title: "contribuir"
         url:   "/es/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "Adopción de SegWit"
         url:   "/en/segwit_adoption"
@@ -195,6 +204,9 @@ fr:
       contribute:
         title: "contribuer"
         url:   "/fr/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "adoption de SegWit"
         url:   "/en/segwit_adoption"
@@ -247,6 +259,9 @@ it:
       contribute:
         title: "contribute"
         url:   "/it/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -299,6 +314,9 @@ ru:
       contribute:
         title: "contribute"
         url:   "/ru/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -351,6 +369,9 @@ zh_CN:
       contribute:
         title: "貢獻"
         url:   "/zh_CN/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -403,6 +424,9 @@ zh_TW:
       contribute:
         title: "貢獻"
         url:   "/zh_TW/contribute"
+      contribute-code:
+        title: "contribute code"
+        url:   "/en/faq/contribute-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
