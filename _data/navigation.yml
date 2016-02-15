@@ -40,8 +40,8 @@ en:
         title: "contribute"
         url:   "/en/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -95,8 +95,8 @@ de:
         title: "Mitmachen"
         url:   "/de/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "SegWit Übernahme"
         url:   "/en/segwit_adoption"
@@ -150,8 +150,8 @@ es:
         title: "contribuir"
         url:   "/es/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "Adopción de SegWit"
         url:   "/en/segwit_adoption"
@@ -205,8 +205,8 @@ fr:
         title: "contribuer"
         url:   "/fr/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "adoption de SegWit"
         url:   "/en/segwit_adoption"
@@ -260,8 +260,8 @@ it:
         title: "contribute"
         url:   "/it/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -315,8 +315,8 @@ ru:
         title: "contribute"
         url:   "/ru/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -370,8 +370,8 @@ zh_CN:
         title: "貢獻"
         url:   "/zh_CN/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -425,8 +425,8 @@ zh_TW:
         title: "貢獻"
         url:   "/zh_TW/contribute"
       contribute-code:
-        title: "contribute code"
-        url:   "/en/faq/contribute-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
