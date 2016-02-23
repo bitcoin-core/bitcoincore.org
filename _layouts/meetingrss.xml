@@ -4,7 +4,7 @@
         <title>{{ site.title }}</title>
         <description>{{ site.translations[page.lang].description }}</description>
         <link>{{ site.url }}</link>
-        <atom:link href="{{ site.social_url }}{{ page.lang }}/rss.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="{{ site.url }}/{{ page.lang }}/rss.xml" rel="self" type="application/rss+xml" />
         {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'meetings' %}
         {% for post in posts %}
         <item>
