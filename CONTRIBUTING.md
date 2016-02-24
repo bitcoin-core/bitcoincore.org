@@ -53,6 +53,10 @@ Translators should only translate the `title:` field, and change the language co
 
 Notice the remaining fields are left untranslated, however in Transifiex, you must copy these fields as translations (without actually translating them).
 
+### Important note
+
+Please be careful when translating Markdown formatting, this must be exact (including spaces). Markdown titles require a space after the header tags, e.g. `## Title`.
+
 Please note that [translations.yml](https://github.com/bitcoin-core/website/blob/gh-pages/_data/translations.yml) and [navigation.yml](https://github.com/bitcoin-core/website/blob/gh-pages/_data/navigation.yml) should be translated and submitted as normal pull-requests because they are not compatible with Transifex at this time.
 
 ## License
