@@ -10,14 +10,14 @@ en:
   translation_outdated: "This translation may be out of date. Please compare with the English version."
 
 de:
-  created: "Published on the"
-  author: "by"
-  description: "Bitcoin Core website"
-  footer: "Bitcoin Core project"
-  related: "Recommended"
-  viewallposts: "View all posts"
+  created: "Veröffentlicht am"
+  author: "von"
+  description: "Bitcoin Core Website"
+  footer: "Bitcoin Core Projekt"
+  related: "Empfohlen"
+  viewallposts: "Zeige alle Beiträge"
   not_translated: "Hinweis: Diese Seite wurde nicht übersetzt"
-  tocoverview: "Overview"
+  tocoverview: "Inhaltsverzeichnis"
   translation_outdated: "Diese Übersetzung kann veraltet sein. Vergleichen Sie bitte mit der englischen Version."
 
 es:
