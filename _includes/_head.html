@@ -3,8 +3,8 @@
 <!-- version: {{ page.version }} -->
 <!-- translated: {{ page.translated }} -->
 <meta charset="utf-8">
-<title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
-{% if page.excerpt %}<meta name="description" content="{{ page.excerpt | strip_html }}">{% endif %}
+<title>{{ site.title }}{% if page.title %} :: {{ page.title }}{% endif %}</title>
+{% if page.excerpt %}<meta name="description" content="{{ page.title | strip_html }}">{% endif %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}">
 {% if page.author %}
   {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}

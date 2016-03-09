@@ -70,5 +70,5 @@ defaults:
       path: ""
     values:
       lang: en
-      layout: page
-      type: pages
+      layout: post
+      type: posts
