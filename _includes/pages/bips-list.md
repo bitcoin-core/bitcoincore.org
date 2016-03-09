@@ -1,46 +1,24 @@
-|[11] | v0.6.0        |[M-of-N Standard Transactions][11]|
-|[13] | v0.6.0        |[Address Format for pay-to-script-hash][13]|
-|[14] | v0.6.0        |[Protocol Version and User Agent][14]|
-|[16] | v0.6.0        |[Pay To Script Hash][16]|
-|[21] | v0.6.0        |[URI Scheme][21]|
-|[22] | v0.7.0        |[getblocktemplate][22]|
-|[23] | v0.10.0       |[getblocktemplate - Pooled Mining][23]|
-|[30] | v0.6.0        |[Duplicate transactions][30]|
-|[31] | v0.6.1        |[Pong message][31]|
-|[34] | v0.7.0        |[Block v2, Height in coinbase][34]|
-|[35] | v0.7.0        |[mempool message][35]|
-|[37] | v0.8.0        |[Bloom filtering][37]|
-|[42] | v0.9.2        |[A finite monetary supply for Bitcoin][42]|
-|[61] | v0.9.0        |["reject" P2P message][61]|
-|[65] | v0.10.4       |[OP_CHECKLOCKTIMEVERIFY][65]|
-|[66] | v0.10.0       |[Strict DER signatures][66]|
-|[70] | v0.9.0        |[Payment protocol][70]|
-|[71] | v0.9.0        |[Payment protocol MIME types][71]|
-|[72] | v0.9.0        |[URI extensions for Payment Protocol][72]|
-|[111]| v0.12.0       |[NODE_BLOOM service bit][111]|
-|[125]| v0.12.0       |[Opt-in Full Replace-by-Fee Signaling][125]|
-|[130]| v0.12.0       |[Sendheaders message][130]|
+|[11][BIP11] | v0.6.0        |[M-of-N Standard Transactions][BIP11]|
+|[13][BIP13] | v0.6.0        |[Address Format for pay-to-script-hash][BIP13]|
+|[14][BIP14] | v0.6.0        |[Protocol Version and User Agent][BIP14]|
+|[16][BIP16] | v0.6.0        |[Pay To Script Hash][BIP16]|
+|[21][BIP21] | v0.6.0        |[URI Scheme][BIP21]|
+|[22][BIP22] | v0.7.0        |[getblocktemplate][BIP22]|
+|[23][BIP23] | v0.10.0       |[getblocktemplate - Pooled Mining][BIP23]|
+|[30][BIP30] | v0.6.0        |[Duplicate transactions][BIP30]|
+|[31][BIP31] | v0.6.1        |[Pong message][BIP31]|
+|[34][BIP34] | v0.7.0        |[Block v2, Height in coinbase][BIP34]|
+|[35][BIP35] | v0.7.0        |[mempool message][BIP35]|
+|[37][BIP37] | v0.8.0        |[Bloom filtering][BIP37]|
+|[42][BIP42] | v0.9.2        |[A finite monetary supply for Bitcoin][BIP42]|
+|[61][BIP61] | v0.9.0        |["reject" P2P message][BIP61]|
+|[65][BIP65] | v0.10.4       |[OP_CHECKLOCKTIMEVERIFY][BIP65]|
+|[66][BIP66] | v0.10.0       |[Strict DER signatures][BIP66]|
+|[70][BIP70] | v0.9.0        |[Payment protocol][BIP70]|
+|[71][BIP71] | v0.9.0        |[Payment protocol MIME types][BIP71]|
+|[72][BIP72] | v0.9.0        |[URI extensions for Payment Protocol][BIP72]|
+|[111][BIP111]| v0.12.0       |[NODE_BLOOM service bit][BIP111]|
+|[125][BIP125]| v0.12.0       |[Opt-in Full Replace-by-Fee Signaling][BIP125]|
+|[130][BIP130]| v0.12.0       |[Sendheaders message][BIP130]|
 
-[BIPS-link]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
-[11]: https://github.com/bitcoin/bips/blob/master/bip-0011.mediawiki
-[13]: https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki
-[14]: https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki
-[16]: https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
-[21]: https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki
-[22]: https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki
-[23]: https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki
-[30]: https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki
-[31]: https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki
-[34]: https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki
-[35]: https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki
-[37]: https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki
-[42]: https://github.com/bitcoin/bips/blob/master/bip-0042.mediawiki
-[61]: https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki
-[65]: https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki
-[66]: https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
-[70]: https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki
-[71]: https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki
-[72]: https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki
-[111]: https://github.com/bitcoin/bips/blob/master/bip-0111.mediawiki
-[125]: https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki
-[130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
+
