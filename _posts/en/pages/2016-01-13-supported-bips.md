@@ -6,9 +6,9 @@ layout: page
 lang: en
 permalink: /en/bips/
 share: false
-version: 1
+version: 2
 ---
-Bitcoin Core supports the following [BIP1][].
+Bitcoin Core supports the following [BIPs][BIP1].
 
 | BIP |Supported since| Title |
 |-----|---------------|-------|
