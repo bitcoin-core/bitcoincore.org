@@ -2,3 +2,5 @@
 layout:
 permalink: /robots.txt
 ---
+User-agent: *{% for page in site.posts %}{% if page.robots_exclude == true %}
+Disallow: {{ page.url }}{% endif %}{% endfor %}
