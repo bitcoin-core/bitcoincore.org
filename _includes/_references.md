@@ -37,3 +37,6 @@
 [BIP125]: https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki
 [BIP130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
 [BIP133]: https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki
+
+[@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
+[Slack]: https://slack.bitcoincore.org/
