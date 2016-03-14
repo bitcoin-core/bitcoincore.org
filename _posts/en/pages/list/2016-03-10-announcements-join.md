@@ -1,7 +1,7 @@
 ---
 title: Subscribe to Bitcoin Core announcements
 name: announcements
-permalink: /en/list/announcements/join
+permalink: /en/list/announcements/join/
 type: pages
 layout: page
 lang: en
