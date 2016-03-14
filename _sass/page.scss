@@ -976,3 +976,34 @@ Show your support page
 .show-your-support-small {
 	margin-top: 2em;
 }
+
+#mailregform
+{
+	@include clearfix;
+	
+	input {
+		padding: 0.5em 0.5em;
+		float: left;
+		border-color: lighten($black,70);
+	}
+	#email {
+		@include border-radius(0px, 0px, 5px, 5px);
+		width: 60%;
+		@media #{$small} {
+			width: 250px;
+		}
+	}
+	#submit {
+		width: 25%;
+		@media #{$small} {
+			width: 90px;
+		}
+		border-left:0px;
+		@include border-radius(5px, 5px, 0px, 0px);
+		background-color: darken($white, 2);
+		&:hover {
+			background-color: darken($white, 20);
+			border-color: lighten($black,70);
+		}
+	}
+}
