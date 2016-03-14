@@ -1,6 +1,6 @@
 ---
 title: Keep updated!
-permalink: /en/2016/03/12/announcement-list/
+permalink: /en/2016/03/15/announcement-list/
 lang: en
 id: en-announce-list
 name: announce-list
