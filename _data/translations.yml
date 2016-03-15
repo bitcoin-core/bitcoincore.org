@@ -64,16 +64,16 @@ ru:
   tocoverview: "Overview"
   translation_outdated: "Этот перевод может быть устаревшим. Пожалуйста, сравните с английской версией."
 
-zh_CH:
-  created: "发表于"
-  author: "作者"
-  description: "Bitcoin Core 网站"
-  footer: "Bitcoin Core 计划"
-  recommended: "推荐阅读"
-  viewallposts: "顯示所有文章"
-  not_translated: "注意：本页未被翻译"
-  tocoverview: "Overview"
-  translation_outdated: "This translation may be out of date compared to the English version"
+zh_CN:
+  created: "发布在"
+  authored: "由"
+  description: "比特币核心网站"
+  footer: "比特币核心项目"
+  recommended: "推荐"
+  viewallposts: "查看所有帖子"
+  not_translated: "注：该页尚未被翻译"
+  tocoverview: "总览"
+  translation_outdated: "这段翻译可能已过期。请对照英文原版."
 
 zh_TW:
   created: "發表於"
