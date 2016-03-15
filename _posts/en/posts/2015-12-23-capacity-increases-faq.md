@@ -18,8 +18,9 @@ New technology will be deployed when it is ready and has been tested. However, w
 | Feb 2016 | 0.12.0 | [libsecp256k1 verification][] |
 | Feb 2016 | | Segregated witness feature complete & ready for general review |
 | Mar 2016\* | 0.12.x | Deploy OP_CHECKSEQUENCEVERIFY (BIPs [68][BIP68] & [112][BIP112]) + [BIP113][] as first [BIP9][] versionbits soft fork |
-| April 2016\* |  0.12.x |  Deploy segregated witness |
-| 2016 | | Weak blocks, IBLTs, or both |
+| April 2016\* |  0.12.x |  Deploy segregated witness (including block size increase) |
+| 2016 | | Weak blocks and IBLT, Lightning, or both |
+| 2017 | | Prepare for hardfork |
 
 \* Dates with an asterisk are when we expect to release soft fork-ready code. The code will not be released until it has been well reviewed, and the actual fork will take time to activate ([BIP66][] activated in July 2015 after a few months; [BIP65][] activated in Dec 2015 after only 5 weeks).
 
@@ -35,13 +36,14 @@ New technology will be deployed when it is ready and has been tested. However, w
 
 - **IBLTs and weak blocks:** 90% or more reduction in critical bandwidth to relay blocks created by miners who want their blocks to propagate quickly with a modest [increase in total bandwidth][], bringing many of the benefits of the [Bitcoin Relay Network][] to all full nodes. This improvement is accomplished by spreading bandwidth usage out over time for full nodes, which means IBLT and weak blocks may allow for safer future increases to the max block size.
 
-## Is the segregated witness soft fork equivalent to a 4MB block size increase, a 2MB increase, a 1.75MB increase, or what? I keep hearing different numbers.  {#segwit-size}
+## Is the segregated witness soft fork equivalent to a 4 MB block size increase, a 2 MB increase, a 1.75 MB increase, or what? I keep hearing different numbers.  {#segwit-size}
 
-The [current proposal][] for soft fork segregated witness (segwit) counts each byte in a witness as 0.25 bytes towards the maximum block size limit, meaning the maximum size of a block is just under 4MB.
+The [current proposal][] for soft fork segregated witness (segwit) replaces the block size limit with a new block *cost* limit, counting each byte of witness data as 1 unit of cost and UTXO transaction data as 4 units; as a result, the maximum size of a block becomes just under 4 MB.
 
-However, blocks are not expected to consist entirely of witness data and each non-witness byte is counted as 1.00 bytes towards the maximum block size limit, so blocks near 4MB in size would be unlikely.
+However, blocks are not expected to consist entirely of witness data, so blocks near 4 MB in size would be unlikely.
 
-According to some [calculations][] performed by Anthony Towns, a block filled with standard single-signature P2PKH transactions would be about 1.6MB and a block filled with 2-of-2 multisignature transactions would be about 2.0MB.
+According to some [calculations][] performed by Anthony Towns, a block filled with standard single-signature P2PKH transactions would be about 1.6 MB and a block filled with 2-of-2 multisignature transactions would be about 2.0 MB.
+It is further likely that future scaling improvements, such as Lightning, may slightly improve the ratio such that filled blocks become larger than 2 MB.
 
 [current proposal]: https://youtu.be/fst1IK_mrng?t=2234
 [calculations]: http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011869.html
@@ -52,23 +54,23 @@ Some ideas are easy to explain but hard to execute. Other ideas are easy to exec
 
 Segwit can be deployed incrementally without breaking compatibility, so no significant preparation of the ecosystem is necessary. Developers who want immediate hands-on experience with segwit have begun to test their software on the segwit testnet deployed Dec 2015.
 
-Initially, only miners who wish to support it need to upgrade in order to activate it and enforce it on the mainnet. Existing applications only need to change if they wish to take advantage of the new features.
+Initially, only miners who wish to support it need to upgrade in order to activate it and enforce it on the mainnet. Existing applications only need to change if they wish to take advantage of the new features and additional block space.
 
 Segregated witness transactions will require lower fees, will afford much greater performance optimizations, and can support multistage smart contracts and protocols such as bi-directional payment channels that can scale without writing extra data to the blockchain. Wallets are strongly encouraged to upgrade but can continue to operate without modification as the deployment does not break backwards compatibility.
 
 ## Segregated witness still sounds complicated. Why not simply raise the maximum block size?  {#size-bump}
 
-There's a [single line of code][max_block_size] in Bitcoin Core that says the maximum block size is 1,000,000 bytes (1MB). The simplest change would be a hard fork to update that line to say, for example, 2,000,000 bytes (2MB).
+There's a [single line of code][max_block_size] in Bitcoin Core that says the maximum block size is 1,000,000 bytes (1 MB). The simplest code modification would be a hard fork to update that line to say, for example, 2,000,000 bytes (2 MB).
 
-Hard forks are anything but simple:
+However, hard forks are anything but simple:
 
-- **We don't have experience:** Miners, merchants, developers, and users have never deployed a hard fork, so techniques for safely deploying them have not been tested.
+- **We don't have experience:** Miners, merchants, developers, and users have never deployed a non-emergency hard fork, so techniques for safely deploying them have not been tested.
 
     This is unlike soft forks, whose deployments were initially managed by Nakamoto, where we gained experience from the complications in the [BIP16][] deployment, where we refined our technique in the [BIP34][] deployment, and where we've gained enough experience with BIPs [66][BIP66] and [65][BIP65] to begin managing multiple soft forks with [BIP9][] version bits in the future.
 
 - **Upgrades required:** Hard forks require all full nodes to upgrade or everyone who uses that node may lose money. This includes the node operator, if they use it to protect their wallet, as well as lightweight clients who get their data from the node.
 
-- **Other changes required:** Even a single-line change such as increasing the maximum block size has effects on other parts of the code, some of which are undesirable. For example, right now it's possible to construct a transaction that takes up almost 1MB of space and which takes 30 seconds or more to validate on a modern computer (blocks containing such transactions have been mined). In 2MB blocks, a 2MB transaction can be constructed that may take over 10 minutes to validate which opens up dangerous denial-of-service attack vectors.  Other lines of code would need to be changed to prevent these problems.
+- **Other changes required:** Even a single-line change such as increasing the maximum block size has effects on other parts of the code, some of which are undesirable. For example, right now it's possible to construct a transaction that takes up almost 1 MB of space and which takes 30 seconds or more to validate on a modern computer (blocks containing such transactions have been mined). In 2 MB blocks, a 2 MB transaction can be constructed that may take over 10 minutes to validate which opens up dangerous denial-of-service attack vectors.  Other lines of code would need to be changed to prevent these problems.
 
 Despite these considerable complications, with sufficient precautions, none of them is fatal to a hard fork, and we do expect to make hard forks in the future. But with segregated witness (segwit) we have a soft fork, similar to other soft forks we've performed and gained experience in deploying, that provides us with many benefits in addition to allowing more transactions to be added to the blockchain.
 
@@ -129,9 +131,9 @@ Web wallets and exchanges that send large numbers of transactions each day at fi
 
 None of them. By default, current versions of Bitcoin Core won't replace an unconfirmed transaction with another transaction that spends any of the same inputs. Some people think this means the first transaction they see that spends a particular input is safe, but this is untrue. (If it were true, we wouldn't need the blockchain.)
 
-This current default policy does mean that people who want to be able to update their unconfirmed transactions can't do that. The original version of Bitcoin provided people with a way to indicate that they wanted to be able to update their transactions, but Nakamoto had to disable it in 2010 to prevent denial-of-service attacks.
+This current default policy does mean that people who want to be able to update their unconfirmed transactions can't do that. The original version of Bitcoin provided people with a way to indicate that they wanted to be able to update their transactions, but Nakamoto had to disable it in 2010 to prevent denial-of-service (DoS) attacks.
 
-Recent Bitcoin Core developers realized that they could prevent the DOS attack by requiring updated transactions pay extra fees, and they've re-enabled Nakamoto's mechanism for indicating when a transactions can be replaced. This feature is planned for Bitcoin Core 0.12.0 (expected Jan/Feb 2016) but, like Nakamoto's original feature, is opt-in so people who want to be able to replace their transactions have to use a wallet that supports that feature.
+Recent Bitcoin Core developers realized that they could prevent the DoS attack by requiring updated transactions pay extra fees, and they've re-enabled Nakamoto's mechanism for indicating when a transactions can be replaced. This feature is planned for Bitcoin Core 0.12.0 (expected Jan/Feb 2016) but, like Nakamoto's original feature, is opt-in so people who want to be able to replace their transactions have to use a wallet that supports that feature.
 
 Currently there are no wallets that provide this feature, but wallets that do provide it in the future may be able to combine multiple transactions together to reduce the amount of blockchain space they use as well as increase the fees they pay on transactions that are taking a long time to confirm, helping to prevent transactions from getting “stuck” (a known usability problem).
 
