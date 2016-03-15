@@ -54,6 +54,16 @@ en:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"
 de:
   home:
     title: "Bitcoin Core"
@@ -109,6 +119,16 @@ de:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"
 es:
   home:
     title: "Bitcoin Core"
@@ -164,6 +184,16 @@ es:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"
 fr:
   home:
     title: "Bitcoin Core"
@@ -219,6 +249,16 @@ fr:
       eol:
         title: "Cycle de vie"
         url:   "/fr/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"
 it:
   home:
     title: "Bitcoin Core"
@@ -274,6 +314,16 @@ it:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"
 ru:
   home:
     title: "Bitcoin Core"
@@ -329,6 +379,16 @@ ru:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"
 zh_CN:
   home:
     title: "Bitcoin Core"
@@ -384,6 +444,16 @@ zh_CN:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"
 zh_TW:
   home:
     title: "Bitcoin Core"
@@ -439,3 +509,13 @@ zh_TW:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"

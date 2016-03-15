@@ -39,6 +39,9 @@ en:
       contribute:
         title: "contribute"
         url:   "/en/contribute"
+      contribute-code:
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
@@ -51,3 +54,13 @@ en:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+  contact:
+      title: "Contact"
+      submenu: true
+      tree:
+        contact_us:
+          title: "Contact Us"
+          url: "/en/contact"
+        announcements:
+          title: "Announcements"
+          url: "/en/list/announcements/join"

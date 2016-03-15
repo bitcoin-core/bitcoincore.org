@@ -37,3 +37,12 @@
 [BIP125]: https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki
 [BIP130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
 [BIP133]: https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki
+
+[@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
+[#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
+[issues]: https://github.com/bitcoin/bitcoin/issues
+[pulls]: https://github.com/bitcoin/bitcoin/pulls
+[bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
+[bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
+[Slack]: https://bitcoincore.slack.com/
+[slack-invite]: https://slack.bitcoincore.org/
