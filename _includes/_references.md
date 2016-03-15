@@ -8,6 +8,11 @@
 [Cory Fields]: https://github.com/theuni
 [Alex Morcos]: https://github.com/morcos
 [Pavel Janik]: https://github.com/paveljanik
+[Matt Corallo]: https://github.com/TheBlueMatt
+[Eric Voskuil]: https://github.com/evoskuil
+[Jonas Schnelli]: https://github.com/jonasschnelli
+[Warren Togami]: https://github.com/wtogami
+[Wladimir van der Laan]: https://github.com/laanwj
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
@@ -37,6 +42,7 @@
 [BIP125]: https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki
 [BIP130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
 [BIP133]: https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki
+[BIP142]: https://github.com/bitcoin/bips/blob/master/bip-0142.mediawiki
 
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
 [#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
@@ -46,3 +52,4 @@
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [Slack]: https://bitcoincore.slack.com/
 [slack-invite]: https://slack.bitcoincore.org/
+[software life cycle]: /en/lifecycle
