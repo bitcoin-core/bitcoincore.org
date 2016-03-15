@@ -1,6 +1,6 @@
 ---
 title: Confirmation Success
-permalink: /list/announcements/confirmed
+permalink: /list/announcements/confirmed/
 type:
 layout: page
 lang: en
