@@ -4,10 +4,10 @@
     <link rel="self" type="application/atom+xml" href="{{ site.url }}/{{ page.lang }}/feed.xml" />
     <link rel="alternate" type="text/html" href="{{ site.url }}" />
     <updated>{{ site.time | date_to_xmlschema }}</updated>
-    <id>{{ site.url }}/</id>
+    <id>{{ post.id }}</id>
     <author>
         <name>{{ site.owner.name }}</name>
-        <uri>{{ site.url }}/</uri>
+        <uri>{{ site.url }}{{ post.url }}</uri>
         {% if site.owner.email %}<email>{{ site.owner.email }}</email>{% endif %}
     </author>
     {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
@@ -19,15 +19,15 @@
     {% endif %}
     <entry>
         <title type="html"><![CDATA[{{ post.title | cdata_escape }}]]></title>
-        <link rel="alternate" type="text/html" href="{{ site.url }}/{{ post.url }}" />
-        <id>{{ site.url }}{{ post.id }}</id>
+        <link rel="alternate" type="text/html" href="{{ site.url }}{{ post.url }}" />
+        <id>{{ post.id }}</id>
         {% if post.modified %}<updated>{{ post.modified | to_xmlschema }}T00:00:00-00:00</updated>
         <published>{{ post.date | date_to_xmlschema }}</published>
         {% else %}<published>{{ post.date | date_to_xmlschema }}</published>
         <updated>{{ post.date | date_to_xmlschema }}</updated>{% endif %}
         <author>
             <name>{{ author.name }}</name>
-            <uri>{{ site.url }}</uri>
+            <uri>{{ site.url }}{{ post.url }}</uri>
             {% if author.email %}<email>{{ author.email }}</email>{% endif %}
         </author>
         <content type="html">
