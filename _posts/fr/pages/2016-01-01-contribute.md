@@ -3,11 +3,11 @@ title: Comment puis-je participer ?
 name: contribute
 id: fr-contribute
 permalink: /fr/contribute/
-layout: page
 type: pages
+layout: page
 lang: fr
 share: false
-version: 1
+version: 2
 ---
 
 Vous êtes invités à contribuer au projet !
@@ -20,7 +20,7 @@ Notre principal référentiel de code source est [hébergé chez GitHub](https:/
   - Améliorer les interfaces utilisateurs
   - Coder (corriger les bugs ouverts ou implémenter de nouvelles fonctionnalités)
 
-N'hésitez pas à signaler des [problèmes][issues] et à ouvrir des [pull requests][pulls], mais veuillez consulter les [règles de contribution](/en/faq/contributing-code) pour comprendre notre organisation de travail.
+N'hésitez pas à nous faire part des [problèmes][issues] que vous rencontrez.  Vous pouvez aussi proposer des correctifs en ouvrant des [pull requests][pulls], mais veuillez consulter préalablement les [règles de contribution](/en/faq/contributing-code) afin de bien comprendre la procédure.
 
 **Discussion**
 
