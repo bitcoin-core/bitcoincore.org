@@ -53,3 +53,7 @@
 [Slack]: https://bitcoincore.slack.com/
 [slack-invite]: https://slack.bitcoincore.org/
 [software life cycle]: /en/lifecycle
+
+[laanwj-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-downloader/laanwj-key.pgp
+[jonasschnelli-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-downloader/jonasschnelli-key.pgp
+[sipa-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-downloader/sipa-key.pgp
