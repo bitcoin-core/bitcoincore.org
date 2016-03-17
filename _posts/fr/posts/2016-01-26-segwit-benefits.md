@@ -1,6 +1,6 @@
 ---
-layout: post
 type: posts
+layout: post
 lang: fr
 name: segwit-benefits
 id: fr-segwit-benefits
@@ -11,7 +11,7 @@ excerpt: Cette page récapitule tous les avantages apportés par "segregated wit
 ---
 {% include _toc.html %}
 
-Le soft-fork Segregated Witness (Segway) comprend un large éventail de fonctionnalités, dont beaucoup sont très techniques.  Cette page résume certains des avantages de ces fonctionnalités qui vont au-delà d'une simple augmentation de la capacité de la blockchain.
+Le soft-fork Segregated Witness (segwit) comprend un large éventail de fonctionnalités, dont beaucoup sont très techniques.  Cette page résume certains des avantages de ces fonctionnalités qui vont au-delà d'une simple augmentation de la capacité de la blockchain.
 
 ## Correctifs de la malléabilité
 
@@ -163,7 +163,7 @@ Trouver la sélection de transactions la plus rentable à inclure dans un bloc a
 
 Il est impossible de résoudre ce problème sans un hardfork ou une diminution significative de la taille des blocs.  Segwit ne pouvant pas non plus résoudre ce problème, il se contente de ne pas l'aggraver : en particulier, plutôt que d'introduire une nouvelle limite spécifique pour les données witness, segwit applique une seule limite qui combine le poids des données UTXO et des données witness, permettant aux deux d'être limités simultanément comme une seule entité combinée.
 
-## Qui en profite ?
+### Qui en profite ?
 
 En fin de compte, ce sont les mineurs qui en profiteront si à l'avenir un hardfork définit la taille limite des blocs comme une simple somme pondérée de paramètres. Par exemple:
 
