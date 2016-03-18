@@ -17,7 +17,7 @@ maintainers:
     role: GUI maintainer
 contributors:
   -
-    name: Pieter Wullie
+    name: Pieter Wuille
     github: sipa
     irc: sipa
     twitter: pwuille
