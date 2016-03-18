@@ -104,7 +104,7 @@ To spend a P2WSH output, the <code>scriptSig</code> MUST be empty, and the witne
 
 <pre><code>witness: <...> <...> <...> < witnessScript ></code></pre>
 
-where the <code>RIPEMD160(SHA256(witnessScript))</code> is equal to the <code>32-byte-script-hash</code> in scriptPubKey. The <code>witnessScript</code> is deserialized and evaluated with the remaining data in the <code>witness</code>.
+where the <code>SHA256(witnessScript)</code> is equal to the <code>32-byte-script-hash</code> in scriptPubKey. The <code>witnessScript</code> is deserialized and evaluated with the remaining data in the <code>witness</code>.
 
 
 #### P2WSH in P2SH (P2SH-P2WSH)
