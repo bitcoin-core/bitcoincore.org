@@ -1007,3 +1007,26 @@ Show your support page
 		}
 	}
 }
+
+ul.team {
+	@include clearfix;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	li {
+		height: 300px;
+		min-height: 300px;
+		float: left;
+		@media #{$small} {
+			@include grid(12,4.5);
+		}
+	}
+	li:nth-child(even)
+	{
+		float: right;
+	}
+}
+
+div.maintainers {
+	margin-bottom: 1.5em;
+}
