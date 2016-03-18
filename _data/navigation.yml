@@ -10,6 +10,9 @@ en:
       about:
         title: "About Us"
         url:   "/en/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
