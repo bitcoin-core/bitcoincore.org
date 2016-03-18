@@ -78,6 +78,9 @@ de:
       about:
         title: "Über uns"
         url:   "/de/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "Unterstützer"
         url:   "/en/supporters"
@@ -143,6 +146,9 @@ es:
       about:
         title: "Sobre Nosotros"
         url:   "/es/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "Desarrolladores"
         url:   "/en/supporters"
@@ -208,6 +214,9 @@ fr:
       about:
         title: "à propos de nous"
         url:   "/fr/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "soutiens"
         url:   "/en/supporters"
@@ -273,6 +282,9 @@ it:
       about:
         title: "About Us"
         url:   "/it/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
@@ -338,6 +350,9 @@ ru:
       about:
         title: "About Us"
         url:   "/ru/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
@@ -403,6 +418,9 @@ zh_CN:
       about:
         title: "About Us"
         url:   "/zh_CN/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
@@ -468,6 +486,9 @@ zh_TW:
       about:
         title: "About Us"
         url:   "/zh_TW/about/"
+      team:
+        title: "Team"
+        url:   "/en/team/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
