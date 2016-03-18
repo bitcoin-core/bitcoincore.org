@@ -3,7 +3,7 @@
 {% assign avatar=person.avatar %}
 {% unless person.avatar contains 'https://' %}{% capture avatar %}/images/team/{{person.avatar}}{% endcapture %}{% endunless %}
 <li>
-    <a href="https://github.com/{{ person.github }}"><img src="{{ avatar }}" class="bio-photo" width="150" height="150" alt="{{ person.name }}""></a>
+    <a href="https://github.com/{{ person.github }}"><img src="{{ avatar }}" class="bio-photo" width="150" height="150" alt="{{ person.name }}"></a>
     <h3 itemprop="name">{{ person.name }}</h3>
     <p>{{ person.bio }}</p>
     {% if person.email %}<a href="mailto:{{ person.email }}" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square" rel="nofollow"></i> Email</a>{% endif %}
