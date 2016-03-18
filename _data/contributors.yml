@@ -1,0 +1,146 @@
+maintainers:
+  -
+    name: Wladimir J. van der Laan
+    github: laanwj
+    irc: wumpus
+    twitter: orionwl
+    avatar: https://avatars3.githubusercontent.com/u/126646?v=3&s=460
+    bio:
+    role: Lead maintainer
+  -
+    name: Jonas Schnelli
+    github: jonasschnelli
+    irc: jonasschnelli
+    twitter: jonasschnelli
+    avatar: https://avatars1.githubusercontent.com/u/178464?v=3&s=460
+    bio:
+    role: GUI maintainer
+contributors:
+  -
+    name: Pieter Wullie
+    github: sipa
+    irc: sipa
+    twitter: pwuille
+    avatar: https://avatars1.githubusercontent.com/u/548488?v=3&s=460
+    bio:
+    role:
+  -
+    name: Marco Falke
+    github: MarcoFalke
+    irc: MarcoFalke
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/6399679?v=3&s=460
+    bio:
+    role:
+  -
+    name: Cory Fields
+    github: theuni
+    irc: cfields
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/417043?v=3&s=460
+    bio:
+    role:
+  -
+    name: Luke-Jr
+    github: luke-jr
+    irc: luke-jr
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/1095675?v=3&s=460
+    bio:
+    role:
+  -
+    name: Suhas Daftuar
+    github: sdaftuar
+    irc: sdaftuar
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/7463573?v=3&s=460
+    bio:
+    role:
+  -
+    name: Alex Morcos
+    github: morcos
+    irc: morcos
+    twitter: morcosa
+    avatar: https://avatars1.githubusercontent.com/u/4360349?v=3&s=460
+    bio:
+    role:
+  -
+    name: Matt Corallo
+    github: TheBlueMatt
+    irc: BlueMatt
+    twitter: TheBlueMatt
+    avatar: https://avatars1.githubusercontent.com/u/649246?v=3&s=460
+    bio:
+    role:
+  -
+    name: Gregory Maxwell
+    github: gmaxwell
+    irc: gmaxwell
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/858454?v=3&s=460
+    bio:
+    role:
+  -
+    name: Jorge Timón
+    github: jtimon
+    irc: jtimon
+    twitter: timoncc
+    avatar: https://avatars1.githubusercontent.com/u/1008458?v=3&s=460
+    bio:
+    role:
+  -
+    name: Peter Todd
+    github: petertodd
+    irc: petertodd
+    twitter: petertoddbtc
+    avatar: https://avatars1.githubusercontent.com/u/7042?v=3&s=460
+    bio:
+    role:
+  -
+    name: Eric Lombrozo
+    github: CodeShark
+    irc: CodeShark
+    twitter:
+    avatar: https://avatars2.githubusercontent.com/u/894059?v=3&s=460
+    bio:
+    role:
+  -
+    name: Johnson Lau
+    github: jl2012
+    irc: jl2012
+    twitter:
+    avatar: https://avatars3.githubusercontent.com/u/8403418?v=3&s=460
+    bio:
+    role:
+  -
+    name: Nicolas Dorier
+    github: NicolasDorier
+    irc: NicolasDorier
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/3020646?v=3&s=460
+    bio:
+    role:
+  -
+    name: ฿tcDrak
+    github: btcdrak
+    irc: btcdrak
+    twitter: btcdrak
+    avatar: https://avatars1.githubusercontent.com/u/7275704?v=3&s=460
+    bio:
+    role:
+  -
+    name: Michael Ford
+    github: fanquake
+    irc: fanquake
+    twitter: fanquake
+    avatar: https://avatars1.githubusercontent.com/u/863730?v=3&s=460
+    bio:
+    role:
+  -
+    name: paveljanik
+    github: paveljanik
+    irc: paveljanik
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/6848764?v=3&s=460
+    bio:
+    role:
