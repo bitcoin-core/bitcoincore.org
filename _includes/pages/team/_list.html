@@ -1,7 +1,7 @@
 <ul class="team">
 {% for person in people %}
 {% assign avatar=person.avatar %}
-{% unless person.avatar contains 'https://' %}{% capture avatar %}/images/team/{{person.avatar}}{% endcapture %}{% endunless %}
+{% unless person.avatar contains 'https://' %}{% capture avatar %}/assets/images/team/{{person.avatar}}{% endcapture %}{% endunless %}
 <li>
     <a href="https://github.com/{{ person.github }}"><img src="{{ avatar }}" class="bio-photo" width="150" height="150" alt="{{ person.name }}"></a>
     <h3 itemprop="name">{{ person.name }}</h3>
