@@ -1,69 +1,69 @@
 # Site navigation links
-fr:
+en:
   home:
     title: "Bitcoin Core"
-    url:   "/fr/"
+    url:   "/"
   about:
-    title: "à propos"
+    title: "About"
     submenu: true
     tree:
       about:
-        title: "à propos de nous"
-        url:   "/fr/about/"
+        title: "About Us"
+        url:   "/en/about/"
       team:
         title: "Team"
         url:   "/en/team/"
       supporters:
-        title: "soutiens"
+        title: "Supporters"
         url:   "/en/supporters"
   blog:
     title: "blog"
-    url:   "/fr/blog/"
+    url:   "/en/blog/"
   releases:
-    title: "versions"
-    url:   "/fr/releases/"
+    title: "releases"
+    url:   "/en/releases/"
   faq:
      title: "FAQs"
      submenu: true
      tree:
        capacity-faq:
-         title: "Augmentation de la capacité"
-         url: "/fr/2015/12/23/capacity-increases-faq"
+         title: "Capacity Increases"
+         url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
-         title: "SegWit"
-         url: "/fr/2016/01/26/segwit-benefits"
+         title: "Segwit"
+         url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
          title: "Opt-in RBF"
-         url: "/fr/faq/optin_rbf"
+         url: "/en/faq/optin_rbf"
   dev:
-    title: "Développement"
+    title: "Development"
     submenu: true
     tree:
       contribute:
-        title: "contribuer"
-        url:   "/fr/contribute"
+        title: "contribute"
+        url:   "/en/contribute"
       contribute-code:
-        title: "Contribuer au code"
-        url:   "/fr/faq/contributing-code"
+        title: "contributing code"
+        url:   "/en/faq/contributing-code"
       segwit:
-        title: "Adoption de SegWit"
+        title: "SegWit Adoption"
         url:   "/en/segwit_adoption"
       meetings:
-        title: "réunions"
-        url:   "/fr/meetings/"
+        title: "meetings"
+        url:   "/en/meetings/"
       bips:
-        title: "BIPS supportées"
-        url:   "/fr/bips"
+        title: "Supported BIPs"
+        url:   "/en/bips"
       eol:
-        title: "Cycle de vie"
-        url:   "/fr/lifecycle"
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
   contact:
       title: "Contact"
       submenu: true
       tree:
         contact_us:
-          title: "Nous contacter"
-          url: "/fr/contact"
+          title: "Contact Us"
+          url: "/en/contact"
         announcements:
-          title: "Annonces"
-          url: "/fr/list/announcements/join"
+          title: "Announcements"
+          url: "/en/list/announcements/join"
