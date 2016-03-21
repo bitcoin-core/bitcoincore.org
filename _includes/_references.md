@@ -59,4 +59,6 @@
 [jonasschnelli-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-downloader/jonasschnelli-key.pgp
 [sipa-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-downloader/sipa-key.pgp
 
-[recent-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors?from=2015-01-01&to=2016-03-04&type=c
+[recent-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors?from=2015-01-01&to=2016-03-21&type=c
+
+[website-issues]: https://github.com/bitcoin-core/bitcoincore.org/issues
