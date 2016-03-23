@@ -14,4 +14,7 @@ Bien que le projet Bitcoin Core bénéficie déjà d'une grande variété de moy
 Pour vous abonner, veuillez saisir votre adresse de courriel ci-dessous :
 
 {% include pages/list/announcement.html %}
+
+_Les courriels seront signés à l'aide de GPG par [Wladimir van der Laan][laanwj-key], [Jonas Schnelli][jonasschnelli-key] ou bien [Pieter Wullie][sipa-key] et signés DKIM pour le domaine bitcoincore.org_.
+
 {% include _references.md %}

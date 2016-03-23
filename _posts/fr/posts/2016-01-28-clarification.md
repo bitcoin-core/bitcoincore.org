@@ -2,14 +2,13 @@
 title: Clarifier la communication
 name: clarifying-communications
 id: fr-clarifying-communications
-layout: post
 type: posts
+layout: post
 lang: fr
 permalink: /fr/2016/01/28/clarification/
 share: true
-excerpt: >
-  Où trouver la documentation officielle au sujet de Bitcoin Core et comment interagir
-  avec les autres utilisateurs et les développeurs de Bitcoin Core.
+version: 1
+excerpt: Où trouver la documentation officielle au sujet de Bitcoin Core et comment interagir avec les autres utilisateurs et les développeurs de Bitcoin Core.
 ---
 Initialement, le site bitcoin.org était principalement utilisé pour la publication du [livre blanc de Bitcoin](/bitcoin.pdf), il est par la suite devenu le site de référence du [logiciel client Bitcoin](https://bitcoin.org/en/download).  Il est maintenant une source d'information générale sur Bitcoin et n'a [plus aucun lien](https://bitcoin.org/en/bitcoin-core/about-site) avec le projet Bitcoin Core actuel.  Nous savons que l'écosystème Bitcoin peut sembler parfois un peu déroutant et nous mettons tout en oeuvre pour clarifier les liens qui unissent ses différents membres.
 
