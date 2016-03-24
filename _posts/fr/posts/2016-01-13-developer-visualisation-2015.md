@@ -1,6 +1,6 @@
 ---
-layout: post
 type: posts
+layout: post
 lang: fr
 id: fr-development-visualisation-2015
 name: development-visualisation-2015
