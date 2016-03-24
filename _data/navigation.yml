@@ -208,17 +208,17 @@ fr:
     title: "Bitcoin Core"
     url:   "/fr/"
   about:
-    title: "à propos"
+    title: "À propos"
     submenu: true
     tree:
       about:
-        title: "à propos de nous"
+        title: "À propos de nous"
         url:   "/fr/about/"
       team:
-        title: "Team"
-        url:   "/en/team/"
+        title: "L'équipe"
+        url:   "/fr/team/"
       supporters:
-        title: "soutiens"
+        title: "Soutiens"
         url:   "/en/supporters"
   blog:
     title: "blog"
@@ -247,7 +247,7 @@ fr:
         title: "contribuer"
         url:   "/fr/contribute"
       contribute-code:
-        title: "Contribuer au code"
+        title: "contribuer au code"
         url:   "/fr/faq/contributing-code"
       segwit:
         title: "Adoption de SegWit"
@@ -256,7 +256,7 @@ fr:
         title: "réunions"
         url:   "/fr/meetings/"
       bips:
-        title: "BIPS supportées"
+        title: "BIPs supportées"
         url:   "/fr/bips"
       eol:
         title: "Cycle de vie"
@@ -269,7 +269,7 @@ fr:
           title: "Nous contacter"
           url: "/fr/contact"
         announcements:
-          title: "Annonces"
+          title: "Communiqués"
           url: "/fr/list/announcements/join"
 it:
   home:

@@ -45,7 +45,7 @@ Le titre de la pull-request doit être précédé par le nom du composant ou de 
     Qt: Add feed bump button
     Trivial: fix typo
 
-If a pull request is specifically not to be considered for merging (yet) please prefix the title with [WIP] or use [Tasks Lists](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) in the body of the pull request to indicate tasks are pending.
+Si une pull request ne doit pas être considérée comme prête à être fusionnée, veuillez préfixer son titre par [WIP] (work in progress) ou bien utilisez les [listes de tâches](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) dans la description pour indiquer quelles sont les tâches encore en attente.
 
 The body of the pull request should contain enough description about what the patch does together with any justification/reasoning. You should include references to any discussions (for example other tickets or mailing list discussions).
 
@@ -57,13 +57,11 @@ La philosophie d'une pull-request
 
 Un patch doit reste focalisé sur un seul sujet.  Par exemple une pull-request peut ajouter une nouvelle fonctionnalité, corriger un bug ou effectuer une refactorisation de code mais pas tout faire à la fois. Veuillez également éviter les pull-requests qui cherche à trop en faire, sont trop volumineuses ou trop complexes car cela rend la revue de code difficile.
 
-
-###Fonctionnalités
+### Fonctionnalités
 
 When adding a new feature, thought must be given to the long term technical debt and maintenance that feature may require after inclusion. Before proposing a new feature that will require maintenance, please consider if you are willing to maintain it (including bug fixing). If features get orphaned with no maintainer in the future, they may be removed by the Repository Maintainer.
 
-
-###Refactorisation
+### Refactorisation
 
 Refactoring is a necessary part of any software project's evolution. The following guidelines cover refactoring pull requests for the project.
 
@@ -92,10 +90,9 @@ In general, all pull requests must:
 
 Patches that change Bitcoin consensus rules are considerably more involved than normal because they affect the entire ecosystem and so must be preceded by extensive mailing list discussions and have a numbered BIP. While each case will be different, one should be prepared to expend more time and effort than for other kinds of patches because of increased peer review and consensus building requirements.
 
+### Revue de code
 
-###Revue de code
-
-Toute le monde peut participer aux revues de code qui se traduisent par des commentaires dans les pull-requests.  Typiquement les examinateurs vérifient le code à la recherche d'erreurs évidentes, effectuent des tests sur l'ensemble des correctifs et donnent leur avis sur les mérites techniques du patch.  Les responsables de la maintenance du projet tiennent compte des commentaires des examinateurs pour déterminer s'il y a consensus ou pas pour fusionner une pull-request (ne pas oublier que les discussions peuvent avoir eu lieu sur github, mais aussi sur la liste de diffusion et/ou sur IRC).  Voici ci-dessous la terminologie utilisée dans les commentaires des pull-requests :
+Toute le monde peut participer aux revues de code qui se concrétisent par des commentaires dans les pull-requests.  Typiquement les examinateurs vérifient le code à la recherche d'erreurs évidentes, effectuent des tests sur l'ensemble des correctifs et donnent leur avis sur les mérites techniques du patch.  Les responsables de la maintenance du projet tiennent compte des commentaires des examinateurs pour déterminer s'il y a consensus ou pas pour fusionner une pull-request (ne pas oublier que les discussions peuvent avoir eu lieu sur github, mais aussi sur la liste de diffusion et/ou sur IRC).  Voici ci-dessous la terminologie utilisée dans les commentaires des pull-requests :
 
   - ACK signifie "J'ai testé le code et je suis d'accord pour qu'il soit fusionné";
   - NACK signifie "Je ne suis pas d'accord pour que ce code soit fusionné", une justification technique détaillée doit accompagner ce rejet.  les NACKs non accompagnés d'une justification pourront ne pas être pris en compte;

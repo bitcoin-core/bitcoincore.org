@@ -1,6 +1,6 @@
 ---
-layout: post
 type: posts
+layout: post
 lang: fr
 id: fr-segwit-testnet
 name: segwit-testnet
