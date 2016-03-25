@@ -126,14 +126,14 @@ de:
         title: "Lifecycle"
         url:   "/en/lifecycle"
   contact:
-      title: "Contact"
+      title: "Kontakt"
       submenu: true
       tree:
         contact_us:
-          title: "Contact Us"
+          title: "Kontaktiere uns"
           url: "/en/contact"
         announcements:
-          title: "Announcements"
+          title: "Ankündigungen"
           url: "/en/list/announcements/join"
 es:
   home:

@@ -1,15 +1,16 @@
 ---
-title: Bitcoin Core Supported BIPs
+title: Bitcoin Core Unterstützte BIPs
 name: supported-bips
-layout: page
 type: pages
+layout: page
 lang: de
 permalink: /de/bips/
 share: false
-version: 0
+version: 2
 ---
-Bitcoin Core supports the following [BIPs][BIPS-link].
+Bitcoin Core unterstützt die folgenden [BIPs][BIP1].
 
-| BIP |Supported since| Title |
+| BIP |Unterstützt seit| Titel |
 |-----|---------------|-------|
 {% include pages/bips-list.md %}
+{% include _references.md %}
