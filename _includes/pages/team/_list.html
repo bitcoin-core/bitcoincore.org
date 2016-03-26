@@ -5,7 +5,7 @@
 <li>
     <a href="https://github.com/{{ person.github }}"><img src="{{ avatar }}" class="bio-photo" width="150" height="150" alt="{{ person.name }}" title="{{ person.name }}"></a>
     <h3 itemprop="name">{{ person.name }}</h3>
-    {% if person.bio %}<a href="{{ person.bio }}" class="author-social" target="_blank"><i class="fa fa-fw fa-book" rel="nofollow"></i>Bio</a>{% endif %}
+    {% if person.bio %}<a href="{{ site.url }}/{{ page.lang }}/team/bio/{{ person.bio }}/" class="author-social" target="_blank"><i class="fa fa-fw fa-book" rel="nofollow"></i>Bio</a>{% endif %}
     {% if person.email %}<a href="mailto:{{ person.email }}" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square" rel="nofollow"></i>Email</a>{% endif %}
     {% if person.twitter %}<a href="https://twitter.com/{{ person.twitter }}" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square" rel="nofollow"></i>Twitter</a>{% endif %}
     {% if person.google.plus %}<a href="http://plus.google.com/+{{ person.google.plus }}" class="author-social" target="_blank"><i class="fa fa-fw fa-google-plus-square" rel="nofollow"></i>Google+</a>{% endif %}
