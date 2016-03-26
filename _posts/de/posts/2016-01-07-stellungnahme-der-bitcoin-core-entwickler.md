@@ -2,8 +2,9 @@
 layout: post
 name: bitcoin-core-2016-01-07-statement
 id: de-bitcoin-core-2016-01-07-statement
-title: Stellungnahme der Bitcoin Core Entwickler -- 2016-01-07
+lang: de
 permalink: /de/2016/01/07/stellungnahme-der-bitcoin-core-entwickler/
+title: Stellungnahme der Bitcoin Core Entwickler -- 2016-01-07
 version: 1
 ---
 Bitcoin ist eine peer-to-peer Version von digitalem Geld, welche ermöglicht Zahlungen auf dem direkten Weg zwischen zwei Teilnehmern zu veranlassen, ohne dabei durch einen zentralen Finanzdienstleister verarbeitet zu werden. Unsere Vorstellung von Bitcoin ist es auch bei extremer Auslastung effizient zu arbeiten, aber dennoch Sicherheit und die grundlegenden  Eigenschaften der Dezentralisierung, welche Bitcoin einzigartig machen, zu erhalten.
