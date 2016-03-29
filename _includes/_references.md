@@ -14,6 +14,7 @@
 [Warren Togami]: https://github.com/wtogami
 [Wladimir van der Laan]: https://github.com/laanwj
 [Jorge Timon]: https://github.com/jtimon
+[Marco Falke]: https://github.com/MarcoFalke
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
