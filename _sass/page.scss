@@ -314,7 +314,7 @@ li.lang:hover {
 	color: $white;
 	position: relative;
 	a {
-		color: $white;
+		color: $black;
 	}
 	@media #{$small} {
 		background-color: $black;
@@ -328,7 +328,7 @@ li.lang:hover {
 
 .nav li ul li:hover ul {
 	display: block;
-	background-color: darken($white, 20);
+	background-color: $white;
 	padding:0;
 	padding-top: 0.3em;
 	position: relative;
@@ -346,6 +346,7 @@ li.lang:hover {
 		background-color: transparent;
 }
 .nav li:hover ul li:hover ul li:hover {
+	    background-color: $black;
 		color: $white;
 		a {
 			color: $white;
