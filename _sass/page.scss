@@ -507,6 +507,7 @@ li.lang:hover {
 .image-wrap {
 	position: relative;
 	margin-bottom: 2em;
+	z-index: -1;
 	@include clearfix;
 	&:after {
 		content: " ";
