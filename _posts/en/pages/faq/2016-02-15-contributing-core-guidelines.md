@@ -1,7 +1,7 @@
 ---
 title: How to contribute code to Bitcoin Core
 name: contributing-guidelines
-id: en-software-life-cycle
+id: en-contributing-guidelines
 permalink: /en/faq/contributing-code/
 layout: page
 type: pages
