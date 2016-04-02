@@ -19,6 +19,9 @@
       "/assets/images/{{ page.image.feature }}"
     {% endif %}
     alt="{% if page.image.alt %}{{ page.image.alt }}{% else %}{{ page.title }}{% endif %} feature image">
+  {% if page.image.byline %}
+    <span class="image-credit">&ldquo;{{ page.image.byline }}&rdquo;</span>
+  {% endif %}
   {% if page.image.credit %}
     <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
   {% endif %}
