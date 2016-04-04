@@ -58,5 +58,5 @@ Example technical projects:
 - Formal verification, correctness
 - Payment protocol
 - Validation cost metric
-- Security security audits
+- Security audits
 - Transaction fee estimation
