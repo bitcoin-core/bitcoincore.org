@@ -15,6 +15,6 @@ To subscribe, enter your email address below:
 
 {% include pages/list/announcement.html %}
 
-_Emails will be GPG signed by [Wladimir van der Laan][laanwj-key], [Jonas Schnelli][jonasschnelli-key] or [Pieter Wullie][sipa-key] and DKIM signed from bitcoincore.org._
+_Emails will be GPG signed by [Wladimir van der Laan][laanwj-key], [Jonas Schnelli][jonasschnelli-key] or [Pieter Wuille][sipa-key] and DKIM signed from bitcoincore.org._
 
 {% include _references.md %}
