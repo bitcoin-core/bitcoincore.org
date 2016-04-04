@@ -8,7 +8,7 @@ type: pages
 layout: page
 tags: [sponsorship, research, funding]
 ---
-The Bitcoin Core Sponsorship Programme provides a way for the Bitcoin industry to fund independent research and development of Bitcoin Core, by funding developers, developer projects, or otherwise providing resources to the project. The programme is tailored for larger industry participants and at this time, we have no mechanism for taking smaller donations.
+The [Bitcoin Core Sponsorship Programme](/en/2016/04/04/announcing_sponsorship_programme/) provides a way for the Bitcoin industry to fund independent research and development of Bitcoin Core, by funding developers, developer projects, or otherwise providing resources to the project. The programme is tailored for larger industry participants and at this time, we have no mechanism for taking smaller donations.
 
 To maintain decentralisation, projects will be individually managed by a separate lead, who will be responsible for heading the project as well as allocating funds.
 
