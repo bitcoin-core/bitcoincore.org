@@ -17,7 +17,7 @@
                               {% if sublink[0] != 'home' and sublink[1].submenu != true and sublink[1].disabled != true %}
                               <li><a href="{{ sublink[1].url }}">{{ sublink[1].title }}</a></li>
                               {% elsif sublink[1].submenu == true and sublink[1].disabled != true %}
-                              <li>{% if sublink[1].url %}<a href="{{ link[1].url }}">{{ sublink[1].title }}</a>{% else %}<a href="javascript:;">{{ sublink[1].title }}</a>{% endif %}
+                              <li>{% if sublink[1].url %}<a href="{{ sublink[1].url }}">{{ sublink[1].title }}</a>{% else %}<a href="javascript:;">{{ sublink[1].title }}</a>{% endif %}
                                   <ul>
                                       {% for sublink2 in sublink[1].tree %}
                                       <li><a href="{{ sublink2[1].url }}">{{ sublink2[1].title }}</a></li>
