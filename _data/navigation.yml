@@ -573,10 +573,10 @@ zh_TW:
         tree:
           programme:
             title: "programme"
-            url: "/en/about/sponsorship/programme/"
+            url: "/zh_TW/about/sponsorship/programme/"
           faq:
             title: "FAQ"
-            url: "/en/about/sponsorship/faq/"
+            url: "/zh_TW/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
