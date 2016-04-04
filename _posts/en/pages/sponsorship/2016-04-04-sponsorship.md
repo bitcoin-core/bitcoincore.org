@@ -16,6 +16,8 @@ The Bitcoin Core project has a suggested list of projects that require funding, 
 
 _**To discuss the possibilities, please email sponsorship<span style="display:none"></span>@bitcoincore.org**_
 
+Additionally please see the [FAQ](/en/about/sponsorship/faq/) for more details.
+
 Example general projects:
 
 - Internships for new developers to help with code, review and testing

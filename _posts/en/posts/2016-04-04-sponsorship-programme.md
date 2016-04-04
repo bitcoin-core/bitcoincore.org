@@ -27,3 +27,5 @@ As well as sponsorship of specific projects, we need more qualified developers w
 Finally, because Bitcoin Core is an open source project, and we want to maintain a sense of decentralisation, individual projects will have their own project manager who will be responsible for allocating funds as well as providing regular monthly reporting. Please note that this programme is tailored for industry participants, and at this time we have no mechanism for accepting smaller donations.
 
 If your business would like to sponsor general development, a specific project, or know more, **please visit the [Sponsorship Programme](/en/about/sponsorship/programme/) page**.
+
+Additionally please see the [FAQ](/en/about/sponsorship/faq/) for more details.
