@@ -12,7 +12,7 @@ image:
   feature: mount-everest-276995_1280.jpg
   byline: "With determination, no mountain is insurmountable." 
 ---
-Today we are happy to announce the launch of the Bitcoin Core Sponsorship Programme for the Bitcoin industry. The programme provides a direct way for industry to get involved with Bitcoin Core by facilitating specific projects, research, and development; as well as to help with often overlooked aspects of the project like communication, infrastructure and project coordination.
+Today we are happy to announce the launch of the **[Bitcoin Core Sponsorship Programme](/en/about/sponsorship/programme/)** for the Bitcoin industry. The programme provides a direct way for industry to get involved with Bitcoin Core by facilitating specific projects, research, and development; as well as to help with often overlooked aspects of the project like communication, infrastructure and project coordination.
 
 Bitcoin Core software powers a large portion of the Bitcoin network infrastructure, and a project of this magnitude requires as much help as it can get. However, due to the complex nature of the Bitcoin system, people with domain expertise that can actually contribute are scarce and the bar for developing, research, and testing is extremely high. Domain experts already get a lot of opportunities across many industries, and without direct incentives it is difficult to attract and retain talent.
 
@@ -26,4 +26,4 @@ As well as sponsorship of specific projects, we need more qualified developers w
 
 Finally, because Bitcoin Core is an open source project, and we want to maintain a sense of decentralisation, individual projects will have their own project manager who will be responsible for allocating funds as well as providing regular monthly reporting. Please note that this programme is tailored for industry participants, and at this time we have no mechanism for accepting smaller donations.
 
-If your business would like to sponsor general development, a specific project, or know more, please visit the [Sponsorship Programme](/en/about/sponsorship/programme/) page.
+If your business would like to sponsor general development, a specific project, or know more, **please visit the [Sponsorship Programme](/en/about/sponsorship/programme/) page**.

@@ -14,7 +14,7 @@ To maintain decentralisation, projects will be individually managed by a separat
 
 The Bitcoin Core project has a suggested list of projects that require funding, and sponsors are also able to suggest their own. Sponsors may provide funding or human resources.
 
-To discuss the possibilities, please email sponsorship<span style="display:none"></span>@bitcoincore.org
+_**To discuss the possibilities, please email sponsorship<span style="display:none"></span>@bitcoincore.org**_
 
 Example general projects:
 
