@@ -1,6 +1,7 @@
 ---
 title: 有關Bitcoin Core溝通渠道的澄清
 name: clarifying-communications
+id: zh_tw-clarifying-communications
 type: post
 type: posts
 lang: zh_TW
