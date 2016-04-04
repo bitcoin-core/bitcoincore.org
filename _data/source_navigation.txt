@@ -13,6 +13,17 @@ en:
       team:
         title: "Team"
         url:   "/en/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"

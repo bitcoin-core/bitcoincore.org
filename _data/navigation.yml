@@ -92,6 +92,17 @@ de:
       team:
         title: "Team"
         url:   "/en/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Unterstützer"
         url:   "/en/supporters"
@@ -160,6 +171,17 @@ es:
       team:
         title: "Team"
         url:   "/en/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Desarrolladores"
         url:   "/en/supporters"
@@ -228,6 +250,17 @@ fr:
       team:
         title: "L'équipe"
         url:   "/fr/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Soutiens"
         url:   "/en/supporters"
@@ -296,6 +329,17 @@ it:
       team:
         title: "Team"
         url:   "/en/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
@@ -364,6 +408,17 @@ ru:
       team:
         title: "Team"
         url:   "/en/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
@@ -432,6 +487,17 @@ zh_CN:
       team:
         title: "Team"
         url:   "/en/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
@@ -500,6 +566,17 @@ zh_TW:
       team:
         title: "Team"
         url:   "/en/team/"
+      projects:
+        title: "Sponsorship"
+        url: "/en/about/sponsorship/programme/"
+        submenu: true
+        tree:
+          programme:
+            title: "programme"
+            url: "/en/about/sponsorship/programme/"
+          faq:
+            title: "FAQ"
+            url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
         url:   "/en/supporters"
