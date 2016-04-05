@@ -8,3 +8,6 @@ en:
   not_translated: "Note: this page has not been translated"
   tocoverview: "Overview"
   translation_outdated: "This translation may be out of date. Please compare with the English version."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
