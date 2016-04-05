@@ -15,6 +15,9 @@
 [Wladimir van der Laan]: https://github.com/laanwj
 [Jorge Timon]: https://github.com/jtimon
 [Marco Falke]: https://github.com/MarcoFalke
+[Tom Harding]: https://github.com/dgenr8
+[Patrick Strateman]: https://github.com/pstratem
+[Pavel Janik]: https://github.com/paveljanik
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
