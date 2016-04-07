@@ -1,3 +1,4 @@
+|[9][BIP9]   | v0.12.1       |[Version bits with timeout and delay][BIP9]|
 |[11][BIP11] | v0.6.0        |[M-of-N Standard Transactions][BIP11]|
 |[13][BIP13] | v0.6.0        |[Address Format for pay-to-script-hash][BIP13]|
 |[14][BIP14] | v0.6.0        |[Protocol Version and User Agent][BIP14]|
