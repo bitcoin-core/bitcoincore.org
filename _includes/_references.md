@@ -55,6 +55,7 @@
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
+[bitcoin-core-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-core-dev
 [Slack]: https://bitcoincore.slack.com/
 [slack-invite]: https://slack.bitcoincore.org/
 [software life cycle]: /en/lifecycle

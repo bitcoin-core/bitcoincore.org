@@ -7,7 +7,7 @@ type: pages
 layout: page
 lang: en
 share: false
-version: 2
+version: 3
 ---
 
 You are welcome to contribute to the project!
@@ -24,7 +24,7 @@ Feel free to report [issues][issues] and open [pull requests][pulls], but please
 
 **Discussion**
 
-Most Bitcoin Core related discussion happens in the `#bitcoin-core-dev` IRC channel on irc.freenode.net. There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev] and a general Bitcoin discussion [bitcoin-discuss][bitcoin-discuss]. We also have [Slack][slack] (request an [invitation][invite]).
+Most Bitcoin Core related discussion happens in the [#bitcoin-core-dev] IRC channel on irc.freenode.net or [bitcoin-core-dev][] mailing list. There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][] and a general Bitcoin discussion [bitcoin-discuss][]. We also have [Slack][slack] ([request an invitation][slack-invite]).
 
 **Contribute to this website**
 
@@ -33,10 +33,6 @@ You can also translate or contribute to this [website][website-contrib].
 [README.md]: https://github.com/bitcoin/bitcoin/blob/master/README.md
 [doc]: https://github.com/bitcoin/bitcoin/tree/master/doc
 [translation_process.md]: https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md
-[issues]: https://github.com/bitcoin/bitcoin/issues
-[pulls]: https://github.com/bitcoin/bitcoin/pulls
-[bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
-[bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
-[Slack]: https://bitcoincore.slack.com/
-[invite]: https://slack.bitcoincore.org/
+
+{% include _references.md %}
