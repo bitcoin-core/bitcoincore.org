@@ -1,0 +1,9 @@
+{% assign t=site.data.translations[page.lang] %}
+<p>
+    <a href="https://bitcoincore.org/{{ page.lang }}/rss.xml" title="{{ t.rss_feed }}"><img src="/assets/images/rss-24x24.png" alt="{{ t.rss_feed }}"></a>
+    {{ t.rss_blog_feed }}
+</p>
+<p>
+    <a href="https://bitcoincore.org/{{ page.lang }}/meetingrss.xml" title="{{ t.rss_feed }}"><img src="/assets/images/rss-24x24.png" alt="{{ t.rss_feed }}"></a>
+    {{ t.rss_meetings_feed }}
+</p>

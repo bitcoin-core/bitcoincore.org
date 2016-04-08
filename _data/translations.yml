@@ -8,6 +8,9 @@ en:
   not_translated: "Note: this page has not been translated"
   tocoverview: "Overview"
   translation_outdated: "This translation may be out of date. Please compare with the English version."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
 
 de:
   created: "Veröffentlicht am"
@@ -19,6 +22,9 @@ de:
   not_translated: "Hinweis: Diese Seite wurde nicht übersetzt"
   tocoverview: "Inhaltsverzeichnis"
   translation_outdated: "Diese Übersetzung kann veraltet sein. Vergleichen Sie bitte mit der englischen Version."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
 
 es:
   created: "Publicado el"
@@ -30,6 +36,9 @@ es:
   not_translated: "Nota: esta página no ha sido traducida"
   tocoverview: "Overview"
   translation_outdated: "Esta traducción se puede estar fuera de fecha. Por favor compare con la versión Inglés."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
 
 fr:
   created: "Publié le"
@@ -41,6 +50,9 @@ fr:
   not_translated: "Note: cette page n'a pas encore été traduite"
   tocoverview: "Sommaire"
   translation_outdated: "Cette traduction peut être obsolète. S'il vous plaît de comparer avec la version anglaise."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
 
 it:
   created: "Published on the"
@@ -52,6 +64,9 @@ it:
   not_translated: "Nota: questa pagina non è stato tradotto"
   tocoverview: "Overview"
   translation_outdated: "Questa traduzione può essere aggiornato. Si prega di confrontare con la versione inglese."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
 
 ru:
   created: "Published on the"
@@ -63,6 +78,9 @@ ru:
   not_translated: "Примечание: Эта страница не была переведена"
   tocoverview: "Overview"
   translation_outdated: "Этот перевод может быть устаревшим. Пожалуйста, сравните с английской версией."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
 
 zh_CN:
   created: "发布在"
@@ -74,6 +92,9 @@ zh_CN:
   not_translated: "注：该页尚未被翻译"
   tocoverview: "总览"
   translation_outdated: "这段翻译可能已过期。请对照英文原版."
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
 
 zh_TW:
   created: "發表於"
@@ -85,3 +106,6 @@ zh_TW:
   not_translated: "注意：本頁未被翻譯"
   tocoverview: "Overview"
   translation_outdated: "This translation may be out of date compared to the English version"
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"
