@@ -43,16 +43,16 @@ es:
 fr:
   created: "Publié le"
   author: "par"
-  description: "Site Bitcoin Core"
+  description: "Site web Bitcoin Core"
   footer: "Projet Bitcoin Core"
   related: "Recommandé"
   viewallposts: "Voir tout"
   not_translated: "Note: cette page n'a pas encore été traduite"
   tocoverview: "Sommaire"
-  translation_outdated: "Cette traduction peut être obsolète. S'il vous plaît de comparer avec la version anglaise."
-  rss_feed: "Bitcoin Core Blog RSS Feed"
-  rss_meetings_feed: "Meetings feed"
-  rss_blog_feed: "Blog posts feed"
+  translation_outdated: "Cette traduction est probablement obsolète.  Veuillez consulter la version anglaise."
+  rss_feed: "Flux RSS du Blog Bitcoin Core"
+  rss_meetings_feed: "Flux des réunions"
+  rss_blog_feed: "Flux des posts du blog"
 
 it:
   created: "Published on the"
