@@ -251,16 +251,16 @@ fr:
         title: "L'équipe"
         url:   "/fr/team/"
       projects:
-        title: "Sponsorship"
-        url: "/en/about/sponsorship/programme/"
+        title: "Parrainage"
+        url: "/fr/about/sponsorship/programme/"
         submenu: true
         tree:
           programme:
             title: "programme"
-            url: "/en/about/sponsorship/programme/"
+            url: "/fr/about/sponsorship/programme/"
           faq:
             title: "FAQ"
-            url: "/en/about/sponsorship/faq/"
+            url: "/fr/about/sponsorship/faq/"
       supporters:
         title: "Soutiens"
         url:   "/en/supporters"
