@@ -18,6 +18,7 @@
 [Tom Harding]: https://github.com/dgenr8
 [Patrick Strateman]: https://github.com/pstratem
 [Pavel Janik]: https://github.com/paveljanik
+[Bryan Bishop]: https://github.com/kanzure
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
@@ -30,6 +31,7 @@
 [BIP23]: https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki
 [BIP30]: https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki
 [BIP31]: https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki
+[BIP32]: https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
 [BIP34]: https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki
 [BIP35]: https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki
 [BIP37]: https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki
