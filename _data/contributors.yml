@@ -15,6 +15,14 @@ maintainers:
     avatar: https://avatars1.githubusercontent.com/u/178464?v=3&s=460
     bio:
     role: GUI maintainer
+  -
+    name: Marco Falke
+    github: MarcoFalke
+    irc: MarcoFalke
+    twitter:
+    avatar: https://avatars1.githubusercontent.com/u/6399679?v=3&s=460
+    bio:
+    role: QA/Test framework maintainer
 contributors:
   -
     name: Dr. Pieter Wuille
@@ -110,14 +118,6 @@ contributors:
     irc: sdaftuar
     twitter:
     avatar: https://avatars1.githubusercontent.com/u/7463573?v=3&s=460
-    bio:
-    role:
-  -
-    name: Marco Falke
-    github: MarcoFalke
-    irc: MarcoFalke
-    twitter:
-    avatar: https://avatars1.githubusercontent.com/u/6399679?v=3&s=460
     bio:
     role:
   -
