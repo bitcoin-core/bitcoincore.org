@@ -14,3 +14,5 @@ Bitcoin Core supports the following [BIPs][BIP1].
 |-----|---------------|-------|
 {% include pages/bips-list.md %}
 {% include _references.md %}
+
+* pending `csv` soft fork deployment using [BIP9][]
