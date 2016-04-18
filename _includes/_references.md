@@ -19,6 +19,7 @@
 [Patrick Strateman]: https://github.com/pstratem
 [Pavel Janik]: https://github.com/paveljanik
 [Bryan Bishop]: https://github.com/kanzure
+[Gregory Sanders]: https://github.com/instagibbs
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
