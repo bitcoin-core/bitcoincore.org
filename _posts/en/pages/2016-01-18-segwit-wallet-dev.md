@@ -1,5 +1,5 @@
 ---
-version: 1
+version: 2
 title: Segregated Witness Wallet Development Guide
 name: segwit-wallet-dev
 type: pages
