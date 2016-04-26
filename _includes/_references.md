@@ -50,7 +50,11 @@
 [BIP125]: https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki
 [BIP130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
 [BIP133]: https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki
+[BIP141]: https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
 [BIP142]: https://github.com/bitcoin/bips/blob/master/bip-0142.mediawiki
+[BIP143]: https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki
+[BIP144]: https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki
+[BIP145]: https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki
 
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
 [#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
