@@ -20,6 +20,12 @@ Native witness program is defined as a <code>scriptPubKey</code> with a single b
 
 Witness program nested in P2SH is a P2SH output with a <code>redeemScript</code> of a single byte push (<code>OP_0</code>, <code>OP_1</code>, ...,  <code>OP_16</code>) followed by a push of 2 to 32 bytes.
 
+## Network services
+
+Segregated witness capable nodes will advertise that they can provide witnesses through the following service bit:
+
+<pre><code>NODE_WITNESS = (1 << 3)</code></pre>
+
 ### Transaction Serialization
 
 If a transaction is transmitted without any witness data, the traditional serialization format MUST be used.
