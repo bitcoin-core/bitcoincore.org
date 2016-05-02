@@ -14,12 +14,13 @@ version: 1
 
 New technology will be deployed when it is ready and has been tested. However, we believe the following is a reasonable schedule for the specific improvements described in the [roadmap][].
 
-| Dec 2015 | | Deploy segregated witness testnet |
-| Feb 2016 | 0.12.0 | [libsecp256k1 verification][] |
-| Feb 2016 | | Segregated witness feature complete & ready for general review |
-| Mar 2016\* | 0.12.x | Deploy OP_CHECKSEQUENCEVERIFY (BIPs [68][BIP68] & [112][BIP112]) + [BIP113][] as first [BIP9][] versionbits soft fork |
-| April 2016\* |  0.12.x |  Deploy segregated witness (including block size increase) |
-| 2016 | | Weak blocks and IBLT, Lightning, or both |
+| Dec 2015 | | Deploy segregated witness testnet |<img src="/assets/images/ok-48.png" alt="delivered" title="delivered">|
+| Feb 2016 | 0.12.0 | [libsecp256k1 verification][] |<img src="/assets/images/ok-48.png" alt="delivered" title="delivered">|
+| Feb 2016 | | Segregated witness feature complete & ready for general review |<img src="/assets/images/ok-48.png" alt="delivered" title="delivered">|
+| Mar 2016\* | 0.12.1 | Deploy OP_CHECKSEQUENCEVERIFY (BIPs [68][BIP68] & [112][BIP112]) + [BIP113][] as first [BIP9][] versionbits soft fork |<img src="/assets/images/ok-48.png" alt="delivered" title="delivered">|
+| | | [Segregated witness pull request](https://github.com/bitcoin/bitcoin/pull/7910) | <img src="/assets/images/ok-48.png" alt="delivered" title="delivered">|
+| April 2016\* |  0.12.2 |  Deploy segregated witness (including block size increase) ||
+| 2016 | | Weak blocks and IBLT, Lightning, or both ||
 
 \* Dates with an asterisk are when we expect to release soft fork-ready code. The code will not be released until it has been well reviewed, and the actual fork will take time to activate ([BIP66][] activated in July 2015 after a few months; [BIP65][] activated in Dec 2015 after only 5 weeks).
 
