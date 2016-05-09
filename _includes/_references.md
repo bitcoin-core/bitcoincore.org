@@ -22,6 +22,8 @@
 [Gregory Sanders]: https://github.com/instagibbs
 [Johnson Lau]: https://github.com/jl2012
 [Andrew Chow]: https://github.com/achow101
+[Nicolas Dorier]: https://github.com/NicolasDorier
+[Jonas Nick]: https://github.com/jonasnick
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
