@@ -22,6 +22,7 @@
 |[Eloipool](https://github.com/luke-jr/eloipool)|yes|wip|pool software|n/a|
 |[GreenAddress](https://greenaddress.it/)*|yes|wip|wallet|pycoin, bitcoinjs|
 |[GreenBits](https://www.greenbits.com/)|yes|wip|wallet|bitcoinj|
+|[Kaiko](https://www.kaiko.com/)|yes|no|explorer||
 |[Ledger](https://www.ledgerwallet.com/)|yes|yes|hardware wallet||
 |[libbtc](https://github.com/libbtc)|yes|no|library||
 |[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library||
@@ -35,5 +36,5 @@
 |[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
 |[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|bitcoinj|
 |[Smartbit](https://www.smartbit.com.au/)|yes|no|explorer||
-|[Trezor](http://satoshilabs.com/trezor/)|yes|no|hardware wallet||
+|[Trezor](http://satoshilabs.com/trezor/)|yes|wip|hardware wallet||
 |[Vaultoro](https://www.vaultoro.com/)|yes|no|||
