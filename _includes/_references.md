@@ -64,6 +64,8 @@
 [BIP143]: https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki
 [BIP144]: https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki
 [BIP145]: https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki
+[BIP151]: https://github.com/bitcoin/bips/blob/master/bip-0151.mediawiki
+[BIP152]: https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki
 
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
 [#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
