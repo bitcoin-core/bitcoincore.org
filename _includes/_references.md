@@ -1,5 +1,8 @@
+[Adam Back]: http://www.cypherspace.org/adam/
 [Gregory Maxwell]: https://github.com/gmaxwell
 [Luke Dashjr]: https://github.com/luke-jr
+[Tadge Dryja]: https://github.com/T909
+[Mark Friedenbach]: https://github.com/maaku
 [Peter Todd]: https://github.com/petertodd
 [Suhas Daftuar]: https://github.com/sdaftuar
 [Pieter Wuille]: https://github.com/sipa
@@ -14,6 +17,7 @@
 [Warren Togami]: https://github.com/wtogami
 [Wladimir van der Laan]: https://github.com/laanwj
 [Jorge Timon]: https://github.com/jtimon
+[Jorge Timón]: https://github.com/jtimon
 [Marco Falke]: https://github.com/MarcoFalke
 [Tom Harding]: https://github.com/dgenr8
 [Patrick Strateman]: https://github.com/pstratem
