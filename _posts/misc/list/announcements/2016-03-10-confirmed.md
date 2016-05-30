@@ -1,7 +1,7 @@
 ---
 title: Confirmation Success
 permalink: /list/announcements/confirmed/
-type:
+type: none
 layout: page
 lang: en
 share: false
