@@ -1,6 +1,7 @@
 |[AirBitz](https://airbitz.co/)|yes|no|wallet||
 |[Armory](https://github.com/goatpig/BitcoinArmory/tree/SegWit/)|yes|wip|wallet|bitcoin core|
 |[Bcoin](https://github.com/bcoin-org/bcoin)|yes|wip|library||
+|[Bitcoin India](https://bitcoin-india.org/)|yes|wip|exchange||
 |[Bitcoin LJR](http://luke.dashjr.org/programs/bitcoin-ljr/)|yes|no||n/a|
 |[BitcoinJ](https://bitcoinj.github.io/)|yes|wip|library|n/a|
 |[bitcoin-lib](https://github.com/ACINQ/bitcoin-lib)|yes|wip|library|n/a|
@@ -8,6 +9,7 @@
 |[bitcore-lib](https://bitcore.io/)|yes|wip|library|n/a|
 |[BitGo](https://www.bitgo.com/)*|yes|no|wallet|bitcoinj, bitcoinjs|
 |[Bither Wallet](https://bither.net/)|yes|no|wallet||
+|[BitmainWarranty](https://bitmainwarranty.com/)|yes|yes|miner||
 |[Bitrated](https://www.bitrated.com/)|yes|no|wallet||
 |[BitWasp](https://github.com/Bit-Wasp/bitcoin-php)|yes|yes|library||
 |[Blocktrail](https://www.blocktrail.com/)|yes|no|wallet, block explorer||
@@ -38,3 +40,4 @@
 |[Smartbit](https://www.smartbit.com.au/)|yes|no|explorer||
 |[Trezor](http://satoshilabs.com/trezor/)|yes|wip|hardware wallet||
 |[Vaultoro](https://www.vaultoro.com/)|yes|no|||
+|[WageCan](https://www.wagecan.com/)|yes|wip|exchange||
