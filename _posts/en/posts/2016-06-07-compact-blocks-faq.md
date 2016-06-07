@@ -21,8 +21,8 @@ excerpt: Compact block relay, BIP152, is a method of reducing the amount of band
 
 Using simple techniques it is possible to reduce the amount of bandwidth necessary to propagate new blocks to full nodes when they already share much of the same mempool contents. Peers send compact block “sketches” to receiving peers. These sketches include the following information:
 
-- The 80-type header of the new block
-- Shortened transaction identifiers (txids), that are encoded to prevent Denial-of-Service (DoS) attacks
+- The 80-byte header of the new block
+- Shortened transaction identifiers (txids), that are designed to prevent Denial-of-Service (DoS) attacks
 - Some full transactions which the sending peer predicts the receiving peer doesn't have yet
 
 The receiving peer then tries to reconstruct the entire block using the received information and the transactions already in its memory pool.  If it is still missing any transactions, it will request those from the transmitting peer.
@@ -63,13 +63,13 @@ The [Fast Relay Network](http://bitcoinrelaynetwork.org/) (FRN) consists of two 
 
 * The Fast Block Relay Protocol (FBRP)
 
-The set of curated nodes in the FRN have been carefully chosen with minimal relay over the globe as the number one priority. Failure of these nodes would result in a not inconsequential increase of wasted hashpower and potential further centralization of mining. A large majority of mining hashpower today connects to this network.
+The set of curated nodes in the FRN have been carefully chosen with minimal relay over the globe as the number one priority. Failure of these nodes would result in a significant increase of wasted hashpower and potential further centralization of mining. A large majority of mining hashpower today connects to this network.
 
 The original FBRP is how the participating nodes communicate block information to each other. Nodes keep track of what transactions they send to each other, and relay block differentials based off of this knowledge. This protocol is nearly optimal for one-to-one server-client communication of new blocks. More recently, a UDP and Forward Error Correction (FEC) based protocol, named RN-NextGeneration,has been deployed for testing and use by miners. These protocols however require a not-well connected relay topology and are more brittle than a more general p2p network. Improvements at the protocol level using compact blocks will shrink the performance gap between the curated network of nodes and the p2p network in general. The increased robustness of the p2p network and block propagation speed at large will play a role in how the network develops in the future. 
 
 ## Does this scale Bitcoin?
 
-This feature is intended to save peak block bandwidth for nodes, reducing bandwidth spikes which can degrade end-user internet experience. However, the centralization pressures of mining exist in a large part due to latency of block propagation, as described in the following video. Compact blocks version 1 is not necessarily designed to solve that problem.
+This feature is intended to save peak block bandwidth for nodes, reducing bandwidth spikes which can degrade end-user internet experience. However, the centralization pressures of mining exist in a large part due to latency of block propagation, as described in the following video. Compact blocks version 1 is not primarily designed to solve that problem.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Y6kibPzbrIc" frameborder="0" allowfullscreen> </iframe>
 
