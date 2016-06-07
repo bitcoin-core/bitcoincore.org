@@ -5,12 +5,13 @@ lang: en
 name: compact-blocks-faq
 id: en-compact-blocks-faq
 title: Compact Blocks FAQ
-permalink: /en/2016/06/06/compact-blocks-faq/
+permalink: /en/2016/06/07/compact-blocks-faq/
 version: 1
+excerpt: Compact block relay, BIP152, is a method of reducing the amount of bandwidth used to propagate new blocks to full nodes.
 ---
 {% include _toc.html %}
 
-*Compact block relay* is a method of reducing the amount of bandwidth used to propagate new blocks to full nodes.
+*Compact block relay*, [BIP152][], is a method of reducing the amount of bandwidth used to propagate new blocks to full nodes.
 
 ## Summary
 
@@ -36,7 +37,7 @@ The diagram below shows the way nodes currently send blocks compared to compact 
 
 - In **Low Bandwidth Relaying,** Node B uses `sendcmpt(0)` to tell Node A that it wants to minimize bandwidth usage as much as possible.  When a new block arrives, Node A fully validates it (so it doesn't relay any invalid blocks).  Then it asks Node B whether it wants the block (`inv`) so that if Node B has already received the block from another peer, it can avoid downloading it again.  If Node B does want the block, it asks for it in compact mode (`getdata(CMPCT)`) and Node A sends the header, short txids, and predicted missing transactions.  Node B attempts to reconstruct the block, requests any transactions it is still missing, and Node A sends those transactions.  Node B then fully validates the block normally.
 
-##What are some useful benchmarks for this?
+## What are some useful benchmarks for this?
 
 A typical full 1MB block announcement with 2,500 transactions can be reconstructed by the receiving node with a block sketch of about 15KB, plus overhead for each transaction in the block that is not in the receiving node's mempool.
 
@@ -50,7 +51,7 @@ To reduce the number of things that need to be reviewed in the initial implement
 
 However, in the described experiments, the sending node used a simple formula to choose which transactions to send: when Node A received a block, it checked to see which transactions were in the block but not in its mempool; those were the transactions it predicted that its peer didn't have.  The reasoning is that (without additional information) the transactions you didn't know about are probably also the transactions your peers don't know about. With this basic heuristic, a large improvement was seen, illustrating that many times the simplest solutions are the best.
 
-##How does the Fast Relay Network factor into this?
+## How does the Fast Relay Network factor into this?
 
 The [Fast Relay Network](http://bitcoinrelaynetwork.org/) (FRN) consists of two pieces:
 
@@ -80,7 +81,7 @@ Furthermore, the experiments conducted and data collected using the first versio
 
 ## What is the timeline on coding, testing, reviewing and deploying compact block propagation?
 
-The first version of compact blocks has been assigned BIP152, has a working implementation, and is being actively tested by the developer community. 
+The first version of compact blocks has been assigned [BIP152][], has a working implementation, and is being actively tested by the developer community. 
 
 - BIP152: <https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki>
 - Reference implementation: <https://github.com/TheBlueMatt/bitcoin/tree/udp>
