@@ -7,6 +7,10 @@ id: en-compact-blocks-faq
 title: Compact Blocks FAQ
 permalink: /en/2016/06/07/compact-blocks-faq/
 version: 1
+categories:
+ - FAQ
+ - BIPS
+tags: [compact blocks, compact block relay]
 excerpt: Compact block relay, BIP152, is a method of reducing the amount of bandwidth used to propagate new blocks to full nodes.
 ---
 {% include _toc.html %}
@@ -15,7 +19,7 @@ excerpt: Compact block relay, BIP152, is a method of reducing the amount of band
 
 ## Summary
 
-Using simple techniques it is possible to reduce the amount of bandwidth necessary to propagate new blocks to full nodes when they already share much of the same mempool contents. Peers send compact block “sketches” to receiving peers. These sketchest include the following information:
+Using simple techniques it is possible to reduce the amount of bandwidth necessary to propagate new blocks to full nodes when they already share much of the same mempool contents. Peers send compact block “sketches” to receiving peers. These sketches include the following information:
 
 - The 80-type header of the new block
 - Shortened transaction identifiers (txids), that are encoded to prevent Denial-of-Service (DoS) attacks

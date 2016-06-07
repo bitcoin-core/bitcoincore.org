@@ -46,6 +46,9 @@ en:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -125,6 +128,9 @@ de:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Entwicklung"
     submenu: true
@@ -204,6 +210,9 @@ es:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Programación"
     submenu: true
@@ -283,6 +292,9 @@ fr:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/fr/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Développement"
     submenu: true
@@ -362,6 +374,9 @@ it:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -441,6 +456,9 @@ ru:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -520,6 +538,9 @@ zh_CN:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -599,6 +620,9 @@ zh_TW:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Development"
     submenu: true

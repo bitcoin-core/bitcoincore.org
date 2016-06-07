@@ -46,6 +46,9 @@ en:
        optin-rbf:
          title: "Opt-in RBF"
          url: "/en/faq/optin_rbf"
+       compact-blocks:
+         title: "Compact Blocks"
+         url: "/en/2016/06/07/compact-blocks-faq/"
   dev:
     title: "Development"
     submenu: true
