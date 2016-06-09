@@ -15,7 +15,7 @@ This document describes the life-cycle of the Bitcoin Core software package rele
 
 ## Versioning
 
-Bitcoin Core versions releases as follows 0.MAJOR.MINOR. Release candidates are suffixed with rc1, rc2 etc.
+Bitcoin Core releases are versioned as follow: 0.MAJOR.MINOR, and release candidates are suffixed with rc1, rc2 etc.
 
 ## Major releases
 
@@ -25,13 +25,13 @@ These will be numbered 0.11.0, 0.12.0 etc.
 
 ## Maintenance releases
 
-We will provide maintenance "minor releases" that fix bugs within the major releases. As a general rule we do not introduce major new features in a maintenance release (consensus rule are exempt from this rule). However, we may add minor features where necessary, and we will back-port consensus rule changes such as soft forks.
+We will provide maintenance "minor releases" that fix bugs within the major releases. As a general rule we do not introduce major new features in a maintenance release (consensus rules are exempt). However, we may add minor features where necessary, and we will back-port consensus rule changes such as soft forks.
 
 Minor releases will be numbered 0.11.1, 0.11.2, 0.12.1, 0.12.2 etc.
 
-## Soft forks
+## Consensus rules
 
-Soft fork consensus rule proposals are always shipped first in maintenance versions such as 0.11.2, 0.12.1 etc. This make it easier for enterprise users to assess and test the proposal due to smaller changeset than in a major release. 
+Proposals to change consensus rules are always shipped first in maintenance versions such as 0.11.2, 0.12.1 etc. This make it easier for enterprise users to assess and test the proposal due to smaller changeset than in a major release. It also allows users who follow a more conservative upgrade path to adopt consensus rule changes in a more timely manner.
 
 ## Maintenance period
 
@@ -53,4 +53,9 @@ Once EOL is reached, you will need to upgrade to a newer version.
 
 _TBA: to be announced_
 
+## Foot notes
+
+Bitcoin Core software versioning is similar, but not identical to [SemVer][]. Bitcoin Core implements a full stack of wallet, full node, networking and consensus rule validation. However, versioning of the Bitcoin system is much more complex; there are block versions, transaction versions, p2p versions, and consensus rules are all versioned separately, and the consensus rule. [SemVer][] is not designed to handle this complexity and while Bitcoin Core adheres in the most part to the spirit of [SemVer][], there are notable exceptions, especially for consensus rules proposals.
+
+[SemVer]: https://semver.org/
 [bitcoin-transifex-link]: https://www.transifex.com/bitcoin/bitcoin/
