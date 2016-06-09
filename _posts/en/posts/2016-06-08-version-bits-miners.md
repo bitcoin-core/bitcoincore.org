@@ -66,7 +66,7 @@ To signal both soft forks at once, use `0x20000003` (i.e. `0x1` + `0x2` + `0x200
 
 |0|0|1|0|0| ... |0|0|0|0|0|0|0|0|1|1|
 
-* note if once activated before the other, you must unset the relevant bit and continue signalling the other.
+* note if one is activated before the other, you must unset the relevant bit and continue signalling the other. IF one fails to activate and the timeout expires, you should also unset the bit.
 
 ## How does it differ to an ISM soft fork?
 
@@ -76,15 +76,15 @@ IsSuperMajority() or ISM for short, is a legacy soft fork trigger that activates
 
 For example, if the current version is 4, and the next soft fork introduces version 5 blocks, then after activation is reached (950/1000 blocks), nodes will reject all version 4 blocks.
 
-Once a _version bits_ soft fork reached activation, nodes will simply begin enforcing the new rules, and will NOT orphan a non-signalling block.
+Once a _version bits_ soft fork reaches activation, nodes will simply begin enforcing the new rules, and will NOT orphan a non-signalling block _unless_ it violates the new rules.
 
-2. ISM() look at the previous 1000 blocks on a rolling basis; _version bits_ looks at the previous 2016 block once each time the mining difficulty retargets.
+2. ISM() looks at the previous 1000 blocks on a rolling basis; _version bits_ looks at the previous 2016 block once each time the mining difficulty retargets.
 
 3. ISM() soft forks do not expire. _version bits_ soft forks can only activate between the _start time_ and the _timeout_.
 
 ## Do miners have to upgrade?
 
-No. A [BIP9][] soft fork will not activate unless 95% of the miners signal readiness. If a soft fork reaches `[LOCKED_IN]` state, where the vast majority of the miners are ready for the change, the remaining miners should upgrade within roughly 2 weeks before the next difficulty retarget.
+No. A [BIP9][] soft fork will not activate unless 95% of the miners signal readiness. If a soft fork reaches `[LOCKED_IN]` state, where the vast majority of the miners are ready for the change, the remaining miners should upgrade _before_ the next difficulty retarget (about 2 weeks).
 
 Non-upgraded miners risk producing invalid blocks which would be orphaned if they are not able to validate the newly activated rules.
 
