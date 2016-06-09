@@ -15,7 +15,7 @@ This document describes the life-cycle of the Bitcoin Core software package rele
 
 ## Versioning
 
-Bitcoin Core releases are versioned as follow: 0.MAJOR.MINOR, and release candidates are suffixed with rc1, rc2 etc.
+Bitcoin Core releases are versioned as follows: 0.MAJOR.MINOR, and release candidates are suffixed with rc1, rc2 etc.
 
 ## Major releases
 
@@ -25,13 +25,13 @@ These will be numbered 0.11.0, 0.12.0 etc.
 
 ## Maintenance releases
 
-We will provide maintenance "minor releases" that fix bugs within the major releases. As a general rule we do not introduce major new features in a maintenance release (consensus rules are exempt). However, we may add minor features where necessary, and we will back-port consensus rule changes such as soft forks.
+We will provide maintenance "minor releases" that fix bugs within the major releases. As a general rule we do not introduce major new features in a maintenance release (except for consensus rules). However, we may add minor features where necessary, and we will back-port consensus rule changes such as soft forks.
 
 Minor releases will be numbered 0.11.1, 0.11.2, 0.12.1, 0.12.2 etc.
 
 ## Consensus rules
 
-Proposals to change consensus rules are always shipped first in maintenance versions such as 0.11.2, 0.12.1 etc. This make it easier for enterprise users to assess and test the proposal due to smaller changeset than in a major release. It also allows users who follow a more conservative upgrade path to adopt consensus rule changes in a more timely manner.
+Proposals to change consensus rules are always shipped first in maintenance versions such as 0.11.2, 0.12.1 etc. This make it easier for enterprise users to assess and test the proposal because of its smaller changeset compared to a major release. It also allows users who follow a more conservative upgrade path to adopt consensus rule changes in a more timely manner.
 
 ## Maintenance period
 
@@ -53,9 +53,13 @@ Once EOL is reached, you will need to upgrade to a newer version.
 
 _TBA: to be announced_
 
-## Foot notes
+## Relationship to SemVer
 
-Bitcoin Core software versioning is similar, but not identical to [SemVer][]. Bitcoin Core implements a full stack of wallet, full node, networking and consensus rule validation. However, versioning of the Bitcoin system is much more complex; there are block versions, transaction versions, p2p versions, and consensus rules are all versioned separately, and the consensus rule. [SemVer][] is not designed to handle this complexity and while Bitcoin Core adheres in the most part to the spirit of [SemVer][], there are notable exceptions, especially for consensus rules proposals.
+Bitcoin Core software versioning is similar to the [SemVer][] optional versioning standard for regular feature releases.  However, SemVer was designed for use in normal software libraries where individuals can choose to upgrade the library at their own pace, or even stay behind if they don't like the changes.
+
+Parts of Bitcoin, most notably the consensus rules, don't work that way.  In order for a new consensus rule to go into effect, it must be enforced by some number of miners, full nodes, or both; and once it has gone into effect, software that doesn't know about the new rule may generate or accept invalid transactions.
+
+For this reason, Bitcoin Core deviates from SemVer for changes to consensus rules and other updates where network-wide adoption is necessary or desirable.  The deviation is slight: Bitcoin Core releases these changes as minor releases (`x.y`) instead of as major releases(`x.0`); this minimizes the size of the patch in order to make it easy for as many people as possible to inspect it, test it, and deploy it.  It also makes it possible to backport the same patch to multiple previous major releases, further increasing the number of users who can easily upgrade, although there are not always enough volunteers to manage this.
 
 [SemVer]: https://semver.org/
 [bitcoin-transifex-link]: https://www.transifex.com/bitcoin/bitcoin/
