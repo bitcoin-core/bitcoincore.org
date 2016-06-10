@@ -73,15 +73,13 @@ To signal both soft forks at once, use `0x20000003` (i.e. `0x1` + `0x2` + `0x200
 
 IsSuperMajority() or ISM for short, is a legacy soft fork trigger that activates new rules once 950 out of 1000 blocks are mined which signal the new block version.
 
-1. An IsSuperMajority() soft fork will orphan all blocks with previous version after activation.
+1. An IsSuperMajority() soft fork will orphan all blocks with previous version after activation. For example, if the current version is 4, and the next soft fork introduces version 5 blocks, then after activation is reached (950/1000 blocks), nodes will reject all version 4 blocks.
 
-For example, if the current version is 4, and the next soft fork introduces version 5 blocks, then after activation is reached (950/1000 blocks), nodes will reject all version 4 blocks.
+2. Once a _version bits_ soft fork reaches activation, nodes will simply begin enforcing the new rules, and will NOT orphan a non-signalling block _unless_ it violates the new rules.
 
-Once a _version bits_ soft fork reaches activation, nodes will simply begin enforcing the new rules, and will NOT orphan a non-signalling block _unless_ it violates the new rules.
+3. ISM() looks at the previous 1000 blocks on a rolling basis; _version bits_ looks at the previous 2016 block once each time the mining difficulty retargets.
 
-2. ISM() looks at the previous 1000 blocks on a rolling basis; _version bits_ looks at the previous 2016 block once each time the mining difficulty retargets.
-
-3. ISM() soft forks do not expire. _version bits_ soft forks can only activate between the _start time_ and the _timeout_.
+4. ISM() soft forks do not expire. _version bits_ soft forks can only activate between the _start time_ and the _timeout_.
 
 ## Do miners have to upgrade?
 
