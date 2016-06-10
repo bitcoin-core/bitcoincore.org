@@ -49,6 +49,9 @@ en:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -131,6 +134,9 @@ de:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Entwicklung"
     submenu: true
@@ -213,6 +219,9 @@ es:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Programación"
     submenu: true
@@ -295,6 +304,9 @@ fr:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Développement"
     submenu: true
@@ -377,6 +389,9 @@ it:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -459,6 +474,9 @@ ru:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -541,6 +559,9 @@ zh_CN:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -623,6 +644,9 @@ zh_TW:
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
+       version-bits:
+         title: "Version Bits (BIP9)"
+         url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Development"
     submenu: true
