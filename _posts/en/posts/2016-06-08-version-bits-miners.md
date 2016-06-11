@@ -39,7 +39,7 @@ or
 
 ![version bits state diagram](https://raw.githubusercontent.com/bitcoin/bips/master/bip-0009/states.png)
 
-The Bitcoin network retargets mining difficulty every 2016 blocks; at this time _version bits_ will look at the window of the previous 2016 every to see how many blocks signal for a given soft fork. If 95% of the blocks signal readiness for the soft fork, the state changes from `[STARTED]` to `[LOCKED_IN]`.
+The Bitcoin network retargets mining difficulty every 2016 blocks; at this time _version bits_ will look at the window of the previous 2016 blocks to see how many blocks signal for a given soft fork. If 95% of the blocks signal readiness for the soft fork, the state changes from `[STARTED]` to `[LOCKED_IN]`.
 
 After `[LOCKED_IN]` the rules will activate after one more difficulty retarget, i.e. a further 2016 blocks. Nodes software will warn that an upgrade is pending.
 
