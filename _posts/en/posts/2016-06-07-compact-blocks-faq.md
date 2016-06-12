@@ -43,11 +43,11 @@ The diagram below shows the way nodes currently send blocks compared to compact 
 
 ## What are some useful benchmarks for this?
 
-A typical full 1MB block announcement with 2,500 transactions can be reconstructed by the receiving node with a block sketch of about 15KB, plus overhead for each transaction in the block that is not in the receiving node's mempool.
+An average full 1MB block announcement can be reconstructed by the receiving node with a block sketch of 9KB, plus overhead for each transaction in the block that is not in the receiving node's mempool. The largest block sketches seen top out at a few bytes north of 20KB.
 
-When running live experiments in ‘high bandwidth’ mode and having nodes send up to 6 transactions they predict their peer doesn’t have, we can expect to see around 86% of blocks propagate immediately without needing to request any missing transactions. Even without sending any transactions that are predicted to be missing, a little bit less than 50% of blocks propagate immediately, with the rest needing a full additional network round trip to request and receive missing transactions.
+When running live experiments in ‘high bandwidth’ mode and having nodes prefill up to 6 transactions, we can expect to see well over 90% of blocks propagate immediately without needing to request any missing transactions. Even without prefilling any transactions except for the coinbase, experiments show we can see well north of 60% of blocks propagate immediately, the rest requiring a full additional network round trip.
 
-Since the difference between mempools and blocks is fewer than 6 transactions in most cases, this means that compact block relay achieves a dramatic reduction in required peak bandwidth.
+Since the difference between mempools and blocks for warmed up nodes is rarely more than 6 transactions, this means that compact block relay achieves a dramatic reduction in required peak bandwidth.
 
 ## How are expected missing transactions chosen to immediately forward?
 
