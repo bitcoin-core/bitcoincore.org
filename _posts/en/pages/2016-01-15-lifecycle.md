@@ -55,20 +55,13 @@ _TBA: to be announced_
 
 ## Protocol versioning
 
-The description above only describes Bitcoin Core releases.  Many other
-parts of the Bitcoin system contain their own versions.  A few examples:
+The description above only describes Bitcoin Core software releases. Many other parts of the Bitcoin system contain their own versions.  A few examples:
 
 - Every **block** and **transaction** contains a version number.
-- The **P2P network protocol** uses version numbers to allow nodes to
-  announce what features they support.
+- The **P2P network protocol** uses version numbers to allow nodes to announce what features they support.
 - Bitcoin Core's **built-in wallet** has its own internal version number.
 
-These versions numbers are deliberately decoupled from Bitcoin Core's version
-number as the Bitcoin Core project either has no direct control over them (as is
-the case with blocks and transactions), or tries to maintain compatibility with
-other projects (as is the case with the network protocol), or
-allows for the possibility that no major changes will be made in some
-releases (as is sometimes the case with the built-in wallet).
+These versions numbers are deliberately decoupled from Bitcoin Core's version number as the Bitcoin Core project either has no direct control over them (as is the case with blocks and transactions), or tries to maintain compatibility with other projects (as is the case with the network protocol), or allows for the possibility that no major changes will be made in some releases (as is sometimes the case with the built-in wallet).
 
 ## Relationship to SemVer
 
@@ -76,7 +69,7 @@ Bitcoin Core software versioning does not follow the [SemVer][] optional version
 
 Parts of Bitcoin, most notably the consensus rules, don't work that way.  In order for a new consensus rule to go into effect, it must be enforced by some number of miners, full nodes, or both; and once it has gone into effect, software that doesn't know about the new rule may generate or accept invalid transactions (although upgrades are designed to prevent this from happening when possible).
 
-For this reason, Bitcoin Core deviates from SemVer for changes to consensus rules and other updates where network-wide adoption is necessary or desirable.  The deviation is slight: Bitcoin Core releases these changes as minor releases (`0.x.y`) instead of as major releases(`0.x.0`); this minimizes the size of the patch in order to make it easy for as many people as possible to inspect it, test it, and deploy it.  It also makes it possible to backport the same patch to multiple previous major releases, further increasing the number of users who can easily upgrade, although there are not always enough volunteers to manage this.
+For this reason, Bitcoin Core deviates from SemVer for changes to consensus rules and other updates where network-wide adoption is necessary or desirable.  Bitcoin Core releases these changes as maintenance releases (`0.x.y`) instead of as major releases(`0.x.0`); this minimizes the size of the patch in order to make it easy for as many people as possible to inspect it, test it, and deploy it.  It also makes it possible to backport the same patch to multiple previous major releases, further increasing the number of users who can easily upgrade, although there are not always enough volunteers to manage this.
 
 [SemVer]: https://semver.org/
 [bitcoin-transifex-link]: https://www.transifex.com/bitcoin/bitcoin/
