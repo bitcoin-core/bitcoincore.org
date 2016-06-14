@@ -31,7 +31,7 @@ Minor releases will be numbered 0.11.1, 0.11.2, 0.12.1, 0.12.2 etc.
 
 ## Consensus rules
 
-Proposals to change consensus rules are always shipped first in maintenance versions such as 0.11.2, 0.12.1 etc. This make it easier for enterprise users to assess and test the proposal because of its smaller changeset compared to a major release. It also allows users who follow a more conservative upgrade path to adopt consensus rule changes in a more timely manner.
+Proposals to change consensus rules are always shipped first in maintenance versions such as 0.11.2, 0.12.1 etc. This makes it easier for enterprise users to assess and test the proposal because of its smaller changeset compared to a major release. It also allows users who follow a more conservative upgrade path to adopt consensus rule changes in a more timely manner.
 
 ## Maintenance period
 
