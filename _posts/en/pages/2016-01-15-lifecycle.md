@@ -58,14 +58,12 @@ _TBA: to be announced_
 The description above only describes Bitcoin Core software releases. Many other parts of the Bitcoin system contain their own versions.  A few examples:
 
 - Every **transaction** contains a version number.
-- Every **block** allows miners to signal their readiness to enforce new
-  versions of the consensus rules.
 - The **P2P network protocol** uses version numbers to allow nodes to announce what features they support.
 - Bitcoin Core's **built-in wallet** has its own internal version number.
 
 These versions numbers are deliberately decoupled from Bitcoin Core's version number as the Bitcoin Core project either has no direct control over them (as is the case with blocks and transactions), or tries to maintain compatibility with other projects (as is the case with the network protocol), or allows for the possibility that no major changes will be made in some releases (as is sometimes the case with the built-in wallet).
 
-The consensus protocol itself doesn't have a version number, although it has gone through about a dozen different versions since the release of Bitcoin 0.1 in January 2009.
+The consensus protocol itself doesn't have a version number.
 
 ## Relationship to SemVer
 
