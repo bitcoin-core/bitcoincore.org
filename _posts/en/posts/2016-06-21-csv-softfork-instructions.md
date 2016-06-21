@@ -21,7 +21,11 @@ TL;DR
 
 1. Check all your nodes have been upgraded to Bitcoin Core 0.12.1 or compatible software. This must happen before block #419328.
 
-2. If you manually hardcode the block version field, or use the nSequence or nLockTime fields in the coinbase transaction, you must follow the instructions carefully.
+2. If you hardcode the block version please unset bit 0 of the version field before block 419328, or preferably stop hardcoding it and let bitcoind do it automatically.
+
+3. Use a coinbase nSequence value of 0xffffffff will avoid any potential conflict with BIP68 and BIP113.
+
+4. If you have to use a different nSequence value, you must follow the instructions carefully.
 
 ## Status of CSV soft fork
 
