@@ -21,7 +21,7 @@ TL;DR
 
 1. Check all your nodes have been upgraded to Bitcoin Core 0.12.1 or compatible software. This must happen before block #419328.
 
-2. If you manually hard code the block version field, or use the nSequence or nLockTime fields in the coinbase transaction, you must follow the instructions carefully.
+2. If you manually hardcode the block version field, or use the nSequence or nLockTime fields in the coinbase transaction, you must follow the instructions carefully.
 
 ## Status of CSV soft fork
 
@@ -29,7 +29,7 @@ The "CSV" soft fork has reached the "locked in" threshold required to proceed to
 
 ## For all miners
 
-During the grace period, all miners must upgrade to Bitcoin Core 0.12.1 or any implementation which supports the CSV softfork. In pratice, at the time of writing, Bitcoin Core 0.12.1 is the only version that supports the CSV softfork. Miners must double check to make sure all the mining nodes and backup nodes have been upgraded. Failing to do so may result in generation of invalid blocks, or cause your nodes to build upon any invalid blocks causing chain forks and monetary loss of the concerned miners and general Bitcoin users. 
+During the grace period, all miners must upgrade to Bitcoin Core 0.12.1 or any implementation which supports the CSV softfork. In pratice, at the time of writing, Bitcoin Core 0.12.1 is the only version that supports the CSV softfork. Miners must double check to make sure all the mining nodes and backup nodes have been upgraded. Failing to do so may result in generation of invalid blocks, or cause your nodes to build upon any invalid blocks causing chain forks and monetary loss to the concerned miners and general Bitcoin users. 
 
 ## For miners who manually hardcoded the block version
 
@@ -43,13 +43,13 @@ However, if you are manually setting the block version against this recommendati
 
 Failing to follow this advice may trigger the upgrade warning system of all BIP9 compliant nodes on the network, which will be very disruptive.
 
-For miners who do use the default block version provided by bitcoind, they will keep generating blocks with version 0x20000001 until block #419328 at which point is will automatically unset bit 0. No further action is required.
+For miners who that allow bitcoind to set the block version automatically, no further action is required. Please note it will keep generating blocks with version 0x20000001 until block #419328 at which point is will automatically unset bit 0.
 
 ## For miners who are using the nSequence field of the coinbase transaction
 
 Some miners may use the nSequence field of the coinbase transaction as the mining nonce. With the activation of [BIP68][], such miners must pay extra attention.
 
-If miners are interfering with the nSequence of the coinbase transaction in any manner, they must make sure that the nVersion of the coinbase transaction (*not* the block version) must be 1 or below. One way to ensure this is to hardcode the nVersion of the coinbase transaction as 1. Failing to do so may result in generation of invalid blocks, causing chain fork and monetary loss of the concerned miners and general Bitcoin users.
+If miners are interfering with the nSequence of the coinbase transaction in any manner, they must make sure that the nVersion of the coinbase transaction (*not* the block version) must be 1 or below. One way to ensure this is to hardcode the nVersion of the coinbase transaction as 1. Failing to do so may result in generation of invalid blocks, causing a chain fork and monetary loss of the concerned miners and general Bitcoin users.
 
 No further action is required for miners who are using the default coinbase nSequence and nVersion values provided by bitcoind.
 
