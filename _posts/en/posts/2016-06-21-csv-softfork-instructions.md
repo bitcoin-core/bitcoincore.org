@@ -45,7 +45,7 @@ Failing to follow this advice may trigger the upgrade warning system of all BIP9
 
 For miners who do use the default block version provided by bitcoind, they will keep generating blocks with version 0x20000001 until block #419328 at which point is will automatically unset bit 0. No further action is required.
 
-## For miners who are interfering with the nSequence field of the coinbase transaction
+## For miners who are using the nSequence field of the coinbase transaction
 
 Some miners may use the nSequence field of the coinbase transaction as the mining nonce. With the activation of [BIP68][], such miners must pay extra attention.
 
