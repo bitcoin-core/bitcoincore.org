@@ -9,6 +9,7 @@ permalink: /en/2016/06/21/csv-softfork-instructions/
 categories: [mining]
 tags: [soft fork, soft forks, bip9, version bits, mining, bip68, bip112, bip113]
 version: 1
+excerpt: There is an ongoing soft fork of the Bitcoin consensus rules. While everything appears to be proceeding well, this article contains important information and checklists for miners and pool operators which must not be ignored.
 ---
 {% include _toc.html %}
 
@@ -17,7 +18,9 @@ There is an ongoing soft fork of the Bitcoin consensus rules. While everything a
 If there is any doubt, miners and pool operators are welcome to [contact us][1].
 
 TL;DR 
+
 1. Check all your nodes have been upgraded to Bitcoin Core 0.12.1 or compatible software. This must happen before block #419328.
+
 2. If you manually hard code the block version field, or use the nSequence or nLockTime fields in the coinbase transaction, you must follow the instructions carefully.
 
 ## Status of CSV soft fork
