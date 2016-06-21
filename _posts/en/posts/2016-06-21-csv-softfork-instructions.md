@@ -14,11 +14,11 @@ version: 1
 
 There is an ongoing soft fork of the Bitcoin consensus rules. While everything appears to be proceeding well, this article contains important information and checklists for miners and pool operators which must not be ignored.
 
-If there is any doubt, miners and pool operators are welcome to [contact us](https://bitcoincore.org/en/contact/).
+If there is any doubt, miners and pool operators are welcome to [contact us][1].
 
 TL;DR 
 1. Check all your nodes have been upgraded to Bitcoin Core 0.12.1 or compatible software. This must happen before block #419328.
-2. If you manually hard code the block version field, or use the nSqeuence or nLockTime fields in the coinbase transaction, you must follow the instructions carefully.
+2. If you manually hard code the block version field, or use the nSequence or nLockTime fields in the coinbase transaction, you must follow the instructions carefully.
 
 ## Status of CSV soft fork
 
@@ -36,7 +36,7 @@ If a miner inadvertently has any nodes that don't support the rules indicated by
 
 Unlike the IsSuperMajority softfork used in BIP33/66/65, in the BIP9 softfork system, no blocks will be orphaned due to a wrong version number (as long as the version is >= 4, which is required by BIP65). Therefore, there should be no incentive for miners to hardcode the block version, which would unnecessarily increase the burden of maintenance and risks of human error.
 
-However, if you are manually setting the block version against this recommendation, you MUST take specific action. Now that the "point of no return" grace period has been reached for CSV, you must unset the CSV version bit, bit 0. This means if you were signalling 0x20000001 you should signal 0x20000000. This MUST be changed before block #419328 or you will trigger "unknown softfork" messages in the logs of all BIP9 compliant nodes. For more information please see the [Version Bits FAQ][1].
+However, if you are manually setting the block version against this recommendation, you MUST take specific action. Now that the "point of no return" grace period has been reached for CSV, you must unset the CSV version bit, bit 0. This means if you were signalling 0x20000001 you should signal 0x20000000. This MUST be changed before block #419328 or you will trigger "unknown softfork" messages in the logs of all BIP9 compliant nodes. For more information please see the [Version Bits FAQ][2].
 
 Failing to follow this advice may trigger the upgrade warning system of all BIP9 compliant nodes on the network, which will be very disruptive.
 
@@ -59,7 +59,8 @@ If a miner is interfering with the nLockTime of the coinbase transaction in any 
 
 No further action is required for miners who are using the default coinbase nLockTime values provided by bitcoind.
 
-[1]: /en/2016/06/08/version-bits-miners-faq/#when-should-miners-set-bits
+[1]: /en/contact/
+[2]: /en/2016/06/08/version-bits-miners-faq/#when-should-miners-set-bits
 
 {% include _references.md %}
 
