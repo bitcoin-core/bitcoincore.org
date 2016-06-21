@@ -4,7 +4,7 @@ layout: post
 lang: en
 name: csv-softfork-instructions
 id: en-csv-softfork-instructions
-title: BIP68/112/113 (CSV) softfork: Important upgrade instructions for miners
+title: CSV softfork - Important upgrade instructions for miners
 permalink: /en/2016/06/21/csv-softfork-instructions/
 categories: [mining]
 tags: [soft fork, soft forks, bip9, version bits, mining, bip68, bip112, bip113]
@@ -36,7 +36,7 @@ If a miner inadvertently has any nodes that don't support the rules indicated by
 
 Unlike the IsSuperMajority softfork used in BIP33/66/65, in the BIP9 softfork system, no blocks will be orphaned due to a wrong version number (as long as the version is >= 4, which is required by BIP65). Therefore, there should be no incentive for miners to hardcode the block version, which would unnecessarily increase the burden of maintenance and risks of human error.
 
-However, if you are manually setting the block version against this recommendation, you MUST take specific action. Now that the "point of no return" grace period has been reached for CSV, you must unset the CSV version bit, bit 0. This means if you were signalling 0x20000001 you should signal 0x20000000. This MUST be changed before block #419328 or you will trigger "unknown softfork" messages in the logs of all BIP9 compliant nodes. For more information please see the [Version Bits FAQ](https://bitcoincore.org/en/2016/06/08/version-bits-miners-faq/#when-should-miners-set-bits).
+However, if you are manually setting the block version against this recommendation, you MUST take specific action. Now that the "point of no return" grace period has been reached for CSV, you must unset the CSV version bit, bit 0. This means if you were signalling 0x20000001 you should signal 0x20000000. This MUST be changed before block #419328 or you will trigger "unknown softfork" messages in the logs of all BIP9 compliant nodes. For more information please see the [Version Bits FAQ][1].
 
 Failing to follow this advice may trigger the upgrade warning system of all BIP9 compliant nodes on the network, which will be very disruptive.
 
@@ -58,4 +58,8 @@ This is less common since the Stratum protocol does not support the use of nLock
 If a miner is interfering with the nLockTime of the coinbase transaction in any manner, they must make sure that the value, if interpreted as an UNIX timestamp (i.e. >= 500000000), must be smaller than the median timestamp value of the past 11 blocks, unless the nSequence of the coinbase transaction is exactly 0xffffffff. Failing to do so may result in generation of invalid blocks, causing chain fork and monetary loss of the concerned miners and general Bitcoin users.
 
 No further action is required for miners who are using the default coinbase nLockTime values provided by bitcoind.
+
+[1]: /en/2016/06/08/version-bits-miners-faq/#when-should-miners-set-bits
+
+{% include _references.md %}
 
