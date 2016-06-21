@@ -54,7 +54,7 @@ If miners are interfering with the nSequence of the coinbase transaction in any 
 No further action is required for miners who are using the default coinbase nSequence and nVersion values provided by bitcoind.
 
 
-## For miners who are interfering with the nLockTime field of the coinbase transaction
+## For miners who are using the nLockTime field of the coinbase transaction
 
 This is less common since the Stratum protocol does not support the use of nLockTime field as the mining nonce. But miners doing so must pay extra attention due to the activation of [BIP113][].
 
