@@ -43,7 +43,7 @@ However, if you are manually setting the block version against this recommendati
 
 Failing to follow this advice may trigger the upgrade warning system of all BIP9 compliant nodes on the network, which will be very disruptive.
 
-For miners who that allow bitcoind to set the block version automatically, no further action is required. Please note it will keep generating blocks with version 0x20000001 until block #419328 at which point is will automatically unset bit 0.
+For miners that allow bitcoind to set the block version automatically, no further action is required. Please note it will keep generating blocks with version 0x20000001 until block #419328 at which point is will automatically unset bit 0.
 
 ## For miners who are using the nSequence field of the coinbase transaction
 
