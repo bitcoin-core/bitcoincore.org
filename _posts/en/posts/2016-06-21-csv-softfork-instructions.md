@@ -29,7 +29,7 @@ The "CSV" soft fork has reached the "locked in" threshold required to proceed to
 
 ## For all miners
 
-During the grace period, all miners must upgrade to Bitcoin Core 0.12.1 or any implementation which supports the CSV softfork. In pratice, at the time of writing, Bitcoin Core 0.12.1 is the only version that supports the CSV softfork. Miners must double check to make sure all the mining nodes and backup nodes have been upgraded. Failing to do so may result in generation of invalid blocks, or cause your nodes to build upon any invalid blocks causing chain forks and monetary loss to the concerned miners and general Bitcoin users. 
+During the grace period, all miners must upgrade to Bitcoin Core 0.12.1 or any implementation which supports the CSV softfork. In practice, at the time of writing, Bitcoin Core 0.12.1 is the only version that supports the CSV softfork. Miners must double check to make sure all the mining nodes and backup nodes have been upgraded. Failing to do so may result in generation of invalid blocks, or cause your nodes to build upon any invalid blocks causing chain forks and monetary loss to the concerned miners and general Bitcoin users. 
 
 ## For miners who manually hardcoded the block version
 
