@@ -80,7 +80,7 @@ The high bandwidth mode is being used as the basis for further development into 
 
 The following plan describes how segwit is expected to be deployed.
 
-**Merge to master (without mainnet activation code):** after Bitcoin Core developers "ACK" (approve) the final segwit pull request, it will be merged into the Bitcoin Core master Git repository branch.  The code that is being merged will include everything in segwit except for the activation code.  This will make it easy for developers to test other features on top of segwit, such as compact blocks.
+**Merge to master (without mainnet activation code):** after Bitcoin Core developers "ACK" (approve) the final segwit pull request, it will be merged into the Bitcoin Core master Git repository branch.  The code that is being merged will include everything in segwit except for the activation code.  This will make it easy for developers to test other features on top of segwit, such as compact blocks.  **Activation on testnet** has already occurred so users and developers may experiment and test segwit on testnet.
 
 **Backport to 0.12 branch:** the unactivated code will be backported to the 0.12 maintenance branch and the backport will receive its own testing.
 
@@ -88,7 +88,7 @@ The following plan describes how segwit is expected to be deployed.
 
 **Release candidate phase:** after all developer testing is successfully concluded, a release candidate (probably named 0.12.2RC1) will be publicly provided to anyone willing to test the code.  Miners, merchants, and wallet vendors are especially encouraged to test.  If any problems are found, they will be fixed and a new release candidate will be issued.  This will be repeated as necessary until a release candidate is found with no known problems.
 
-**Binary release:** the final release candidate will have its version changed to the final release version (expected to be 0.12.2) and will be released for all users to download and begin running at their leisure (segwit is a soft fork, so upgrading is only required if they plan to use segwit features; however upgrade is appreciated).
+**Binary release:** the final release candidate will have its version changed to the final release version (expected to be 0.12.2) and will be released for all users to download and begin running at their leisure (segwit is a soft fork, so upgrading is only required if they plan to use segwit features).
 
 **Miners upgrade:** miners who choose to upgrade to 0.12.2 will be able to start producing blocks that signal readiness to enforce segwit once the date defined as segwit's BIP9 started date is reached.
 
@@ -110,7 +110,7 @@ The following plan describes how segwit is expected to be deployed.
 
 - **Users of other wallets** can continue using their existing wallets.  It is recommended that lightweight wallet users always wait for several confirmations when receiving significant amounts of money, so no extra waiting is expected to be required here.
 
-    When you have the opportunity to upgrade to a version of your wallet that supports segwit, you may find that the transaction fee you have to pay is slightly lower when you spend bitcoins you received after upgrading to segwit.
+    When you have the opportunity to upgrade to a version of your wallet that supports segwit, you may find that the transaction fee you have to pay is slightly lower when you spend bitcoins you received after upgrading to segwit because the the witness is external and therefore the transaction size is counted as smaller.
 
 ## Future upgrades made easier by segwit
 
