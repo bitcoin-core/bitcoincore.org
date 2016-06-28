@@ -157,7 +157,7 @@ Although signature aggregation is still being designed, it will be easy to add s
 
 They work by taking a program and splitting each conditional part of it into a separate segment, and then placing each of those segments into a merkle tree.  Bitcoins are spent (encumbered) to the merkle root of the merkle tree.
 
-A minimal set of conditions that need to be used for final validation can be revealed to all full validation nodes, but code that does not execute can be replaced by a simple hash as part of a partial merkle branch, allowing all parts of the script to connected to the merkle root used in the encumbrance so that validation can be completed.
+A minimal set of conditions that need to be used for final validation can be revealed to all full validation nodes, but code that does not execute can be replaced by a simple hash as part of a partial merkle branch, allowing all parts of the script to be connected to the merkle root used in the encumbrance so that validation can be completed.
 
 This not only saves space but it may also help improve privacy.  For example, if Alice wants to be able to spend her bitcoins normally every day but also wants her estate lawyer Bob to be able to spend her bitcoins if they’ve been inactive for a year, she can place both of those conditions in separate branches.  When Alice is making normal spends, nobody can see just by looking at the transaction what that second condition is.
 
