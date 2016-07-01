@@ -33,7 +33,7 @@ The "CSV" soft fork has reached the "locked in" threshold required to proceed to
 
 ## For all miners
 
-During the grace period, all miners must upgrade to Bitcoin Core 0.12.1 or any implementation which supports the CSV softfork. In practice, at the time of writing, Bitcoin Core 0.12.1 is the only version that supports the CSV softfork. Miners must double check to make sure all the mining nodes and backup nodes have been upgraded. Failing to do so may result in generation of invalid blocks, or cause your nodes to build upon any invalid blocks causing chain forks and monetary loss to the concerned miners and general Bitcoin users. 
+During the grace period, all miners must upgrade to Bitcoin Core 0.12.1 or any implementation which supports the CSV softfork. In practice, at the time of writing, Bitcoin Core and Knots 0.12.1 are the only versions that supports the CSV softfork. Miners must double check to make sure all the mining nodes and backup nodes have been upgraded. Failing to do so may result in generation of invalid blocks, or cause your nodes to build upon any invalid blocks causing chain forks and monetary loss to the concerned miners and general Bitcoin users.
 
 ## For miners who manually hardcoded the block version
 
@@ -49,7 +49,7 @@ Failing to follow this advice may trigger the upgrade warning system of all BIP9
 
 For miners that allow bitcoind to set the block version automatically, no further action is required. Please note it will keep generating blocks with version 0x20000001 until block #419328 at which point is will automatically unset bit 0.
 
-## For miners who are using or manually setting nSequence field of the generation transaction
+## With regard to the nSequence field of the generation transaction
 
 Some miners may use the nSequence field of the generation transaction as the mining nonce. With the activation of [BIP68][], such miners must pay extra attention.
 
@@ -59,20 +59,16 @@ If you do not use nSequence field of the generation transaction, but have to set
 
 Failing to follow the above instructions may result in generation of invalid blocks, causing a chain fork and monetary loss of the concerned miners and general Bitcoin users.
 
-No further action is required for miners who are using the default generation nSequence and nVersion values provided by bitcoind.
 
+## With regard to the nLockTime field of the generation transaction
 
-## For miners who are using or manually setting the nLockTime field of the generation transaction
-
-This is less common since the Stratum protocol does not support the use of nLockTime field as the mining nonce. But miners doing so must pay extra attention due to the activation of [BIP113][].
+This is less common, but miners using the nLockTime field must pay extra attention due to the activation of [BIP113][].
 
 If a miner is interfering with the nLockTime of the generation transaction in any manner, they must make sure that the value, if interpreted as an UNIX timestamp (i.e. >= 500000000), must be smaller than the median timestamp value of the past 11 blocks, unless the nSequence of the generation transaction is exactly 0xffffffff.
 
-If you do not use nLockTime field of the generation transaction, but have to set it manually, please use a value of 0.
+If you do not use nLockTime field of the generation transaction, please use a value of 0.
 
 Failing to follow the above instructions may result in generation of invalid blocks, causing a chain fork and monetary loss of the concerned miners and general Bitcoin users.
-
-No further action is required for miners who are using the default generation nLockTime values provided by bitcoind.
 
 [1]: /en/contact/
 [2]: /en/2016/06/08/version-bits-miners-faq/#when-should-miners-set-bits
