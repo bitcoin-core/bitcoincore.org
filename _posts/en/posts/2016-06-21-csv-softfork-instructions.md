@@ -19,7 +19,7 @@ If there is any doubt, miners and pool operators are welcome to [contact us][1].
 
 TL;DR 
 
-1. Check all your nodes have been upgraded to Bitcoin Core 0.12.1 or compatible software. This must happen before block #419328.
+1. Check all your nodes have been upgraded to Bitcoin Core 0.12.1 or compatible software. This must happen before block #419328. Note that if your GBT client(s) implement the protocol correctly, you will need to patch in [PR #8176](https://patch-diff.githubusercontent.com/raw/bitcoin/bitcoin/pull/8176) ([patch](https://patch-diff.githubusercontent.com/raw/bitcoin/bitcoin/pull/8176.patch)) or use [Bitcoin Knots](http://bitcoinknots.org/) which already includes it.
 
 2. If you hardcode the block version please unset bit 0 of the version field before block 419328, or preferably stop hardcoding it and let bitcoind do it automatically.
 
