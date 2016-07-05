@@ -23,9 +23,9 @@ TL;DR
 
 2. If you hardcode the block version please unset bit 0 of the version field before block 419328, or preferably stop hardcoding it and let bitcoind do it automatically.
 
-3. Use a nSequence value of 0xffffffff for the generation transaction will avoid any potential conflict with BIP68 and BIP113.
+3. Use a nLockTime value of 0xffffffff for the generation transaction to avoid any potential conflict with BIP113.
 
-4. If you have to use a different nSequence value, you must follow the instructions carefully.
+4. If you have to use a different nLockTime value, you must follow the instructions carefully.
 
 ## Status of CSV soft fork
 
@@ -49,20 +49,9 @@ Failing to follow this advice may trigger the upgrade warning system of all BIP9
 
 For miners that allow bitcoind to set the block version automatically, no further action is required. Please note it will keep generating blocks with version 0x20000001 until block #419328 at which point is will automatically unset bit 0.
 
-## With regard to the nSequence field of the generation transaction
-
-Some miners may use the nSequence field of the generation transaction as the mining nonce. With the activation of [BIP68][], such miners must pay extra attention.
-
-If miners are interfering with the nSequence of the generation transaction in any manner, they must make sure that the nVersion of the generation transaction (*not* the block version) must be 1 or below. One way to ensure this is to hardcode the nVersion of the generation transaction as 1.
-
-If you do not use nSequence field of the generation transaction, but have to set it manually, please use a value of 0xffffffff.
-
-Failing to follow the above instructions may result in generation of invalid blocks, causing a chain fork and monetary loss of the concerned miners and general Bitcoin users.
-
-
 ## With regard to the nLockTime field of the generation transaction
 
-This is less common, but miners using the nLockTime field must pay extra attention due to the activation of [BIP113][].
+This is uncommon, but miners using the nLockTime field must pay extra attention due to the activation of [BIP113][].
 
 If a miner is interfering with the nLockTime of the generation transaction in any manner, they must make sure that the value, if interpreted as an UNIX timestamp (i.e. >= 500000000), must be smaller than the median timestamp value of the past 11 blocks, unless the nSequence of the generation transaction is exactly 0xffffffff.
 
