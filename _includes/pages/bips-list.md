@@ -14,15 +14,13 @@
 |[42][BIP42] | v0.9.2        |[A finite monetary supply for Bitcoin][BIP42]|
 |[61][BIP61] | v0.9.0        |["reject" P2P message][BIP61]|
 |[65][BIP65] | v0.10.4       |[OP_CHECKLOCKTIMEVERIFY][BIP65]|
-|[68][BIP68] | v0.12.1*      |[Relative lock-time using consensus-enforced sequence numbers][BIP68]|
+|[68][BIP68] | v0.12.1       |[Relative lock-time using consensus-enforced sequence numbers][BIP68]|
 |[66][BIP66] | v0.10.0       |[Strict DER signatures][BIP66]|
 |[70][BIP70] | v0.9.0        |[Payment protocol][BIP70]|
 |[71][BIP71] | v0.9.0        |[Payment protocol MIME types][BIP71]|
 |[72][BIP72] | v0.9.0        |[URI extensions for Payment Protocol][BIP72]|
 |[111][BIP111]| v0.12.0       |[NODE_BLOOM service bit][BIP111]|
-|[112][BIP112]| v0.12.1*      |[OP_CHECKSEQUENCEVERIFY][BIP112]|
-|[113][BIP113]| v0.12.1*      |[Median Time Past][BIP113]|
+|[112][BIP112]| v0.12.1       |[OP_CHECKSEQUENCEVERIFY][BIP112]|
+|[113][BIP113]| v0.12.1       |[Median Time Past][BIP113]|
 |[125][BIP125]| v0.12.0       |[Opt-in Full Replace-by-Fee Signaling][BIP125]|
 |[130][BIP130]| v0.12.0       |[Sendheaders message][BIP130]|
-
-
