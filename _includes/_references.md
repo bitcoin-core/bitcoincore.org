@@ -30,6 +30,7 @@
 [Jonas Nick]: https://github.com/jonasnick
 [Johnathan Corgan]: https://github.com/jmcorgan
 [Jeremy Rubin]: https://github.com/JeremyRubin
+[Bob McElrath]: https://github.com/mcelrath
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
