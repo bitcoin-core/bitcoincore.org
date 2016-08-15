@@ -31,6 +31,7 @@
 [Johnathan Corgan]: https://github.com/jmcorgan
 [Jeremy Rubin]: https://github.com/JeremyRubin
 [Bob McElrath]: https://github.com/mcelrath
+[Joseph Poon]: https://github.com/josephpoon
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
