@@ -32,6 +32,8 @@
 [Jeremy Rubin]: https://github.com/JeremyRubin
 [Bob McElrath]: https://github.com/mcelrath
 [Joseph Poon]: https://github.com/josephpoon
+[Zooko Wilcox]: https://github.com/zooko
+[Joshua Simmons]: https://github.com/kadoban
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
@@ -68,6 +70,8 @@
 [BIP143]: https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki
 [BIP144]: https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki
 [BIP145]: https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki
+[BIP146]: https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki
+[BIP150]: https://github.com/bitcoin/bips/blob/master/bip-0150.mediawiki
 [BIP151]: https://github.com/bitcoin/bips/blob/master/bip-0151.mediawiki
 [BIP152]: https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki
 
