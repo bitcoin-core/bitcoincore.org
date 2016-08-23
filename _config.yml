@@ -63,6 +63,7 @@ exclude:
   - CNAME
   - vendor  # Travis CI creates a vendor/ dir with files we shouldn't render
   - assets/images/assets.yml
+  - contrib
 
 defaults:
   -
