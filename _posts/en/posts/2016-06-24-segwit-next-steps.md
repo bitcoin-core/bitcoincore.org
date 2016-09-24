@@ -110,7 +110,7 @@ The following plan describes how segwit is expected to be deployed.
 
 - **Users of other wallets** can continue using their existing wallets.  It is recommended that lightweight wallet users always wait for several confirmations when receiving significant amounts of money, so no extra waiting is expected to be required here.
 
-    When you have the opportunity to upgrade to a version of your wallet that supports segwit, you may find that the transaction fee you have to pay is slightly lower when you spend bitcoins you received after upgrading to segwit because the the witness is external and therefore the transaction size is counted as smaller.
+    When you have the opportunity to upgrade to a version of your wallet that supports segwit, you may find that the transaction fee you have to pay is slightly lower when you spend bitcoins you received after upgrading to segwit because the witness is external and therefore the transaction size is counted as smaller.
 
 ## Future upgrades made easier by segwit
 
