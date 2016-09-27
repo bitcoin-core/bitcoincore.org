@@ -35,6 +35,7 @@
 [Zooko Wilcox]: https://github.com/zooko
 [Joshua Simmons]: https://github.com/kadoban
 [Michagogo]: https://github.com/Michagogo
+[Olaoluwa Osuntokun]: https://github.com/Roasbeef
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
