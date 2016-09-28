@@ -40,7 +40,8 @@ So if the current release is 0.13, then 0.12 is also considered maintained.
 Once 0.14 is released, then 0.12 would be considered at it's "Maintenance End".
 The older the major release, the more critical issues have to be to get backported to it, and the more to warrant a new minor release.
 Once software has reached the "Maintenance End" period it will only receive critical security fixes until the EOL date.
-After EOL, users must upgrade to a later version to receive security updates.
+After EOL, users must upgrade to a later version to receive security updates, even though the community may provide fixes for critical issues on a best effort basis.
+Generally, it is recommended to run the latest maintanance release (point release) of the current or previous major version.
 
 Please note that minor versions get bugfixes, translation updates, and soft forks. Translation on [Transifex][bitcoin-transifex-link] is only open for the last two major releases.
 
