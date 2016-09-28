@@ -21,4 +21,5 @@ env:
 # Whitelist all branches since gh-pages branch is blacklisted by default
 branches:
   only:
+  - gh-pages
   - /.*/
