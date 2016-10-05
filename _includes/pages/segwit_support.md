@@ -1,6 +1,6 @@
 |[AirBitz](https://airbitz.co/)|yes|no|wallet||
 |[Armory](https://github.com/goatpig/BitcoinArmory/tree/SegWit/)|yes|wip|wallet|bitcoin core|
-|[Bcoin](https://github.com/bcoin-org/bcoin)|yes|wip|library||
+|[Bcoin](https://github.com/bcoin-org/bcoin)|yes|yes|library||
 |[Bitcoin India](https://bitcoin-india.org/)|yes|wip|exchange||
 |[Bitcoin LJR](http://luke.dashjr.org/programs/bitcoin-ljr/)|yes|no||n/a|
 |[BitcoinJ](https://bitcoinj.github.io/)|yes|wip|library|n/a|
@@ -12,10 +12,13 @@
 |[BitmainWarranty](https://bitmainwarranty.com/)|yes|yes|miner||
 |[Bitrated](https://www.bitrated.com/)|yes|no|wallet||
 |[BitWasp](https://github.com/Bit-Wasp/bitcoin-php)|yes|yes|library||
+|[Blockchain.info](https://blockchain.info/)|yes|no|wallet, block explorer||
 |[Blocktrail](https://www.blocktrail.com/)|yes|no|wallet, block explorer||
 |[BreadWallet](http://breadwallet.com/)|yes|no|wallet||
-|[Coinfloor](https://www.coinfloor.co.uk/)|yes|no|exchange||
-|[Coinkite](https://coinkite.com/)|yes|no|wallet, hardware wallet||
+|[BTC.com](https://btc.com/)|yes|wip|block explorer, wallet||
+|[cgminer](https://www.blocktrail.com/)|yes|wip|mining software||
+|[ckpool](https://bitbucket.org/ckolivas/ckpool)|yes|yes|mining software||
+|[Coinfloor](https://www.coinfloor.co.uk/)|yes|wip|exchange||
 |[Coinomi](https://coinomi.com/)|yes|no|wallet||
 |[CoPay](https://copay.io/)|yes|no|wallet|bitcore-lib|
 |[Digitalbitbox](https://digitalbitbox.com/)|yes|wip|hardware wallet||
@@ -25,19 +28,20 @@
 |[GreenAddress](https://greenaddress.it/)*|yes|wip|wallet|pycoin, bitcoinjs|
 |[GreenBits](https://www.greenbits.com/)|yes|wip|wallet|bitcoinj|
 |[Kaiko](https://www.kaiko.com/)|yes|no|explorer||
-|[Ledger](https://www.ledgerwallet.com/)|yes|yes|hardware wallet||
+|[Ledger Wallet](https://www.ledgerwallet.com/)|yes|yes|hardware wallet||
 |[libbtc](https://github.com/libbtc)|yes|no|library||
 |[libbitcoin](http://libbitcoin.dyne.org/)|yes|no|library||
 |[libblkmaker](https://github.com/bitcoin/libblkmaker)|yes|yes|mining library|n/a|
 |[mSIGNA](https://ciphrex.com/)|yes|yes|wallet||
 |[Multibit HD](https://multibit.org/)|yes|no|wallet|bitcoinj|
-|[Mycelium](https://mycelium.com/)|yes|no|wallet||
+|[Mycelium](https://mycelium.com/)|yes|wip|wallet||
 |NBitcoin|yes|no|library|n/a|
+|[OKLink](https://www.oklink.com/)|yes|wip|wallet, block explorer||
 |[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet||
 |[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library||
 |[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
-|[Samourai Wallet](http://samouraiwallet.com/)|yes|no|wallet|bitcoinj|
-|[Smartbit](https://www.smartbit.com.au/)|yes|no|explorer||
+|[Samourai Wallet](http://samouraiwallet.com/)|yes|wip|wallet|bitcoinj|
+|[Smartbit](https://www.smartbit.com.au/)|yes|wip|explorer||
 |[Trezor](http://satoshilabs.com/trezor/)|yes|wip|hardware wallet||
 |[Vaultoro](https://www.vaultoro.com/)|yes|no|||
 |[WageCan](https://www.wagecan.com/)|yes|wip|exchange||
