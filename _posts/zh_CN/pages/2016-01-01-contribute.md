@@ -2,9 +2,9 @@
 type: pages
 layout: page
 lang: zh_CN
-name: 我如何做出贡献?
+name: 2016-01-01-contribute
 id: zh_cn-2016-01-01-contribute.md
-title: ??
+title: 我如何做出贡献?
 permalink: /zh_CN/contribute/
 version: 0
 share: false
