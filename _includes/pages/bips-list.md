@@ -24,3 +24,8 @@
 |[113][BIP113]| v0.12.1       |[Median Time Past][BIP113]|
 |[125][BIP125]| v0.12.0       |[Opt-in Full Replace-by-Fee Signaling][BIP125]|
 |[130][BIP130]| v0.12.0       |[Sendheaders message][BIP130]|
+|[141][BIP141]| v0.13.0       |[Segregated Witness (Consensus Layer)][BIP141]|
+|[143][BIP143]| v0.13.0       |[Transaction Signature Verification for Version 0 Witness Program][BIP143]|
+|[144][BIP144]| v0.13.0       |[Segregated Witness (Peer Services)][BIP144]|
+|[145][BIP145]| v0.13.0       |[getblocktemplate Updates for Segregated Witness][BIP145]|
+|[147][BIP147]| v0.13.1       |[Dealing with dummy stack element malleability][BIP147]|
