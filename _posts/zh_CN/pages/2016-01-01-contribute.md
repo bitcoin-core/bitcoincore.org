@@ -1,43 +1,40 @@
 ---
-title: How Can I Contribute?
-name: contribute
-id: zh_cn-contribute
-permalink: /zh_CN/contribute/
-layout: page
 type: pages
+layout: page
 lang: zh_CN
-share: false
+name: 2016-01-01-contribute
+id: zh_cn-2016-01-01-contribute.md
+title: 我如何做出贡献?
+permalink: /zh_CN/contribute/
 version: 0
+share: false
 ---
 
-You are welcome to contribute to the project!
-Our main source code repository is [hosted on GitHub](https://github.com/bitcoin/bitcoin/) and there are several aspects you can help on:
+欢迎您为项目做贡献！
+我们的主要源代码库是 [hosted on GitHub](https://github.com/bitcoin/bitcoin/)，您可以通过几个途径提供帮助 
 
-  - Improving our documentation (see [README.md][README.md] and [doc folder][doc])
-  - [Translations][translation_process.md]
-  - Testing code, testing releases
-  - Participate on the mailing lists
-  - Improving our UIs
-  - Coding (fix open issues or implement new features)
+  - 改进文档 ([查看][README.md] 和  [文档][doc])
+  - [翻译][translation_process.md] 
+  - 测试代码，测试版本
+  - 加入邮件列表
+  - 改进我们的用户界面（UIs）
+  - 编写代码 (修改开放问题或改进新特性)
+  
+请随时报告 [issues][issues] 并打开 [pull requests][pulls], 但请提前阅读 [contribution guidelines] (/zh_CN/faq/contributing-code)  以便了解工作流程.
 
-Feel free to report [issues][issues] and open [pull requests][pulls], but
-please check the [contribution guidelines](/en/faq/contributing-code) to understand our workflow.
+**讨论**
 
-**Discussion**
+大多数比特币核心相关的讨论发生在 irc.freenode.net 上的 [#bitcoin-core-dev] IRC（互联网中继聊天） 频道。
+比特币协议讨论区 [bitcoin-dev][] 和一个普通比特币讨论区 [bitcoin-discuss][].
+有一个邮件列表。我们还有 [slack][slack] ([需要][slack-invite])。
 
-Most Bitcoin Core related discussion happens in the `#bitcoin-core-dev` IRC channel on irc.freenode.net. There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][bitcoin-dev] and a general Bitcoin discussion [bitcoin-discuss][bitcoin-discuss]. We also have [Slack][slack] (request an [invitation][invite]).
+**为本网站做出贡献**
 
-**Contribute to this website**
-
-You can also translate or contribute to this [website][website-contrib].
+您还可以翻译这个 [website][website-contrib] 或为其做出贡献。
 
 [README.md]: https://github.com/bitcoin/bitcoin/blob/master/README.md
 [doc]: https://github.com/bitcoin/bitcoin/tree/master/doc
 [translation_process.md]: https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md
-[issues]: https://github.com/bitcoin/bitcoin/issues
-[pulls]: https://github.com/bitcoin/bitcoin/pulls
-[bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
-[bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
-[Slack]: https://bitcoincore.slack.com/
-[invite]: https://slack.bitcoincore.org/
+
+{% include _references.md %}
