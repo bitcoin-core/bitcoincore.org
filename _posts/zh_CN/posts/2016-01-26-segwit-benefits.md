@@ -204,6 +204,6 @@ Segwit改善了情况并通过允许未来软叉延长证人结构并包括承�
 ### 更多资料
 
  * [背包问题](https://en.wikipedia.org/wiki/Knapsack_problem)
- * [2015 年 8 月 Sigop 攻击 bitcoin 的讨论](https://bitcointalk.org/index.php?topic=1166928.0;all)
- * [Gregory Maxwell 对比特币-dev证人的限制 ](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011870.html)
+ * [2015 年 8 月 Sigop 攻击 bitcointalk 的讨论](https://bitcointalk.org/index.php?topic=1166928.0;all)
+ * [Gregory Maxwell 对比特币-bitcoin-dev邮件列表 证人的限制](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011870.html)
  * [“验证成本度量” 成绩](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/validation-cost-metric/)
