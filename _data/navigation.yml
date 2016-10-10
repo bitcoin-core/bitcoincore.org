@@ -93,24 +93,24 @@ zh_CN:
     submenu: true
     tree:
       about:
-        title: "About Us"
+        title: "关于我们"
         url:   "/zh_CN/about/"
       team:
-        title: "Team"
+        title: "团队"
         url:   "/en/team/"
       projects:
-        title: "Sponsorship"
+        title: "赞助"
         url: "/en/about/sponsorship/programme/"
         submenu: true
         tree:
           programme:
-            title: "programme"
+            title: "赞助计划"
             url: "/en/about/sponsorship/programme/"
           faq:
-            title: "FAQ"
+            title: "常见问题"
             url: "/en/about/sponsorship/faq/"
       supporters:
-        title: "Supporters"
+        title: "支持者"
         url:   "/en/supporters"
   blog:
     title: "博客"
@@ -119,55 +119,55 @@ zh_CN:
     title: "软件发行"
     url:   "/zh_CN/releases/"
   faq:
-     title: "FAQs"
+     title: "常见问题"
      submenu: true
      tree:
        capacity-faq:
-         title: "Capacity Increases"
+         title: "容量增长"
          url: "/en/2015/12/23/capacity-increases-faq"
        segwit-faq:
-         title: "Segwit"
+         title: "隔离见证"
          url: "/en/2016/01/26/segwit-benefits"
        optin-rbf:
-         title: "Opt-in RBF"
+         title: "使用费用替代方案 opt-in RBF"
          url: "/en/faq/optin_rbf"
        compact-blocks:
-         title: "Compact Blocks"
+         title: "压缩区块"
          url: "/en/2016/06/07/compact-blocks-faq/"
        version-bits:
-         title: "Version Bits (BIP9)"
+         title: "版本位 (比特币改进协议 9/BIP9)"
          url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
-    title: "Development"
+    title: "开发"
     submenu: true
     tree:
       contribute:
         title: "貢獻"
         url:   "/zh_CN/contribute"
       contribute-code:
-        title: "contributing code"
+        title: "贡献码"
         url:   "/en/faq/contributing-code"
       segwit:
-        title: "SegWit Adoption"
+        title: "SegWit 采用"
         url:   "/en/segwit_adoption"
       meetings:
-        title: "meetings"
+        title: "会议"
         url:   "/zh_CN/meetings/"
       bips:
-        title: "Supported BIPs"
+        title: "支持的比特币改进协议 BIPs"
         url:   "/en/bips"
       eol:
-        title: "Lifecycle"
+        title: "生命周期"
         url:   "/en/lifecycle"
   contact:
-      title: "Contact"
+      title: "联系"
       submenu: true
       tree:
         contact_us:
-          title: "Contact Us"
+          title: "联系我们"
           url: "/en/contact"
         announcements:
-          title: "Announcements"
+          title: "声明"
           url: "/en/list/announcements/join"
 zh_TW:
   home:
