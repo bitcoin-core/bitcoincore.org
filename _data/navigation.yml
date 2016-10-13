@@ -139,7 +139,7 @@ zh_CN:
          url: "/zh_CN/faq/optin_rbf/"
        compact-blocks:
          title: "压缩区块"
-         url: "/zh_CN/2016/06/07/compact-blocks-faq/"
+         url: "/en/2016/06/07/compact-blocks-faq/"
        version-bits:
          title: "版本位 (比特币改进协议 9/BIP9)"
          url: "/zh_CN/2016/06/08/version-bits-miners-faq/"
