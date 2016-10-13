@@ -34,27 +34,27 @@ en:
     title: "releases"
     url:   "/en/releases/"
   faq:
-     title: "FAQs"
-     submenu: true
-     tree:
-       capacity-faq:
-         title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
-       segwit-faq:
-         title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
-       segwit-dev:
-         title: "Segwit dev guide"
-         url: "/en/segwit_wallet_dev/"
-       optin-rbf:
-         title: "Opt-in RBF"
-         url: "/en/faq/optin_rbf/"
-       compact-blocks:
-         title: "Compact Blocks"
-         url: "/en/2016/06/07/compact-blocks-faq/"
-       version-bits:
-         title: "Version Bits (BIP9)"
-         url: "/en/2016/06/08/version-bits-miners-faq/"
+    title: "FAQs"
+    submenu: true
+    tree:
+      capacity-faq:
+        title: "Capacity Increases"
+        url: "/en/2015/12/23/capacity-increases-faq/"
+      segwit-faq:
+        title: "Segwit"
+        url: "/en/2016/01/26/segwit-benefits/"
+      segwit-dev:
+        title: "Segwit dev guide"
+        url: "/en/segwit_wallet_dev/"
+      optin-rbf:
+        title: "Opt-in RBF"
+        url: "/en/faq/optin_rbf/"
+      compact-blocks:
+        title: "Compact Blocks"
+        url: "/en/2016/06/07/compact-blocks-faq/"
+      version-bits:
+        title: "Version Bits (BIP9)"
+        url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -78,12 +78,12 @@ en:
         title: "Lifecycle"
         url:   "/en/lifecycle"
   contact:
-      title: "Contact"
-      submenu: true
-      tree:
-        contact_us:
-          title: "Contact Us"
-          url: "/en/contact/"
+    title: "Contact"
+    submenu: true
+    tree:
+      contact_us:
+        title: "Contact Us"
+        url: "/en/contact/"
         announcements:
           title: "Announcements"
           url: "/en/list/announcements/join/"
@@ -166,15 +166,15 @@ zh_CN:
         title: "生命周期"
         url:   "/zh_CN/lifecycle/"
   contact:
-      title: "联系"
-      submenu: true
-      tree:
-        contact_us:
-          title: "联系我们"
-          url: "/zh_CN/contact/"
-        announcements:
-          title: "声明"
-          url: "/zh_CN/list/announcements/join/"
+    title: "联系"
+    submenu: true
+    tree:
+      contact_us:
+        title: "联系我们"
+        url: "/zh_CN/contact/"
+      announcements:
+        title: "声明"
+        url: "/zh_CN/list/announcements/join/"
 zh_TW:
   home:
     title: "Bitcoin Core"
@@ -210,24 +210,27 @@ zh_TW:
     title: "軟件發行"
     url:   "/zh_TW/releases/"
   faq:
-     title: "FAQs"
-     submenu: true
-     tree:
-       capacity-faq:
-         title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq/"
-       segwit-faq:
-         title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits/"
-       optin-rbf:
-         title: "Opt-in RBF"
-         url: "/en/faq/optin_rbf/"
-       compact-blocks:
-         title: "Compact Blocks"
-         url: "/en/2016/06/07/compact-blocks-faq/"
-       version-bits:
-         title: "Version Bits (BIP9)"
-         url: "/en/2016/06/08/version-bits-miners-faq/"
+    title: "FAQs"
+    submenu: true
+    tree:
+      capacity-faq:
+        title: "Capacity Increases"
+        url: "/en/2015/12/23/capacity-increases-faq/"
+      segwit-faq:
+        title: "Segwit"
+        url: "/en/2016/01/26/segwit-benefits/"
+      segwit-dev:
+        title: "Segwit dev guide"
+        url: "/en/segwit_wallet_dev/"
+      optin-rbf:
+        title: "Opt-in RBF"
+        url: "/en/faq/optin_rbf/"
+      compact-blocks:
+        title: "Compact Blocks"
+        url: "/en/2016/06/07/compact-blocks-faq/"
+      version-bits:
+        title: "Version Bits (BIP9)"
+        url: "/en/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "Development"
     submenu: true
@@ -241,9 +244,6 @@ zh_TW:
       segwit:
         title: "SegWit Adoption"
         url:   "/en/segwit_adoption/"
-       segwit-dev:
-         title: "Segwit dev guide"
-         url: "/en/segwit_wallet_dev/"
       meetings:
         title: "meetings"
         url:   "/zh_CN/meetings/"
@@ -254,12 +254,12 @@ zh_TW:
         title: "Lifecycle"
         url:   "/en/lifecycle/"
   contact:
-      title: "Contact"
-      submenu: true
-      tree:
-        contact_us:
-          title: "Contact Us"
-          url: "/en/contact/"
-        announcements:
-          title: "Announcements"
-          url: "/en/list/announcements/join/"
+    title: "Contact"
+    submenu: true
+    tree:
+      contact_us:
+        title: "Contact Us"
+        url: "/en/contact/"
+      announcements:
+        title: "Announcements"
+        url: "/en/list/announcements/join/"
