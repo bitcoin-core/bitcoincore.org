@@ -26,7 +26,7 @@ en:
             url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
-        url:   "/en/supporters"
+        url:   "/en/supporters/"
   blog:
     title: "blog"
     url:   "/en/blog/"
@@ -39,13 +39,16 @@ en:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq"
+         url: "/en/2015/12/23/capacity-increases-faq/"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits"
+         url: "/en/2016/01/26/segwit-benefits/"
+       segwit-dev:
+         title: "Segwit dev guide"
+         url: "/en/segwit_wallet_dev/"
        optin-rbf:
          title: "Opt-in RBF"
-         url: "/en/faq/optin_rbf"
+         url: "/en/faq/optin_rbf/"
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
@@ -58,19 +61,19 @@ en:
     tree:
       contribute:
         title: "contribute"
-        url:   "/en/contribute"
+        url:   "/en/contribute/"
       contribute-code:
         title: "contributing code"
-        url:   "/en/faq/contributing-code"
+        url:   "/en/faq/contributing-code/"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption"
+        url:   "/en/segwit_adoption/"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
       bips:
         title: "Supported BIPs"
-        url:   "/en/bips"
+        url:   "/en/bips/"
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
@@ -80,7 +83,8 @@ en:
       tree:
         contact_us:
           title: "Contact Us"
-          url: "/en/contact"
+          url: "/en/contact/"
         announcements:
           title: "Announcements"
-          url: "/en/list/announcements/join"
+          url: "/en/list/announcements/join/"
+

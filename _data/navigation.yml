@@ -26,7 +26,7 @@ en:
             url: "/en/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
-        url:   "/en/supporters"
+        url:   "/en/supporters/"
   blog:
     title: "blog"
     url:   "/en/blog/"
@@ -39,13 +39,16 @@ en:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq"
+         url: "/en/2015/12/23/capacity-increases-faq/"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits"
+         url: "/en/2016/01/26/segwit-benefits/"
+       segwit-dev:
+         title: "Segwit dev guide"
+         url: "/en/segwit_wallet_dev/"
        optin-rbf:
          title: "Opt-in RBF"
-         url: "/en/faq/optin_rbf"
+         url: "/en/faq/optin_rbf/"
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
@@ -58,19 +61,19 @@ en:
     tree:
       contribute:
         title: "contribute"
-        url:   "/en/contribute"
+        url:   "/en/contribute/"
       contribute-code:
         title: "contributing code"
-        url:   "/en/faq/contributing-code"
+        url:   "/en/faq/contributing-code/"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption"
+        url:   "/en/segwit_adoption/"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
       bips:
         title: "Supported BIPs"
-        url:   "/en/bips"
+        url:   "/en/bips/"
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
@@ -80,10 +83,10 @@ en:
       tree:
         contact_us:
           title: "Contact Us"
-          url: "/en/contact"
+          url: "/en/contact/"
         announcements:
           title: "Announcements"
-          url: "/en/list/announcements/join"
+          url: "/en/list/announcements/join/"
 zh_CN:
   home:
     title: "Bitcoin Core"
@@ -97,21 +100,21 @@ zh_CN:
         url:   "/zh_CN/about/"
       team:
         title: "团队"
-        url:   "/en/team/"
+        url:   "/zn_CN/team/"
       projects:
         title: "赞助"
-        url: "/en/about/sponsorship/programme/"
+        url: "/zn_CN/about/sponsorship/programme/"
         submenu: true
         tree:
           programme:
             title: "赞助计划"
-            url: "/en/about/sponsorship/programme/"
+            url: "/zn_CN/about/sponsorship/programme/"
           faq:
             title: "常见问题"
-            url: "/en/about/sponsorship/faq/"
+            url: "/zn_CN/about/sponsorship/faq/"
       supporters:
         title: "支持者"
-        url:   "/en/supporters"
+        url:   "/en/supporters/"
   blog:
     title: "博客"
     url:   "/zh_CN/blog/"
@@ -124,51 +127,54 @@ zh_CN:
      tree:
        capacity-faq:
          title: "容量增长"
-         url: "/en/2015/12/23/capacity-increases-faq"
+         url: "/zn_CN/2015/12/23/capacity-increases-faq/"
        segwit-faq:
          title: "隔离见证"
-         url: "/en/2016/01/26/segwit-benefits"
+         url: "/zh_CN/2016/01/26/segwit-benefits/"
+       segwit-dev:
+         title: "Segwit dev guide"
+         url: "/en/segwit_wallet_dev/"
        optin-rbf:
          title: "使用费用替代方案 opt-in RBF"
-         url: "/en/faq/optin_rbf"
+         url: "/zn_CH/faq/optin_rbf/"
        compact-blocks:
          title: "压缩区块"
-         url: "/en/2016/06/07/compact-blocks-faq/"
+         url: "/zh_CN/2016/06/07/compact-blocks-faq/"
        version-bits:
          title: "版本位 (比特币改进协议 9/BIP9)"
-         url: "/en/2016/06/08/version-bits-miners-faq/"
+         url: "/zh_CN/2016/06/08/version-bits-miners-faq/"
   dev:
     title: "开发"
     submenu: true
     tree:
       contribute:
         title: "貢獻"
-        url:   "/zh_CN/contribute"
+        url:   "/en/contribute/"
       contribute-code:
         title: "贡献码"
-        url:   "/en/faq/contributing-code"
+        url:   "/en/faq/contributing-code/"
       segwit:
         title: "SegWit 采用"
-        url:   "/en/segwit_adoption"
+        url:   "/en/segwit_adoption/"
       meetings:
         title: "会议"
-        url:   "/zh_CN/meetings/"
+        url:   "/en/meetings/"
       bips:
         title: "支持的比特币改进协议 BIPs"
-        url:   "/en/bips"
+        url:   "/zh_CN/bips"
       eol:
         title: "生命周期"
-        url:   "/en/lifecycle"
+        url:   "/zh_CN/lifecycle/"
   contact:
       title: "联系"
       submenu: true
       tree:
         contact_us:
           title: "联系我们"
-          url: "/en/contact"
+          url: "/zh_CN/contact/"
         announcements:
           title: "声明"
-          url: "/en/list/announcements/join"
+          url: "/zh_CN/list/announcements/join/"
 zh_TW:
   home:
     title: "Bitcoin Core"
@@ -185,7 +191,7 @@ zh_TW:
         url:   "/en/team/"
       projects:
         title: "Sponsorship"
-        url: "/en/about/sponsorship/programme/"
+        url: "/zh_TW/about/sponsorship/programme/"
         submenu: true
         tree:
           programme:
@@ -196,7 +202,7 @@ zh_TW:
             url: "/zh_TW/about/sponsorship/faq/"
       supporters:
         title: "Supporters"
-        url:   "/en/supporters"
+        url:   "/en/supporters/"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
@@ -209,13 +215,13 @@ zh_TW:
      tree:
        capacity-faq:
          title: "Capacity Increases"
-         url: "/en/2015/12/23/capacity-increases-faq"
+         url: "/en/2015/12/23/capacity-increases-faq/"
        segwit-faq:
          title: "Segwit"
-         url: "/en/2016/01/26/segwit-benefits"
+         url: "/en/2016/01/26/segwit-benefits/"
        optin-rbf:
          title: "Opt-in RBF"
-         url: "/en/faq/optin_rbf"
+         url: "/en/faq/optin_rbf/"
        compact-blocks:
          title: "Compact Blocks"
          url: "/en/2016/06/07/compact-blocks-faq/"
@@ -228,29 +234,32 @@ zh_TW:
     tree:
       contribute:
         title: "貢獻"
-        url:   "/zh_TW/contribute"
+        url:   "/zh_TW/contribute/"
       contribute-code:
         title: "contributing code"
-        url:   "/en/faq/contributing-code"
+        url:   "/en/faq/contributing-code/"
       segwit:
         title: "SegWit Adoption"
-        url:   "/en/segwit_adoption"
+        url:   "/en/segwit_adoption/"
+       segwit-dev:
+         title: "Segwit dev guide"
+         url: "/en/segwit_wallet_dev/"
       meetings:
         title: "meetings"
         url:   "/zh_CN/meetings/"
       bips:
         title: "Supported BIPs"
-        url:   "/en/bips"
+        url:   "/en/bips/"
       eol:
         title: "Lifecycle"
-        url:   "/en/lifecycle"
+        url:   "/en/lifecycle/"
   contact:
       title: "Contact"
       submenu: true
       tree:
         contact_us:
           title: "Contact Us"
-          url: "/en/contact"
+          url: "/en/contact/"
         announcements:
           title: "Announcements"
-          url: "/en/list/announcements/join"
+          url: "/en/list/announcements/join/"
