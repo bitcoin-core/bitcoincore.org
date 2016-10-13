@@ -100,18 +100,18 @@ zh_CN:
         url:   "/zh_CN/about/"
       team:
         title: "团队"
-        url:   "/zn_CN/team/"
+        url:   "/zh_CN/team/"
       projects:
         title: "赞助"
-        url: "/zn_CN/about/sponsorship/programme/"
+        url: "/zh_CN/about/sponsorship/programme/"
         submenu: true
         tree:
           programme:
             title: "赞助计划"
-            url: "/zn_CN/about/sponsorship/programme/"
+            url: "/zh_CN/about/sponsorship/programme/"
           faq:
             title: "常见问题"
-            url: "/zn_CN/about/sponsorship/faq/"
+            url: "/zh_CN/about/sponsorship/faq/"
       supporters:
         title: "支持者"
         url:   "/en/supporters/"
@@ -127,7 +127,7 @@ zh_CN:
      tree:
        capacity-faq:
          title: "容量增长"
-         url: "/zn_CN/2015/12/23/capacity-increases-faq/"
+         url: "/zh_CN/2015/12/21/系统扩展常见问题解答/"
        segwit-faq:
          title: "隔离见证"
          url: "/zh_CN/2016/01/26/segwit-benefits/"
@@ -136,7 +136,7 @@ zh_CN:
          url: "/en/segwit_wallet_dev/"
        optin-rbf:
          title: "使用费用替代方案 opt-in RBF"
-         url: "/zn_CH/faq/optin_rbf/"
+         url: "/zh_CH/faq/optin_rbf/"
        compact-blocks:
          title: "压缩区块"
          url: "/zh_CN/2016/06/07/compact-blocks-faq/"
@@ -149,16 +149,16 @@ zh_CN:
     tree:
       contribute:
         title: "貢獻"
-        url:   "/en/contribute/"
+        url:   "/zh_CN/contribute/"
       contribute-code:
         title: "贡献码"
         url:   "/en/faq/contributing-code/"
       segwit:
         title: "SegWit 采用"
-        url:   "/en/segwit_adoption/"
+        url:   "/zh_CN/segwit_adoption/"
       meetings:
         title: "会议"
-        url:   "/en/meetings/"
+        url:   "/zh_CN/meetings/"
       bips:
         title: "支持的比特币改进协议 BIPs"
         url:   "/zh_CN/bips"
@@ -215,7 +215,7 @@ zh_TW:
     tree:
       capacity-faq:
         title: "Capacity Increases"
-        url: "/en/2015/12/23/capacity-increases-faq/"
+        url: "/zh_TW/2015/12/21/系統擴展常見問題解答/"
       segwit-faq:
         title: "Segwit"
         url: "/en/2016/01/26/segwit-benefits/"
@@ -246,7 +246,7 @@ zh_TW:
         url:   "/en/segwit_adoption/"
       meetings:
         title: "meetings"
-        url:   "/zh_CN/meetings/"
+        url:   "/en/meetings/"
       bips:
         title: "Supported BIPs"
         url:   "/en/bips/"
