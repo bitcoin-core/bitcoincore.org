@@ -67,6 +67,8 @@ To spend a P2PKH output, the <code>scriptSig</code> is
 
 where the <code>RIPEMD160(SHA256(pubkey))</code> is equal to the <code>20-byte-pubkey-hash</code> in scriptPubKey.
 
+Example: [d869f854e1f8788bcff294cc83b280942a8c728de71eb709a2c29d10bfe21b7c](http://n.bitcoin.ninja/checktx?txid=d869f854e1f8788bcff294cc83b280942a8c728de71eb709a2c29d10bfe21b7c)
+
 #### Pay-to-Script-Hash (P2SH)
 P2SH is defined in BIP16. It allows payment to arbitrarily complex scripts with a fixed length <code>scriptPubKey</code>. The format is:
 
@@ -100,6 +102,8 @@ To spend a P2SH-P2WPKH output, the <code>scriptSig</code> MUST contain a push of
 witness: < sig > < pubkey ></code></pre>
   
 where the <code>RIPEMD160(SHA256(pubkey))</code> is equal to the <code>20-byte-pubkey-hash</code>, and <code>RIPEMD160(SHA256(0x0014{20-byte-pubkey-hash}))</code> is equal to the <code>20-byte-script-hash</code>.
+
+Example: [8139979112e894a14f8370438a471d23984061ff83a9eba0bc7a34433327ec21](http://n.bitcoin.ninja/checktx?txid=8139979112e894a14f8370438a471d23984061ff83a9eba0bc7a34433327ec21)
   
 #### Pay-to-Witness-Script-Hash (P2WSH)
 P2WSH is another new standard script defined in BIP141. Similar to P2SH, it allows payment to arbitrarily complex scripts. The format is:
@@ -112,6 +116,7 @@ To spend a P2WSH output, the <code>scriptSig</code> MUST be empty, and the witne
 
 where the <code>SHA256(witnessScript)</code> is equal to the <code>32-byte-script-hash</code> in scriptPubKey. The <code>witnessScript</code> is deserialized and evaluated with the remaining data in the <code>witness</code>.
 
+Example: [78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
 
 #### P2WSH in P2SH (P2SH-P2WSH)
 P2SH-P2WSH is using a P2WSH script as the <code>redeemScript</code> for P2SH. The <code>scriptPubKey</code> of P2SH-P2WSH looks exactly the same as an ordinary P2SH:
@@ -124,6 +129,8 @@ To spend a P2SH-P2WSH output, the <code>scriptSig</code> MUST contain a push of 
 witness: <...> <...> <...> < witnessScript ></code></pre>
 
 where the <code>SHA256(witnessScript)</code> is equal to the <code>32-byte-script-hash</code>, and <code>RIPEMD160(SHA256(0x0020{32-byte-script-hash}))</code> is equal to the <code>20-byte-script-hash</code>.
+
+Example: [954f43dbb30ad8024981c07d1f5eb6c9fd461e2cf1760dd1283f052af746fc88](http://n.bitcoin.ninja/checktx?txid=954f43dbb30ad8024981c07d1f5eb6c9fd461e2cf1760dd1283f052af746fc88)
 
 ### New signing algorithm
 To spend a witness program output, a new signing algorithm MUST be used when producing the ECDSA signature. A step-by-step example could be found in BIP143.
