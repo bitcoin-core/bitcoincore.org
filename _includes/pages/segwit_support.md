@@ -32,7 +32,7 @@
 |[mSIGNA](https://ciphrex.com/)|yes|yes|wallet||
 |[Multibit HD](https://multibit.org/)|yes|no|wallet|bitcoinj|
 |[Mycelium](https://mycelium.com/)|yes|no|wallet||
-|NBitcoin|yes|no|library|n/a|
+|NBitcoin|yes|yes|library|n/a|
 |[OmniCore](https://github.com/OmniLayer/omnicore)|yes|no|wallet||
 |[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)|yes|no|library||
 |[pycoin](https://github.com/richardkiss/pycoin)|yes|no|library|n/a|
