@@ -14,11 +14,11 @@ There are 2 ways to use segregated witness:
 
 #### Native witness program
 
-Native witness program is defined as a <code>scriptPubKey</code> with a single byte push (<code>OP_0</code>, <code>OP_1</code>, ...,  <code>OP_16</code>) followed by a push of 2 to 32 bytes.
+Native witness program is defined as a <code>scriptPubKey</code> with a single byte push (<code>OP_0</code>, <code>OP_1</code>, ...,  <code>OP_16</code>) followed by a push of 2 to 40 bytes.
 
 #### Witness program nested in P2SH
 
-Witness program nested in P2SH is a P2SH output with a <code>redeemScript</code> of a single byte push (<code>OP_0</code>, <code>OP_1</code>, ...,  <code>OP_16</code>) followed by a push of 2 to 32 bytes.
+Witness program nested in P2SH is a P2SH output with a <code>redeemScript</code> of a single byte push (<code>OP_0</code>, <code>OP_1</code>, ...,  <code>OP_16</code>) followed by a push of 2 to 40 bytes.
 
 ## Network services
 
