@@ -84,9 +84,9 @@ en:
       contact_us:
         title: "Contact Us"
         url: "/en/contact/"
-        announcements:
-          title: "Announcements"
-          url: "/en/list/announcements/join/"
+      announcements:
+        title: "Announcements"
+        url: "/en/list/announcements/join/"
 zh_CN:
   home:
     title: "Bitcoin Core"
