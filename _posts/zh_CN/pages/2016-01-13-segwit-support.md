@@ -2,7 +2,7 @@
 type: pages
 layout: page
 lang: zh_CN
-name: 2016-01-13-segwit-support
+name: segwit-support
 id: zh_cn-2016-01-13-segwit-support
 title: 隔离见证支持
 permalink: /zh_CN/segwit_adoption/

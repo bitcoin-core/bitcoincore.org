@@ -2,7 +2,7 @@
 type: pages
 layout: page
 lang: zh_CN
-name: 2016-01-01-contribute
+name: contribute
 id: zh_cn-2016-01-01-contribute.md
 title: 我如何做出贡献?
 permalink: /zh_CN/contribute/
