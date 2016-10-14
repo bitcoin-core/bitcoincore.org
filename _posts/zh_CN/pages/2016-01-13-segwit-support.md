@@ -14,8 +14,6 @@ share: false
 
 最新! (隔离见证比特币测试网服务):
 
-|Name|Planned|Ready|Notes|Depends|
-|----|-------|-----|-----|-------|
 {% include pages/segwit_support.md %} 
 
 添加公司或服务, 请使用 ACK ticket [#30] 加公司／服务名称。
