@@ -13,8 +13,6 @@ The following is a list of companies and projects which have stated they will su
 To add your company or service, please ACK ticket <a href="https://github.com/bitcoin-core/bitcoincore.org/pull/30">[#30]
 </a> with company/service name.
 
-|Name|Planned|Ready|Notes|Depends|
-|----|-------|-----|-----|-------|
 {% include pages/segwit_support.md %}
 
 \* BitGo provides wallet services to exchanges such as Bitstamp and Kraken.
