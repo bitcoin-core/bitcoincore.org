@@ -1,5 +1,5 @@
 ---
-version: 2
+version: 3
 title: Segregated Witness Wallet Development Guide
 name: segwit-wallet-dev
 type: pages
@@ -8,129 +8,170 @@ lang: en
 permalink: /en/segwit_wallet_dev/
 ---
 
-### Witness program
+Most contents of this document could be found in the BIPs related to segregated witness, including BIP141, 143, 144, and 145. Please consider this as the first point of reference to other related documents, and as a checklist for what should and should not be done.
 
-There are 2 ways to use segregated witness:
+### Basic segregated witness support
 
-#### Native witness program
+A wallet MUST implement all the features in this section, in order to be considered as segwit-compatible at a basic level:
 
-Native witness program is defined as a <code>scriptPubKey</code> with a single byte push (<code>OP_0</code>, <code>OP_1</code>, ...,  <code>OP_16</code>) followed by a push of 2 to 40 bytes.
+#### Sending to P2SH
 
-#### Witness program nested in P2SH
+* A segwit-compatible wallet MUST support pay-to-script-hash ([BIP16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)) and its address format ([BIP13](https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki)).
+* For making payments, the wallet must be able to correctly transform a given P2SH address to a <code>scriptPubKey</code>, and create a transaction.
+* For receiving payments, the wallet must be able to create a P2SH address based on a P2WPKH script (defined hereinafter), and be able to recognize payment to such addresses.
+* This is a mandatory requirement, even if the wallet accepts only single-signature payments.
 
-Witness program nested in P2SH is a P2SH output with a <code>redeemScript</code> of a single byte push (<code>OP_0</code>, <code>OP_1</code>, ...,  <code>OP_16</code>) followed by a push of 2 to 40 bytes.
+#### Creation of P2SH-P2WPKH Address
 
-## Network services
+* A P2SH-P2WPKH address is comparable to Bitcoin's original single-signature P2PKH address (address with prefix 1).
+* Like any other P2SH address, P2SH-P2WPKH address has prefix 3.
+* Until a P2SH-P2WPKH UTXO is spent and the <code>redeemScript</code> is exposed, a P2SH-P2WPKH address is indistinguishable from a non-segwit P2SH address (such as a non-segwit multi-signature address)
+* P2SH-P2WPKH addresses should be used when only 1 public key is used to receive payment (like P2PKH)
+* P2SH-P2WPKH uses the same public key format as P2PKH, with a very important exception: the public key used in P2SH-P2WPKH MUST be compressed, i.e. 33 bytes in size, and starting with a <code>0x02</code> or <code>0x03</code>. Using any other format such as uncompressed public key may lead to irrevocable fund loss.
+* To create a P2SH-P2WPKH address:
+    1. Calculate the RIPEMD160 of the SHA256 of a public key (<code>keyhash</code>). Despite the <code>keyhash</code> formula is same as P2PKH, reuse of <code>keyhash</code> should be avoided for better privacy and prevention of accidental use of uncompressed key
+    2. The P2SH <code>redeemScript</code> is always 22 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>keyhash</code> (i.e. <code>0x0014{20-byte keyhash}</code>)
+    3. Same as any other P2SH, the <code>scripPubKey</code> is <code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>, and the address is the corresponding P2SH address with prefix 3.
 
-Segregated witness capable nodes will advertise that they can provide witnesses through the following service bit:
+#### Transaction Serialization
 
-<pre><code>NODE_WITNESS = (1 << 3)</code></pre>
+* A segwit-compatible wallet MUST support the original transaction format, as <code>nVersion|txins|txouts|nLockTime</code>.
+* A segwit-compatible wallet MUST also support the new serialization format, as <code>nVersion|marker|flag|txins|txouts|witness|nLockTime</code>
+    * Format of <code>nVersion</code>, <code>txins</code>, <code>txouts</code>, and <code>nLockTime</code> are same as the original format
+    * The <code>marker</code> MUST be <code>0x00</code>
+    * The <code>flag</code> MUST be <code>0x01</code>
+    * The <code>witness</code> is a serialization of all witness data of the transaction.
+        * Each txin is associated with a witness field. As a result, there is no indication of number of witness fields, as it is implied by the number of <code>txins</code>
+        * Each witness field starts with a <code>compactSize</code> [integer](https://bitcoin.org/en/developer-reference#compactsize-unsigned-integers) to indicate the number of stack items for the corresponding <code>txin</code>. It is then followed by witness stack item(s) for the corresponding <code>txin</code>, if any. 
+        * Each witness stack item starts with a <code>compactSize</code> integer to indicate the number of bytes of the item.
+        * If a <code>txin</code> is not associated with any witness data, its corresponding witness field is an exact <code>0x00</code>, indicating that the number of witness stack items is zero.
+* If all <code>txin</code> in a transaction are not associated with any witness data, the transaction MUST be serialized in the original transaction format, without <code>marker</code>, <code>flag</code>, and <code>witness</code>. For example, if none of the <code>txins</code> are coming from segwit UTXO, it MUST be serialized in the original transaction format. (exception: coinbase transaction)
+* Examples of the transaction serialization can be found under the example section of BIP143. Wallet developers may use the examples to test if their implementations correctly parse the new serialization format.
 
-### Transaction Serialization
+#### Transaction ID
 
-If a transaction is transmitted without any witness data, the traditional serialization format MUST be used.
+* Under segwit, each transaction will have 2 IDs.
+* The definition of <code>txid</code> remains unchanged: the double SHA256 of the original serialization format.
+* A new <code>wtxid</code> is defined, which is the double SHA256 of the new serialization format with witness data.
+* If a transaction does not have any witness data, its <code>wtxid</code> is same as the <code>txid</code>.
+* The <code>txid</code> remains the primary identifier of a transaction:
+    * It MUST be used in the <code>txin</code> when referring to a previous output.
+    * If a wallet or service is currently using <code>txid</code> to identify transactions, it is expected to use the same after upgrade.
 
-If a transaction is transmitted with witness data, a new serialization format MUST be used:
+#### Signature Generation and Verification for P2SH-P2WPKH
 
-<pre><code>[nVersion][marker][flag][txins][txouts][witness][nLockTime]</code></pre>
+* For spending of non-segwit UTXO, the signature generation algorithm is unchanged.
+* For spending of P2SH-P2WPKH:
+    * The <code>scriptSig</code> MUST ONLY contain a push of the <code>redeemScript</code>
+    * The corresponding witness field MUST contain exactly 2 items, a signature followed by the public key
+    * There is a new signature generation algorithm described in BIP143 for segwit scripts. Developers should follow the instructions carefully, and make use of the P2SH-P2WPKH example in [BIP143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki#P2SHP2WPKH) to make sure they are able to reproduce the <code>sighash</code>.
+    * The BIP143 signature generating algorithm covers the value of the input being spent, which simplifies the design of air-gapped light-weight wallets and hardware wallets.
+    * Please note that for a P2SH-P2WPKH, the <code>scriptCode</code> is always 26 bytes including the leading size byte, as <code>0x1976a914{20-byte keyhash}88ac</code>, NOT the <code>redeemScript</code> nor <code>scriptPubKey</code>
+    * [Example](http://n.bitcoin.ninja/checktx?txid=8139979112e894a14f8370438a471d23984061ff83a9eba0bc7a34433327ec21)
+    
+#### Network Services (optional)
 
-Format of <code>nVersion</code>, <code>txins</code>, <code>txouts</code>, and <code>nLockTime</code> are same as traditional serialization.
+* Network services are needed if the wallet would send and receive transactions through the peer-to-peer network
+* Segwit-capable nodes will advertise that they can provide witnesses through the service bit: <code>NODE_WITNESS = (1 << 3)</code>
+* Transactions without any witness data (and therefore serialized in original format) may be sent to nodes with or without <code>NODE_WITNESS</code> support
+* Transactions which spend segwit UTXOs (and therefore is serialized in the new format) MUST ONLY be sent to nodes with <code>NODE_WITNESS</code> support
+* Transactions which spend segwit UTXOs but with witness data stripped (and therefore serialized in original format) may be sent to nodes without <code>NODE_WITNESS</code> support. Such transactions, however, are invalid after activation of segwit and would not be accepted in a block.
+* Details of the network services could be found in BIP144.
 
-The <code>marker</code> MUST be <code>0x00</code>.
+#### User Privacy
 
-The <code>flag</code> MUST be a 1-byte non-zero value. Currently, <code>0x01</code> MUST be used.
+* In the early days just after segwit is activated, there may be limited number of segwit transactions in the network.
+* Using segwit transaction when it is uncommon may make Bitcoin tracking easier.
+* Using P2SH-P2WPKH as default change output may also have an impact on privacy.
 
-The <code>witness</code> is a serialization of all witness data of the transaction. Each txin is associated with a witness field. A witness field starts with a var_int to indicate the number of stack items for the txin. It is followed by stack items, with each item starts with a var_int to indicate the length. Witness data is NOT script and is not restricted by the 520-byte push limit.
+#### Transaction Fee Estimation
 
-A non-witness program txin MUST be associated with an empty witness field, represented by a <code>0x00</code>. If all txins are not witness program, a transaction MUST be serialized with the traditional format (exception: coinbase transaction).
+* Instead of transaction size, a new metric is defined, called "virtual size" (<code>vsize</code>)
+* <code>vsize</code> of a transaction equals to 3 times of the size with original serialization, plus the size with new serialization, divide the result by 4 and round up to the next integer. For example, if a transaction is 200 bytes with new serialization, and becomes 99 bytes with <code>marker</code>, <code>flag</code>, and <code>witness</code> removed, the transaction weight is (99 * 3 + 200) / 4 = 125 with round up.
+* <code>vsize</code> of a non-segwit transaction is simply its size
+* Transaction fee should be estimated by comparing the <code>vsize</code> with other transactions, not the size.
+* Developers should be careful not to make an off-by-4-times mistake in fee estimation.
 
-### Transaction ID
 
-Each transaction will have 2 IDs.
+#### Upgrade Safety
 
-Definition of <code>txid</code> remains unchanged: the double SHA256 of the traditional serialization.
+* End users MUST NOT be allowed to generate any P2SH-P2WPKH or other segwit addresses before segwit is fully activated on the network. Before activation, using P2SH-P2WPKH or other segwit addresses may lead to permanent fund loss
+* Similarly, change MUST NOT be sent to a segwit output before activation
+* Activation of segwit is defined by BIP9. After 15 Nov 2016 and before 15 Nov 2017 UTC, if in a full retarget cycle at least 1916 out of 2016 blocks is signaling readiness, segwit will be activated in the retarget cycle after the next one
+* If a wallet does not have the ability to follow the BIP9 signal, the upgraded version should not be released to end users until it is activated
+* If there were any concerns that some miners may not correctly enforce the new rules, release of the upgraded wallet may be delayed until evidence has shown that vast majority (if not all) miners are following the new rules. Violations would be very obvious, shown as invalid orphaned blocks.
 
-A new <code>wtxid</code> is defined: the double SHA256 of the new serialization with witness data. If a transaction is transmitted without any witness data, its <code>wtxid</code> is same as the <code>txid</code>.
+#### Backward Compatibility
 
-The txid remains the primary identifier of a transaction. Particularly, it is used in the txin when referring to a previous output.
+* Sending and receiving P2PKH payment (address with prefix 1) should remain to be supported.
 
-### Standard script types
 
-#### Pay-to-Public-Key-Hash (P2PKH)
-P2PKH is the most common <code>scriptPubKey</code> template defined by Satoshi Nakamoto, allows simple payment to a single public key. The format is:
+### Complex script support
 
-<pre><code>scriptPubKey (25 bytes): OP_DUP OP_HASH160 < 20-byte-pubkey-hash > OP_EQUALVERIFY OP_CHECKSIG</code></pre>
+If a wallet supports script types other than just single signature, such as multi-signature, it has to fulfill more than the basic requirements:
 
-To spend a P2PKH output, the <code>scriptSig</code> is
+#### Creation of P2SH-P2WSH Address
 
-<pre><code>scriptSig: < sig > < pubkey ></code></pre>
+* A P2SH-P2WSH address is comparable to Bitcoin's original P2SH address, which allows representation of arbritarily complex scripts with a fixed size address.
+* Like any other P2SH and P2SH-P2WPKH address, P2SH-P2WSH address has prefix 3. They are indistinguishable until the UTXO is spent
+* To create a P2SH-P2WSH address:
+    1. Define a script, called (<code>witnessScript</code>)
+    2. Calculate the SHA256 of the <code>witnessScript</code> (<code>scripthash</code>). Please pay attention that a single SHA256 is used, not double SHA256 nor RIPEMD160(SHA256)
+    3. The P2SH <code>redeemScript</code> is always 34 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>scripthash</code> (i.e. <code>0x0020{32-byte scripthash}</code>)
+    4. Same as any other P2SH, the <code>scripPubKey</code> is <code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>, and the address is the corresponding P2SH address with prefix 3.
+* Restrictions on the script
+    * The script evaluation must not fail, and MUST leave one and only one TRUE stack item after evaluation. Otherwise, the evaluation is failed.
+    * Any public key inside P2SH-P2WSH scripts MUST be compressed key, or fund may be lost permenantly.
+    * If OP_IF or OP_NOTIF is used, it argument MUST be either an empty vector (for false) or <code>0x01</code> (for true). Use of other value may lead to permenant fund loss. ([BIP draft](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-August/013014.html))
+    * If an OP_CHECKSIG or OP_CHECKMULTISIG is returning a fail, all signature(s) must be empty vector(s). Otherwise, fund may be lost permenantly. ([BIP146](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki))
+    * There is a default policy limit for the <code>witnessScript</code> at 3600 bytes. Except the <code>witnessScript</code>, there could be at most 100 witness stack items, with at most 80 bytes each. Transactions excessing these limits may not be relayed nor included in a block
+    * Many of the original scripts consensus limitations, such as 10000 bytes script size, 201 <code>nOpCount</code>, are still applited to P2SH-P2WSH
+    * The 520 bytes script size limit for P2SH is not applicable to P2SH-P2WSH. It is replaced by the 3600 bytes policy limit and 10000 bytes consensus limit.
+    
+#### Signature Generation and Verification for P2SH-P2WSH
 
-where the <code>RIPEMD160(SHA256(pubkey))</code> is equal to the <code>20-byte-pubkey-hash</code> in scriptPubKey.
+* For spending of P2SH-P2WSH:
+    * The <code>scriptSig</code> MUST ONLY contain a push of the <code>redeemScript</code>
+    * The last witness item of the corresponding witness field MUST be the <code>witnessScript</code>
+    * The new BIP143 signature generation algorithm is applied:
+        * Without using any OP_CODESEPARATOR, the <code>scriptCode</code> is <code>witnessScript</code> preceeded by a <code>compactSize</code> integer for the size of <code>witnessScript</code>. For example, if the script is OP_1 (<code>0x51</code>), the <code>scriptCode</code> being serialized is (<code>0x0151</code>)
+        * For any unusal scripts containing OP_CODESEPARATOR, please refer to BIP143 for the exact semantics
+    * Any witness stack items before the <code>witnessScript</code> are used as the input stack for script evaluation. The input stack is not interpreted as script. For example, there is no need to use a <code>0x4c</code> (OP_PUSHDATA1) to "push" a big item.
+    * To verify the correctness of signature generation and stack serialization, please always test against the examples in BIP143
+    * [Example](http://n.bitcoin.ninja/checktx?txid=954f43dbb30ad8024981c07d1f5eb6c9fd461e2cf1760dd1283f052af746fc88)
 
-Example: [d869f854e1f8788bcff294cc83b280942a8c728de71eb709a2c29d10bfe21b7c](http://n.bitcoin.ninja/checktx?txid=d869f854e1f8788bcff294cc83b280942a8c728de71eb709a2c29d10bfe21b7c)
+### Advanced designs
 
-#### Pay-to-Script-Hash (P2SH)
-P2SH is defined in BIP16. It allows payment to arbitrarily complex scripts with a fixed length <code>scriptPubKey</code>. The format is:
+The following functions are not required for initial segwit support.
 
-<pre><code>scriptPubKey (23 bytes): OP_HASH160 <20-byte-script-hash> OP_EQUAL</code></pre>
+#### Native Pay-to-Witness-Public-Key-Hash (P2WPKH)
 
-To spend a P2SH output, the <code>scriptSig</code> is
+* Native P2WPKH is a <code>scripPubKey</code> of 22 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>keyhash</code> (i.e. <code>0x0014{20-byte keyhash}</code>)
+* Same as P2SH-P2WPKH, <code>keyhash</code> is RIPEMD160(SHA256) of a compressed public key.
+* When spending a native P2WPKH, the <code>scriptSig</code> MUST be empty, and the witness stack format and signature generating rules are same as P2SH-P2WPKH (including the requirement of using compressed public key)
+* [Example](http://n.bitcoin.ninja/checktx?txid=d869f854e1f8788bcff294cc83b280942a8c728de71eb709a2c29d10bfe21b7c)
 
-<pre><code>scriptSig: <...> <...> <...> < redeemScript ></code></pre>
+#### Native Pay-to-Witness-Script-Hash (P2WSH)
 
-where the <code>RIPEMD160(SHA256(redeemScript))</code> is equal to the <code>20-byte-script-hash</code> in <code>scriptPubKey</code>. The <code>redeemScript</code> is deserialized and evaluated with the remaining data in the <code>scriptSig</code>.
+* Native P2WSH is a <code>scripPubKey</code> of 34 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>scripthash</code> (i.e. <code>0x0020{32-byte keyhash}</code>)
+* Same as P2SH-P2WSH, <code>scripthash</code> is SHA256 of the <code>witnessScript</code>.
+* When spending a native P2WSH, the <code>scriptSig</code> MUST be empty, and the witness stack format and signature generating rules are same as P2SH-P2WSH (including the requirement of using compressed public key)
+* [Example](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
 
-#### Pay-to-Witness-Public-Key-Hash (P2WPKH)
-P2WPKH is a new defined in BIP141. Similar to P2PKH, it allows simple payment to a single public key. The format is:
+#### Why and How to Use Native P2WPKH and P2WSH?
 
-<pre><code>scriptPubKey (22 bytes): OP_0 < 20-byte-pubkey-hash ></code></pre>
+* There is no address format for native P2WPKH and P2WSH. BIP142 is deferred and is likely to be implemented in a completely different way
+* Comparing with the P2SH versions, the transaction weight of native versions is smaller in most cases, and therefore less fee is required
+* Native P2WPKH and P2WSH may be used with raw <code>scripPubKey</code> protocols, such as the Payment Protocol (BIP70). However, it may affect the privacy of the payer and recipient (see below).
+* Native P2WPKH and P2WSH may be used as default change address, but this may allow other people identifying the change easily (see below)
+* It is expected that the use of native P2WPKH and P2WSH would be uncommon at the beginning, which may cause privacy concerns among the users.
 
-To spend a P2WPKH output, the <code>scriptSig</code> MUST be empty, and the <code>witness</code> is:
-  
-<pre><code>witness: < sig > < pubkey ></code></pre>
 
-where the <code>RIPEMD160(SHA256(pubkey))</code> is equal to the <code>20-byte-pubkey-hash</code> in <code>scriptPubKey</code>.
+### Scripts and Transactions Examples
 
-#### P2WPKH in P2SH (P2SH-P2WPKH)
-P2SH-P2WPKH is using a P2WPKH script as the <code>redeemScript</code> for P2SH. The <code>scriptPubKey</code> of P2SH-P2WPKH looks exactly the same as an ordinary P2SH:
-
-<pre><code>scriptPubKey (23 bytes): OP_HASH160 < 20-byte-script-hash > OP_EQUAL</code></pre>
-
-To spend a P2SH-P2WPKH output, the <code>scriptSig</code> MUST contain a push of the <code>redeemScript</code> and nothing else and the <code>witness</code> is same as P2WPKH:
-
-<pre><code>scriptSig (23 bytes): < OP_0 < 20-byte-pubkey-hash > >
-witness: < sig > < pubkey ></code></pre>
-  
-where the <code>RIPEMD160(SHA256(pubkey))</code> is equal to the <code>20-byte-pubkey-hash</code>, and <code>RIPEMD160(SHA256(0x0014{20-byte-pubkey-hash}))</code> is equal to the <code>20-byte-script-hash</code>.
-
-Example: [8139979112e894a14f8370438a471d23984061ff83a9eba0bc7a34433327ec21](http://n.bitcoin.ninja/checktx?txid=8139979112e894a14f8370438a471d23984061ff83a9eba0bc7a34433327ec21)
-  
-#### Pay-to-Witness-Script-Hash (P2WSH)
-P2WSH is another new standard script defined in BIP141. Similar to P2SH, it allows payment to arbitrarily complex scripts. The format is:
-
-<pre><code>scriptPubKey (34 bytes): OP_0 < 32-byte-script-hash ></code></pre>
-
-To spend a P2WSH output, the <code>scriptSig</code> MUST be empty, and the witness is:
-
-<pre><code>witness: <...> <...> <...> < witnessScript ></code></pre>
-
-where the <code>SHA256(witnessScript)</code> is equal to the <code>32-byte-script-hash</code> in scriptPubKey. The <code>witnessScript</code> is deserialized and evaluated with the remaining data in the <code>witness</code>.
-
-Example: [78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
-
-#### P2WSH in P2SH (P2SH-P2WSH)
-P2SH-P2WSH is using a P2WSH script as the <code>redeemScript</code> for P2SH. The <code>scriptPubKey</code> of P2SH-P2WSH looks exactly the same as an ordinary P2SH:
-
-<pre><code>scriptPubKey (23 bytes): OP_HASH160 <20-byte-script-hash> OP_EQUAL</code></pre>
-
-To spend a P2SH-P2WSH output, the <code>scriptSig</code> MUST contain a push of the <code>redeemScript</code> and nothing else and the <code>witness</code> is same as P2WSH:
-
-<pre><code>scriptSig (35 bytes): < OP_0 < 32-byte-script-hash > > \
-witness: <...> <...> <...> < witnessScript ></code></pre>
-
-where the <code>SHA256(witnessScript)</code> is equal to the <code>32-byte-script-hash</code>, and <code>RIPEMD160(SHA256(0x0020{32-byte-script-hash}))</code> is equal to the <code>20-byte-script-hash</code>.
-
-Example: [954f43dbb30ad8024981c07d1f5eb6c9fd461e2cf1760dd1283f052af746fc88](http://n.bitcoin.ninja/checktx?txid=954f43dbb30ad8024981c07d1f5eb6c9fd461e2cf1760dd1283f052af746fc88)
-
-### New signing algorithm
-To spend a witness program output, a new signing algorithm MUST be used when producing the ECDSA signature. A step-by-step example could be found in BIP143.
+* [Examples of different witness transaction types and transaction validity checking tool](http://n.bitcoin.ninja/checktx)
+* [BIP141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
+* [BIP143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
+* [Script tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/script_tests.json)
+* [Valid transaction tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/tx_valid.json)
+* [Invalid transaction tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/tx_invalid.json)
