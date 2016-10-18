@@ -6,7 +6,9 @@ type: pages
 layout: page
 lang: en
 permalink: /en/segwit_wallet_dev/
+version: 1
 ---
+{% include _toc.html %}
 
 Most contents of this document could be found in the BIPs related to segregated witness, including BIP141, 143, 144, and 145. Please consider this as the first point of reference to other related documents, and as a checklist for what should and should not be done.
 
