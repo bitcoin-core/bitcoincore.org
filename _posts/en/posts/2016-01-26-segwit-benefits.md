@@ -133,18 +133,6 @@ Reduced UTXO growth will benefit miners, businesses, and users who run full node
 
  * [Statoshi UTXO dashboard](http://statoshi.info/dashboard/db/unspent-transaction-output-set)
 
-## Compact fraud proofs
-
-As the Bitcoin userbase expands, validating the entire blockchain naturally becomes more expensive. To maintain the decentralised, trustless nature of Bitcoin, it is important to allow those who cannot afford to validate the entire blockchain to at least be able to cheaply validate as much of it as they can afford.
-
-Segwit improves the situation here by allowing a future soft-fork to extend the witness structure to include commitment data, which will allow lightweight (SPV) clients to enforce consensus rules such such as the number of bitcoins introduced in a block, the size of a block, and the number of sigops used in a block.
-
-### Who benefits?
-
-Fraud proofs allow SPV users to help enforce Bitcoin's consensus rules, which will potentially greatly increase the security of the Bitcoin network as a whole, as well as reduce the ways in which individual users can be attacked.
-
-These fraud proofs can be added to the witness data structure as part of a future soft-fork, and they'll help SPV clients enforce the rules even on transactions that don't make use of the segwit features.
-
 ## Efficiency gains when not verifying signatures
 
 Signatures for historical transactions may be less interesting than signatures for future transactions -- for example, Bitcoin Core does not check signatures for transactions prior to the most recent checkpoint by default, and some SPV clients simply don't check signatures themselves at all, trusting that has already been done by miners or other nodes. At present, however, signature data is an integral part of the transaction and must be present in order to calculate the transaction hash.
@@ -186,4 +174,22 @@ This lets miners easily and accurately fill blocks while maximising fee income, 
  * [Sigop attack discussion on bitcointalk in Aug 2015](https://bitcointalk.org/index.php?topic=1166928.0;all)
  * [Gregory Maxwell on bitcoin-dev on witness limits](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011870.html)
  * ["Validation Cost Metric" transcript](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/validation-cost-metric/)
+
+## Update 2016-10-19
+
+Earlier versions of this page listed "Compact fraud proofs" as a benefit of segwit. However, as implemented, segwit does not make this any easier: with or without segwit, a future soft-fork enabling compact fraud proofs and the benefits they bring, will need to include its own commitment (eg, in the coinbase transaction), rather than being able to extend the commitment data used by segwit.
+
+The previous text was:
+
+> **Compact fraud proofs**
+>
+> As the Bitcoin userbase expands, validating the entire blockchain naturally becomes more expensive. To maintain the decentralised, trustless nature of Bitcoin, it is important to allow those who cannot afford to validate the entire blockchain to at least be able to cheaply validate as much of it as they can afford.
+>
+> Segwit improves the situation here by allowing a future soft-fork to extend the witness structure to include commitment data, which will allow lightweight (SPV) clients to enforce consensus rules such such as the number of bitcoins introduced in a block, the size of a block, and the number of sigops used in a block.
+>
+> **Who benefits?**
+>
+> Fraud proofs allow SPV users to help enforce Bitcoin's consensus rules, which will potentially greatly increase the security of the Bitcoin network as a whole, as well as reduce the ways in which individual users can be attacked.
+>
+> These fraud proofs can be added to the witness data structure as part of a future soft-fork, and they'll help SPV clients enforce the rules even on transactions that don't make use of the segwit features.
 
