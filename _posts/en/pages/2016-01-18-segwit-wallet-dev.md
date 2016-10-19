@@ -47,7 +47,7 @@ A wallet MUST implement all the features in this section, in order to be conside
         * Each witness field starts with a <code>compactSize</code> [integer](https://bitcoin.org/en/developer-reference#compactsize-unsigned-integers) to indicate the number of stack items for the corresponding <code>txin</code>. It is then followed by witness stack item(s) for the corresponding <code>txin</code>, if any. 
         * Each witness stack item starts with a <code>compactSize</code> integer to indicate the number of bytes of the item.
         * If a <code>txin</code> is not associated with any witness data, its corresponding witness field is an exact <code>0x00</code>, indicating that the number of witness stack items is zero.
-* If all <code>txin</code> in a transaction are not associated with any witness data, the transaction MUST be serialized in the original transaction format, without <code>marker</code>, <code>flag</code>, and <code>witness</code>. For example, if none of the <code>txins</code> are coming from segwit UTXO, it MUST be serialized in the original transaction format. (exception: coinbase transaction)
+* If all <code>txins</code> in a transaction are not associated with any witness data, the transaction MUST be serialized in the original transaction format, without <code>marker</code>, <code>flag</code>, and <code>witness</code>. For example, if none of the <code>txins</code> are coming from segwit UTXO, it MUST be serialized in the original transaction format. (exception: coinbase transaction)
 * Examples of the transaction serialization can be found under the example section of BIP143. Wallet developers may use the examples to test if their implementations correctly parse the new serialization format.
 
 #### Transaction ID
@@ -89,7 +89,7 @@ A wallet MUST implement all the features in this section, in order to be conside
 #### Transaction Fee Estimation
 
 * Instead of transaction size, a new metric is defined, called "virtual size" (<code>vsize</code>)
-* <code>vsize</code> of a transaction equals to 3 times of the size with original serialization, plus the size with new serialization, divide the result by 4 and round up to the next integer. For example, if a transaction is 200 bytes with new serialization, and becomes 99 bytes with <code>marker</code>, <code>flag</code>, and <code>witness</code> removed, the transaction weight is (99 * 3 + 200) / 4 = 125 with round up.
+* <code>vsize</code> of a transaction equals to 3 times of the size with original serialization, plus the size with new serialization, divide the result by 4 and round up to the next integer. For example, if a transaction is 200 bytes with new serialization, and becomes 99 bytes with <code>marker</code>, <code>flag</code>, and <code>witness</code> removed, the <code>vsize</code> is (99 * 3 + 200) / 4 = 125 with round up.
 * <code>vsize</code> of a non-segwit transaction is simply its size
 * Transaction fee should be estimated by comparing the <code>vsize</code> with other transactions, not the size.
 * Developers should be careful not to make an off-by-4-times mistake in fee estimation.
@@ -127,7 +127,7 @@ If a wallet supports script types other than just single signature, such as mult
     * If OP_IF or OP_NOTIF is used, it argument MUST be either an empty vector (for false) or <code>0x01</code> (for true). Use of other value may lead to permenant fund loss. ([BIP draft](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-August/013014.html))
     * If an OP_CHECKSIG or OP_CHECKMULTISIG is returning a fail, all signature(s) must be empty vector(s). Otherwise, fund may be lost permenantly. ([BIP146](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki))
     * There is a default policy limit for the <code>witnessScript</code> at 3600 bytes. Except the <code>witnessScript</code>, there could be at most 100 witness stack items, with at most 80 bytes each. Transactions excessing these limits may not be relayed nor included in a block
-    * Many of the original scripts consensus limitations, such as 10000 bytes script size, 201 <code>nOpCount</code>, are still applited to P2SH-P2WSH
+    * Many of the original scripts consensus limitations, such as 10000 bytes script size, 201 <code>nOpCount</code>, are still applied to P2SH-P2WSH
     * The 520 bytes script size limit for P2SH is not applicable to P2SH-P2WSH. It is replaced by the 3600 bytes policy limit and 10000 bytes consensus limit.
     
 #### Signature Generation and Verification for P2SH-P2WSH
@@ -163,7 +163,7 @@ The following functions are not required for initial segwit support.
 #### Why and How to Use Native P2WPKH and P2WSH?
 
 * There is no address format for native P2WPKH and P2WSH. BIP142 is deferred and is likely to be implemented in a completely different way
-* Comparing with the P2SH versions, the transaction weight of native versions is smaller in most cases, and therefore less fee is required
+* Comparing with the P2SH versions, the transaction <code>vsize</code> of native versions is smaller in most cases, and therefore less fee may be required
 * Native P2WPKH and P2WSH may be used with raw <code>scripPubKey</code> protocols, such as the Payment Protocol (BIP70). However, it may affect the privacy of the payer and recipient (see below).
 * Native P2WPKH and P2WSH may be used as default change address, but this may allow other people identifying the change easily (see below)
 * It is expected that the use of native P2WPKH and P2WSH would be uncommon at the beginning, which may cause privacy concerns among the users.
