@@ -55,6 +55,9 @@ en:
       version-bits:
         title: "Version Bits (BIP9)"
         url: "/en/2016/06/08/version-bits-miners-faq/"
+      segwit-upgrade-guide:
+        title: "Segwit upgrade guide"
+        url: "/en/segwit-upgrade-guide/"
   dev:
     title: "Development"
     submenu: true
