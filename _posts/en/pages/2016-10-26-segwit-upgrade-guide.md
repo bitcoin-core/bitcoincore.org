@@ -69,7 +69,8 @@ When segwit is activated, you will want to be able to mine and relay segwit-styl
 - [libblkmaker](https://github.com/bitcoin/libblkmaker) 0.6.0
 - [Eloipool](https://github.com/luke-jr/eloipool) ([Branch available](https://github.com/luke-jr/eloipool/commits/segwit))
 - [BFGMiner](https://github.com/luke-jr/bfgminer) 2.10.4+ (requires libblkmaker 0.6.0 or greater)
-- [CGMiner](https://github.com/ckolivas/cgminer)
+- [ckpool](https://bitbucket.org/ckolivas/ckpool)
+- [CGMiner](https://github.com/ckolivas/cgminer) (pull-request [pending](https://github.com/ckolivas/cgminer/pull/699))
 - [Bitcoin FIBRE](http://bitcoinfibre.org/)
 - [The Bitcoin Relay Network](http://www.bitcoinrelaynetwork.org/) (see for details on upgrading to the new network)
 
