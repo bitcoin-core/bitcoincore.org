@@ -507,3 +507,56 @@ from layer two networks can easily saturate the on-chain capacity with
 segwit enabled. Even if only a very small amount of the value of these
 networks are captured via on-chain transaction fees, this would likely
 be substantially above the current fee value.
+
+# Risks related to long term scaling
+
+As described above, full adoption of segwit by all transactions is
+expected to approximately double capacity. This provides a significant
+one-time increase in capacity, in either the short or medium term,
+depending on the speed of adoption. In addition, by adding features to
+enable layer two networks, some additional medium and long term scaling
+may be achieved. By fixing the quadratic sighash scaling bug, segwit also
+reduces the risk of negative impacts due to future capacity increases.
+
+Segwit does not, however, provide any direct mechanism for scaling
+on-chain transaction volume further other than that one-off doubling.
+
+This runs this risk that approaches to long-term scaling may be prevented
+or delayed: stakeholders may consider segwit to be "enough" scaling and
+decline to work on or support further scaling efforts.
+
+## Avoidance
+
+Efforts to avoid this risk have included:
+
+ * Inclusion of "moderate block size increase proposals" in the [2015-12-07 Capacity increases roadmap](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html)
+ * Inclusion of "flex caps or incentive-aligned dynamic block size controls"
+   in the same roadmap.
+ * Inclusion of features in segwit to make later scaling less risky,
+   particularly [Linear scaling of sighash operations](/en/2016/01/26/segwit-benefits/#linear-scaling-of-sighash-operations) and [Moving towards a single combined block limit](/en/2016/01/26/segwit-benefits/#moving-towards-a-single-combined-block-limit).
+ * Work on techniques to use block space more
+   efficiently, such as using [Schnorr signatures and signature aggregation](http://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
+ * Research on alternate models to the blockchain, maintaining
+   decentralisation and security, but with better scalability properties,
+   eg [Mimblewimble](http://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/mimblewimble/), [Braiding](http://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/breaking-the-chain/), [Jute Braiding](http://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/jute-braiding/).
+
+Additionally, work that has made the scale increases segwit allows
+achievable (such as libsecp256k1 and compact blocks) have also, obviously,
+made further potential scale increases more achievable.
+
+## Mitigation
+
+Segwit does not make further scaling any more difficult on any technical
+level -- the risk here is entirely social. As a consequence, the most
+effective mitigation efforts are likely also social in nature: such as
+by having companies who support long-term scaling commit development
+resources to making that happen.
+
+That segwit enables transaction volume to increase to approximately double
+current levels also provides the opportunity to demonstrate the actual
+impact of scaling, such as on node performance, decentralisation, and
+transaction demand, as well as the speed with which ecosystem upgrades
+can be undertaken. This data could reasonably be collected and used
+to support future scaling efforts, either by showing that some feared
+outcomes are less likely than expected, or by confirming valid concerns
+and allowing work to be focussed on addressing those concerns.
