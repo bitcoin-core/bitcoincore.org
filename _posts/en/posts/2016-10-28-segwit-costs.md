@@ -219,3 +219,52 @@ In addition, the possibility of versioning the "script" language
 introduces the possibility to fix bugs in the bitcoin script language,
 including both pre-existing bugs as well as any potential new bugs that
 segwit may introduce.
+
+# Risks related to complexity and technical debt
+
+The concept of *technical debt* is that an easy fix now might cause
+enough difficulty and problems in the long term, that spending more time
+and effort now will turn out to be more economical.
+
+In the context of Bitcoin, there are two types of technical debt:
+
+ * ugly or complicated code, that can be refactored without impacting users or
+   consensus; and
+ * poor design decisions, many of which have to be retained indefinitely,
+   as otherwise Bitcoin users would lose access to their existing coins.
+
+## Avoidance
+
+As noted above, the segwit code has been heavily reviewed, which
+helps resist the introduction of technical debt at both a code and
+design level.
+
+As also noted above, segwit has multiple independent reimplementations,
+which helps discover any unnecessary complexity and technical debt at
+the point that it can still be avoided.
+
+In support of existing efforts to pay down technical debt
+by refactoring and improving the bitcoin codebase, segwit was merged as
+a code-only update as part of [work towards the 0.13.0 release](https://bitcoincore.org/en/meetings/2016/05/26/).
+
+## Mitigation
+
+Bitcoin already suffers from some significant design debt, and segwit
+is specifically designed to reduce the impact of some of this debt
+(notably transaction malleability, linear scaling of signature hashing,
+and signing of input values).
+
+The script versioning method provided by segwit provides an elegant way of
+allowing future soft-fork updates to further reduce design debt, including
+by fixing bugs in existing opcodes (such as CHECKMULTISIG), re-enabling
+disabled opcodes (such as CAT), or switching to superior verification
+methods (such as Schnorr signatures, or aggregate signatures).
+
+Generally, design debt in Bitcoin script cannot be fully paid off, as
+it is always possible that there are some unspent transactions paying
+to P2SH addresses that make use of the "ugly" functionality. Disabling
+those features would render those transactions unspendable, effectively
+stealing funds from users. Script versioning allows the "cost" of this
+design debt to be reduced, by partitioning such "ugly" functionality as
+only applicable to "old" script versions, thus allowing new development
+work to largely ignore the old code.
