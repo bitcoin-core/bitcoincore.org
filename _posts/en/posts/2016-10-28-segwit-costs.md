@@ -268,3 +268,110 @@ stealing funds from users. Script versioning allows the "cost" of this
 design debt to be reduced, by partitioning such "ugly" functionality as
 only applicable to "old" script versions, thus allowing new development
 work to largely ignore the old code.
+
+# Risks related to soft-fork deployment
+
+A soft-fork is any change to bitcoin consensus rules that invalidates
+some set of previously valid transaction. A poorly handled soft-fork can
+cause a number of problems in the Bitcoin ecosystem, and, because segwit
+makes the additional witness data critical to establishing Bitcoin's
+distributed consensus, a poorly handled upgrade could cause the system
+to fail in additional ways. The primary potential failure modes include:
+
+ 1. making it impossible for some Bitcoin holders to spend their money
+ 2. causing old nodes and upgraded nodes to have a different view of
+    which unconfirmed transactions are valid and likely to be mined
+ 3. having miners mistakenly mine blocks that are not valid under
+    the new rules
+ 4. being activated, with some actual use, then backed out
+ 5. allowing large blockchain forks, due to the p2p network being
+    effectively disconnected as a result of connections via old nodes
+    that are unable to forward witness data
+
+## Avoidance
+
+Numerous soft-forks have already been activated in Bitcoin (including BIPS
+16, 34, 65, 66, 68, 112, 113), and this experience has been codified in the
+[BIP 9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki)
+process for activating soft-forks. The BIP 9 process was used for
+deploying the CSV soft-fork (BIPs 68, 112, and 113), and resulted in a
+fast and unproblematic upgrade to the consensus rules for that change.
+
+The segwit design and BIP 9 deployment avoids the problems listed above
+in the following ways:
+
+ 1. The new restrictions imposed by segwit only affect transactions
+    that no one would currently make use of:
+
+    - The affected transactions would be non-standard, and thus not
+      relayed by the vast majority of nodes or mined by most miners.
+
+    - Any transactions that were affected would currently be considered
+      obvious "anyone can spend" payments, and could immediately be
+      claimed by anyone monitoring the blockchain, and therefore should
+      have been expected to be "lost".
+
+ 2. Old nodes will consider transactions spending segwit transactions as
+    non-standard, due to apparent violation of BIP61 CLEANSTACK rules,
+    and thus won't be included in old nodes' mempools. Similarly, transactions
+    with P2WPKH or P2WSH outputs (though not P2WPKH/P2WSH encoded via P2SH)
+    will also be considered non-standard due to being a new output type.
+
+    This makes it impossible to achieve double spends of segwit outputs
+    by relaying one transaction through old nodes and a different
+    transaction through segwit nodes.
+
+    However, these differences may still be used to attempt a double
+    spend, for example by combining a non-segwit output and a segwit
+    output in a single transaction (that will only be relayed via the
+    upgraded segwit nodes), then attempting to double-spend it via
+    a higher fee transaction only using the non-segwit output, which may
+    be successful relayed via the old nodes.
+
+    These concerns only affect unconfirmed transactions in the mempool;
+    once a transaction is confirmed and mined in a block, double spending
+    remains impossible. Existing methods for monitoring double spends
+    should remain equally effective, provided the monitoring tools are
+    able to track segwit spends at all.
+
+ 3. Ensuring miners mine valid blocks is obviously a high priority to
+    everyone involved, and significant work has
+    gone into guaranteeing this is the case with
+    segwit. This includes both the direct work, under
+    [BIP-145](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki),
+    as well as indirect work, such as Compact Blocks
+    ([BIP-152](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki)).
+
+ 4. If the segwit soft-fork were reverted after being activated,
+    this could allow anyone who had made segwit transactions to lose funds
+    -- a malicious miner could replay the transaction on a chain without
+    segwit enabled at which point it would be anyone-can-spend, and could
+    then steal the funds by spending it to themselves. There are two ways
+    in which a segwit soft-fork could be reverted after being activated
+    while allowing theft of segwit enabled transactions:
+
+    - Miners could abandon the segwit enabled chain and start mining from
+      prior to segwit's activation. Based on the
+      [BIP-9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki)
+      activation rules, this would require abandoning over 2016 blocks
+      (the LOCKED IN period, plus enough blocks to ensure the 95%
+      threshold wasn't reached). This would require miners to abandon
+      over 25,200 BTC in block reward, which at current prices is over
+      $15,000,000 USD.
+
+    - Miners could simply use software that does not recognise segwit
+      rules (such as earlier versions of Bitcoin Core) to mine blocks
+      on top of a chain that has activated segwit. This would be a
+      hard-fork as far as segwit-aware software is concerned, and those
+      blocks would consequently be ignored by Bitcoin users using segwit
+      aware validating nodes. If there are sufficiently many users
+      using segwit nodes, such a hard-fork would be no more effective
+      than introducing a new alt coin.
+
+    As a result, neither approach seems likely.
+
+ 5. Significant work has gone into ensuring that segwit enabled peers
+    will form a strongly connected subgraph of the Bitcoin P2P network.
+    This includes providing a dedicated service bit for witness enabled
+    nodes and preferentially connecting to such nodes.
+
