@@ -560,3 +560,62 @@ can be undertaken. This data could reasonably be collected and used
 to support future scaling efforts, either by showing that some feared
 outcomes are less likely than expected, or by confirming valid concerns
 and allowing work to be focussed on addressing those concerns.
+
+# Alternative approaches
+
+This section provides a brief comparison with some alternative approaches
+to achieving some or all of the benefits of segwit, and how those
+different approaches might change the costs and risks involved.
+
+## Hard-forked segwit
+
+Any hard-fork implementation of segwit would add significant new costs
+and risks, due to requiring all nodes to upgrade to understand the new
+rules prior to activation, and risking a chain fork into "old Bitcoin"
+and "new Bitcoin" with consequent confusion and loss of value. Due to the
+comparative lack of experience with hard-forks in the Bitcoin community,
+unexpected risks and costs might also eventuate, though that is obviously
+hard to analyse by its very nature.
+
+A hard-fork implementation of segwit could realistically be made in
+two ways:
+
+ * SPV-invisible: if the witness commitment was moved from the coinbase
+   into the block transaction merkle tree, most non-validating clients
+   and wallets would continue to work without needing an upgrade. This
+   would save the 38-47 bytes from the coinbase transaction, but does
+   not offer any other advantages.
+
+ * SPV-visible: if calculation of transaction hashes were changed to
+   exclude the scriptSig, this might allow for a simpler implementation,
+   and reduce the per-transaction overhead; however it would render all
+   existing Bitcoin software unable to work with those transactions
+   prior to be being updated. Additionally, separate code paths to
+   manage old style transactions would need to be kept, increasing
+   code complexity and the possibility of bugs.
+   [BIP 134, Flexible Transactions](https://github.com/bitcoin/bips/blob/master/bip-0134.mediawiki) presents an alternative approach at gaining
+   some of the benefits of segwit via an SPV-visible hard-fork.
+
+Either approach to a hard-fork would make it possible to simultaneously
+drastically alter the consensus limits on blocks.
+
+## Simpler segwit
+
+Many of the benefits of segwit could logically be separated into
+independent changes, and evaluated and deployed separately. The
+implementation requirements for the various features are, however,
+closely related:
+
+ * Linear scaling of sighash operations: the CHECKSIG and CHECKMULTISIG
+   opcodes need replacement.
+ * Signing of input values: the CHECKSIG and CHECKMULTISIG opcodes need
+   replacement.
+ * Increased security for multisig via P2SH: the P2SH payment format needs
+   replacement.
+ * Script versioning: the P2SH payment format needs replacement.
+
+Doing these fixes independently would increase the complexity of the
+Bitcoin codebase due to the need to handle different features being active
+at different times on the blockchain; while deploying them concurrently
+removes this complexity.
+
