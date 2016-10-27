@@ -108,10 +108,10 @@ In order to reduce the chances of these risks occurring when segwit is activated
     - [PR#7910](https://github.com/bitcoin/bitcoin/pull/7910)
     - [PR#8149](https://github.com/bitcoin/bitcoin/pull/8149)
     - [Development branch pull requests](https://github.com/sipa/bitcoin/pulls?utf8=%E2%9C%93&q=is%3Apr%20)
-    - [Bitcoin Core Zurich Meeting](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
+    - [Bitcoin Core Zurich Meeting](/logs/2016-05-zurich-meeting-notes.html)
     - [Peter Todd's review](https://petertodd.org/2016/segwit-consensus-critical-code-review)
 
- * Test cases: as described in the [Next Steps](https://bitcoincore.org/en/2016/06/24/segwit-next-steps/#how-segwit-was-tested) post, "The combined changes to the consensus rules and the P2P networking code consist of 1,486 lines of added or modified code. The segwit patch also includes an additional 3,338 lines of added or modified code in the unit and integration tests that help ensure segwit is functioning as expected on every full build of the Bitcoin Core program."
+ * Test cases: as described in the [Next Steps](/en/2016/06/24/segwit-next-steps/#how-segwit-was-tested) post, "The combined changes to the consensus rules and the P2P networking code consist of 1,486 lines of added or modified code. The segwit patch also includes an additional 3,338 lines of added or modified code in the unit and integration tests that help ensure segwit is functioning as expected on every full build of the Bitcoin Core program."
 
  * Test networks: during development, segregated witness has been deployed on multiple test nets, allowing the code to be vetted, and developers from the wider ecosystem, such as block explorers and wallets, to ensure their software interoperates correctly with segregated witness. These test networks have included:
    - Elements Project -- tested the concept of segregated witness implemented as a hard-fork, along with many other changes
@@ -145,7 +145,7 @@ As noted above, the segwit code has been heavily reviewed, which helps resist th
 
 Also as noted above, segwit has multiple independent reimplementations, which helps discover any unnecessary complexity and technical debt at the point that it can still be avoided.
 
-In support of existing efforts to pay down technical debt by refactoring and improving the Bitcoin codebase, segwit was merged as a code-only update as part of [work towards the 0.13.0 release](https://bitcoincore.org/en/meetings/2016/05/26/).
+In support of existing efforts to pay down technical debt by refactoring and improving the Bitcoin codebase, segwit was merged as a code-only update as part of [work towards the 0.13.0 release](/en/meetings/2016/05/26/).
 
 ### Mitigation
 
