@@ -375,3 +375,79 @@ in the following ways:
     This includes providing a dedicated service bit for witness enabled
     nodes and preferentially connecting to such nodes.
 
+# Risks due to larger blocks
+
+Segwit updates the 1MB block size limit to a 4M unit block weight limit,
+counting serialised witness data as one unit, and core block data as
+four units. As transactions that use segwit features begin to be used,
+this change will allow more data to be included per block (with 100%
+of transactions using segwit features this is expected to be about 2MB
+of data per block, however in the worst case could be up to 4MB of data
+per block). In so far as it allows a greater transaction volume,
+can be expected to increase the UTXO database more quickly (with 100%
+of transactions using segwit features, the rate of increase might be
+expected to approximately double; however because segwit is a soft fork,
+the worst case UTXO growth is unchanged).
+
+These outcomes may have positive attributes (more volume allows more
+user uptake, for example), but also have possibly significant negatives:
+
+ * Larger blocks may result in slower block transmission, resulting
+   in higher orphan rates for miners -- this in turn may result in
+   lower security (less hashpower required to take over the network),
+   or higher centralisation (larger miners being more able to reduce
+   their orphan rate).
+
+ * Larger blocks will result in higher resource requirements for full
+   nodes, potentially causing users to shut down their nodes, which
+   would result in higher centralisation.
+
+ * Larger UTXO sets will result in higher resource requirements for
+   miners, potentially causes miners to share validation resources,
+   which would result in higher centralisation.
+
+## Avoidance
+
+The negative impact of larger blocks is limited in a number of ways:
+
+ * Validation times of blocks have been significantly reduced thanks
+   to deployment of libsecp256k1.
+
+ * Deployment of Compact Blocks via [BIP 152](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki)
+   helps limit the impact of larger blocks on block transmission, and
+   hence orphan rates, and also reduces the bandwidth usage of full nodes.
+
+ * Pruning support allows users to run full nodes without storing
+   the entire history of the blockchain, which allows users who have
+   constrained storage resources to continue running full nodes, even
+   with a larger block size.
+
+ * The changes to the signature hashing algorithm used by segwit
+   signatures to avoid quadratic scaling, provides a significant reduction
+   in cost for some large transactions.
+
+The negative impact of increased UTXO growth is limited by:
+
+ * Deploying segwit as a soft-fork ensures the worst-case UTXO growth
+   does not get any worse.
+
+ * The reduced weighting of witness data rebalances the lifecycle cost
+   of a UTXO, reducing the cost of introducing an additional input that
+   spends a segwit output, and therefore (relatively) increasing the cost
+   of introducing an additional output creating a new UTXO, changing
+   the create/spend cost ratio from about 1:4.5 to about 1:2. This
+   should moderately reduce incentives to increase the UTXO set by both
+   discouraging UTXO creation, and encouraging spending of UTXOs.
+
+## Mitigation
+
+ * Since the maximum amount of data per block is capped at no more
+   than four times the current rate, mitigation work to address problems
+   that arise from large blocks should be within the bounds of relatively
+   straightforward engineering work. Further, since the expected amount
+   of data per block is only approximately double the current rate, this
+   any necessary mitigation efforts should be further eased.
+
+ * There is ongoing work to improve on-disk and network serialisation of
+   transactions and blocks, further reducing the storage and bandwith
+   requirements of running a full node.
