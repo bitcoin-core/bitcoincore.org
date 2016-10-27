@@ -11,10 +11,11 @@ version: 1
 excerpt: This page summarises some of the costs and expected risks of deploying segregated witness.
 ---
 {% include _toc.html %}
+{% include _references.md %}
 
 # Introduction
 
-This post is a companion to the earlier post on [Segregated Witness Benefits](/en/2016/01/26/segwit-benefits/), giving an overview of the technical costs and risks that may be incurred by activating segregated witness via [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki).
+This post is a companion to the earlier post on [Segregated Witness Benefits](/en/2016/01/26/segwit-benefits/), giving an overview of the technical costs and risks that may be incurred by activating segregated witness via [BIP141][].
 
 ## Aims
 
@@ -94,11 +95,11 @@ In order to reduce the chances of these risks eventuating when segwit is activat
    - [Scaling Bitcoin Hong Kong](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/segregated-witness-and-its-impact-on-scalability/)
    - [SF Bitcoin Devs](https://www.youtube.com/watch?v=NOYNZB5BCHM)
    - [Scaling Bitcoin Milan](http://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/segwit-lessons-learned/)
-   - [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki),
-     [BIP 142](https://github.com/bitcoin/bips/blob/master/bip-0142.mediawiki),
-     [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki),
-     [BIP 144](https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki),
-     [BIP 145](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki)
+   - [BIP141][],
+     [BIP142][],
+     [BIP143][],
+     [BIP144][], and
+     [BIP145][]
 
    Technical reviews include:
    - [PR#7910](https://github.com/bitcoin/bitcoin/pull/7910)
@@ -163,9 +164,9 @@ A soft-fork is any change to bitcoin consensus rules that invalidates some set o
 
 ## Avoidance
 
-Numerous soft-forks have already been activated in Bitcoin (including BIPS 16, 34, 65, 66, 68, 112, 113), and this experience has been codified in the [BIP 9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki) process for activating soft-forks. The BIP 9 process was used for deploying the CSV soft-fork (BIPs 68, 112, and 113), and resulted in a fast and unproblematic upgrade to the consensus rules for that change.
+Numerous soft-forks have already been activated in Bitcoin (including BIPs [16][BIP16], [34][BIP34], [65][BIP65], [66][BIP66], [68][BIP68], [112][BIP112], [113][BIP113]), and this experience has been codified in the [BIP9][] process for activating soft-forks. The BIP9 process was used for deploying the CSV soft-fork (BIPs 68, 112, and 113), and resulted in a fast and unproblematic upgrade to the consensus rules for that change.
 
-The segwit design and BIP 9 deployment avoids the problems listed above in the following ways:
+The segwit design and BIP9 deployment avoids the problems listed above in the following ways:
 
  1. The new restrictions imposed by segwit only affect transactions that no one would currently make use of:
 
@@ -173,7 +174,7 @@ The segwit design and BIP 9 deployment avoids the problems listed above in the f
 
     - Any transactions that were affected would currently be considered obvious "anyone can spend" payments, and could immediately be claimed by anyone monitoring the blockchain, and therefore should have been expected to be "lost".
 
- 2. Old nodes will consider transactions spending segwit transactions as non-standard, due to apparent violation of BIP61 CLEANSTACK rules, and thus won't be included in old nodes' mempools. Similarly, transactions with P2WPKH or P2WSH outputs (though not P2WPKH/P2WSH encoded via P2SH) will also be considered non-standard due to being a new output type.
+ 2. Old nodes will consider transactions spending segwit transactions as non-standard, due to apparent violation of [BIP61][] CLEANSTACK rules, and thus won't be included in old nodes' mempools. Similarly, transactions with P2WPKH or P2WSH outputs (though not P2WPKH/P2WSH encoded via P2SH) will also be considered non-standard due to being a new output type.
 
     This makes it impossible to achieve double spends of segwit outputs by relaying one transaction through old nodes and a different transaction through segwit nodes.
 
@@ -181,11 +182,11 @@ The segwit design and BIP 9 deployment avoids the problems listed above in the f
 
     These concerns only affect unconfirmed transactions in the mempool; once a transaction is confirmed and mined in a block, double spending remains impossible. Existing methods for monitoring double spends should remain equally effective, provided the monitoring tools are able to track segwit spends at all.
 
- 3. Ensuring miners mine valid blocks is obviously a high priority to everyone involved, and significant work has gone into guaranteeing this is the case with segwit. This includes both the direct work, under [BIP-145](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki), as well as indirect work, such as Compact Blocks ([BIP-152](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki)).
+ 3. Ensuring miners mine valid blocks is obviously a high priority to everyone involved, and significant work has gone into guaranteeing this is the case with segwit. This includes both the direct work, under [BIP145][], as well as indirect work, such as Compact Blocks ([BIP152][]).
 
  4. If the segwit soft-fork were reverted after being activated, this could allow anyone who had made segwit transactions to lose funds -- a malicious miner could replay the transaction on a chain without segwit enabled at which point it would be anyone-can-spend, and could then steal the funds by spending it to themselves. There are two ways in which a segwit soft-fork could be reverted after being activated while allowing theft of segwit enabled transactions:
 
-    - Miners could abandon the segwit enabled chain and start mining from prior to segwit's activation. Based on the [BIP-9](https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki) activation rules, this would require abandoning over 2016 blocks (the LOCKED IN period, plus enough blocks to ensure the 95% threshold wasn't reached). This would require miners to abandon over 25,200 BTC in block reward, which at current prices is over $15,000,000 USD.
+    - Miners could abandon the segwit enabled chain and start mining from prior to segwit's activation. Based on the [BIP9][] activation rules, this would require abandoning over 2016 blocks (the LOCKED IN period, plus enough blocks to ensure the 95% threshold wasn't reached). This would require miners to abandon over 25,200 BTC in block reward, which at current prices is over $15,000,000 USD.
 
     - Miners could simply use software that does not recognise segwit rules (such as earlier versions of Bitcoin Core) to mine blocks on top of a chain that has activated segwit. This would be a hard-fork as far as segwit-aware software is concerned, and those blocks would consequently be ignored by Bitcoin users using segwit aware validating nodes. If there are sufficiently many users using segwit nodes, such a hard-fork would be no more effective than introducing a new alt coin.
 
@@ -211,7 +212,7 @@ The negative impact of larger blocks is limited in a number of ways:
 
  * Validation times of blocks have been significantly reduced thanks to deployment of libsecp256k1.
 
- * Deployment of Compact Blocks via [BIP 152](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki) helps limit the impact of larger blocks on block transmission, and hence orphan rates, and also reduces the bandwidth usage of full nodes.
+ * Deployment of Compact Blocks via [BIP152][] helps limit the impact of larger blocks on block transmission, and hence orphan rates, and also reduces the bandwidth usage of full nodes.
 
  * Pruning support allows users to run full nodes without storing the entire history of the blockchain, which allows users who have constrained storage resources to continue running full nodes, even with a larger block size.
 
@@ -287,7 +288,7 @@ A hard-fork implementation of segwit could realistically be made in two ways:
 
  * SPV-invisible: if the witness commitment was moved from the coinbase into the block transaction merkle tree, most non-validating clients and wallets would continue to work without needing an upgrade. This would save the 38-47 bytes from the coinbase transaction, but does not offer any other advantages.
 
- * SPV-visible: if calculation of transaction hashes were changed to exclude the scriptSig, this might allow for a simpler implementation, and reduce the per-transaction overhead; however it would render all existing Bitcoin software unable to work with those transactions prior to be being updated. Additionally, separate code paths to manage old style transactions would need to be kept, increasing code complexity and the possibility of bugs.  [BIP 134, Flexible Transactions](https://github.com/bitcoin/bips/blob/master/bip-0134.mediawiki) presents an alternative approach at gaining some of the benefits of segwit via an SPV-visible hard-fork.
+ * SPV-visible: if calculation of transaction hashes were changed to exclude the scriptSig, this might allow for a simpler implementation, and reduce the per-transaction overhead; however it would render all existing Bitcoin software unable to work with those transactions prior to be being updated. Additionally, separate code paths to manage old style transactions would need to be kept, increasing code complexity and the possibility of bugs.  [BIP 134, Flexible Transactions][BIP134] presents an alternative approach at gaining some of the benefits of segwit via an SPV-visible hard-fork.
 
 Either approach to a hard-fork would make it possible to simultaneously drastically alter the consensus limits on blocks.
 
