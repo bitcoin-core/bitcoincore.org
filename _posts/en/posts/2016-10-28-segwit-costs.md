@@ -127,3 +127,95 @@ P2SH-encoded-P2WPKH output. This however only amounts to about six SHA256
 runs over at most 4MB of data, or roughly about 24MB of SHA256 data in
 total, which should translate to at most an additional 15s per block on
 a Raspberry Pi, or under a tenth of a second on more capable hardware.
+
+# Risk of introducing bugs
+
+The segwit patch set is a major change to Bitcoin, and was rolled out,
+though not activated on the main bitcoin network, in Bitcoin Core 0.13.0.
+Any major change like this runs a variety of risks, including:
+
+ * Outright bugs: mistakes can be made in design or implementation
+   giving unexpected or harmful results. For example
+   [PR#8525](https://github.com/bitcoin/bitcoin/pull/8525).
+
+ * User errors: changes to the system can result in user confusion,
+   resulting in incorrect use of the system, which in turn may lead to
+   harmful results.
+
+ * Ecosystem interactions: different parts of the Bitcoin ecosystem may
+   have hard-coded assumptions that will be violated with the update. For
+   example, applications that parse bitcoind's block store will need to
+   be updated to understand the new serialisation.
+
+## Avoidance
+
+In order to reduce the chances of these risks eventuating when segwit
+is activated, the following steps have been undertaken:
+
+ * Peer review: all the changes in segwit, both design and implementation
+   have been presented publicly and reviewed by multiple independent
+   experts; often resulting in suggested improvements being undertaken.
+
+   Public presentations include:
+   - [Elements Project](https://www.elementsproject.org/elements/segregated-witness/)
+   - [Scaling Bitcoin Hong Kong](http://diyhpl.us/wiki/transcripts/scalingbitcoin/hong-kong/segregated-witness-and-its-impact-on-scalability/)
+   - [SF Bitcoin Devs](https://www.youtube.com/watch?v=NOYNZB5BCHM)
+   - [Scaling Bitcoin Milan](http://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/segwit-lessons-learned/)
+   - [BIP 141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki),
+     [BIP 142](https://github.com/bitcoin/bips/blob/master/bip-0142.mediawiki),
+     [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki),
+     [BIP 144](https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki),
+     [BIP 145](https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki)
+
+   Technical reviews include:
+   - [PR#7910](https://github.com/bitcoin/bitcoin/pull/7910)
+   - [PR#8149](https://github.com/bitcoin/bitcoin/pull/8149)
+   - [Development branch pull requests](https://github.com/sipa/bitcoin/pulls?utf8=%E2%9C%93&q=is%3Apr%20)
+   - [Bitcoin Core Zurich Meeting](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
+   - [Peter Todd's review](https://petertodd.org/2016/segwit-consensus-critical-code-review)
+
+ * Test cases: as described in the [Next Steps](https://bitcoincore.org/en/2016/06/24/segwit-next-steps/#how-segwit-was-tested)
+   post, "The combined changes to the consensus rules and the P2P
+   networking code consist of 1,486 lines of added or modified code. The
+   segwit patch also includes an additional 3,338 lines of added or
+   modified code in the unit and integration tests that help ensure
+   segwit is functioning as expected on every full build of the Bitcoin
+   Core program."
+
+ * Test networks: during development, segregated witness has been deployed
+   on multiple test nets, allowing the code to be vetted, and developers
+   from the wider ecosystem, such as block explorers and wallets,
+   to ensure their software interoperates correctly with segregated
+   witness. These test networks have included:
+   - Elements Project -- tested the concept of segregated witness
+     implemented as a hard-fork, along with many other changes
+   - segnet1 through segnet4 -- tested implementation of segwit as a
+     soft-fork, between January and May 2016
+   - testnet3 -- segwit activated on the standard testnet in May 2016
+
+ * Alternative implementations: the segwit BIPs have been reimplemented in
+   [btcd](https://github.com/btcsuite/btcd/pull/656) (Go) and
+   [Bcoin](https://medium.com/purse-essays/introducing-bcoin-fdfcb22dfa34) (Javascript),
+   as well as in [various wallets and libraries](/en/segwit_adoption/).
+   Independent reimplementation helps shake out unstated assumptions, and
+   ambiguities in the design, and avoid bugs that may result from them.
+
+## Mitigation
+
+A major factor in mitigating the impact of any bugs is that segwit is
+implemented as a soft-fork. This means:
+
+ * Users of bitcoin can simply avoid newly introduced features until
+   they are personally confident they are implemented correctly,
+   without losing any functionality.
+
+ * All valid segwit blocks are also valid blocks to pre-segwit software,
+   so earlier versions of bitcoin that don't include the segwit changes,
+   and hence don't include any bugs introduced in those changes, can be
+   used to verify blocks to provide a second level of assurance against
+   the possibility of consensus regressions.
+
+In addition, the possibility of versioning the "script" language
+introduces the possibility to fix bugs in the bitcoin script language,
+including both pre-existing bugs as well as any potential new bugs that
+segwit may introduce.
