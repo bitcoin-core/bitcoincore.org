@@ -451,3 +451,59 @@ The negative impact of increased UTXO growth is limited by:
  * There is ongoing work to improve on-disk and network serialisation of
    transactions and blocks, further reducing the storage and bandwith
    requirements of running a full node.
+
+# Risks due to lower fees
+
+The security of the Bitcoin blockchain is provided by hashpower, which
+is rewarded by both a fixed block reward and by fees from individual
+transaction. As a result, decreases in fee income have the potential to
+reduce the hashpower used to mine Bitcoin, which in turn may lower the
+security of the Bitcoin blockchain.
+
+In so far as the individual transaction fees are determined
+by market forces and supply and demand, the changes introduced by segwit
+may risk lowering prices by increasing supply (presuming that demand
+does not also rise, either because of or at least concurrent with segwit
+deployment), and lower individual prices may result in lower overall
+mining revenue (if the price elasticity of demand is in the inelastic
+range).
+
+In addition, the changes made in segwit may make "layer two" solutions,
+such as the Lightning Network, more compelling. If this leads to users
+treating layer two solutions as a substitute for on-chain transactions,
+this may signficantly decrease demand for on-chain transactions, which
+would put additional downward pressure on transaction fee levels.
+
+## Avoidance
+
+As fee income is currently only a small fraction of miner income (fees
+are currently approximately 0.5 BTC per block versus 12.5 BTC per block
+in block reward, so about 4% of miner income), the potential impact on
+miner income and hence network security is likely small in the short term.
+
+In addition, fees have been rising over the past twelve months both in
+BTC denominated value (from under 0.2 BTC per block a year ago) and in
+real terms (from under $300 USD per BTC a year ago, to over $600 USD per
+BTC today), so moderate falls in fee levels will only be equivalent to
+reverting to fee incomes from up to twelve months ago, which should not
+be a major impact.
+
+## Mitigation
+
+Miners are able to individually and collectively limit supply, either
+by setting a soft-limit on the maximum weight for blocks they produce
+("blockmaxweight" setting, which defaults to 3M), or by using a soft-fork
+to effectively lower the consensus limits by orphaning blocks above a
+particular weight. This approach has the potential to prevent any fee
+decreases due to increased supply (or indeed to increase individual
+fees by reducing supply, though that may not increase overall revenue),
+but cannot prevent decreases to fee income due to substitution effects
+(such as the adoption of layer two networks).
+
+While layer two networks may act as a substitute for on-chain
+transactions, they cannot avoid on-chain transactions entirely, and
+in some scenarios, even these comparatively few on-chain transactions
+from layer two networks can easily saturate the on-chain capacity with
+segwit enabled. Even if only a very small amount of the value of these
+networks are captured via on-chain transaction fees, this would likely
+be substantially above the current fee value.
