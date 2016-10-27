@@ -1,12 +1,13 @@
 ---
-version: 1
 title: Segregated Witness Upgrade Guide
 name: segwit-upgrade-guide
-type: pages
-layout: page
+id: en-segwit-upgrade-guide
+type: posts
+layout: post
 lang: en
-permalink: /en/segwit-upgrade-guide/
+permalink: /en/2016/10/27/segwit-upgrade-guide/
 version: 1
+excerpt: Almost two years of iterative design, development, and testing has gone into the version of segwit being released in Bitcoin Core 0.13.1, with much of the effort over the last year focused on making it as easy as possible for existing Bitcoin users, businesses, developers, and miners to upgrade to segwit.
 ---
 {% include _toc.html %}
 {% include _references.md %}
