@@ -57,7 +57,7 @@ en:
         url: "/en/2016/06/08/version-bits-miners-faq/"
       segwit-upgrade-guide:
         title: "Segwit upgrade guide"
-        url: "/en/segwit-upgrade-guide/"
+        url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "Development"
     submenu: true
@@ -146,6 +146,9 @@ zh_CN:
        version-bits:
          title: "版本位 (比特币改进协议 9/BIP9)"
          url: "/zh_CN/2016/06/08/version-bits-miners-faq/"
+      segwit-upgrade-guide:
+        title: "Segwit upgrade guide"
+        url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "开发"
     submenu: true
@@ -234,6 +237,9 @@ zh_TW:
       version-bits:
         title: "Version Bits (BIP9)"
         url: "/en/2016/06/08/version-bits-miners-faq/"
+      segwit-upgrade-guide:
+        title: "Segwit upgrade guide"
+        url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "Development"
     submenu: true
