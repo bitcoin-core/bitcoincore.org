@@ -13,11 +13,11 @@ excerpt: This page summarises some of the costs and expected risks of deploying 
 {% include _toc.html %}
 {% include _references.md %}
 
-# Introduction
+## Introduction
 
 This post is a companion to the earlier post on [Segregated Witness Benefits](/en/2016/01/26/segwit-benefits/), giving an overview of the technical costs and risks that may be incurred by activating segregated witness via [BIP141][].
 
-## Aims
+### Aims
 
 For the purpose of this post, we will use *costs* to describe negative results that are certain to occur if segwit is deployed and activated, and *risks* to describe negative impacts that may not eventuate, or changes that are only subjectively negative -- that is a reasonable person may not consider them to be negative.
 
@@ -25,7 +25,7 @@ When analysing risks, we consider steps undertaken to *avoid* the risk (that is,
 
 This post does not attempt to produce a conclusion as to whether the benefits outweigh the costs or whether segwit should be deployed or activated, but rather to assist by providing background information to assist stakeholders in making informed decisions.
 
-# Serialisation costs
+## Serialisation costs
 
 Transactions and block information are serialised for three main purposes:
 
@@ -53,7 +53,7 @@ The segwit transaction formats (see [BIP 141 - witness program](https://github.c
 
 The percentages above are based on a transaction of 180 bytes with one input and one output. These proportions remain roughly the same as the number of inputs/outputs increases, but decreases if more complicated transaction scripts (such as multisig) are in use.
 
-## Rationale
+### Rationale
 
 The transaction size overhead is due to two factors:
 
@@ -66,15 +66,15 @@ The motivation behind the first factor is discussed under [Increased security fo
 
 The second factor is a tradeoff that individual users can make when publishing a receiving address, and users who choose P2WPKH/P2SH or P2WSH/P2SH will pay higher fees in proportion to the overhead.  This should naturally limit the impact of this overhead in the long term.
 
-## Future reductions
+### Future reductions
 
 It is possible to make most of this overhead disappear via changes to the network and storage serialisation formats: the full serialisation can be recovered from a simple flag indicating which format is in use (P2PKH, P2WPKH, P2WPKH/P2SH, etc) along with the actual data (the pubkey and signature).  (For example, [compacted_txn.txt](https://people.xiph.org/~greg/compacted_txn.txt))
 
-# Block validation costs
+## Block validation costs
 
 With segwit, additional processing is introduced when validating a block in order both to check the witness merkle tree, and to deal with P2SH-encoded witness transactions. This requires about five additional SHA256 hashes per transaction, and an additional SHA256 per P2SH-encoded-P2WSH input, and an additional HASH160 per P2SH-encoded-P2WPKH output. This however only amounts to about six SHA256 runs over at most 4MB of data, or roughly about 24MB of SHA256 data in total, which should translate to at most an additional 15s per block on a Raspberry Pi, or under a tenth of a second on more capable hardware.
 
-# Risk of introducing bugs
+## Risk of introducing bugs
 
 The segwit patch set is a major change to Bitcoin, and was rolled out, though not activated on the main bitcoin network, in Bitcoin Core 0.13.0.  Any major change like this runs a variety of risks, including:
 
@@ -84,7 +84,7 @@ The segwit patch set is a major change to Bitcoin, and was rolled out, though no
 
  * Ecosystem interactions: different parts of the Bitcoin ecosystem may have hard-coded assumptions that will be violated with the update. For example, applications that parse bitcoind's block store will need to be updated to understand the new serialisation.
 
-## Avoidance
+### Avoidance
 
 In order to reduce the chances of these risks eventuating when segwit is activated, the following steps have been undertaken:
 
@@ -117,7 +117,7 @@ In order to reduce the chances of these risks eventuating when segwit is activat
 
  * Alternative implementations: the segwit BIPs have been reimplemented in [btcd](https://github.com/btcsuite/btcd/pull/656) (Go) and [Bcoin](https://medium.com/purse-essays/introducing-bcoin-fdfcb22dfa34) (Javascript), as well as in [various wallets and libraries](/en/segwit_adoption/).  Independent reimplementation helps shake out unstated assumptions, and ambiguities in the design, and avoid bugs that may result from them.
 
-## Mitigation
+### Mitigation
 
 A major factor in mitigating the impact of any bugs is that segwit is implemented as a soft-fork. This means:
 
@@ -127,7 +127,7 @@ A major factor in mitigating the impact of any bugs is that segwit is implemente
 
 In addition, the possibility of versioning the "script" language introduces the possibility to fix bugs in the bitcoin script language, including both pre-existing bugs as well as any potential new bugs that segwit may introduce.
 
-# Risks related to complexity and technical debt
+## Risks related to complexity and technical debt
 
 The concept of *technical debt* is that an easy fix now might cause enough difficulty and problems in the long term, that spending more time and effort now will turn out to be more economical.
 
@@ -136,7 +136,7 @@ In the context of Bitcoin, there are two types of technical debt:
  * ugly or complicated code, that can be refactored without impacting users or consensus; and
  * poor design decisions, many of which have to be retained indefinitely, as otherwise Bitcoin users would lose access to their existing coins.
 
-## Avoidance
+### Avoidance
 
 As noted above, the segwit code has been heavily reviewed, which helps resist the introduction of technical debt at both a code and design level.
 
@@ -144,7 +144,7 @@ As also noted above, segwit has multiple independent reimplementations, which he
 
 In support of existing efforts to pay down technical debt by refactoring and improving the bitcoin codebase, segwit was merged as a code-only update as part of [work towards the 0.13.0 release](https://bitcoincore.org/en/meetings/2016/05/26/).
 
-## Mitigation
+### Mitigation
 
 Bitcoin already suffers from some significant design debt, and segwit is specifically designed to reduce the impact of some of this debt (notably transaction malleability, linear scaling of signature hashing, and signing of input values).
 
@@ -152,7 +152,7 @@ The script versioning method provided by segwit provides an elegant way of allow
 
 Generally, design debt in Bitcoin script cannot be fully paid off, as it is always possible that there are some unspent transactions paying to P2SH addresses that make use of the "ugly" functionality. Disabling those features would render those transactions unspendable, effectively stealing funds from users. Script versioning allows the "cost" of this design debt to be reduced, by partitioning such "ugly" functionality as only applicable to "old" script versions, thus allowing new development work to largely ignore the old code.
 
-# Risks related to soft-fork deployment
+## Risks related to soft-fork deployment
 
 A soft-fork is any change to bitcoin consensus rules that invalidates some set of previously valid transaction. A poorly handled soft-fork can cause a number of problems in the Bitcoin ecosystem, and, because segwit makes the additional witness data critical to establishing Bitcoin's distributed consensus, a poorly handled upgrade could cause the system to fail in additional ways. The primary potential failure modes include:
 
@@ -162,7 +162,7 @@ A soft-fork is any change to bitcoin consensus rules that invalidates some set o
  4. being activated, with some actual use, then backed out
  5. allowing large blockchain forks, due to the p2p network being effectively disconnected as a result of connections via old nodes that are unable to forward witness data
 
-## Avoidance
+### Avoidance
 
 Numerous soft-forks have already been activated in Bitcoin (including BIPs [16][BIP16], [34][BIP34], [65][BIP65], [66][BIP66], [68][BIP68], [112][BIP112], [113][BIP113]), and this experience has been codified in the [BIP9][] process for activating soft-forks. The BIP9 process was used for deploying the CSV soft-fork (BIPs 68, 112, and 113), and resulted in a fast and unproblematic upgrade to the consensus rules for that change.
 
@@ -194,7 +194,7 @@ The segwit design and BIP9 deployment avoids the problems listed above in the fo
 
  5. Significant work has gone into ensuring that segwit enabled peers will form a strongly connected subgraph of the Bitcoin P2P network.  This includes providing a dedicated service bit for witness enabled nodes and preferentially connecting to such nodes.
 
-# Risks due to larger blocks
+## Risks due to larger blocks
 
 Segwit updates the 1MB block size limit to a 4M unit block weight limit, counting serialised witness data as one unit, and core block data as four units. As transactions that use segwit features begin to be used, this change will allow more data to be included per block (with 100% of transactions using segwit features this is expected to be about 2MB of data per block, however in the worst case could be up to 4MB of data per block). In so far as it allows a greater transaction volume, can be expected to increase the UTXO database more quickly (with 100% of transactions using segwit features, the rate of increase might be expected to approximately double; however because segwit is a soft fork, the worst case UTXO growth is unchanged).
 
@@ -206,7 +206,7 @@ These outcomes may have positive attributes (more volume allows more user uptake
 
  * Larger UTXO sets will result in higher resource requirements for miners, potentially causes miners to share validation resources, which would result in higher centralisation.
 
-## Avoidance
+### Avoidance
 
 The negative impact of larger blocks is limited in a number of ways:
 
@@ -224,13 +224,13 @@ The negative impact of increased UTXO growth is limited by:
 
  * The reduced weighting of witness data rebalances the lifecycle cost of a UTXO, reducing the cost of introducing an additional input that spends a segwit output, and therefore (relatively) increasing the cost of introducing an additional output creating a new UTXO, changing the create/spend cost ratio from about 1:4.5 to about 1:2. This should moderately reduce incentives to increase the UTXO set by both discouraging UTXO creation, and encouraging spending of UTXOs.
 
-## Mitigation
+### Mitigation
 
  * Since the maximum amount of data per block is capped at no more than four times the current rate, mitigation work to address problems that arise from large blocks should be within the bounds of relatively straightforward engineering work. Further, since the expected amount of data per block is only approximately double the current rate, this any necessary mitigation efforts should be further eased.
 
  * There is ongoing work to improve on-disk and network serialisation of transactions and blocks, further reducing the storage and bandwith requirements of running a full node.
 
-# Risks due to lower fees
+## Risks due to lower fees
 
 The security of the Bitcoin blockchain is provided by hashpower, which is rewarded by both a fixed block reward and by fees from individual transaction. As a result, decreases in fee income have the potential to reduce the hashpower used to mine Bitcoin, which in turn may lower the security of the Bitcoin blockchain.
 
@@ -238,19 +238,19 @@ In so far as the individual transaction fees are determined by market forces and
 
 In addition, the changes made in segwit may make "layer two" solutions, such as the Lightning Network, more compelling. If this leads to users treating layer two solutions as a substitute for on-chain transactions, this may signficantly decrease demand for on-chain transactions, which would put additional downward pressure on transaction fee levels.
 
-## Avoidance
+### Avoidance
 
 As fee income is currently only a small fraction of miner income (fees are currently approximately 0.5 BTC per block versus 12.5 BTC per block in block reward, so about 4% of miner income), the potential impact on miner income and hence network security is likely small in the short term.
 
 In addition, fees have been rising over the past twelve months both in BTC denominated value (from under 0.2 BTC per block a year ago) and in real terms (from under $300 USD per BTC a year ago, to over $600 USD per BTC today), so moderate falls in fee levels will only be equivalent to reverting to fee incomes from up to twelve months ago, which should not be a major impact.
 
-## Mitigation
+### Mitigation
 
 Miners are able to individually and collectively limit supply, either by setting a soft-limit on the maximum weight for blocks they produce ("blockmaxweight" setting, which defaults to 3M), or by using a soft-fork to effectively lower the consensus limits by orphaning blocks above a particular weight. This approach has the potential to prevent any fee decreases due to increased supply (or indeed to increase individual fees by reducing supply, though that may not increase overall revenue), but cannot prevent decreases to fee income due to substitution effects (such as the adoption of layer two networks).
 
 While layer two networks may act as a substitute for on-chain transactions, they cannot avoid on-chain transactions entirely, and in some scenarios, even these comparatively few on-chain transactions from layer two networks can easily saturate the on-chain capacity with segwit enabled. Even if only a very small amount of the value of these networks are captured via on-chain transaction fees, this would likely be substantially above the current fee value.
 
-# Risks related to long term scaling
+## Risks related to long term scaling
 
 As described above, full adoption of segwit by all transactions is expected to approximately double capacity. This provides a significant one-time increase in capacity, in either the short or medium term, depending on the speed of adoption. In addition, by adding features to enable layer two networks, some additional medium and long term scaling may be achieved. By fixing the quadratic sighash scaling bug, segwit also reduces the risk of negative impacts due to future capacity increases.
 
@@ -258,7 +258,7 @@ Segwit does not, however, provide any direct mechanism for scaling on-chain tran
 
 This runs this risk that approaches to long-term scaling may be prevented or delayed: stakeholders may consider segwit to be "enough" scaling and decline to work on or support further scaling efforts.
 
-## Avoidance
+### Avoidance
 
 Efforts to avoid this risk have included:
 
@@ -270,17 +270,17 @@ Efforts to avoid this risk have included:
 
 Additionally, work that has made the scale increases segwit allows achievable (such as libsecp256k1 and compact blocks) have also, obviously, made further potential scale increases more achievable.
 
-## Mitigation
+### Mitigation
 
 Segwit does not make further scaling any more difficult on any technical level -- the risk here is entirely social. As a consequence, the most effective mitigation efforts are likely also social in nature: such as by having companies who support long-term scaling commit development resources to making that happen.
 
 That segwit enables transaction volume to increase to approximately double current levels also provides the opportunity to demonstrate the actual impact of scaling, such as on node performance, decentralisation, and transaction demand, as well as the speed with which ecosystem upgrades can be undertaken. This data could reasonably be collected and used to support future scaling efforts, either by showing that some feared outcomes are less likely than expected, or by confirming valid concerns and allowing work to be focussed on addressing those concerns.
 
-# Alternative approaches
+## Alternative approaches
 
 This section provides a brief comparison with some alternative approaches to achieving some or all of the benefits of segwit, and how those different approaches might change the costs and risks involved.
 
-## Hard-forked segwit
+### Hard-forked segwit
 
 Any hard-fork implementation of segwit would add significant new costs and risks, due to requiring all nodes to upgrade to understand the new rules prior to activation, and risking a chain fork into "old Bitcoin" and "new Bitcoin" with consequent confusion and loss of value. Due to the comparative lack of experience with hard-forks in the Bitcoin community, unexpected risks and costs might also eventuate, though that is obviously hard to analyse by its very nature.
 
@@ -292,7 +292,7 @@ A hard-fork implementation of segwit could realistically be made in two ways:
 
 Either approach to a hard-fork would make it possible to simultaneously drastically alter the consensus limits on blocks.
 
-## Simpler segwit
+### Simpler segwit
 
 Many of the benefits of segwit could logically be separated into independent changes, and evaluated and deployed separately. The implementation requirements for the various features are, however, closely related:
 
