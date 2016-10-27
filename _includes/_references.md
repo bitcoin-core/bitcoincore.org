@@ -55,6 +55,7 @@
 [BIP37]: https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki
 [BIP42]: https://github.com/bitcoin/bips/blob/master/bip-0042.mediawiki
 [BIP61]: https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki
+[BIP62]: https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki
 [BIP65]: https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki
 [BIP66]: https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 [BIP68]: https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki
