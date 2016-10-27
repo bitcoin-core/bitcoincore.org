@@ -72,7 +72,7 @@ It is possible to make most of this overhead disappear via changes to the networ
 
 ## Block validation costs
 
-With segwit, additional processing is introduced when validating a block in order both to check the witness merkle tree, and to deal with P2SH-encoded witness transactions. This requires about five additional SHA256 hashes per transaction, and an additional SHA256 per P2SH-encoded-P2WSH input, and an additional HASH160 per P2SH-encoded-P2WPKH output. This however only amounts to about six SHA256 runs over at most 4MB of data, or roughly about 24MB of SHA256 data in total, which should translate to at most an additional 15s per block on a Raspberry Pi, or under a tenth of a second on more capable hardware.
+With segwit, additional processing is introduced when validating a block in order both to check the witness merkle tree, and to deal with P2SH-encoded witness transactions. This requires about five additional SHA256 hashes per transaction, and an additional SHA256 per P2SH-encoded-P2WSH input, and an additional HASH160 per P2SH-encoded-P2WPKH output. This however only amounts to about six SHA256 runs over at most 4MB of data, or roughly about 24MB of SHA256 data in total, which should translate to at most an additional 15s per block on a Raspberry Pi v1, or under a tenth of a second on more capable hardware.
 
 ## Risk of introducing bugs
 
