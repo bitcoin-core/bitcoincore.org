@@ -55,6 +55,7 @@
 [BIP37]: https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki
 [BIP42]: https://github.com/bitcoin/bips/blob/master/bip-0042.mediawiki
 [BIP61]: https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki
+[BIP62]: https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki
 [BIP65]: https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki
 [BIP66]: https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 [BIP68]: https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki
@@ -68,6 +69,7 @@
 [BIP125]: https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki
 [BIP130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
 [BIP133]: https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki
+[BIP134]: https://github.com/bitcoin/bips/blob/master/bip-0134.mediawiki
 [BIP141]: https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
 [BIP142]: https://github.com/bitcoin/bips/blob/master/bip-0142.mediawiki
 [BIP143]: https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki
