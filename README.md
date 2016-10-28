@@ -55,15 +55,21 @@ and then run the following commands:
 
 To preview the site (this will launch a tiny webserver on port 4000):
 
-    bundle exec jekyll server
+    bundle exec jekyll server --future
 
 To simply build the site (output placed in the `_site` directory):
 
-    bundle exec jekyll build
+    bundle exec jekyll build --future
+
+Note that the `--future` parameter is only required if you're adding any
+pages dated in the future (such as prepared release announcements).
 
 To test the site:
 
-    bundle exec jekyll build && bundle exec htmlproof ./_site
+    bundle exec jekyll build --future --drafts --unpublished && bundle exec htmlproof ./_site
+
+The additional parameters to `jekyll build` ensure that all possible
+pages are built and checked.
 
 ## Contributing
 
