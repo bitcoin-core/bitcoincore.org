@@ -306,3 +306,4 @@ Many of the benefits of segwit could logically be separated into independent cha
 
 Doing these fixes independently would increase the complexity of the Bitcoin codebase due to the need to handle different features being active at different times on the blockchain; while deploying them concurrently removes this complexity.
 
+Because increasing capacity is dangerous due to the quadratic scaling of sighash operations with the existing CHECKSIG and CHECKMULTISIG opcodes, some limit on these operations needs to be in place. Since segwit only allows increased signature operations via the fixed opcodes, the old opcodes remain naturally limited. In contrast if a capacity increase were applied independently, additional limits would need to be implemented to ensure the increase was safe, likely adding complexity to mining and fee calculation.
