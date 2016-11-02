@@ -22,6 +22,7 @@ cgminer,https://www.blocktrail.com/,yes,yes,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,yes,yes,mining software,
 Coinfloor,https://www.coinfloor.co.uk/,yes,wip,exchange,
 Coinomi,https://coinomi.com/,yes,no,wallet,
+Coinsource,http://www.coinsource.net/,yes,yes,bitcoin atm network
 CoPay,https://copay.io/,yes,no,wallet,bitcore-lib
 Digitalbitbox,https://digitalbitbox.com/,yes,yes,hardware wallet,
 EI8HT,http://ei8.ht/,yes,no,wallet,"bitcoin core, bitcoinjs"
