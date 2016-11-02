@@ -20,7 +20,7 @@
 <tbody>
 {% for sws in site.data.segwitsupport %}
 <tr>
-<td><a href="{{ sws.url }}">{{ sws.name }}</a></td>
+<td><a rel="nofollow" href="{{ sws.url }}">{{ sws.name }}</a></td>
 <td {% if sws.planned == "yes" %} class="good" {% elsif sws.planned == "no" %} class="bad" {% endif %}>{{ sws.planned }}</td>
 <td {% if sws.ready == "yes" %} class="good" {% elsif sws.ready == "no" %} class="bad" {% endif %}>{{ sws.ready }}</td>
 <td>{{ sws.notes }}</td>

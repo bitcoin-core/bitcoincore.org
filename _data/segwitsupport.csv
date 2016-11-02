@@ -8,7 +8,7 @@ BitcoinJ,https://bitcoinj.github.io/,yes,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,yes,wip,library,n/a
 Bitcoinjs,http://bitcoinjs.org/,yes,wip,library,n/a
 bitcore-lib,https://bitcore.io/,yes,wip,library,n/a
-BitGo*,https://www.bitgo.com/,yes,no,wallet,"bitcoinj, bitcoinjs"
+BitGo*,https://www.bitgo.com/,yes,wip,wallet,"bitcoinj, bitcoinjs"
 Bither Wallet,https://bither.net/,yes,no,wallet,
 BitmainWarranty,https://bitmainwarranty.com/,yes,yes,miner,
 Bitrated,https://www.bitrated.com/,yes,no,wallet,
@@ -17,12 +17,12 @@ Blockchain.info,https://blockchain.info/,yes,no,"wallet, block explorer",
 Blocktrail,https://www.blocktrail.com/,yes,no,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,yes,no,wallet,
 BTC.com,https://btc.com/,yes,wip,"block explorer, wallet",
-cgminer,https://www.blocktrail.com/,yes,wip,mining software,
+cgminer,https://www.blocktrail.com/,yes,yes,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,yes,yes,mining software,
 Coinfloor,https://www.coinfloor.co.uk/,yes,wip,exchange,
 Coinomi,https://coinomi.com/,yes,no,wallet,
 CoPay,https://copay.io/,yes,no,wallet,bitcore-lib
-Digitalbitbox,https://digitalbitbox.com/,yes,wip,hardware wallet,
+Digitalbitbox,https://digitalbitbox.com/,yes,yes,hardware wallet,
 EI8HT,http://ei8.ht/,yes,no,wallet,"bitcoin core, bitcoinjs"
 Electrum,https://electrum.org/,yes,no,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,yes,wip,pool software,n/a
