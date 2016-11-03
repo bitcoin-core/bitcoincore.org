@@ -25,6 +25,7 @@ Coinfloor,https://www.coinfloor.co.uk/,yes,wip,exchange,
 Coinomi,https://coinomi.com/,yes,no,wallet,
 Coinsource,http://www.coinsource.net/,yes,yes,bitcoin atm network
 CoPay,https://copay.io/,yes,no,wallet,bitcore-lib
+Cryptobuyer,https://cryptobuyer.io/,yes,no,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,yes,yes,hardware wallet,
 EI8HT,http://ei8.ht/,yes,no,wallet,"bitcoin core, bitcoinjs"
 Electrum,https://electrum.org/,yes,no,wallet,
