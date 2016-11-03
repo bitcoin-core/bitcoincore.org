@@ -37,6 +37,7 @@
 [Michagogo]: https://github.com/Michagogo
 [Olaoluwa Osuntokun]: https://github.com/Roasbeef
 [Chris Stewart]: https://github.com/Christewart
+[David Harding]: https://github.com/harding/
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
