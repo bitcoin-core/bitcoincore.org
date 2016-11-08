@@ -47,8 +47,8 @@ p2pool,https://github.com/p2pool/p2pool,yes,wip,mining software,
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,yes,no,library,
 pycoin,https://github.com/richardkiss/pycoin,yes,no,library,n/a
 Samourai Wallet,http://samouraiwallet.com/,yes,wip,wallet,bitcoinj
+Slush Pool,https://www.slushpool.com/,yes,wip,mining software,
 Smartbit,https://www.smartbit.com.au/,yes,yes,explorer,
 Trezor,http://satoshilabs.com/trezor/,yes,wip,hardware wallet,
 Vaultoro,https://www.vaultoro.com/,yes,no,,
 WageCan,https://www.wagecan.com/,yes,wip,exchange,
-Slush Pool,https://www.slushpool.com/,yes,wip,mining software,,
