@@ -2,8 +2,9 @@ name,url,planned,ready,notes,depends
 AirBitz,https://airbitz.co/,yes,no,wallet,
 Armory,https://github.com/goatpig/BitcoinArmory/tree/SegWit/,yes,wip,wallet,bitcoin core
 Bcoin,https://github.com/bcoin-org/bcoin,yes,yes,library,
+BFGMiner,http://bfgminer.com,yes,yes,mining software,
 Bitcoin India,https://bitcoin-india.org/,yes,wip,exchange,
-Bitcoin LJR,http://luke.dashjr.org/programs/bitcoin-ljr/,yes,no,,n/a
+Bitcoin Knots,https://bitcoinknots.org/,yes,yes,"node, wallet",n/a
 BitcoinJ,https://bitcoinj.github.io/,yes,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,yes,wip,library,n/a
 Bitcoinjs,http://bitcoinjs.org/,yes,wip,library,n/a
