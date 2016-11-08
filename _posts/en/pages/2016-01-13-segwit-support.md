@@ -16,7 +16,7 @@ The last 2k block segwit activation graph (_note signalling will start around th
 
 The following is a list of companies and software projects that are ready or preparing for segregated witness (segwit).
 
-_**To add your company or service, please submit a [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/gh-pages/_data/segwitsupport.csv).**_
+_**To add your company or service, please submit a** [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/gh-pages/_data/segwitsupport.csv)._
 
 {% include pages/segwit_support.md %}
 
@@ -24,7 +24,7 @@ _**To add your company or service, please submit a [pull-request](https://github
 <sup>2</sup> GreenAddress provides wallet services to TheRockTrading exchange, BitBoat and CoinBR.<br />
 wip: work-in-progress
 
-_**To add your company or service, please submit a [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/gh-pages/_data/segwitsupport.csv).**_
+_**To add your company or service, please submit a** [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/gh-pages/_data/segwitsupport.csv)._
 
 <hr>
 
