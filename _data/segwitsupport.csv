@@ -13,7 +13,7 @@ Bither Wallet,https://bither.net/,yes,no,wallet,
 BitLox,https://www.bitlox.com/,yes,wip,hardware wallet,
 BitmainWarranty,https://bitmainwarranty.com/,yes,yes,miner,
 Bitrated,https://www.bitrated.com/,yes,no,wallet,
-bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,yes,no,library
+bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,yes,no,library,
 BitWasp,https://github.com/Bit-Wasp/bitcoin-php,yes,yes,library,
 Blockchain.info,https://blockchain.info/,yes,no,"wallet, block explorer",
 Blocktrail,https://www.blocktrail.com/,yes,no,"wallet, block explorer",
@@ -23,7 +23,7 @@ cgminer,https://www.blocktrail.com/,yes,yes,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,yes,yes,mining software,
 Coinfloor,https://www.coinfloor.co.uk/,yes,wip,exchange,
 Coinomi,https://coinomi.com/,yes,no,wallet,
-Coinsource,http://www.coinsource.net/,yes,yes,bitcoin atm network
+Coinsource,http://www.coinsource.net/,yes,yes,bitcoin atm network,
 CoPay,https://copay.io/,yes,no,wallet,bitcore-lib
 Cryptobuyer,https://cryptobuyer.io/,yes,no,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,yes,yes,hardware wallet,
