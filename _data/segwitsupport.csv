@@ -8,7 +8,7 @@ BitcoinJ,https://bitcoinj.github.io/,yes,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,yes,wip,library,n/a
 Bitcoinjs,http://bitcoinjs.org/,yes,wip,library,n/a
 bitcore-lib,https://bitcore.io/,yes,wip,library,n/a
-BitGo*,https://www.bitgo.com/,yes,wip,wallet,"bitcoinj, bitcoinjs"
+BitGo<sup>1</sup>,https://www.bitgo.com/,yes,wip,wallet,"bitcoinj, bitcoinjs"
 Bither Wallet,https://bither.net/,yes,no,wallet,
 BitLox,https://www.bitlox.com/,yes,wip,hardware wallet,
 BitmainWarranty,https://bitmainwarranty.com/,yes,yes,miner,
@@ -31,7 +31,7 @@ Digitalbitbox,https://digitalbitbox.com/,yes,yes,hardware wallet,
 EI8HT,http://ei8.ht/,yes,no,wallet,"bitcoin core, bitcoinjs"
 Electrum,https://electrum.org/,yes,no,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,yes,wip,pool software,n/a
-GreenAddress*,https://greenaddress.it/,yes,yes,wallet,"pycoin, bitcoinjs"
+GreenAddress<sup>2</sup>,https://greenaddress.it/,yes,yes,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,yes,yes,wallet,bitcoinj
 Kaiko,https://www.kaiko.com/,yes,no,explorer,
 Ledger Wallet,https://www.ledgerwallet.com/,yes,yes,hardware wallet,
