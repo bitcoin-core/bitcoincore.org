@@ -1088,11 +1088,15 @@ div.maintainers {
 	margin-bottom: 1.5em;
 }
 
-.good {
-	background-color: $good;
+.bg-yes {
+	background-color: $bg-yes;
 }
 
-.bad {
-	background-color: $bad;
+.bg-no {
+	background-color: $bg-no;
+}
+
+.bg-wip {
+	background-color: $bg-wip;
 }
 
