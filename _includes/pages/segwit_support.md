@@ -3,7 +3,7 @@
   to translate the table headers, copy and replace the above line prior
   to including this file
 {% endcomment %}
-{% assign segwitsupportheaders = "#, Name,Planned,Ready,Notes,Depends" %}
+{% assign segwitsupportheaders = ", Name,Planned,Ready,Notes,Depends" %}
 {% endunless %}
 {% assign segwitsupportheaders = segwitsupportheaders | split: ',' %}
 
