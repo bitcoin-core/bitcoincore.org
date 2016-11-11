@@ -25,3 +25,10 @@ branches:
   only:
   - gh-pages
   - /.*/
+
+notifications:
+  irc:
+    channels:
+      - "chat.freenode.net#bitcoin-core-website"
+    on_success: [change]
+    on_failure: [change] 
