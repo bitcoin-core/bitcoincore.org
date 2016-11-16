@@ -20,6 +20,7 @@ Blockchain.info,https://blockchain.info/,yes,no,"wallet, block explorer",
 Blocktrail,https://www.blocktrail.com/,yes,no,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,yes,no,wallet,
 BTC.com,https://btc.com/,yes,wip,"block explorer, wallet",
+btcpool,https://github.com/btccom/btcpool,yes,wip,"mining software",
 bustabit,https://www.bustabit.com,yes,wip,gambling,bitcoin core
 cgminer,https://www.blocktrail.com/,yes,yes,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,yes,yes,mining software,
