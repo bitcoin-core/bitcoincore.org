@@ -12,6 +12,7 @@ version: 2
 The last 2k block segwit activation graph.
 [![Segwit activation 2000 block window](http://bitcoin.sipa.be/ver9-2k.png)](http://bitcoin.sipa.be/ver9-2k.png)
 
+An API is available [here](http://api.qbit.ninja/versionstats).
 <hr>
 
 The following is a list of companies and software projects that are ready or preparing for segregated witness (segwit).
