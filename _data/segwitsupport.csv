@@ -36,6 +36,7 @@ Digitalbitbox,https://digitalbitbox.com/,yes,yes,hardware wallet,
 EI8HT,http://ei8.ht/,yes,no,wallet,"bitcoin core, bitcoinjs"
 Electrum,https://electrum.org/,yes,no,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,yes,wip,pool software,n/a
+Fairlay,https://fairlay.com/,yes,no,Bitcoin Prediction Market,
 GreenAddress<sup>2</sup>,https://greenaddress.it/,yes,yes,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,yes,yes,wallet,bitcoinj
 Kaiko,https://www.kaiko.com/,yes,no,explorer,
