@@ -4,7 +4,7 @@ Armory,https://github.com/goatpig/BitcoinArmory/tree/SegWit/,yes,wip,wallet,bitc
 Bcoin,https://github.com/bcoin-org/bcoin,yes,yes,library,
 BetKing,https://betking.io,yes,wip,gambling,bitcoin core
 BFGMiner,http://bfgminer.com,yes,yes,mining software,
-Bitcoin India,https://bitcoin-india.org/,yes,wip,exchange,
+Bitcoin India,https://bitcoin-india.org/,yes,yes,"exchange, pool",bitcoin core
 Bitcoin Knots,https://bitcoinknots.org/,yes,yes,"node, wallet",n/a
 BitcoinJ,https://bitcoinj.github.io/,yes,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,yes,wip,library,n/a
