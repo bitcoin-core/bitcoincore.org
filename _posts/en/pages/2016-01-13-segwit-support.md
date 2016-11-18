@@ -9,7 +9,7 @@ permalink: /en/segwit_adoption/
 version: 2
 ---
 
-The last 2k block segwit activation graph (_note signalling will start around the 20th November 2016_)
+The last 2k block segwit activation graph.
 [![Segwit activation 2000 block window](http://bitcoin.sipa.be/ver9-2k.png)](http://bitcoin.sipa.be/ver9-2k.png)
 
 <hr>
@@ -30,6 +30,6 @@ _**To add your company or service, please submit a** [pull-request](https://gith
 
 <hr>
 
-The last 10k block segwit activation graph (_note signalling will start around the 20th November 2016_)
+The last 10k block segwit activation graph.
 [![Segwit activation 10000 block window](http://bitcoin.sipa.be/ver9-10k.png)](http://bitcoin.sipa.be/ver9-10k.png)
 
