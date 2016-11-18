@@ -10,6 +10,7 @@ BitcoinJ,https://bitcoinj.github.io/,yes,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,yes,wip,library,n/a
 Bitcoinjs,http://bitcoinjs.org/,yes,wip,library,n/a
 bitcore-lib,https://bitcore.io/,yes,wip,library,n/a
+Bitfinex,https://www.bitfinex.com/,yes,yes,exchange,
 BitGo<sup>1</sup>,https://www.bitgo.com/,yes,wip,wallet,"bitcoinj, bitcoinjs"
 Bither Wallet,https://bither.net/,yes,no,wallet,
 BitLox,https://www.bitlox.com/,yes,wip,hardware wallet,
