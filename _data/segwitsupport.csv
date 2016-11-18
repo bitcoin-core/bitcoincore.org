@@ -46,7 +46,7 @@ Multibit HD,https://multibit.org/,yes,no,wallet,bitcoinj
 Mycelium,https://mycelium.com/,yes,wip,wallet,
 NBitcoin,https://github.com/MetacoSA/NBitcoin,yes,yes,library,n/a
 OKLink,https://www.oklink.com/,yes,wip,"wallet, block explorer",
-OmniCore,https://github.com/OmniLayer/omnicore,yes,no,wallet,
+Omni Core,https://github.com/OmniLayer/omnicore,yes,wip,wallet,
 p2pool,https://github.com/p2pool/p2pool,yes,wip,mining software,
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,yes,no,library,
 pycoin,https://github.com/richardkiss/pycoin,yes,no,library,n/a
