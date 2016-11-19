@@ -56,7 +56,7 @@ pycoin,https://github.com/richardkiss/pycoin,yes,no,library,n/a
 Samourai Wallet,http://samouraiwallet.com/,yes,wip,wallet,bitcoinj
 Slush Pool,https://www.slushpool.com/,yes,yes,mining software,
 Smartbit,https://www.smartbit.com.au/,yes,yes,explorer,
-Trezor,http://satoshilabs.com/trezor/,yes,wip,hardware wallet,
+TREZOR,https://www.trezor.io/,yes,yes,hardware wallet,
 Vaultoro,https://www.vaultoro.com/,yes,no,,
 WageCan,https://www.wagecan.com/,yes,wip,exchange,
 Walltime,https://walltime.info,yes,no,exchange,n/a
