@@ -39,6 +39,7 @@ Eloipool,https://github.com/luke-jr/eloipool,yes,wip,pool software,n/a
 Fairlay,https://fairlay.com/,yes,no,Bitcoin Prediction Market,
 GreenAddress<sup>2</sup>,https://greenaddress.it/,yes,yes,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,yes,yes,wallet,bitcoinj
+JoinMarket,https://github.com/JoinMarket-Org/joinmarket,yes,wip,"library, privacy solution, wallet",
 Kaiko,https://www.kaiko.com/,yes,no,explorer,
 Ledger Wallet,https://www.ledgerwallet.com/,yes,yes,hardware wallet,
 libbtc,https://github.com/libbtc,yes,no,library,
