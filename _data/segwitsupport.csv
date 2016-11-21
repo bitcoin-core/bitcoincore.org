@@ -17,6 +17,7 @@ BitLox,https://www.bitlox.com/,yes,wip,hardware wallet,
 BitmainWarranty,https://bitmainwarranty.com/,yes,yes,miner,
 Bitrated,https://www.bitrated.com/,yes,no,wallet,
 bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,yes,no,library,
+Bitwala,https://bitwala.io,yes,no,remittance,Bitgo
 BitWasp,https://github.com/Bit-Wasp/bitcoin-php,yes,yes,library,
 Blockchain.info,https://blockchain.info/,yes,no,"wallet, block explorer",
 Blocktrail,https://www.blocktrail.com/,yes,no,"wallet, block explorer",
