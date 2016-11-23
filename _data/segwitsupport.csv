@@ -43,6 +43,7 @@ GreenAddress<sup>2</sup>,https://greenaddress.it/,yes,yes,wallet,"pycoin, bitcoi
 GreenBits,https://www.greenbits.com/,yes,yes,wallet,bitcoinj
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,yes,wip,"library, privacy solution, wallet",
 Kaiko,https://www.kaiko.com/,yes,no,explorer,
+Keepkey,https://www.keepkey.com/,yes,yes,hardware wallet,
 Ledger Wallet,https://www.ledgerwallet.com/,yes,yes,hardware wallet,
 libbtc,https://github.com/libbtc,yes,no,library,
 libbitcoin,http://libbitcoin.dyne.org/,yes,no,library,
