@@ -9,8 +9,9 @@ permalink: /en/segwit_wallet_dev/
 version: 1
 ---
 {% include _toc.html %}
+{% include _references.md %}
 
-Most contents of this document could be found in the BIPs related to segregated witness, including BIP141, 143, 144, and 145. Please consider this as the first point of reference to other related documents, and as a checklist for what should and should not be done.
+Most contents of this document could be found in the BIPs related to segregated witness, including [BIP141][], [BIP143][], [BIP144][], and [BIP145][]. Please consider this as the first point of reference to other related documents, and as a checklist for what should and should not be done.
 
 ### Basic segregated witness support
 
@@ -18,7 +19,7 @@ A wallet MUST implement all the features in this section, in order to be conside
 
 #### Sending to P2SH
 
-* A segwit-compatible wallet MUST support pay-to-script-hash ([BIP16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)) and its address format ([BIP13](https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki)).
+* A segwit-compatible wallet MUST support pay-to-script-hash ([BIP16][]) and its address format ([BIP13][]).
 * For making payments, the wallet must be able to correctly transform a given P2SH address to a <code>scriptPubKey</code>, and create a transaction.
 * For receiving payments, the wallet must be able to create a P2SH address based on a P2WPKH script (defined hereinafter), and be able to recognize payment to such addresses.
 * This is a mandatory requirement, even if the wallet accepts only single-signature payments.
@@ -66,8 +67,8 @@ A wallet MUST implement all the features in this section, in order to be conside
 * For spending of P2SH-P2WPKH:
     * The <code>scriptSig</code> MUST ONLY contain a push of the <code>redeemScript</code>
     * The corresponding witness field MUST contain exactly 2 items, a signature followed by the public key
-    * There is a new signature generation algorithm described in BIP143 for segwit scripts. Developers should follow the instructions carefully, and make use of the P2SH-P2WPKH example in [BIP143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki#P2SHP2WPKH) to make sure they are able to reproduce the <code>sighash</code>.
-    * The BIP143 signature generating algorithm covers the value of the input being spent, which simplifies the design of air-gapped light-weight wallets and hardware wallets.
+    * There is a new signature generation algorithm described in [BIP143][] for segwit scripts. Developers should follow the instructions carefully, and make use of the P2SH-P2WPKH example in [BIP143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki#P2SHP2WPKH) to make sure they are able to reproduce the <code>sighash</code>.
+    * The [BIP143][] signature generating algorithm covers the value of the input being spent, which simplifies the design of air-gapped light-weight wallets and hardware wallets.
     * Please note that for a P2SH-P2WPKH, the <code>scriptCode</code> is always 26 bytes including the leading size byte, as <code>0x1976a914{20-byte keyhash}88ac</code>, NOT the <code>redeemScript</code> nor <code>scriptPubKey</code>
     * [Example](http://n.bitcoin.ninja/checktx?txid=8139979112e894a14f8370438a471d23984061ff83a9eba0bc7a34433327ec21)
     
@@ -78,7 +79,7 @@ A wallet MUST implement all the features in this section, in order to be conside
 * Transactions without any witness data (and therefore serialized in original format) may be sent to nodes with or without <code>NODE_WITNESS</code> support
 * Transactions which spend segwit UTXOs (and therefore is serialized in the new format) MUST ONLY be sent to nodes with <code>NODE_WITNESS</code> support
 * Transactions which spend segwit UTXOs but with witness data stripped (and therefore serialized in original format) may be sent to nodes without <code>NODE_WITNESS</code> support. Such transactions, however, are invalid after activation of segwit and would not be accepted in a block.
-* Details of the network services could be found in BIP144.
+* Details of the network services could be found in [BIP144][].
 
 #### User Privacy
 
@@ -99,8 +100,8 @@ A wallet MUST implement all the features in this section, in order to be conside
 
 * End users MUST NOT be allowed to generate any P2SH-P2WPKH or other segwit addresses before segwit is fully activated on the network. Before activation, using P2SH-P2WPKH or other segwit addresses may lead to permanent fund loss
 * Similarly, change MUST NOT be sent to a segwit output before activation
-* Activation of segwit is defined by BIP9. After 15 Nov 2016 and before 15 Nov 2017 UTC, if in a full retarget cycle at least 1916 out of 2016 blocks is signaling readiness, segwit will be activated in the retarget cycle after the next one
-* If a wallet does not have the ability to follow the BIP9 signal, the upgraded version should not be released to end users until it is activated
+* Activation of segwit is defined by [BIP9][]. After 15 Nov 2016 and before 15 Nov 2017 UTC, if in a full retarget cycle at least 1916 out of 2016 blocks is signaling readiness, segwit will be activated in the retarget cycle after the next one
+* If a wallet does not have the ability to follow the [BIP9][] signal, the upgraded version should not be released to end users until it is activated
 * If there were any concerns that some miners may not correctly enforce the new rules, release of the upgraded wallet may be delayed until evidence has shown that vast majority (if not all) miners are following the new rules. Violations would be very obvious, shown as invalid orphaned blocks.
 
 #### Backward Compatibility
@@ -125,7 +126,7 @@ If a wallet supports script types other than just single signature, such as mult
     * The script evaluation must not fail, and MUST leave one and only one TRUE stack item after evaluation. Otherwise, the evaluation is failed.
     * Any public key inside P2SH-P2WSH scripts MUST be compressed key, or fund may be lost permenantly.
     * If OP_IF or OP_NOTIF is used, it argument MUST be either an empty vector (for false) or <code>0x01</code> (for true). Use of other value may lead to permenant fund loss. ([BIP draft](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-August/013014.html))
-    * If an OP_CHECKSIG or OP_CHECKMULTISIG is returning a fail, all signature(s) must be empty vector(s). Otherwise, fund may be lost permenantly. ([BIP146](https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki))
+    * If an OP_CHECKSIG or OP_CHECKMULTISIG is returning a fail, all signature(s) must be empty vector(s). Otherwise, fund may be lost permenantly. ([BIP146][])
     * There is a default policy limit for the <code>witnessScript</code> at 3600 bytes. Except the <code>witnessScript</code>, there could be at most 100 witness stack items, with at most 80 bytes each. Transactions excessing these limits may not be relayed nor included in a block
     * Many of the original scripts consensus limitations, such as 10000 bytes script size, 201 <code>nOpCount</code>, are still applied to P2SH-P2WSH
     * The 520 bytes script size limit for P2SH is not applicable to P2SH-P2WSH. It is replaced by the 3600 bytes policy limit and 10000 bytes consensus limit.
@@ -135,11 +136,11 @@ If a wallet supports script types other than just single signature, such as mult
 * For spending of P2SH-P2WSH:
     * The <code>scriptSig</code> MUST ONLY contain a push of the <code>redeemScript</code>
     * The last witness item of the corresponding witness field MUST be the <code>witnessScript</code>
-    * The new BIP143 signature generation algorithm is applied:
+    * The new [BIP143][] signature generation algorithm is applied:
         * Without using any OP_CODESEPARATOR, the <code>scriptCode</code> is <code>witnessScript</code> preceeded by a <code>compactSize</code> integer for the size of <code>witnessScript</code>. For example, if the script is OP_1 (<code>0x51</code>), the <code>scriptCode</code> being serialized is (<code>0x0151</code>)
-        * For any unusal scripts containing OP_CODESEPARATOR, please refer to BIP143 for the exact semantics
+        * For any unusal scripts containing OP_CODESEPARATOR, please refer to [BIP143][] for the exact semantics
     * Any witness stack items before the <code>witnessScript</code> are used as the input stack for script evaluation. The input stack is not interpreted as script. For example, there is no need to use a <code>0x4c</code> (OP_PUSHDATA1) to "push" a big item.
-    * To verify the correctness of signature generation and stack serialization, please always test against the examples in BIP143
+    * To verify the correctness of signature generation and stack serialization, please always test against the examples in [BIP143][]
     * [Example](http://n.bitcoin.ninja/checktx?txid=954f43dbb30ad8024981c07d1f5eb6c9fd461e2cf1760dd1283f052af746fc88)
 
 ### Advanced designs
@@ -172,8 +173,8 @@ The following functions are not required for initial segwit support.
 ### Scripts and Transactions Examples
 
 * [Examples of different witness transaction types and transaction validity checking tool](http://n.bitcoin.ninja/checktx)
-* [BIP141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
-* [BIP143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
+* [BIP141][]
+* [BIP143][]
 * [Script tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/script_tests.json)
 * [Valid transaction tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/tx_valid.json)
 * [Invalid transaction tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/tx_invalid.json)
