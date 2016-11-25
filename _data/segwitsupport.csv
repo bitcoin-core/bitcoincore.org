@@ -4,6 +4,7 @@ Armory,https://github.com/goatpig/BitcoinArmory/tree/SegWit/,yes,wip,wallet,bitc
 Bcoin,https://github.com/bcoin-org/bcoin,yes,yes,library,
 BetKing,https://betking.io,yes,wip,gambling,bitcoin core
 BFGMiner,http://bfgminer.com,yes,yes,mining software,
+Bitclub,https://www.blocktrail.com/BTC/pool/bitclubnetwork,yes,yes,mining pool,ckpool
 Bitcoin India,https://bitcoin-india.org/,yes,yes,"exchange, pool",bitcoin core
 Bitcoin Knots,https://bitcoinknots.org/,yes,yes,"node, wallet",n/a
 BitcoinJ,https://bitcoinj.github.io/,yes,wip,library,n/a
@@ -11,6 +12,7 @@ bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,yes,wip,library,n/a
 Bitcoinjs,http://bitcoinjs.org/,yes,wip,library,n/a
 bitcore-lib,https://bitcore.io/,yes,wip,library,n/a
 Bitfinex,https://www.bitfinex.com/,yes,yes,exchange,
+Bitfury,http://bitfury.com/,yes,yes,mining pool,bitcoin core
 BitGo<sup>1</sup>,https://www.bitgo.com/,yes,wip,wallet,"bitcoinj, bitcoinjs"
 Bither Wallet,https://bither.net/,yes,no,wallet,
 BitLox,https://www.bitlox.com/,yes,wip,hardware wallet,
