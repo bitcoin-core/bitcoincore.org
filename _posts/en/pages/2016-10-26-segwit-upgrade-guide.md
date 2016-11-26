@@ -38,7 +38,6 @@ The BIP9 soft fork deployment mechanism is being used for segwit---the same mech
 
 - **Activated:** after the completion of the *locked-in* period, the miners who signaled readiness to enforce segwit will begin producing segwit-style blocks that contain transactions with segregated witnesses.
 
-
 ### Not upgrading
 
 This section describes what you can do as a miner if you don’t want to enforce segwit.
@@ -51,8 +50,7 @@ For this reason, after segwit reaches *locked-in*, it is recommended that you ei
 
 ### Upgrading
 
-The BIP9 parameters for the segwit soft fork allow miners to begin signaling their support for it at the beginning of the first retarget period on or after 15 November 2016.  To signal support, you will need to
-do the following: 
+The BIP9 parameters for the segwit soft fork allow miners to begin signaling their support for it at the beginning of the first retarget period on or after 15 November 2016.  To signal support, you will need to do the following:
 
 - Upgrade the full node you use for transaction selection and block construction to Bitcoin Core 0.13.1 or another segwit-compatible full node.
 
@@ -72,7 +70,6 @@ When segwit is activated, you will want to be able to mine and relay segwit-styl
 - [ckpool](https://bitbucket.org/ckolivas/ckpool)
 - [CGMiner](https://github.com/ckolivas/cgminer)
 - [Bitcoin FIBRE](http://bitcoinfibre.org/)
-- [The Bitcoin Relay Network](http://www.bitcoinrelaynetwork.org/) (see for details on upgrading to the new network)
 
 Please note that software that supports the GetBlockTemplate (GBT) RPC must be upgraded to support the BIP9 and BIP145 changes to GBT.  All the programs linked above that support GBT have been upgraded.
 
