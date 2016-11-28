@@ -31,7 +31,7 @@ btcpool,https://github.com/btccom/btcpool,yes,wip,"pool software",
 bustabit,https://www.bustabit.com,yes,wip,gambling,bitcoin core
 cgminer,https://www.blocktrail.com/,yes,yes,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,yes,yes,pool software,
-CoinCorner, https://www.coincorner.com,yes,wip,exchange,
+CoinCorner,https://www.coincorner.com,yes,wip,exchange,
 Coinfloor,https://www.coinfloor.co.uk/,yes,wip,exchange,
 Coinomi,https://coinomi.com/,yes,no,wallet,
 Coinsource,http://www.coinsource.net/,yes,yes,bitcoin atm network,
