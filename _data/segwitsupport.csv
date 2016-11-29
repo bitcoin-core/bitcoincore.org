@@ -69,7 +69,7 @@ SpicePay,https://www.spicepay.com/,yes,wip,"exchange, merchant",
 stratum-mining,https://github.com/slush0/stratum-mining,yes,wip,"pool software",
 Smartbit,https://www.smartbit.com.au/,yes,yes,explorer,
 TREZOR,https://www.trezor.io/,yes,yes,hardware wallet,
-Vaultoro,https://www.vaultoro.com/,yes,no,,
+Vaultoro,https://www.vaultoro.com/,yes,wip,exchange,
 WageCan,https://www.wagecan.com/,yes,wip,exchange,
 Walltime,https://walltime.info,yes,no,exchange,n/a
 Woleet,https://woleet.io,yes,no,Data anchoring platform,bitcoin core
