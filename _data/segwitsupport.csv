@@ -28,6 +28,7 @@ Blocktrail,https://www.blocktrail.com/,yes,no,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,yes,no,wallet,
 BTC.com,https://btc.com/,yes,wip,"block explorer, wallet",
 BTCC,https://www.btcc.com/,yes,yes,"exchange, pool, wallet",
+btcd,https://github.com/btcsuite/btcd,yes,wip,"full node",
 btcpool,https://github.com/btccom/btcpool,yes,wip,"pool software",
 bustabit,https://www.bustabit.com,yes,wip,gambling,bitcoin core
 cgminer,https://www.blocktrail.com/,yes,yes,mining software,
