@@ -63,7 +63,7 @@ NiceHash Solo,https://solo.nicehash.com/,yes,yes,solo mining pool,
 OKLink,https://www.oklink.com/,yes,wip,"wallet, block explorer",
 Omni Core,https://github.com/OmniLayer/omnicore,yes,wip,wallet,
 p2pool,https://github.com/p2pool/p2pool,yes,wip,mining software,
-Paymium,https://paymium.com/,yes,no,exchange
+Paymium,https://paymium.com/,yes,no,exchange,
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,yes,no,library,
 pycoin,https://github.com/richardkiss/pycoin,yes,no,library,n/a
 Samourai Wallet,http://samouraiwallet.com/,yes,wip,wallet,bitcoinj
