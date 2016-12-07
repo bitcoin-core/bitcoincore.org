@@ -38,16 +38,6 @@ The BIP9 soft fork deployment mechanism is being used for segwit---the same mech
 
 - **Activated:** after the completion of the *locked-in* period, the miners who signaled readiness to enforce segwit will begin producing segwit-style blocks that contain transactions with segregated witnesses.
 
-### Not upgrading
-
-This section describes what you can do as a miner if you don’t want to enforce segwit.
-
-During the *started* phase, if you don’t want to adopt segwit, you may simply refuse to upgrade to a segwit-compatible full node such as Bitcoin Core 0.13.1, as well as avoiding any mining software that assumes you want to set segwit’s versionbit of bit 1.
-
-If segwit reaches *locked-in*, you still don’t need to upgrade, but upgrading is strongly recommended.  The segwit soft fork does not require you to produce segwit-style blocks, so you may continue producing non-segwit blocks indefinitely.  However, once segwit activates, it will be possible for other miners to produce blocks that you consider to be valid but which every segwit-enforcing node rejects; if you build any of your blocks upon those invalid blocks, your blocks will be considered invalid too.
-
-For this reason, after segwit reaches *locked-in*, it is recommended that you either upgrade your full node to Bitcoin Core 0.13.1 or later (or a compatible full node), or that you follow the “not upgrading” instructions in the Full Node section below to use Bitcoin Core 0.13.1 or later as a filter for your pre-segwit software.
-
 ### Upgrading
 
 The BIP9 parameters for the segwit soft fork allow miners to begin signaling their support for it at the beginning of the first retarget period on or after 15 November 2016.  To signal support, you will need to do the following:
@@ -60,22 +50,39 @@ The BIP9 parameters for the segwit soft fork allow miners to begin signaling the
 
 When segwit is activated, you will want to be able to mine and relay segwit-style blocks.  The following mining software has been upgraded to support segwit.
 
-- Full nodes 
-    - [Bitcoin Core](https://bitcoin.org/en/download) 0.13.1
-    - [Bitcoin Knots](http://bitcoinknots.org/) 0.13.1.\*
-    - [Btcd](https://github.com/btcsuite/btcd) ([PR open](https://github.com/btcsuite/btcd/pull/656))
-- [libblkmaker](https://github.com/bitcoin/libblkmaker) 0.6.0
-- [Eloipool](https://github.com/luke-jr/eloipool) ([Branch available](https://github.com/luke-jr/eloipool/commits/segwit))
-- [BFGMiner](https://github.com/luke-jr/bfgminer) 2.10.4+ (requires libblkmaker 0.6.0 or greater)
-- [ckpool](https://bitbucket.org/ckolivas/ckpool)
-- [CGMiner](https://github.com/ckolivas/cgminer)
-- [Bitcoin FIBRE](http://bitcoinfibre.org/)
+- Full nodes:
+  - [Bitcoin Core](https://bitcoin.org/en/download) 0.13.1
+  - [Bitcoin Knots](http://bitcoinknots.org/) 0.13.1
+  - [Btcd](https://github.com/btcsuite/btcd/pull/656)\*
+
+- Mining software:
+  - [BFGMiner](https://github.com/luke-jr/bfgminer)\*
+  - [CGMiner](https://github.com/ckolivas/cgminer)
+  - [libblkmaker](https://github.com/bitcoin/libblkmaker/pull/6)\*
+
+- Pool software:
+  - [ckpool](https://bitbucket.org/ckolivas/ckpool)
+  - [Eloipool](https://github.com/luke-jr/eloipool)
+  - [Stratum-Mining](https://github.com/slush0/stratum-mining/pull/16)\*
+ 
+- Relay software:
+   - [Bitcoin FIBRE](http://bitcoinfibre.org/)
 
 Please note that software that supports the GetBlockTemplate (GBT) RPC must be upgraded to support the BIP9 and BIP145 changes to GBT.  All the programs linked above that support GBT have been upgraded.
 
 Segwit is already activated and enforced on testnet, so you may find it useful to test your infrastructure upgrade by mining with some small amount of hashrate on testnet.  Alternatively, Bitcoin Core 0.13.1’s regression test mode (regtest) also supports segwit by default.
 
 **Questions?** Solo miners and pool operators are welcome to ask for help in #bitcoin-mining on irc.freenode.net.  Pool miners should contact their pool operators for any questions about the pool’s policies regarding segwit.
+
+### Not upgrading
+
+This section describes what you can do as a miner if you don’t want to enforce segwit.
+
+During the *started* phase, if you don’t want to adopt segwit, you may simply refuse to upgrade to a segwit-compatible full node such as Bitcoin Core 0.13.1, as well as avoiding any mining software that assumes you want to set segwit’s versionbit of bit 1.
+
+If segwit reaches *locked-in*, you still don’t need to upgrade, but upgrading is strongly recommended.  The segwit soft fork does not require you to produce segwit-style blocks, so you may continue producing non-segwit blocks indefinitely.  However, once segwit activates, it will be possible for other miners to produce blocks that you consider to be valid but which every segwit-enforcing node rejects; if you build any of your blocks upon those invalid blocks, your blocks will be considered invalid too.
+
+For this reason, after segwit reaches *locked-in*, it is recommended that you either upgrade your full node to Bitcoin Core 0.13.1 or later (or a compatible full node), or that you follow the “not upgrading” instructions in the Full Node section below to use Bitcoin Core 0.13.1 or later as a filter for your pre-segwit software.
 
 ## Full node users
 
@@ -86,6 +93,18 @@ Full nodes prevent their users from accepting any blocks that violate any of Bit
 However, anyone who wants to use the features enabled by the segwit soft fork will want to know that a sufficient number of full node users have upgraded their nodes to refuse blocks and transactions that violate the segwit rules, thereby providing a strong incentive for miners to follow segwit’s updated consensus rules.
 
 This system has worked well in the past, with at least 25% of reachable nodes (and usually 50% or more) upgraded before each of the previous several soft forks activated (not counting the BIP50 emergency and temporary soft fork).  There is no reason to expect any differently for the segwit soft fork, and upgrading is an easy way for people who support segwit to help encourage its adoption.  Those who are uninterested in segwit may, of course, simply not upgrade.  Details for both cases are described below.
+
+### Upgrading
+
+To upgrade to a segwit-compatible release, download a segwit-compatible version of your full node software (such as the [Bitcoin Core 0.13.1 release](https://bitcoin.org/en/download)), ensure that the files you downloaded are legitimate (using PGP or another method), stop the old version of your node software, and start the new version of the software. Note that if you upgrade after segwit has activated, your node will need to download and resync blocks from the activation point forward, since the old version did not download them completely.
+
+You may use the Bitcoin Core RPC `getblockchaininfo` to track the status of the segwit soft fork (labeled `segwit` in the list of BIP9-style soft forks).  This information includes how many recent blocks have been produced by miners signaling their intention to enforce segwit’s new consensus rules.  The results from the `getblockchaininfo` RPC will also let you determine when segwit’s soft fork has become locked in (meaning it will activate within the next 2,016 blocks) and activated (meaning it is now enforced by miners).
+
+The wallet provided with Bitcoin Core 0.13.1 will continue to only generate non-segwit P2PKH addresses for receiving payment by default.  Later releases are expected to allow users to choose to receive payments to segwit addresses.
+
+If you’re a developer or expert user who wants to generate addresses for testing, please see the [segwit dev guide][].
+
+**Questions?** If you use Bitcoin Core as your full node, please see the [Get Help](https://bitcoin.org/en/bitcoin-core/help) page on Bitcoin.org for various support options.  If you use another full node, the best place to ask is wherever users of your full node software go for support.  The maintainers of your software will be familiar with the idea behind segwit at the very least, and they will be able to tell you when it will be implemented and how it will affect you.
 
 ### Not upgrading
 
@@ -127,28 +146,9 @@ For example,
 
 This will cause the older node to only connect to the newer node so that all blocks and transactions are filtered by the newer node.
 
-
-### Upgrading
-
-To upgrade to a segwit-compatible release, download a segwit-compatible version of your full node software (such as the [Bitcoin Core 0.13.1 release](https://bitcoin.org/en/download)), ensure that the files you downloaded are legitimate (using PGP or another method), stop the old version of your node software, and start the new version of the software. Note that if you upgrade after segwit has activated, your node will need to download and resync blocks from the activation point forward, since the old version did not download them completely.
-
-You may use the Bitcoin Core RPC `getblockchaininfo` to track the status of the segwit soft fork (labeled `segwit` in the list of BIP9-style soft forks).  This information includes how many recent blocks have been produced by miners signaling their intention to enforce segwit’s new consensus rules.  The results from the `getblockchaininfo` RPC will also let you determine when segwit’s soft fork has become locked in (meaning it will activate within the next 2,016 blocks) and activated (meaning it is now enforced by miners).
-
-The wallet provided with Bitcoin Core 0.13.1 will continue to only generate non-segwit P2PKH addresses for receiving payment by default.  Later releases are expected to allow users to choose to receive payments to segwit addresses.
-
-If you’re a developer or expert user who wants to generate addresses for testing, please see the [segwit dev guide][].
-
-**Questions?** If you use Bitcoin Core as your full node, please see the [Get Help](https://bitcoin.org/en/bitcoin-core/help) page on Bitcoin.org for various support options.  If you use another full node, the best place to ask is wherever users of your full node software go for support.  The maintainers of your software will be familiar with the idea behind segwit at the very least, and they will be able to tell you when it will be implemented and how it will affect you.
-
 ## Wallet users
 
 *This section is written for anyone using a lightweight wallet, a web wallet, a wallet connected to a personal full node, or any other wallet.* 
-
-### Not upgrading
-
-If you don’t want to upgrade to segwit, you may simply continue to use any wallet that has not added segwit support.  Even though you haven’t upgraded, you will be able to transact with both users who have upgraded to segwit and users who, like you, haven’t upgraded to segwit.
-
-If you don't upgrade, you may experience one difference: if someone who has upgraded to segwit pays you, your wallet may not show you the payment until after it has been included in a block.  This is a safety feature that prevents your wallet from seeing transactions it doesn’t completely understand until they’ve been confirmed by a miner.
 
 ### Upgrading
 
@@ -167,6 +167,12 @@ When spending your bitcoins with a segwit wallet, you will notice the following:
 - When spending bitcoins you received to your new P2SH addresses after upgrading, you may notice that the transaction fee you pay is slightly lower than when spending non-segwit payments you previously received.  This is because the part of the transaction that contains your signature (the “witness”) doesn’t need to be accessed quickly by Bitcoin full nodes, so segwit allows miners to store up to 4 times as many witness bytes in a block as they store non-witness bytes.  This better aligns the cost of creating a block (and thus its transaction fees) with the actual costs of operating a full node.
 
 **Questions?** If you have any questions, the best place to ask is wherever users of your wallet go for support.  The maintainers of your wallet will be familiar with the ideas behind segwit, and they will be able to tell you if segwit will be implemented for your wallet, when that might happen, and how it will affect your usage of your wallet.
+
+### Not upgrading
+
+If you don’t want to upgrade to segwit, you may simply continue to use any wallet that has not added segwit support.  Even though you haven’t upgraded, you will be able to transact with both users who have upgraded to segwit and users who, like you, haven’t upgraded to segwit.
+
+If you don't upgrade, you may experience one difference: if someone who has upgraded to segwit pays you, your wallet may not show you the payment until after it has been included in a block.  This is a safety feature that prevents your wallet from seeing transactions it doesn’t completely understand until they’ve been confirmed by a miner.
 
 ## Bitcoin software developers
 
@@ -201,7 +207,6 @@ For testing changes on a segwit-enabled network, testnet (testnet3) has supporte
 A number of free and open source software Bitcoin wallets and packages besides Bitcoin Core have also already [added segwit compatiblity](https://bitcoincore.org/en/segwit_adoption/) or have segwit-compatible code ready to deploy, so you may be able to use their code changes as an example for updating your software if their copyright license is compatible with your code.
 
 **Questions?** Bitcoin development questions may be asked in the #bitcoin-dev IRC chatroom on irc.freenode.net.  Questions may also be asked on Bitcoin.StackExchange.com and the BitcoinTalk.org [technical discussion board.](https://bitcointalk.org/index.php?board=6.0)
-
 
 [miners guide]: #miners
 [node guide]: #full-node-users
