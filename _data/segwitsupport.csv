@@ -55,12 +55,13 @@ Keepkey,https://www.keepkey.com/,yes,yes,hardware wallet,
 Ledger Wallet,https://www.ledgerwallet.com/,yes,yes,hardware wallet,
 libbtc,https://github.com/libbtc,yes,no,library,
 libbitcoin,http://libbitcoin.dyne.org/,yes,no,library,
-libblkmaker,https://github.com/bitcoin/libblkmaker,yes,yes,mining library,n/a
+libblkmaker,https://github.com/bitcoin/libblkmaker/pull/6,yes,yes,mining library,n/a
 mSIGNA,https://ciphrex.com/,yes,yes,wallet,
 Multibit HD,https://multibit.org/,yes,no,wallet,bitcoinj
 Mycelium,https://mycelium.com/,yes,wip,wallet,
 NBitcoin,https://github.com/MetacoSA/NBitcoin,yes,yes,library,n/a
 NiceHash Solo,https://solo.nicehash.com/,yes,yes,solo mining pool,
+NOMP,https://github.com/zone117x/node-stratum-pool/pull/115,yes,wip,mining software,
 OKLink,https://www.oklink.com/,yes,wip,"wallet, block explorer",
 Omni Core,https://github.com/OmniLayer/omnicore,yes,wip,wallet,
 p2pool,https://github.com/p2pool/p2pool,yes,wip,mining software,
@@ -70,9 +71,10 @@ pycoin,https://github.com/richardkiss/pycoin,yes,no,library,n/a
 Samourai Wallet,http://samouraiwallet.com/,yes,wip,wallet,bitcoinj
 Slush Pool,https://www.slushpool.com/,yes,yes,mining pool,
 SpicePay,https://www.spicepay.com/,yes,wip,"exchange, merchant",
-stratum-mining,https://github.com/slush0/stratum-mining,yes,wip,"pool software",
+stratum-mining,https://github.com/slush0/stratum-mining/pull/16,yes,yes,"pool software",
 Smartbit,https://www.smartbit.com.au/,yes,yes,explorer,
 TREZOR,https://www.trezor.io/,yes,yes,hardware wallet,
+UNOMP,https://github.com/UNOMP/node-merged-pool/pull/4,yes,wip,mining software,
 Vaultoro,https://www.vaultoro.com/,yes,wip,exchange,
 WageCan,https://www.wagecan.com/,yes,wip,exchange,
 Walltime,https://walltime.info,yes,no,exchange,n/a
