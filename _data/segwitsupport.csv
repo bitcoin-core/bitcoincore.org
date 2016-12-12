@@ -67,7 +67,7 @@ Omni Core,https://github.com/OmniLayer/omnicore,yes,wip,wallet,
 p2pool,https://github.com/p2pool/p2pool,yes,wip,mining software,
 Paymium,https://paymium.com/,yes,no,exchange,
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,yes,no,library,
-pycoin,https://github.com/richardkiss/pycoin,yes,no,library,n/a
+pycoin,https://github.com/richardkiss/pycoin,yes,yes,library,
 Samourai Wallet,http://samouraiwallet.com/,yes,wip,wallet,bitcoinj
 Slush Pool,https://www.slushpool.com/,yes,yes,mining pool,
 SpicePay,https://www.spicepay.com/,yes,wip,"exchange, merchant",
