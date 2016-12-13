@@ -2,6 +2,7 @@ name,url,planned,ready,notes,depends
 AirBitz,https://airbitz.co/,yes,no,wallet,
 AnycoinDirect,https://anycoindirect.eu,yes,wip,broker,bitcoin core
 Armory,https://github.com/goatpig/BitcoinArmory/tree/SegWit/,yes,wip,wallet,bitcoin core
+Authparty, http://authparty.io
 Bcoin,https://github.com/bcoin-org/bcoin,yes,yes,library,
 BetKing,https://betking.io,yes,wip,gambling,bitcoin core
 BFGMiner,http://bfgminer.com,yes,yes,mining software,
