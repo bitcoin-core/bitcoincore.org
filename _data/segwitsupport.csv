@@ -71,7 +71,7 @@ pycoin,https://github.com/richardkiss/pycoin,yes,no,library,n/a
 Samourai Wallet,http://samouraiwallet.com/,yes,wip,wallet,bitcoinj
 Slush Pool,https://www.slushpool.com/,yes,yes,mining pool,
 SpicePay,https://www.spicepay.com/,yes,wip,"exchange, merchant",
-stratum-mining,https://github.com/slush0/stratum-mining/pull/16,yes,yes,"pool software",
+stratum-mining,https://github.com/slush0/stratum-mining/,yes,yes,"pool software",
 Smartbit,https://www.smartbit.com.au/,yes,yes,explorer,
 TREZOR,https://www.trezor.io/,yes,yes,hardware wallet,
 UNOMP,https://github.com/UNOMP/node-merged-pool/pull/4,yes,wip,mining software,
