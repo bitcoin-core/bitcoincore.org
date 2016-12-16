@@ -26,6 +26,7 @@ Bitwala,https://bitwala.io,yes,no,remittance,Bitgo
 BitWasp,https://github.com/Bit-Wasp/bitcoin-php,yes,yes,library,
 Bity,https://bity.com,yes,no,broker,bitcoin core
 Blockchain.info,https://blockchain.info/,yes,no,"wallet, block explorer",
+Blockonomics,https://www.blockonomics.co/,yes,wip,"bitcoin tracker, block explorer","bitcoin core"
 Blocktrail,https://www.blocktrail.com/,yes,no,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,yes,no,wallet,
 BTC.com,https://btc.com/,yes,wip,"block explorer, wallet",
