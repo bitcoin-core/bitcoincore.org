@@ -50,6 +50,7 @@ Electrum,https://electrum.org/,yes,no,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,yes,yes,pool software,n/a
 Exodus,https://www.exodus.io,yes,no,wallet,bitcoinjs
 Fairlay,https://fairlay.com/,yes,no,Bitcoin Prediction Market,
+Gatecoin,https://gatecoin.com/,yes,yes,exchange,"bitcoin core, nbitcoin"
 GreenAddress<sup>2</sup>,https://greenaddress.it/,yes,yes,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,yes,yes,wallet,bitcoinj
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,yes,wip,"library, privacy solution, wallet",
