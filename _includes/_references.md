@@ -40,6 +40,7 @@
 [David Harding]: https://github.com/harding/
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
+[BIP2]: https://github.com/bitcoin/bips/blob/master/bip-0002.mediawiki
 [BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
 [BIP11]: https://github.com/bitcoin/bips/blob/master/bip-0011.mediawiki
 [BIP13]: https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki
