@@ -76,6 +76,16 @@ Segwit does require more changes in higher level software stacks than a simple b
 
 Developers, miners, and the community have accrued significant experience deploying soft forks, and we believe segwit can be deployed at least as fast, and probably more securely, than a hard fork that increases the maximum block size.
 
+## I read that segregated witness was originally intended to be a hard fork, but this was discarded in favor of the soft fork approach. Is that correct? {why-not-hardfork}
+
+Segregated witness, like CHECKSEQUENCEVERIFY of BIP 68 & 112, was first prototyped in Blockstream’s Elements Alpha sidechain. Like CSV, the implementation that finally made it into Bitcoin Core was different from the initial prototype, for various reasons:
+
+1. Alpha was a prototype chain, and there was a lot that learned from using it in production, even on just a test network. The Alpha version of SegWit was a "just don't include the signatures, etc., in the hash" hard-fork change. With the experience of using this code on a testnet sidechain, and performing third-party integrations, it was discovered that this approach has significant drawbacks: it is an inefficient use of block space size; it requires messy, not-obviously-correct code in the core data structures of bitcoin; and it totally and completely breaks all existing infrastructure in weird, unexpected, layer-violating, and unique ways. The tweak introduced by Bitcoin Core developer Luke-Jr to allow SegWit to be soft-fork compatible also fixes all these issues. It's an objectively better approach regardless of hard-fork vs soft-fork, for code engineering reasons. 
+
+2. The idea itself was refined and improved over time as new insights were had. Luke-Jr's approach to soft-forking SegWit fixed a bunch of problems experienced with Alpha. It also made script versioning very easy (1 byte per output) to add. Script versioning allows us to fix all sorts of long-standing problems with the bitcoin scripting language. To ease review, the first SegWit script version only makes absolutely uncontroversial fixes to security problems like quadratic hashing, but much more (like aggregate Schnorr signatures) becomes possible. So today's SegWit is different from and better than earlier proposals because it has received more care and attention from its creators in the elapsed time.
+
+3. The final SegWit code in v0.13.1 is subject to a bunch of little improvements, e.g. the location of the commitment in the coinbase and the format of the SegWit script types, which were recognized and suggested during the public review process. So today's SegWit is better than previous proposals because of public review.
+
 ## Will there be a hard fork before or as part of the segregated witness implementation?  {#pre-segwit-fork}
 
 No. That is not part of the [roadmap][].
@@ -122,6 +132,16 @@ David Harding provided a table of [estimated savings][] at various fee/transacti
 (We don't expect fees to get as high as the highest seen in this table; they are just provided for reference.)
 
 Web wallets and exchanges that send large numbers of transactions each day at fixed rates (such as for free or for 1% per spend) are expected to be early adopters---even the small savings per spend seen in the table above will add up to significant amounts of money if repeated hundreds or thousands of times a day.
+
+## Some people are suggesting this discount is an arbitrary decision to favor payment channels & Lightning over on-chain transactions, is that true? {why-discount}
+
+Witness scripts are discounted because their cost to the network is less than the rest of the transaction data. Unlike outputs they do not go into the UTXO set, and do not need to be maintained in RAM for fast processing of future transactions. They can be pruned from disk as soon as they are validated.
+
+The reason for discounting witnesses is that it makes it easier to spend an output, thereby lowering the dust threshold. It makes it less likely that the UTXO set gets filled up with junk outputs, since small outputs get easier to spend / cleanup.
+
+However, you don't want to make the discount too large because then people will use the witnesses to store their junk on the block chain. Or adversarial miners will fill excess space with random junk to defeat IBLT-like relay schemes.
+
+A discount of 1/2 would have been too little. We can get more benefit than that. A discount of 1/8 would have been too much -- it would have made adversarial blocks 8MB in size which the network simply cannot handle. A discount of 1/4 is neither too big nor too small.
 
 ## I heard you were breaking zero-confirmation transactions. Which technology in the scaling roadmap is doing that?  {#rbf}
 
