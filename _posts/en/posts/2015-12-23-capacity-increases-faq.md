@@ -96,8 +96,6 @@ For example,
 
 - Segregated witness allows soft forks to change the Bitcoin Script language in ways that could reduce the average size of a transaction, such as using public-key-recovery-from-signatures or Schnorr combined signatures.
 
-- Segregated witness permits the creation of compact fraud proofs that may bring the security of Simplified Payment Verification (SPV) lightweight clients up near to that of full nodes, which may allow the network to function well with fewer full nodes than it can under currently-deployed technology.
-
 The actual effect of these technologies is unknown, but scaling now with a soft fork that has wide consensus allows us to obtain the immediate gains, test and measure the mid-term possibilities, and use that data to formulate long-term plans.
 
 ## How will segregated witness transactions work for wallets?  {#segwit-in-wallets}
@@ -163,6 +161,14 @@ A permanent fix for third-party malleability, allowing multi-stage smart contrac
 Through the previous soft forks, and through conversations such as the [Miners' Panel][] at Scaling Bitcoin Hong Kong, miners have repeatedly shown that they want Bitcoin to be the most useful system possible even if they don't receive any direct benefits. Segwit and the other improvements in the roadmap provide significant usability enhancements.
 
 In addition, segwit allows miners to put more transactions in their blocks, which may allow them to increase their per-block revenue.
+
+## Update 2016-12-26
+
+Earlier versions of this page listed “Compact fraud proofs” as a benefit of segwit. However, as implemented, segwit does not make this any easier: with or without segwit, a future soft-fork enabling compact fraud proofs and the benefits they bring, will need to include its own commitment (eg, in the coinbase transaction), rather than being able to extend the commitment data used by segwit.
+
+The previous text was:
+>Segregated witness permits the creation of compact fraud proofs that may bring the security of Simplified Payment >Verification (SPV) lightweight clients up near to that of full nodes, which may allow the network to function well with fewer >full nodes than it can under currently-deployed technology.
+
 
 ## How can I help?
 
