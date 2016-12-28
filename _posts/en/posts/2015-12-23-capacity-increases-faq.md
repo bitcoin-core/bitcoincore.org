@@ -78,13 +78,19 @@ Developers, miners, and the community have accrued significant experience deploy
 
 ## I read that a hard fork deployment of segregated witness would be preferable to avoid complexity, is that correct? {why-not-hardfork}
 
+In effect, the only notable difference is the location of the witness root hash commitment which would be closer to the block header in a hard-fork implementation. To better understand the tradeoffs behind this decision, a good resource is Core developer Peter Todd's blog post [here](https://petertodd.org/2016/segwit-consensus-critical-code-review#commitment-structures)
+
+## Some people have argued that the soft-fork implementation is not well thought through and a hack that was rushed to avoid a hard-fork, is that true? 
+
 Segregated witness, like CHECKSEQUENCEVERIFY of BIP 68 & 112, was first prototyped in the Elements Alpha sidechain. Like CSV, the implementation that finally made it into Bitcoin Core was different from the initial prototype, for various reasons:
 
-1. Alpha was a prototype chain, and there was a lot that learned from using it in production, even on just a test network. The Alpha version of SegWit was a "just don't include the signatures, etc., in the hash" hard-fork change. With the experience of using this code on a testnet sidechain, and performing third-party integrations, it was discovered that this approach has significant drawbacks: it is an inefficient use of block space size; it requires messy, not-obviously-correct code in the core data structures of bitcoin; and it totally and completely breaks all existing infrastructure in weird, unexpected, layer-violating, and unique ways. The tweak introduced to allow SegWit to be soft-fork compatible also fixes all these issues. It's an objectively better approach regardless of hard-fork vs soft-fork, for code engineering reasons. 
+1. Alpha was a prototype chain, and there was a lot learned from using it in production, even on just a test network. The Alpha version of SegWit was a "just don't include the signatures, etc., in the hash" hard-fork change. With the experience of using this code on a testnet sidechain, and performing third-party integrations, it was discovered that this approach has significant drawbacks. The tweak introduced to allow SegWit to be soft-fork compatible also fixes most if not all of the issues introduced by the hard-fork implementation. It's an objectively better approach regardless of hard-fork vs soft-fork, for code engineering reasons. 
 
-2. The idea itself was refined and improved over time as new insights were had. Luke-Jr's approach made script versioning very easy (1 byte per output) to add. Script versioning allows us to fix all sorts of long-standing problems with the bitcoin scripting language. To ease review, the first SegWit script version only makes absolutely uncontroversial fixes to security problems like quadratic hashing, but much more (like aggregate Schnorr signatures) becomes possible. Today's SegWit has benefited from the lessons learned from previous implementations and the cumulative review of dozens of contributors since the first iteration, significantly reducing technical debt and increasing extensibility
+2. The idea itself was refined and improved over time as new insights were had. Luke-Jr's approach made script versioning very easy (1 byte per output) to add. Script versioning allows us to fix all sorts of long-standing problems with the bitcoin scripting language. To ease review, the first SegWit script version only makes absolutely uncontroversial fixes to security problems like quadratic hashing, but much more (like aggregate Schnorr signatures) becomes possible. 
 
-3. The final SegWit code in v0.13.1 is subject to a bunch of little improvements, e.g. the location of the commitment in the coinbase and the format of the SegWit script types, which were recognized and suggested during the public review process. The former being the only thing that would be different if SegWit were to be implemented as a hard fork. 
+3. The final SegWit code in v0.13.1 is subject to a bunch of little improvements, e.g. the location of the commitment in the coinbase and the format of the SegWit script types, which were recognized and suggested during the public review process.
+
+Today's SegWit has benefited from the lessons learned from previous implementations and the cumulative review of dozens of contributors since the first iteration, significantly reducing technical debt and increasing extensibility
 
 ## Will there be a hard fork before or as part of the segregated witness implementation?  {#pre-segwit-fork}
 
@@ -141,7 +147,7 @@ Therefore, discounting witnesses makes it easier to spend an output and, consequ
 
 However, you don't want to make the discount too large because then people will use the witnesses to store general purpose data on the block chain, or adversarial miners may fill excess space with random junk to defeat fast relay schemes that rely on similar mempools
 
-Empirical observation of network propagation has demonstrated that the peer-to-peer network can manage worst-case 4MB blocks provided other costs, such as UTXO growth & quadratic scaling of hashing time, are mitigated. A discount of 1/8 would have been too much -- it would have made adversarial blocks 8MB in size which the network simply cannot handle. Finally, no discount at all would have left space available for unupgraded nodes in competition with SegWit transactions. 
+Empirical observation of network propagation has demonstrated that the peer-to-peer network can manage worst-case 4MB blocks provided other costs, such as UTXO growth & quadratic scaling of hashing time, are mitigated. A discount of 1/8 would have been too much -- it would have made adversarial blocks 8MB in size which the network simply cannot handle. Finally, no discount at all would have left space available in blocks for unupgraded nodes in competition with SegWit transactions. 
 
 75% is in the range of typical witness-to-non-witness data ratio and therefore provides manageable capacity increase while addressing the concerns related to UTXO growth.
 
