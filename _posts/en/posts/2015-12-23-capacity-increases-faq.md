@@ -133,7 +133,7 @@ David Harding provided a table of [estimated savings][] at various fee/transacti
 
 Web wallets and exchanges that send large numbers of transactions each day at fixed rates (such as for free or for 1% per spend) are expected to be early adopters---even the small savings per spend seen in the table above will add up to significant amounts of money if repeated hundreds or thousands of times a day.
 
-## Some people are suggesting this discount is an arbitrary decision to favor payment channels & Lightning over on-chain transactions, is that true? {why-discount}
+## I have heard suggestions that this discount is an arbitrary decision to favor payment channels & Lightning over on-chain transactions, is that true? {why-discount}
 
 Witness scripts are discounted because their cost to the network is less than the rest of the transaction data. Unlike outputs they do not go into the UTXO set, and do not need to be maintained in RAM for fast processing of future transactions. They can be pruned from disk as soon as they are validated.
 
