@@ -76,7 +76,7 @@ Segwit does require more changes in higher level software stacks than a simple b
 
 Developers, miners, and the community have accrued significant experience deploying soft forks, and we believe segwit can be deployed at least as fast, and probably more securely, than a hard fork that increases the maximum block size.
 
-## I read that hard fork deployment of segregated witness would be preferable to avoid complexity, is that correct? {why-not-hardfork}
+## I read that a hard fork deployment of segregated witness would be preferable to avoid complexity, is that correct? {why-not-hardfork}
 
 Segregated witness, like CHECKSEQUENCEVERIFY of BIP 68 & 112, was first prototyped in the Elements Alpha sidechain. Like CSV, the implementation that finally made it into Bitcoin Core was different from the initial prototype, for various reasons:
 
