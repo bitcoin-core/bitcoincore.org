@@ -34,7 +34,7 @@ A wallet MUST implement all the features in this section, in order to be conside
 * To create a P2SH-P2WPKH address:
     1. Calculate the RIPEMD160 of the SHA256 of a public key (<code>keyhash</code>). Despite the <code>keyhash</code> formula is same as P2PKH, reuse of <code>keyhash</code> should be avoided for better privacy and prevention of accidental use of uncompressed key
     2. The P2SH <code>redeemScript</code> is always 22 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>keyhash</code> (i.e. <code>0x0014{20-byte keyhash}</code>)
-    3. Same as any other P2SH, the <code>scripPubKey</code> is <code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>, and the address is the corresponding P2SH address with prefix 3.
+    3. Same as any other P2SH, the <code>scriptPubKey</code> is <code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>, and the address is the corresponding P2SH address with prefix 3.
 
 #### Transaction Serialization
 
