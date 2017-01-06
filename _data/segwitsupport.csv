@@ -7,7 +7,7 @@ BetKing,https://betking.io,yes,wip,gambling,bitcoin core
 BFGMiner,http://bfgminer.com,yes,yes,mining software,
 Bitso,https://bitso.com,yes,yes,exchange,bitcoin core
 Bitclub,https://www.blocktrail.com/BTC/pool/bitclubnetwork,yes,yes,mining pool,ckpool
-Bitcoin Embassy, https://bitcoinembassy.ca, yes, yes, commmunity hub, bitcoin core
+Bitcoin Embassy,https://bitcoinembassy.ca,yes,yes,commmunity hub,bitcoin core
 Bitcoin India,https://bitcoin-india.org/,yes,yes,"exchange, pool",bitcoin core
 Bitcoin Knots,https://bitcoinknots.org/,yes,yes,"node, wallet",n/a
 BitcoinJ,https://bitcoinj.github.io/,yes,wip,library,n/a
@@ -37,7 +37,7 @@ BTCC,https://www.btcc.com/,yes,yes,"exchange, pool, wallet",
 btcd,https://github.com/btcsuite/btcd,yes,wip,"full node",
 btcpool,https://github.com/btccom/btcpool,yes,wip,"pool software",
 bustabit,https://www.bustabit.com,yes,wip,gambling,bitcoin core
-Bylls, https://bylls.com, yes, wip, payment processor, bitcore
+Bylls,https://bylls.com,yes,wip,payment processor,bitcore
 cgminer,https://www.blocktrail.com/,yes,yes,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,yes,yes,pool software,
 CK solopool,http://solo.ckpool.org/,yes,yes,"mining pool","bitcoin core, ckpool"
@@ -78,7 +78,7 @@ Paymium,https://paymium.com/,yes,no,exchange,
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,yes,no,library,
 pycoin,https://github.com/richardkiss/pycoin,yes,yes,library,
 Samourai Wallet,http://samouraiwallet.com/,yes,wip,wallet,bitcoinj
-Satoshi Counter, https://satoshicounter.com, yes, yes, broker, bitcoin core
+Satoshi Counter,https://satoshicounter.com,yes,yes,broker,bitcoin core
 Slush Pool,https://www.slushpool.com/,yes,yes,mining pool,
 SpicePay,https://www.spicepay.com/,yes,wip,"exchange, merchant",
 stratum-mining,https://github.com/slush0/stratum-mining/,yes,yes,"pool software",
