@@ -38,7 +38,7 @@ btcd,https://github.com/btcsuite/btcd,yes,wip,"full node",
 btcpool,https://github.com/btccom/btcpool,yes,yes,"pool software",
 bustabit,https://www.bustabit.com,yes,wip,gambling,bitcoin core
 Bylls,https://bylls.com,yes,wip,payment processor,bitcore
-cgminer,https://www.blocktrail.com/,yes,yes,mining software,
+cgminer,https://github.com/ckolivas/cgminer,yes,yes,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,yes,yes,pool software,
 CK solopool,http://solo.ckpool.org/,yes,yes,"mining pool","bitcoin core, ckpool"
 CoinCorner,https://www.coincorner.com,yes,wip,exchange,
