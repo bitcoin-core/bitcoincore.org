@@ -35,7 +35,7 @@ Example technical projects:
 - Improve block relay
 - IBLT
 - Research and on how to do a hard fork safely
-- Flexicap blocksize
+- Flexcap blocksize
 - UTXO commitments
 - Relay network maintenance
 - Relay Network v2
