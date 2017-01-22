@@ -46,6 +46,8 @@ CoinCorner,https://www.coincorner.com,wip,exchange,
 Coinfloor,https://www.coinfloor.co.uk/,wip,exchange,
 Coinomi,https://coinomi.com/,planned,wallet,
 Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
+Colored-coins,https://www.coloredcoins.org/,planned,wallet blockexplorer blockchain-protocol-layer,bitcoinjs-lib
+Colu,https://www.colu.com/,planned,wallet blockchain-application-layer,Colored-coin bitcoinjs-lib
 CoPay,https://copay.io/,planned,wallet,bitcore-lib
 Cryptobuyer,https://cryptobuyer.io/,planned,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,ready,hardware wallet,
