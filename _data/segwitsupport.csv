@@ -69,6 +69,7 @@ libbtc,https://github.com/libbtc,planned,library,
 libbitcoin,http://libbitcoin.dyne.org/,planned,library,
 libblkmaker,https://github.com/bitcoin/libblkmaker/pull/6,ready,mining library,n/a
 LocalBitcoins,https://www.localbitcoins.com/,ready,P2P Exchange,
+Mana,https://github.com/JediWed/Mana,wip,wallet,BitcoinSPV
 mSIGNA,https://ciphrex.com/,ready,wallet,
 Multibit HD,https://multibit.org/,planned,wallet,bitcoinj
 Mycelium,https://mycelium.com/,wip,wallet,
