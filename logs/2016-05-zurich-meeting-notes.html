@@ -80,7 +80,7 @@
 
 <p>nickler is testing segnet chainparams with 0.9 to make sure segwit is still soft-fork compatible.</p>
 
-<h3>Error code and correction for a new address type</h3>
+<h3 id="base32">Error code and correction for a new address type</h3>
 
 <p>In terms of address type stuff, as Pieter was saying he wants to talk about address type stuff. Rusty wrote a blog post a while ago on native segwit address type which consists of a prefix colon and then a base32 encoding of just the scriptpubkey directly. There's some issues with integrating that into a wallet because you would only want to use it for recognized cases. Like say we have an address type that encodes any possible scriptpubkey up to a certain limit in size. Now you do a listtransactions and suddenly all your old transactions, oh they also match this new type -- and then it will be listed like that-- that's not what you want. This is the default for everything we don't have an alternative for, or you only do it for a whitelist of the subset. But that's independent of the encoding. That's more of a UI issue. You check the particular case. And then the question is, what do you do for the checksum? After trying many different possibilities and grinding several I guess weeks of CPU time on this, we found a code that adds 6 characters for any random error it has at least a chance of 1 in a billion to fail at most. It will detect up to 4 transpositions or substitution errors for sure 100%. It doesn't fix anything though-- it can fix 2 transpositions. Stop. No.</p>
 
