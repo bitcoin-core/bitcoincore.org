@@ -86,6 +86,7 @@ OXT,https://oxt.me,ready,blockchain analysis,
 p2pool,https://github.com/p2pool/p2pool,wip,mining software,
 Paxful,https://paxful.com/,ready,P2P Exchange,
 Paymium,https://paymium.com/,planned,exchange,
+Purse.io,http://Purse.io,ready,e-commerce,wallet
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,planned,library,
 pycoin,https://github.com/richardkiss/pycoin,ready,library,
 Samourai Wallet,http://samouraiwallet.com/,wip,wallet,bitcoinj
@@ -103,4 +104,3 @@ Walltime,https://walltime.info,ready,exchange,
 Woleet,https://woleet.io,planned,Data anchoring platform,bitcoin core
 Xotika,https://xotika.tv,ready,video streaming,
 Yogh,http://yogh.io,planned,block explorer,bitcoin core
-Purse.io,http://Purse.io,ready,e-commerce,wallet
