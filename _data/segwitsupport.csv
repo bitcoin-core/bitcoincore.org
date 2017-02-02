@@ -14,6 +14,7 @@ Bitcoin India,https://bitcoin-india.org/,ready,"exchange, pool",bitcoin core
 Bitcoin Knots,https://bitcoinknots.org/,ready,"node, wallet",n/a
 BitcoinJ,https://bitcoinj.github.io/,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,ready,library,n/a
+bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,ready,library,
 Bitcoinjs,http://bitcoinjs.org/,wip,library,n/a
 bitcore-lib,https://bitcore.io/,wip,library,n/a
 Bitfinex,https://www.bitfinex.com/,ready,exchange,
@@ -25,7 +26,7 @@ BitmainWarranty,https://bitmainwarranty.com/,ready,miner,
 Bitonic,https://bitonic.com/,ready,"broker, exchange",
 Bitrated,https://www.bitrated.com/,planned,wallet,
 Bitrefill,https://www.bitrefill.com/,planned,merchant,
-bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,ready,library,
+Bitstop,https://bitstop.co,ready,atm operator,bitcoin core
 Bittylicious,https://bittylicious.com/,ready,exchange,
 Bitwala,https://bitwala.io,planned,remittance,Bitgo
 BitWasp,https://github.com/Bit-Wasp/bitcoin-php,ready,library,
@@ -89,6 +90,7 @@ python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,planned,library
 pycoin,https://github.com/richardkiss/pycoin,ready,library,
 Samourai Wallet,http://samouraiwallet.com/,wip,wallet,bitcoinj
 Satoshi Counter,https://satoshicounter.com,ready,broker,bitcoin core
+Simple Bitcoin Wallet,https://btcontract.com,planned,wallet,bitcoinj
 Slush Pool,https://www.slushpool.com/,ready,mining pool,
 SpicePay,https://www.spicepay.com/,wip,"exchange, merchant",
 stratum-mining,https://github.com/slush0/stratum-mining/,ready,"pool software",
@@ -101,4 +103,3 @@ Walltime,https://walltime.info,ready,exchange,
 Woleet,https://woleet.io,planned,Data anchoring platform,bitcoin core
 Xotika,https://xotika.tv,ready,video streaming,
 Yogh,http://yogh.io,planned,block explorer,bitcoin core
-Bitstop,https://bitstop.co,ready,atm operator,bitcoin core
