@@ -31,10 +31,10 @@ Bittylicious,https://bittylicious.com/,ready,exchange,
 Bitwala,https://bitwala.io,planned,remittance,Bitgo
 BitWasp,https://github.com/Bit-Wasp/bitcoin-php,ready,library,
 Bity,https://bity.com,planned,broker,bitcoin core
-Blockchain.info,https://blockchain.info/,planned,"wallet, block explorer",
+Blockchain.info,https://blockchain.info/,ready,"wallet, block explorer",
 Blockonomics,https://www.blockonomics.co/,wip,"bitcoin tracker, block explorer","bitcoin core"
 Blocktrail,https://www.blocktrail.com/,planned,"wallet, block explorer",
-BreadWallet,http://breadwallet.com/,planned,wallet,
+BreadWallet,http://breadwallet.com/,wip,wallet,
 BTC.com,https://btc.com/,wip,"block explorer, wallet",
 BTCC,https://www.btcc.com/,ready,"exchange, pool, wallet",
 btcd,https://github.com/btcsuite/btcd,wip,"full node",
@@ -55,7 +55,7 @@ CoPay,https://copay.io/,planned,wallet,bitcore-lib
 Cryptobuyer,https://cryptobuyer.io/,planned,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,ready,hardware wallet,
 EI8HT,http://ei8.ht/,planned,wallet,"bitcoin core, bitcoinjs"
-Electrum,https://electrum.org/,planned,wallet,
+Electrum,https://electrum.org/,wip,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,ready,pool software,n/a
 Exodus,https://www.exodus.io,planned,wallet,bitcoinjs
 Fairlay,https://fairlay.com/,planned,Bitcoin Prediction Market,
@@ -87,7 +87,7 @@ p2pool,https://github.com/p2pool/p2pool,wip,mining software,
 Paxful,https://paxful.com/,ready,P2P Exchange,
 Paymium,https://paymium.com/,planned,exchange,
 Purse.io,http://Purse.io,ready,e-commerce,wallet
-python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,planned,library,
+python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,wip,library,
 pycoin,https://github.com/richardkiss/pycoin,ready,library,
 Samourai Wallet,http://samouraiwallet.com/,wip,wallet,bitcoinj
 Satoshi Counter,https://satoshicounter.com,ready,broker,bitcoin core
