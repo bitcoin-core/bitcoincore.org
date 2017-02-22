@@ -1,43 +1,42 @@
 [Adam Back]: http://www.cypherspace.org/adam/
-[Gregory Maxwell]: https://github.com/gmaxwell
-[Luke Dashjr]: https://github.com/luke-jr
-[Tadge Dryja]: https://github.com/T909
-[Mark Friedenbach]: https://github.com/maaku
-[Peter Todd]: https://github.com/petertodd
-[Suhas Daftuar]: https://github.com/sdaftuar
-[Pieter Wuille]: https://github.com/sipa
-[Eric Lombrozo]: https://github.com/codeshark
-[BtcDrak]: https://github.com/btcdrak
-[Cory Fields]: https://github.com/theuni
 [Alex Morcos]: https://github.com/morcos
-[Pavel Janik]: https://github.com/paveljanik
-[Matt Corallo]: https://github.com/TheBlueMatt
+[Andrew Chow]: https://github.com/achow101
+[Bob McElrath]: https://github.com/mcelrath
+[Bryan Bishop]: https://github.com/kanzure
+[BtcDrak]: https://github.com/btcdrak
+[Chris Stewart]: https://github.com/Christewart
+[Cory Fields]: https://github.com/theuni
+[David Harding]: https://github.com/harding/
+[Eric Lombrozo]: https://github.com/codeshark
 [Eric Voskuil]: https://github.com/evoskuil
+[Gregory Maxwell]: https://github.com/gmaxwell
+[Gregory Sanders]: https://github.com/instagibbs
+[Jeremy Rubin]: https://github.com/JeremyRubin
+[Johnathan Corgan]: https://github.com/jmcorgan
+[Johnson Lau]: https://github.com/jl2012
+[Jonas Nick]: https://github.com/jonasnick
 [Jonas Schnelli]: https://github.com/jonasschnelli
-[Warren Togami]: https://github.com/wtogami
-[Wladimir van der Laan]: https://github.com/laanwj
 [Jorge Timon]: https://github.com/jtimon
 [Jorge Timón]: https://github.com/jtimon
+[Joseph Poon]: https://github.com/josephpoon
+[Joshua Simmons]: https://github.com/kadoban
+[Luke Dashjr]: https://github.com/luke-jr
 [Marco Falke]: https://github.com/MarcoFalke
-[Tom Harding]: https://github.com/dgenr8
+[Mark Friedenbach]: https://github.com/maaku
+[Matt Corallo]: https://github.com/TheBlueMatt
+[Michagogo]: https://github.com/Michagogo
+[Nicolas Dorier]: https://github.com/NicolasDorier
+[Olaoluwa Osuntokun]: https://github.com/Roasbeef
 [Patrick Strateman]: https://github.com/pstratem
 [Pavel Janik]: https://github.com/paveljanik
-[Bryan Bishop]: https://github.com/kanzure
-[Gregory Sanders]: https://github.com/instagibbs
-[Johnson Lau]: https://github.com/jl2012
-[Andrew Chow]: https://github.com/achow101
-[Nicolas Dorier]: https://github.com/NicolasDorier
-[Jonas Nick]: https://github.com/jonasnick
-[Johnathan Corgan]: https://github.com/jmcorgan
-[Jeremy Rubin]: https://github.com/JeremyRubin
-[Bob McElrath]: https://github.com/mcelrath
-[Joseph Poon]: https://github.com/josephpoon
+[Peter Todd]: https://github.com/petertodd
+[Pieter Wuille]: https://github.com/sipa
+[Suhas Daftuar]: https://github.com/sdaftuar
+[Tadge Dryja]: https://github.com/T909
+[Tom Harding]: https://github.com/dgenr8
+[Warren Togami]: https://github.com/wtogami
+[Wladimir van der Laan]: https://github.com/laanwj
 [Zooko Wilcox]: https://github.com/zooko
-[Joshua Simmons]: https://github.com/kadoban
-[Michagogo]: https://github.com/Michagogo
-[Olaoluwa Osuntokun]: https://github.com/Roasbeef
-[Chris Stewart]: https://github.com/Christewart
-[David Harding]: https://github.com/harding/
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP2]: https://github.com/bitcoin/bips/blob/master/bip-0002.mediawiki
