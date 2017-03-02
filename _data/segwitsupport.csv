@@ -82,6 +82,7 @@ NOMP,https://github.com/zone117x/node-stratum-pool/,ready,mining software,
 OpenDime,https://opendime.com/,planned,hardware wallet,
 OKLink,https://www.oklink.com/,wip,"wallet, block explorer",
 Omni Core,https://github.com/OmniLayer/omnicore,wip,wallet,
+OtikaTV,https://otika.tv,ready,social video platform,
 OXT,https://oxt.me,ready,blockchain analysis,
 p2pool,https://github.com/p2pool/p2pool,wip,mining software,
 Paxful,https://paxful.com/,ready,P2P Exchange,
@@ -102,6 +103,6 @@ Vaultoro,https://www.vaultoro.com/,wip,exchange,
 WageCan,https://www.wagecan.com/,wip,exchange,
 Walltime,https://walltime.info,ready,exchange,
 Woleet,https://woleet.io,planned,Data anchoring platform,bitcoin core
-Xotika,https://xotika.tv,ready,video streaming,
+XotikaTV,https://xotika.tv,ready,adult social video platform,
 Yogh,http://yogh.io,planned,block explorer,bitcoin core
 Bernstein,http://bernstein.io,wip,notarization saas,bitcoinjs-lib
