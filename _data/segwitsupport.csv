@@ -55,7 +55,7 @@ CoPay,https://copay.io/,planned,wallet,bitcore-lib
 Cryptobuyer,https://cryptobuyer.io/,planned,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,ready,hardware wallet,
 EI8HT,http://ei8.ht/,planned,wallet,"bitcoin core, bitcoinjs"
-Electrum,https://electrum.org/,wip,wallet,
+Electrum,https://electrum.org/,ready,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,ready,pool software,n/a
 Exodus,https://www.exodus.io,planned,wallet,bitcoinjs
 Fairlay,https://fairlay.com/,planned,Bitcoin Prediction Market,
