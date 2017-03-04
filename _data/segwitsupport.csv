@@ -42,6 +42,7 @@ btcpool,https://github.com/btccom/btcpool,ready,"pool software",
 bustabit,https://www.bustabit.com,wip,gambling,bitcoin core
 Bylls,https://bylls.com,wip,payment processor,bitcore
 cgminer,https://github.com/ckolivas/cgminer,ready,mining software,
+"Ciphrex / mSIGNA",https://ciphrex.com/,ready,"wallet, library",
 ckpool,https://bitbucket.org/ckolivas/ckpool,ready,pool software,
 CK solopool,http://solo.ckpool.org/,ready,"mining pool","bitcoin core, ckpool"
 Coinbase,https://coinbase.com/,planned,wallet,
@@ -74,7 +75,6 @@ libbitcoin,http://libbitcoin.dyne.org/,planned,library,
 libblkmaker,https://github.com/bitcoin/libblkmaker/pull/6,ready,mining library,n/a
 LocalBitcoins,https://www.localbitcoins.com/,ready,P2P Exchange,
 Mana,https://github.com/JediWed/Mana,wip,wallet,BitcoinSPV
-mSIGNA,https://ciphrex.com/,ready,wallet,
 Multibit HD,https://multibit.org/,planned,wallet,bitcoinj
 Mycelium,https://mycelium.com/,wip,wallet,
 NBitcoin,https://github.com/MetacoSA/NBitcoin,ready,library,n/a
