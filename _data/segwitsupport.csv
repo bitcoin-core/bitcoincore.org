@@ -61,6 +61,7 @@ Exodus,https://www.exodus.io,planned,wallet,bitcoinjs
 Fairlay,https://fairlay.com/,planned,Bitcoin Prediction Market,
 Gatecoin,https://gatecoin.com/,ready,exchange,"bitcoin core, nbitcoin"
 GDAX,https://gdax.com/,planned,exchange,
+Gemini,https://gemini.com/,ready,exchange,
 GreenAddress<sup>2</sup>,https://greenaddress.it/,ready,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,ready,wallet,bitcoinj
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,wip,"library, privacy solution, wallet",
