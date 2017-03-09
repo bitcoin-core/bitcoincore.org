@@ -9,6 +9,7 @@
 [David Harding]: https://github.com/harding/
 [Eric Lombrozo]: https://github.com/codeshark
 [Eric Voskuil]: https://github.com/evoskuil
+[Glenn Willen]: https://github.com/gwillen
 [Gregory Maxwell]: https://github.com/gmaxwell
 [Gregory Sanders]: https://github.com/instagibbs
 [Jeremy Rubin]: https://github.com/JeremyRubin
