@@ -54,7 +54,7 @@ As a consequence, synchronization to the tip of the chain happens much faster by
 
   * [Parallel script verification #2060](https://github.com/bitcoin/bitcoin/pull/2060)
 
-### Headers first synchronization
+## Headers first synchronization
 Release: Bitcoin Core 0.10
 
 Striving to further improve initial block download time, the Core project introduced in late 2014 an important re-architecture of the mechanism used by nodes to synchronize with the “best chain”. 
@@ -114,5 +114,4 @@ Configuration of the maximum size is left to the users with the default size bei
 
 * [Bitcoin-Qt 0.12.0 Release notes](https://bitcoin.org/en/release/v0.12.0#memory-pool-limiting)
 
-
-In part 2, we will discuss more recent improvements that build on the technologies presented above and further improve the robustness and scaling potential of the network. 
+In Part 2, we will discuss more recent improvements that build on the technologies presented above and further improve the robustness and scaling potential of the network. 
