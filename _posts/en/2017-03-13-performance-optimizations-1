@@ -4,7 +4,7 @@ layout: post
 lang: en
 name: performance-optimizations-1
 id: en-performance-optimizations-1
-title: On-chain scaling: a review of historical performance optimization made to Bitcoin’s reference software
+title: On-chain scaling: a review of historical performance optimization made to Bitcoin’s reference software. Part 1
 permalink: /en/2017/03/13/performance-optimizations-1/
 version: 1
 excerpt: Development milestones that helped preserve a reliable experience for users of the Bitcoin software client over the years. 
