@@ -57,7 +57,7 @@ As a consequence, synchronization to the tip of the chain happens much faster by
 ## Headers first synchronization
 Release: Bitcoin Core 0.10
 
-Striving to further improve initial block download time, the Core project introduced in late 2014 an important re-architecture of the mechanism used by nodes to synchronize with the “best chain”. 
+Striving to further improve initial block download time, the Core project introduced in late 2014 an important re-architecture of the mechanism used by nodes to synchronize with the most-work valid chain. 
 
 Initially, the process of bootstrapping a new Bitcoin client would involve a user fetching block data from a single peer with the consequence that any interruption or decrease in connection quality would significantly stall the process. With an ever-increasing blockchain size, this would result in sometimes massive waiting time for the synchronization to complete, with a large percentage of users reporting up to multi-day periods depending on their hardware.
 
