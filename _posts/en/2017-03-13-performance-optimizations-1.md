@@ -29,9 +29,9 @@ Additionally, the signature cache also mitigates a DoS vector introduced by the 
 ## Ultraprune + LevelDB
 Release: Bitcoin-Qt 0.8.0
 
-Ultraprune was one of the first major upgrade to the Bitcoin software aimed at solving the overhead associated with validating transaction data from the blockchain. Previous versions of the Bitcoin reference client would use the entire transaction index which, even back then, resulted in a considerably heavy set of information to work from. One consequence of this was an almost unbearably slow initial block download, which turned out to be a significant hindrance for users looking to bootstrap a new client. 
+Ultraprune was one of the first major upgrade to the Bitcoin software aimed at solving the overhead associated with validating transaction data from the blockchain. Previous versions of the Bitcoin reference client maintained an index of all transaction outputs, spent or unspent. Ultraprune significantly reduced the size of that index with the insight that you only needed to keep track of unspent outputs, and an output - once spent - can be removed from the indexes entirely.
 
-Working from the insight that these operations do not actually require complete transaction history but only the UTXO set, developers implemented a new database layout that allocated unspent transaction outputs to a compact custom format in order to reduce the size of information required for validation work. 
+To achieve this, a new database layout was implemented which allocates unspent transaction outputs to a compact custom format in order to reduce the size of information required for validation work. 
 
 To further optimize the performance of the system, Ultraprune was introduced in parallel with LevelDB, which deprecated the old BDB database technology. Overall, the impact was notable: depending on their hardware, users could experience at least an order of magnitude improvement when validating blockchain data. This new database structure would also pave the way for future work on pruning and lighter implementations of Bitcoin full nodes. 
 
@@ -61,7 +61,7 @@ Striving to further improve initial block download time, the Core project introd
 
 Initially, the process of bootstrapping a new Bitcoin client would involve a user fetching block data from a single peer with the consequence that any interruption or decrease in connection quality would significantly stall the process. With an ever-increasing blockchain size, this would result in sometimes massive waiting time for the synchronization to complete, with a large percentage of users reporting up to multi-day periods depending on their hardware.
 
-Headers first synchronization severely mitigates this issue using a new method that involves nodes first downloading and validating block headers from a single peer and then fetching block data in parallel from a multitude of others. 
+Headers first synchronization completely mitigates this issue using a new method that involves nodes first downloading and validating block headers from a single peer and then fetching block data in parallel from a multitude of others. 
 
 Complaints about initial block download time have been prevalent since the early days of Bitcoin. With headers first synchronization, the software took a major step forward in terms of usability for new users. Rather than wasting many hours on unreliable synchronization, nodes could now leverage their entire network of peers and cut down the bootstrapping time significantly. With the use of smarter algorithms, another asymptotic improvement was made to this crucial aspect of Bitcoin’s long term sustainability. 
 
@@ -74,9 +74,9 @@ Complaints about initial block download time have been prevalent since the early
 ## Block file pruning
 Release: Bitcoin Core 0.11
 
-Pruning of old data was a concept first described by Satoshi Nakamoto in his white paper as a potential solution to disk space scarcity. Unfortunately, the original design was inadequate and could not be implemented as imagined by its creator. Seven years later, with the blockchain reaching more than a hundred gigabyte, the introduction of block file pruning as we know it today presents a major boon to users with limited resources.
+Pruning of old data was a concept first described by Satoshi Nakamoto in his white paper as a potential solution to disk space scarcity. Unfortunately, the original design was inadequate and could not be implemented as imagined by its creator. Seven years later, with the blockchain reaching more than a hundred gigabytes, the introduction of block file pruning as we know it today presents a major boon to users with limited resources.
 
-Block file pruning leverages previous work with ultraprune; users who have initially downloaded and validated the blockchain may now discard raw data older than 288 blocks. Because those nodes still preserve the full UTXO set, they remain able to validate unspent data, which is enough to provide full guarantees against double-spends. 
+Block file pruning leverages previous work with ultraprune; users who have initially downloaded and validated the blockchain may now discard raw data older than 288 blocks. Because those nodes still preserve the full UTXO set, they remain able to validate unspent data, which is enough to fully validate new blocks and protect against potential double-spends. 
 
 Of course, pruning implies that there remains a sufficient number of archival nodes around to serve full blockchain data. On the other hand, this innovation expands the range of validators by making it more cost-effective to remain one. As a whole, the solution is a welcome addition to the options available for us to bolster network diversity. 
 
