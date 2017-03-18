@@ -15,6 +15,7 @@ Bitcoin Knots,https://bitcoinknots.org/,ready,"node, wallet",n/a
 BitcoinJ,https://bitcoinj.github.io/,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,ready,library,n/a
 bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,ready,library,
+BitcoinReminder.com,https://bitcoinreminder.com,ready,service,
 Bitcoinjs,http://bitcoinjs.org/,wip,library,n/a
 bitcore-lib,https://bitcore.io/,wip,library,n/a
 Bitfinex,https://www.bitfinex.com/,ready,exchange,
