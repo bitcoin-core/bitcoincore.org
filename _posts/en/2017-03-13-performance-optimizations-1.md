@@ -15,7 +15,7 @@ The following post aims to highlight development milestones that helped preserve
 ## Signature Caching
 Release: Bitcoin-Qt 0.7.0
 
-Verification of ECSDA signatures are one of the most computationally heavy operations done at the peer level. Because they need to be verified for every transactions, any superfluous validation leads to significant resource overhead for the end user. That was the case for early versions of the software which would both verify signatures before they entered a node mempool and after they were received into a block. 
+Verification of ECSDA signatures are one of the most computationally heavy operations done at the peer level. Because they need to be verified for every transaction, any superfluous validation leads to significant resource overhead for the end user. That was the case for early versions of the software which would both verify signatures before they entered a node mempool and after they were received into a block. 
 
 In order to gain in efficiency, developers created a cache allowing nodes to store previously validated signatures and skip redundant work once the transactions make it into an accepted block. 
 
@@ -29,7 +29,7 @@ Additionally, the signature cache also mitigates a DoS vector introduced by the 
 ## Ultraprune + LevelDB
 Release: Bitcoin-Qt 0.8.0
 
-Ultraprune was one of the first major upgrade to the Bitcoin software aimed at solving the overhead associated with validating transaction data from the blockchain. Previous versions of the Bitcoin reference client maintained an index of all transaction outputs, spent or unspent. Ultraprune significantly reduced the size of that index with the insight that you only needed to keep track of unspent outputs, and an output - once spent - can be removed from the indexes entirely.
+Ultraprune was one of the first major upgrades to the Bitcoin software aimed at solving the overhead associated with validating transaction data from the blockchain. Previous versions of the Bitcoin reference client maintained an index of all transaction outputs, spent or unspent. Ultraprune significantly reduced the size of that index with the insight that you only needed to keep track of unspent outputs, and an output - once spent - can be removed from the indexes entirely.
 
 To achieve this, a new database layout was implemented which allocates unspent transaction outputs to a compact custom format in order to reduce the size of information required for validation work. 
 
@@ -45,7 +45,7 @@ To further optimize the performance of the system, Ultraprune was introduced in 
 ## Parallel script verification
 Release: Bitcoin-Qt 0.8
 
-While a more subtle change, transitioning script verification to a more parallelized process removed significant overhead from block validation times. Early versions of the software would validate script data from inputs in between every UTXO fetch, creating performance issue because of the linear processing of all actions. This violates a basic principle for the design of efficient computing processes, which dictates that computation should happen concurrently with I/O jobs, where possible. 
+While a more subtle change, transitioning script verification to a more parallelized process removed significant overhead from block validation times. Early versions of the software would validate script data from inputs in between every UTXO fetch, creating a performance issue because of the linear processing of all actions. This violates a basic principle for the design of efficient computing processes, which dictates that computation should happen concurrently with I/O jobs, where possible. 
 With that in mind, the block validation mechanism was re-engineered in order to be able to allocate script checks to parallel threads so that their verification can happen even before the client is done fetching all of the UTXOs from the block. To achieve this, script check actions are stored in a queue after transaction are processed and are handled separately from other input validation jobs. 
 
 As a consequence, synchronization to the tip of the chain happens much faster by making more efficient use of the peer’s resources. During testing of the implementation, developers noted 35% to 100% speed-up when benchmarking against previous versions of the software.
@@ -89,9 +89,9 @@ Release: Bitcoin Core 0.12
 
 After measurements, it was determined that the next step after solving the inefficiencies of blockchain download was to tackle the bottleneck of transaction verification and its heavy computing load. The Core project set out to do this by using a new library designed for optimized performance of ECDSA operations. ECDSA (Elliptic Curve Digital Signature Algorithm) is the backbone of Bitcoin’s public key infrastructure and is used every time a user moves coins by signing a message with their private keys. These signatures need to be verified by every peer in the network in order to preserve the ledger’s integrity.
 
-Early developers had long considered transitioning away from the original OpenSSL library and after 5 years of design considerations, testing and peer-review, Pieter Wuille’s libsecp256k1 library was introduced as its replacement. As expected, the implementation led to major speed-up of the signature validation process behind every Bitcoin transaction. Benchmarks reported 5–7x improvements over the OpenSSL implementation. For users this would translate to saving up to half the bootstrap time typically dedicated to ECSDA operations, one of the most laborious step in synchronizing a new node from scratch. 
+Early developers had long considered transitioning away from the original OpenSSL library and after 5 years of design considerations, testing and peer-review, Pieter Wuille’s libsecp256k1 library was introduced as its replacement. As expected, the implementation led to major speed-up of the signature validation process behind every Bitcoin transaction. Benchmarks reported 5–7x improvements over the OpenSSL implementation. For users this would translate to saving up to half the bootstrap time typically dedicated to ECSDA operations, one of the most laborious steps in synchronizing a new node from scratch. 
 
-Considering the growth in Bitcoin transaction activity, this upgrade was essential to preserving a reasonable user experience for network peers. Once again, reduction of algorithmic complexity provided users with more efficient usage of their resources and drastically reduced the barriers of entry for new participants. 
+Considering the growth in Bitcoin transaction activity, this upgrade was essential to preserving a reasonable user experience for network peers. Once again, reduction of algorithmic complexity provided users with more efficient usage of their resources and drastically lowered the barrier of entry for new participants. 
 
 ### Further information
 
@@ -104,9 +104,9 @@ Considering the growth in Bitcoin transaction activity, this upgrade was essenti
 ## Memory pool limiting
 Release: Bitcoin Core 0.12
 
-A long standing vulnerability of the Bitcoin software was its inability to properly deal with the flooding of a peer’s memory pool. Indeed, an attacker could send a high number of low value, low fee transactions that would accumulate in buffer until it would overload the memory available. This would cause nodes with relatively low RAM resources to crash during periods of unusual activity. The only effective measure against this was to increase the software’s minimum relay fee which still left no upper bound on the on the potential size of the mempool.
+A long standing vulnerability of the Bitcoin software was its inability to properly deal with the flooding of a peer’s memory pool. Indeed, an attacker could send a high number of low value, low fee transactions that would accumulate in the memory pool until it would overload the memory available. This would cause nodes with relatively low RAM resources to crash during periods of unusual activity. The only effective measure against this was to increase the software’s minimum relay fee which still left no upper bound on the potential size of the mempool.
 
-To remediate this, developers of the Core project implemented a strict memory pool maximum size with specific eviction policies sorting transactions by fees and evicting the lowest paying ones first. In order to avoid transactions with the same fee from re-entering the memory pool, the node will increase its effective minimum relay feerate to match the one of the last evicted transaction plus the initial minimum relay feerate. 
+To remediate this, developers of the Core project implemented a strict memory pool maximum size with specific eviction policies sorting transactions by fees and evicting the lowest paying ones first. In order to prevent transactions with the same fee from re-entering the memory pool, the node will increase its effective minimum relay feerate to match the one of the last evicted transaction plus the initial minimum relay feerate. 
 
 Configuration of the maximum size is left to the users with the default size being 300 megabytes. This update provides a much more robust experience for node users with limited resources and, in general, makes the entire network more reliable.
 
