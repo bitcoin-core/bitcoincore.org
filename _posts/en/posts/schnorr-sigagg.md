@@ -51,7 +51,10 @@ Until more evaluation of the delinearization scheme securing signers from malici
 ### Further information
   * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
   * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
-  * [High level explanation from Aaron Van Wirdum at BitcoinMagazine.com](https://bitcoinmagazine.com/articles/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496/)
+  * [Discussion about Schnorr Signatures at July 2016 Bitcoin developers & miners meet-up](http://diyhpl.us/wiki/transcripts/2016-july-bitcoin-developers-miners-meeting/dan-boneh/)
+  * [Schnorr documentation](https://github.com/sipa/secp256k1/blob/968e2f415a5e764d159ee03e95815ea11460854e/src/modules/schnorr/schnorr.md)
+  * [StackExchange - What are the implications of Schnorr](http://bitcoin.stackexchange.com/questions/34288/what-are-the-implications-of-schnorr-signatures/35351#35351)
+  * [Elements Project: Schnorr Signature Validation](https://www.elementsproject.org/elements/schnorr-signatures/)
   * [SF Bitcoin Devs Seminar: Gregory Maxwell on Schnorr multi-signatures](https://www.youtube.com/watch?v=TYQ-3VvNCHE)
   * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
 
@@ -74,6 +77,7 @@ It is rather straightforward to evaluate the type of resources savings that woul
 
 ### Further information
   * [Gregory Maxwell post on signature aggregation on Bitcointalk.org forum](https://bitcointalk.org/index.php?topic=1377298.0)
+  * [Bitcointalk.org post on signature aggregation by user Horas Yuan Mouton](https://bitcointalk.org/index.php?topic=290971.0)
   * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
   * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
   * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
