@@ -66,7 +66,7 @@ Because this scheme expands the scope of aggregation outside of the deterministi
 In terms of implementation, the proposal is rather straightforward: OP_CHECKSIG and
 OP_CHECKMULTISIG are modified so that they can stack public keys, delinearize them and once all associated inputs are validated, produce a combined signature for their respective transactions. 
 
-It is rather straightforward to evaluate the type of resources savings that would have been possible had signature aggregation been implemented since the genesis block. Assuming every historical signature would be reduced to 1 byte, except for one per transaction, analysis suggest the method would result in, at least, a 25% reduction in terms of storage and bandwidth. Increased used of n-of-n thresholds are like to translate into more savings though they were not accounted for in this analysis. 
+It is rather straightforward to evaluate the type of resources savings that would have been possible had signature aggregation been implemented since the genesis block. Assuming every historical signature would be reduced to 1 byte, except for one per transaction, analysis suggest the method would result in at least a 25% reduction in terms of storage and bandwidth. Increased used of n-of-n thresholds are likely to translate into more savings though they were not accounted for in this analysis. 
 
 <p align="center">
   <img src="http://i.imgur.com/TCR4Tf3.png">
