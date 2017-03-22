@@ -25,7 +25,9 @@ From a privacy standpoint, Schnorr allows the entire policy of the multisig to b
 
 <p align="center">
   <img src="https://cdn-images-1.medium.com/max/800/1*9_03N_A0OlLkcJpCGq--Qw.png">
-  <figcaption>Distribution of unspent P2SH outputs according to their multisig setup. Source: p2sh.info </figcaption>
+</p>
+<p align="center">
+  Distribution of unspent P2SH outputs according to their multisig setup. Source: p2sh.info
 </p>
 
 Unfortunately, unlike ECSDA, the Schnorr algorithm has not been standardized since its invention, likely because of the original patent enforced on it (which has since expired). While the general outlines of the system are mathematically sound, the lack of documentation and specification makes it more challenging to implement. Specifically, its application to the ephemeral keypairs design of Bitcoin involves security considerations that require further optimization. 
