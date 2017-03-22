@@ -10,6 +10,8 @@ version: 1
 excerpt: Status and explanation of Schnorr signatures and signature aggregation
 ---
 
+## Schnorr Signatures
+
 The replacement of Bitcoin’s digital signature algorithm (ECSDA) for the more efficient Schnorr algorithm has long been at the top of the bucket list for many Bitcoin developers. A simple algorithm leveraging elliptic curves cryptography, Schnorr enables several improvements over the existing scheme all while preserving all of the features and security assumptions of ECSDA.
 
 Notably, Schnorr signatures support “native multisig” which enables the aggregation of multiple signatures into a single one valid for the sum of the keys of their respective inputs. This functionality offers three important benefits: 
@@ -46,7 +48,34 @@ The latter involves threshold scenarios where only n-of-m signatures are necessa
 
 Until more evaluation of the delinearization scheme securing signers from malicious actors is performed, further applications of Schnorr signatures may be premature but the implementation of the features above can hopefully pave the way for a better understanding of the scheme in production. Contingent on additional peer-review, a BIP for the implementation of Schnorr Signatures could be proposed by the end of the year. 
 
+### Further information
+  * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
+  * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
+  * [High level explanation from Aaron Van Wirdum at BitcoinMagazine.com](https://bitcoinmagazine.com/articles/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496/)
+  * [SF Bitcoin Devs Seminar: Gregory Maxwell on Schnorr multi-signatures](https://www.youtube.com/watch?v=TYQ-3VvNCHE)
+  * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
+
+## Signature aggregation
+
+The properties of Schnorr allowing for the combination of multiple signatures over a single input are also applicable to the aggregation of multiple inputs for all transactions. Bitcoin developer Gregory Maxwell was the first to introduce the idea using insights from a previous proposal based on BLS signatures. 
+
+To properly understand the difference between this application and the ones described above it is necessary to consider how signatures are aggregated in each respective cases. In the native multisig setup, signers collaborate between themselves to compute a common public key and its associated signature. This interaction happens outside the protocol and only concerns the parties involved. The idea behind signature aggregation is to enable system validators ie. Bitcoin nodes to compute a single key and signature for every inputs of all transactions at the protocol level. 
+
+Because this scheme expands the scope of aggregation outside of the deterministic set of participants, it introduces a new vector of attack for malicious actors to leverage the “cancellation” bug. For this reason, the delinearization fix highlighted in the previous section is critical to the soundness of this method.  
+
+In terms of implementation, the proposal is rather straightforward: OP_CHECKSIG and
+OP_CHECKMULTISIG are modified so that they can stack public keys, delinearize them and once all associated inputs are validated, produce a combined signature for their respective transactions. 
+
+It is rather straightforward to evaluate the type of resources savings that would have been possible had signature aggregation been implemented since the genesis block. Assuming every historical signature would be reduced to 1 byte, except for one per transaction, analysis suggest the method would result in, at least, a 25% reduction in terms of storage and bandwidth. Increased used of n-of-n thresholds are like to translate into more savings though they were not accounted for in this analysis. 
+
 <p align="center">
   <img src="http://i.imgur.com/TCR4Tf3.png">
 </p>
+
+### Further information
+  * [Gregory Maxwell post on signature aggregation on Bitcointalk.org forum](https://bitcointalk.org/index.php?topic=1377298.0)
+  * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
+  * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
+  * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
+ 
 
