@@ -10,8 +10,6 @@ version: 1
 excerpt: Status and explanation of Schnorr signatures and signature aggregation
 ---
 
-The following post aims to highlight development milestones that helped preserve a reliable experience for users of the Bitcoin software client over the years. We present several upgrades that were critical in maintaining the decentralized properties of the network and mitigate the resources burden of its participants. We describe how numerous orders-of-magnitude optimizations were made so that the Bitcoin network could support the growth in transaction activity without dramatically increasing the costs of participation for new and existing users. Finally, we note how those improvements all fall within a larger, systematic approach to protocol development that uses insights from Big-O complexity concepts and leverages smarter algorithms that make more efficient use of the network’s resources. 
-
 The replacement of Bitcoin’s digital signature algorithm (ECSDA) for the more efficient Schnorr algorithm has long been at the top of the bucket list for many Bitcoin developers. A simple algorithm leveraging elliptic curves cryptography, Schnorr enables several improvements over the existing scheme all while preserving all of the features and security assumptions of ECSDA.
 
 Notably, Schnorr signatures support “native multisig” which enables the aggregation of multiple signatures into a single one valid for the sum of the keys of their respective inputs. This functionality offers three important benefits: 
@@ -29,7 +27,8 @@ From a privacy standpoint, Schnorr allows the entire policy of the multisig to b
   <img src="https://cdn-images-1.medium.com/max/800/1*9_03N_A0OlLkcJpCGq--Qw.png">
 </p>
 <p align="center">
-  Distribution of unspent P2SH outputs according to their multisig setup. Source: p2sh.info 
+  <font size="4">Distribution of unspent P2SH outputs according to their multisig setup. Source: p2sh.info 
+</font>
 </p>
 
 Unfortunately, unlike ECSDA, the Schnorr algorithm has not been standardized since its invention, likely because of the original patent enforced on it (which has since expired). While the general outlines of the system are mathematically sound, the lack of documentation and specification makes it more challenging to implement. Specifically, its application to the ephemeral keypairs design of Bitcoin involves security considerations that require further optimization. 
