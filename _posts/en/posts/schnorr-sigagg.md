@@ -77,7 +77,6 @@ It is rather straightforward to evaluate the type of resources savings that woul
 
 ### Further information
   * [Gregory Maxwell post on signature aggregation on Bitcointalk.org forum](https://bitcointalk.org/index.php?topic=1377298.0)
-  * [Bitcointalk.org post on signature aggregation by user Horas Yuan Mouton](https://bitcointalk.org/index.php?topic=290971.0)
   * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
   * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
   * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
