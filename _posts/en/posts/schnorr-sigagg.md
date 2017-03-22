@@ -43,3 +43,5 @@ The latter involves threshold scenarios where only n-of-m signatures are necessa
 Until more evaluation of the delinearization scheme securing signers from malicious actors is performed, further applications of Schnorr signatures may be premature but the implementation of the features above can hopefully pave the way for a better understanding of the scheme in production. Contingent on additional peer-review, a BIP for the implementation of Schnorr Signatures could be proposed by the end of the year. 
 
 ![Signature aggregation savings since genesis block](http://i.imgur.com/TCR4Tf3.png)
+
+<img style="float: center;" src="http://i.imgur.com/TCR4Tf3.png">
