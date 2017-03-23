@@ -12,7 +12,7 @@ excerpt: Status and explanation of Schnorr signatures and signature aggregation
 
 ## Schnorr Signatures
 
-The replacement of Bitcoin’s digital signature algorithm (ECDSA) for the more efficient Schnorr algorithm has long been at the top of the list for many Bitcoin developers. A simple algorithm leveraging elliptic curve cryptography, Schnorr enables several improvements over the existing scheme all while preserving all of its features and security assumptions.
+The replacement of Bitcoin’s digital signature algorithm (ECDSA) for the more efficient Schnorr algorithm has long been at the top of the wish list for many Bitcoin developers. A simple algorithm leveraging elliptic curve cryptography, Schnorr enables several improvements over the existing scheme all while preserving all of its features and security assumptions.
 
 Notably, Schnorr signatures support “native multisig” which enables the aggregation of multiple signatures into a single one valid for the sum of the keys of their respective inputs. This functionality offers three important benefits: 
 
