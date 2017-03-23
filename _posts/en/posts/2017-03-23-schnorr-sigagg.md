@@ -48,16 +48,6 @@ The latter involves threshold scenarios where only n-of-m signatures are necessa
 
 Until more evaluation of the delinearization scheme securing signers from malicious actors is performed, further applications of Schnorr signatures may be premature but the implementation of the features above can hopefully pave the way for a better understanding of the scheme in production. Contingent on additional peer-review, a BIP for the implementation of Schnorr Signatures could be proposed by the end of the year. 
 
-### Further information
-  * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
-  * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
-  * [Discussion about Schnorr Signatures at July 2016 Bitcoin developers & miners meet-up](http://diyhpl.us/wiki/transcripts/2016-july-bitcoin-developers-miners-meeting/dan-boneh/)
-  * [Schnorr documentation](https://github.com/sipa/secp256k1/blob/968e2f415a5e764d159ee03e95815ea11460854e/src/modules/schnorr/schnorr.md)
-  * [StackExchange - What are the implications of Schnorr?](http://bitcoin.stackexchange.com/questions/34288/what-are-the-implications-of-schnorr-signatures/35351#35351)
-  * [Elements Project: Schnorr Signature Validation](https://www.elementsproject.org/elements/schnorr-signatures/)
-  * [SF Bitcoin Devs Seminar: Gregory Maxwell on Schnorr multi-signatures](https://www.youtube.com/watch?v=TYQ-3VvNCHE)
-  * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
-
 ## Signature aggregation
 
 The properties of Schnorr allowing for the combination of multiple signatures over a single input are also applicable to the aggregation of multiple inputs for all transactions. Bitcoin developer Gregory Maxwell was the first to introduce the idea using insights from a previous proposal based on BLS signatures. 
@@ -75,7 +65,17 @@ It is rather straightforward to evaluate the type of resources savings that woul
   <img src="/assets/images/posts/signature-agg-chart.png" alt="Schnorr signature addregation savings chart">
 </p>
 
-### Further information
+### Further information on Schnorr signatures
+  * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
+  * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
+  * [Discussion about Schnorr Signatures at July 2016 Bitcoin developers & miners meet-up](http://diyhpl.us/wiki/transcripts/2016-july-bitcoin-developers-miners-meeting/dan-boneh/)
+  * [Schnorr documentation](https://github.com/sipa/secp256k1/blob/968e2f415a5e764d159ee03e95815ea11460854e/src/modules/schnorr/schnorr.md)
+  * [StackExchange - What are the implications of Schnorr?](http://bitcoin.stackexchange.com/questions/34288/what-are-the-implications-of-schnorr-signatures/35351#35351)
+  * [Elements Project: Schnorr Signature Validation](https://www.elementsproject.org/elements/schnorr-signatures/)
+  * [SF Bitcoin Devs Seminar: Gregory Maxwell on Schnorr multi-signatures](https://www.youtube.com/watch?v=TYQ-3VvNCHE)
+  * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
+
+### Further information on signature aggregation
   * [Gregory Maxwell post on signature aggregation on Bitcointalk.org forum](https://bitcointalk.org/index.php?topic=1377298.0)
   * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
   * [Transcript of Pieter Wuille's Scaling Bitcoin Milan presentation on Schnorr signatures](https://diyhpl.us/wiki/transcripts/scalingbitcoin/milan/schnorr-signatures/)
