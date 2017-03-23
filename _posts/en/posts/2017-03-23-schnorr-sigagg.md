@@ -26,7 +26,7 @@ Notably, Schnorr signatures support “native multisig” which enables the aggr
 
 
 <p align="center">
-  <img src="/assets/images/posts/utxo-repartition.png">
+  <img src="/assets/images/posts/utxo-repartition.png" alt="UTXO repartition">
 </p>
 <p align="center">
   Distribution of unspent P2SH outputs according to their multisig setup. Source: p2sh.info
@@ -72,7 +72,7 @@ OP_CHECKMULTISIG are modified so that they can stack public keys, delinearize th
 It is rather straightforward to evaluate the type of resources savings that would have been possible had signature aggregation been implemented since the genesis block. Assuming every historical signature would be reduced to 1 byte, except for one per transaction, analysis suggest the method would result in at least a 25% reduction in terms of storage and bandwidth. Increased used of n-of-n thresholds are likely to translate into more savings though they were not accounted for in this analysis. 
 
 <p align="center">
-  <img src="/assets/images/posts/signature-agg-chart.png">
+  <img src="/assets/images/posts/signature-agg-chart.png" alt="Schnorr signature addregation savings chart">
 </p>
 
 ### Further information
