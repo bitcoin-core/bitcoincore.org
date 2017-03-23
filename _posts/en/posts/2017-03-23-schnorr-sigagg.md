@@ -4,7 +4,7 @@ layout: post
 lang: en
 name: schnorr-sigagg
 id: en-schnorr-sigagg
-title: Technology roadmap: Schnorr signatures & signature aggregation
+title: Technology roadmap - Schnorr signatures & signature aggregation
 permalink: /en/2017/03/23/schnorr-sigagg/
 version: 1
 excerpt: Status and explanation of Schnorr signatures and signature aggregation
@@ -26,7 +26,7 @@ Notably, Schnorr signatures support “native multisig” which enables the aggr
 
 
 <p align="center">
-  <img src="https://cloud.githubusercontent.com/assets/16766934/24232569/b2f9c6be-0fc6-11e7-93b2-9590855a3635.png">
+  <img src="/assets/images/posts/utxo-repartition.png">
 </p>
 <p align="center">
   Distribution of unspent P2SH outputs according to their multisig setup. Source: p2sh.info
@@ -72,7 +72,7 @@ OP_CHECKMULTISIG are modified so that they can stack public keys, delinearize th
 It is rather straightforward to evaluate the type of resources savings that would have been possible had signature aggregation been implemented since the genesis block. Assuming every historical signature would be reduced to 1 byte, except for one per transaction, analysis suggest the method would result in at least a 25% reduction in terms of storage and bandwidth. Increased used of n-of-n thresholds are likely to translate into more savings though they were not accounted for in this analysis. 
 
 <p align="center">
-  <img src="https://cloud.githubusercontent.com/assets/16766934/24232638/5ac90fbc-0fc7-11e7-9576-a912e813618c.png">
+  <img src="/assets/images/posts/signature-agg-chart.png">
 </p>
 
 ### Further information
