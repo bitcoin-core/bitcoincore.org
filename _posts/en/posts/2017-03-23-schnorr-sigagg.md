@@ -4,8 +4,8 @@ layout: post
 lang: en
 name: schnorr-sigagg
 id: en-schnorr-sigagg
-title: Technology roadmap - Schnorr signatures & signature aggregation
-permalink: /en/2017/03/23/schnorr-sigagg/
+title: Technology roadmap - Schnorr signatures and signature aggregation
+permalink: /en/2017/03/23/schnorr-signature-aggregation/
 version: 1
 excerpt: Status and explanation of Schnorr signatures and signature aggregation
 ---
