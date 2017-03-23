@@ -5,7 +5,7 @@ lang: en
 name: schnorr-sigagg
 id: en-schnorr-sigagg
 title: Technology roadmap: Schnorr signatures & signature aggregation
-permalink: /en/2017/03/22/schnorr-sigagg/
+permalink: /en/2017/03/23/schnorr-sigagg/
 version: 1
 excerpt: Status and explanation of Schnorr signatures and signature aggregation
 ---
