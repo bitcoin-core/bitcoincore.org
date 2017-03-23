@@ -12,17 +12,17 @@ excerpt: Status and explanation of Schnorr signatures and signature aggregation
 
 ## Schnorr Signatures
 
-The replacement of Bitcoin’s digital signature algorithm (ECSDA) for the more efficient Schnorr algorithm has long been at the top of the bucket list for many Bitcoin developers. A simple algorithm leveraging elliptic curves cryptography, Schnorr enables several improvements over the existing scheme all while preserving all of the features and security assumptions of ECSDA.
+The replacement of Bitcoin’s digital signature algorithm (ECDSA) for the more efficient Schnorr algorithm has long been at the top of the list for many Bitcoin developers. A simple algorithm leveraging elliptic curve cryptography, Schnorr enables several improvements over the existing scheme all while preserving all of its features and security assumptions.
 
 Notably, Schnorr signatures support “native multisig” which enables the aggregation of multiple signatures into a single one valid for the sum of the keys of their respective inputs. This functionality offers three important benefits: 
 
-Constant-size signatures irrespective of the number of participants in the multisig setup. A 50-of-50 transaction is effectively the same size as one that uses a single public key and signature. For this reason, the performance of such schemes is significantly improved by removing the original requirement of validating every signature individually. Additionally, the verification of Schnorr signatures is slightly faster than that of ECSDA.
+* Constant-size signatures irrespective of the number of participants in the multisig setup. A 50-of-50 transaction is effectively the same size as one that uses a single public key and signature. For this reason, the performance of such schemes is significantly improved by removing the original requirement of validating every signature individually. Additionally, the verification of Schnorr signatures is slightly faster than that of ECDSA.
 
 
-The diminished size of data to be validated and transmitted across the network also translates in interesting capacity gains. Considering the historical growth in the number of multisig transactions displayed below, the potential to reduce the size of these transactions is an enticing addition to existing scaling efforts. We should expect this trend to continue with the emergence and further adoption of payment channels.
+* The diminished size of data to be validated and transmitted across the network also translates in interesting capacity gains. Considering the historical growth in the number of multisig transactions displayed below, the potential to reduce the size of these transactions is an enticing addition to existing scaling efforts. We should expect this trend to continue with the emergence and further adoption of payment channels.
 
 
-From a privacy standpoint, Schnorr allows the entire policy of the multisig to be obscured and indistinguishable from a conventional single pubkey. In a threshold setup, it also becomes impossible for participants to reveal which of them authorized, or not, a transaction. 
+* From a privacy standpoint, Schnorr allows the entire policy of the multisig to be obscured and indistinguishable from a conventional single pubkey. In a threshold setup, it also becomes impossible for participants to reveal which of them authorized, or not, a transaction. 
 
 
 <p align="center">
@@ -32,7 +32,7 @@ From a privacy standpoint, Schnorr allows the entire policy of the multisig to b
   Distribution of unspent P2SH outputs according to their multisig setup. Source: p2sh.info
 </p>
 
-Unfortunately, unlike ECSDA, the Schnorr algorithm has not been standardized since its invention, likely because of the original patent enforced on it (which has since expired). While the general outlines of the system are mathematically sound, the lack of documentation and specification makes it more challenging to implement. Specifically, its application to the ephemeral keypairs design of Bitcoin involves security considerations that require further optimization. 
+Unfortunately, unlike ECDSA, the Schnorr algorithm has not been standardized since its invention, likely because of the original patent enforced on it (which has since expired). While the general outlines of the system are mathematically sound, the lack of documentation and specification makes it more challenging to implement. Specifically, its application to the ephemeral keypairs design of Bitcoin involves security considerations that require further optimization. 
 
 The main challenge is defined by Pieter Wuille in his Scaling Bitcoin Milan presentation of Schnorr signatures as the “cancellation” problem. The possibility for a group of users to create a signature valid for the sum of their keys opens the door for an adversarial participant to subtract from the whole another user’s key. It essentially works like this:
 
@@ -42,7 +42,7 @@ Fortunately, a solution is now available which involves multiplying every key us
 
 In the near term, Schnorr signatures are being considered as viable replacement for two important functions of the Bitcoin protocol: OP_CHECKSIG & OP_CHECKMULTISIG. 
 
-The former is currently used to check ECSDA signatures against their respective public key according to the message in a transaction. By switching to an equivalent that checks for Schnorr signatures rather than ECSDA, the opcode can be used to authorize a spend requiring multiple signatures which would typically require calling OP_CHECKMULTISIG. Using a priori interaction not observable by the network, the collection of signers compute a combined public key along with a common signature which is verified by the new OP_CHECKSIG with the benefits of increased privacy and reduced costs. 
+The former is currently used to check ECDSA signatures against their respective public key according to the message in a transaction. By switching to an equivalent that checks for Schnorr signatures rather than ECDSA, the opcode can be used to authorize a spend requiring multiple signatures which would typically require calling OP_CHECKMULTISIG. Using a priori interaction not observable by the network, the collection of signers compute a combined public key along with a common signature which is verified by the new OP_CHECKSIG with the benefits of increased privacy and reduced costs. 
 
 The latter involves threshold scenarios where only n-of-m signatures are necessary to authorize a transaction. The current implementation of OP_CHECKMULTISIG validates all of the public keys and associated signatures required by the threshold policy. Because the computation scales linearly with the number of participants, Schnorr propose a much more efficient scheme which replaces the list of signatures with a single combined one along with a subset of the required pubkeys. 
 
