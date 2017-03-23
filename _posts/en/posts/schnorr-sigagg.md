@@ -53,7 +53,7 @@ Until more evaluation of the delinearization scheme securing signers from malici
   * [Video of Pieter Wuille's presentation](https://youtu.be/_Z0ID-0DOnc?t=2297)
   * [Discussion about Schnorr Signatures at July 2016 Bitcoin developers & miners meet-up](http://diyhpl.us/wiki/transcripts/2016-july-bitcoin-developers-miners-meeting/dan-boneh/)
   * [Schnorr documentation](https://github.com/sipa/secp256k1/blob/968e2f415a5e764d159ee03e95815ea11460854e/src/modules/schnorr/schnorr.md)
-  * [StackExchange - What are the implications of Schnorr](http://bitcoin.stackexchange.com/questions/34288/what-are-the-implications-of-schnorr-signatures/35351#35351)
+  * [StackExchange - What are the implications of Schnorr?](http://bitcoin.stackexchange.com/questions/34288/what-are-the-implications-of-schnorr-signatures/35351#35351)
   * [Elements Project: Schnorr Signature Validation](https://www.elementsproject.org/elements/schnorr-signatures/)
   * [SF Bitcoin Devs Seminar: Gregory Maxwell on Schnorr multi-signatures](https://www.youtube.com/watch?v=TYQ-3VvNCHE)
   * [Bitcoin Core Developers meeting notes on Schnorr signatures](https://bitcoincore.org/logs/2016-05-zurich-meeting-notes.html)
