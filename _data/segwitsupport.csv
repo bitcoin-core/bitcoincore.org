@@ -31,7 +31,7 @@ Bitrefill,https://www.bitrefill.com/,planned,merchant,
 BitRocket,https://www.bitrocket.co,ready,ATM operator,
 Bitstop,https://bitstop.co,ready,atm operator,bitcoin core
 Bittylicious,https://bittylicious.com/,ready,exchange,
-Bitwala,https://bitwala.io,planned,remittance,Bitgo
+Bitwala,https://bitwala.io,wip,remittance,Bitgo
 BitWasp,https://github.com/Bit-Wasp/bitcoin-php,ready,library,
 Bity,https://bity.com,planned,broker,bitcoin core
 Blockchain.info,https://blockchain.info/,ready,"wallet, block explorer",
