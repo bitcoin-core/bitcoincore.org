@@ -4,7 +4,7 @@ layout: post
 lang: en
 name: hybrid-spv
 id: en-hybrid-spv
-title: Technology roadmap: Prioritized block download with hybrid full block SPV mode
+title: Technology roadmap: Prioritized block download with using full block SPV mode
 permalink: /en/2017/03/30/hybrid-spv
 version: 1
 excerpt: Prioritized block download with hybrid full block SPV mode
