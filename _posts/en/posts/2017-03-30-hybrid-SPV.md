@@ -2,12 +2,12 @@
 type: posts
 layout: post
 lang: en
-name: schnorr-sigagg
-id: en-schnorr-sigagg
-title: Technology roadmap: Schnorr signatures & signature aggregation
-permalink: /en/2017/03/23/schnorr-sigagg/
+name: hybrid-spv
+id: en-hybrid-spv
+title: Technology roadmap: Prioritized block download with hybrid full block SPV mode
+permalink: /en/2017/03/30/hybrid-spv
 version: 1
-excerpt: Status and explanation of Schnorr signatures and signature aggregation
+excerpt: Prioritized block download with hybrid full block SPV mode
 ---
 
 ## Hybrid full block SPV mode
