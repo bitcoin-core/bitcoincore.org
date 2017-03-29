@@ -4,8 +4,8 @@ layout: post
 lang: en
 name: hybrid-spv
 id: en-hybrid-spv
-title: Technology roadmap: Prioritized block download with using full block SPV mode
-permalink: /en/2017/03/30/hybrid-spv
+title: Technology roadmap - Prioritized block download with using full block SPV mode
+permalink: /en/2017/03/30//prioritized-block-download-using-hybrid-spv/
 version: 1
 excerpt: Prioritized block download with using full block SPV mode
 ---
@@ -19,7 +19,6 @@ On the other hand, existing features of the software such as headers-first valid
 Contrary to typical implementation of SPV wallets, this model does not suffer from the [privacy degradation](http://bitcoin.stackexchange.com/questions/37756/are-public-keys-and-their-corresponding-hash-values-both-added-to-a-bitcoinj-blo) imposed on schemes relying on bloom filters and public disclosure of public keys. This benefit comes with a tradeoff which is that it consumes more bandwidth. Another caveat: confirmations received under SPV mode are inherently less safe than those received under full validation. A user leveraging the hybrid SPV mode should wait for several confirmations (6+) until his payment can be considered secure. 
 
 ### Further information
-  * [Experimental implementation PR](https://github.com/bitcoin/bitcoin/pull/9076)
   * [Complete patch-set PR](https://github.com/bitcoin/bitcoin/pull/9483)
   * [Perfect privacy for received transactions](https://bitcoin.org/en/bitcoin-core/features/privacy#perfect-privacy-for-received-transactions)
  
