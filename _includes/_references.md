@@ -1,6 +1,7 @@
 [Adam Back]: http://www.cypherspace.org/adam/
 [Alex Morcos]: https://github.com/morcos
 [Andrew Chow]: https://github.com/achow101
+[Antti Majakivi]: https://github.com/anduck
 [Bob McElrath]: https://github.com/mcelrath
 [Bryan Bishop]: https://github.com/kanzure
 [BtcDrak]: https://github.com/btcdrak
