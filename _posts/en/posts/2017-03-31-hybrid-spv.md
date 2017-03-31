@@ -5,7 +5,7 @@ lang: en
 name: hybrid-spv
 id: en-hybrid-spv
 title: Technology roadmap - Prioritized block download with using full block SPV mode
-permalink: /en/2017/03/30//prioritized-block-download-using-hybrid-spv/
+permalink: /en/2017/03/31//prioritized-block-download-using-hybrid-spv/
 version: 1
 excerpt: Prioritized block download with using full block SPV mode
 ---
