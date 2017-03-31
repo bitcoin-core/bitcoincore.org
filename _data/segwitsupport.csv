@@ -58,6 +58,7 @@ Colu,https://www.colu.com/,planned,"wallet, blockchain-application-layer","Color
 CoPay,https://copay.io/,planned,wallet,bitcore-lib
 Cryptobuyer,https://cryptobuyer.io/,planned,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,ready,hardware wallet,
+DigitalMint,https://www.digitalmint.io,ready,"on-demand, cash-to-bitcoin exchange", bitcoin core
 EI8HT,http://ei8.ht/,planned,wallet,"bitcoin core, bitcoinjs"
 Electrum,https://electrum.org/,ready,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,ready,pool software,n/a
