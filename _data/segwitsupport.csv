@@ -69,6 +69,7 @@ GDAX,https://gdax.com/,planned,exchange,
 Gemini,https://gemini.com/,ready,exchange,
 GreenAddress<sup>2</sup>,https://greenaddress.it/,ready,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,ready,wallet,bitcoinj
+HolyTransaction,https://holytransaction.com/,wip,"wallet, crypto-to-crypto exchange", bitcoin core
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,wip,"library, privacy solution, wallet",
 Kaiko,https://www.kaiko.com/,planned,explorer,
 Keepkey,https://www.keepkey.com/,ready,hardware wallet,
