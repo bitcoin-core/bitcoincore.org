@@ -51,6 +51,7 @@ CK solopool,http://solo.ckpool.org/,ready,"mining pool","bitcoin core, ckpool"
 Coinbase,https://coinbase.com/,planned,wallet,
 CoinCorner,https://www.coincorner.com,wip,exchange,
 Coinfloor,https://www.coinfloor.co.uk/,wip,exchange,
+CoinGate,https://coingate.com,ready,payment processor,
 Coinomi,https://coinomi.com/,planned,wallet,
 Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
 Colored-coins,https://www.coloredcoins.org/,planned,"wallet, block explorer, blockchain-protocol-layer",bitcoinjs-lib
