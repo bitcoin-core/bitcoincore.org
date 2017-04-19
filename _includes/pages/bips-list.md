@@ -29,3 +29,4 @@
 |[144][BIP144]| v0.13.0       |[Segregated Witness (Peer Services)][BIP144]|
 |[145][BIP145]| v0.13.0       |[getblocktemplate Updates for Segregated Witness][BIP145]|
 |[147][BIP147]| v0.13.1       |[Dealing with dummy stack element malleability][BIP147]|
+|[152][BIP152]| v0.13.0       |[Compact Block Relay][BIP152]|
