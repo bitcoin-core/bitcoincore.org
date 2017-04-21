@@ -76,6 +76,22 @@ Segwit does require more changes in higher level software stacks than a simple b
 
 Developers, miners, and the community have accrued significant experience deploying soft forks, and we believe segwit can be deployed at least as fast, and probably more securely, than a hard fork that increases the maximum block size.
 
+## I read that a hard fork deployment of segregated witness would be preferable to avoid complexity, is that correct? {why-not-hardfork}
+
+In effect, the only notable difference is the location of the witness root hash commitment which would be closer to the block header in a hard-fork implementation. To better understand the tradeoffs behind this decision, a good resource is Core developer Peter Todd's blog post [here](https://petertodd.org/2016/segwit-consensus-critical-code-review#commitment-structures)
+
+## Some people have argued that the soft-fork implementation is not well thought through and a hack that was rushed to avoid a hard-fork, is that true? 
+
+Segregated witness, like CHECKSEQUENCEVERIFY of BIP 68 & 112, was first prototyped in the Elements Alpha sidechain. Like CSV, the implementation that finally made it into Bitcoin Core was different from the initial prototype, for various reasons:
+
+1. Alpha was a prototype chain, and there was a lot learned from using it in production, even on just a test network. The Alpha version of SegWit was a "just don't include the signatures, etc., in the hash" hard-fork change. With the experience of using this code on a testnet sidechain, and performing third-party integrations, it was discovered that this approach has significant drawbacks. The tweak introduced to allow SegWit to be soft-fork compatible also fixes most if not all of the issues introduced by the hard-fork implementation. It's an objectively better approach regardless of hard-fork vs soft-fork, for code engineering reasons. 
+
+2. The idea itself was refined and improved over time as new insights were had. Luke-Jr's approach made script versioning very easy (1 byte per output) to add. Script versioning allows us to fix all sorts of long-standing problems with the bitcoin scripting language. To ease review, the first SegWit script version only makes absolutely uncontroversial fixes to security problems like quadratic hashing, but much more (like aggregate Schnorr signatures) becomes possible. 
+
+3. The final SegWit code in v0.13.1 is subject to a bunch of little improvements, e.g. the location of the commitment in the coinbase and the format of the SegWit script types, which were recognized and suggested during the public review process.
+
+Today's SegWit has benefited from the lessons learned from previous implementations and the cumulative review of dozens of contributors since the first iteration, significantly reducing technical debt and increasing extensibility
+
 ## Will there be a hard fork before or as part of the segregated witness implementation?  {#pre-segwit-fork}
 
 No. That is not part of the [roadmap][].
@@ -95,8 +111,6 @@ For example,
 - Segregated witness allows a payment channel close transaction to be combined with a payment channel open transaction, reducing the blockchain space used to change channels by about 66%. 
 
 - Segregated witness allows soft forks to change the Bitcoin Script language in ways that could reduce the average size of a transaction, such as using public-key-recovery-from-signatures or Schnorr combined signatures.
-
-- Segregated witness permits the creation of compact fraud proofs that may bring the security of Simplified Payment Verification (SPV) lightweight clients up near to that of full nodes, which may allow the network to function well with fewer full nodes than it can under currently-deployed technology.
 
 The actual effect of these technologies is unknown, but scaling now with a soft fork that has wide consensus allows us to obtain the immediate gains, test and measure the mid-term possibilities, and use that data to formulate long-term plans.
 
@@ -124,6 +138,18 @@ David Harding provided a table of [estimated savings][] at various fee/transacti
 (We don't expect fees to get as high as the highest seen in this table; they are just provided for reference.)
 
 Web wallets and exchanges that send large numbers of transactions each day at fixed rates (such as for free or for 1% per spend) are expected to be early adopters---even the small savings per spend seen in the table above will add up to significant amounts of money if repeated hundreds or thousands of times a day.
+
+## I have heard suggestions that this discount is an arbitrary decision to favor payment channels & Lightning over on-chain transactions, is that true? {why-discount}
+
+Witness scripts are discounted because their cost to the network is less than the rest of the transaction data. Unlike outputs they do not go into the UTXO set, and do not need to be maintained in RAM for fast processing of future transactions. They can be pruned from disk as soon as they are validated.
+
+Therefore, discounting witnesses makes it easier to spend an output and, consequently, helps to lower the dust threshold. It makes it less likely that the UTXO set gets filled up with junk outputs, since small outputs get easier to spend / cleanup.
+
+However, you don't want to make the discount too large because then people will use the witnesses to store general purpose data on the block chain, or adversarial miners may fill excess space with random junk to defeat fast relay schemes that rely on similar mempools
+
+Empirical observation of network propagation has demonstrated that the peer-to-peer network can manage worst-case 4MB blocks provided other costs, such as UTXO growth & quadratic scaling of hashing time, are mitigated. A discount of 1/8 would have been too much -- it would have made adversarial blocks 8MB in size which the network simply cannot handle. Finally, no discount at all would have left space available in blocks for unupgraded nodes in competition with SegWit transactions. 
+
+75% is in the range of typical witness-to-non-witness data ratio and therefore provides manageable capacity increase while addressing the concerns related to UTXO growth.
 
 ## I heard you were breaking zero-confirmation transactions. Which technology in the scaling roadmap is doing that?  {#rbf}
 
@@ -163,6 +189,14 @@ A permanent fix for third-party malleability, allowing multi-stage smart contrac
 Through the previous soft forks, and through conversations such as the [Miners' Panel][] at Scaling Bitcoin Hong Kong, miners have repeatedly shown that they want Bitcoin to be the most useful system possible even if they don't receive any direct benefits. Segwit and the other improvements in the roadmap provide significant usability enhancements.
 
 In addition, segwit allows miners to put more transactions in their blocks, which may allow them to increase their per-block revenue.
+
+## Update 2016-12-26
+
+Earlier versions of this page listed “Compact fraud proofs” as a benefit of segwit. However, as implemented, segwit does not make this any easier: with or without segwit, a future soft-fork enabling compact fraud proofs and the benefits they bring, will need to include its own commitment (eg, in the coinbase transaction), rather than being able to extend the commitment data used by segwit.
+
+The previous text was:
+>Segregated witness permits the creation of compact fraud proofs that may bring the security of Simplified Payment >Verification (SPV) lightweight clients up near to that of full nodes, which may allow the network to function well with fewer >full nodes than it can under currently-deployed technology.
+
 
 ## How can I help?
 
