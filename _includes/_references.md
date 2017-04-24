@@ -36,6 +36,7 @@
 [Peter Todd]: https://github.com/petertodd
 [Pieter Wuille]: https://github.com/sipa
 [Russell Yanofsky]: https://github.com/ryanofsky
+[Saleem Rashid]: https://github.com/saleemrashid
 [Suhas Daftuar]: https://github.com/sdaftuar
 [Tadge Dryja]: https://github.com/T909
 [Tom Harding]: https://github.com/dgenr8
