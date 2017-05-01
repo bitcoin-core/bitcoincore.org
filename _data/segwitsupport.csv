@@ -2,7 +2,7 @@ name,url,status,notes,depends
 1200wd,https://github.com/1200wd/bitcoinlib,wip,library,
 AirBitz,https://airbitz.co/,ready,wallet,
 AnycoinDirect,https://anycoindirect.eu,wip,broker,bitcoin core
-Armory,https://github.com/goatpig/BitcoinArmory/tree/SegWit/,wip,wallet,bitcoin core
+Armory,https://github.com/goatpig/BitcoinArmory/,ready,wallet,bitcoin core
 Authparty,http://authparty.io,planned,authentication library,bitcoin core
 Bcoin,https://github.com/bcoin-org/bcoin,ready,library,
 BetKing,https://betking.io,wip,gambling,bitcoin core
