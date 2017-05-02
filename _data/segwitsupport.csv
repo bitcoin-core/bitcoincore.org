@@ -57,6 +57,7 @@ Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
 Colored-coins,https://www.coloredcoins.org/,planned,"wallet, block explorer, blockchain-protocol-layer",bitcoinjs-lib
 Colu,https://www.colu.com/,planned,"wallet, blockchain-application-layer","Colored-coins, bitcoinjs-lib"
 CoPay,https://copay.io/,planned,wallet,bitcore-lib
+Counterparty,https://counterparty.io/,wip,"wallet, blockchain-protocol-layer",bitcoin core
 Cryptobuyer,https://cryptobuyer.io/,planned,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,ready,hardware wallet,
 DigitalMint,https://www.digitalmint.io,ready,"on-demand, cash-to-bitcoin exchange", bitcoin core
