@@ -1,5 +1,6 @@
 name,url,status,notes,depends
 1200wd,https://github.com/1200wd/bitcoinlib,wip,library,
+Abra,https://www.goabra.com/,planned,remittance,
 AirBitz,https://airbitz.co/,ready,wallet,
 AnycoinDirect,https://anycoindirect.eu,wip,broker,bitcoin core
 Armory,https://github.com/goatpig/BitcoinArmory/,ready,wallet,bitcoin core
@@ -16,7 +17,7 @@ BitcoinJ,https://bitcoinj.github.io/,wip,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,ready,library,n/a
 bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,ready,library,
 BitcoinReminder.com,https://bitcoinreminder.com,ready,service,
-Bitcoinjs,http://bitcoinjs.org/,wip,library,n/a
+BitcoinJS,http://bitcoinjs.org/,ready,library,n/a
 bitcore-lib,https://bitcore.io/,wip,library,n/a
 Bitfinex,https://www.bitfinex.com/,ready,exchange,
 Bitfury,http://bitfury.com/,ready,mining pool,bitcoin core
@@ -29,6 +30,7 @@ Bitminter,https://bitminter.com/,ready,mining pool,
 Bitonic,https://bitonic.com/,ready,"broker, exchange",
 Bitrated,https://www.bitrated.com/,planned,wallet,
 Bitrefill,https://www.bitrefill.com/,planned,merchant,
+Bitsquare,https://bitsquare.io/,ready,exchange,n/a
 BitRocket,https://www.bitrocket.co,ready,ATM operator,
 Bitstop,https://bitstop.co,ready,atm operator,bitcoin core
 Bittylicious,https://bittylicious.com/,ready,exchange,
@@ -40,7 +42,7 @@ Blockonomics,https://www.blockonomics.co/,wip,"bitcoin tracker, block explorer",
 Blocktrail,https://www.blocktrail.com/,planned,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,wip,wallet,
 BTC.com,https://btc.com/,wip,"block explorer, wallet",
-BTCC,https://www.btcc.com/,ready,"exchange, pool, wallet",
+BTCC,https://www.btcc.com/,ready,"exchange, mining pool, wallet",
 btcd,https://github.com/btcsuite/btcd,wip,"full node",
 btcpool,https://github.com/btccom/btcpool,ready,"pool software",
 bustabit,https://www.bustabit.com,wip,gambling,bitcoin core
@@ -50,6 +52,7 @@ cgminer,https://github.com/ckolivas/cgminer,ready,mining software,
 ckpool,https://bitbucket.org/ckolivas/ckpool,ready,pool software,
 CK solopool,http://solo.ckpool.org/,ready,"mining pool","bitcoin core, ckpool"
 Coinbase,https://coinbase.com/,planned,wallet,
+CoinCheck,https://coincheck.com/,ready,exchange,
 CoinCorner,https://www.coincorner.com,wip,exchange,
 Coinfloor,https://www.coinfloor.co.uk/,wip,exchange,
 CoinGate,https://coingate.com,ready,payment processor,
@@ -58,7 +61,7 @@ Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
 Colored-coins,https://www.coloredcoins.org/,planned,"wallet, block explorer, blockchain-protocol-layer",bitcoinjs-lib
 Colu,https://www.colu.com/,planned,"wallet, blockchain-application-layer","Colored-coins, bitcoinjs-lib"
 CoPay,https://copay.io/,planned,wallet,bitcore-lib
-Counterparty,https://counterparty.io/,wip,"wallet, blockchain-protocol-layer",bitcoin core
+Counterparty,https://counterparty.io/,ready,"wallet, blockchain-protocol-layer",bitcoin core
 Cryptobuyer,https://cryptobuyer.io/,planned,wallet,n/a
 Digitalbitbox,https://digitalbitbox.com/,ready,hardware wallet,
 DigitalMint,https://www.digitalmint.io,ready,"on-demand, cash-to-bitcoin exchange", bitcoin core
@@ -67,6 +70,7 @@ EI8HT,http://ei8.ht/,planned,wallet,"bitcoin core, bitcoinjs"
 Electrum,https://electrum.org/,ready,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,ready,pool software,n/a
 Exodus,https://www.exodus.io,planned,wallet,bitcoinjs
+F2Pool,https://f2pool.com/,ready,mining pool,
 Fairlay,https://fairlay.com/,planned,Bitcoin Prediction Market,
 Gatecoin,https://gatecoin.com/,ready,exchange,"bitcoin core, nbitcoin"
 GDAX,https://gdax.com/,planned,exchange,
@@ -77,6 +81,7 @@ HolyTransaction,https://holytransaction.com/,wip,"wallet, crypto-to-crypto excha
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,wip,"library, privacy solution, wallet",
 Kaiko,https://www.kaiko.com/,planned,explorer,
 Keepkey,https://www.keepkey.com/,ready,hardware wallet,
+Lamassu,https://lamassu.is/,ready,atm manufacturer,
 learn me a bitcoin,http://learnmeabitcoin.com/,ready,block explorer,bitcoin core
 Ledger Wallet,https://www.ledgerwallet.com/,ready,hardware wallet,
 libbtc,https://github.com/libbtc,planned,library,
@@ -107,6 +112,7 @@ Satoshi Counter,https://satoshicounter.com,ready,broker,bitcoin core
 Simple Bitcoin Wallet,https://btcontract.com,planned,wallet,bitcoinj
 Slush Pool,https://www.slushpool.com/,ready,mining pool,
 SpicePay,https://www.spicepay.com/,wip,"exchange, merchant",
+Stampery,https://stampery.com/,ready,blockchain notarization,
 stratum-mining,https://github.com/slush0/stratum-mining/,ready,"pool software",
 Smartbit,https://www.smartbit.com.au/,ready,explorer,
 TREZOR,https://www.trezor.io/,ready,hardware wallet,
