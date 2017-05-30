@@ -43,6 +43,7 @@
 [Warren Togami]: https://github.com/wtogami
 [Wladimir van der Laan]: https://github.com/laanwj
 [Zooko Wilcox]: https://github.com/zooko
+[Murch]: https://github.com/Xekyo
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP2]: https://github.com/bitcoin/bips/blob/master/bip-0002.mediawiki
