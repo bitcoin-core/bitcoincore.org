@@ -2,6 +2,7 @@ name,url,status,notes,depends
 1200wd,https://github.com/1200wd/bitcoinlib,wip,library,
 Abra,https://www.goabra.com/,planned,remittance,
 AirBitz,https://airbitz.co/,ready,wallet,
+Altana,https://play.google.com/store/apps/details?id=it.inbitcoin.altana,ready,wallet,GreenAddress
 AnycoinDirect,https://anycoindirect.eu,wip,broker,bitcoin core
 Armory,https://github.com/goatpig/BitcoinArmory/,ready,wallet,bitcoin core
 Authparty,http://authparty.io,planned,authentication library,bitcoin core
@@ -79,6 +80,7 @@ Gemini,https://gemini.com/,ready,exchange,
 GreenAddress<sup>2</sup>,https://greenaddress.it/,ready,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,ready,wallet,bitcoinj
 HolyTransaction,https://holytransaction.com/,wip,"wallet, crypto-to-crypto exchange", bitcoin core
+inbitcoin,https://inbitcoin.it/,ready,payment processor,bitcoin core
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,wip,"library, privacy solution, wallet",
 Kaiko,https://www.kaiko.com/,planned,explorer,
 Keepkey,https://www.keepkey.com/,ready,hardware wallet,
