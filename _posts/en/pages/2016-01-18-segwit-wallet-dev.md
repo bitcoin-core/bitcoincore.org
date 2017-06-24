@@ -163,9 +163,9 @@ The following functions are not required for initial segwit support.
 
 #### Why and How to Use Native P2WPKH and P2WSH?
 
-* There is no address format for native P2WPKH and P2WSH. BIP142 is deferred and is likely to be implemented in a completely different way
+* There is no address format for native P2WPKH and P2WSH. BIP142 is deferred and is likely to be implemented in a completely different way. Another attempt, [BIP173][] (Bech32), has 'Draft' status as of June 2017. 
 * Comparing with the P2SH versions, the transaction <code>vsize</code> of native versions is smaller in most cases, and therefore less fee may be required
-* Native P2WPKH and P2WSH may be used with raw <code>scripPubKey</code> protocols, such as the Payment Protocol (BIP70). However, it may affect the privacy of the payer and recipient (see below).
+* Native P2WPKH and P2WSH may be used with raw <code>scriptPubKey</code> protocols, such as the Payment Protocol (BIP70). However, it may affect the privacy of the payer and recipient (see below).
 * Native P2WPKH and P2WSH may be used as default change address, but this may allow other people identifying the change easily (see below)
 * It is expected that the use of native P2WPKH and P2WSH would be uncommon at the beginning, which may cause privacy concerns among the users.
 
