@@ -86,6 +86,8 @@
 [BIP145]: https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki
 [BIP146]: https://github.com/bitcoin/bips/blob/master/bip-0146.mediawiki
 [BIP147]: https://github.com/bitcoin/bips/blob/master/bip-0147.mediawiki
+[BIP148]: https://github.com/bitcoin/bips/blob/master/bip-0148.mediawiki
+[BIP149]: https://github.com/bitcoin/bips/blob/master/bip-0149.mediawiki
 [BIP150]: https://github.com/bitcoin/bips/blob/master/bip-0150.mediawiki
 [BIP151]: https://github.com/bitcoin/bips/blob/master/bip-0151.mediawiki
 [BIP152]: https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki
