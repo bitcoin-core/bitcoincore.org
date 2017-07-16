@@ -132,3 +132,4 @@ MoneyBadger,https://moneybadger.io,ready,"exchange, tipping, remittance",bitcoin
 KeeeX,https://keeex.me,ready,"notarization and document proofs",
 CryptoBG,https://crypto.bg/,ready,exchange,
 bitcoin-ruby,https://github.com/lian/bitcoin-ruby,ready,library,n/a
+BitBay,https://bitbay.net/,wip,exchange,
