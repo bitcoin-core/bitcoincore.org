@@ -38,6 +38,6 @@ You can also translate or contribute to this [website][website-contrib].
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
-[website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
+[website-contrib]: https://github.com/bitcoin-core/bitcoincore.org/blob/master/CONTRIBUTING.md
 [Slack]: https://bitcoincore.slack.com/
 [invite]: https://slack.bitcoincore.org/

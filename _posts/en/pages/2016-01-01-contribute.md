@@ -33,6 +33,6 @@ You can also translate or contribute to this [website][website-contrib].
 [README.md]: https://github.com/bitcoin/bitcoin/blob/master/README.md
 [doc]: https://github.com/bitcoin/bitcoin/tree/master/doc
 [translation_process.md]: https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md
-[website-contrib]: https://github.com/bitcoin-core/website/blob/gh-pages/README.md
+[website-contrib]: https://github.com/bitcoin-core/bitcoincore.org/blob/master/CONTRIBUTING.md
 
 {% include _references.md %}
