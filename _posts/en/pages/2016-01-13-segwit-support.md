@@ -13,7 +13,7 @@ version: 2
 
 The following is a list of companies and software projects that are ready or preparing for [segregated witness](/en/2016/01/26/segwit-benefits/). Miner signalling can be tracked [below](#miner-signalling) or [here](http://segwit.co/).
 
-_**To add your company or service, please submit a** [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/gh-pages/_data/segwitsupport.csv)._
+_**To add your company or service, please submit a** [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/master/_data/segwitsupport.csv)._
 
 For more information see: [segwit developer's guide](/en/segwit_wallet_dev/), [upgrade guide](/en/2016/10/27/segwit-upgrade-guide/) including [benefits](/en/2016/01/26/segwit-benefits/) and [costs](/en/2016/10/28/segwit-costs/).
 
