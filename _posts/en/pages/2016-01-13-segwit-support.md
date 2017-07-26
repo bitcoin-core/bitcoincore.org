@@ -23,7 +23,7 @@ For more information see: [segwit developer's guide](/en/segwit_wallet_dev/), [u
 <sup>2</sup> GreenAddress provides wallet services to TheRockTrading exchange, BitBoat and CoinBR.<br />
 wip: work-in-progress
 
-_**To add your company or service, please submit a** [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/gh-pages/_data/segwitsupport.csv)._
+_**To add your company or service, please submit a** [pull-request](https://github.com/bitcoin-core/bitcoincore.org/blob/master/_data/segwitsupport.csv)._
 
 <hr>
 

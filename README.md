@@ -1,4 +1,4 @@
-# [bitcoincore.org](https://bitcoincore.org) [![Build Status](https://travis-ci.org/bitcoin-core/bitcoincore.org.svg?branch=gh-pages)](https://travis-ci.org/bitcoin-core/bitcoincore.org)
+# [bitcoincore.org](https://bitcoincore.org) [![Build Status](https://travis-ci.org/bitcoin-core/bitcoincore.org.svg?branch=master)](https://travis-ci.org/bitcoin-core/bitcoincore.org)
 
 This repository is the source code of the Bitcoin Core project website built with Jekyll.
 
