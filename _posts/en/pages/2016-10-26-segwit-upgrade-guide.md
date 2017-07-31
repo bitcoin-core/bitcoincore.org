@@ -18,7 +18,7 @@ Initial segwit adoption requires the participation of two groups:
 
 - **[Miners][miners guide]** representing 95% or more of the total Bitcoin network hash rate must signal support for segwit in order to  lock-in segwit’s activation.
 
-- **[Full nodes][node guide]** run by a reasonable number of users and business to validate the payments they receive need to be upgraded to Bitcoin Core 0.13.1 or another segwit-compatible implementation in order to incentivize miners to follow segwit’s rules after segwit activates.  (This is Bitcoin’s normal incentivization mechanism where miners only receive income for generating a block if they follow all of the consensus rules, which will include the new segwit consensus rules once segwit activates.)
+- **[Full nodes][node guide]** run by a reasonable number of users and business to validate the payments they receive need to be upgraded to Bitcoin Core 0.13.1 or above, or another segwit-compatible implementation in order to incentivize miners to follow segwit’s rules after segwit activates.  (This is Bitcoin’s normal incentivization mechanism where miners only receive income for generating a block if they follow all of the consensus rules, which will include the new segwit consensus rules once segwit activates.)
 
 The segwit soft fork has been designed to allow individuals in both groups to voluntarily decide whether or not they want to adopt segwit, and guides are provided below for both those who want to adopt segwit and those who don’t.
 
@@ -42,7 +42,7 @@ The BIP9 soft fork deployment mechanism is being used for segwit---the same mech
 
 The BIP9 parameters for the segwit soft fork allow miners to begin signaling their support for it at the beginning of the first retarget period on or after 15 November 2016.  To signal support, you will need to do the following:
 
-- Upgrade the full node you use for transaction selection and block construction to Bitcoin Core 0.13.1 or another segwit-compatible full node.
+- Upgrade the full node you use for transaction selection and block construction to Bitcoin Core 0.13.1+ or another segwit-compatible full node.
 
 - Upgrade your mining software, mining pool software, or both to a segwit-compatible version.
 
@@ -51,8 +51,8 @@ The BIP9 parameters for the segwit soft fork allow miners to begin signaling the
 When segwit is activated, you will want to be able to mine and relay segwit-style blocks.  The following mining software has been upgraded to support segwit.
 
 - Full nodes:
-  - [Bitcoin Core](https://bitcoin.org/en/download) 0.13.1
-  - [Bitcoin Knots](http://bitcoinknots.org/) 0.13.1
+  - [Bitcoin Core](https://bitcoin.org/en/download) 0.13.1 or later
+  - [Bitcoin Knots](http://bitcoinknots.org/) 0.13.1 or later
   - [Btcd](https://github.com/btcsuite/btcd/pull/656)\*
 
 - Mining software:
@@ -78,7 +78,7 @@ Segwit is already activated and enforced on testnet, so you may find it useful t
 
 This section describes what you can do as a miner if you don’t want to enforce segwit.
 
-During the *started* phase, if you don’t want to adopt segwit, you may simply refuse to upgrade to a segwit-compatible full node such as Bitcoin Core 0.13.1, as well as avoiding any mining software that assumes you want to set segwit’s versionbit of bit 1.
+During the *started* phase, if you don’t want to adopt segwit, you may simply refuse to upgrade to a segwit-compatible full node such as Bitcoin Core 0.13.1 or above, as well as avoiding any mining software that assumes you want to set segwit’s versionbit of bit 1.
 
 If segwit reaches *locked-in*, you still don’t need to upgrade, but upgrading is strongly recommended.  The segwit soft fork does not require you to produce segwit-style blocks, so you may continue producing non-segwit blocks indefinitely.  However, once segwit activates, it will be possible for other miners to produce blocks that you consider to be valid but which every segwit-enforcing node rejects; if you build any of your blocks upon those invalid blocks, your blocks will be considered invalid too.
 
@@ -112,7 +112,7 @@ If you don’t want to upgrade to segwit and you aren’t a miner, you may simpl
 
 However, if you accept transactions with fewer blocks of confirmation (such as a single block or two), please note that after a soft fork activates, there is a small increased risk that full nodes which don’t upgrade will temporarily accept invalid blocks.  The situation will resolve itself within a few blocks as upgraded miners continue to enforce the new segwit consensus rules, but there is no guarantee that transactions shown as confirmed in the invalid block will continue to be confirmed in valid blocks.      
 
-The easiest way to prevent this problem is to upgrade to Bitcoin Core 0.13.1 or another full node release that is compatible with the segwit soft fork.  If you still don’t wish to upgrade, it is possible to use a newer Bitcoin Core release as a filter for older Bitcoin Core releases.
+The easiest way to prevent this problem is to upgrade to Bitcoin Core 0.13.1 or later, or another full node release that is compatible with the segwit soft fork.  If you still don’t wish to upgrade, it is possible to use a newer Bitcoin Core release as a filter for older Bitcoin Core releases.
 
 ![Filtering by an upgraded node](/assets/images/filtering-by-upgraded-node.svg)
 
