@@ -9,7 +9,8 @@ DIR=$(dirname "$0")
 echo "Using verify-commits data from ${DIR}"
 
 VERIFIED_ROOT=$(cat "${DIR}/trusted-git-root")
-VERIFIED_SHA512_ROOT=$(cat "${DIR}/trusted-sha512-root-commit")
+#VERIFIED_SHA512_ROOT=$(cat "${DIR}/trusted-sha512-root-commit")
+VERIFIED_SHA512_ROOT="NONE"
 REVSIG_ALLOWED=$(cat "${DIR}/allow-revsig-commits")
 
 HAVE_FAILED=false
@@ -29,9 +30,9 @@ if [ "${CURRENT_COMMIT#* }" != "$CURRENT_COMMIT" ]; then
 fi
 
 VERIFY_TREE=0
-if [ x"$2" = "x--tree-checks" ]; then
-	VERIFY_TREE=1
-fi
+#if [ x"$2" = "x--tree-checks" ]; then
+#	VERIFY_TREE=1
+#fi
 
 NO_SHA1=1
 PREV_COMMIT=""
@@ -77,7 +78,7 @@ while true; do
 	fi
 
 	# We always verify the top of the tree
-	if [ "$VERIFY_TREE" = 1 -o "$PREV_COMMIT" = "" ]; then
+	if [ "$VERIFY_TREE" = 1 ]; then #-o "$PREV_COMMIT" = "" ]; then
 		IFS_CACHE="$IFS"
 		IFS='
 '
