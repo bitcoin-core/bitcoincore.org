@@ -12,9 +12,9 @@ cache: bundler
 ## Disable external link checking to prevent spurious failures because
 ## of other people's downtime. This can also avoid wasting their
 ## bandwidth.
-#
+
 ## Build all possible jekyll pages for use with link checking.
-script: bundle exec jekyll build --future --drafts --unpublished && bundle exec htmlproof --disable-external ./_site
+script: bundle exec jekyll build --future --drafts --unpublished && bundle exec htmlproof --disable-external --url-ignore '/^\/bin/.*/' ./_site
 
 env:
   global:
