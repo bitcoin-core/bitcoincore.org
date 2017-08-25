@@ -57,7 +57,7 @@ Notice the remaining fields are left untranslated, however in Transifiex, you mu
 
 Please be careful when translating Markdown formatting, this must be exact (including spaces). Markdown titles require a space after the header tags, e.g. `## Title`.
 
-Please note that [translations.yml](https://github.com/bitcoin-core/website/blob/gh-pages/_data/translations.yml) and [navigation.yml](https://github.com/bitcoin-core/website/blob/gh-pages/_data/navigation.yml) should be translated and submitted as normal pull-requests because they are not compatible with Transifex at this time.
+Please note that [translations.yml](https://github.com/bitcoin-core/website/blob/master/_data/translations.yml) and [navigation.yml](https://github.com/bitcoin-core/website/blob/master/_data/navigation.yml) should be translated and submitted as normal pull-requests because they are not compatible with Transifex at this time.
 
 ## License
 
@@ -65,5 +65,5 @@ The code and documentation of this website are licensed under [MIT license][MIT]
 
 Unless specified in the header of the file, the website content in `_posts/` of this website is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: [CC-BY-SA] and all contributors agree to irrevocably license their content under the same license.
 
-[MIT]: https://github.com/bitcoin-core/website/blob/gh-pages/LICENSE
+[MIT]: https://github.com/bitcoin-core/website/blob/master/LICENSE
 [CC-BY-SA]: http://creativecommons.org/licenses/by-sa/4.0/
