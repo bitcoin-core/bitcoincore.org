@@ -39,3 +39,17 @@ zh_TW:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+
+ja:
+  created: "Published on the"
+  author: "by"
+  description: "Bitcoin Core ウェブサイト"
+  footer: "Bitcoin Core プロジェクト"
+  related: "Recommended"
+  viewallposts: "すべての投稿を見る"
+  not_translated: "注意: このページは翻訳されていません"
+  tocoverview: "Overview"
+  translation_outdated: "この翻訳は古くなっている可能性があります。英語版と比較してください。"
+  rss_feed: "Bitcoin Core Blog RSS Feed"
+  rss_meetings_feed: "Meetings feed"
+  rss_blog_feed: "Blog posts feed"

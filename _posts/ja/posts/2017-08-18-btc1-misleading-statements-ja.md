@@ -1,0 +1,29 @@
+---
+type: posts
+layout: post
+lang: ja
+name: btc1-misleading-statements
+id: ja-btc1-misleading-statements
+title: Segwit2xとbtc1の誤った情報に関する訂正
+permalink: /ja/2017/08/18/btc1-misleading-statements/
+version: 1
+excerpt: Segwit2xとbtc1の誤った情報に関する訂正
+---
+
+Bitcoinネットワークのコンセンサスルールと互換性のない変更を提案している"Segwit2x"が最近よく話題にあがっています。Segwit2xの実装であるbtc1プロジェクトが成功し、まるで既存のソフトウェアに必要なアップデートであるかのように誤解させる事態になっています。Segwit2xは既存のネットワークルールから逸脱しており、そのユーザーはブロックとトランザクションの有効性について残りのネットワークのユーザーと結果が異なることをすぐに気付くことになります。
+
+以下の点に注意してください
+  
+  * Segregated Witness（Segwit、数日以内にソフトフォークがアクティベートされます）は、Segwit2xのハードフォークとは関係ありません。Segregated Witnessは、これまでの全てのBitcoinソフトウェアと後方互換性があります。大多数のBitcoinユーザーは何もする必要はありません。
+  
+  * [bitcoincore.org](https://bitcoincore.org) は公式ウェブサイトで、[@bitcoincoreorg](https://twitter.com/bitcoincoreorg) はBitcoin Coreの公式Twitterアカウントです。これ以外のプロジェクトを称する他のウェブサイトやTwitterアカウントは偽物です。Bitcoin CoreはGithubのプロジェクトを介して、どなたからのコントリビュートやレビューも歓迎するオープンソースプロジェクトです。Bitcoin Coreのバイナリは[bitcoincore.org](https://bitcoincore.org/bin/) と [bitcoin.org](https://bitcoin.org/bin/) から入手でき、常にリリースマネージャーの署名鍵でデジタル署名されています。Bitcoin Coreの最新バージョンは0.14.2です。
+
+  * btc1がBitcoin Coreに接続されることはありません。Bitcoin Coreのコントリビューターはbtc1をサポートしておらず、プロジェクトにも関わっていません。また提案されているハードフォークの設計にも関与していません。
+   
+  * 私たちは、Segwit2xにより提案された変更がBitcoinのシステムに及ぼす影響と、そのコミュニティサポートのレベルについて注意深く考慮することなく、Bitcoinのコンセンサスルールを”アップグレード”することを主張するBitcoinフルノードをダウンロードしないことを強く推奨します。これには新しいBitcoin Coreのリリースで提案されたコンセンサスの変更を含みます。
+
+  * より幅広いBitcoinコミュニティがサポートしているものを判断することは難しいことですが、大規模で多様なBitcoinコミュニティが独立した検証なくあるフォークもしくは別のフォークへの移行を示唆する主張には注意してください。文書への署名は、ユーザーやクライアントへの合意が無いまま、彼らを代理するという企業によって使用されており、それにはよく不正確で誤解を招く言葉が使われています。これまで、Bitcoin XTやBitcoin Classic、Bitcoin Unlimitedなどの文書も、コミュニティの検討事項にかかわらずソフトウェアを実行するコミットメントであると吹聴しながら、アイディアの一般的な支持を示すために配布されましたが、数ヶ月後には立ち消えになるだけです。
+
+  * Bitcoin CoreのコントリビューターやBitcoinコミュニティのメンバーによるSegwit2xの懸念は、Segwit2xの提案者によって適切に対処されていません。Segwit2xの提案の詳細は、BitcoinのSegregated Witnessのアクティベーションの前、また最近のBCH通貨の作成の前に作成されました。将来を計画する際に、このような出来事の結果を無視するのは無責任です。一例として、私たちは１つのアドレスが２つのチェーンにわたって有効な場合に生じる混乱を目の当たりにしてきましたが、Segwit2xは同じミスを繰り返すつもりです。BCHの強力なリプレイ保護の実装では、BCHとBitcoinの両方のユーザーに対してSegwit2xが提供する予定のない重要な保護が提供されています。
+ 
+  * Bitcoinのコンセンサスルールについては、わずかな変更であってもコミュニティ全体から広く合意する必要があります。Segwit2xはそのプロセスと実装の両方において多くの人から反対されてきました。Bitcoin CoreはSegwitのソフトフォークを引き続きサポートし、今後数年間でBitcoinの規模をさらに高めていくことを楽しみにしています。
