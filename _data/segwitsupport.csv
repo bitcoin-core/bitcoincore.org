@@ -101,6 +101,7 @@ Mycelium,https://mycelium.com/,wip,wallet,
 NBitcoin,https://github.com/MetacoSA/NBitcoin,ready,library,n/a
 NiceHash Solo,https://solo.nicehash.com/,ready,solo mining pool,
 NOMP,https://github.com/zone117x/node-stratum-pool/,ready,mining software,
+OpenBazaar,https://openbazaar.org,ready,marketplace, OpenBazaar SPV wallet
 OpenDime,https://opendime.com/,planned,hardware wallet,
 OKLink,https://www.oklink.com/,wip,"wallet, block explorer",
 Omni Core,https://github.com/OmniLayer/omnicore,ready,wallet,
