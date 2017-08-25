@@ -17,6 +17,7 @@ Bitcoin Embassy,https://bitcoinembassy.ca,ready,community hub,bitcoin core
 Bitcoin India,https://bitcoin-india.org/,ready,"exchange, pool",bitcoin core
 Bitcoin Knots,https://bitcoinknots.org/,ready,"node, wallet",n/a
 BitcoinJ,https://bitcoinj.github.io/,wip,library,n/a
+BitcoinML,https://github.com/dakk/bitcoinml/,ready,library,n/a
 bitcoin-lib,https://github.com/ACINQ/bitcoin-lib,ready,library,n/a
 bitcoin-s,https://github.com/bitcoin-s/bitcoin-s-core,ready,library,
 BitcoinReminder.com,https://bitcoinreminder.com,ready,service,
