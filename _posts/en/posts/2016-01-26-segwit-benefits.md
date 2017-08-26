@@ -53,7 +53,7 @@ A major problem with simple approaches to increasing the Bitcoin blocksize is th
 
 ![Linear versus quadratic](/assets/images/linear-quad-scale.png)
 
-In essence, doubling the size of a transaction increases can double both the number of signature operations, and the amount of data that has to be hashed for each of those signatures to be verified. This has been seen in the wild, where an individual block required 25 seconds to validate, and maliciously designed transactions could take over 3 minutes.
+In essence, doubling the size of a transaction can double both the number of signature operations, and the amount of data that has to be hashed for each of those signatures to be verified. This has been seen in the wild, where an individual block required 25 seconds to validate, and maliciously designed transactions could take over 3 minutes.
 
 Segwit resolves this by changing the calculation of the transaction hash for signatures so that each byte of a transaction only needs to be hashed at most twice. This provides the same functionality more efficiently, so that large transactions can still be generated without running into problems due to signature hashing, even if they are generated maliciously or much larger blocks (and therefore larger transactions) are supported.
 
