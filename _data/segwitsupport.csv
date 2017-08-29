@@ -1,3 +1,4 @@
+name,url,status,notes,depends
 1200wd,https://github.com/1200wd/bitcoinlib,wip,library,
 Abe,https://github.com/bitcoin-abe/bitcoin-abe,wip,block explorer,
 Abra,https://www.goabra.com/,planned,remittance,
@@ -106,7 +107,6 @@ Mana,https://github.com/JediWed/Mana,wip,wallet,BitcoinSPV
 MoneyBadger,https://moneybadger.io,ready,"exchange, tipping, remittance",bitcoin core
 Multibit HD,https://multibit.org/,planned,wallet,bitcoinj
 Mycelium,https://mycelium.com/,wip,wallet,
-name,url,status,notes,depends
 NBitcoin,https://github.com/MetacoSA/NBitcoin,ready,library,n/a
 NiceHash Solo,https://solo.nicehash.com/,ready,solo mining pool,
 NOMP,https://github.com/zone117x/node-stratum-pool/,ready,mining software,
