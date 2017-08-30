@@ -83,7 +83,7 @@ GreenAddress<sup>2</sup>,https://greenaddress.it/,ready,wallet,"pycoin, bitcoinj
 GreenBits,https://www.greenbits.com/,ready,wallet,bitcoinj
 HolyTransaction,https://holytransaction.com/,wip,"wallet, crypto-to-crypto exchange", bitcoin core
 inbitcoin,https://inbitcoin.it/,ready,payment processor,bitcoin core
-JoinMarket,https://github.com/JoinMarket-Org/joinmarket,wip,"library, privacy solution, wallet",
+JoinMarket,https://github.com/JoinMarket-Org/joinmarket,deployed,"library, privacy solution, wallet",
 Kaiko,https://www.kaiko.com/,planned,explorer,
 Keepkey,https://www.keepkey.com/,ready,hardware wallet,
 Lamassu,https://lamassu.is/,ready,atm manufacturer,
