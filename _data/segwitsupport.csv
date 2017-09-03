@@ -89,6 +89,7 @@ Keepkey,https://www.keepkey.com/,ready,hardware wallet,
 Lamassu,https://lamassu.is/,ready,atm manufacturer,
 learn me a bitcoin,http://learnmeabitcoin.com/,ready,block explorer,bitcoin core
 Ledger Wallet,https://www.ledgerwallet.com/,ready,hardware wallet,
+libbitc,https://github.com/libbitc,ready,library,
 libbtc,https://github.com/libbtc,planned,library,
 libbitcoin,http://libbitcoin.dyne.org/,planned,library,
 libblkmaker,https://github.com/bitcoin/libblkmaker/pull/6,ready,mining library,n/a
