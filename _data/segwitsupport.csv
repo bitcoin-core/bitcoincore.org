@@ -94,7 +94,8 @@ GreenBits,https://www.greenbits.com/,ready,wallet,bitcoinj
 Hardblock,https://www.hardblock.net/, ready, Broker, bitcoin core
 HolyTransaction,https://holytransaction.com/,wip,"wallet, crypto-to-crypto exchange", bitcoin core
 inbitcoin,https://inbitcoin.it/,ready,payment processor,bitcoin core
-JoinMarket,https://github.com/JoinMarket-Org/joinmarket,wip,"library, privacy solution, wallet",
+JoinMarket,https://github.com/JoinMarket-Org/joinmarket,ready,"library, privacy solution, wallet",
+Kaiko,https://www.kaiko.com/,planned,explorer,
 KeeeX,https://keeex.me,ready,"notarization and document proofs",
 Keepkey,https://www.keepkey.com/,ready,hardware wallet,
 Lamassu,https://lamassu.is/,ready,atm manufacturer,
