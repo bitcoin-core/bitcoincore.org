@@ -1,5 +1,5 @@
 <ul class="releases">
-  {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'releases' | sort:'post.date' %}
+  {% assign english_posts =           site.releases | sort: 'release' | reverse | where:"lang", 'en' | where:"type", 'releases' %}
   {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'releases' %}
   {% for default_post in english_posts %}
     {% assign post=default_post %}

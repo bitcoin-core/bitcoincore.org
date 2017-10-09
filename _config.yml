@@ -73,3 +73,15 @@ defaults:
       lang: en
       layout: post
       type: posts
+  - scope:
+      path: ""
+      type: releases
+    values:
+      type: releases
+      layout: page
+      lang: en
+      share: true
+
+collections:
+  releases:
+    output: true
