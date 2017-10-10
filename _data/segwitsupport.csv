@@ -127,7 +127,7 @@ pycoin,https://github.com/richardkiss/pycoin,ready,library,
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,wip,library,
 Samourai Wallet,http://samouraiwallet.com/,wip,wallet,bitcoinj
 Satoshi Counter,https://satoshicounter.com,ready,broker,bitcoin core
-ShapeShift,https://ShapeShift.io,deployed,exchange,bitcoin core,
+ShapeShift,https://ShapeShift.io,deployed,exchange,bitcoin core
 Simple Bitcoin Wallet,https://btcontract.com,planned,wallet,bitcoinj
 SimpleFX,https://simplefx.com,ready,"broker, financial services","bitcoin core"
 Slush Pool,https://www.slushpool.com/,ready,mining pool,
