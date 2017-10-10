@@ -27,6 +27,9 @@ en:
       supporters:
         title: "Supporters"
         url:   "/en/supporters/"
+  download:
+    title: "Download"
+    url: "/en/download"
   blog:
     title: "blog"
     url:   "/en/blog/"

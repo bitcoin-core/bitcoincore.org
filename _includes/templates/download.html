@@ -1,0 +1,139 @@
+{% capture /dev/null %}<!-- suppress render of this part -->
+<!-- Copyright 2013 - 2016 The Bitcoin.org Project.
+     Copyright 2017 The BitcoinCore.org Project
+     This file is licensed under the MIT License (MIT) available on
+     http://opensource.org/licenses/MIT. -->
+{% assign VERSION_SORTED_RELEASES = site.releases | sort: 'release' | reverse %}
+{% capture CURRENT_RELEASE %}{% for subver in VERSION_SORTED_RELEASES[0].release %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
+{% assign magnet = VERSION_SORTED_RELEASES[0].optional_magnetlink %}
+{% capture PATH_PREFIX %}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
+{% capture FILE_PREFIX %}bitcoin-{{CURRENT_RELEASE}}{% endcapture %}
+{% endcapture %}
+<link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
+<div class="download">
+  <h2>{{ page.latestversion }} {{CURRENT_RELEASE}} <a type="application/rss+xml" href="/en/releasesrss.xml"><img src="/assets/images/icons/icon_rss.svg" alt="rss" class="rssicon"></a></h2>
+  <div class="mainbutton"><a id="downloadbutton" href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win32exe }}"><img src="/assets/images/os/but_windows.svg" alt="icon">{{ page.download }}</a></div>
+  <div class="downloadbox">
+    <p>{{ page.downloados }}</p>
+    <div>
+      <div>
+        <img src="/assets/images/os/med_win.png" alt="windows">
+        <span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" id="downloadwinexe">Windows</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" class="dl" id="win64exe">64 bit</a> -
+            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win32exe }}" class="dl" id="win32exe">32 bit</a></span>
+        </span>
+      </div>
+      <div>
+        <img src="/assets/images/os/med_win.png" alt="windows">
+        <span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64zip }}" id="downloadwinzip">Windows (zip)</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64zip }}" class="dl" id="win64zip">64 bit</a> -
+            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win32zip }}" class="dl" id="win32zip">32 bit</a></span>
+        </span>
+      </div>
+      <div>
+        <img src="/assets/images/os/med_osx.png" alt="osx">
+        <span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}{{ site.data.binaries.macdmg }}">Mac OS X</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}{{ site.data.binaries.macdmg }}" class="dl" id="macdmg">dmg</a> -
+            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.mactar }}" class="dl" id="mactar">tar.gz</a></span>
+        </span>
+      </div>
+    </div>
+    <div>
+      <div>
+        <img src="/assets/images/os/med_linux.png" alt="linux">
+        <span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin64 }}" id="downloadlin">Linux (tgz)</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin64 }}" class="dl" id="lin64">64 bit</a> -
+            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin32 }}" class="dl" id="lin32">32 bit</a></span>
+        </span>
+      </div>
+      <div>
+        <img src="/assets/images/os/arm.png" alt="ARM Linux">
+        <span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl">ARM Linux</a>
+          	<span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-aarch64-linux-gnu.tar.gz" class="dl" id="lin64arm">64 bit</a> -
+            	<a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl" id="lin32arm">32 bit</a></span>
+        </span>
+      </div>
+      <div>
+        <img src="/assets/images/os/med_ubuntu.svg" alt="ubuntu">
+        <span>
+          <a href="https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin">Ubuntu (PPA)</a>
+        </span>
+      </div>
+    </div>
+    <p class="downloadmore">
+      <a href="{{ PATH_PREFIX }}/SHA256SUMS.asc" class="dl">{{ page.downloadsig }}</a><br>
+      <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}.torrent" class="dl">{{ page.downloadtorrent }}</a>
+        {% if magnet %} <a href="{{ magnet | replace: '&', '\&amp;'}}" class="magnetlink" data-proofer-ignore></a>{% endif %}<br>
+      <a href="https://github.com/bitcoin/bitcoin" class="dl">{{ page.source }}</a><br>
+      <a href="/en/releases">{{ page.versionhistory }}</a>
+    </p>
+    <p class="downloadkeys">
+      <span>{{ page.releasekeys }}</span>
+      <a href="/keys/laanwj-releases.asc">v0.11.0+</a>
+    </p>
+  </div>
+
+  <h2><img src="/assets/images/icons/note.svg" class="warningicon" alt="note">{{ page.patient }}</h2>
+  <p>{{ page.notesync | replace: '$(SIZE)', site.data.stats.datadir_gb}} {{ page.full_node_guide }}</p>
+  <p>{{ page.notelicense }}</p>
+</div>
+<script type="text/javascript">
+var os = 'windows32';
+if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
+else if (navigator.userAgent.indexOf('Linux') != -1) {
+	var os='linux32';
+	if (navigator.userAgent.indexOf('x86_64') != -1) var os = 'linux64';
+	if (navigator.userAgent.indexOf('Ubuntu') != -1) var os = 'ubuntu';
+}
+else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
+var but = document.getElementById('downloadbutton');
+var linkwinexe = document.getElementById('downloadwinexe');
+var linkwinzip = document.getElementById('downloadwinzip');
+var linklin = document.getElementById('downloadlin');
+var hrefwin64exe = document.getElementById('win64exe').href;
+var hrefwin32exe = document.getElementById('win32exe').href;
+var hrefwin64zip = document.getElementById('win64zip').href;
+var hrefwin32zip = document.getElementById('win32zip').href;
+var hrefmacdmg = document.getElementById('macdmg').href;
+var hrefmactar = document.getElementById('mactar').href;
+var hreflin64 = document.getElementById('lin64').href;
+var hreflin32 = document.getElementById('lin32').href;
+switch (os) {
+case 'windows64':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
+	but.href = hrefwin64exe;
+	linkwinexe.href = hrefwin64exe;
+	linkwinzip.href = hrefwin64zip;
+break;
+case 'windows32':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
+	but.href = hrefwin32exe;
+	linkwinexe.href = hrefwin32exe;
+	linkwinzip.href = hrefwin32zip;
+break;
+case 'linux64':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
+	but.href = hreflin64;
+	linklin.href = hreflin64;
+break;
+case 'linux32':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
+	but.href = hreflin32;
+	linklin.href = hreflin32;
+break;
+case 'ubuntu':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_ubuntu.svg';
+	but.href = 'https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin';
+break;
+case 'mac':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
+	but.href = hrefmacdmg;
+break;
+}
+
+</script>

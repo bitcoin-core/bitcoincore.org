@@ -1,0 +1,163 @@
+// Copyright 2013 - 2016 The Bitcoin.org Project.
+// Copyright 2017 The BitcoinCore.org Project.
+// This file is licensed under the MIT License (MIT) available on
+// http://opensource.org/licenses/MIT.
+
+.mainbutton{
+        text-align:center;
+}
+.mainbutton a,
+.mainbutton a:link,
+.mainbutton a:visited,
+.mainbutton a:active{
+        font-family:'Ubuntu', sans-serif;
+        font-weight:400;
+        font-size:150%;
+        text-shadow:0 2px 6px rgba(0,0,0,0.6);
+        text-align:left;
+        display:inline-block;
+        background-color:#2c6fad;
+        border:1px solid #20598f;
+        background-image:-o-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-moz-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-webkit-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-ms-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        color:#fff;
+        padding:15px 20px 20px 68px;
+        margin:40px 0 40px 0;
+        -webkit-border-radius:12px;
+        -moz-border-radius:12px;
+        border-radius:12px;
+}
+.mainbutton a:hover{
+        background-image:none;
+        color:#fff;
+}
+.mainbutton img{
+        margin-right:10px;
+        margin-left:-52px;
+        margin-bottom:-12px;
+        height:42px;
+        width:42px;
+}
+
+.download{
+        text-align:center;
+}
+.download p{
+        text-align:justify;
+}
+.download div p{
+        text-align:center;
+}
+.download h1,
+.download h2{
+        text-align:center;
+}
+.download .mainbutton a{
+        margin:10px 0 35px 0;
+}
+.downloadbox{
+        display:inline-block;
+        border:2px solid #fad296;
+        padding:20px;
+        font-size:125%;
+        -webkit-border-radius:12px;
+        -moz-border-radius:12px;
+        border-radius:12px;
+        margin:0 auto 20px auto;
+}
+.downloadbox p{
+        margin:0;
+}
+.downloadbox p.downloadmore a{
+        font-size:90%;
+}
+.downloadbox p.downloadkeys{
+        font-size:80%;
+        margin-top:15px;
+}
+.downloadbox p.downloadkeys span{
+        display:block;
+}
+.downloadbox p.downloadkeys a{
+        display:inline-block;
+        padding: 5px 10px 0 20px;
+        background:url(/assets/images/icons/mini_ico_key.svg) left 8px no-repeat;
+}
+.downloadbox div a{
+        display:inline-block;
+}
+.downloadbox div{
+        display:inline-block;
+        margin:0 10px;
+        vertical-align:top;
+}
+
+.downloadbox div div{
+        display:block;
+        width:190px;
+        height:46px;
+        margin:25px 0;
+        text-align:left;
+}
+.downloadbox div div span{
+        display:inline-block;
+        margin-left:6px;
+}
+.downloadbox div div span span{
+        display:block;
+        margin:6px 0 0 0;
+        font-size:80%;
+}
+.downloadbox img{
+        width:32px;
+        height:32px;
+        vertical-align:top;
+        position:relative;
+        top:4px;
+}
+.downloadbox .magnetlink{
+        display:inline-block;
+        width:16px;
+        height:16px;
+        position:relative;
+        bottom:-1px;
+        background:url(/assets/images/icons/mini_ico_magnet.svg) no-repeat;
+}
+
+@media handheld, only screen and ( max-width: 60em ), only screen and ( max-device-width: 60em ){
+
+        .download{
+                text-align:left;
+        }
+        .download p{
+                text-align:left;
+        }
+        .download div p{
+                text-align:left;
+        }
+        .download .mainbutton{
+                display:none;
+        }
+        .downloadbox{
+                border:0;
+                padding:0;
+                text-align:left;
+        }
+        .downloadbox div div{
+                margin:15px 0;
+                width:auto;
+        }
+        .downloadbox div{
+                margin:0;
+                display:block;
+        }
+        .downloadbox>p:first-child{
+                display:none;
+        }
+        .downloadbox>p+div+div+p{
+                margin-top:25px;
+        }
+}

@@ -1,0 +1,4 @@
+## Size of the Bitcoin Core data directory running with default settings.
+## Suggest rounding up by about 10% so it doesn't need to be updated
+## too often.
+datadir_gb: 180
