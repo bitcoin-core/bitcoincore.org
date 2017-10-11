@@ -51,7 +51,7 @@ Blocktrail,https://www.blocktrail.com/,planned,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,wip,wallet,
 BTC.com,https://btc.com/,wip,"block explorer, wallet",
 BTCC,https://www.btcc.com/,ready,"exchange, mining pool, wallet",
-btcd,https://github.com/btcsuite/btcd,wip,"full node",
+btcd,https://github.com/btcsuite/btcd,ready,"full node",
 btcpool,https://github.com/btccom/btcpool,ready,"pool software",
 bustabit,https://www.bustabit.com,wip,gambling,bitcoin core
 Bylls,https://bylls.com,wip,payment processor,bitcore
@@ -93,7 +93,6 @@ Hardblock,https://www.hardblock.net/, ready, Broker, bitcoin core
 HolyTransaction,https://holytransaction.com/,wip,"wallet, crypto-to-crypto exchange", bitcoin core
 inbitcoin,https://inbitcoin.it/,ready,payment processor,bitcoin core
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,wip,"library, privacy solution, wallet",
-Kaiko,https://www.kaiko.com/,planned,explorer,
 KeeeX,https://keeex.me,ready,"notarization and document proofs",
 Keepkey,https://www.keepkey.com/,ready,hardware wallet,
 Lamassu,https://lamassu.is/,ready,atm manufacturer,
@@ -108,7 +107,6 @@ Lykke,http://www.lykke.com ,planned,exchange,NBitcoin
 Magnr,https://magnr.com/,ready,"broker, financial services","BitGo, Bitfinex, Bitstamp"
 Mana,https://github.com/JediWed/Mana,wip,wallet,BitcoinSPV
 MoneyBadger,https://moneybadger.io,ready,"exchange, tipping, remittance",bitcoin core
-Multibit HD,https://multibit.org/,planned,wallet,bitcoinj
 Mycelium,https://mycelium.com/,wip,wallet,
 NBitcoin,https://github.com/MetacoSA/NBitcoin,ready,library,n/a
 NiceHash Solo,https://solo.nicehash.com/,ready,solo mining pool,
@@ -143,5 +141,5 @@ WageCan,https://www.wagecan.com/,wip,exchange,
 Walltime,https://walltime.info,ready,exchange,
 Woleet,https://woleet.io,planned,Data anchoring platform,bitcoin core
 XotikaTV,https://xotika.tv,ready,adult social video platform,
-Yogh,http://yogh.io,planned,block explorer,bitcoin core
+Yogh,http://yogh.io,ready,block explorer,bitcoin core
 MiningRigRentals,https://www.miningrigrentals.com.com,ready,mining pool/rental services,n/a
