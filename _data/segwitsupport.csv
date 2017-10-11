@@ -47,6 +47,7 @@ BitWasp,https://github.com/Bit-Wasp/bitcoin-php,ready,library,
 Bity,https://bity.com,planned,broker,bitcoin core
 Blockchain.info,https://blockchain.info/,ready,"wallet, block explorer",
 Blockonomics,https://www.blockonomics.co/,ready,"bitcoin tracker, block explorer","bitcoin core"
+Blockstream,https://www.blockstream.com,ready,"satellite, wallet",
 Blocktrail,https://www.blocktrail.com/,planned,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,wip,wallet,
 BTC.com,https://btc.com/,wip,"block explorer, wallet",
