@@ -16,7 +16,7 @@ Please be aware that:
 
   * Segregated Witness (or Segwit, a soft fork which will be active within the coming days) is not related to the Segwit2x hard fork. Segregated Witness is backwards compatible with all previous Bitcoin software. For the vast majority of Bitcoin users, no action is required.
 
-  * [bitcoincore.org](https://bitcoincore.org) is the official website and [@bitcoincoreorg](https://twitter.com/bitcoincoreorg) is the official Twitter account of the Bitcoin Core project. Any other websites or Twitter accounts claiming to represent the project are fraudulent. Bitcoin Core is an open source project that welcomes contributions and review from anyone through its GitHub project. Bitcoin Core binaries can be obtained from [bitcoincore.org](https://bitcoincore.org/bin/) and are always digitally signed by the release manager’s signing key. The latest version of Bitcoin Core at the time of writing is 0.14.2.
+  * [bitcoincore.org](https://bitcoincore.org) is the official website and [@bitcoincoreorg](https://twitter.com/bitcoincoreorg) is the official Twitter account of the Bitcoin Core project. Any other websites or Twitter accounts claiming to represent the project are fraudulent. Bitcoin Core is an open source project that welcomes contributions and review from anyone through its GitHub project. Bitcoin Core binaries can be obtained from [bitcoincore.org](/en/download) and are always digitally signed by the release manager’s signing key. The latest version of Bitcoin Core at the time of writing is 0.14.2.
 
   * btc1 is *not* connected to Bitcoin Core in any way. No regular Bitcoin Core contributors support btc1 or have any connection to the project, nor were any involved in the design of its proposed hard fork.
 
