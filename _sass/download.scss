@@ -24,7 +24,7 @@
         background-image:-ms-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
         background-image:linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
         color:#fff;
-        padding:15px 20px 20px 68px;
+        padding:15px 20px 15px 8px;
         margin:40px 0 40px 0;
         -webkit-border-radius:12px;
         -moz-border-radius:12px;
@@ -35,11 +35,15 @@
         color:#fff;
 }
 .mainbutton img{
-        margin-right:10px;
-        margin-left:-52px;
-        margin-bottom:-12px;
         height:42px;
         width:42px;
+        margin-right: 8px;
+        display: inline-block;
+        vertical-align: middle;
+}
+.mainbutton span{
+        display: inline-block;
+        vertical-align: middle;
 }
 
 .download{
