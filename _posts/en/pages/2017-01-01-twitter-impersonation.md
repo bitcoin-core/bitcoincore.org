@@ -53,5 +53,5 @@ cryptographically signed by a developer.
 [announcements mailing list]: /en/list/announcements/join/
 [front page of this website]: /
 [RSS feed]: /en/rss.xml
-[download page]: /bin/
+[download page]: /en/download
 [full node guide]: https://bitcoin.org/en/full-node
