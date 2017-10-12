@@ -1,6 +1,6 @@
 ---
 title: Twitter impersonation
-name: contact
+name: twitter-impersonation
 permalink: /en/twitter-impersonation/
 type: pages
 layout: page
