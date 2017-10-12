@@ -90,6 +90,9 @@ en:
       announcements:
         title: "Announcements"
         url: "/en/list/announcements/join/"
+      twitter_impersonation:
+        title: "Twitter impersonation"
+        url: "/en/twitter-impersonation"
 zh_CN:
   home:
     title: "Bitcoin Core"
