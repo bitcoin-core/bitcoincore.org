@@ -79,7 +79,7 @@
   </div>
 
   <h2><img src="/assets/images/icons/note.svg" class="warningicon" alt="note">{{ page.patient }}</h2>
-  <p>{{ page.notesync | replace: '$(SIZE)', site.data.stats.datadir_gb}} {{ page.full_node_guide }}</p>
+  <p>{{ page.notesync | replace: '$(DATADIR_SIZE)', site.data.stats.datadir_gb | replace: '$(PRUNED_SIZE)', site.data.stats.pruned_gb | replace: '$(MONTHLY_RANGE_GB)', site.data.stats.monthly_storage_increase_range_gb }} {{ page.full_node_guide }}</p>
   <p>{{ page.notelicense }}</p>
 </div>
 <script type="text/javascript">
