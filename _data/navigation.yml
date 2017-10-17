@@ -364,8 +364,11 @@ ja:
     submenu: true
     tree:
       contact_us:
-        title: "Contact Us"
-        url: "/en/contact/"
+        title: "お問い合わせ"
+        url: "/ja/contact/"
       announcements:
-        title: "Announcements"
-        url: "/en/list/announcements/join/"
+        title: "お知らせ"
+        url: "/ja/list/announcements/join/"
+      twitter_impersonation:
+        title: "Twitterのなりすまし"
+        url: "/ja/twitter-impersonation"
