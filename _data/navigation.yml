@@ -306,6 +306,9 @@ ja:
       supporters:
         title: "Supporters"
         url:   "/en/supporters/"
+  download:
+    title: "Download"
+    url: "/ja/download"
   blog:
     title: "blog"
     url:   "/en/blog/"
