@@ -69,7 +69,7 @@
       <a href="{{ PATH_PREFIX }}/SHA256SUMS.asc" class="dl">{{ page.downloadsig }}</a><br>
       <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}.torrent" class="dl">{{ page.downloadtorrent }}</a>
         {% if magnet %} <a href="{{ magnet | replace: '&', '\&amp;'}}" class="magnetlink" data-proofer-ignore></a>{% endif %}<br>
-      <a href="https://github.com/bitcoin/bitcoin" class="dl">{{ page.source }}</a><br>
+      <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX}}.tar.gz" class="dl">{{ page.source }}</a><br>
       <a href="/en/releases">{{ page.versionhistory }}</a>
     </p>
     <p class="downloadkeys">
