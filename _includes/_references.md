@@ -23,6 +23,7 @@
 [Jorge Timón]: https://github.com/jtimon
 [Joseph Poon]: https://github.com/josephpoon
 [Joshua Simmons]: https://github.com/kadoban
+[Karel Bilek]: https://github.com/runn1ng
 [Karl-Johan Alm]: https://github.com/kallewoof
 [Luke Dashjr]: https://github.com/luke-jr
 [Marco Falke]: https://github.com/MarcoFalke
@@ -37,6 +38,7 @@
 [Pieter Wuille]: https://github.com/sipa
 [Russell Yanofsky]: https://github.com/ryanofsky
 [Saleem Rashid]: https://github.com/saleemrashid
+[Samuel Dobson]: https://github.com/MeshCollider
 [Suhas Daftuar]: https://github.com/sdaftuar
 [Tadge Dryja]: https://github.com/T909
 [Tom Harding]: https://github.com/dgenr8
