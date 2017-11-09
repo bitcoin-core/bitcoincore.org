@@ -126,7 +126,7 @@ Paymium,https://paymium.com/,planned,exchange,
 Purse.io,http://Purse.io,ready,e-commerce,wallet
 pycoin,https://github.com/richardkiss/pycoin,ready,library,
 python-bitcoinlib,https://github.com/petertodd/python-bitcoinlib,wip,library,
-Samourai Wallet,http://samouraiwallet.com/,ready,wallet,bitcoinj
+Samourai Wallet,http://samouraiwallet.com/,deployed,wallet,bitcoinj
 Satoshi Counter,https://satoshicounter.com,ready,broker,bitcoin core
 ShapeShift,https://ShapeShift.io,deployed,exchange,bitcoin core
 Simple Bitcoin Wallet,https://btcontract.com,planned,wallet,bitcoinj
