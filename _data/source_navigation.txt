@@ -24,9 +24,6 @@ en:
           faq:
             title: "FAQ"
             url: "/en/about/sponsorship/faq/"
-      supporters:
-        title: "Supporters"
-        url:   "/en/supporters/"
   blog:
     title: "blog"
     url:   "/en/blog/"

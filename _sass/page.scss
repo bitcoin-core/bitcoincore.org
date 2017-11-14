@@ -993,47 +993,6 @@ li.lang:hover {
 	@extend .btn;
 }
 
-
-/*
-Show your support page
-========================================================================== */
-.show-your-support,
-{
-	@include grid(12,12);
-	@include prefix(12,0);
-	@include suffix(12,0);
-	@include clearfix;
-	margin-bottom: 1em;
-	h2, h3, h4 {
-		margin-bottom: 0.3em;
-	}
-	text-align: center;
-  .fa {
-		margin-right: 5px;
-	}
-	div {
-		@media #{$small} {
-			@include grid(12,3);
-		}
-		&:last-child {
-			text-align: right;
-		}
-		&:first-child {
-			text-align: left;
-		}
-	}
-	ul {
-		margin: 0;
-		padding: 0;
-		clear: both;
-		list-style-type: none;
-	}
-}
-
-.show-your-support-small {
-	margin-top: 2em;
-}
-
 #mailregform
 {
 	@include clearfix;
