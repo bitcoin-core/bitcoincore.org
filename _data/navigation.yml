@@ -24,9 +24,6 @@ en:
           faq:
             title: "FAQ"
             url: "/en/about/sponsorship/faq/"
-      supporters:
-        title: "Supporters"
-        url:   "/en/supporters/"
   download:
     title: "Download"
     url: "/en/download"
@@ -121,9 +118,6 @@ zh_CN:
           faq:
             title: "常见问题"
             url: "/zh_CN/about/sponsorship/faq/"
-      supporters:
-        title: "支持者"
-        url:   "/en/supporters/"
   blog:
     title: "博客"
     url:   "/zh_CN/blog/"
@@ -212,9 +206,6 @@ zh_TW:
           faq:
             title: "FAQ"
             url: "/zh_TW/about/sponsorship/faq/"
-      supporters:
-        title: "Supporters"
-        url:   "/en/supporters/"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
@@ -303,12 +294,6 @@ ja:
           faq:
             title: "FAQ"
             url: "/en/about/sponsorship/faq/"
-      supporters:
-        title: "Supporters"
-        url:   "/en/supporters/"
-  download:
-    title: "Download"
-    url: "/ja/download"
   blog:
     title: "blog"
     url:   "/en/blog/"
