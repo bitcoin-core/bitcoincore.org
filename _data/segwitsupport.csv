@@ -108,6 +108,7 @@ LocalBitcoins,https://www.localbitcoins.com/,ready,P2P Exchange,
 Lykke,http://www.lykke.com ,planned,exchange,NBitcoin
 Magnr,https://magnr.com/,ready,"broker, financial services","BitGo, Bitfinex, Bitstamp"
 Mana,https://github.com/JediWed/Mana,wip,wallet,BitcoinSPV
+Mego,https://mego.cl,wip,"video game","Makers of Hammercoin, the Bitcoin-denominated online game"
 MoneyBadger,https://moneybadger.io,ready,"exchange, tipping, remittance",bitcoin core
 Mycelium,https://mycelium.com/,wip,wallet,
 NBitcoin,https://github.com/MetacoSA/NBitcoin,ready,library,n/a
