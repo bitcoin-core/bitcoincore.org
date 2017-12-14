@@ -27,7 +27,7 @@ BitcoinReminder.com,https://bitcoinreminder.com,ready,service,
 bitcore-lib,https://bitcore.io/,wip,library,n/a
 Bitfinex,https://www.bitfinex.com/,ready,exchange,
 Bitfury,http://bitfury.com/,ready,mining pool,bitcoin core
-BitGo<sup>1</sup>,https://www.bitgo.com/,ready,wallet,"bitcoinj, bitcoinjs"
+BitGo<sup>1</sup>,https://www.bitgo.com/,deployed,wallet,"bitcoinj, bitcoinjs"
 Bither Wallet,https://bither.net/,planned,wallet,
 BitKong,https://bitkong.com/,ready,gambling,NBitcoin
 BitLox,https://www.bitlox.com/,wip,hardware wallet,
@@ -40,7 +40,7 @@ BitRocket,https://www.bitrocket.co,ready,ATM operator,
 Bitsler,https://www.bitsler.com,ready,gambling,bitcoin core
 Bitso,https://bitso.com,ready,exchange,bitcoin core
 Bitsquare,https://bitsquare.io/,ready,exchange,n/a
-Bitstamp,https://bitstamp.net/,ready,exchange,
+Bitstamp,https://bitstamp.net/,deployed,exchange,
 Bitstop,https://bitstop.co,ready,atm operator,bitcoin core
 Bittylicious,https://bittylicious.com/,ready,exchange,
 Bitwala,https://bitwala.io,wip,remittance,Bitgo
@@ -131,7 +131,7 @@ Satoshi Counter,https://satoshicounter.com,ready,broker,bitcoin core
 ShapeShift,https://ShapeShift.io,deployed,exchange,bitcoin core
 Simple Bitcoin Wallet,https://btcontract.com,planned,wallet,bitcoinj
 SimpleFX,https://simplefx.com,ready,"broker, financial services","bitcoin core"
-Slush Pool,https://www.slushpool.com/,ready,mining pool,
+Slush Pool,https://www.slushpool.com/,deployed,mining pool,
 Smartbit,https://www.smartbit.com.au/,ready,explorer,
 SpicePay,https://www.spicepay.com/,wip,"exchange, merchant",
 Stampery,https://stampery.com/,ready,blockchain notarization,
