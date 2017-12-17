@@ -25,7 +25,7 @@ _version bits_ does not require activation, it's simply a way for miners to sign
 
 ## What are soft fork timeouts?
 
-Soft forks have a start time and an _timeout_ during which the proposal is active. The soft fork can only be activated between _start time_ and _timeout_. If the soft fork does not get activated by the _timeout_, the soft fork proposal fails and will not activate even if signalled.
+Soft forks have a start time and a _timeout_ during which the proposal is active. The soft fork can only be activated between _start time_ and _timeout_. If the soft fork does not get activated by the _timeout_, the soft fork proposal fails and will not activate even if signalled.
 
 ## What is the activation workflow?
 
