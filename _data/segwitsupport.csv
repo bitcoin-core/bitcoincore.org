@@ -2,7 +2,6 @@ name,url,status,notes,depends
 1200wd,https://github.com/1200wd/bitcoinlib,wip,library,
 Abe,https://github.com/bitcoin-abe/bitcoin-abe,wip,block explorer,
 Abra,https://www.goabra.com/,planned,remittance,
-AirBitz,https://airbitz.co/,ready,wallet,
 Altana,https://play.google.com/store/apps/details?id=it.inbitcoin.altana,ready,wallet,GreenAddress
 AnycoinDirect,https://anycoindirect.eu,wip,broker,bitcoin core
 Armory,https://github.com/goatpig/BitcoinArmory/,ready,wallet,bitcoin core
@@ -39,12 +38,12 @@ Bitrated,https://www.bitrated.com/,planned,wallet,
 Bitrefill,https://www.bitrefill.com/,ready,merchant,bitcoin core
 BitRocket,https://www.bitrocket.co,ready,ATM operator,
 Bitsler,https://www.bitsler.com,ready,gambling,bitcoin core
-Bitso,https://bitso.com,ready,exchange,bitcoin core
+Bitso,https://bitso.com,deployed,exchange,bitcoin core
 Bitsquare,https://bitsquare.io/,ready,exchange,n/a
 Bitstamp,https://bitstamp.net/,deployed,exchange,
 Bitstop,https://bitstop.co,ready,atm operator,bitcoin core
 Bittylicious,https://bittylicious.com/,ready,exchange,
-Bitwala,https://bitwala.io,wip,remittance,Bitgo
+Bitwala,https://bitwala.io,deployed,remittance,Bitgo
 BitWasp,https://github.com/Bit-Wasp/bitcoin-php,ready,library,
 Bity,https://bity.com,planned,broker,bitcoin core
 Blockchain.info,https://blockchain.info/,ready,"wallet, block explorer",
@@ -52,7 +51,7 @@ Blockonomics,https://www.blockonomics.co/,ready,"bitcoin tracker, block explorer
 Blockstream,https://www.blockstream.com,ready,"satellite, wallet",
 Blocktrail,https://www.blocktrail.com/,planned,"wallet, block explorer",
 BreadWallet,http://breadwallet.com/,wip,wallet,
-BTC.com,https://btc.com/,wip,"block explorer, wallet",
+BTC.com,https://btc.com/,deployed,"block explorer, wallet",
 BTCC,https://www.btcc.com/,ready,"exchange, mining pool, wallet",
 btcd,https://github.com/btcsuite/btcd,ready,"full node",
 btcpool,https://github.com/btccom/btcpool,ready,"pool software",
@@ -69,7 +68,7 @@ CoinCorner,https://www.coincorner.com,wip,exchange,
 CoinFalcon,https://coinfalcon.com,ready,exchange,
 Coinfloor,https://www.coinfloor.co.uk/,wip,exchange,
 CoinGate,https://coingate.com,ready,payment processor,
-CoinMall,https://www.coinmall.com,ready,marketplace,bitcoin core
+CoinMall,https://www.coinmall.com,deployed,marketplace,bitcoin core
 Coinomi,https://coinomi.com/,planned,wallet,
 Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
 Colored-coins,https://www.coloredcoins.org/,planned,"wallet, block explorer, blockchain-protocol-layer",bitcoinjs-lib
@@ -82,6 +81,7 @@ CryptoGames,https://www.crypto-games.net,ready,gambling,bitcoin core
 Digitalbitbox,https://digitalbitbox.com/,ready,hardware wallet,
 DigitalMint,https://www.digitalmint.io,ready,"on-demand, cash-to-bitcoin exchange", bitcoin core
 Dotbit.me,https://dotbit.me,ready,"dot-bit registrar, wallet",Bitcoin Core
+Edge,https://edgesecure.co/,deployed,wallet,
 EI8HT,http://ei8.ht/,planned,wallet,"bitcoin core, bitcoinjs"
 Electrum,https://electrum.org/,ready,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,ready,pool software,n/a
