@@ -68,6 +68,7 @@ CoinCorner,https://www.coincorner.com,wip,exchange,
 CoinFalcon,https://coinfalcon.com,ready,exchange,
 Coinfloor,https://www.coinfloor.co.uk/,wip,exchange,
 CoinGate,https://coingate.com,ready,payment processor,
+CoinMall,https://www.coinmall.com,ready,marketplace,bitcoin core
 Coinomi,https://coinomi.com/,planned,wallet,
 Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
 Colored-coins,https://www.coloredcoins.org/,planned,"wallet, block explorer, blockchain-protocol-layer",bitcoinjs-lib
