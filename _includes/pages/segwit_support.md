@@ -22,11 +22,13 @@
 {% assign ready = '0' %}
 {% assign wip = '0' %}
 {% assign planned = '0' %}
+{% assign deployed = '0' %}
 {% for sws in site.data.segwitsupport %}
 {% assign rowid = rowid | plus:'1' %}
 {% if sws.status == "ready" %}{% assign rowcolour = 'bg-green' %}{% assign ready = ready | plus:'1' %}
 {% elsif sws.status == "wip" %}{% assign rowcolour = 'bg-yellow' %}{% assign wip = wip | plus:'1' %}
 {% elsif sws.status == "planned" %}{% assign rowcolour = 'bg-white' %}{% assign planned = planned | plus:'1' %}
+{% elsif sws.status == "deployed" %}{% assign rowcolour = 'bg-blue' %}{% assign deployed = deployed | plus:'1' %}
 {% endif %}
 <tr>
 <td class="{{ rowcolour }}">#{{ rowid }}</td>
@@ -39,5 +41,5 @@
 </tbody>
 </table>
 
-Segwit Ready: {{ ready }}, work-in-progress: {{ wip }}, planned: {{ planned }}
+Segwit status: deployed: {{ deployed }}, ready: {{ ready }}, work-in-progress: {{ wip }}, planned: {{ planned }}
 
