@@ -27,6 +27,7 @@ BitcoinML,https://github.com/dakk/bitcoinml/,ready,library,n/a
 BitcoinReminder.com,https://bitcoinreminder.com,ready,service,
 bitcore-lib,https://bitcore.io/,wip,library,n/a
 Bitfinex,https://www.bitfinex.com/,ready,exchange,
+Bitflyer,https://www.bitflyer.jp/,no,exchage
 Bitfury,http://bitfury.com/,ready,mining pool,bitcoin core
 BitGo<sup>1</sup>,https://www.bitgo.com/,deployed,wallet,"bitcoinj, bitcoinjs"
 Bither Wallet,https://bither.net/,planned,wallet,
