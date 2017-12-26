@@ -2,6 +2,7 @@ name,url,status,notes,depends
 1200wd,https://github.com/1200wd/bitcoinlib,wip,library,
 Abe,https://github.com/bitcoin-abe/bitcoin-abe,wip,block explorer,
 Abra,https://www.goabra.com/,planned,remittance,
+Abucoins,https://abucoins.com/,ready,exchange,
 AirBitz,https://airbitz.co/,ready,wallet,
 Altana,https://play.google.com/store/apps/details?id=it.inbitcoin.altana,ready,wallet,GreenAddress
 AnycoinDirect,https://anycoindirect.eu,wip,broker,bitcoin core
