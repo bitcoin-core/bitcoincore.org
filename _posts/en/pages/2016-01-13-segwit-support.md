@@ -19,7 +19,7 @@ For more information see: [segwit developer's guide](/en/segwit_wallet_dev/), [u
 
 {% include pages/segwit_support.md %}
 
-<sup>1</sup> BitGo provides wallet services to exchanges such as Bitstamp and Kraken.<br />
+<sup>1</sup> BitGo provides wallet services to exchanges such as Bitstamp and Unocoin.<br />
 <sup>2</sup> GreenAddress provides wallet services to TheRockTrading exchange, BitBoat and CoinBR.<br />
 wip: work-in-progress
 
