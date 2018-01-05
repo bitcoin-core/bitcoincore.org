@@ -90,13 +90,14 @@ Eloipool,https://github.com/luke-jr/eloipool,ready,pool software,n/a
 Exodus,https://www.exodus.io,planned,wallet,bitcoinjs
 F2Pool,https://f2pool.com/,ready,mining pool,
 Fairlay,https://fairlay.com/,planned,Bitcoin Prediction Market,
+Flyp.me,https://flyp.me/,deployed,"accountless exchange",bitcoin core
 Gatecoin,https://gatecoin.com/,ready,exchange,"bitcoin core, nbitcoin"
 GDAX,https://gdax.com/,planned,exchange,
 Gemini,https://gemini.com/,ready,exchange,
 GreenAddress<sup>2</sup>,https://greenaddress.it/,ready,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,ready,wallet,bitcoinj
 Hardblock,https://www.hardblock.net/, ready, Broker, bitcoin core
-HolyTransaction,https://holytransaction.com/,wip,"wallet, crypto-to-crypto exchange", bitcoin core
+HolyTransaction,https://holytransaction.com/,deployed,"wallet, crypto-to-crypto exchange", bitcoin core
 inbitcoin,https://inbitcoin.it/,ready,payment processor,bitcoin core
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,ready,"library, privacy solution, wallet",
 Kaiko,https://www.kaiko.com/,planned,explorer,
