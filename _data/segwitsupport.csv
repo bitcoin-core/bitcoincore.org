@@ -85,7 +85,7 @@ DigitalMint,https://www.digitalmint.io,ready,"on-demand, cash-to-bitcoin exchang
 Dotbit.me,https://dotbit.me,ready,"dot-bit registrar, wallet",Bitcoin Core
 Edge,https://edgesecure.co/,deployed,wallet,
 EI8HT,http://ei8.ht/,planned,wallet,"bitcoin core, bitcoinjs"
-Electrum,https://electrum.org/,ready,wallet,
+Electrum,https://electrum.org/,deployed,wallet,
 Eloipool,https://github.com/luke-jr/eloipool,ready,pool software,n/a
 Exodus,https://www.exodus.io,planned,wallet,bitcoinjs
 F2Pool,https://f2pool.com/,ready,mining pool,
