@@ -75,6 +75,7 @@ Coinomi,https://coinomi.com/,planned,wallet,
 Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
 Colored-coins,https://www.coloredcoins.org/,planned,"wallet, block explorer, blockchain-protocol-layer",bitcoinjs-lib
 Colu,https://www.colu.com/,planned,"wallet, blockchain-application-layer","Colored-coins, bitcoinjs-lib"
+Conio,https://www.conio.com,ready,"wallet, exchange","bitcoin core, pybitcointools"
 CoPay,https://copay.io/,planned,wallet,bitcore-lib
 Counterparty,https://counterparty.io/,ready,"wallet, blockchain-protocol-layer",bitcoin core
 CryptoBG,https://crypto.bg/,ready,exchange,
