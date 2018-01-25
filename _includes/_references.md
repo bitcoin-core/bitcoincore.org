@@ -14,6 +14,7 @@
 [Gregory Maxwell]: https://github.com/gmaxwell
 [Gregory Sanders]: https://github.com/instagibbs
 [Jeremy Rubin]: https://github.com/JeremyRubin
+[Joao Barbosa]: https://github.com/promag
 [John Newbery]: https://github.com/jnewbery
 [Johnathan Corgan]: https://github.com/jmcorgan
 [Johnson Lau]: https://github.com/jl2012
@@ -23,7 +24,7 @@
 [Jorge Timón]: https://github.com/jtimon
 [Joseph Poon]: https://github.com/josephpoon
 [Joshua Simmons]: https://github.com/kadoban
-[Karel Bilek]: https://github.com/runn1ng
+[Karel Bilek]: https://github.com/karel-3d
 [Karl-Johan Alm]: https://github.com/kallewoof
 [Luke Dashjr]: https://github.com/luke-jr
 [Marco Falke]: https://github.com/MarcoFalke
