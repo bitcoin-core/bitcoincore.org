@@ -58,7 +58,7 @@ BTC.com,https://btc.com/,deployed,"block explorer, wallet",
 BTCC,https://www.btcc.com/,ready,"exchange, mining pool, wallet",
 btcd,https://github.com/btcsuite/btcd,ready,"full node",
 btcpool,https://github.com/btccom/btcpool,ready,"pool software",
-BTCTurk,https://btcturk.com/,ready,exchange,"bitcoin core, nbitcoin",
+BTCTurk,https://btcturk.com/,deployed,exchange,"bitcoin core, nbitcoin",
 bustabit,https://www.bustabit.com,wip,gambling,bitcoin core
 Bylls,https://bylls.com,wip,payment processor,bitcore
 cgminer,https://github.com/ckolivas/cgminer,ready,mining software,
