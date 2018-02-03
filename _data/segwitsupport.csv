@@ -26,7 +26,7 @@ BitcoinJS,http://bitcoinjs.org/,ready,library,n/a
 BitcoinML,https://github.com/dakk/bitcoinml/,ready,library,n/a
 BitcoinReminder.com,https://bitcoinreminder.com,ready,service,
 bitcore-lib,https://bitcore.io/,wip,library,n/a
-Bitelon,https://www.bitelon.com/,deployed,exchange,BitGo,
+Bitelon,https://www.bitelon.com/,deployed,exchange,BitGo
 Bitfinex,https://www.bitfinex.com/,ready,exchange,
 Bitfury,http://bitfury.com/,ready,mining pool,bitcoin core
 BitGo<sup>1</sup>,https://www.bitgo.com/,deployed,wallet,"bitcoinj, bitcoinjs"
