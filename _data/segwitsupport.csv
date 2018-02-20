@@ -3,6 +3,7 @@ name,url,status,notes,depends
 Abe,https://github.com/bitcoin-abe/bitcoin-abe,wip,block explorer,
 Abra,https://www.goabra.com/,planned,remittance,
 Altana,https://play.google.com/store/apps/details?id=it.inbitcoin.altana,ready,wallet,GreenAddress
+Apirone.com,https://apirone.com/,deployed,"SegWit Payment Processing Provider",bitcoin core
 AnycoinDirect,https://anycoindirect.eu,wip,broker,bitcoin core
 Armory,https://github.com/goatpig/BitcoinArmory/,ready,wallet,bitcoin core
 Authparty,http://authparty.io,planned,authentication library,bitcoin core
