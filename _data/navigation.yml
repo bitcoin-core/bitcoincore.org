@@ -294,12 +294,15 @@ ja:
           faq:
             title: "FAQ"
             url: "/en/about/sponsorship/faq/"
+  download:
+      title: "Download"
+      url: "/ja/download"
   blog:
     title: "blog"
-    url:   "/en/blog/"
+    url:   "/ja/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/ja/releases/"
   faq:
     title: "FAQs"
     submenu: true
@@ -309,10 +312,10 @@ ja:
         url: "/en/2015/12/23/capacity-increases-faq/"
       segwit-faq:
         title: "Segwit"
-        url: "/en/2016/01/26/segwit-benefits/"
+        url: "/ja/2016/01/26/segwit-benefits/"
       segwit-dev:
         title: "Segwit dev guide"
-        url: "/en/segwit_wallet_dev/"
+        url: "/ja/segwit_wallet_dev/"
       optin-rbf:
         title: "Opt-in RBF"
         url: "/en/faq/optin_rbf/"
