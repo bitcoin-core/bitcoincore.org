@@ -100,6 +100,7 @@
 [BIP152]: https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki
 [BIP157]: https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki
 [BIP158]: https://github.com/bitcoin/bips/blob/master/bip-0158.mediawiki
+[BIP173]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
 [#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87

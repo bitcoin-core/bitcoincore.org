@@ -1,12 +1,11 @@
 ---
-version: 3
+version: 4
 title: Segregated Witness Wallet Development Guide
 name: segwit-wallet-dev
 type: pages
 layout: page
 lang: en
 permalink: /en/segwit_wallet_dev/
-version: 1
 ---
 {% include _toc.html %}
 {% include _references.md %}
@@ -59,7 +58,7 @@ A wallet MUST implement all the features in this section, in order to be conside
 * If a transaction does not have any witness data, its <code>wtxid</code> is same as the <code>txid</code>.
 * The <code>txid</code> remains the primary identifier of a transaction:
     * It MUST be used in the <code>txin</code> when referring to a previous output.
-    * If a wallet or service is currently using <code>txid</code> to identify transactions, it is expected to use the same after upgrade.
+    * If a wallet or service is currently using <code>txid</code> to identify transactions, it is expected to continue using this with segwit.
 
 #### Signature Generation and Verification for P2SH-P2WPKH
 
@@ -83,8 +82,7 @@ A wallet MUST implement all the features in this section, in order to be conside
 
 #### User Privacy
 
-* In the early days just after segwit is activated, there may be limited number of segwit transactions in the network.
-* Using segwit transaction when it is uncommon may make Bitcoin tracking easier.
+* Until segwit transactions are commonplace, this transaction type may make Bitcoin tracking easier.
 * Using P2SH-P2WPKH as default change output may also have an impact on privacy.
 
 #### Transaction Fee Estimation
@@ -96,17 +94,13 @@ A wallet MUST implement all the features in this section, in order to be conside
 * Developers should be careful not to make an off-by-4-times mistake in fee estimation.
 
 
-#### Upgrade Safety
+#### Activation {#upgrade-safety}
 
-* End users MUST NOT be allowed to generate any P2SH-P2WPKH or other segwit addresses before segwit is fully activated on the network. Before activation, using P2SH-P2WPKH or other segwit addresses may lead to permanent fund loss
-* Similarly, change MUST NOT be sent to a segwit output before activation
-* Activation of segwit is defined by [BIP9][]. After 15 Nov 2016 and before 15 Nov 2017 UTC, if in a full retarget cycle at least 1916 out of 2016 blocks is signaling readiness, segwit will be activated in the retarget cycle after the next one
-* If a wallet does not have the ability to follow the [BIP9][] signal, the upgraded version should not be released to end users until it is activated
-* If there were any concerns that some miners may not correctly enforce the new rules, release of the upgraded wallet may be delayed until evidence has shown that vast majority (if not all) miners are following the new rules. Violations would be very obvious, shown as invalid orphaned blocks.
+* As of block height 481824, all SegWit ready nodes started enforcing the new SegWit consensus rules.
 
 #### Backward Compatibility
 
-* Sending and receiving P2PKH payment (address with prefix 1) should remain to be supported.
+* Sending and receiving legacy P2PKH payment (address with prefix 1) should continue to be supported.
 
 
 ### Complex script support
@@ -115,7 +109,7 @@ If a wallet supports script types other than just single signature, such as mult
 
 #### Creation of P2SH-P2WSH Address
 
-* A P2SH-P2WSH address is comparable to Bitcoin's original P2SH address, which allows representation of arbritarily complex scripts with a fixed size address.
+* A P2SH-P2WSH address is comparable to Bitcoin's original P2SH address, which allows representation of arbitrarily complex scripts with a fixed size address.
 * Like any other P2SH and P2SH-P2WPKH address, P2SH-P2WSH address has prefix 3. They are indistinguishable until the UTXO is spent
 * To create a P2SH-P2WSH address:
     1. Define a script, called (<code>witnessScript</code>)
@@ -124,9 +118,9 @@ If a wallet supports script types other than just single signature, such as mult
     4. Same as any other P2SH, the <code>scripPubKey</code> is <code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>, and the address is the corresponding P2SH address with prefix 3.
 * Restrictions on the script
     * The script evaluation must not fail, and MUST leave one and only one TRUE stack item after evaluation. Otherwise, the evaluation is failed.
-    * Any public key inside P2SH-P2WSH scripts MUST be compressed key, or fund may be lost permenantly.
-    * If OP_IF or OP_NOTIF is used, it argument MUST be either an empty vector (for false) or <code>0x01</code> (for true). Use of other value may lead to permenant fund loss. ([BIP draft](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-August/013014.html))
-    * If an OP_CHECKSIG or OP_CHECKMULTISIG is returning a fail, all signature(s) must be empty vector(s). Otherwise, fund may be lost permenantly. ([BIP146][])
+    * Any public key inside P2SH-P2WSH scripts MUST be compressed key, or fund may be lost permanently.
+    * If OP_IF or OP_NOTIF is used, it argument MUST be either an empty vector (for false) or <code>0x01</code> (for true). Use of other value may lead to permanent fund loss. ([BIP draft](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-August/013014.html))
+    * If an OP_CHECKSIG or OP_CHECKMULTISIG is returning a fail, all signature(s) must be empty vector(s). Otherwise, fund may be lost permanently. ([BIP146][])
     * There is a default policy limit for the <code>witnessScript</code> at 3600 bytes. Except the <code>witnessScript</code>, there could be at most 100 witness stack items, with at most 80 bytes each. Transactions excessing these limits may not be relayed nor included in a block
     * Many of the original scripts consensus limitations, such as 10000 bytes script size, 201 <code>nOpCount</code>, are still applied to P2SH-P2WSH
     * The 520 bytes script size limit for P2SH is not applicable to P2SH-P2WSH. It is replaced by the 3600 bytes policy limit and 10000 bytes consensus limit.
@@ -138,12 +132,12 @@ If a wallet supports script types other than just single signature, such as mult
     * The last witness item of the corresponding witness field MUST be the <code>witnessScript</code>
     * The new [BIP143][] signature generation algorithm is applied:
         * Without using any OP_CODESEPARATOR, the <code>scriptCode</code> is <code>witnessScript</code> preceeded by a <code>compactSize</code> integer for the size of <code>witnessScript</code>. For example, if the script is OP_1 (<code>0x51</code>), the <code>scriptCode</code> being serialized is (<code>0x0151</code>)
-        * For any unusal scripts containing OP_CODESEPARATOR, please refer to [BIP143][] for the exact semantics
+        * For any unusual scripts containing OP_CODESEPARATOR, please refer to [BIP143][] for the exact semantics
     * Any witness stack items before the <code>witnessScript</code> are used as the input stack for script evaluation. The input stack is not interpreted as script. For example, there is no need to use a <code>0x4c</code> (OP_PUSHDATA1) to "push" a big item.
     * To verify the correctness of signature generation and stack serialization, please always test against the examples in [BIP143][]
     * [Example](http://n.bitcoin.ninja/checktx?txid=954f43dbb30ad8024981c07d1f5eb6c9fd461e2cf1760dd1283f052af746fc88)
 
-### Advanced designs
+### Segwit native addresses (optional) {#advanced-designs}
 
 The following functions are not required for initial segwit support.
 
@@ -161,13 +155,14 @@ The following functions are not required for initial segwit support.
 * When spending a native P2WSH, the <code>scriptSig</code> MUST be empty, and the witness stack format and signature generating rules are same as P2SH-P2WSH (including the requirement of using compressed public key)
 * [Example](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
 
-#### Why and How to Use Native P2WPKH and P2WSH?
+#### Why and How to Use Native (Bech32) P2WPKH and P2WSH?
 
-* There is no address format for native P2WPKH and P2WSH. BIP142 is deferred and is likely to be implemented in a completely different way. Another attempt, [BIP173][] (Bech32), has 'Draft' status as of June 2017. 
+* [BIP173][] proposes a checksummed base32 format (Bech32) for native P2WPKH and P2WSH addresses.
+* Support for Bech32 addresses was included in Bitcoin Core v0.16.0
 * Comparing with the P2SH versions, the transaction <code>vsize</code> of native versions is smaller in most cases, and therefore less fee may be required
 * Native P2WPKH and P2WSH may be used with raw <code>scriptPubKey</code> protocols, such as the Payment Protocol (BIP70). However, it may affect the privacy of the payer and recipient (see below).
-* Native P2WPKH and P2WSH may be used as default change address, but this may allow other people identifying the change easily (see below)
-* It is expected that the use of native P2WPKH and P2WSH would be uncommon at the beginning, which may cause privacy concerns among the users.
+* Native P2WPKH and P2WSH may be used as default change address, but this may allow other people to identify the change easily (see below)
+* Until native P2WPKH and P2WSH are widely used, these address types may cause privacy concerns among users.
 
 
 ### Scripts and Transactions Examples
@@ -175,6 +170,7 @@ The following functions are not required for initial segwit support.
 * [Examples of different witness transaction types and transaction validity checking tool](http://n.bitcoin.ninja/checktx)
 * [BIP141][]
 * [BIP143][]
+* [BIP173][]
 * [Script tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/script_tests.json)
 * [Valid transaction tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/tx_valid.json)
 * [Invalid transaction tests](https://github.com/bitcoin/bitcoin/blob/master/src/test/data/tx_invalid.json)
