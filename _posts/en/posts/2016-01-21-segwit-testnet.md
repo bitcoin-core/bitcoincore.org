@@ -22,7 +22,7 @@ This effort was initiated by Dr. Pieter Wuille, but included contributions from 
 
 ## Bitcoin Core Ecosystem
 
-There is broad excitement and anticipation as far as what providers and other exchange operators will create with the fundamental developments and innovations included in this release. So far, the [most popular wallets][segwit_adoption] and supporting libraries have stated they will support segwit including Ledger, Trezor, Electrum, and Bitgo. Additionally, work on numerous other libraries such as bitcoinj, bitcoinjs, pycoin and bitcore has already begun.
+There is broad excitement and anticipation as far as what providers and other exchange operators will create with the fundamental developments and innovations included in this release. So far, the most popular wallets and supporting libraries have stated they will support segwit including Ledger, Trezor, Electrum, and Bitgo. Additionally, work on numerous other libraries such as bitcoinj, bitcoinjs, pycoin and bitcore has already begun.
 
 A faucet is available for "segnet" coins [here](https://segwit.greenaddress.it/faucet/).
 
@@ -36,8 +36,6 @@ Early previews of third party wallet support are available at:
 Please join the `segwit-dev` IRC channel on irc.freenode.net.
 
 Wallet providers should read the [migration guide](/en/segwit_wallet_dev).
-
-If you are a wallet user interested in following the status of your wallet’s implementation, please [follow their progress][segwit_adoption] which will be regularly updated. 
 
 ## Testing
 
@@ -69,5 +67,4 @@ Once compiled, add `-segnet` to the standard `bitcoind` and `bitcoin-cli` comman
 
 [FAQ]: https://bitcoincore.org/en/2015/12/23/capacity-increases-faq
 [roadmap]: http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html
-[segwit_adoption]: /en/segwit_adoption
 

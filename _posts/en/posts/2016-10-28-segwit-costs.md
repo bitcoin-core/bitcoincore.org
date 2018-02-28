@@ -118,7 +118,7 @@ In order to reduce the chances of these risks occurring when segwit is activated
    - segnet1 through segnet4 -- tested implementation of segwit as a soft-fork, between January and May 2016
    - testnet3 -- segwit activated on the standard testnet in May 2016
 
- * Alternative implementations: the segwit BIPs have been reimplemented in [btcd](https://github.com/btcsuite/btcd/pull/656) (Go) and [Bcoin](https://medium.com/purse-essays/introducing-bcoin-fdfcb22dfa34) (Javascript), as well as in [various wallets and libraries](/en/segwit_adoption/).  Independent reimplementation helps shake out unstated assumptions and ambiguities in the design, and avoid bugs that may result from them.
+ * Alternative implementations: the segwit BIPs have been reimplemented in [btcd](https://github.com/btcsuite/btcd/pull/656) (Go) and [Bcoin](https://medium.com/purse-essays/introducing-bcoin-fdfcb22dfa34) (Javascript), as well as in various wallets and libraries.  Independent reimplementation helps shake out unstated assumptions and ambiguities in the design, and avoid bugs that may result from them.
 
 ### Mitigation
 

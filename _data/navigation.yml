@@ -68,9 +68,6 @@ en:
       contribute-code:
         title: "contributing code"
         url:   "/en/faq/contributing-code/"
-      segwit:
-        title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
@@ -159,9 +156,6 @@ zh_CN:
       contribute-code:
         title: "贡献码"
         url:   "/en/faq/contributing-code/"
-      segwit:
-        title: "SegWit 采用"
-        url:   "/zh_CN/segwit_adoption/"
       meetings:
         title: "会议"
         url:   "/zh_CN/meetings/"
@@ -247,9 +241,6 @@ zh_TW:
       contribute-code:
         title: "contributing code"
         url:   "/en/faq/contributing-code/"
-      segwit:
-        title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
@@ -335,9 +326,6 @@ ja:
       contribute-code:
         title: "contributing code"
         url:   "/en/faq/contributing-code/"
-      segwit:
-        title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
