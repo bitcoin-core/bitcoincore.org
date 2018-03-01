@@ -32,12 +32,16 @@
                     {% endif %}
                 {% endfor %}
                 {% assign posts=site.posts | where:"name", page.name | sort: 'path' %}
+                {% assign releases=site.releases | where:"name", page.name | sort: 'path' %}
 
                 <li id="langselect" class="lang">
                     <select onchange="window.location=this.value;">
                         <option value="{{ post.url }}">{{ site.data.languages[page.lang] }}</option>
                         {% for post in posts %}
                         {% if post.lang != page.lang %}<option value="{{ post.url }}">{{ site.data.languages[post.lang] }}</option>{% endif %}
+                        {% endfor %}
+                        {% for release in releases %}
+                        {% if release.lang != page.lang %}<option value="{{ release.url }}">{{ site.data.languages[release.lang] }}</option>{% endif %}
                         {% endfor %}
                     </select>
                 </li>
