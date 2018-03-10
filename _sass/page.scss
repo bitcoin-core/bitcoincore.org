@@ -689,6 +689,7 @@ li.lang:hover {
 	}
 	h3 {
 		margin: 0;
+		margin-top: 2px;
 		padding: 5px 10px;
 		color: $white;
 		@include font-rem(16);
@@ -733,7 +734,7 @@ li.lang:hover {
 }
 
 /* TOC trigger for collapsing */
-#drawer {
+.toc-drawer {
 	max-height: 100%;
 	overflow: hidden;
 	&.js-hidden {

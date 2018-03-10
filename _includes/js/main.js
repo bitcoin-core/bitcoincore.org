@@ -52,7 +52,11 @@ $(function() {
 
 // Table of Contents toggle
 $(function() {
-  $(".toc h3").click(function () {
-    $("#drawer").toggleClass("js-hidden");
+  $(".toc header").each(function(){
+    var header = $(this);
+    var drawer = header.find(".toc-drawer");
+    header.find(".toc-header").click(function(){
+      drawer.toggleClass("js-hidden");
+    });
   });
 });
