@@ -742,6 +742,11 @@ li.lang:hover {
 	}
 }
 
+.doc pre {
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
 /* Image grid - not used */
 .image-grid {
 	@include clearfix;
