@@ -29,7 +29,8 @@ BitcoinReminder.com,https://bitcoinreminder.com,ready,service,
 bitcore-lib,https://bitcore.io/,wip,library,n/a
 Bitelon,https://www.bitelon.com/,deployed,exchange,BitGo
 Bitfinex,https://www.bitfinex.com/,ready,exchange,
-Bitfury,http://bitfury.com/,ready,mining pool,bitcoin core
+Bitflyer,https://www.bitflyer.jp/,wip,exchage,
+Bitfury,http://bitfury.com/,ready,mining pool,bitcoin core,
 BitGo<sup>1</sup>,https://www.bitgo.com/,deployed,wallet,"bitcoinj, bitcoinjs"
 Bither Wallet,https://bither.net/,planned,wallet,
 BitKong,https://bitkong.com/,ready,gambling,NBitcoin
