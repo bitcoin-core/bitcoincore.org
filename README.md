@@ -47,8 +47,8 @@ permalink: /en/2016/01/01/short-title
 
 ## Building
 
-This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater
-and then run the following commands:
+This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup)
+and then run the following commands.  Note that you can easily run multiple versions of Ruby on the same system if you install them through [rvm](https://rvm.io/).
 
     gem install bundle
     bundle install
