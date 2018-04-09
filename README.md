@@ -47,8 +47,20 @@ permalink: /en/2016/01/01/short-title
 
 ## Building
 
-This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater
-and then run the following commands:
+This website is based on [Jekyll](https://jekyllrb.com/).  To build
+locally, [install Ruby 2.2.2](https://gorails.com/setup) using system
+packages, [rvm](https://rvm.io), or another method.  Then clone this
+repository and change directory into it:
+
+    git clone https://github.com/bitcoin-core/bitcoincore.org.git
+    cd bitcoincore.org
+
+Install the `bundle` utility using the Ruby package manager, `gem`, and
+then use `bundle` to install the rest of the Ruby packages needed to
+build this site.  Note, depending on your system configuration, you may
+need to run `gem` as the superuser by putting "sudo" followed by a space
+before the `gem` command.  You shouldn't need to use `sudo` with the
+`bundle` command.
 
     gem install bundle
     bundle install
@@ -66,7 +78,8 @@ pages dated in the future (such as prepared release announcements).
 
 To test the site:
 
-    bundle exec jekyll build --future --drafts --unpublished && bundle exec htmlproof ./_site
+    bundle exec jekyll build --future --drafts --unpublished
+    bundle exec htmlproof --disable-external --url-ignore '/^\/bin/.*/' ./_site
 
 The additional parameters to `jekyll build` ensure that all possible
 pages are built and checked.
