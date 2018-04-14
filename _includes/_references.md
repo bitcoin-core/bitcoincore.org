@@ -14,6 +14,7 @@
 [Gregory Maxwell]: https://github.com/gmaxwell
 [Gregory Sanders]: https://github.com/instagibbs
 [Jeremy Rubin]: https://github.com/JeremyRubin
+[Jim Posen]: https://github.com/jimpo
 [Joao Barbosa]: https://github.com/promag
 [John Newbery]: https://github.com/jnewbery
 [Johnathan Corgan]: https://github.com/jmcorgan
@@ -37,6 +38,7 @@
 [Pavel Janik]: https://github.com/paveljanik
 [Peter Todd]: https://github.com/petertodd
 [Pieter Wuille]: https://github.com/sipa
+[Randolf Richardson]: https://github.com/randolf
 [Russell Yanofsky]: https://github.com/ryanofsky
 [Saleem Rashid]: https://github.com/saleemrashid
 [Samuel Dobson]: https://github.com/MeshCollider
@@ -94,6 +96,8 @@
 [BIP150]: https://github.com/bitcoin/bips/blob/master/bip-0150.mediawiki
 [BIP151]: https://github.com/bitcoin/bips/blob/master/bip-0151.mediawiki
 [BIP152]: https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki
+[BIP157]: https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki
+[BIP158]: https://github.com/bitcoin/bips/blob/master/bip-0158.mediawiki
 
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
 [#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
