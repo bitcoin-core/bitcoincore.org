@@ -74,7 +74,7 @@ CoinFalcon,https://coinfalcon.com,ready,exchange,
 Coinfloor,https://www.coinfloor.co.uk/,wip,exchange,
 CoinGate,https://coingate.com,deployed,payment processor,
 CoinMall,https://www.coinmall.com,deployed,marketplace,bitcoin core
-Coinomi,https://coinomi.com/,planned,wallet,
+Coinomi,https://coinomi.com/,deployed,wallet,
 Coinsource,http://www.coinsource.net/,ready,bitcoin atm network,
 Colored-coins,https://www.coloredcoins.org/,planned,"wallet, block explorer, blockchain-protocol-layer",bitcoinjs-lib
 Colu,https://www.colu.com/,planned,"wallet, blockchain-application-layer","Colored-coins, bitcoinjs-lib"
