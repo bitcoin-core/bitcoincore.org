@@ -12,7 +12,7 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
-gems:
+plugins:
   - jekyll-redirect-from
 
 kramdown:
@@ -64,6 +64,8 @@ exclude:
   - vendor  # Travis CI creates a vendor/ dir with files we shouldn't render
   - assets/images/assets.yml
   - contrib
+  - Gemfile
+  - Gemfile.lock
 
 defaults:
   -

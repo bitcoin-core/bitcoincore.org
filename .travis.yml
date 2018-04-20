@@ -16,7 +16,7 @@ cache: bundler
 ## Build all possible jekyll pages for use with link checking.
 script:
     - bundle exec jekyll build --future --drafts --unpublished
-    - bundle exec htmlproof --disable-external --url-ignore '/^\/bin/.*/' ./_site
+    - bundle exec htmlproofer --disable-external --url-ignore '/^\/bin/.*/' ./_site
     - contrib/qa/test-binary-availability.sh && echo "SUCCESS checking URLs for binaries"
 
 env:
