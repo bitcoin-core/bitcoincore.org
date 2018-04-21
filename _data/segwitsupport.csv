@@ -101,6 +101,7 @@ Gemini,https://gemini.com/,ready,exchange,
 GreenAddress<sup>2</sup>,https://greenaddress.it/,ready,wallet,"pycoin, bitcoinjs"
 GreenBits,https://www.greenbits.com/,ready,wallet,bitcoinj
 Hardblock,https://www.hardblock.net/, ready, Broker, bitcoin core
+Helperbit,https://helperbit.com/,ready,"P2P donation platform","bitcoinjs, bitcoin core"
 HolyTransaction,https://holytransaction.com/,deployed,"wallet, crypto-to-crypto exchange", bitcoin core
 inbitcoin,https://inbitcoin.it/,ready,payment processor,bitcoin core
 JoinMarket,https://github.com/JoinMarket-Org/joinmarket,ready,"library, privacy solution, wallet",
