@@ -1,4 +1,5 @@
 [Adam Back]: http://www.cypherspace.org/adam/
+[Anthony Towns]: https://github.com/ajtowns
 [Alex Morcos]: https://github.com/morcos
 [Andrew Chow]: https://github.com/achow101
 [Antti Majakivi]: https://github.com/anduck
@@ -13,6 +14,7 @@
 [Glenn Willen]: https://github.com/gwillen
 [Gregory Maxwell]: https://github.com/gmaxwell
 [Gregory Sanders]: https://github.com/instagibbs
+[James O'Beirne]: https://github.com/jamesob
 [Jeremy Rubin]: https://github.com/JeremyRubin
 [Jim Posen]: https://github.com/jimpo
 [Joao Barbosa]: https://github.com/promag
@@ -29,6 +31,7 @@
 [Karl-Johan Alm]: https://github.com/kallewoof
 [Luke Dashjr]: https://github.com/luke-jr
 [Marco Falke]: https://github.com/MarcoFalke
+[Mark Erhardt]: https://github.com/Xekyo
 [Mark Friedenbach]: https://github.com/maaku
 [Matt Corallo]: https://github.com/TheBlueMatt
 [Michagogo]: https://github.com/Michagogo
@@ -48,7 +51,6 @@
 [Warren Togami]: https://github.com/wtogami
 [Wladimir van der Laan]: https://github.com/laanwj
 [Zooko Wilcox]: https://github.com/zooko
-[Murch]: https://github.com/Xekyo
 
 [BIP1]: https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki
 [BIP2]: https://github.com/bitcoin/bips/blob/master/bip-0002.mediawiki
