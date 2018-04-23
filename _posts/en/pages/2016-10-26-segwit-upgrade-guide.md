@@ -8,6 +8,9 @@ lang: en
 permalink: /en/2016/10/27/segwit-upgrade-guide/
 version: 1
 excerpt: Almost two years of iterative design, development, and testing has gone into the version of segwit being released in Bitcoin Core 0.13.1, with much of the effort over the last year focused on making it as easy as possible for existing Bitcoin users, businesses, developers, and miners to upgrade to segwit.
+redirect_from:
+  - /en/segwit_adoption/
+  - /zh_CN/segwit_adoption/
 ---
 {% include _toc.html %}
 {% include _references.md %}
@@ -204,7 +207,7 @@ Most implementation details for BIPs 141, 143, 144, and 145 may be found in [Bit
 
 For testing changes on a segwit-enabled network, testnet (testnet3) has supported segwit for several months now and includes a large number of segwit blocks, including blocks that have very nearly the maximum block size allowed for by segwit.  Bitcoin Core’s regression-testing (regtest) mode also supports segwit by default in Bitcoin Core 0.13.0 and 0.13.1.
 
-A number of free and open source software Bitcoin wallets and packages besides Bitcoin Core have also already [added segwit compatibility](https://bitcoincore.org/en/segwit_adoption/) or have segwit-compatible code ready to deploy, so you may be able to use their code changes as an example for updating your software if their copyright license is compatible with your code.
+A number of free and open source software Bitcoin wallets and packages besides Bitcoin Core have also already added segwit compatibility or have segwit-compatible code ready to deploy, so you may be able to use their code changes as an example for updating your software if their copyright license is compatible with your code.
 
 **Questions?** Bitcoin development questions may be asked in the #bitcoin-dev IRC chatroom on irc.freenode.net.  Questions may also be asked on Bitcoin.StackExchange.com and the BitcoinTalk.org [technical discussion board.](https://bitcointalk.org/index.php?board=6.0)
 

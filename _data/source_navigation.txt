@@ -62,9 +62,6 @@ en:
       contribute-code:
         title: "contributing code"
         url:   "/en/faq/contributing-code/"
-      segwit:
-        title: "SegWit Adoption"
-        url:   "/en/segwit_adoption/"
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
