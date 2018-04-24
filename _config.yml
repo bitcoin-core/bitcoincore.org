@@ -85,3 +85,5 @@ defaults:
 collections:
   releases:
     output: true
+
+theme: jekyll-theme-cayman
