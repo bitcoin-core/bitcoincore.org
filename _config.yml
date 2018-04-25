@@ -85,6 +85,7 @@ defaults:
       path: ""
       type: doc
     values:
+      layout: doc
       lang: en
       share: true
 

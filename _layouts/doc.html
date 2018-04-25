@@ -1,0 +1,65 @@
+<!doctype html>
+{% include _browser_magic.html %}
+<head>
+{% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
+{% include _head.html %}
+</head>
+
+<body class="page">
+
+{% include _browser-upgrade.html %}
+
+{% include _navigation.html %}
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    <div>
+      <p>
+        Documentation exported from <a href="https://github.com/bitcoin/bitcoin/tree/v{{page.btcversion}}">Bitcoin Core {{page.btcversion}}</a>
+      </p>
+    </div>
+  </div>
+  <article class="page">
+    <h1>{{ custom_title }}</h1>
+    <div class="article-wrap">
+      {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
+      <section class="toc">
+      {% for group in groups %}
+        <header>
+          <h3 class="toc-header">
+            <i class="fa fa-book"></i>
+            {{ group.name }}
+          </h3>
+          <div class="toc-drawer js-hidden">
+            <ul>
+              {% for article in group.items %}
+                <li><a href="{{article.url}}">{{article.name}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </header>
+      {% endfor %}
+      </section>
+
+      <!-- { % include _istranslated.html % } -->
+<span class="doc">
+{% highlight text %}{{ content }}{% endhighlight %}
+</span>
+      {% if page.share != false %}
+        <hr />
+        {% include _social-share.html %}
+      {% endif %}
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#index -->
+
+<div class="footer-wrap">
+  <footer>
+    {% include _footer.html %}
+  </footer> 
+</div><!-- /.footer-wrap -->
+
+{% include _scripts.html %}
+
+</body>
+</html>
