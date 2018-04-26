@@ -27,6 +27,27 @@
                               {% endif %}
 
                           {% endfor %}
+                          {% if link[0] == 'dev' %}
+                            <li>
+                              {% for article in site.doc %}
+                                {% if article.btcversion == "index" %}
+                                  <a href="{{article.url}}">RPC Docs</a>
+                                {% endif %}
+                              {% endfor %}
+                              {% assign groups = site.doc | group_by:"btcversion" | sort: "name" %}
+                              <ul>
+                                {% for group in groups %}
+                                  {% if group.name != "index" %}
+                                    {% for article in group.items %}
+                                      {% if article.name == "index" %}
+                                        <li><a href="{{article.url}}">{{group.name}}</a></li>
+                                      {% endif %}
+                                    {% endfor %}
+                                  {% endif %}
+                                {% endfor %}
+                              </ul>
+                            </li>
+                          {% endif %}
                           </ul>
                       </li>
                     {% endif %}
