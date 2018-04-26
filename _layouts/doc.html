@@ -1,7 +1,15 @@
 <!doctype html>
 {% include _browser_magic.html %}
 <head>
-{% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
+{% if page.name != "index" and page.name != "rpcindex" %}
+  {% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
+{% else %}
+  {% if page.btcversion != "index" %}
+    {% assign custom_title = "Bitcoin Core " | append: page.btcversion | append: " RPC" %}
+  {% else %}
+    {% assign custom_title = "Bitcoin Core RPC" %}
+  {% endif %}
+{% endif %}
 {% include _head.html %}
 </head>
 
@@ -15,36 +23,63 @@
   <div class="article-author-side">
     <div>
       <p>
-        Documentation exported from <a href="https://github.com/bitcoin/bitcoin/tree/v{{page.btcversion}}">Bitcoin Core {{page.btcversion}}</a>
+        {% if page.btcversion != "index" %}
+          Documentation exported from <a href="https://github.com/bitcoin/bitcoin/tree/v{{page.btcversion}}">Bitcoin Core {{page.btcversion}}</a>
+        {% endif %}
       </p>
     </div>
   </div>
   <article class="page">
     <h1>{{ custom_title }}</h1>
     <div class="article-wrap">
-      {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
-      <section class="toc">
-      {% for group in groups %}
-        <header>
-          <h3 class="toc-header">
-            <i class="fa fa-book"></i>
-            {{ group.name }}
-          </h3>
-          <div class="toc-drawer js-hidden">
-            <ul>
-              {% for article in group.items %}
-                <li><a href="{{article.url}}">{{article.name}}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        </header>
-      {% endfor %}
-      </section>
+      {% if page.btcversion != "index" %}
+        {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
+        <section class="toc">
+        {% for group in groups %}
+          {% if group.name != "index" %}
+            <header>
+              <h3 class="toc-header">
+                <i class="fa fa-book"></i>
+                {{ group.name }}
+              </h3>
+              <div class="toc-drawer js-hidden">
+                <ul>
+                  {% for article in group.items %}
+                    <li><a href="{{article.url}}">{{article.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </header>
+          {% endif %}
+        {% endfor %}
+        </section>
+      {% endif %}
 
       <!-- { % include _istranslated.html % } -->
+
+      {% if page.name != "index" and page.name != "rpcindex" %}
 <span class="doc">
 {% highlight text %}{{ content }}{% endhighlight %}
 </span>
+      {% else %}
+        {% if page.btcversion != "index" %}
+          Select a command group in the menu.
+        {% else %}
+          Following docs are available:
+          {% assign groups = site.doc | group_by:"btcversion" | sort: "name" %}
+          <ul>
+            {% for group in groups %}
+              {% if group.name != "index" %}
+                {% for article in group.items %}
+                  {% if article.name == "index" %}
+                    <li><a href="{{article.url}}">{{group.name}}</a></li>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endif %}
       {% if page.share != false %}
         <hr />
         {% include _social-share.html %}

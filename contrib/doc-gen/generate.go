@@ -105,6 +105,31 @@ func main() {
 				log.Fatalf("Cannot make command file %s: %s", name, err.Error())
 			}
 		}
+		address := fmt.Sprintf("../../_doc/en/%s/rpc/index.html", VERSION)
+		permalink := fmt.Sprintf("en/doc/%s/rpc/", VERSION)
+		err = tmpl.Execute(open(address), CommandData{
+			Version:     VERSION,
+			Name:        "rpcindex",
+			Description: "",
+			Group:       "index",
+			Permalink:   permalink,
+		})
+		if err != nil {
+			log.Fatalf("Cannot make index file: %s", err.Error())
+		}
+
+		address = fmt.Sprintf("../../_doc/en/%s/index.html", VERSION)
+		permalink = fmt.Sprintf("en/doc/%s/", VERSION)
+		err = tmpl.Execute(open(address), CommandData{
+			Version:     VERSION,
+			Name:        "index",
+			Description: "",
+			Group:       "index",
+			Permalink:   permalink,
+		})
+		if err != nil {
+			log.Fatalf("Cannot make index file: %s", err.Error())
+		}
 	}
 }
 
