@@ -38,7 +38,8 @@ The main challenge is defined by Pieter Wuille in his Scaling Bitcoin Milan pres
 
 Assume a 2-of-2 multisig scheme using input public keys Q1 and Q2. Rather than announce their key as Q2 to be combined with Q1, a malicious participant could provide, during the interaction phase, Q2-Q1 and effectively cancel out the other user’s key. Any fund sent to the joint public key is now only spendable by the owner of the Q2 key without the owner of Q1 even being aware of what is going on. 
 
-Fortunately, a solution is now available which involves multiplying every key used during the setup with a hash based on itself and all other keys involved before signing. This process is called delinearization. A proof of the security of this scheme is currently undergoing peer-review and will be formally described in an upcoming whitepaper. 
+Fortunately, a solution is now available which involves multiplying every key used during the setup with a hash based on itself and all other keys involved before signing. This process is called delinearization. A proof of the security of this scheme is currently undergoing peer-review and will be formally described in an upcoming whitepaper.
+(Update December 2017: The paper was rejected because it solved a problem too similar to a previously solved problem. See <a href="https://github.com/kanzure/diyhpluswiki/blob/master/transcripts/bitcoin-core-dev-tech/2017-09-06-signature-aggregation.mdwn">the transcript</a> of the <a href="https://coredev.tech/sf_5-7_sept_17.html">CoreDev Event 2017-09-06</a>. The Bellare-Neven paper from 2006 <a href="https://github.com/bitcoin-core/secp256k1/pull/461">is being implemented</a>.)
 
 In the near term, Schnorr signatures are being considered as viable replacement for two important functions of the Bitcoin protocol: OP_CHECKSIG & OP_CHECKMULTISIG. 
 
