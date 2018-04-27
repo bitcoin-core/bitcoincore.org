@@ -34,6 +34,7 @@
 [Mark Erhardt]: https://github.com/Xekyo
 [Mark Friedenbach]: https://github.com/maaku
 [Matt Corallo]: https://github.com/TheBlueMatt
+[Michael Ford]: https://github.com/fanquake
 [Michagogo]: https://github.com/Michagogo
 [Nicolas Dorier]: https://github.com/NicolasDorier
 [Olaoluwa Osuntokun]: https://github.com/Roasbeef
