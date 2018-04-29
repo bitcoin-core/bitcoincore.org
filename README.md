@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/hancoin/hancoincore-client.svg?branch=hancoin-core-client)](https://travis-ci.org/hancoin/hancoincore-client) HanCoin integration/staging tree
+HanCoin integration/staging tree
 http://www.hancoin.io
 
-Copyright (c) 2009-2014 Bitcoin Developers 
+Copyright (c) 2009-2018 Bitcoin Developers 
 Copyright (c) 2017-2018 HanCoin Developers
 
 What is HanCoin?
