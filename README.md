@@ -1,76 +1,92 @@
-# [bitcoincore.org](https://bitcoincore.org) [![Build Status](https://travis-ci.org/bitcoin-core/bitcoincore.org.svg?branch=master)](https://travis-ci.org/bitcoin-core/bitcoincore.org)
+HanCoin integration/staging tree
+http://www.hancoin.io
 
-This repository is the source code of the Bitcoin Core project website built with Jekyll.
+Copyright (c) 2009-2018 Bitcoin Developers 
+Copyright (c) 2017-2018 HanCoin Developers
 
-## Directory structure
+What is HanCoin?
+HanCoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
 
-  - `_posts/<lang>/posts` for blog articles.
-  - `_posts/<lang>/pages` for static pages.
-  - `_posts/<lang>/releases` for Bitcoin Core release notes
+2.5 minute block targets
+subsidy halves in 840k blocks (~4 years)
+540 million total coins
+140 million premined
+The rest is the similar as Bitcoin.
 
-File names *must* be in the format `Y-m-d-title.md`, e.g. `2015-12-31-title.md`. File names can be translated.
+1000 coins per block reward for han miners
+2016 blocks to retarget difficulty
+For more information, as well as an immediately useable, binary version of the HanCoin client sofware, see http://www.hancoin.io.
 
-## Translations
+License
+HanCoin is released under the terms of the MIT license. See COPYING for more information or see http://opensource.org/licenses/MIT.
 
-The main translations can be found at [Transifex](https://www.transifex.com/bitcoincore/bitcoincoreorg/). Please
-join if you wish to contribute to translating content.
+Development process
+Developers work in their own trees, then submit pull requests when they think their feature or bug fix is ready.
 
-Menu and miscellaneous localisations can be found in:
+If it is a simple/trivial/non-controversial change, then one of the HanCoin development team members simply pulls it.
 
-  - `_data/lanaguges.yml`
-  - `_data/navgation.yml`
-  - `_data/translations.yml`
+If it is a more complicated or potentially controversial change, then the patch submitter will be asked to start a discussion with the devs and community.
 
-## Front Matter notes
+The patch will be accepted if there is broad consensus that it is a good thing. Developers should expect to rework and resubmit patches if the code doesn't match the project's coding conventions (see doc/coding.txt) or are controversial.
 
-The following `Front Matter` is required for the multilingual setup in all files. The required fields are as follows:
+The master branch is regularly built and tested, but is not guaranteed to be completely stable. Tags are created regularly to indicate new official, stable release versions of HanCoin.
 
-  - `name:`      group name for unique article. Each translation must share the same group name, e.g. `october15-report`
-  - `id:`        each article translation must have a unique ID. Use the language code + `-name` field. e.g. `en-october15-report`
-  - `permalink:` the must include the language code, end a trailing slash, e.g. `/en/2015/12/31/report/`.
-  - `title:`     the translated title of the article
-  - `type:`      the content type (`pages`, `posts`, `releases`, `meetings`, etc.)
-  - `layout:`    the layout template (`page`, `post`, etc.)
-  - `lang:`      the language code (`en`, `fr`, etc.)
+Testing
+Testing and code review is the bottleneck for development; we get more pull requests than we can review and test. Please be patient and help out, and remember this is a security-critical project where any mistake might cost people lots of money.
 
-```
----
-title: Short Title
-name: short-title
-layout: post
-type: posts
-lang: en
-id: en-short-title
-permalink: /en/2016/01/01/short-title
----
-```
+Automated Testing
+Developers are strongly encouraged to write unit tests for new code, and to submit new unit tests for old code.
 
-## Building
+Unit tests for the core code are in src/test/. To compile and run them:
 
-This website is based on Jekyll. To build locally, [install Ruby 2.2.2](https://gorails.com/setup) or greater
-and then run the following commands:
+cd src; make -f makefile.unix test
+Unit tests for the GUI code are in src/qt/test/. To compile and run them:
 
-    gem install bundle
-    bundle install
+qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
+make -f Makefile.test
+./hancoin-qt_test
 
-To preview the site (this will launch a tiny webserver on port 4000):
+Our first client that is currently mineable and sustained.
 
-    bundle exec jekyll server --future
+Coinbase maturity | 20 blocks
+-- | --
+Target spacing | 5 minutes
+Target timespan | 10 minutes
+Transaction confirmations | 6 blocks
+Seednode 1 | node.hancoin.com
+Seednode 2 | node2.hancoin.com
 
-To simply build the site (output placed in the `_site` directory):
+Getting started
+Use the following instructions to mine a block on your blockchain
 
-    bundle exec jekyll build --future
 
-Note that the `--future` parameter is only required if you're adding any
-pages dated in the future (such as prepared release announcements).
+Open your wallet, and make sure you are connected to another wallet. 
+You are connected when you see the icon Wallet Connections in the lower right corner of your wallet.
 
-To test the site:
+The message "No block source available" will disappear once you mine your first block.
 
-    bundle exec jekyll build --future --drafts --unpublished && bundle exec htmlproof ./_site
 
-The additional parameters to `jekyll build` ensure that all possible
-pages are built and checked.
+Close your wallet and create the file hancoin.conf in the folder "%APPDATA%\hancoin\".
 
-## Contributing
+Paste the following text into hancoin.conf and save the file.
 
-Contributions welcome. Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for details.
+addnode=node.hancoin.com
+addnode=node2.hancoin.com
+Open your wallet.
+
+Go to Help. 
+Click Debug Window. 
+This is the console where you will execute all commands.
+
+Type this command to start mining your first block:
+
+setgenerate true 8
+
+If you want to use a specific number of CPU cores, instead of -1, type the number of cores.
+
+You can type the following command to see the status of generation.
+
+getmininginfo
+
+It will take about +/- 30 minutes to mine your first block, depending on your computer hardware.
+

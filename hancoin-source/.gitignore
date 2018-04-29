@@ -1,0 +1,34 @@
+src/*.exe
+src/hancoin
+src/hancoind
+src/test_hancoin
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.hancoin
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+hancoin-qt
+HanCoin-Qt.app
+
+# Unit-tests
+Makefile.test
+hancoin-qt_test
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+build
+
+!src/leveldb*/Makefile
