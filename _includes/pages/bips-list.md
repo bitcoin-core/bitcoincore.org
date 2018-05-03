@@ -30,3 +30,4 @@
 |[145][BIP145]| v0.13.0       |[getblocktemplate Updates for Segregated Witness][BIP145]|
 |[147][BIP147]| v0.13.1       |[Dealing with dummy stack element malleability][BIP147]|
 |[152][BIP152]| v0.13.0       |[Compact Block Relay][BIP152]|
+|[173][BIP173]| v0.16.0       |[Base32 address format for native v0-16 witness outputs][BIP173]|
