@@ -87,3 +87,18 @@ pages are built and checked.
 ## Contributing
 
 Contributions welcome. Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for details.
+
+## References
+
+The website uses an old version of the [Minimal Mistakes theme][].  The
+theme's website provides [documentation][mm docs], including information
+about [configuration variables][mm config], creating [pages and posts][mm
+content], adding [new Javascript][mm js], and more.  Note that
+current documentation may describe features not available in the old
+version of the theme used by the website.
+
+[minimal mistakes theme]: https://mmistakes.github.io/minimal-mistakes/
+[mm docs]: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ 
+[mm config]: https://mmistakes.github.io/minimal-mistakes/docs/configuration/
+[mm content]: https://mmistakes.github.io/minimal-mistakes/docs/posts/
+[mm js]: https://mmistakes.github.io/minimal-mistakes/docs/javascript/
