@@ -16,6 +16,7 @@
 [Gregory Sanders]: https://github.com/instagibbs
 [James O'Beirne]: https://github.com/jamesob
 [Jeremy Rubin]: https://github.com/JeremyRubin
+[Jesse Cohen]: http://github.com/skeees
 [Jim Posen]: https://github.com/jimpo
 [Joao Barbosa]: https://github.com/promag
 [John Newbery]: https://github.com/jnewbery
@@ -34,6 +35,7 @@
 [Mark Erhardt]: https://github.com/Xekyo
 [Mark Friedenbach]: https://github.com/maaku
 [Matt Corallo]: https://github.com/TheBlueMatt
+[Michael Ford]: https://github.com/fanquake
 [Michagogo]: https://github.com/Michagogo
 [Nicolas Dorier]: https://github.com/NicolasDorier
 [Olaoluwa Osuntokun]: https://github.com/Roasbeef
