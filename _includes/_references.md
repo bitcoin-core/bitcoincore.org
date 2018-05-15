@@ -47,6 +47,7 @@
 [Russell Yanofsky]: https://github.com/ryanofsky
 [Saleem Rashid]: https://github.com/saleemrashid
 [Samuel Dobson]: https://github.com/MeshCollider
+[Sjors Provoost]: https://github.com/sjors
 [Suhas Daftuar]: https://github.com/sdaftuar
 [Tadge Dryja]: https://github.com/T909
 [Tom Harding]: https://github.com/dgenr8
