@@ -1,6 +1,20 @@
 /*! Responsive Menu */
 // http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/
 //  The function to change the class
+
+// change root element class from no-js to js
+// copied from https://github.com/Modernizr/Modernizr/blob/5eea7e2a213edc9e83a47b6414d0250468d83471/src/setClasses.js
+function addJs() {
+  var docElement = document.documentElement;
+  var className = docElement.className;
+
+  var reJS = new RegExp('(^|\\s)no-js(\\s|$)');
+  className = className.replace(reJS, '$1js$2');
+  docElement.className = className;
+}
+
+addJs();
+
 var changeClass = function (r,className1,className2) {
   var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
   if( regex.test(r.className) ) {
