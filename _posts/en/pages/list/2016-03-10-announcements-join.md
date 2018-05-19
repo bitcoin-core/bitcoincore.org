@@ -6,7 +6,7 @@ type: pages
 layout: page
 lang: en
 share: false
-version: 1
+version: 2
 ---
 Receive notification of important security announcements and releases for Bitcoin Core.
 
@@ -16,6 +16,9 @@ Enter your email address below:
     
 Low traffic for announcements only.
 
-_Emails will be GPG signed by [Wladimir van der Laan][laanwj-key], [Jonas Schnelli][jonasschnelli-key] or [Pieter Wuille][sipa-key] and DKIM signed from bitcoincore.org_.
+Emails will be DKIM signed from bitcoincore.org and GPG signed by one of
+the following keys:
+
+{% include dev-keys.md %}
 
 {% include _references.md %}

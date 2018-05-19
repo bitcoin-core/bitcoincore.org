@@ -116,9 +116,9 @@
 [slack-invite]: https://slack.bitcoincore.org/
 [software life cycle]: /en/lifecycle
 
-[laanwj-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-keys/laanwj-key.pgp
-[jonasschnelli-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-keys/jonasschnelli-key.pgp
-[sipa-key]: https://github.com/bitcoin/bitcoin/blob/master/contrib/gitian-keys/sipa-key.pgp
+[laanwj-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x71A3B16735405025D447E8F274810B012346C9A6
+[jonasschnelli-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x32EE5C4C3FA15CCADB46ABE529D4BCB6416F53EC
+[sipa-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x133EAC179436F14A5CF1B794860FEB804E669320
 
 [recent-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors?from=2017-03-01
 
