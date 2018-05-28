@@ -42,7 +42,7 @@
                 <i class="fa fa-book"></i>
                 {{ group.name }}
               </h3>
-              <div class="toc-drawer js-hidden">
+              <div class="toc-drawer js-hide-on-start">
                 <ul>
                   {% for article in group.items %}
                     <li><a href="{{article.url}}">{{article.name}}</a></li>

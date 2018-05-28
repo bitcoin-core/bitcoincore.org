@@ -59,4 +59,8 @@ $(function() {
       drawer.toggleClass("js-hidden");
     });
   });
+  $(".toc-drawer.js-hide-on-start").each(function(){
+    var drawer = $(this);
+    drawer.toggleClass("js-hidden");
+  });
 });
