@@ -88,6 +88,12 @@ defaults:
       layout: doc
       lang: en
       share: true
+  - scope:
+      path: "_posts/en/posts"
+      type: posts
+      lang: en
+    values:
+      permalink: /en/:year/:month/:day/:title/
 
 collections:
   releases:
