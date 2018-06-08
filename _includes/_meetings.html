@@ -1,20 +1,17 @@
 <ul class="meeting">
   {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'meetings' | sort:'post.date' %}
   {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'meetings' %}
-  {% for default_post in english_posts %}
+  {% for default_post in english_posts %}{% capture year_entry %}
     {% assign post=default_post %}
     {% capture year %}{{post.date | date: '%Y' }}{% endcapture %}
     {% if forloop.first == true %}<li><b>{{year}}</b><ul>{% assign old_year = year %}{% endif %}
     {% if year != old_year %}</ul><li><b>{{year}}</b><ul>{% assign old_year = year %}{% endif %}
-    {% for t_post in translated_posts %}
-      {% if t_post.name == post.name %}{% assign post=t_post %}{% break %}{% endif %}
-    {% endfor %}
-  <li>
-    <a href="{{ post.url }}">
-      {{ post.title | replace: '<br/>', '' }}
-    </a>
-    <div class="desc">{{ post.desc }}</div>
-  </li>
+    {% endcapture %}{{ year_entry | strip }}{% capture /dev/null %}
+      {% for t_post in translated_posts %}
+        {% if t_post.name == post.name %}{% assign post=t_post %}{% break %}{% endif %}
+      {% endfor %}
+    {% endcapture %}
+    <li><a href="{{ post.url }}">{{ post.title | replace: '<br/>', '' }}</a></li>
   {% endfor %}
   </ul>
 </ul>
