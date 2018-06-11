@@ -9,5 +9,5 @@ build:
 	bundle exec jekyll build --future --drafts --unpublished
 
 test:
-	bundle exec htmlproof --disable-external --url-ignore '/^\/bin/.*/' ./_site
+	bundle exec htmlproof --check-html --disable-external --url-ignore '/^\/bin/.*/' ./_site
 	contrib/qa/test-binary-availability.sh && echo "SUCCESS checking URLs for binaries"
