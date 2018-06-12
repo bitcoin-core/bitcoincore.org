@@ -1,9 +1,9 @@
 <section id="table-of-contents" class="toc">
   <header>
     {% assign t=site.data.translations[page.lang] %}
-    <h3><i class="fa fa-book"></i> {{ t.tocoverview }}</h3>
+    <h3 class="toc-header"><i class="fa fa-book"></i> {{ t.tocoverview }}</h3>
   </header>
-<div id="drawer" markdown="1">
+<div markdown="1" class="toc-drawer">
 *  Auto generated table of contents
 {:toc}
 </div>

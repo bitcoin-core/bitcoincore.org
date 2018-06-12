@@ -81,7 +81,16 @@ defaults:
       layout: page
       lang: en
       share: true
+  - scope:
+      path: ""
+      type: doc
+    values:
+      layout: doc
+      lang: en
+      share: true
 
 collections:
   releases:
+    output: true
+  doc:
     output: true
