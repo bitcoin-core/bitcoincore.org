@@ -11,6 +11,8 @@
 {% assign SIGNING_KEY_FINGERPRINT = "01EA5486DE18A882D4C2684590C8019E36C2E964" %}
 {% capture SIGNING_KEY_FINGERPRINT_EXPLODED %}{% include fingerprint-split.html hex=SIGNING_KEY_FINGERPRINT %}{% endcapture %}
 {% assign GPG_DOWNLOAD_URL = "https://www.gnupg.org/download/index.en.html#binary" %}
+{% assign GPG_MACOS_DOWNLOAD_URL = "https://gpgtools.org/" %}
+{% assign GPG_WINDOWS_DOWNLOAD_URL = "https://gpg4win.org/download.html" %}
 {% assign GITIAN_REPOSITORY_URL = "https://github.com/bitcoin-core/gitian.sigs" %}
 {% endcapture %}
 <link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
@@ -114,7 +116,9 @@
         <pre class="highlight"><code>type SHA256SUMS.asc</code></pre></li>
 
       <li><p>{{page.install_gpg}} <a
-      href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a></p></li>
+      href="{{GPG_WINDOWS_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a>
+      {{page.gpg_download_other}}
+      <a href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_options}}</a></p></li>
 
       <li><p>{{page.obtain_release_key}}</p>
 
@@ -156,7 +160,9 @@
         <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}{{site.data.binaries.macdmg}}: {{page.localized_checksum_ok}}</code></p></li>
 
       <li><p>{{page.install_gpg}} <a
-      href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a></p></li>
+      href="{{GPG_MACOS_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a>
+      {{page.gpg_download_other}}
+      <a href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_options}}</a></p></li>
 
       <li><p>{{page.obtain_release_key}}</p>
 
