@@ -1,6 +1,6 @@
 {% capture /dev/null %}<!-- suppress render of this part -->
 <!-- Copyright 2013 - 2016 The Bitcoin.org Project.
-     Copyright 2017 The BitcoinCore.org Project
+     Copyright 2017 - 2018 The BitcoinCore.org Project
      This file is licensed under the MIT License (MIT) available on
      http://opensource.org/licenses/MIT. -->
 {% assign VERSION_SORTED_RELEASES = site.releases | sort: 'release' | reverse %}
@@ -8,6 +8,12 @@
 {% assign magnet = VERSION_SORTED_RELEASES[0].optional_magnetlink %}
 {% capture PATH_PREFIX %}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
 {% capture FILE_PREFIX %}bitcoin-{{CURRENT_RELEASE}}{% endcapture %}
+{% assign SIGNING_KEY_FINGERPRINT = "01EA5486DE18A882D4C2684590C8019E36C2E964" %}
+{% capture SIGNING_KEY_FINGERPRINT_EXPLODED %}{% include fingerprint-split.html hex=SIGNING_KEY_FINGERPRINT %}{% endcapture %}
+{% assign GPG_DOWNLOAD_URL = "https://www.gnupg.org/download/index.en.html#binary" %}
+{% assign GPG_MACOS_DOWNLOAD_URL = "https://gpgtools.org/" %}
+{% assign GPG_WINDOWS_DOWNLOAD_URL = "https://gpg4win.org/download.html" %}
+{% assign GITIAN_REPOSITORY_URL = "https://github.com/bitcoin-core/gitian.sigs" %}
 {% endcapture %}
 <link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
 <div class="download">
@@ -74,14 +80,173 @@
     </p>
     <p class="downloadkeys">
       <span>{{ page.releasekeys }}</span>
-      <a href="/keys/laanwj-releases.asc">v0.11.0+</a>
+      <a href="/keys/laanwj-releases.asc">v0.11.0+</a> <code title="{{page.pgp_key_fingerprint}}">{{SIGNING_KEY_FINGERPRINT}}</code>
     </p>
   </div>
 
-  <h2><img src="/assets/images/icons/note.svg" class="warningicon" alt="note">{{ page.patient }}</h2>
-  <p>{{ page.notesync | replace: '$(DATADIR_SIZE)', site.data.stats.datadir_gb | replace: '$(PRUNED_SIZE)', site.data.stats.pruned_gb | replace: '$(MONTHLY_RANGE_GB)', site.data.stats.monthly_storage_increase_range_gb }} {{ page.full_node_guide }}</p>
-  <p>{{ page.notelicense }}</p>
 </div>
+
+  <h2 style="text-align: center">{{ page.patient }}</h2>
+  <p>{{ page.notesync | replace: '$(DATADIR_SIZE)', site.data.stats.datadir_gb | replace: '$(PRUNED_SIZE)', site.data.stats.pruned_gb | replace: '$(MONTHLY_RANGE_GB)', site.data.stats.monthly_storage_increase_range_gb }} {{ page.full_node_guide }}</p>
+
+{% if page.version > 1 %}
+  <h2 style="text-align: center">{{page.verify_download}}</h2>
+  <p>{{page.verification_recommended}}</p>
+  <details>
+  {% assign GPG = "C:\Program Files\Gnu\GnuPg\gpg.exe" %}
+    <summary><strong>{{page.windows_instructions}}</strong></summary>
+    <ol>
+      <li><p>{{page.download_release}}</p></li>
+
+      <li><p>{{page.download_checksums}} <a href="{{ PATH_PREFIX }}/SHA256SUMS.asc">SHA256SUMS.asc</a></p></li>
+
+      <li><p>{{page.cd_to_downloads}}</p>
+
+        <pre class="highlight"><code>{{page.cd_example_windows}}</code></pre>
+
+        </li>
+
+      {% capture windows_example_binary %}{{FILE_PREFIX}}-{{site.data.binaries.win64exe}}{% endcapture %}
+      <li><p>{{page.generate_checksum | replace: "$(FILE)", windows_example_binary}}</p>
+
+        <pre class="highlight"><code>certUtil -hashfile {{windows_example_binary}} SHA256</code></pre></li>
+
+      <li><p>{{page.ensure_checksum_matches}}</p>
+
+        <pre class="highlight"><code>type SHA256SUMS.asc</code></pre></li>
+
+      <li><p>{{page.install_gpg}} <a
+      href="{{GPG_WINDOWS_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a>
+      {{page.gpg_download_other}}
+      <a href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_options}}</a></p></li>
+
+      <li><p>{{page.obtain_release_key}}</p>
+
+        <pre class="highlight"><code>{{GPG}} --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
+
+        <p>{{page.release_key_obtained}}</p></li>
+
+      <li>{{page.verify_checksums_file}}
+
+        <pre class="highlight"><code>{{GPG}} --verify SHA256SUMS.asc</code></pre></li>
+
+      <li><p>{{page.check_gpg_output}}</p>
+        <ol><li><p>{{page.line_starts_with}} <code>gpg: {{page.localized_gpg_good_sig}}</code></p></li>
+          <li><p>{{page.complete_line_saying}} <code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></p></li>
+        </ol>
+
+        <p>{{page.gpg_trust_warning}}</p></li>
+
+    </ol>
+  </details>
+  <details>
+    {% assign GPG = "gpg" %}
+    <summary><strong>{{page.macos_instructions}}</strong></summary>
+    <ol>
+      <li><p>{{page.download_release}}</p></li>
+
+      <li><p>{{page.download_checksums}} <a href="{{ PATH_PREFIX }}/SHA256SUMS.asc">SHA256SUMS.asc</a></p></li>
+
+      <li><p>{{page.cd_to_downloads}}</p>
+
+        <pre class="highlight"><code>{{page.cd_example_linux}}</code></pre>
+
+        </li>
+
+      <li><p>{{page.verify_download_checksum}}</p>
+
+        <pre class="highlight"><code>shasum -a 256 --check SHA256SUMS.asc</code></pre>
+
+        <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}{{site.data.binaries.macdmg}}: {{page.localized_checksum_ok}}</code></p></li>
+
+      <li><p>{{page.install_gpg}} <a
+      href="{{GPG_MACOS_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a>
+      {{page.gpg_download_other}}
+      <a href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_options}}</a></p></li>
+
+      <li><p>{{page.obtain_release_key}}</p>
+
+        <pre class="highlight"><code>gpg --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
+
+        <p>{{page.release_key_obtained}}</p></li>
+
+      <li>{{page.verify_checksums_file}}
+
+        <pre class="highlight"><code>gpg --verify SHA256SUMS.asc</code></pre></li>
+
+      <li><p>{{page.check_gpg_output}}</p>
+        <ol><li><p>{{page.line_starts_with}} <code>gpg: {{page.localized_gpg_good_sig}}</code></p></li>
+          <li><p>{{page.complete_line_saying}} <code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></p></li>
+        </ol>
+
+        <p>{{page.gpg_trust_warning}}</p></li>
+    </ol>
+  </details>
+
+  <details>
+    <summary><strong>{{page.linux_instructions}}</strong></summary>
+    <ol>
+      <li><p>{{page.download_release}}</p></li>
+
+      <li><p>{{page.download_checksums}} <a href="{{ PATH_PREFIX }}/SHA256SUMS.asc">SHA256SUMS.asc</a></p></li>
+
+      <li><p>{{page.cd_to_downloads}}</p>
+
+        <pre class="highlight"><code>{{page.cd_example_linux}}</code></pre>
+
+        </li>
+
+      <li><p>{{page.verify_download_checksum}}</p>
+
+        <pre class="highlight"><code>sha256sum --ignore-missing --check SHA256SUMS.asc</code></pre>
+
+        <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.lin64}}: {{page.localized_checksum_ok}}</code></p></li>
+
+      <li><p>{{page.obtain_release_key}}</p>
+
+        <pre class="highlight"><code>gpg --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
+
+        <p>{{page.release_key_obtained}}</p></li>
+
+      <li>{{page.verify_checksums_file}}
+
+        <pre class="highlight"><code>gpg --verify SHA256SUMS.asc</code></pre></li>
+
+      <li><p>{{page.check_gpg_output}}</p>
+        <ol><li><p>{{page.line_starts_with}} <code>gpg: {{page.localized_gpg_good_sig}}</code></p></li>
+          <li><p>{{page.complete_line_saying}} <code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></p></li>
+        </ol>
+
+        <p>{{page.gpg_trust_warning}}</p></li>
+
+    </ol>
+  </details>
+
+  <details>
+    <summary><strong>{{page.ubuntu_ppa_instructions}}</strong></summary>
+
+    <p>{{page.ubuntu_notice}}</p>
+
+    <blockquote>{{page.ubuntu_ppa_quote}}</blockquote>
+  </details>
+
+  <h2 style="text-align: center">{{page.build_reproduction}}</h2>
+
+  <p>{{page.additional_steps}}</p>
+
+  <ul>
+    <li><p><em>{{page.reproducible_builds}}</em> {{page.build_identical_binaries}}</p></li>
+
+    <li><p><em>{{page.verified_reproduction}}</em> {{page.independently_reproducing}}</p></li>
+  </ul>
+
+  <p>{{page.verifying_and_reproducing}} <a href="{{GITIAN_REPOSITORY_URL}}">{{page.gitian_repository}}</a>.</p>
+{% endif %}{% comment %}END VERSION > 1 CONTENT{% endcomment %}
+
+<hr>
+
+<p>{{ page.notelicense }}</p>
+
 <script type="text/javascript">
 var os = 'windows32';
 if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'

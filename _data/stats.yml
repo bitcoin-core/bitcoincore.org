@@ -1,7 +1,7 @@
 ## Size of the Bitcoin Core data directory running with default settings.
 ## Suggest rounding up by about 10% so it doesn't need to be updated
 ## too often.
-datadir_gb: "180"
+datadir_gb: "210"
 
 ## Size of the datadir with the maximum allowed pruning enabled.
 ## Suggest rounding up a little bit to give room for growth in the UTXO
