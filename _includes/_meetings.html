@@ -5,7 +5,7 @@
     {% assign post=default_post %}
     {% capture year %}{{post.date | date: '%Y' }}{% endcapture %}
     {% if forloop.first == true %}<li><b>{{year}}</b><ul>{% assign old_year = year %}{% endif %}
-    {% if year != old_year %}</ul><li><b>{{year}}</b><ul>{% assign old_year = year %}{% endif %}
+    {% if year != old_year %}</ul></li><li><b>{{year}}</b><ul>{% assign old_year = year %}{% endif %}
     {% for t_post in translated_posts %}
       {% if t_post.name == post.name %}{% assign post=t_post %}{% break %}{% endif %}
     {% endfor %}
@@ -16,5 +16,5 @@
     <div class="desc">{{ post.desc }}</div>
   </li>
   {% endfor %}
-  </ul>
+  </ul></li>
 </ul>
