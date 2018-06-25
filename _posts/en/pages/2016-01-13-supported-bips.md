@@ -7,6 +7,8 @@ lang: en
 permalink: /en/bips/
 share: false
 version: 2
+redirect_from:
+  - /zh_TW/bips/
 ---
 Bitcoin Core supports the following [BIPs][BIP1].
 
