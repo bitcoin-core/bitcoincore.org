@@ -8,6 +8,14 @@ build:
 	bundle exec jekyll clean
 	bundle exec jekyll build --future --drafts --unpublished
 
-test:
+test: test-fast test-slow
+
+test-slow:
+	## Check for malformed HTML and broken internal links
 	bundle exec htmlproof --check-html --disable-external --url-ignore '/^\/bin/.*/' ./_site
+	## Check that links on the /en/download page point to the separately-stored binaries in /bin
 	contrib/qa/test-binary-availability.sh && echo "SUCCESS checking URLs for binaries"
+
+test-fast:
+	## Check for broken Markdown reference-style links that are displayed in text unchanged, e.g. [broken][broken link]
+	! find _site/ -name '*.html' | xargs grep ']\[' | grep -v skip-test | grep .
