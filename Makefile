@@ -12,7 +12,7 @@ test: test-fast test-slow
 
 test-slow:
 	## Check for malformed HTML and broken internal links
-	bundle exec htmlproof --check-html --disable-external --url-ignore '/^\/bin/.*/' ./_site
+	bundle exec htmlproof --check-html --disable-external --url-ignore '/^\/bin/.*/' ./_site | cat
 	## Check that links on the /en/download page point to the separately-stored binaries in /bin
 	contrib/qa/test-binary-availability.sh && echo "SUCCESS checking URLs for binaries"
 
