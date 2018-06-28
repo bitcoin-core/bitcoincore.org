@@ -1068,3 +1068,7 @@ div.maintainers {
 .bg-blue {
 	background-color: $bg-blue;
 }
+
+details > summary {
+        cursor: pointer;
+}
