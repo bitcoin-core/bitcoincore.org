@@ -9,7 +9,7 @@ lang: en
 share: false
 version: 2
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 This document describes the life-cycle of the Bitcoin Core software package released by the Bitcoin Core project. It is in line with standard maintenance policy across commercial software.  
 
@@ -55,7 +55,7 @@ Once EOL is reached, you will need to upgrade to a newer version.
 
 | Version | Release Date | Maintenance End | End of Life |
 |---------|--------------|-----------------|-------------|
-{% include posts/_maintenance-table.md %}
+{% include posts/maintenance-table.md %}
 
 \* _We aim to make a major release every 6-7 months_
 

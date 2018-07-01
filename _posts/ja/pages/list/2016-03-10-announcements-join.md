@@ -18,4 +18,4 @@ Bitcoin Coreの重要なセキュリティのお知らせとリリースの通�
 
 _メールは[Wladimir van der Laan][laanwj-key]および[Jonas Schnelli][jonasschnelli-key]、もしくは[Pieter Wuille][sipa-key]のGPGで署名され、bitcoincore.orgのDKIM署名がされています。_
 
-{% include _references.md %}
+{% include references.md %}

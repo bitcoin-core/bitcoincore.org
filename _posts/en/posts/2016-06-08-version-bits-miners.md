@@ -11,7 +11,7 @@ tags: [soft fork, soft forks, bip9, version bits, mining]
 version: 1
 excerpt: The "version bits" BIP9 system is a way to introduce backward compatible rule changes to the Bitcoin consensus rules, known as a soft fork.
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 ## What is _version bits_ BIP9?
 
@@ -97,5 +97,5 @@ Soft forks are proposed through the [BIPs process][BIP1]. Active [BIP9][] soft f
 - <https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>
 - <https://bitcointalk.org/index.php?topic=1067693.msg11446462#msg11446462>
 
-{% include _references.md %}
+{% include references.md %}
 

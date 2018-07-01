@@ -13,4 +13,4 @@ version: 2
 | BIP |Supported since| Title |
 |-----|---------------|-------|
 {% include pages/bips-list.md %}
-{% include _references.md %}
+{% include references.md %}

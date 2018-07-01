@@ -9,7 +9,7 @@ permalink: /en/2016/01/26/segwit-benefits/
 version: 1
 excerpt: This page summarises some of the benefits of segregated witness.
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 The Segregated Witness soft-fork (segwit) includes a wide range of features, many of which are highly technical. This page summarises some of the benefits of those features.
 

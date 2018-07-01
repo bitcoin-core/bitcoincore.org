@@ -8,7 +8,7 @@ title: Bitcoin Capacity Increases FAQ
 permalink: /en/2015/12/23/capacity-increases-faq/
 version: 1
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 ## What specific technologies are included in the roadmap, and when can we expect them?  {#roadmap-dates}
 

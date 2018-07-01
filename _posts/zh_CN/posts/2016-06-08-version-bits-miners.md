@@ -80,10 +80,10 @@ IsSuperMajority() 或其简写ISM，是一个历史遗留的软分叉触发器�
 ## 更多阅读
 
 
-{% include _toc.html %}
+{% include toc.html %}
 
 - <http://rusty.ozlabs.org/?p=576>
 - <https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki>
 - <https://bitcointalk.org/index.php?topic=1067693.msg11446462#msg11446462>
 
-{% include _references.md %}
+{% include references.md %}

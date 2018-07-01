@@ -10,8 +10,8 @@ share: yes
 version: 1
 excerpt: A summary of some of the costs and expected risks of deploying segregated witness.
 ---
-{% include _toc.html %}
-{% include _references.md %}
+{% include toc.html %}
+{% include references.md %}
 
 ## Introduction
 

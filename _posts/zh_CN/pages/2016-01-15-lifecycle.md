@@ -25,7 +25,7 @@ version: 1
 
 | 版本 | 发布日期 | 维护结束 | 结束 |
 |---------|--------------|-----------------|-------------|
-{% include posts/_maintenance-table.md %}
+{% include posts/maintenance-table.md %}
 
 \* _我们的目标是每6-7个月发布一个主要版本_
 
