@@ -7,10 +7,12 @@
 [Bryan Bishop]: https://github.com/kanzure
 [BtcDrak]: https://github.com/btcdrak
 [Chris Stewart]: https://github.com/Christewart
+[Clark Moody]: https://github.com/clarkmoody
 [Cory Fields]: https://github.com/theuni
 [David Harding]: https://github.com/harding/
 [Eric Lombrozo]: https://github.com/codeshark
 [Eric Voskuil]: https://github.com/evoskuil
+[Gleb Naumenko]: https://github.com/naumenkogs
 [Glenn Willen]: https://github.com/gwillen
 [Gregory Maxwell]: https://github.com/gmaxwell
 [Gregory Sanders]: https://github.com/instagibbs
@@ -52,6 +54,7 @@
 [Suhas Daftuar]: https://github.com/sdaftuar
 [Tadge Dryja]: https://github.com/T909
 [Tom Harding]: https://github.com/dgenr8
+[Varunram Ganesh]: https://github.com/Varunram
 [Warren Togami]: https://github.com/wtogami
 [Wladimir van der Laan]: https://github.com/laanwj
 [Zooko Wilcox]: https://github.com/zooko
