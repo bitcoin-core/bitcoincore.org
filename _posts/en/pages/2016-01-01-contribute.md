@@ -8,6 +8,8 @@ layout: page
 lang: en
 share: false
 version: 3
+redirect_from:
+  - /zh_TW/contribute/
 ---
 
 You are welcome to contribute to the project!
