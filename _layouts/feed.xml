@@ -32,7 +32,7 @@
         </author>
         <content type="html">
             {{ post.content | xml_escape }}
-            {% include _feed-footer.html %}
+            {% include feed-footer.html %}
         </content>
     </entry>
     {% endfor %}

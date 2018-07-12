@@ -37,4 +37,4 @@ share: false
 [translation_process.md]: https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md
 [website-contrib]: https://github.com/bitcoin-core/bitcoincore.org/blob/master/CONTRIBUTING.md
 
-{% include _references.md %}
+{% include references.md %}

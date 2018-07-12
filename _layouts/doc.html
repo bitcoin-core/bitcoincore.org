@@ -1,5 +1,5 @@
 <!doctype html>
-{% include _browser_magic.html %}
+{% include browser_magic.html %}
 <head>
 {% if page.name != "index" and page.name != "rpcindex" %}
   {% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
@@ -10,14 +10,14 @@
     {% assign custom_title = "Bitcoin Core RPC" %}
   {% endif %}
 {% endif %}
-{% include _head.html %}
+{% include head.html %}
 </head>
 
 <body class="page">
 
-{% include _browser-upgrade.html %}
+{% include browser-upgrade.html %}
 
-{% include _navigation.html %}
+{% include navigation.html %}
 
 <div id="main" role="main">
   <div class="article-author-side">
@@ -55,7 +55,7 @@
         </section>
       {% endif %}
 
-      <!-- { % include _istranslated.html % } -->
+      <!-- { % include istranslated.html % } -->
 
       {% if page.name != "index" and page.name != "rpcindex" %}
 <span class="doc">
@@ -82,7 +82,7 @@
       {% endif %}
       {% if page.share != false %}
         <hr />
-        {% include _social-share.html %}
+        {% include social-share.html %}
       {% endif %}
     </div><!-- /.article-wrap -->
   </article>
@@ -90,11 +90,11 @@
 
 <div class="footer-wrap">
   <footer>
-    {% include _footer.html %}
+    {% include footer.html %}
   </footer> 
 </div><!-- /.footer-wrap -->
 
-{% include _scripts.html %}
+{% include scripts.html %}
 
 </body>
 </html>

@@ -12,8 +12,8 @@ redirect_from:
   - /en/segwit_adoption/
   - /zh_CN/segwit_adoption/
 ---
-{% include _toc.html %}
-{% include _references.md %}
+{% include toc.html %}
+{% include references.md %}
 
 Almost two years of iterative design, development, and testing has gone into the version of segwit being released in Bitcoin Core 0.13.1, with much of the effort over the last year focused on making it as easy as possible for existing Bitcoin users, businesses, developers, and miners to upgrade to segwit.
 

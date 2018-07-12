@@ -1,14 +1,14 @@
 <!doctype html>
-{% include _browser_magic.html %}
+{% include browser_magic.html %}
 <head>
-{% include _head.html %}
+{% include head.html %}
 </head>
 
 <body class="post">
 
-{% include _browser-upgrade.html %}
+{% include browser-upgrade.html %}
 
-{% include _navigation.html %}
+{% include navigation.html %}
 
 {% if page.image.feature %}
   <div class="image-wrap">
@@ -30,7 +30,7 @@
 
 <div id="main" role="main">
   <div class="article-author-side">
-    {% include _author-bio.html %}
+    {% include author-bio.html %}
   </div>
   <article class="post h-entry">
     <div class="headline-wrap">
@@ -52,7 +52,7 @@
       </div>
       <hr />
       <footer role="contentinfo">
-        {% if page.share != false %}{% include _social-share.html %}{% endif %}
+        {% if page.share != false %}{% include social-share.html %}{% endif %}
         <p class="byline">
           <strong>{{ page.title }}</strong>
           was published on
@@ -70,16 +70,16 @@
     <section id="disqus_thread"></section><!-- /#disqus_thread -->
   {% endif %}
   </article>
-  {% if page.related != false %}{% include _related.html %}{% endif %}
+  {% if page.related != false %}{% include related.html %}{% endif %}
 </div><!-- /#main -->
 
 <div class="footer-wrap">
   <footer>
-    {% include _footer.html %}
+    {% include footer.html %}
   </footer>
 </div><!-- /.footer-wrap -->
 
-{% include _scripts.html %}
+{% include scripts.html %}
 
 </body>
 </html>

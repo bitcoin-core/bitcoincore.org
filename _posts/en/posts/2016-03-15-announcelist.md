@@ -20,4 +20,4 @@ the following keys:
 
 {% include dev-keys.md %}
 
-{% include _references.md %}
+{% include references.md %}

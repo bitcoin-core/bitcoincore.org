@@ -1,7 +1,7 @@
 {% capture /dev/null %}
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! NB: for this file to render correctly, !!!
-!!! you must also include _references.md   !!!
+!!! you must also include references.md   !!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 {% case page.lang %}

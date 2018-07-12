@@ -11,7 +11,7 @@ tags: [soft fork, soft forks, bip9, version bits, mining, bip68, bip112, bip113]
 version: 1
 excerpt: There is an ongoing soft fork of the Bitcoin consensus rules. While everything appears to be proceeding well, this article contains important information and checklists for miners and pool operators which must not be ignored.
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 There is an ongoing soft fork of the Bitcoin consensus rules. While everything appears to be proceeding well, this article contains important information and checklists for miners and pool operators which must not be ignored.
 
@@ -62,5 +62,5 @@ Failing to follow the above instructions may result in generation of invalid blo
 [1]: /en/contact/
 [2]: /en/2016/06/08/version-bits-miners-faq/#when-should-miners-set-bits
 
-{% include _references.md %}
+{% include references.md %}
 

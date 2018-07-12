@@ -18,4 +18,4 @@ version: 1
 
 _Emails will be GPG signed by [Wladimir van der Laan][laanwj-key], [Jonas Schnelli][jonasschnelli-key] or [Pieter Wullie][sipa-key] and DKIM signed from bitcoincore.org_.
 
-{% include _references.md %}
+{% include references.md %}

@@ -8,8 +8,8 @@ lang: ja
 permalink: /ja/segwit_wallet_dev/
 version: 1
 ---
-{% include _toc.html %}
-{% include _references.md %}
+{% include toc.html %}
+{% include references.md %}
 
 このドキュメントのほとんどの内容は、[BIP141][]や [BIP143][]、 [BIP144][]、 [BIP145][]などのsegregated witness関連のBIPに記載されています。このドキュメントは、他の関連ドキュメントへの参照点、また何をすべきで何をすべきではないかのチェックリストと考えてください。
 

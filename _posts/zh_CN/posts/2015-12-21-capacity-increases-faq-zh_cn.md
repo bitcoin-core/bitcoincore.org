@@ -8,7 +8,7 @@ title: 比特币系统扩展
 permalink: /zh_CN/2015/12/21/系统扩展常见问题解答/
 version: 1
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 ## 路线图包括什么新技术，预期在什么时候可以使用？  {#roadmap-dates}
 

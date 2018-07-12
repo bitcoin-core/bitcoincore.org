@@ -11,8 +11,8 @@ tags: [soft fork, soft forks, bip9, version bits, mining, segwit]
 version: 1
 excerpt: Segregated witness (segwit) is approaching release.  This post provides some background information, details about how segwit was tested, information about how the upgrade is expected to proceed, and a description of some future features that segwit makes easier to implement.
 ---
-{% include _toc.html %}
-{% include _references.md %}
+{% include toc.html %}
+{% include references.md %}
 
 {{page.excerpt}}
 

@@ -13,7 +13,7 @@ categories:
 tags: [compact blocks, compact block relay]
 excerpt: Compact block relay, BIP152, is a method of reducing the amount of bandwidth used to propagate new blocks to full nodes.
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 *Compact block relay*, [BIP152][], is a method of reducing the amount of bandwidth used to propagate new blocks to full nodes.
 
@@ -144,4 +144,4 @@ As was noted in the excerpt, simply extending the protocol to support sending in
 - <http://diyhpl.us/~bryan/irc/bitcoin/weak-blocks-links.2016-05-09.txt>
 - <http://diyhpl.us/~bryan/irc/bitcoin/propagation-links.2016-05-09.txt>
 
-{% include _references.md %}
+{% include references.md %}

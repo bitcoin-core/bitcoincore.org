@@ -9,7 +9,7 @@ permalink: /zh_CN/2016/01/26/segwit-benefits/
 version: 1
 excerpt: 隔离见证软分叉（segwit）包括很多的特性，其中许多是技术性很强的。
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 隔离见证软分叉（segwit）包括很多的特性，其中许多是技术性很强的。 此页面总结了这些特性的一些好处。
 
