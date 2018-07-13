@@ -8,6 +8,7 @@
 [BtcDrak]: https://github.com/btcdrak
 [Chris Stewart]: https://github.com/Christewart
 [Clark Moody]: https://github.com/clarkmoody
+[Chun Kuan Lee]: https://github.com/ken2812221
 [Cory Fields]: https://github.com/theuni
 [David Harding]: https://github.com/harding/
 [Eric Lombrozo]: https://github.com/codeshark
