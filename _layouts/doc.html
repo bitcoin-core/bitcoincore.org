@@ -30,7 +30,7 @@
     </div>
   </div>
   <article class="page">
-    <h1>{{ custom_title }}</h1>
+    <h1>{{ custom_title | xml_escape }}</h1>
     <div class="article-wrap">
       {% if page.btcversion != "index" %}
         {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}

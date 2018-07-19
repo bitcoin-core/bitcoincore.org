@@ -18,7 +18,7 @@
     {% else %}
       "/assets/images/{{ page.image.feature }}"
     {% endif %}
-  alt="{% if page.image.alt %}{{ page.image.alt }}{% else %}{{ page.title }}{% endif %} feature image">
+  alt="{% if page.image.alt %}{{ page.image.alt }}{% else %}{{ page.title | xml_escape }}{% endif %} feature image">
   {% if page.image.byline %}
     <span class="image-credit">{{ page.image.byline }}</span>
   {% endif %}
@@ -33,7 +33,7 @@
     {% include author-bio.html %}
   </div>
   <article class="page">
-    <h1>{{ page.title }}</h1>
+    <h1>{{ page.title | xml_escape }}</h1>
     <div class="article-wrap">
       <!-- { % include istranslated.html % } -->
       {{ content }}

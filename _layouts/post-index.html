@@ -18,7 +18,7 @@
     {% else %}
       "/assets/images/{{ page.image.feature }}"
     {% endif %}
-    alt="{% if page.image.alt %}{{ page.image.alt }}{% else %}{{ page.title }}{% endif %} feature image">
+    alt="{% if page.image.alt %}{{ page.image.alt }}{% else %}{{ page.title | xml_escape }}{% endif %} feature image">
   {% if page.image.byline %}
     <span class="image-credit">{{ page.image.byline }}</span>
   {% endif %}
@@ -33,7 +33,7 @@
     {% include author-bio.html %}
   </div>
   <div id="index">
-    <h1>{{ page.title }}</h1>
+    <h1>{{ page.title | xml_escape }}</h1>
     {% capture written_year %}'None'{% endcapture %}
     {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'posts' %}
     {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
@@ -49,9 +49,9 @@
       {% endif %}
       <article>
         {% if post.link %}
-          <h2 class="link-post"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h2>
+          <h2 class="link-post"><a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title | xml_escape }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title | xml_escape }}"><i class="fa fa-link"></i></a></h2>
         {% else %}
-          <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+          <h2><a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a></h2>
           <p>{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
         {% endif %}
       </article>
