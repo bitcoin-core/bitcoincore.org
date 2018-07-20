@@ -33,6 +33,7 @@
 [Joshua Simmons]: https://github.com/kadoban
 [Karel Bilek]: https://github.com/karel-3d
 [Karl-Johan Alm]: https://github.com/kallewoof
+[Lucas Betschart]: https://github.com/lclc
 [Luke Dashjr]: https://github.com/luke-jr
 [Marco Falke]: https://github.com/MarcoFalke
 [Mark Erhardt]: https://github.com/Xekyo
@@ -130,3 +131,10 @@
 [recent-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors?from=2017-03-01
 
 [website-issues]: https://github.com/bitcoin-core/bitcoincore.org/issues
+
+{% comment %}
+<!--REQUIRES PERIODIC UPDATE: update rpc_version below to latest
+version of this site's RPC docs-->
+{% endcomment %}
+{% assign rpc_version = "0.16.1" %}
+[rpc fundrawtransaction]: /en/doc/{{rpc_version}}/rpc/rawtransactions/fundrawtransaction/
