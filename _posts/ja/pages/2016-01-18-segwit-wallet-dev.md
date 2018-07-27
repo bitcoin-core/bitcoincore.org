@@ -154,7 +154,7 @@ version: 1
 
 #### Native Pay-to-Witness-Script-Hash (P2WSH) {#native-pay-to-witness-script-hash}
 
-* Native P2WSHは34バイトの<code>scripPubKey</code>です。この<code>scripPubKey</code>は<code>OP_0</code>から始まり、その後に<code>scripthash</code>がプッシュされます。（例：<code>0x0020{32-byte keyhash}</code>）
+* Native P2WSHは34バイトの<code>scripPubKey</code>です。この<code>scripPubKey</code>は<code>OP_0</code>から始まり、その後に<code>scripthash</code>がプッシュされます。（例：<code>0x0020{32-byte scripthash}</code>）
 * P2SH-P2WSHと同様、<code>scripthash</code>は<code>witnessScript</code>をSHA256した値です。
 * Native P2WSHを使用する際は、<code>scriptSig</code>は必ず空で、witnessスタックの形式と署名の生成ルールはP2SH-P2WSHと同じです（圧縮公開鍵を使用する要件含め）。
 * [Example](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
