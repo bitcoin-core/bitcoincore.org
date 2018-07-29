@@ -137,4 +137,7 @@
 version of this site's RPC docs-->
 {% endcomment %}
 {% assign rpc_version = "0.16.1" %}
+[rpc abandontransaction]: /en/doc/{{rpc_version}}/rpc/wallet/abandontransaction/
 [rpc fundrawtransaction]: /en/doc/{{rpc_version}}/rpc/rawtransactions/fundrawtransaction/
+[rpc getblock]: /en/doc/{{rpc_version}}/rpc/blockchain/getblock/
+[rpc verifytxoutproof]: /en/doc/{{rpc_version}}/rpc/blockchain/verifytxoutproof/
