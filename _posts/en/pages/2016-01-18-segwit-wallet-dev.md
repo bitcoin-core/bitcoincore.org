@@ -150,7 +150,7 @@ The following functions are not required for initial segwit support.
 
 #### Native Pay-to-Witness-Script-Hash (P2WSH)
 
-* Native P2WSH is a <code>scripPubKey</code> of 34 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>scripthash</code> (i.e. <code>0x0020{32-byte keyhash}</code>)
+* Native P2WSH is a <code>scripPubKey</code> of 34 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>scripthash</code> (i.e. <code>0x0020{32-byte scripthash}</code>)
 * Same as P2SH-P2WSH, <code>scripthash</code> is SHA256 of the <code>witnessScript</code>.
 * When spending a native P2WSH, the <code>scriptSig</code> MUST be empty, and the witness stack format and signature generating rules are same as P2SH-P2WSH (including the requirement of using compressed public key)
 * [Example](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
