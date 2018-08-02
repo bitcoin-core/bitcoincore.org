@@ -136,7 +136,7 @@
 <!--REQUIRES PERIODIC UPDATE: update rpc_version below to latest
 version of this site's RPC docs-->
 {% endcomment %}
-{% assign rpc_version = "0.16.1" %}
+{% assign rpc_version = "0.16.2" %}
 [rpc abandontransaction]: /en/doc/{{rpc_version}}/rpc/wallet/abandontransaction/
 [rpc fundrawtransaction]: /en/doc/{{rpc_version}}/rpc/rawtransactions/fundrawtransaction/
 [rpc getblock]: /en/doc/{{rpc_version}}/rpc/blockchain/getblock/
