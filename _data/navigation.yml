@@ -265,41 +265,41 @@ ja:
     title: "Bitcoin Core"
     url:   "/ja/"
   about:
-    title: "About"
+    title: "概要"
     submenu: true
     tree:
       about:
-        title: "About Us"
+        title: "プロジェクト概要"
         url:   "/en/about/"
       team:
-        title: "Team"
+        title: "チーム"
         url:   "/en/team/"
       projects:
-        title: "Sponsorship"
+        title: "スポンサーシップ"
         url: "/en/about/sponsorship/programme/"
         submenu: true
         tree:
           programme:
-            title: "programme"
+            title: "プログラム"
             url: "/en/about/sponsorship/programme/"
           faq:
             title: "FAQ"
             url: "/en/about/sponsorship/faq/"
   download:
-    title: "Download"
+    title: "ダウンロード"
     url: "/ja/download/"
   blog:
-    title: "blog"
+    title: "ブログ"
     url:   "/ja/blog/"
   releases:
-    title: "releases"
+    title: "リリース"
     url:   "/ja/releases/"
   faq:
-    title: "FAQs"
+    title: "FAQ"
     submenu: true
     tree:
       capacity-faq:
-        title: "Capacity Increases"
+        title: "キャパシティの増加"
         url: "/en/2015/12/23/capacity-increases-faq/"
       segwit-faq:
         title: "Segwit"
@@ -317,29 +317,29 @@ ja:
         title: "Version Bits (BIP9)"
         url: "/en/2016/06/08/version-bits-miners-faq/"
       segwit-upgrade-guide:
-        title: "Segwit upgrade guide"
+        title: "Segwitアップグレードガイド"
         url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
-    title: "Development"
+    title: "開発"
     submenu: true
     tree:
       contribute:
-        title: "contribute"
+        title: "貢献"
         url:   "/en/contribute/"
       contribute-code:
-        title: "contributing code"
+        title: "コードの貢献"
         url:   "/en/faq/contributing-code/"
       meetings:
-        title: "meetings"
+        title: "ミーティング"
         url:   "/en/meetings/"
       bips:
-        title: "Supported BIPs"
+        title: "サポートするBIP"
         url:   "/en/bips/"
       eol:
-        title: "Lifecycle"
+        title: "ライフサイクル"
         url:   "/en/lifecycle"
   contact:
-    title: "Contact"
+    title: "コンタクト"
     submenu: true
     tree:
       contact_us:
