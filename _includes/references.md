@@ -8,6 +8,7 @@
 [BtcDrak]: https://github.com/btcdrak
 [Chris Stewart]: https://github.com/Christewart
 [Clark Moody]: https://github.com/clarkmoody
+[Clem Taylor]: https://github.com/clemtaylor
 [Chun Kuan Lee]: https://github.com/ken2812221
 [Cory Fields]: https://github.com/theuni
 [David Harding]: https://github.com/harding/
@@ -41,6 +42,7 @@
 [Matt Corallo]: https://github.com/TheBlueMatt
 [Michael Ford]: https://github.com/fanquake
 [Michagogo]: https://github.com/Michagogo
+[Midnight Magic]: https://github.com/midnightmagic
 [Nicolas Dorier]: https://github.com/NicolasDorier
 [Olaoluwa Osuntokun]: https://github.com/Roasbeef
 [Patrick Strateman]: https://github.com/pstratem
