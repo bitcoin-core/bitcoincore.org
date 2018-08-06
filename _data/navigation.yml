@@ -285,12 +285,15 @@ ja:
           faq:
             title: "FAQ"
             url: "/en/about/sponsorship/faq/"
+  download:
+    title: "Download"
+    url: "/ja/download/"
   blog:
     title: "blog"
-    url:   "/en/blog/"
+    url:   "/ja/blog/"
   releases:
     title: "releases"
-    url:   "/en/releases/"
+    url:   "/ja/releases/"
   faq:
     title: "FAQs"
     submenu: true
@@ -302,8 +305,8 @@ ja:
         title: "Segwit"
         url: "/en/2016/01/26/segwit-benefits/"
       segwit-dev:
-        title: "Segwit dev guide"
-        url: "/en/segwit_wallet_dev/"
+        title: "Segwit開発ガイド"
+        url: "/ja/segwit_wallet_dev/"
       optin-rbf:
         title: "Opt-in RBF"
         url: "/en/faq/optin_rbf/"
