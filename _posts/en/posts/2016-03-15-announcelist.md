@@ -6,6 +6,8 @@ id: en-announce-list
 name: announce-list
 tags: [bitcoin, bitcoin core, announcement list, updates]
 version: 2
+redirect_from:
+  - /zh_CN/2016/03/15/announcement-list/
 ---
 In an effort to increase communications, we are now providing opt-in, _announcement-only_ information for users of Bitcoin Core to receive notifications of security issues and new releases.
 
