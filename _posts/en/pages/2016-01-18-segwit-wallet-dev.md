@@ -115,7 +115,7 @@ If a wallet supports script types other than just single signature, such as mult
     1. Define a script, called (<code>witnessScript</code>)
     2. Calculate the SHA256 of the <code>witnessScript</code> (<code>scripthash</code>). Please pay attention that a single SHA256 is used, not double SHA256 nor RIPEMD160(SHA256)
     3. The P2SH <code>redeemScript</code> is always 34 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>scripthash</code> (i.e. <code>0x0020{32-byte scripthash}</code>)
-    4. Same as any other P2SH, the <code>scripPubKey</code> is <code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>, and the address is the corresponding P2SH address with prefix 3.
+    4. Same as any other P2SH, the <code>scriptPubKey</code> is <code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>, and the address is the corresponding P2SH address with prefix 3.
 * Restrictions on the script
     * The script evaluation must not fail, and MUST leave one and only one TRUE stack item after evaluation. Otherwise, the evaluation is failed.
     * Any public key inside P2SH-P2WSH scripts MUST be compressed key, or fund may be lost permanently.
@@ -143,14 +143,14 @@ The following functions are not required for initial segwit support.
 
 #### Native Pay-to-Witness-Public-Key-Hash (P2WPKH)
 
-* Native P2WPKH is a <code>scripPubKey</code> of 22 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>keyhash</code> (i.e. <code>0x0014{20-byte keyhash}</code>)
+* Native P2WPKH is a <code>scriptPubKey</code> of 22 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>keyhash</code> (i.e. <code>0x0014{20-byte keyhash}</code>)
 * Same as P2SH-P2WPKH, <code>keyhash</code> is RIPEMD160(SHA256) of a compressed public key.
 * When spending a native P2WPKH, the <code>scriptSig</code> MUST be empty, and the witness stack format and signature generating rules are same as P2SH-P2WPKH (including the requirement of using compressed public key)
 * [Example](http://n.bitcoin.ninja/checktx?txid=d869f854e1f8788bcff294cc83b280942a8c728de71eb709a2c29d10bfe21b7c)
 
 #### Native Pay-to-Witness-Script-Hash (P2WSH)
 
-* Native P2WSH is a <code>scripPubKey</code> of 34 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>scripthash</code> (i.e. <code>0x0020{32-byte scripthash}</code>)
+* Native P2WSH is a <code>scriptPubKey</code> of 34 bytes. It starts with a <code>OP_0</code>, followed by a canonical push of the <code>scripthash</code> (i.e. <code>0x0020{32-byte scripthash}</code>)
 * Same as P2SH-P2WSH, <code>scripthash</code> is SHA256 of the <code>witnessScript</code>.
 * When spending a native P2WSH, the <code>scriptSig</code> MUST be empty, and the witness stack format and signature generating rules are same as P2SH-P2WSH (including the requirement of using compressed public key)
 * [Example](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
