@@ -10,15 +10,8 @@ version: 2
 ---
 Receive notification of important security announcements and releases for Bitcoin Core.
 
-Enter your email address below:
+Subscribe to the RSS feed below.
 
 {% include pages/list/announcement.html %}
     
 Low traffic for announcements only.
-
-Emails will be DKIM signed from bitcoincore.org and GPG signed by one of
-the following keys:
-
-{% include dev-keys.md %}
-
-{% include references.md %}
