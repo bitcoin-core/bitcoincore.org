@@ -69,7 +69,7 @@ The description above only describes Bitcoin Core software releases. Many other 
 - The **P2P network protocol** uses version numbers to allow nodes to announce what features they support.
 - Bitcoin Core's **built-in wallet** has its own internal version number.
 
-These versions numbers are deliberately decoupled from Bitcoin Core's version number as the Bitcoin Core project either has no direct control over them (as is the case with blocks and transactions), or tries to maintain compatibility with other projects (as is the case with the network protocol), or allows for the possibility that no major changes will be made in some releases (as is sometimes the case with the built-in wallet).
+These version numbers are deliberately decoupled from Bitcoin Core's version number as the Bitcoin Core project either has no direct control over them (as is the case with blocks and transactions), or tries to maintain compatibility with other projects (as is the case with the network protocol), or allows for the possibility that no major changes will be made in some releases (as is sometimes the case with the built-in wallet).
 
 The consensus protocol itself doesn't have a version number.
 
