@@ -9,7 +9,7 @@ permalink: /ja/2016/01/26/segwit-benefits/
 version: 1
 excerpt: このページはSegregated Witnessの恩恵についてまとめています。
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 Segregated Witnessのソフトフォーク（segwit）には幅広い機能が含まれており、その多くは高度に技術的です。このページにはこれらの機能の恩恵の一部がまとめられています。
 
