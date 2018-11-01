@@ -303,7 +303,7 @@ ja:
         url: "/en/2015/12/23/capacity-increases-faq/"
       segwit-faq:
         title: "Segwit"
-        url: "/en/2016/01/26/segwit-benefits/"
+        url: "/ja/2016/01/26/segwit-benefits/"
       segwit-dev:
         title: "Segwit開発ガイド"
         url: "/ja/segwit_wallet_dev/"
