@@ -32,6 +32,7 @@
 [Jorge Timón]: https://github.com/jtimon
 [Joseph Poon]: https://github.com/josephpoon
 [Joshua Simmons]: https://github.com/kadoban
+[Justin Arthur]: https://github.com/justintarthur
 [Karel Bilek]: https://github.com/karel-3d
 [Karl-Johan Alm]: https://github.com/kallewoof
 [Lucas Betschart]: https://github.com/lclc
