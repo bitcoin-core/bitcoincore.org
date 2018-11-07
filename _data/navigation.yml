@@ -337,7 +337,7 @@ ja:
         url:   "/en/bips/"
       eol:
         title: "ライフサイクル"
-        url:   "/en/lifecycle"
+        url:   "/ja/lifecycle"
   contact:
     title: "コンタクト"
     submenu: true
