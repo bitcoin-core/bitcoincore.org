@@ -119,7 +119,7 @@ version: 1
     1. <code>witnessScript</code>と呼ばれるスクリプトを定義します。
     2. <code>witnessScript</code>のSHA256（<code>scripthash</code>）を計算します。この時ダブルSHA256やRIPEMD160(SHA256)でなく、単体のSHA256であることに注意してください。
     3. P2SHの<code>redeemScript</code>は常に34バイトです。<code>OP_0</code>から始まり、その後に<code>scripthash</code>がプッシュされます。（例： <code>0x0020{32-byte scripthash}</code>）
-    4. 他のP2SHと同様、<code>scripPubKey</code>は<code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>で、対応するアドレスは3から始まるP2SHアドレスです。
+    4. 他のP2SHと同様、<code>scriptPubKey</code>は<code>OP_HASH160 hash160(redeemScript) OP_EQUAL</code>で、対応するアドレスは3から始まるP2SHアドレスです。
 * スクリプトの制限事項
     * スクリプトの評価に失敗してはならず、評価後のスタックにはただ１つTRUEとなるスタックアイテムが残っている状態でないといけません。それ以外の場合、評価は失敗します。
     * P2SH-P2WSHスクリプト内の公開鍵は圧縮公開鍵でなければならず、それ以外の場合資金が永久に失われる可能性があります。
@@ -147,14 +147,14 @@ version: 1
 
 #### Native Pay-to-Witness-Public-Key-Hash (P2WPKH) {#native-pay-to-witness-public-key-hash}
 
-* Native P2WPKHは22バイトの<code>scripPubKey</code>です。この<code>scripPubKey</code>は<code>OP_0</code>で始まり、その後に<code>keyhash</code>がプッシュされます。（例：<code>0x0014{20-byte keyhash}</code>）
+* Native P2WPKHは22バイトの<code>scriptPubKey</code>です。この<code>scriptPubKey</code>は<code>OP_0</code>で始まり、その後に<code>keyhash</code>がプッシュされます。（例：<code>0x0014{20-byte keyhash}</code>）
 * P2SH-P2WPKHと同様、<code>keyhash</code>は圧縮公開鍵をRIPEMD160(SHA256)した値です。
 * Native P2WPKHを使用する際は、<code>scriptSig</code>は必ず空で、witnessスタックの形式と署名の生成ルールはP2SH-P2WPKHと同じです（圧縮公開鍵を使用する要件含め）。
 * [Example](http://n.bitcoin.ninja/checktx?txid=d869f854e1f8788bcff294cc83b280942a8c728de71eb709a2c29d10bfe21b7c)
 
 #### Native Pay-to-Witness-Script-Hash (P2WSH) {#native-pay-to-witness-script-hash}
 
-* Native P2WSHは34バイトの<code>scripPubKey</code>です。この<code>scripPubKey</code>は<code>OP_0</code>から始まり、その後に<code>scripthash</code>がプッシュされます。（例：<code>0x0020{32-byte scripthash}</code>）
+* Native P2WSHは34バイトの<code>scriptPubKey</code>です。この<code>scriptPubKey</code>は<code>OP_0</code>から始まり、その後に<code>scripthash</code>がプッシュされます。（例：<code>0x0020{32-byte scripthash}</code>）
 * P2SH-P2WSHと同様、<code>scripthash</code>は<code>witnessScript</code>をSHA256した値です。
 * Native P2WSHを使用する際は、<code>scriptSig</code>は必ず空で、witnessスタックの形式と署名の生成ルールはP2SH-P2WSHと同じです（圧縮公開鍵を使用する要件含め）。
 * [Example](http://n.bitcoin.ninja/checktx?txid=78457666f82c28aa37b74b506745a7c7684dc7842a52a457b09f09446721e11c)
