@@ -64,12 +64,6 @@
             	<a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl" id="lin32arm">32 bit</a></span>
         </span>
       </div>
-      <div>
-        <img src="/assets/images/os/med_ubuntu.svg" alt="ubuntu">
-        <span>
-          <a href="https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin">Ubuntu (PPA)</a>
-        </span>
-      </div>
     </div>
     <p class="downloadmore">
       <a href="{{ PATH_PREFIX }}/SHA256SUMS.asc" class="dl">{{ page.downloadsig }}</a><br>
@@ -222,14 +216,6 @@
     </ol>
   </details>
 
-  <details>
-    <summary><strong>{{page.ubuntu_ppa_instructions}}</strong></summary>
-
-    <p>{{page.ubuntu_notice}}</p>
-
-    <blockquote>{{page.ubuntu_ppa_quote}}</blockquote>
-  </details>
-
   <h2 style="text-align: center">{{page.build_reproduction}}</h2>
 
   <p>{{page.additional_steps}}</p>
@@ -253,7 +239,6 @@ if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
 else if (navigator.userAgent.indexOf('Linux') != -1) {
 	var os='linux32';
 	if (navigator.userAgent.indexOf('x86_64') != -1) var os = 'linux64';
-	if (navigator.userAgent.indexOf('Ubuntu') != -1) var os = 'ubuntu';
 }
 else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
 var but = document.getElementById('downloadbutton');
@@ -290,10 +275,6 @@ case 'linux32':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
 	but.href = hreflin32;
 	linklin.href = hreflin32;
-break;
-case 'ubuntu':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_ubuntu.svg';
-	but.href = 'https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin';
 break;
 case 'mac':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
