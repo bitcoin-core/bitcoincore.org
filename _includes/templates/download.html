@@ -80,6 +80,11 @@
 
 </div>
 
+  {% if page.version > 2 %}
+  {{page.ubuntu_warning}} <a href="https://bugs.launchpad.net/snapstore/+bug/1803914">1</a>,
+  <a href="https://bugs.launchpad.net/launchpad/+bug/1331914">2</a>
+  {% endif %}
+
   <h2 style="text-align: center">{{ page.patient }}</h2>
   <p>{{ page.notesync | replace: '$(DATADIR_SIZE)', site.data.stats.datadir_gb | replace: '$(PRUNED_SIZE)', site.data.stats.pruned_gb | replace: '$(MONTHLY_RANGE_GB)', site.data.stats.monthly_storage_increase_range_gb }} {{ page.full_node_guide }}</p>
 
