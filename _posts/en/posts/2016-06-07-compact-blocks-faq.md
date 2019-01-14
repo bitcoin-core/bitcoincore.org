@@ -31,7 +31,7 @@ The advantage of this approach is that transactions only need to be sent once in
 
 In addition, the compact block relay proposal also provides a second mode of operation (called *high bandwidth mode*) where the receiving node asks a few of its peers to send new blocks directly without asking for permission first, which may increase bandwidth (because two peers may try sending the same block at the same time) but which further reduces the amount of time it takes blocks to arrive (latency) on high-bandwidth connections.
 
-The diagram below shows the way nodes currently send blocks compared to compact block relay's two operating modes.
+The diagram below shows the way nodes currently send blocks compared to compact block relay's two operating modes. The grey box on node A's timeline represents the period in which it is performing validation.
 
 ![Compact Blocks diagram](https://raw.githubusercontent.com/bitcoin/bips/master/bip-0152/protocol-flow.png)
 
