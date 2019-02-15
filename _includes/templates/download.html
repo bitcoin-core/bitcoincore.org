@@ -80,7 +80,8 @@
     </p>
     <p class="downloadkeys">
       <span>{{ page.releasekeys }}</span>
-      <a href="/keys/laanwj-releases.asc">v0.11.0+</a> <code title="{{page.pgp_key_fingerprint}}">{{SIGNING_KEY_FINGERPRINT}}</code>
+      v0.11.0+ <code title="{{page.pgp_key_fingerprint}}">{{SIGNING_KEY_FINGERPRINT}}</code><br>
+      {% if page.version > 2 %}<i>{{page.key_refresh}}</i> <code>gpg --refresh-keys</code>{% endif %}
     </p>
   </div>
 
