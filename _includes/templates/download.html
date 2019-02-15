@@ -198,7 +198,7 @@
 
       <li><p>{{page.verify_download_checksum}}</p>
 
-        <pre class="highlight"><code>sha256sum --ignore-missing --check SHA256SUMS.asc</code></pre>
+        <pre class="highlight"><code>sha256sum --check SHA256SUMS.asc 2&gt;/dev/null | grep OK</code></pre>
 
         <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.lin64}}: {{page.localized_checksum_ok}}</code></p></li>
 
