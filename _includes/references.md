@@ -123,8 +123,6 @@
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [bitcoin-core-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-core-dev
-[Slack]: https://bitcoincore.slack.com/
-[slack-invite]: https://slack.bitcoincore.org/
 [software life cycle]: /en/lifecycle
 
 [laanwj-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x71A3B16735405025D447E8F274810B012346C9A6

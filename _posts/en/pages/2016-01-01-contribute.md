@@ -26,7 +26,7 @@ Feel free to report [issues][issues] and open [pull requests][pulls], but please
 
 **Discussion**
 
-Most Bitcoin Core related discussion happens in the [#bitcoin-core-dev] IRC channel on irc.freenode.net or [bitcoin-core-dev][] mailing list. There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][] and a general Bitcoin discussion [bitcoin-discuss][]. We also have [Slack][slack] ([request an invitation][slack-invite]).
+Most Bitcoin Core related discussion happens in the [#bitcoin-core-dev] IRC channel on irc.freenode.net or [bitcoin-core-dev][] mailing list. There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][] and a general Bitcoin discussion [bitcoin-discuss][].
 
 **Contribute to this website**
 

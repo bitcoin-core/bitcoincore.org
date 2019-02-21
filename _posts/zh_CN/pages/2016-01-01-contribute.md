@@ -26,7 +26,6 @@ share: false
 
 大多数比特币核心相关的讨论发生在 irc.freenode.net 上的 [#bitcoin-core-dev] IRC（互联网中继聊天） 频道。
 比特币协议讨论区 [bitcoin-dev][] 和一个普通比特币讨论区 [bitcoin-discuss][].
-有一个邮件列表。我们还有 [slack][slack] ([需要][slack-invite])。
 
 **为本网站做出贡献**
 
