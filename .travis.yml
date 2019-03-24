@@ -2,11 +2,7 @@ language: ruby
 rvm:
   - "2.2.2"
 
-## Allows use of docker-based containers, which are more available than
-## the xen-based (or whatever) VMs, so builds tend to happen sooner
-sudo: false
-
-## Save bundler deps.  Requires sudo: false
+## Save bundler deps.
 cache: bundler
 
 ## Disable external link checking to prevent spurious failures because
