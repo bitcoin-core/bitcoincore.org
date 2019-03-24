@@ -120,6 +120,7 @@
 [#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
 [issues]: https://github.com/bitcoin/bitcoin/issues
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
+[BitcoinCoreDocBips]: https://github.com/bitcoin/bitcoin/blob/master/doc/bips.md
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [bitcoin-core-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-core-dev
