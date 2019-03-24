@@ -65,9 +65,6 @@ en:
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
-      bips:
-        title: "Supported BIPs"
-        url:   "/en/bips/"
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
