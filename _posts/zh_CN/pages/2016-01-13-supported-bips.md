@@ -8,9 +8,6 @@ permalink: /zh_CN/bips/
 share: false
 version: 2
 ---
-比特币核心支持如下[BIPs][BIP1]：
+比特币核心支持如下[BIPs][BitcoinCoreDocBips]：
 
-| BIP |Supported since| Title |
-|-----|---------------|-------|
-{% include pages/bips-list.md %}
 {% include references.md %}

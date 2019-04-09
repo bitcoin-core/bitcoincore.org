@@ -71,9 +71,6 @@ en:
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
-      bips:
-        title: "Supported BIPs"
-        url:   "/en/bips/"
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
@@ -244,9 +241,6 @@ zh_TW:
       meetings:
         title: "meetings"
         url:   "/en/meetings/"
-      bips:
-        title: "Supported BIPs"
-        url:   "/en/bips/"
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle/"

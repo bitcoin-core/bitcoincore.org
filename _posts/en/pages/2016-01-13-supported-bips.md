@@ -10,9 +10,6 @@ version: 2
 redirect_from:
   - /zh_TW/bips/
 ---
-Bitcoin Core supports the following [BIPs][BIP1].
+Bitcoin Core supports the following [BIPs][BitcoinCoreDocBips].
 
-| BIP |Supported since| Title |
-|-----|---------------|-------|
-{% include pages/bips-list.md %}
 {% include references.md %}
