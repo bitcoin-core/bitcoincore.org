@@ -1,0 +1,23 @@
+---
+layout: null
+lang: en
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ site.title }}</title>
+        <description>{{ site.translations[page.lang].description }}</description>
+        <link>{{ site.url }}</link>
+        <atom:link href="{{ site.url }}/{{ page.lang }}/announcements.xml" rel="self" type="application/rss+xml" />
+        {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' | where: "announcement", 1 %}
+        {% for post in posts limit:5 %}
+        <item>
+            <title>{{ post.title | strip_html }}</title>
+            <description>{{ post.content | xml_escape | replace: "[[", " (" | replace: "]]", ")"}}</description>
+            <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+            <link>{{ site.url }}{{ post.url }}</link>
+            <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+        </item>
+        {% endfor %}
+    </channel>
+</rss>
