@@ -25,17 +25,9 @@
       <div>
         <img src="/assets/images/os/med_win.png" alt="windows">
         <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" id="downloadwinexe">Windows</a>
-          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" class="dl" id="win64exe">64 bit</a> -
-            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win32exe }}" class="dl" id="win32exe">32 bit</a></span>
-        </span>
-      </div>
-      <div>
-        <img src="/assets/images/os/med_win.png" alt="windows">
-        <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64zip }}" id="downloadwinzip">Windows (zip)</a>
-          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64zip }}" class="dl" id="win64zip">64 bit</a> -
-            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win32zip }}" class="dl" id="win32zip">32 bit</a></span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" class="dl" id="downloadwinexe">Windows</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" class="dl" id="win64exe">exe</a> -
+            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64zip }}" class="dl" id="win64zip">zip</a></span>
         </span>
       </div>
       <div>
@@ -46,8 +38,6 @@
             <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.mactar }}" class="dl" id="mactar">tar.gz</a></span>
         </span>
       </div>
-    </div>
-    <div>
       <div>
         <img src="/assets/images/os/med_linux.png" alt="linux">
         <span>
@@ -56,12 +46,21 @@
             <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin32 }}" class="dl" id="lin32">32 bit</a></span>
         </span>
       </div>
+    </div>
+    <div>
       <div>
         <img src="/assets/images/os/arm.png" alt="ARM Linux">
         <span>
           <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl">ARM Linux</a>
           	<span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-aarch64-linux-gnu.tar.gz" class="dl" id="lin64arm">64 bit</a> -
             	<a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl" id="lin32arm">32 bit</a></span>
+        </span>
+      </div>
+      <div>
+        <img src="/assets/images/os/but_riscv.svg" alt="RISC-V Linux">
+        <span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.riscv64 }}.tar.gz" class="dl">RISC-V Linux</a>
+            <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.riscv64 }}.tar.gz" class="dl" id="lin64riscv">64 bit</a></span>
         </span>
       </div>
     </div>
@@ -235,7 +234,7 @@
 <p>{{ page.notelicense }}</p>
 
 <script type="text/javascript">
-var os = 'windows32';
+var os = 'windows64';
 if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
 else if (navigator.userAgent.indexOf('Linux') != -1) {
 	var os='linux32';
@@ -247,9 +246,7 @@ var linkwinexe = document.getElementById('downloadwinexe');
 var linkwinzip = document.getElementById('downloadwinzip');
 var linklin = document.getElementById('downloadlin');
 var hrefwin64exe = document.getElementById('win64exe').href;
-var hrefwin32exe = document.getElementById('win32exe').href;
 var hrefwin64zip = document.getElementById('win64zip').href;
-var hrefwin32zip = document.getElementById('win32zip').href;
 var hrefmacdmg = document.getElementById('macdmg').href;
 var hrefmactar = document.getElementById('mactar').href;
 var hreflin64 = document.getElementById('lin64').href;
@@ -260,12 +257,6 @@ case 'windows64':
 	but.href = hrefwin64exe;
 	linkwinexe.href = hrefwin64exe;
 	linkwinzip.href = hrefwin64zip;
-break;
-case 'windows32':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
-	but.href = hrefwin32exe;
-	linkwinexe.href = hrefwin32exe;
-	linkwinzip.href = hrefwin32zip;
 break;
 case 'linux64':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
