@@ -6,7 +6,6 @@ lang: en
 permalink: /en/2016/10/28/segwit-costs/
 type: posts
 layout: post
-share: yes
 version: 1
 excerpt: A summary of some of the costs and expected risks of deploying segregated witness.
 ---

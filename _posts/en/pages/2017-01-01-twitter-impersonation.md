@@ -5,7 +5,6 @@ permalink: /en/twitter-impersonation/
 type: pages
 layout: page
 lang: en
-share: false
 version: 1
 ---
 We are aware of several accounts on Twitter that violate [Twitter's

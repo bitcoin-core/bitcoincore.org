@@ -7,7 +7,6 @@ id: zh_cn-2016-01-01-contribute.md
 title: 我如何做出贡献?
 permalink: /zh_CN/contribute/
 version: 0
-share: false
 ---
 
 欢迎您为项目做贡献！

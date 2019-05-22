@@ -5,7 +5,6 @@ permalink: /en/legal/
 type: pages
 layout: page
 lang: en
-share: false
 version: 1
 ---
 

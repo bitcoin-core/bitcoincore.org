@@ -6,7 +6,6 @@ type: posts
 layout: post
 lang: en
 permalink: /en/2016/01/28/clarification/
-share: true
 version: 1
 excerpt: Where to find official information about Bitcoin Core and how you can interact with other Bitcoin Core users and developers.
 ---

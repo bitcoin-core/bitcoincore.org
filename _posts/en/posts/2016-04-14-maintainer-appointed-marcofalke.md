@@ -6,7 +6,6 @@ lang: en
 permalink: /en/blog/2016/04/14/maintainer/
 type: posts
 layout: post
-share: true
 author: laanwj
 tags: [bitcoin, maintainer]
 category: [announcements]

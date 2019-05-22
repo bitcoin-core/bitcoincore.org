@@ -6,7 +6,6 @@ permalink: /en/contribute/
 type: pages
 layout: page
 lang: en
-share: false
 version: 3
 redirect_from:
   - /zh_TW/contribute/

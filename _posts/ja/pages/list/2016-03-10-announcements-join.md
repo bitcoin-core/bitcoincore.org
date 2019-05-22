@@ -5,7 +5,6 @@ permalink: /ja/list/announcements/join/
 type: pages
 layout: page
 lang: ja
-share: false
 version: 0
 ---
 Bitcoin Coreの重要なセキュリティのお知らせとリリースの通知を受け取ります。

@@ -4,7 +4,6 @@ permalink: /list/announcements/confirmed/
 type: none
 layout: page
 lang: en
-share: false
 robots_exclude: true
 sitemap_exlude: true
 ---
