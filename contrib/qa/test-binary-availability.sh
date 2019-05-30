@@ -25,5 +25,5 @@ do
     curl -sI "https://bitcoincore.org${url}"
   else
     curl -sI "$url"
-  fi | grep -q '200 OK' || echo "Error: Could not retrieve $url"
+  fi | egrep -q '(200 OK|HTTP/2 200)' || echo "Error: Could not retrieve $url"
 done | if grep . ; then sed 1iERROR ; false ; else true ; fi
