@@ -63,6 +63,12 @@
             <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.riscv64 }}.tar.gz" class="dl" id="lin64riscv">64 bit</a></span>
         </span>
       </div>
+      <div>
+        <img src="/assets/images/os/med_snap.svg" alt="Snap Store Linux">
+        <span>
+          <a href="https://snapcraft.io/bitcoin-core" class="dl">Snap Store Linux</a>
+        </span>
+      </div>
     </div>
     <p class="downloadmore">
       <a href="{{ PATH_PREFIX }}/SHA256SUMS.asc" class="dl">{{ page.downloadsig }}</a><br>
@@ -215,6 +221,15 @@
 
     </ol>
   </details>
+
+  {% if page.version > 3 %}
+  <details>
+    <summary><strong>{{page.snap_instructions}}</strong></summary>
+
+    <p>{{page.snap_warning}}</p>
+
+  </details>
+  {% endif %}
 
   <h2 style="text-align: center">{{page.build_reproduction}}</h2>
 
