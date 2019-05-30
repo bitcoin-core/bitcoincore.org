@@ -6,7 +6,6 @@ type: posts
 layout: post
 lang: zh_CN
 permalink: /zh_CN/2016/01/28/clarification/
-share: true
 version: 1
 excerpt: 在哪里可以找到关于比特币核心的官方信息，以及如何与其他比特币核心用户和开发者进行互动？
 ---

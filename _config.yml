@@ -81,14 +81,12 @@ defaults:
       type: releases
       layout: page
       lang: en
-      share: true
   - scope:
       path: ""
       type: doc
     values:
       layout: doc
       lang: en
-      share: true
   - scope:
       path: "_posts/en/posts"
       type: posts

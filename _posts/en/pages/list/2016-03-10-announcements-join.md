@@ -5,7 +5,6 @@ permalink: /en/list/announcements/join/
 type: pages
 layout: page
 lang: en
-share: false
 version: 2
 ---
 Receive notification of important security announcements and releases for Bitcoin Core.

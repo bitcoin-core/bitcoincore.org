@@ -35,7 +35,6 @@ Each document has a header called "Front Matter", which looks something like thi
     layout: post
     type: post
     layout: post
-    share: true
     ---
 
 Translators should only translate the `title:` field, and change the language code in the `id:`, `lang:` and `permalink:` fields. For example the above would be translated for `zh_CN` as:
@@ -48,7 +47,6 @@ Translators should only translate the `title:` field, and change the language co
     permalink: /zh_CN/2016/01/28/clarification/
     type: post
     layout: post
-    share: true
     ---
 
 Notice the remaining fields are left untranslated, however in Transifiex, you must copy these fields as translations (without actually translating them).

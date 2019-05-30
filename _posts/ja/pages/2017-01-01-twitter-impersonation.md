@@ -5,7 +5,6 @@ permalink: /ja/twitter-impersonation/
 type: pages
 layout: page
 lang: ja
-share: false
 version: 1
 ---
 私たちは[Twitterのなりすましに関するポリシー][]に違反し、Bitcoin Coreのプロジェクトや

@@ -6,7 +6,6 @@ permalink: /en/lifecycle/
 layout: page
 type: pages
 lang: en
-share: false
 version: 2
 ---
 {% include toc.html %}

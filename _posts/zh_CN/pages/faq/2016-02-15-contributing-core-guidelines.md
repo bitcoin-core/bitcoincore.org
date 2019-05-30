@@ -6,7 +6,6 @@ permalink: /zh_CN/faq/contributing-code/
 layout: page
 type: pages
 lang: zh_CN
-share: false
 category: faqs
 version: 2
 ---

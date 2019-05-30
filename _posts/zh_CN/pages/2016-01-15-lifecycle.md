@@ -6,7 +6,6 @@ permalink: /zh_CN/lifecycle/
 layout: page
 type: pages
 lang: zh_CN
-share: false
 version: 1
 ---
 该文档描述了比特币核心项目发布的软件包的生命周期。这符合商业软件的标准维护协议。  

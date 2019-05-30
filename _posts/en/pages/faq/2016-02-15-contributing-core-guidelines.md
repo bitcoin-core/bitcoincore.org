@@ -6,7 +6,6 @@ permalink: /en/faq/contributing-code/
 layout: page
 type: pages
 lang: en
-share: false
 category: faqs
 version: 2
 ---
