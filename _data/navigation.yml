@@ -13,17 +13,6 @@ en:
       team:
         title: "Team"
         url:   "/en/team/"
-      projects:
-        title: "Sponsorship"
-        url: "/en/about/sponsorship/programme/"
-        submenu: true
-        tree:
-          programme:
-            title: "programme"
-            url: "/en/about/sponsorship/programme/"
-          faq:
-            title: "FAQ"
-            url: "/en/about/sponsorship/faq/"
   download:
     title: "Download"
     url: "/en/download"
@@ -101,17 +90,6 @@ zh_CN:
       team:
         title: "团队"
         url:   "/zh_CN/team/"
-      projects:
-        title: "赞助"
-        url: "/zh_CN/about/sponsorship/programme/"
-        submenu: true
-        tree:
-          programme:
-            title: "赞助计划"
-            url: "/zh_CN/about/sponsorship/programme/"
-          faq:
-            title: "常见问题"
-            url: "/zh_CN/about/sponsorship/faq/"
   blog:
     title: "博客"
     url:   "/zh_CN/blog/"
@@ -186,17 +164,6 @@ zh_TW:
       team:
         title: "Team"
         url:   "/en/team/"
-      projects:
-        title: "Sponsorship"
-        url: "/zh_TW/about/sponsorship/programme/"
-        submenu: true
-        tree:
-          programme:
-            title: "programme"
-            url: "/zh_TW/about/sponsorship/programme/"
-          faq:
-            title: "FAQ"
-            url: "/zh_TW/about/sponsorship/faq/"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
@@ -268,17 +235,6 @@ ja:
       team:
         title: "チーム"
         url:   "/en/team/"
-      projects:
-        title: "スポンサーシップ"
-        url: "/en/about/sponsorship/programme/"
-        submenu: true
-        tree:
-          programme:
-            title: "プログラム"
-            url: "/en/about/sponsorship/programme/"
-          faq:
-            title: "FAQ"
-            url: "/en/about/sponsorship/faq/"
   download:
     title: "ダウンロード"
     url: "/ja/download/"
