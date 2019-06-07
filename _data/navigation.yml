@@ -5,14 +5,7 @@ en:
     url:   "/"
   about:
     title: "About"
-    submenu: true
-    tree:
-      about:
-        title: "About Us"
-        url:   "/en/about/"
-      team:
-        title: "Team"
-        url:   "/en/team/"
+    url:   "/en/about/"
   download:
     title: "Download"
     url: "/en/download"
@@ -82,14 +75,7 @@ zh_CN:
     url:   "/zh_CN/"
   about:
     title: "关于我们"
-    submenu: true
-    tree:
-      about:
-        title: "关于我们"
-        url:   "/zh_CN/about/"
-      team:
-        title: "团队"
-        url:   "/zh_CN/team/"
+    url:   "/zh_CN/about/"
   blog:
     title: "博客"
     url:   "/zh_CN/blog/"
@@ -156,14 +142,7 @@ zh_TW:
     url:   "/zh_TW/"
   about:
     title: "關於我們"
-    submenu: true
-    tree:
-      about:
-        title: "About Us"
-        url:   "/zh_TW/about/"
-      team:
-        title: "Team"
-        url:   "/en/team/"
+    url:   "/en/about/"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
@@ -227,14 +206,7 @@ ja:
     url:   "/ja/"
   about:
     title: "概要"
-    submenu: true
-    tree:
-      about:
-        title: "プロジェクト概要"
-        url:   "/en/about/"
-      team:
-        title: "チーム"
-        url:   "/en/team/"
+    url:   "/en/about/"
   download:
     title: "ダウンロード"
     url: "/ja/download/"
