@@ -206,7 +206,7 @@ ja:
     url:   "/ja/"
   about:
     title: "概要"
-    url:   "/en/about/"
+    url:   "/ja/about/"
   download:
     title: "ダウンロード"
     url: "/ja/download/"
@@ -247,16 +247,13 @@ ja:
     tree:
       contribute:
         title: "貢献"
-        url:   "/en/contribute/"
+        url:   "/ja/contribute/"
       contribute-code:
         title: "コードの貢献"
-        url:   "/en/faq/contributing-code/"
+        url:   "/ja/faq/contributing-code/"
       meetings:
         title: "ミーティング"
-        url:   "/en/meetings/"
-      bips:
-        title: "サポートするBIP"
-        url:   "/en/bips/"
+        url:   "/ja/meetings/"
       eol:
         title: "ライフサイクル"
         url:   "/ja/lifecycle"
