@@ -99,3 +99,6 @@ collections:
     output: true
   doc:
     output: true
+
+strings:
+  gpg_keyserver: " --keyserver hkp://keyserver.ubuntu.com"  ## Prefix with a space

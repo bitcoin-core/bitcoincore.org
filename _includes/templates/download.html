@@ -80,7 +80,7 @@
     <p class="downloadkeys">
       <span>{{ page.releasekeys }}</span>
       v0.11.0+ <code title="{{page.pgp_key_fingerprint}}">{{SIGNING_KEY_FINGERPRINT}}</code><br>
-      {% if page.version > 2 %}<i>{{page.key_refresh}}</i> <code>gpg --refresh-keys</code>{% endif %}
+      {% if page.version > 2 %}<i>{{page.key_refresh}}</i><br><code>gpg{{site.strings.gpg_keyserver}} --refresh-keys</code>{% endif %}
     </p>
   </div>
 
@@ -90,7 +90,7 @@
   <p>{{ page.notesync | replace: '$(DATADIR_SIZE)', site.data.stats.datadir_gb | replace: '$(PRUNED_SIZE)', site.data.stats.pruned_gb | replace: '$(MONTHLY_RANGE_GB)', site.data.stats.monthly_storage_increase_range_gb }} {{ page.full_node_guide }}</p>
 
 {% if page.version > 1 %}
-  <h2 style="text-align: center">{{page.verify_download}}</h2>
+  <h2 style="text-align: center" id="{{page.verify_download | slugify}}">{{page.verify_download}}</h2>
   <p>{{page.verification_recommended}}</p>
   <details>
   {% assign GPG = "C:\Program Files\Gnu\GnuPg\gpg.exe" %}
@@ -122,7 +122,7 @@
 
       <li><p>{{page.obtain_release_key}}</p>
 
-        <pre class="highlight"><code>{{GPG}} --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
+        <pre class="highlight"><code>{{GPG}}{{site.strings.gpg_keyserver}} --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
 
         <p>{{page.release_key_obtained}}</p></li>
 
@@ -166,7 +166,7 @@
 
       <li><p>{{page.obtain_release_key}}</p>
 
-        <pre class="highlight"><code>gpg --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
+        <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
 
         <p>{{page.release_key_obtained}}</p></li>
 
@@ -204,7 +204,7 @@
 
       <li><p>{{page.obtain_release_key}}</p>
 
-        <pre class="highlight"><code>gpg --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
+        <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{SIGNING_KEY_FINGERPRINT}}</code></pre>
 
         <p>{{page.release_key_obtained}}</p></li>
 
