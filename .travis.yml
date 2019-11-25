@@ -3,6 +3,10 @@ language: ruby
 ## Save bundler deps.
 cache: bundler
 
+before_install:
+  - gem update --system
+  - gem --version
+
 ## Disable external link checking to prevent spurious failures because
 ## of other people's downtime. This can also avoid wasting their
 ## bandwidth.
