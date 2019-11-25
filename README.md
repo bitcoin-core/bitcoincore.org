@@ -42,8 +42,8 @@ permalink: /en/2016/01/01/short-title
 
 This website is based on [Jekyll](https://jekyllrb.com/).  To build
 locally, [install Ruby 2.2.2](https://gorails.com/setup) using system
-packages, [rvm](https://rvm.io), or another method.  Then clone this
-repository and change directory into it:
+packages, [rvm](https://rvm.io), [rbenv](https://github.com/rbenv/rbenv), or another method.
+Then clone this repository and change directory into it:
 
     git clone https://github.com/bitcoin-core/bitcoincore.org.git
     cd bitcoincore.org
@@ -55,7 +55,7 @@ need to run `gem` as the superuser by putting "sudo" followed by a space
 before the `gem` command.  You shouldn't need to use `sudo` with the
 `bundle` command.
 
-    gem install bundle
+    gem install bundler -v '~>1'
     bundle install
 
 To preview the site (this will launch a tiny webserver on port 4000):
@@ -91,7 +91,7 @@ current documentation may describe features not available in the old
 version of the theme used by the website.
 
 [minimal mistakes theme]: https://mmistakes.github.io/minimal-mistakes/
-[mm docs]: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ 
+[mm docs]: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
 [mm config]: https://mmistakes.github.io/minimal-mistakes/docs/configuration/
 [mm content]: https://mmistakes.github.io/minimal-mistakes/docs/posts/
 [mm js]: https://mmistakes.github.io/minimal-mistakes/docs/javascript/
