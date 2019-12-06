@@ -34,7 +34,7 @@
                                   <a href="{{article.url}}">RPC Docs</a>
                                 {% endif %}
                               {% endfor %}
-                              {% assign groups = site.doc | group_by:"btcversion" | sort: "name" %}
+                              {% assign groups = site.doc | group_by:"btcversion" | sort_by: "btcversion" | reverse %}
                               <ul>
                                 {% for group in groups %}
                                   {% if group.name != "index" %}
@@ -79,5 +79,3 @@
 		</nav>
 	</div><!-- /.top-navigation -->
 </div><!-- /.navigation-wrapper -->
-
-
