@@ -1,6 +1,6 @@
 {% capture /dev/null %}<!-- suppress render of this part -->
 <!-- Copyright 2013 - 2016 The Bitcoin.org Project.
-     Copyright 2017 - 2018 The BitcoinCore.org Project
+     Copyright 2017 - 2020 The BitcoinCore.org Project
      This file is licensed under the MIT License (MIT) available on
      http://opensource.org/licenses/MIT. -->
 {% assign VERSION_SORTED_RELEASES = site.releases | sort: 'release' | reverse %}
@@ -41,9 +41,7 @@
       <div>
         <img src="/assets/images/os/med_linux.png" alt="linux">
         <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin64 }}" id="downloadlin">Linux (tgz)</a>
-          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin64 }}" class="dl" id="lin64">64 bit</a> -
-            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin32 }}" class="dl" id="lin32">32 bit</a></span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin64 }}" class="dl" id="lin64">Linux (tgz)</a>
         </span>
       </div>
     </div>
@@ -251,21 +249,16 @@
 <script type="text/javascript">
 var os = 'windows64';
 if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
-else if (navigator.userAgent.indexOf('Linux') != -1) {
-	var os='linux32';
-	if (navigator.userAgent.indexOf('x86_64') != -1) var os = 'linux64';
-}
+else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
 else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
 var but = document.getElementById('downloadbutton');
 var linkwinexe = document.getElementById('downloadwinexe');
 var linkwinzip = document.getElementById('downloadwinzip');
-var linklin = document.getElementById('downloadlin');
 var hrefwin64exe = document.getElementById('win64exe').href;
 var hrefwin64zip = document.getElementById('win64zip').href;
 var hrefmacdmg = document.getElementById('macdmg').href;
 var hrefmactar = document.getElementById('mactar').href;
 var hreflin64 = document.getElementById('lin64').href;
-var hreflin32 = document.getElementById('lin32').href;
 switch (os) {
 case 'windows64':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
@@ -277,11 +270,6 @@ case 'linux64':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
 	but.href = hreflin64;
 	linklin.href = hreflin64;
-break;
-case 'linux32':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
-	but.href = hreflin32;
-	linklin.href = hreflin32;
 break;
 case 'mac':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
