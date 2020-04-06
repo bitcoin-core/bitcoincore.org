@@ -233,8 +233,8 @@ ja:
         title: "Opt-in RBF"
         url: "/en/faq/optin_rbf/"
       compact-blocks:
-        title: "Compact Blocks"
-        url: "/en/2016/06/07/compact-blocks-faq/"
+        title: "Compact Block"
+        url: "/ja/2016/06/07/compact-blocks-faq/"
       version-bits:
         title: "Version Bits (BIP9)"
         url: "/en/2016/06/08/version-bits-miners-faq/"
