@@ -71,22 +71,6 @@ The modified hash only applies to signature operations initiated from witness da
  * [Proposal to limit transactions to 100kB](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-July/009494.html)
  * [Bitcoin Classic commit on 0.11.2 branch adding additional consensus limit on sighash bytes](https://github.com/bitcoinclassic/bitcoinclassic/commit/842dc24b23ad9551c67672660c4cba882c4c840a)
 
-## Signing of input values
-
-When a hardware wallet signs a transaction, it can easily verify the total amount being spent, but can only safely determine the fee by having a full copy of all the input transactions being spent, and must hash each of those to ensure it is not being fed false data. Since individual transactions can be up to 1MB in size, this is not necessarily a cheap operation, even if the transaction being signed is itself quite small.
-
-Segwit resolves this by explicitly hashing the input value. This means that a hardware wallet can simply be given the transaction hash, index, and value (and told what public key was used), and can safely sign the spending transaction, no matter how large or complicated the transaction being spent was.
-
-### Who benefits?
-
-Manufacturers and users of hardware wallets are the obvious beneficiaries; however this likely also makes it much easier to safely use Bitcoin in small embedded devices for "Internet of things" applications. 
-
-This benefit is only available when spending transactions sent to segwit enabled addresses (or segwit-via-P2SH addresses).
-
-### Further information
-
- * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
-
 ## Increased security for multisig via pay-to-script-hash (P2SH)
 
 Multisig payments currently use P2SH which is secured by the 160-bit HASH160 algorithm (RIPEMD of SHA256). However, if one of the signers wishes to steal all the funds, they can find a collision between a valid address as part of a multisig script and a script that simply pays them all the funds with only 80-bits (2<sup>80</sup>) worth of work, which is already within the realm of possibility for an extremely well-resourced attacker. (For comparison, at a sustained 1 exahash/second, the Bitcoin mining network does 80-bits worth of work every two weeks)
@@ -192,4 +176,31 @@ The previous text was:
 > Fraud proofs allow SPV users to help enforce Bitcoin's consensus rules, which will potentially greatly increase the security of the Bitcoin network as a whole, as well as reduce the ways in which individual users can be attacked.
 >
 > These fraud proofs can be added to the witness data structure as part of a future soft-fork, and they'll help SPV clients enforce the rules even on transactions that don't make use of the segwit features.
+
+## Update 2020-06-23
+
+Earlier versions of this page listed "Signing of input values" as a benefit of segwit.
+However, as implemented, segwit does not make this safe:
+with or without segwit, a future soft-fork will be needed to rely on signed input values.
+
+Since the values of each input are signed individually, the apparent fee can be manipulated in deceiving ways.
+(CVE-2020-14199)
+
+The previous text was:
+
+> **Signing of input values**
+>
+> When a hardware wallet signs a transaction, it can easily verify the total amount being spent, but can only safely determine the fee by having a full copy of all the input transactions being spent, and must hash each of those to ensure it is not being fed false data. Since individual transactions can be up to 1MB in size, this is not necessarily a cheap operation, even if the transaction being signed is itself quite small.
+>
+> Segwit resolves this by explicitly hashing the input value. This means that a hardware wallet can simply be given the transaction hash, index, and value (and told what public key was used), and can safely sign the spending transaction, no matter how large or complicated the transaction being spent was.
+>
+> **Who benefits?**
+>
+> Manufacturers and users of hardware wallets are the obvious beneficiaries; however this likely also makes it much easier to safely use Bitcoin in small embedded devices for "Internet of things" applications. 
+>
+> This benefit is only available when spending transactions sent to segwit enabled addresses (or segwit-via-P2SH addresses).
+>
+> **Further information**
+>
+>  * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
 
