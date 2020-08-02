@@ -1,5 +1,5 @@
 ---
-title: Twitter impersonation
+title: Twitter Impersonation
 name: twitter-impersonation
 permalink: /en/twitter-impersonation/
 type: pages
