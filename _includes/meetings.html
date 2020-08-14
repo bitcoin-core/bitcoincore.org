@@ -1,5 +1,5 @@
 <ul class="meeting">
-  {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'meetings' | sort:'post.date' %}
+  {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'meetings' | sort_by:'date' %}
   {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'meetings' %}
   {% for default_post in english_posts %}
     {% assign post=default_post %}
