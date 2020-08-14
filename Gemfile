@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ## If you update the version here, also update it in .ruby-version, .travis.yml
 ## and README.md. Then push your branch and make sure Travis supports that
 ## version.
-ruby '2.5.1'
+ruby '2.5.5'
 
 ## If you add a new Gem below, run `bundle install` to install it.
 group :development do
