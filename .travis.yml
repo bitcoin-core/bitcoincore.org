@@ -1,4 +1,6 @@
 language: ruby
+rvm:
+  - "2.5.5"
 
 ## Save bundler deps.
 cache: bundler

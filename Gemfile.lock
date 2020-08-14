@@ -258,7 +258,4 @@ DEPENDENCIES
   html-proofer
 
 RUBY VERSION
-   ruby 2.5.1p57
-
-BUNDLED WITH
-   1.17.3
+   ruby 2.5.5p157
