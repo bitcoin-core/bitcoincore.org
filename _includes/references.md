@@ -131,6 +131,7 @@
 [sipa-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x133EAC179436F14A5CF1B794860FEB804E669320
 
 [recent-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors?from=2017-03-01
+[github-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors
 
 [website-issues]: https://github.com/bitcoin-core/bitcoincore.org/issues
 
