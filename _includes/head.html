@@ -11,6 +11,7 @@
 <title>{{ site.title | xml_escape }}{{ custom | xml_escape }}{% if title %} :: {{ title | xml_escape }}{% endif %}</title>
 {% if page.excerpt %}<meta name="description" content="{{ title | strip_html | xml_escape }}">{% endif %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+<meta http-equiv="onion-location" content="http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion{{ page.url }}" />
 {% if page.author %}
   {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
 {% endif %}
