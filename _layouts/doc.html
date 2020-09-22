@@ -35,6 +35,7 @@
       {% if page.btcversion != "index" %}
         {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
         <section class="toc">
+        <input id="searchbar" type="text" value="" placeholder="Search..."/>
         {% for group in groups %}
           {% if group.name != "index" %}
             <header>
@@ -45,7 +46,7 @@
               <div class="toc-drawer js-hide-on-start">
                 <ul>
                   {% for article in group.items %}
-                    <li><a href="{{article.url}}">{{article.name}}</a></li>
+                    <li class="leaf-article"><a href="{{article.url}}">{{article.name}}</a></li>
                   {% endfor %}
                 </ul>
               </div>
