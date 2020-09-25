@@ -35,7 +35,7 @@
       {% if page.btcversion != "index" %}
         {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
         <section class="toc">
-        <input id="searchbar" type="text" value="" placeholder="Search..."/>
+        <input id="searchbar" type="text" value="" placeholder="Search ..."/>
         {% for group in groups %}
           {% if group.name != "index" %}
             <header>
