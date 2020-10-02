@@ -64,3 +64,34 @@ $(function() {
     drawer.toggleClass("js-hidden");
   });
 });
+
+// Search functionality
+var toggleDrawers = function(show){
+  $(".toc header").each(function(){
+    var header = $(this);
+    var drawer = header.find(".toc-drawer");
+    if (show) {
+      drawer.removeClass("js-hidden");
+    } else {
+      drawer.addClass("js-hidden");
+    }
+  });
+};
+
+$(function() {
+  $("#searchbar").on('input', function(){
+    var query = $(this).val();
+    if (query.length > 1) {
+      toggleDrawers(true);
+      $(".leaf-article").each(function(){
+        $(this).show();
+        if ($(this).text().indexOf(query) == -1) {
+          $(this).hide();
+        }
+      });
+    } else {
+      $(".leaf-article").each(function(){ $(this).show(); });
+      toggleDrawers(false);
+    }
+  })
+});
