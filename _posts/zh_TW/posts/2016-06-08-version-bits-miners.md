@@ -4,7 +4,7 @@ layout: post
 lang: zh_TW
 name: version-bits-faq-miners
 id: zh_tw-version-bits-faq-miners
-title: 針對礦工的版本位常見為題
+title: 針對礦工的版本位常見問題
 permalink: /zh_TW/2016/06/08/version-bits-miners-faq/
 version: 1
 excerpt: 版本位允許礦工嚮外界示意他們可以驗證軟分叉規則。它還允許多達29個軟分叉同時被實施。
