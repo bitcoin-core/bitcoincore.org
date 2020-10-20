@@ -147,18 +147,18 @@ zh_TW:
     title: "網誌"
     url:   "/zh_TW/blog/"
   releases:
-    title: "軟件發行"
+    title: "軟體發行"
     url:   "/zh_TW/releases/"
   faq:
     title: "FAQs"
     submenu: true
     tree:
       capacity-faq:
-        title: "Capacity Increases"
-        url: "/zh_TW/2015/12/21/系統擴展常見問題解答/"
+        title: "系統擴展常見問題解答"
+        url: "/zh_TW/2015/12/23/bitcoin-core-capacity-increases-faq/"
       segwit-faq:
-        title: "Segwit"
-        url: "/en/2016/01/26/segwit-benefits/"
+        title: "隔離見證的好處"
+        url: "/zh_TW/2016/01/26/segwit-benefits/"
       segwit-dev:
         title: "Segwit dev guide"
         url: "/en/segwit_wallet_dev/"
@@ -170,7 +170,7 @@ zh_TW:
         url: "/en/2016/06/07/compact-blocks-faq/"
       version-bits:
         title: "Version Bits (BIP9)"
-        url: "/en/2016/06/08/version-bits-miners-faq/"
+        url: "/zh_TW/2016/06/08/version-bits-miners-faq/"
       segwit-upgrade-guide:
         title: "Segwit upgrade guide"
         url: "/en/2016/10/27/segwit-upgrade-guide/"
