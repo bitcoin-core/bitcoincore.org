@@ -1,11 +1,10 @@
 ---
 layout: post
-type: posts
 lang: zh_TW
-name: bitcoin-core-2016-01-07-statement
 id: zh_tw-bitcoin-core-2016-01-07-statement
+name: bitcoin-core-2016-01-07-statement
 title: Bitcoin Core 聲明 -- 2016-01-07
-permalink: /zh_TW/2016/01/07/bitcoin-core-聲明/
+permalink: /zh_TW/2016/01/07/statement/
 version: 1
 ---
 

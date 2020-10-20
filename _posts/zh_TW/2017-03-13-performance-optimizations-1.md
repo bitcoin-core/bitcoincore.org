@@ -2,11 +2,12 @@
 layout: post
 type: posts
 lang: zh_TW
-name: scaling-optimizations-zh_ch
-id: zh_tw-scaling-optimizations-zh_ch
+name: performance-optimizations-1
+id: zh_tw-performance-optimizations-1
 title: 鏈上擴容：比特幣參考軟體性能優化曆史回顧
-permalink: /zh_TW/2017/03/11/比特幣參考軟體性能優化曆史回顧/
+permalink: /zh_TW/2017/03/11/performance-optimizations-1/
 version: 1
+excerpt: 多年來的發展里程碑有助於為比特幣軟體客戶端的用戶保留可靠的體驗。
 ---
 
 最近幾年為維持可靠的用戶體驗，比特幣軟體進行了很多裏程碑式的發展，本文對這些重大發展進行了回顧。我們對這個軟體進行的一些升級對維護比特幣網路去中心化特徵、紓解參與者負擔來說是非常重要的。本文描述了我們對這個軟體所做的大量成倍提升性能的優化，這些優化讓比特幣網路能夠容納更多的交易活動，同時冇有給新參與者和現有參與者增加過多的參與成本。最後，我們解釋了為什麼說這些改善是一個更大且係統化協議開發方式的一部分，這種開發方式從Big-O複雜概念中獲得的啓發，並使用了更精妙的演算法讓這個網路的資源發揮出更大的效力。
