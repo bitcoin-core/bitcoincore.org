@@ -2,8 +2,8 @@
 type: posts
 layout: post
 lang: zh_TW
-name: 2016-06-08-version-bits-miners
-id: zh_tw-2016-06-08-version-bits-miners
+name: version-bits-faq-miners
+id: zh_tw-version-bits-faq-miners
 title: 針對礦工的版本位常見為題
 permalink: /zh_TW/2016/06/08/version-bits-miners-faq/
 version: 1

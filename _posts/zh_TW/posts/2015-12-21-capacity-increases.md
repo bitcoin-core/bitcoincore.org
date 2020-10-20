@@ -5,7 +5,7 @@ lang: zh_TW
 id: zh_tw-capacity-increases
 name: capacity-increases
 title: 比特幣系統擴展
-permalink: /zh_TW/2015/12/21/比特幣系統擴展/
+permalink: /zh_TW/2015/12/21/capacity-increase/
 version: 1
 ---
 

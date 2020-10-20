@@ -3,7 +3,7 @@ type: posts
 layout: post
 lang: zh_TW
 name: csv-softfork-instructions
-id: en-csv-softfork-instructions
+id: zh_tw-csv-softfork-instructions
 title: CSV 軟分叉 - 礦工升級重要指引
 permalink: /zh_TW/2016/06/21/csv-softfork-instructions/
 categories: [mining]

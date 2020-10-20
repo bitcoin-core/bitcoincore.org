@@ -1,9 +1,8 @@
 ---
-type: posts
 layout: post
 lang: zh_TW
 name: segwit-benefits
-id: en-segwit-benefits
+id: zh_tw-segwit-benefits
 title: 隔離見證的好處
 permalink: /zh_TW/2016/01/26/segwit-benefits/
 version: 1
@@ -75,8 +74,8 @@ Segwit 通過改變交易雜湊簽名的計算方式可以解決此問題，使�
 ### 更多信息
 
  * [BIP 143](https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki)
- * [在 25s 交易中 Rusty Russell PO的部落格](http://rusty.ozlabs.org/?p=522)
- * [CVE 2013-2292-比特幣維基](https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2292)
+ * [在 25s 交易中 Rusty Russell  發布的部落格](http://rusty.ozlabs.org/?p=522)
+ * [CVE 2013-2292-比特幣維基](https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Ex 發布sures#CVE-2013-2292)
  * [提議限製交易至 100KB](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-July/009494.html)
  * [在比特幣 Classic0.11.2 版本中添加了限製sighash字節的額外共識](https://github.com/bitcoinclassic/bitcoinclassic/commit/842dc24b23ad9551c67672660c4cba882c4c840a)
 
@@ -102,7 +101,7 @@ Segwit 使 input 雜湊變的精確從而解決了此問題。這意味著硬體
 
 Multisig 付款目前使用 P2SH， 由 160 位 HASH160 算法（SHA256的RIPEMD）保護。但是，如果其中簽名者，想盜取所有的資金，他們可以找到一個有效的地址之為
 multisig 的一部分，隻需支付他們所有的資金隻有80位（280）的工作，這已經是一個極其資源充足的攻擊者可做到的。 （為便於比較，在持續1 exahash /秒，
-比特幣挖掘網路每兩個星期發掘80位值）
+比特幣挖礦網路每兩個星期發掘80位值）
 
 Segwit 通過使用 HASH160 付款直接到一個公共密鑰（這種攻擊是冇用的），同時採用了256 位的散列SHA256付款給腳本解決此問題。
 

@@ -1,11 +1,10 @@
 ---
 layout: post
-type: posts
 lang: zh_TW
 name: bitcoin-core-capacity-increases-faq
 id: zh_tw-bitcoin-core-capacity-increases-faq
-title: 比特幣係統擴展
-permalink: /zh_TW/2015/12/21/係統擴展常見問題解答/
+title: 係統擴展常見問題解答
+permalink: /zh_TW/2015/12/23/bitcoin-core-capacity-increases-faq/
 version: 1
 ---
 {% include toc.html %}

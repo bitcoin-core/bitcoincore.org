@@ -2,10 +2,11 @@
 title: 有關Bitcoin Core溝通渠道的澄清
 name: clarifying-communications
 id: zh_tw-clarifying-communications
-type: post
 type: posts
 lang: zh_TW
 permalink: /zh_TW/2016/01/28/clarification/
+version: 1
+excerpt: 在哪裡可以找到關於比特幣核心的官方信息，以及如何與其他比特幣核心用戶和開發者互動。
 ---
 最初，bitcoin.org是用作放置[比特幣白皮書](https://bitcoin.org/bitcoin.pdf)，並成為[比特幣軟體](https://bitcoin.org/en/download)的主頁。後來，這網站提供了比特幣教育資訊，但這與現時的Bitcoin Core計劃[並無關係](https://bitcoin.org/en/bitcoin-core/about-site)。Bitcoin Core的正式網站是bitcoincore.org，而雖然其它網站仍會提供有關Bitcoin Core的資訊，他們的觀點並不代表Bitcoin Core。我們明白這可能令人感到混淆，因此我們正在努力地清楚說明這些關係。
 
