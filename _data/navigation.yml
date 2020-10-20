@@ -150,17 +150,17 @@ zh_TW:
     title: "網誌"
     url:   "/zh_TW/blog/"
   releases:
-    title: "版本發佈"
+    title: "軟體發行"
     url:   "/zh_TW/releases/"
   faq:
     title: "FAQs"
     submenu: true
     tree:
       capacity-faq:
-        title: "擴容"
-        url: "/zh_TW/2015/12/23/capacity-increases-faq/"
+        title: "系統擴展常見問題解答"
+        url: "/zh_TW/2015/12/23/bitcoin-core-capacity-increases-faq/"
       segwit-faq:
-        title: "隔離見證"
+        title: "隔離見證的好處"
         url: "/zh_TW/2016/01/26/segwit-benefits/"
       segwit-dev:
         title: "隔離見證開發指南"
