@@ -2,8 +2,8 @@
 layout: post
 type: posts
 lang: zh_CN
-name: scaling-optimizations-zh_ch
-id: zh_cn-scaling-optimizations-zh_ch
+name: scaling-optimizations
+id: zh_cn-scaling-optimizations
 title: 链上扩容：比特币参考软件性能优化历史回顾
 permalink: /zh_CN/2017/03/11/比特币参考软件性能优化历史回顾/
 version: 1

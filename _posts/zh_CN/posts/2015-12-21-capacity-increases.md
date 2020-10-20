@@ -3,7 +3,7 @@ layout: post
 type: posts
 lang: zh_CN
 name: capacity-increases
-id: zh_cn-capacity-increases-zh_ch
+id: zh_cn-capacity-increases
 title: 比特币系统扩展
 permalink: /zh_CN/2015/12/21/比特币系统扩展/
 version: 1

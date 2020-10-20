@@ -2,8 +2,8 @@
 layout: post
 type: posts
 lang: zh_CN
-name: bitcoin-core-capacity-increases-faq
-id: zh_cn-bitcoin-core-capacity-increases-faq
+name: bitcoin-core-capacity-increases
+id: zh_cn-bitcoin-core-capacity-increases
 title: 比特币系统扩展
 permalink: /zh_CN/2015/12/21/系统扩展常见问题解答/
 version: 1
