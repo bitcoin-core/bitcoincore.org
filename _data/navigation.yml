@@ -145,7 +145,7 @@ zh_TW:
     url:   "/zh_TW/about/"
   download:
     title: "下載"
-    url: "/en/download"
+    url: "/zh_TW/download"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
@@ -164,19 +164,19 @@ zh_TW:
         url: "/zh_TW/2016/01/26/segwit-benefits/"
       segwit-dev:
         title: "隔離見證開發指南"
-        url: "/en/segwit_wallet_dev/"
+        url: "/zh_TW/segwit_wallet_dev/"
       optin-rbf:
         title: "Opt-in RBF"
         url: "/zh_TW/faq/optin_rbf/"
       compact-blocks:
         title: "Compact Blocks"
-        url: "/en/2016/06/07/compact-blocks-faq/"
+        url: "/zh_TW/2016/06/07/compact-blocks-faq/"
       version-bits:
         title: "Version Bits (BIP9)"
         url: "/zh_TW/2016/06/08/version-bits-miners-faq/"
       segwit-upgrade-guide:
         title: "隔離見證升級指南"
-        url: "/en/2016/10/27/segwit-upgrade-guide/"
+        url: "/zh_TW/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "開發"
     submenu: true
@@ -205,7 +205,7 @@ zh_TW:
         url: "/zh_TW/list/announcements/join/"
       twitter_impersonation:
         title: "Twitter impersonation"
-        url: "/en/twitter-impersonation"
+        url: "/zh_TW/twitter-impersonation"
 ja:
   home:
     title: "Bitcoin Core"
