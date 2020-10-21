@@ -21,4 +21,4 @@ version: 1
 
 
 [1]: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html
-[FAQ]: /zh_TW/2015/12/23/bitcoin-core-capacity-increases-faq/
+[FAQ]: /zh_TW/2015/12/23/capacity-increases-faq/
