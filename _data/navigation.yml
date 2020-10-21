@@ -138,33 +138,36 @@ zh_CN:
         url: "/zh_CN/list/announcements/join/"
 zh_TW:
   home:
-    title: "Bitcoin Core"
+    title: "比特幣核心"
     url:   "/zh_TW/"
   about:
-    title: "關於我們"
-    url:   "/en/about/"
+    title: "關於"
+    url:   "/zh_TW/about/"
+  download:
+    title: "下載"
+    url: "/en/download"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
   releases:
-    title: "軟體發行"
+    title: "版本發佈"
     url:   "/zh_TW/releases/"
   faq:
     title: "FAQs"
     submenu: true
     tree:
       capacity-faq:
-        title: "系統擴展常見問題解答"
-        url: "/zh_TW/2015/12/23/bitcoin-core-capacity-increases-faq/"
+        title: "擴容"
+        url: "/zh_TW/2015/12/23/capacity-increases-faq/"
       segwit-faq:
-        title: "隔離見證的好處"
+        title: "隔離見證"
         url: "/zh_TW/2016/01/26/segwit-benefits/"
       segwit-dev:
-        title: "Segwit dev guide"
+        title: "隔離見證開發指南"
         url: "/en/segwit_wallet_dev/"
       optin-rbf:
         title: "Opt-in RBF"
-        url: "/en/faq/optin_rbf/"
+        url: "/zh_TW/faq/optin_rbf/"
       compact-blocks:
         title: "Compact Blocks"
         url: "/en/2016/06/07/compact-blocks-faq/"
@@ -172,34 +175,37 @@ zh_TW:
         title: "Version Bits (BIP9)"
         url: "/zh_TW/2016/06/08/version-bits-miners-faq/"
       segwit-upgrade-guide:
-        title: "Segwit upgrade guide"
+        title: "隔離見證升級指南"
         url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
-    title: "Development"
+    title: "開發"
     submenu: true
     tree:
       contribute:
         title: "貢獻"
         url:   "/zh_TW/contribute/"
       contribute-code:
-        title: "contributing code"
-        url:   "/en/faq/contributing-code/"
+        title: "貢獻程式碼"
+        url:   "/zh_TW/faq/contributing-code/"
       meetings:
-        title: "meetings"
-        url:   "/en/meetings/"
+        title: "會議"
+        url:   "/zh_TW/meetings/"
       eol:
-        title: "Lifecycle"
-        url:   "/en/lifecycle/"
+        title: "生命週期"
+        url:   "/zh_TW/lifecycle"
   contact:
-    title: "Contact"
+    title: "聯絡"
     submenu: true
     tree:
       contact_us:
-        title: "Contact Us"
-        url: "/en/contact/"
+        title: "聯絡我們"
+        url: "/zh_TW/contact/"
       announcements:
-        title: "Announcements"
-        url: "/en/list/announcements/join/"
+        title: "公告"
+        url: "/zh_TW/list/announcements/join/"
+      twitter_impersonation:
+        title: "Twitter impersonation"
+        url: "/en/twitter-impersonation"
 ja:
   home:
     title: "Bitcoin Core"
