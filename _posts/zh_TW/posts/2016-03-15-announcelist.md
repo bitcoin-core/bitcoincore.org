@@ -7,9 +7,9 @@ name: announce-list
 tags: [bitcoin, bitcoin core, announcement list, updates]
 version: 1
 ---
-為了提高溝通，我們將為比特幣核心開發的用戶 發布一個選擇性加入的_announcement-only_ mailing-list，用於接收安全問題和新聞 發布的通知。
+為了提高溝通，我們將為比特幣核心開發的用戶發布一個選擇性加入的_announcement-only_ mailing-list，用於接收安全問題和新聞發布的通知。
 
-比特幣核心開發項目有許多交流平臺，這個網站Twitter [@bitcoincoreorg][], 對於[announcement mailing list](/zh_TW/list/announcements/join)的請求量也很多。它原本應極低流量，專註於決策性的通知以及通告新的版本 發布。
+比特幣核心開發項目有許多交流平台，這個網站Twitter [@bitcoincoreorg][], 對於[announcement mailing list](/zh_CN/list/announcements/join)的請求量也很多。它原本應極低流量，專注於決策性的通知以及通告新的版本發布。
 
 如需訂閱，請輸入您的信箱地址：
 
