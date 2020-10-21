@@ -21,4 +21,4 @@ version: 1
 
 
 [1]: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-December/011865.html
-[FAQ]: /zh_CN/2015/12/21/系統擴展常見問題解答
+[FAQ]: /zh_TW/2015/12/21/系統擴展常見問題解答
