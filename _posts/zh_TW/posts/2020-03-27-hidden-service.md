@@ -3,6 +3,7 @@ title: bitcoincore.org hidden service
 name: hidden-service
 id: zh_tw-hidden-service
 lang: zh_TW
+permalink: /zh_TW/2020/03/27/hidden-service/
 type: posts
 layout: post
 
