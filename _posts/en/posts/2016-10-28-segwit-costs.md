@@ -148,7 +148,7 @@ In support of existing efforts to pay down technical debt by refactoring and imp
 
 ### Mitigation
 
-Bitcoin already suffers from some significant design debt, and segwit is specifically designed to reduce the impact of some of this debt (notably transaction malleability, linear scaling of signature hashing, and signing of input values).
+Bitcoin already suffers from some significant design debt, and segwit is specifically designed to reduce the impact of some of this debt (notably transaction malleability, quadratic scaling of signature hashing, and non-signing of input values).
 
 The script versioning method provided by segwit provides an elegant way of allowing future soft-fork updates to further reduce design debt, including by fixing bugs in existing opcodes (such as CHECKMULTISIG), re-enabling disabled opcodes (such as CAT), or switching to superior verification methods (such as Schnorr signatures, or aggregate signatures).
 
