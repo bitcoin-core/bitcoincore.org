@@ -1,0 +1,18 @@
+{% assign ROOT_PATH = ''
+%}{% assign depth = page.url | split: '/' | size | minus: 1
+%}{% if depth < 1
+%}{% assign ROOT_PATH = '.'
+%}{% elsif depth == 1
+%}{% assign ROOT_PATH = '..'
+%}{% elsif depth == 2
+%}{% assign ROOT_PATH = '../..'
+%}{% elsif depth == 3
+%}{% assign ROOT_PATH = '../../..'
+%}{% elsif depth == 4
+%}{% assign ROOT_PATH = '../../../..'
+%}{% elsif depth == 5
+%}{% assign ROOT_PATH = '../../../../..'
+%}{% elsif depth == 6
+%}{% assign ROOT_PATH = '../../../../../..'
+%}{% endif
+%}

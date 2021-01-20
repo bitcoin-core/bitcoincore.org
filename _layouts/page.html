@@ -1,4 +1,5 @@
 <!doctype html>
+{% include root_path.html %}
 {% include browser_magic.html %}
 <head>
 {% include head.html %}
@@ -14,9 +15,9 @@
   <div class="image-wrap">
   <img src=
     {% if page.image.feature contains 'http' %}
-      "{{ page.image.feature }}"
+      "{{ ROOT_PATH }}/{{ page.image.feature }}"
     {% else %}
-      "/assets/images/{{ page.image.feature }}"
+      "{{ ROOT_PATH }}/assets/images/{{ page.image.feature }}"
     {% endif %}
   alt="{% if page.image.alt %}{{ page.image.alt }}{% else %}{{ page.title | xml_escape }}{% endif %} feature image">
   {% if page.image.byline %}
