@@ -1,4 +1,5 @@
 <!doctype html>
+{% include root_path.html %}
 {% include browser_magic.html %}
 <head>
 {% if page.name != "index" and page.name != "rpcindex" %}
@@ -46,7 +47,7 @@
               <div class="toc-drawer js-hide-on-start">
                 <ul>
                   {% for article in group.items %}
-                    <li class="leaf-article"><a href="{{article.url}}">{{article.name}}</a></li>
+                    <li class="leaf-article"><a href="{{ ROOT_PATH }}{{article.url}}">{{article.name}}</a></li>
                   {% endfor %}
                 </ul>
               </div>
@@ -73,7 +74,7 @@
               {% if group.name != "index" %}
                 {% for article in group.items %}
                   {% if article.name == "index" %}
-                    <li><a href="{{article.url}}">{{group.name}}</a></li>
+                    <li><a href="{{ ROOT_PATH }}{{article.url}}">{{group.name}}</a></li>
                   {% endif %}
                 {% endfor %}
               {% endif %}

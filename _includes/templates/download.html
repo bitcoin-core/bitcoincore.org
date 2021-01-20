@@ -1,3 +1,4 @@
+{% include root_path.html %}
 {% capture /dev/null %}<!-- suppress render of this part -->
 <!-- Copyright 2013 - 2016 The Bitcoin.org Project.
      Copyright 2017 - 2020 The BitcoinCore.org Project
@@ -6,7 +7,7 @@
 {% assign VERSION_SORTED_RELEASES = site.releases | sort: 'release' | reverse %}
 {% capture CURRENT_RELEASE %}{% for subver in VERSION_SORTED_RELEASES[0].release %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
 {% assign magnet = VERSION_SORTED_RELEASES[0].optional_magnetlink %}
-{% capture PATH_PREFIX %}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
+{% capture PATH_PREFIX %}{{ ROOT_PATH }}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
 {% capture FILE_PREFIX %}bitcoin-{{CURRENT_RELEASE}}{% endcapture %}
 {% assign builder_line_arr = page.example_builders_line | split: ' ' %}
 {% assign example_builder_key = builder_line_arr[0] %}
@@ -30,15 +31,15 @@
 {% assign GPG_WINDOWS_DOWNLOAD_URL = "https://gpg4win.org/download.html" %}
 {% assign GUIX_REPOSITORY_URL = "https://github.com/bitcoin-core/guix.sigs" %}
 {% endcapture %}
-<link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
+<link rel="alternate" type="application/rss+xml" href="{{ ROOT_PATH }}/en/releasesrss.xml" title="Bitcoin Core releases">
 <div class="download">
-  <h2>{{ page.latestversion }} {{CURRENT_RELEASE}} <a type="application/rss+xml" href="/en/releasesrss.xml"><img src="/assets/images/icons/icon_rss.svg" alt="rss" class="rssicon"></a></h2>
-  <div class="mainbutton"><a id="downloadbutton" href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}"><img src="/assets/images/os/but_windows.svg" alt="icon"><span>{{ page.download }}</span></a></div>
+  <h2>{{ page.latestversion }} {{CURRENT_RELEASE}} <a type="application/rss+xml" href="{{ ROOT_PATH }}/en/releasesrss.xml"><img src="{{ ROOT_PATH }}/assets/images/icons/icon_rss.svg" alt="rss" class="rssicon"></a></h2>
+  <div class="mainbutton"><a id="downloadbutton" href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}"><img src="{{ ROOT_PATH }}/assets/images/os/but_windows.svg" alt="icon"><span>{{ page.download }}</span></a></div>
   <div class="downloadbox">
     <p>{{ page.downloados }}</p>
     <div>
       <div>
-        <img src="/assets/images/os/med_win.png" alt="windows">
+        <img src="{{ ROOT_PATH }}/assets/images/os/med_win.png" alt="windows">
         <span>
           <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" class="dl" id="downloadwinexe">Windows</a>
           <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}" class="dl" id="win64exe">exe</a> -
@@ -46,7 +47,7 @@
         </span>
       </div>
       <div>
-        <img src="/assets/images/os/med_osx.png" alt="osx">
+        <img src="{{ ROOT_PATH }}/assets/images/os/med_osx.png" alt="osx">
         <span>
           <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macdmg }}">macOS</a>
           <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macdmg }}" class="dl" id="macdmg">dmg</a> -
@@ -54,7 +55,7 @@
         </span>
       </div>
       <div>
-        <img src="/assets/images/os/med_linux.png" alt="linux">
+        <img src="{{ ROOT_PATH }}/assets/images/os/med_linux.png" alt="linux">
         <span>
           <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.lin64 }}" class="dl" id="lin64">Linux (tgz)</a>
         </span>
@@ -62,7 +63,7 @@
     </div>
     <div>
       <div>
-        <img src="/assets/images/os/arm.png" alt="ARM Linux">
+        <img src="{{ ROOT_PATH }}/assets/images/os/arm.png" alt="ARM Linux">
         <span>
           <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl">ARM Linux</a>
           	<span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-aarch64-linux-gnu.tar.gz" class="dl" id="lin64arm">64 bit</a> -
@@ -70,7 +71,7 @@
         </span>
       </div>
       <div>
-        <img src="/assets/images/os/but_riscv.svg" alt="RISC-V Linux">
+        <img src="{{ ROOT_PATH }}/assets/images/os/but_riscv.svg" alt="RISC-V Linux">
         <span>
           <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.riscv64 }}.tar.gz" class="dl">RISC-V Linux</a>
             <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.riscv64 }}.tar.gz" class="dl" id="lin64riscv">64 bit</a></span>
@@ -86,7 +87,7 @@
         </span>
       </div>
       <div>
-        <img src="/assets/images/os/med_snap.svg" alt="Snap Store Linux">
+        <img src="{{ ROOT_PATH }}/assets/images/os/med_snap.svg" alt="Snap Store Linux">
         <span>
           <a href="https://snapcraft.io/bitcoin-core" class="dl">Snap Store Linux</a>
         </span>
@@ -98,7 +99,7 @@
       <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}.torrent" class="dl">{{ page.downloadtorrent }}</a>
         {% if magnet %} <a href="{{ magnet | replace: '&', '\&amp;'}}" class="magnetlink" data-proofer-ignore></a>{% endif %}<br>
       <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX}}.tar.gz" class="dl">{{ page.source }}</a><br>
-      <a href="/en/releases">{{ page.versionhistory }}</a>
+      <a href="{{ ROOT_PATH }}/en/releases">{{ page.versionhistory }}</a>
     </p>
     <p class="downloadkeys">
       {% if page.version > 2 %}<i>{{page.key_refresh}}</i><br><code>gpg{{site.strings.gpg_keyserver}} --refresh-keys</code>{% endif %}
@@ -300,18 +301,18 @@ var hrefmactar = document.getElementById('mactar').href;
 var hreflin64 = document.getElementById('lin64').href;
 switch (os) {
 case 'windows64':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
+	but.getElementsByTagName('IMG')[0].src = '{{ ROOT_PATH }}/assets/images/os/but_windows.svg';
 	but.href = hrefwin64exe;
 	linkwinexe.href = hrefwin64exe;
 	linkwinzip.href = hrefwin64zip;
 break;
 case 'linux64':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
+	but.getElementsByTagName('IMG')[0].src = '{{ ROOT_PATH }}/assets/images/os/but_linux.png';
 	but.href = hreflin64;
 	linklin.href = hreflin64;
 break;
 case 'mac':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
+	but.getElementsByTagName('IMG')[0].src = '{{ ROOT_PATH }}/assets/images/os/but_mac.svg';
 	but.href = hrefmacdmg;
 break;
 }

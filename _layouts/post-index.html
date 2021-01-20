@@ -1,4 +1,5 @@
 <!doctype html>
+{% include root_path.html %}
 {% include browser_magic.html %}
 <head>
 {% include head.html %}
@@ -14,9 +15,9 @@
   <div class="image-wrap">
   <img src=
     {% if page.image.feature contains 'http' %}
-      "{{ page.image.feature }}"
+      "{{ ROOT_PATH }}/{{ page.image.feature }}"
     {% else %}
-      "/assets/images/{{ page.image.feature }}"
+      "{{ ROOT_PATH }}/assets/images/{{ page.image.feature }}"
     {% endif %}
     alt="{% if page.image.alt %}{{ page.image.alt }}{% else %}{{ page.title | xml_escape }}{% endif %} feature image">
   {% if page.image.byline %}
@@ -49,9 +50,9 @@
       {% endif %}
       <article>
         {% if post.link %}
-          <h2 class="link-post"><a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title | xml_escape }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title | xml_escape }}"><i class="fa fa-link"></i></a></h2>
+          <h2 class="link-post"><a href="{{ ROOT_PATH }}{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title | xml_escape }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title | xml_escape }}"><i class="fa fa-link"></i></a></h2>
         {% else %}
-          <h2><a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a></h2>
+          <h2><a href="{{ ROOT_PATH }}{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a></h2>
           <p>{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
         {% endif %}
       </article>

@@ -1,3 +1,4 @@
+{% include root_path.html %}
 <ul class="releases">
   {% assign english_posts = site.releases | sort: 'release' | reverse %}
   {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'releases' %}
@@ -7,7 +8,7 @@
       {% if t_post.name == post.name %}{% assign post=t_post %}{% break %}{% endif %}
     {% endfor %}
   <li>
-    <a href="{{ post.url }}">
+    <a href="{{ ROOT_PATH }}{{ post.url }}">
       {{ post.title | replace: '<br/>', '' }}
     </a>
     <div class="desc">{{ post.desc }}</div>
