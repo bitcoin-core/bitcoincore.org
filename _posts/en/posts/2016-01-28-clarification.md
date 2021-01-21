@@ -9,7 +9,7 @@ permalink: /en/2016/01/28/clarification/
 version: 1
 excerpt: Where to find official information about Bitcoin Core and how you can interact with other Bitcoin Core users and developers.
 ---
-Initially, bitcoin.org was used to host the original Bitcoin paper and became the homepage for the [Bitcoin program](https://bitcoin.org/en/download). The site evolved into a general educational resource for Bitcoin, and is [not affiliated](https://bitcoin.org/en/bitcoin-core/about-site) with the modern Bitcoin Core project. The Bitcoin Core project's official website is bitcoincore.org and while other websites continue to host information about Bitcoin Core, their views do not represent Bitcoin Core. We know that the Bitcoin ecosystem can be confusing, and we are working hard to make these relationships more clear.
+Initially, bitcoin.org was used to host the [original Bitcoin paper](https://bitcoin.org/bitcoin.pdf) and became the homepage for the [Bitcoin program](https://bitcoin.org/en/download). The site evolved into a general educational resource for Bitcoin, and is [not affiliated](https://bitcoin.org/en/bitcoin-core/about-site) with the modern Bitcoin Core project. The Bitcoin Core project's official website is bitcoincore.org and while other websites continue to host information about Bitcoin Core, their views do not represent Bitcoin Core. We know that the Bitcoin ecosystem can be confusing, and we are working hard to make these relationships more clear.
 
 For development work, Bitcoin Core mainly uses the `#bitcoin-core-dev` IRC channel on Freenode, [Github](https://github.com/bitcoin/bitcoin), and [the bitcoin-dev mailing list](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/).
 
