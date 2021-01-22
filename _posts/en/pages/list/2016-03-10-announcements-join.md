@@ -5,12 +5,14 @@ permalink: /en/list/announcements/join/
 type: pages
 layout: page
 lang: en
-version: 2
+version: 3
 ---
 Receive notification of important security announcements and releases for Bitcoin Core.
 
-Subscribe to the RSS feed below.
+Subscribe to the RSS feed below or add your email address to the [bitcoin-core-dev][] mailing list.
 
 {% include pages/list/announcement.html %}
     
 Low traffic for announcements only.
+
+{% include references.md %}
