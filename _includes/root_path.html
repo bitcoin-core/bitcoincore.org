@@ -1,6 +1,8 @@
 {% assign ROOT_PATH = ''
 %}{% assign depth = page.url | split: '/' | size | minus: 1
-%}{% if depth < 1
+%}{% if page.permalink == '/404.html'
+%}{% assign ROOT_PATH = ''
+%}{% elsif depth < 1
 %}{% assign ROOT_PATH = '.'
 %}{% elsif depth == 1
 %}{% assign ROOT_PATH = '..'
