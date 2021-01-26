@@ -20,6 +20,7 @@ import (
 )
 
 const BITCOIN_COMMAND = "bitcoin-cli"
+const BITCOIN_CHAINOPTION = "-regtest"
 
 type Command struct {
 	Name        string
@@ -158,9 +159,10 @@ func open(path string) io.Writer {
 }
 
 func run(args ...string) string {
+	args = append([]string{BITCOIN_CHAINOPTION}, args...)
 	out, err := exec.Command(BITCOIN_COMMAND, args...).CombinedOutput()
 	if err != nil {
-		log.Fatalf("Cannot run bitcoin-cli: %s, is bitcoind running?", err.Error())
+		log.Fatalf("Cannot run bitcoin-cli: %s, is bitcoind (regtest) running?", err.Error())
 	}
 
 	return string(out)

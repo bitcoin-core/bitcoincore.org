@@ -26,9 +26,18 @@ require 'yaml'
       ## Convert #1234 into URL for the pull request
       ## If #1234 links to an issue, GitHub automatically redirects
       #
-      ## Require at least two digits to reduce false positive matches
-      output.gsub!(/#([0-9][0-9][0-9]*)/){ |s|
-        '<a href="' + @repository_url + '/pull/' + $1 + '">' + s + '</a>'
+      ## Main repository; forbid any lowercase alphabetical prefix to avoid conflation with
+      ## other monotree repos like bitcoin-core/gui.  Require at least a
+      ## double-digit number to reduce false positive matches (e.g. "fix thing,
+      ## try #2")
+      output.gsub!(/(^|[^a-z])#([0-9][0-9]+)/){ |s|
+        $1 + '<a href="' + @repository_url + '/pull/' + $2 + '">#' + $2 + '</a>'
+      }
+
+      ## Other monotree repos; for repo "bitcoin-core/foo", PR format is "foo#123".
+      ## Must start at word boundary
+      output.gsub!(/\b([a-z]+)#([0-9]+)/){ |s|
+        '<a href="https://github.com/bitcoin-core/' + $1 + '/pull/' + $2 + '">' + s + '</a>'
       }
 
       ## Convert `123abcd` into URL for the commit
