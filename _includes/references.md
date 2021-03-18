@@ -8,8 +8,6 @@
 [BtcDrak]: https://github.com/btcdrak
 [Chris Stewart]: https://github.com/Christewart
 [Clark Moody]: https://github.com/clarkmoody
-[Clem Taylor]: https://github.com/clemtaylor
-[Chun Kuan Lee]: https://github.com/ken2812221
 [Cory Fields]: https://github.com/theuni
 [David Harding]: https://github.com/harding/
 [Eric Lombrozo]: https://github.com/codeshark
@@ -32,10 +30,8 @@
 [Jorge Timón]: https://github.com/jtimon
 [Joseph Poon]: https://github.com/josephpoon
 [Joshua Simmons]: https://github.com/kadoban
-[Justin Arthur]: https://github.com/justintarthur
 [Karel Bilek]: https://github.com/karel-3d
 [Karl-Johan Alm]: https://github.com/kallewoof
-[Lucas Betschart]: https://github.com/lclc
 [Luke Dashjr]: https://github.com/luke-jr
 [Marco Falke]: https://github.com/MarcoFalke
 [Mark Erhardt]: https://github.com/Xekyo
@@ -43,7 +39,6 @@
 [Matt Corallo]: https://github.com/TheBlueMatt
 [Michael Ford]: https://github.com/fanquake
 [Michagogo]: https://github.com/Michagogo
-[Midnight Magic]: https://github.com/midnightmagic
 [Nicolas Dorier]: https://github.com/NicolasDorier
 [Olaoluwa Osuntokun]: https://github.com/Roasbeef
 [Patrick Strateman]: https://github.com/pstratem
@@ -120,10 +115,11 @@
 [#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
 [issues]: https://github.com/bitcoin/bitcoin/issues
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
-[BitcoinCoreDocBips]: https://github.com/bitcoin/bitcoin/blob/master/doc/bips.md
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
 [bitcoin-core-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-core-dev
+[Slack]: https://bitcoincore.slack.com/
+[slack-invite]: https://slack.bitcoincore.org/
 [software life cycle]: /en/lifecycle
 
 [laanwj-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x71A3B16735405025D447E8F274810B012346C9A6
@@ -131,16 +127,5 @@
 [sipa-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x133EAC179436F14A5CF1B794860FEB804E669320
 
 [recent-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors?from=2017-03-01
-[github-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors
 
 [website-issues]: https://github.com/bitcoin-core/bitcoincore.org/issues
-
-{% comment %}
-<!--REQUIRES PERIODIC UPDATE: update rpc_version below to latest
-version of this site's RPC docs-->
-{% endcomment %}
-{% assign rpc_version = "0.16.2" %}
-[rpc abandontransaction]: /en/doc/{{rpc_version}}/rpc/wallet/abandontransaction/
-[rpc fundrawtransaction]: /en/doc/{{rpc_version}}/rpc/rawtransactions/fundrawtransaction/
-[rpc getblock]: /en/doc/{{rpc_version}}/rpc/blockchain/getblock/
-[rpc verifytxoutproof]: /en/doc/{{rpc_version}}/rpc/blockchain/verifytxoutproof/
