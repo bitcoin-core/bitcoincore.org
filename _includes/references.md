@@ -117,7 +117,9 @@
 [BIP174]: https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki
 
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
-[#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev&uio=MTY9dHJ1ZSYxMT0yMTU87
+[#bitcoin-core-dev]: https://webchat.freenode.net?channels=%23bitcoin-core-dev
+[#bitcoin-builds]: https://webchat.freenode.net?channels=%23bitcoin-builds
+[##bitcoin-core-gui]: https://webchat.freenode.net?channels=%23%23bitcoin-core-gui
 [issues]: https://github.com/bitcoin/bitcoin/issues
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
 [BitcoinCoreDocBips]: https://github.com/bitcoin/bitcoin/blob/master/doc/bips.md
