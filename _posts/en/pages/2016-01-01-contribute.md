@@ -6,7 +6,7 @@ permalink: /en/contribute/
 type: pages
 layout: page
 lang: en
-version: 4
+version: 5
 redirect_from:
   - /zh_TW/contribute/
 ---
@@ -25,11 +25,11 @@ Feel free to report [issues][issues] and open [pull requests][pulls], but please
 
 **Discussion**
 
-Most Bitcoin Core related discussion happens in the following IRC channels on irc.freenode.net:
+Most Bitcoin Core related discussion happens in the following IRC channels on irc.libera.chat:
 
 - [#bitcoin-core-dev] - Main discussion
-- [#bitcoin-builds] - Build system and release discussion
-- [##bitcoin-core-gui] - Graphical User Interface discussion
+- [#bitcoin-core-builds] - Build system and release discussion
+- [#bitcoin-core-gui] - Graphical User Interface discussion
 
 There is also a mailing list for Bitcoin protocol discussion [bitcoin-dev][].
 
