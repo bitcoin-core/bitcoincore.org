@@ -19,3 +19,6 @@ test-slow:
 test-fast:
 	## Check for broken Markdown reference-style links that are displayed in text unchanged, e.g. [broken][broken link]
 	! find _site/ -name '*.html' | xargs grep ']\[' | grep -v skip-test | grep .
+
+	## Fail if any required strings weren't translated
+	! grep -r TRANSLATION_FAILURE _site

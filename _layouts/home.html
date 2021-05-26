@@ -1,5 +1,6 @@
 <!doctype html>
 {% include browser_magic.html %}
+{% include helpers/latest-release.md %}
 <head>
 {% include head.html %}
 </head>
@@ -32,7 +33,43 @@
   <div class="article-author-side">
     {% include author-bio.html %}
   </div>
+
   <div id="index">
+    {% if page.version > 2 %}
+      <div class="show_less_more">
+        <div class="show_less">
+          <p>{{page.about1 | default: "TRANSLATION_FAILURE" }}</p>
+        </div>
+      </div>
+
+      <div class="show_more">
+        <p>{{page.about2 | default: "TRANSLATION_FAILURE" }}</p>
+
+        <p>{{page.about3 | default: "TRANSLATION_FAILURE" }}</p>
+
+        <p>{{page.about4 | default: "TRANSLATION_FAILURE" }}</p>
+
+        <p>{{page.about5 | default: "TRANSLATION_FAILURE" }}</p>
+      </div>
+
+      <p class="center"><button class="toggle_show_more_less js not-displayed"><span class="fa fa-caret-down
+    "></span> {{page.read-more | default: "TRANSLATION_FAILURE" }}</button></p>
+
+    <div class="two-column-list">
+      <ul class="fa-ul">
+        <li><span class="fa-li fa fa-download fa-2x"></span>
+          <b><a href="/{{page.lang}}/download">Download</a></b><br
+          >Download Bitcoin Core&nbsp;{{ CURRENT_RELEASE | default: "TRANSLATION_FAILURE" }}
+
+        <li><span class="fa-li fa fa-code-fork fa-2x"></span>
+          <b><a href="/{{page.lang}}/contribute">Contribute</a></b><br
+          >Code, translations, and more
+      </ul>
+    </div>
+
+    <br class="clear"><br>
+    {% endif %}
+
     {% assign navigation = site.data.navigation[page.lang] %}
     <h3><a href="{{ navigation.blog.url }}">Recent Posts</a></h3>
     <!-- h3><a href="{{ navigation.blog.url }}">Recent Posts</a></h3 -->
@@ -63,6 +100,14 @@
 </div><!-- /.footer-wrap -->
 
 {% include scripts.html %}
+
+<script src="/assets/js/core.js">
+<script>
+if ( $( window ).width() > 400 && $( window ).height() > 600 ) {
+  $(".show_more").removeClass("show_more");
+  $(".toggle_show_more_less").removeClass("toggle_show_more_less");
+}
+</script>
 
 </body>
 </html>
