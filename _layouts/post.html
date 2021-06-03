@@ -1,4 +1,5 @@
 <!doctype html>
+{% include root_path.html %}
 {% include browser_magic.html %}
 <head>
 {% include head.html %}
@@ -35,9 +36,9 @@
   <article class="post h-entry">
     <div class="headline-wrap">
       {% if page.link %}
-        <h1 class="p-name"><a href="{{ page.link }}">{{ page.title }}</a></h1>
+        <h1 class="p-name"><a href="{{ ROOT_PATH }}{{ page.link }}">{{ page.title }}</a></h1>
       {% else %}
-        <h1 class="p-name"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
+        <h1 class="p-name"><a href="{{ ROOT_PATH }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
       {% endif %}
       {% if page.author %}
         {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = "" %}

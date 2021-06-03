@@ -5,29 +5,29 @@ sitemap: false
   font-family: 'PT Sans Narrow';
   font-style: normal;
   font-weight: 400;
-  src: local('PT Sans Narrow'), local('PTSans-Narrow'), url(/assets/fonts/PTSans-Narrow.ttf) format('truetype');
+  src: local('PT Sans Narrow'), local('PTSans-Narrow'), url(../fonts/PTSans-Narrow.ttf) format('truetype');
 }
 @font-face {
   font-family: 'PT Sans Narrow';
   font-style: normal;
   font-weight: 700;
-  src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url(/assets/fonts/PTSans-NarrowBold.ttf) format('truetype');
+  src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url(../fonts/PTSans-NarrowBold.ttf) format('truetype');
 }
 @font-face {
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 400;
-  src: local('PT Serif'), local('PTSerif-Regular'), url(/assets/fonts/PTSerif-Regular.ttf) format('truetype');
+  src: local('PT Serif'), local('PTSerif-Regular'), url(../fonts/PTSerif-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 700;
-  src: local('PT Serif Bold'), local('PTSerif-Bold'), url(/assets/fonts/PTSerif-Bold.ttf) format('truetype');
+  src: local('PT Serif Bold'), local('PTSerif-Bold'), url(../fonts/PTSerif-Bold.ttf) format('truetype');
 }
 @font-face {
   font-family: 'PT Serif';
   font-style: italic;
   font-weight: 400;
-  src: local('PT Serif Italic'), local('PTSerif-Italic'), url(/assets/fonts/PTSerif-Italic.ttf) format('truetype');
+  src: local('PT Serif Italic'), local('PTSerif-Italic'), url(../fonts/PTSerif-Italic.ttf) format('truetype');
 }

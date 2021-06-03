@@ -20,7 +20,7 @@ body {
 	text-transform: uppercase;
 	@include clearfix;
 	background-color: $black;
-	background-image: url("/assets/images/nav_background.png");
+	background-image: url("../../../assets/images/nav_background.png");
 	background-position: left bottom;
 	background-size: 1px 100px;
 	background-repeat: repeat-x;
