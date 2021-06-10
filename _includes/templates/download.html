@@ -1,10 +1,9 @@
 {% capture /dev/null %}<!-- suppress render of this part -->
 <!-- Copyright 2013 - 2016 The Bitcoin.org Project.
-     Copyright 2017 - 2020 The BitcoinCore.org Project
+     Copyright 2017 - 2021 The BitcoinCore.org Project
      This file is licensed under the MIT License (MIT) available on
      http://opensource.org/licenses/MIT. -->
-{% assign VERSION_SORTED_RELEASES = site.releases | sort: 'release' | reverse %}
-{% capture CURRENT_RELEASE %}{% for subver in VERSION_SORTED_RELEASES[0].release %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
+{% include helpers/latest-release.md %}
 {% assign magnet = VERSION_SORTED_RELEASES[0].optional_magnetlink %}
 {% capture PATH_PREFIX %}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
 {% capture FILE_PREFIX %}bitcoin-{{CURRENT_RELEASE}}{% endcapture %}
