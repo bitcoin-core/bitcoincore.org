@@ -1012,3 +1012,53 @@ div.maintainers {
 details > summary {
         cursor: pointer;
 }
+
+details summary > * {
+  display: inline;
+}
+
+.clear {
+  clear: both;
+}
+
+.two-column-list ul {
+        margin-left: 4em;
+}
+
+.two-column-list li {
+        list-style: none;
+        float: left;
+        width: 14em;
+        text-align: left;
+        margin-bottom: 20px;
+}
+
+.two-column-list .fa-li {
+        top: 0.75em;
+}
+
+.two-column-list li:nth-child(2n+1) {
+        margin-right: 75px;
+        clear: both;
+}
+
+.center {
+  text-align: center;
+}
+
+button.js {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        border-bottom: 1px dotted #2c6fad;
+        color: #2c6fad;
+        font-weight: inherit;
+}
+
+button.js:hover {
+        color: #63a4e1;
+}
+
+button.active {
+        text-decoration: underline;
+}
