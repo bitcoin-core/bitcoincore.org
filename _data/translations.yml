@@ -2,6 +2,7 @@ en:
   created: "Published on the"
   author: "by"
   description: "Bitcoin Core website"
+  features: "Features"
   footer: "Bitcoin Core project"
   related: "Recommended"
   viewallposts: "View all posts"
@@ -11,6 +12,7 @@ en:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  verification: "Verification"  # as in full block/transaction verification
 
 zh_CN:
   created: "发布在"

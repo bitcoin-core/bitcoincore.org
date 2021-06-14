@@ -33,6 +33,7 @@
     {% include author-bio.html %}
   </div>
   <article class="post h-entry">
+    {% if page.breadcrumbs != nil %}{% include breadcrumbs.md %}{% endif %}
     <div class="headline-wrap">
       {% if page.link %}
         <h1 class="p-name"><a href="{{ page.link }}">{{ page.title }}</a></h1>
