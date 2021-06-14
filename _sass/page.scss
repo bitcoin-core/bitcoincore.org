@@ -1012,3 +1012,40 @@ div.maintainers {
 details > summary {
         cursor: pointer;
 }
+
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+
+.bggreen {
+      background-color: #006400;
+}
+
+.bgred {
+      background-color: #8B0000;
+}
+
+.bgyellow {
+      background-color: #B8860B;
+}
+
+.fggreen {
+      color: #006400;
+}
+
+.fgred {
+      color: #8B0000;
+}
+
+.fgyellow {
+      color: #B8860B;
+}
+
+.callout {
+        text-align: center;
+        border-top: thin solid #C0C0C0;
+        border-bottom: thin solid #C0C0C0;
+}

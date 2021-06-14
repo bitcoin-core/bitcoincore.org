@@ -122,6 +122,7 @@
 [#bitcoin-core-gui]: https://web.libera.chat/#bitcoin-core-gui
 [issues]: https://github.com/bitcoin/bitcoin/issues
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
+[bitcoin core install guide]: https://bitcoin.org/en/full-node
 [BitcoinCoreDocBips]: https://github.com/bitcoin/bitcoin/blob/master/doc/bips.md
 [bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
 [bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
@@ -136,6 +137,13 @@
 [github-contributors]: https://github.com/bitcoin/bitcoin/graphs/contributors
 
 [website-issues]: https://github.com/bitcoin-core/bitcoincore.org/issues
+
+{% comment %}<!-- reused internal links -->{% endcomment %}
+[features verification]: /{{page.lang}}/features/verification/
+[features verification decentralization]: /{{page.lang}}/features/verification/#help-protect-decentralization
+[features verification protection]: /{{page.lang}}/features/verification/#how-verification-protects-your-bitcoins
+[features privacy]: /{{page.lang}}/features/privacy/
+[rpc docs]: /en/doc/
 
 {% comment %}
 <!--REQUIRES PERIODIC UPDATE: update rpc_version below to latest

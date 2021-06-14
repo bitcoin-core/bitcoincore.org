@@ -1,0 +1,14 @@
+' After generating updated image, run following command to make background transparent:
+' convert -fuzz 5% losing-decentralization.png -transparent white losing-decentralization.png
+@startditaa(--scale=1.00)
++-----+   +-----+   +-----+   +-----+   +-----+        +-----+
+|{o}  |   |{o}  |   |{o}  |   |{o}  |   |{o}  |        |{o}  |
+|c000 +---+     +---+     +---+     +---+     +----=---+c721 |
+|     |   |     |   |     |   |     |   |     |        |     |
++-----+   +-----+   +-----+   +-----+   +-----+        +-----+
+
+ 2009      2012      2015      2018      2021             ?      
+
+Network                                            Decentralization
+Started                                                  Lost
+@endditaa
