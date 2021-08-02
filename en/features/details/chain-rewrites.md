@@ -23,12 +23,12 @@ back previous payments.
 
 The cost of this attack depends on the percentage of total network hash
 rate the attacking miner controls. The more centralized mining becomes,
-the less expensive the attack for a powerful miner.
+the less expensive the attack is for a powerful miner.
 
 ### Real Example
 
 In September 2013, someone used centralized mining pool GHash.io to
-steal an estimated 1,000 bitcoins (worth $124,000 USD) from the gambling
+steal an estimated 1,000 bitcoins (worth $124,000 USD at the time) from the gambling
 site BetCoin.
 
 The attacker would spend bitcoins to make a bet.  If he won, he would

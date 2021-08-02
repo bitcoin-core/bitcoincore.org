@@ -20,7 +20,7 @@ breadcrumbs:
   a new chain and selling their users' bitcoins from the old chain.
 
 - **Light wallet**{:.fgred} users accept the block chain they know about
-  with the most proof of work. This lets the hash rate majority of
+  with the most proof of work, regardless of validity. This lets the hash rate majority of
   miners force light wallet users off of Bitcoin.
 
 - **Bitcoin Core**{:.fggreen} users don't have to worry about chain

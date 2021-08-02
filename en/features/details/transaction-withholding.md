@@ -17,7 +17,7 @@ breadcrumbs:
 > transaction did confirm, so Alice gave away her bitcoins for nothing.
 
 - **Wallet service**{:.fgred} users only see the transactions the service
-  choose to show them.
+  chooses to show them.
 
 - **Light wallets**{:.fgred} users only see the transactions their full
   node peers choose to send them, even if those transactions were

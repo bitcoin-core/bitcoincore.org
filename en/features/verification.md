@@ -19,15 +19,15 @@ that everything in that block is fully valid---allowing it to trust the
 block without trusting the miner who created it.
 
 This prevents miners from tricking Bitcoin Core users into accepting
-blocks that violate the 21 million bitcoin limit or which break other
+blocks that violate the 21 million bitcoin limit or other
 important rules.
 
 Users of other wallets don't get this level of security, so they can be
 tricked into accepting fabricated transactions or alternative block chains.
 
 Why take that risk if you don't have to? Bitcoin Core provides the best
-possible security against dishonest miners along with additional
-security against other easier attacks (see below for details).
+possible security against dishonest miners, along with additional
+security against other types of attacks (see below for details).
 
 ## How Verification Protects Your Bitcoins
 
@@ -138,7 +138,7 @@ users, those users will be unable to pay full verification Bitcoin Core
 users like you.
 
 As long as there are many non-verifying users who want to be able to
-pay Bitcoin Core users, miners and others know they can't effectively
+pay Bitcoin Core users, miners and others know that they can't effectively
 change Bitcoin's rules.
 
 But what if not enough non-verifying users care about paying Bitcoin
