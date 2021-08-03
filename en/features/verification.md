@@ -91,11 +91,6 @@ real wallet?
 
 </table>
 
-Note that although all programs---including Bitcoin Core---are
-vulnerable to chain rewrites, Bitcoin provides a defense mechanism: the
-more confirmations your transactions have, the safer you are. *There is
-no known decentralized defense better than that.*
-
 ## Help Protect Decentralization
 
 {% comment %}<!-- 1231006505 is the time in block 0; 31558149 is the average number of seconds in a year -->{% endcomment %}

@@ -28,7 +28,7 @@ Direct theft is likely the leading cause of stolen bitcoins so far.
 ### Real Example
 
 Bitcoin exchange Mt Gox reportedly had 650,000 bitcoins (worth $347
-million USD) stolen from their customer deposits and their own operating
+million USD at the time) stolen from their customer deposits and their own operating
 funds. They declared bankruptcy on 28 February 2014.
 
 Even when the bankruptcy proceeding is complete, customers are unlikely to

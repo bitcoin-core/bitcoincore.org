@@ -19,18 +19,19 @@ breadcrumbs:
 - **Wallet service**{:.fgred} users only see the transactions the service
   chooses to show them.
 
-- **Light wallets**{:.fgred} users only see the transactions their full
-  node peers choose to send them, even if those transactions were
-  included in a block the light wallet knows about.
+- **Light wallet**{:.fgred} users only see the transactions their full
+  node peers choose to send them.  Transactions can be hidden from the
+  light wallet even if it knows about the block that included those
+  transactions.
 
 - **Bitcoin Core**{:.fggreen} users see all transactions included in
   received blocks. If Bitcoin Core hasn't received a block for too long,
-  it displays a catching-up progress bar in the graphical user
+  it displays a progress bar in the graphical user
   interface or a warning message in the CLI/API user interface.
 
 <div class="callout" markdown="block">
 Unless you use Bitcoin Core, you can never be sure that your bitcoin balance
-is correct according to the block chain.
+is correct.
 </div>
 
 ### Real Example

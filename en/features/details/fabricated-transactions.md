@@ -22,7 +22,7 @@ breadcrumbs:
 - **Light wallet**{:.fgred} users depend on full nodes and
   miners to verify transactions for them. It costs nothing for
   dishonest full nodes to send unconfirmed fabricated transactions to a
-  light wallet. Getting one or more confirmations of those fabricated
+  light wallet. Getting one or more confirmations on those fabricated
   transactions is also possible with help from a dishonest miner.
 
 - **Bitcoin Core**{:.fggreen} users don't have to worry about fabricated

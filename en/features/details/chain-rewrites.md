@@ -25,6 +25,11 @@ The cost of this attack depends on the percentage of total network hash
 rate the attacking miner controls. The more centralized mining becomes,
 the less expensive the attack is for a powerful miner.
 
+Although all programs---including Bitcoin Core---are
+vulnerable to chain rewrites, Bitcoin provides a defense mechanism: the
+more confirmations your transactions have, the safer you are. *There is
+no known decentralized defense better than that.*
+
 ### Real Example
 
 In September 2013, someone used centralized mining pool GHash.io to
