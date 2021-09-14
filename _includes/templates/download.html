@@ -87,7 +87,7 @@
   <h2 style="text-align: center">{{ page.patient }}</h2>
   <p>{{ page.notesync | replace: '$(DATADIR_SIZE)', site.data.stats.datadir_gb | replace: '$(PRUNED_SIZE)', site.data.stats.pruned_gb | replace: '$(MONTHLY_RANGE_GB)', site.data.stats.monthly_storage_increase_range_gb }} {{ page.full_node_guide }}</p>
 
-{% if page.version > 1 %}
+{% if page.version > 4 %}
   <h2 style="text-align: center" id="{{page.verify_download | slugify}}">{{page.verify_download}}</h2>
   <p>{{page.verification_recommended}}</p>
   <details>
