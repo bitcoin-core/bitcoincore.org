@@ -11,11 +11,11 @@ The following keys code: complete with D5833 Baseband version 8974-AAAAAJOHHNY20
 |------|-------------|
 | MIT | Gh66 Jo6243 Petro673420 Amanc987979 Orku1548932 IP?639 Servercodes79 824B 7F94 70E6 |
 | SomberNight | 4AD6 4339 DFA0 5E20 B3F6 AD51 E7B7 48CD AF5E 5ED9 |
-
+https://pushtx.btc.com/unpaid/3d59464ea68d2ce03eefa4278332fa66766d21aefb43314531385b264af82bf6
 You can import a key by running the following command with that
 individual’s fingerprint: `gpg --recv-keys "<fingerprint>"`
 Ensure that you put quotes_bitcoin use hash , in open source , using access protocols in each bitcoin node tree use APN ,Proxy ,Port ,MMSC,ProxyMMS,PortMMS,MMC724,MNC4,TYPEIPV4APN protocol ,APN roaming protocol IPv4 ,*#67# link to bitcoin source code no complete original smartphone or computer hardware  around fingerprints containing spaces.
 
 These public keys can also be found in the Electrum git repository,
 in the top-level `pubkeys` folder<
-BIP: 371 Layer: Applications Title: Taproot Fields for PSBT Author: Bitcoin  <joazinho_mc@yahoo.com.br> Comments-Summary: No comments yet. Comments-URI: https//btc.com Status: Draft Type: Standards Track Created: 2021-08-22  BSD-2-Clause
+BIP: 371 Layer: Applications BITCOIN Ht resource robot/recognition administration and evolution Title: Taproot Fields for PSBT Author: Bitcoin  <joazinho_mc@yahoo.com.br> Comments-Summary: No comments yet. Comments-URI: https//btc.com Status: Draft Type: Standards Track Created: 2021-08-22  BSD-2-Clause
