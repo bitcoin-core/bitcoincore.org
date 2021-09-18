@@ -8,8 +8,14 @@
 {% assign magnet = VERSION_SORTED_RELEASES[0].optional_magnetlink %}
 {% capture PATH_PREFIX %}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
 {% capture FILE_PREFIX %}bitcoin-{{CURRENT_RELEASE}}{% endcapture %}
-{% capture SIGNING_KEY_FINGERPRINT_EXPLODED %}{% include fingerprint-split.html hex=page.example_builder_key %}{% endcapture %}
-{% capture SHORT_BUILDER_KEY %}{{page.example_builder_key | slice: 0, 4}}  {{ page.example_builder_key | slice: 4, 4 }}...{% endcapture %}
+{% assign builder_line_arr = page.example_builders_line | split: ' ' %}
+{% assign example_builder_key = builder_line_arr[0] %}
+{% capture SIGNING_KEY_FINGERPRINT_EXPLODED %}
+  {% include fingerprint-split.html hex=example_builder_key %}
+{% endcapture %}
+{% capture SHORT_BUILDER_KEY %}
+  {{example_builder_key | slice: 0, 4}}  {{ example_builder_key | slice: 4, 4 }}..
+.{% endcapture %}
 {% capture BUILDER_KEYS_TXT_URL %}{{page.builder_keys_url}}/keys.txt{% endcapture %}
 
 {% capture OBTAIN_RELEASE_KEY %}
@@ -134,7 +140,7 @@
 
       <li><p>{{OBTAIN_RELEASE_KEY}}</p>
 
-        <pre class="highlight"><code>{{GPG}}{{site.strings.gpg_keyserver}} --recv-keys {{page.example_builder_key}}</code></pre>
+        <pre class="highlight"><code>{{GPG}}{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
         <p>{{page.release_key_obtained}}</p></li>
 
@@ -182,7 +188,7 @@
 
       <li><p>{{page.obtain_release_key | replace: '$(BUILDER_KEYS_URL)', page.builder_keys_url | replace: '$(EXAMPLE_BUILDERS_LINE)', page.example_builders_line}}</p>
 
-        <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{page.example_builder_key}}</code></pre>
+        <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
         <p>{{page.release_key_obtained}}</p></li>
 
@@ -224,7 +230,7 @@
 
       <li><p>{{page.obtain_release_key | replace: '$(BUILDER_KEYS_URL)', page.builder_keys_url | replace: '$(EXAMPLE_BUILDERS_LINE)', page.example_builders_line}}</p>
 
-        <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{page.example_builder_key}}</code></pre>
+        <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
         <p>{{page.release_key_obtained}}</p></li>
 
