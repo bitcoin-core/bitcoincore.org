@@ -506,7 +506,7 @@ Instead of SPV clients accepting miner assertion, why don't they accept miner do
 
 Bundle committed transactions with a hard-fork, and this different reduced SPV model. Luke disagrees that they implement SPV because they don't even do fraud proofs. 
 
-<a name="lightning-network-key-derivation" />
+<a name="lightning-network-key-derivation" >
 ### Lightning Network key derivation function
 
 Say you have 5 channels. Yo uwant to be pretty clear that they are actually yours. So you can build network graphs. If you just have a bunch of edges, you can't sort of link them all together into a vertex, it doesn't help. But if you say this edge and this edge are all connected, even if I'm not using the same public key for these 2-of-2 multisig, I must have had a key in common to generate all of these.
