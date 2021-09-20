@@ -186,7 +186,7 @@
       {{page.gpg_download_other}}
       <a href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_options}}</a></p></li>
 
-      <li><p>{{page.obtain_release_key | replace: '$(BUILDER_KEYS_URL)', page.builder_keys_url | replace: '$(EXAMPLE_BUILDERS_LINE)', page.example_builders_line}}</p>
+      <li><p>{{OBTAIN_RELEASE_KEY}}</p>
 
         <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
@@ -228,7 +228,7 @@
 
         <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.lin64}}: {{page.localized_checksum_ok}}</code></p></li>
 
-      <li><p>{{page.obtain_release_key | replace: '$(BUILDER_KEYS_URL)', page.builder_keys_url | replace: '$(EXAMPLE_BUILDERS_LINE)', page.example_builders_line}}</p>
+      <li><p>{{OBTAIN_RELEASE_KEY}}</p>
 
         <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
