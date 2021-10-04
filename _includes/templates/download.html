@@ -116,7 +116,7 @@
 
 {% if page.version > 4 %}
   <h2 style="text-align: center" id="{{page.verify_download | slugify}}">{{page.verify_download}}</h2>
-  <p>{{page.verification_recommended}}</p>
+  {{page.verification_recommended}}
   <details>
   {% assign GPG = "C:\Program Files\Gnu\GnuPg\gpg.exe" %}
     <summary><strong>{{page.windows_instructions}}</strong></summary>
@@ -147,7 +147,7 @@
       {{page.gpg_download_other}}
       <a href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_options}}</a></p></li>
 
-      <li><p>{{OBTAIN_RELEASE_KEY}}</p>
+      <li>{{OBTAIN_RELEASE_KEY}}
 
         <pre class="highlight"><code>{{GPG}}{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
@@ -195,7 +195,7 @@
       {{page.gpg_download_other}}
       <a href="{{GPG_DOWNLOAD_URL}}">{{page.gpg_download_options}}</a></p></li>
 
-      <li><p>{{OBTAIN_RELEASE_KEY}}</p>
+      <li>{{OBTAIN_RELEASE_KEY}}
 
         <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
@@ -237,7 +237,7 @@
 
         <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.lin64}}: {{page.localized_checksum_ok}}</code></p></li>
 
-      <li><p>{{OBTAIN_RELEASE_KEY}}</p>
+      <li>{{OBTAIN_RELEASE_KEY}}
 
         <pre class="highlight"><code>gpg{{site.strings.gpg_keyserver}} --recv-keys {{example_builder_key}}</code></pre>
 
