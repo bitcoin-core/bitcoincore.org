@@ -270,3 +270,19 @@ ja:
       twitter_impersonation:
         title: "Twitterのなりすまし"
         url: "/ja/twitter-impersonation"
+es:
+  home:
+    title: "Bitcoin Core"
+    url:   "/es/"
+  #about:
+  #  title: "Acerca de "
+  #  url:   "/es/about/"
+  download:
+    title: "Descargas"
+    url: "/es/download/"
+  #blog:
+  #  title: "Blog"
+  #  url:   "/es/blog/"
+  releases:
+    title: "Versiones"
+    url:   "/es/releases/"
