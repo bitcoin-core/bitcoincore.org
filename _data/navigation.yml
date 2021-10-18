@@ -276,12 +276,12 @@ es:
     url:   "/es/"
   about:
     title: "Acerca de "
-    url:   "/en/about/"  # XXX
+    url:   "/es/about/"
   download:
     title: "Descargas"
     url: "/es/download/"
   blog:
-    title: "Blog"
+    title: "Blog"  # XXX
     url:   "/en/blog/"  # XXX
   releases:
     title: "Versiones"
