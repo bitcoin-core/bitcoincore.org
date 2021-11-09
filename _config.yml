@@ -101,4 +101,4 @@ collections:
     output: true
 
 strings:
-  gpg_keyserver: " --keyserver hkp://keyserver.ubuntu.com"  ## Prefix with a space
+  gpg_keyserver: " --keyserver hkps://keys.openpgp.org"  ## Prefix with a space
