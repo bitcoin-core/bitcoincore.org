@@ -1,0 +1,3 @@
+Could not load web page at http://bitcoin.io/ because:
+
+ net::ERR_INTERNET_DISCONNECTED
