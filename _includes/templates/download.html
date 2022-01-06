@@ -28,7 +28,7 @@
 {% assign GPG_DOWNLOAD_URL = "https://www.gnupg.org/download/index.en.html#binary" %}
 {% assign GPG_MACOS_DOWNLOAD_URL = "https://gpgtools.org/" %}
 {% assign GPG_WINDOWS_DOWNLOAD_URL = "https://gpg4win.org/download.html" %}
-{% assign GITIAN_REPOSITORY_URL = "https://github.com/bitcoin-core/gitian.sigs" %}
+{% assign GUIX_REPOSITORY_URL = "https://github.com/bitcoin-core/guix.sigs" %}
 {% endcapture %}
 <link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
 <div class="download">
@@ -278,7 +278,7 @@
     <li><p><em>{{page.verified_reproduction}}</em> {{page.independently_reproducing}}</p></li>
   </ul>
 
-  <p>{{page.verifying_and_reproducing}} <a href="{{GITIAN_REPOSITORY_URL}}">{{page.gitian_repository}}</a>.</p>
+  <p>{{page.verifying_and_reproducing}} <a href="{{GUIX_REPOSITORY_URL}}">{{page.guix_repository}}</a>.</p>
 {% endif %}{% comment %}END VERSION > 1 CONTENT{% endcomment %}
 
 <hr>
