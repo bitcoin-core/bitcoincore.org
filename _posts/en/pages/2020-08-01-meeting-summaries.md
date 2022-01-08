@@ -3,7 +3,7 @@ type: pages
 layout: page
 lang: en
 title: IRC Meeting Summaries
-name: meetings
+name: meeting-summaries
 permalink: /en/meeting-summaries/
 version: 1
 ---
