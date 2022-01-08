@@ -270,3 +270,73 @@ ja:
       twitter_impersonation:
         title: "Twitterのなりすまし"
         url: "/ja/twitter-impersonation"
+es:
+  home:
+    title: "Bitcoin Core"
+    url:   "/es/"
+  about:
+    title: "Acerca de "
+    url:   "/es/about/"
+  download:
+    title: "Descargas"
+    url: "/es/download/"
+  blog:
+    title: "Blog"  # XXX
+    url:   "/en/blog/"  # XXX
+  releases:
+    title: "Versiones"
+    url:   "/es/releases/"
+  faq:
+    title: "FAQs"
+    submenu: true
+    tree:
+      capacity-faq:
+        title: "Capacity Increases"  # XXX
+        url: "/en/2015/12/23/capacity-increases-faq/"  # XXX
+      segwit-faq:
+        title: "Segwit"
+        url: "/en/2016/01/26/segwit-benefits/"  # XXX
+      segwit-dev:
+        title: "Segwit dev guide"  # XXX
+        url: "/en/segwit_wallet_dev/"  # XXX
+      optin-rbf:
+        title: "Opt-in RBF"  # XXX
+        url: "/en/faq/optin_rbf/"  # XXX
+      compact-blocks:
+        title: "Compact Blocks"  # XXX
+        url: "/en/2016/06/07/compact-blocks-faq/"  # XXX
+      version-bits:
+        title: "Version Bits (BIP9)"  # XXX
+        url: "/en/2016/06/08/version-bits-miners-faq/"  # XXX
+      segwit-upgrade-guide:
+        title: "Segwit upgrade guide"  # XXX
+        url: "/en/2016/10/27/segwit-upgrade-guide/"  # XXX
+  dev:
+    title: "Development"  # XXX
+    submenu: true
+    tree:
+      contribute:
+        title: "contribute"  # XXX
+        url:   "/en/contribute/"  # XXX
+      contribute-code:
+        title: "contributing code"  # XXX
+        url:   "/en/faq/contributing-code/"  # XXX
+      meetings:
+        title: "meetings"  # XXX
+        url:   "/en/meetings/"  # XXX
+      eol:
+        title: "Lifecycle"  # XXX
+        url:   "/en/lifecycle"  # XXX
+  contact:
+    title: "Contact"  # XXX
+    submenu: true
+    tree:
+      contact_us:
+        title: "Contact Us"  # XXX
+        url: "/en/contact/"  # XXX
+      announcements:
+        title: "Announcements"  # XXX
+        url: "/en/list/announcements/join/"  # XXX
+      twitter_impersonation:
+        title: "Twitter impersonation"  # XXX
+        url: "/en/twitter-impersonation"  # XXX
