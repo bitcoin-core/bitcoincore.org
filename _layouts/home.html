@@ -50,7 +50,7 @@
         <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
         <p>{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
         <p class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
-          <small>Published on {{ post.date | date: "%B %d, %Y" }}</small>
+          <small>{{ site.data.home[page.lang]['published_on'] }} {{ post.date | date: "%B %d, %Y" }}</small>
         </p>
       {% endif %}
     </article>
