@@ -60,4 +60,3 @@ en:
       announcements:
         title: "Announcements"
         url: "/en/list/announcements/join/"
-
