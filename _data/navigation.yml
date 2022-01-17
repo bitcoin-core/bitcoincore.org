@@ -15,31 +15,6 @@ en:
   releases:
     title: "releases"
     url:   "/en/releases/"
-  faq:
-    title: "FAQs"
-    submenu: true
-    tree:
-      capacity-faq:
-        title: "Capacity Increases"
-        url: "/en/2015/12/23/capacity-increases-faq/"
-      segwit-faq:
-        title: "Segwit"
-        url: "/en/2016/01/26/segwit-benefits/"
-      segwit-dev:
-        title: "Segwit dev guide"
-        url: "/en/segwit_wallet_dev/"
-      optin-rbf:
-        title: "Opt-in RBF"
-        url: "/en/faq/optin_rbf/"
-      compact-blocks:
-        title: "Compact Blocks"
-        url: "/en/2016/06/07/compact-blocks-faq/"
-      version-bits:
-        title: "Version Bits (BIP9)"
-        url: "/en/2016/06/08/version-bits-miners-faq/"
-      segwit-upgrade-guide:
-        title: "Segwit upgrade guide"
-        url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "Development"
     submenu: true
@@ -82,31 +57,6 @@ zh_CN:
   releases:
     title: "软件发行"
     url:   "/zh_CN/releases/"
-  faq:
-    title: "常见问题"
-    submenu: true
-    tree:
-      capacity-faq:
-        title: "容量增长"
-        url: "/zh_CN/2015/12/21/系统扩展常见问题解答/"
-      segwit-faq:
-        title: "隔离见证"
-        url: "/zh_CN/2016/01/26/segwit-benefits/"
-      segwit-dev:
-        title: "Segwit dev guide"
-        url: "/en/segwit_wallet_dev/"
-      optin-rbf:
-        title: "使用费用替代方案 opt-in RBF"
-        url: "/zh_CN/faq/optin_rbf/"
-      compact-blocks:
-        title: "压缩区块"
-        url: "/en/2016/06/07/compact-blocks-faq/"
-      version-bits:
-        title: "版本位 (比特币改进协议 9/BIP9)"
-        url: "/zh_CN/2016/06/08/version-bits-miners-faq/"
-      segwit-upgrade-guide:
-        title: "Segwit upgrade guide"
-        url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "开发"
     submenu: true
@@ -149,31 +99,6 @@ zh_TW:
   releases:
     title: "軟件發行"
     url:   "/zh_TW/releases/"
-  faq:
-    title: "FAQs"
-    submenu: true
-    tree:
-      capacity-faq:
-        title: "Capacity Increases"
-        url: "/zh_TW/2015/12/21/系統擴展常見問題解答/"
-      segwit-faq:
-        title: "Segwit"
-        url: "/en/2016/01/26/segwit-benefits/"
-      segwit-dev:
-        title: "Segwit dev guide"
-        url: "/en/segwit_wallet_dev/"
-      optin-rbf:
-        title: "Opt-in RBF"
-        url: "/en/faq/optin_rbf/"
-      compact-blocks:
-        title: "Compact Blocks"
-        url: "/en/2016/06/07/compact-blocks-faq/"
-      version-bits:
-        title: "Version Bits (BIP9)"
-        url: "/en/2016/06/08/version-bits-miners-faq/"
-      segwit-upgrade-guide:
-        title: "Segwit upgrade guide"
-        url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "Development"
     submenu: true
@@ -216,31 +141,6 @@ ja:
   releases:
     title: "リリース"
     url:   "/ja/releases/"
-  faq:
-    title: "FAQ"
-    submenu: true
-    tree:
-      capacity-faq:
-        title: "キャパシティの増加"
-        url: "/en/2015/12/23/capacity-increases-faq/"
-      segwit-faq:
-        title: "Segwit"
-        url: "/ja/2016/01/26/segwit-benefits/"
-      segwit-dev:
-        title: "Segwit開発ガイド"
-        url: "/ja/segwit_wallet_dev/"
-      optin-rbf:
-        title: "Opt-in RBF"
-        url: "/en/faq/optin_rbf/"
-      compact-blocks:
-        title: "Compact Block"
-        url: "/ja/2016/06/07/compact-blocks-faq/"
-      version-bits:
-        title: "Version Bits (BIP9)"
-        url: "/en/2016/06/08/version-bits-miners-faq/"
-      segwit-upgrade-guide:
-        title: "Segwitアップグレードガイド"
-        url: "/en/2016/10/27/segwit-upgrade-guide/"
   dev:
     title: "開発"
     submenu: true
@@ -286,31 +186,6 @@ es:
   releases:
     title: "Versiones"
     url:   "/es/releases/"
-  faq:
-    title: "FAQs"
-    submenu: true
-    tree:
-      capacity-faq:
-        title: "Capacity Increases"  # XXX
-        url: "/en/2015/12/23/capacity-increases-faq/"  # XXX
-      segwit-faq:
-        title: "Segwit"
-        url: "/en/2016/01/26/segwit-benefits/"  # XXX
-      segwit-dev:
-        title: "Segwit dev guide"  # XXX
-        url: "/en/segwit_wallet_dev/"  # XXX
-      optin-rbf:
-        title: "Opt-in RBF"  # XXX
-        url: "/en/faq/optin_rbf/"  # XXX
-      compact-blocks:
-        title: "Compact Blocks"  # XXX
-        url: "/en/2016/06/07/compact-blocks-faq/"  # XXX
-      version-bits:
-        title: "Version Bits (BIP9)"  # XXX
-        url: "/en/2016/06/08/version-bits-miners-faq/"  # XXX
-      segwit-upgrade-guide:
-        title: "Segwit upgrade guide"  # XXX
-        url: "/en/2016/10/27/segwit-upgrade-guide/"  # XXX
   dev:
     title: "Development"  # XXX
     submenu: true
