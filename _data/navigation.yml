@@ -19,9 +19,6 @@ en:
     title: "FAQs"
     submenu: true
     tree:
-      capacity-faq:
-        title: "Capacity Increases"
-        url: "/en/2015/12/23/capacity-increases-faq/"
       segwit-faq:
         title: "Segwit"
         url: "/en/2016/01/26/segwit-benefits/"
@@ -86,9 +83,6 @@ zh_CN:
     title: "常见问题"
     submenu: true
     tree:
-      capacity-faq:
-        title: "容量增长"
-        url: "/zh_CN/2015/12/21/系统扩展常见问题解答/"
       segwit-faq:
         title: "隔离见证"
         url: "/zh_CN/2016/01/26/segwit-benefits/"
@@ -153,9 +147,6 @@ zh_TW:
     title: "FAQs"
     submenu: true
     tree:
-      capacity-faq:
-        title: "Capacity Increases"
-        url: "/zh_TW/2015/12/21/系統擴展常見問題解答/"
       segwit-faq:
         title: "Segwit"
         url: "/en/2016/01/26/segwit-benefits/"
@@ -220,9 +211,6 @@ ja:
     title: "FAQ"
     submenu: true
     tree:
-      capacity-faq:
-        title: "キャパシティの増加"
-        url: "/en/2015/12/23/capacity-increases-faq/"
       segwit-faq:
         title: "Segwit"
         url: "/ja/2016/01/26/segwit-benefits/"
@@ -290,9 +278,6 @@ es:
     title: "FAQs"
     submenu: true
     tree:
-      capacity-faq:
-        title: "Capacity Increases"  # XXX
-        url: "/en/2015/12/23/capacity-increases-faq/"  # XXX
       segwit-faq:
         title: "Segwit"
         url: "/en/2016/01/26/segwit-benefits/"  # XXX
