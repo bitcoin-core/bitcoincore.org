@@ -50,8 +50,7 @@ body {
 	@include grid(12,10);
 	@include prefix(12,1);
 	@include suffix(12,1);
-	margin-bottom: 1em;
-	padding-top: 1.15em;
+	padding-top: 1.5em;
 	float: none;
 	display: block;
 	@include font-rem(24);
