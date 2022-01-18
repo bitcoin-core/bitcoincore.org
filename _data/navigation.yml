@@ -8,7 +8,7 @@ en:
     url:   "/en/about/"
   download:
     title: "Download"
-    url: "/en/download"
+    url: "/en/download/"
   blog:
     title: "blog"
     url:   "/en/blog/"
@@ -340,3 +340,73 @@ es:
       twitter_impersonation:
         title: "Twitter impersonation"  # XXX
         url: "/en/twitter-impersonation"  # XXX
+tr:
+  home:
+    title: "Bitcoin Core"
+    url:   "/tr/"
+  about:
+    title: "Hakkında"
+    url:   "/tr/about/"
+  download:
+    title: "İndir"
+    url: "/tr/download/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "Versiyonlar"
+    url:   "/tr/releases/"
+  faq:
+    title: "FAQs"
+    submenu: true
+    tree:
+      capacity-faq:
+        title: "Capacity Increases"
+        url: "/en/2015/12/23/capacity-increases-faq/"
+      segwit-faq:
+        title: "Segwit"
+        url: "/en/2016/01/26/segwit-benefits/"
+      segwit-dev:
+        title: "Segwit dev guide"
+        url: "/en/segwit_wallet_dev/"
+      optin-rbf:
+        title: "Opt-in RBF"
+        url: "/en/faq/optin_rbf/"
+      compact-blocks:
+        title: "Compact Blocks"
+        url: "/en/2016/06/07/compact-blocks-faq/"
+      version-bits:
+        title: "Version Bits (BIP9)"
+        url: "/en/2016/06/08/version-bits-miners-faq/"
+      segwit-upgrade-guide:
+        title: "Segwit upgrade guide"
+        url: "/en/2016/10/27/segwit-upgrade-guide/"
+  dev:
+    title: "Geliştirme"
+    submenu: true
+    tree:
+      contribute:
+        title: "Katkıda Bulun"
+        url:   "/tr/contribute/"
+      contribute-code:
+        title: "Bitcoin Core'a kod ekle"
+        url:   "/tr/contributing-code/"
+      meetings:
+        title: "Toplantılar"
+        url:   "/tr/meetings/"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
+  contact:
+    title: "İletişim"
+    submenu: true
+    tree:
+      contact_us:
+        title: "Bize Ulaşın"
+        url: "/tr/contact/"
+      announcements:
+        title: "Duyurular"
+        url: "/tr/join/"
+      twitter_impersonation:
+        title: "Twitter' da Biz"
+        url: "/tr/twitter-impersonation"
