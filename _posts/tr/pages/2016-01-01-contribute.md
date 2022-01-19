@@ -6,7 +6,7 @@ permalink: /tr/contribute/
 type: pages
 layout: page
 lang: tr
-version: 1
+version: 5
 ---
 
 Projeye katkıda bulunmaya davetlisiniz! 
