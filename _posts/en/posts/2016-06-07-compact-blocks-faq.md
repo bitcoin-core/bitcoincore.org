@@ -71,7 +71,7 @@ The original FBRP is how the participating nodes communicate block information t
 
 This feature is intended to save peak block bandwidth for nodes, reducing bandwidth spikes which can degrade end-user internet experience. However, the centralization pressures of mining exist in a large part due to latency of block propagation, as described in the following video. Compact blocks version 1 is not primarily designed to solve that problem.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Y6kibPzbrIc" frameborder="0" allowfullscreen> </iframe>
+https://www.youtube.com/embed/Y6kibPzbrIc
 
 It is expected that miners will continue to use the [Fast Relay Network](http://bitcoinrelaynetwork.org/) until a lower-latency or more robust solution is developed. However improvements to the base p2p protocol will increase robustness in the case of FRN failure, and perhaps reduce the advantage of private relay networks, making them not worthwhile to run.
 
