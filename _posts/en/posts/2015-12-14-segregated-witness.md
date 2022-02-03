@@ -15,4 +15,4 @@ excerpt: This is the extended presentation of Segregated Witness by Pieter Wuill
 
 This is the extended presentation of Segregated Witness by Pieter Wuille.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NOYNZB5BCHM" frameborder="0"> </iframe>
+https://www.youtube.com/embed/NOYNZB5BCHM
