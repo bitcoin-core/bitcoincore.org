@@ -25,10 +25,7 @@ kramdown:
 # Site owner
 owner:
   name: Bitcoin Core
-  avatar: bio-photo.jpg
-  bio: ""
   twitter: bitcoincoreorg
-  github: bitcoin
 
 exclude:
   - _config.yml
