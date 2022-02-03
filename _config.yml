@@ -29,23 +29,7 @@ owner:
   bio: ""
   email:
   twitter: bitcoincoreorg
-  facebook: #username
   github: bitcoin
-  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: #username
-  xing: #username
-  instagram: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
-  soundcloud: #username
-  weibo: #username
-  flickr: #username
-  codepen: #username
 
 exclude:
   - _config.yml
