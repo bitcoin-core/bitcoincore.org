@@ -1,6 +1,23 @@
 <!doctype html>
 {% include browser_magic.html %}
 <head>
+{% if page.btcversion == "index" %}
+  <script>
+      // XXX client side redirect
+      // TODO replace for server side redirect
+      window.location.href = (
+          // locator common base
+          window.location.origin + '/'
+          // active language
+          + window.location.pathname.substr(1, 2) + '/'
+          // doc hierarchy
+          + 'doc' + '/'
+          // XXX hard wired current version
+          // TODO auto detect current version
+          + '22.0.0' + '/'
+      );
+  </script>
+{% endif %}
 {% if page.name != "index" and page.name != "rpcindex" %}
   {% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
 {% else %}
