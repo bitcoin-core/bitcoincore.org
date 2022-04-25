@@ -48,8 +48,8 @@
       <div>
         <img src="/assets/images/os/med_osx.png" alt="osx">
         <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}{{ site.data.binaries.macdmg }}">macOS</a>
-          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}{{ site.data.binaries.macdmg }}" class="dl" id="macdmg">dmg</a> -
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macdmg }}">macOS</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macdmg }}" class="dl" id="macdmg">dmg</a> -
             <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.mactar }}" class="dl" id="mactar">tar.gz</a></span>
         </span>
       </div>
@@ -188,7 +188,7 @@
 
         <pre class="highlight"><code>shasum -a 256 --check SHA256SUMS</code></pre>
 
-        <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}{{site.data.binaries.macdmg}}: {{page.localized_checksum_ok}}</code></p></li>
+        <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.macdmg}}: {{page.localized_checksum_ok}}</code></p></li>
 
       <li><p>{{page.install_gpg}} <a
       href="{{GPG_MACOS_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a>
