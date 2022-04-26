@@ -10,6 +10,8 @@
             // locator common base
             window.location.origin + '/'
             // active language
+            // XXX this line would be broken by country based language variants, but that is not happening until someone translates the 'doc' hierarchy
+            // TODO break window.location.pathname separating by '/' and pick the first fragment
             + window.location.pathname.substr(1, 2) + '/'
             // doc hierarchy
             + 'doc' + '/'
