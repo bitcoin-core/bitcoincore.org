@@ -18,10 +18,6 @@
 
 {% include open-graph.html %}
 
-{% if site.owner.google.verify %}<!-- Webmaster Tools verfication -->
-<meta name="google-site-verification" content="{{ site.owner.google.verify }}">{% endif %}
-{% if site.owner.bing-verify %}<meta name="msvalidate.01" content="{{ site.owner.bing-verify }}">{% endif %}
-
 {% assign posts=site.posts |where:"name", page.name %}
 {% for hrefpost in posts %}<link rel="alternate" hreflang="{{ hrefpost.lang }}" href="{{ site.url }}{{ hrefpost.permalink }}" />{% endfor %}
 {% if page.canonical != null %}<link rel="canonical" href="{{ page.canonical }}">{% else %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}

@@ -11,7 +11,7 @@ excerpt: The following video shows commit activity in the Bitcoin Core repositor
 ---
 The following video shows commit activity in the [Bitcoin Core repository][repository] during 2015. A full list of code contributors during this period can be found [here][activity].
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FIt7GLxxIpY" frameborder="0" allowfullscreen> </iframe>
+https://www.youtube.com/embed/FIt7GLxxIpY
 
 In 2015, the Bitcoin Core project released 2 major versions of it's software together with 5 further maintenance releases. 
 Additionally, two soft forks upgrades were deployed and successfully activated. The first, [BIP66], fixed a potentially serious security vulnerability introduced by openssl; and the second, [BIP65], added a new opcode CHECKLOCKTIMEVERIFY to the Bitcoin scripting language.

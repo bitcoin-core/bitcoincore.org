@@ -8,7 +8,6 @@
     <author>
         <name>{{ site.owner.name }}</name>
         <uri>{{ site.url }}{{ post.url }}</uri>
-        {% if site.owner.email %}<email>{{ site.owner.email }}</email>{% endif %}
     </author>
     {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
     {% for post in posts limit:20 %}
