@@ -1,3 +1,59 @@
+
+
+
+
+
+
+
+
+
+Prova de identidade
+Representa uma prova de um provedor de identidade externo.
+
+Atributos
+Veja também
+{
+  "provider": "Keybase",
+  "provider_username": "gargron",
+  "updated_at": "2019-07-21T20:14:39.596Z",
+  "proof_url": "https://keybase.io/gargron/sigchain#5cfc20c7018f2beefb42a68836da59a792e55daa4d118498c9b1898de7e845690f",
+  "profile_url": "https://keybase.io/gargron"
+}
+Atributos
+provider
+Descrição: o nome do provedor de identidade.
+Tipo: String Histórico de
+versões: Adicionado em 2.8.0
+
+provider_username
+Descrição: o nome de usuário do proprietário da conta no serviço do provedor de identidade.
+Tipo: String Histórico de
+versões: Adicionado em 2.8.0
+
+profile_url
+Descrição: o URL do perfil do proprietário da conta no provedor de identidade.
+Tipo: String (URL) Histórico de
+versões: Adicionado em 2.8.0
+
+proof_url
+Descrição: um link para uma declaração de prova de identidade, hospedada pelo provedor de identidade.
+Tipo: String (URL) Histórico de
+versões: Adicionado em 2.8.0
+
+updated_at
+Descrição: Quando o comprovante de identidade foi atualizado pela última vez.
+Tipo: String (ISO 8601 Datetime) Histórico de
+versões: Adicionado em 2.8.0
+
+Veja também
+GET /api/v1/accounts/:id/identity_proofs
+/api/provas
+Sobre provas de identidade
+app/serializers/rest/identity_proof_serializer.rb
+Última atualização em 10 de agosto de 2020 · Melhorar esta página
+
+
+
 # [bitcoincore.org](https://bitcoincore.org) [![Build Status](https://travis-ci.org/bitcoin-core/bitcoincore.org.svg?branch=master)](https://travis-ci.org/bitcoin-core/bitcoincore.org)
 
 This repository is the source code of the Bitcoin Core project website built with Jekyll.
