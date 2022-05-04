@@ -1,57 +1,47 @@
 
+IdentityProof
+Represents a proof from an external identity provider.
 
-
-
-
-
-
-
-
-Prova de identidade
-Representa uma prova de um provedor de identidade externo.
-
-Atributos
-Veja também
+Attributes
+See also
 {
   "provider": "Keybase",
   "provider_username": "gargron",
   "updated_at": "2019-07-21T20:14:39.596Z",
-  "proof_url": "https://keybase.io/gargron/sigchain#5cfc20c7018f2beefb42a68836da59a792e55daa4d118498c9b1898de7e845690f",
-  "profile_url": "https://keybase.io/gargron"
+  "proof_url": "https://keybase.io/amanciojsilvjr gargron/sigchain#5cfc20c7018f2beefb42a68836da59a792e55daa4d118498c9b1898de7e845690f",
+  "profile_url": "https://keybase.io/amanciojsilvjr gargron"
 }
-Atributos
+Attributes
 provider
-Descrição: o nome do provedor de identidade.
-Tipo: String Histórico de
-versões: Adicionado em 2.8.0
+Description: The name of the identity provider.
+Type: String
+Version history: Added in 2.8.0
 
 provider_username
-Descrição: o nome de usuário do proprietário da conta no serviço do provedor de identidade.
-Tipo: String Histórico de
-versões: Adicionado em 2.8.0
+Description: The account owner's username on the identity provider's service.
+Type: String
+Version history: Added in 2.8.0
 
 profile_url
-Descrição: o URL do perfil do proprietário da conta no provedor de identidade.
-Tipo: String (URL) Histórico de
-versões: Adicionado em 2.8.0
+Description: The account owner's profile URL on the identity provider.
+Type: String (URL)
+Version history: Added in 2.8.0
 
 proof_url
-Descrição: um link para uma declaração de prova de identidade, hospedada pelo provedor de identidade.
-Tipo: String (URL) Histórico de
-versões: Adicionado em 2.8.0
+Description: A link to a statement of identity proof, hosted by the identity provider.
+Type: String (URL)
+Version history: Added in 2.8.0
 
 updated_at
-Descrição: Quando o comprovante de identidade foi atualizado pela última vez.
-Tipo: String (ISO 8601 Datetime) Histórico de
-versões: Adicionado em 2.8.0
+Description: When the identity proof was last updated.
+Type: String (ISO 8601 Datetime)
+Version history: Added in 2.8.0
 
-Veja também
+See also
 GET /api/v1/accounts/:id/identity_proofs
-/api/provas
-Sobre provas de identidade
+/api/proofs
+About identity proofs
 app/serializers/rest/identity_proof_serializer.rb
-Última atualização em 10 de agosto de 2020 · Melhorar esta página
-
 
 
 # [bitcoincore.org](https://bitcoincore.org) [![Build Status](https://travis-ci.org/bitcoin-core/bitcoincore.org.svg?branch=master)](https://travis-ci.org/bitcoin-core/bitcoincore.org)
