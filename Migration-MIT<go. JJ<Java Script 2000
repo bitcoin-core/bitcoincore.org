@@ -1,0 +1,19 @@
+Usar vários repositórios em um servidor
+Se você usar vários repositórios em um servidor, você deverá gerar um par de chaves dedicado para cada um. Você não pode reutilizar uma chave de implantação para vários repositórios.
+
+No arquivo de configuração do SSH do servidor (geralmente ~/.ssh/config), adicione uma entrada de pseudônimo para cada repositório. Por exemplo:
+
+Host github.com-repo-0
+        Hostname github.com
+        IdentityFile=/home/user/.ssh/repo-0_deploy_key
+
+Host github.com-repo-1
+        Hostname github.com
+        IdentityFile=/home/user/.ssh/repo-1_deploy_key
+Host github.com-repo-0 - O alias do repositório.
+Hostname github.com - Configura o nome de host a ser usado com o alias.
+IdentityFile=/home/user/.ssh/repo-0_deploy_key - Atribui uma chave privada ao pseudônimo.
+Em seguida, você pode usar o apelido do host para interagir com o repositório usando SSH, que usará a chave de deploy exclusiva atribuída a esse pseudônimo. Por exemplo:
+
+$ git clone git@github.com-repo-1:OWNER/repo-1.git
+Tokens do servidor para
