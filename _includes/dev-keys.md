@@ -15,7 +15,7 @@
 | {{_includes_dev_keys-name}} | {{_includes_dev_keys-fingerprint}}         |
 |-----------------------------|--------------------------------------------|
 | Wladimir van der Laan       | <code>{% include fingerprint-split.html hex="71A3B16735405025D447E8F274810B012346C9A6" %}</code> |
-| Jonas Schnelli              | <code>{% include fingerprint-split.html hex="32EE5C4C3FA15CCADB46ABE529D4BCB6416F53EC" %}</code> |
 | Pieter Wuille               | <code>{% include fingerprint-split.html hex="133EAC179436F14A5CF1B794860FEB804E669320" %}</code> |
+| Michael Ford                | <code>{% include fingerprint-split.html hex="E777299FC265DD04793070EB944D35F9AC3DB76A" %}</code> |
 
 {{_includes_dev_keys-import}}

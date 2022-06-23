@@ -71,7 +71,7 @@ FRNのキュレーションノードのセットは、最優先事項として�
 
 この機能は、ノードのピークブロック帯域幅を節約し、エンドユーザーのインターネットエクスペリエンスを低下させる可能性がある帯域幅のスパイクを減らすことを目的としています。ただし、次のビデオで説明されているように、マイニングの集中化の圧力の大部分の原因はブロック伝播の遅延にあります。Compact Blockバージョン１は主にこの問題を解決するようには設計されたものではありません。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Y6kibPzbrIc" frameborder="0" allowfullscreen> </iframe>
+https://www.youtube.com/embed/Y6kibPzbrIc
 
 低レイテンシーまたはより堅牢なソリューションが開発されるまで、マイナーは[Fast Relay Network](http://bitcoinrelaynetwork.org/)を使用し続けることが予想されます。しかしながら、ベースのP2Pプロトコルの改善は、FRNの障害が発生した場合の堅牢性を増し、おそらくプライベート中継ネットワークの利点を減少させ、それらを実行する価値をなくすでしょう。
 

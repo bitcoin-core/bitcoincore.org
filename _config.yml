@@ -25,35 +25,7 @@ kramdown:
 # Site owner
 owner:
   name: Bitcoin Core
-  avatar: bio-photo.jpg
-  bio: ""
-  email:
-  disqus-shortname:
   twitter: bitcoincoreorg
-  facebook: #username
-  google:
-    plus: #username
-    analytics: #UA-85008990-1
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
-  github: bitcoin
-  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: #username
-  xing: #username
-  instagram: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
-  soundcloud: #username
-  weibo: #username
-  flickr: #username
-  codepen: #username
 
 exclude:
   - _config.yml
@@ -62,7 +34,6 @@ exclude:
   - CONTRIBUTING.md
   - CNAME
   - vendor  # Travis CI creates a vendor/ dir with files we shouldn't render
-  - assets/images/assets.yml
   - contrib
   - Makefile
 
@@ -101,4 +72,4 @@ collections:
     output: true
 
 strings:
-  gpg_keyserver: " --keyserver hkp://keyserver.ubuntu.com"  ## Prefix with a space
+  gpg_keyserver: " --keyserver hkps://keys.openpgp.org"  ## Prefix with a space

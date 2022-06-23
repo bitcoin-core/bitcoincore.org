@@ -51,7 +51,7 @@ func getVersion() string {
 	m := f.(map[string]interface{})
 
 	numv := int(m["version"].(float64))
-	v := fmt.Sprintf("%d.%d.%d", numv/1000000, (numv/10000)%100, (numv/100)%100)
+	v := fmt.Sprintf("%d.%d.%d", (numv/10000)%100, (numv/100)%100, numv%100)
 	return v
 }
 
