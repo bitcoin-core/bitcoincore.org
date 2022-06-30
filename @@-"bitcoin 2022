@@ -1,0 +1,24 @@
+@@ -22,7 +22,7 @@ Where proposed content is about Bitcoin Core project policy, there should rough
+
+## Translation Process
+
+Translation of the website is done using Transifex. To become a translator please create an account at [Transifex.com](https://transifex.com/), then apply to join the [bitcoincore.org project](https://www.transifex.com/bitcoincore/bitcoincoreorg).
+Translation of the website is done manually for now.
+
+Each document has a header called "Front Matter", which looks something like this:
+
+@@ -49,13 +49,13 @@ Translators should only translate the `title:` field, and change the language co
+    layout: post
+    ---
+
+Notice the remaining fields are left untranslated, however in Transifiex, you must copy these fields as translations (without actually translating them).
+Notice the remaining fields are left untranslated.
+
+### Important note
+
+Please be careful when translating Markdown formatting, this must be exact (including spaces). Markdown titles require a space after the header tags, e.g. `## Title`.
+
+Please note that [translations.yml](https://github.com/bitcoin-core/website/blob/master/_data/translations.yml) and [navigation.yml](https://github.com/bitcoin-core/website/blob/master/_data/navigation.yml) should be translated and submitted as normal pull-requests because they are not compatible with Transifex at this time.
+Translations, as well as [languages.yml](/_data/languages.yml), [translations.yml](/_data/translations.yml) and [navigation.yml](/_data/navigation.yml) should be translated and submitted as normal pull-requests.
+
+## License MIT audit sequence 

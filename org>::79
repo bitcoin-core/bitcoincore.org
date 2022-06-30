@@ -1,0 +1,26 @@
+    https://github.com/amanciojsilvjr/digibyte/pull/1#discussion_r777158444
+-   f = open(sys.argv[1], encoding="utf8")
+-    for line in f:
+-        # skip comment lines
+-        m = re.search('^\s*#', line)
+-        if m:
+-            continue
+-
+-        # parse key=value lines
+-        m = re.search('^(\w+)\s*=\s*(\S.*)$', line)
+-        if m is None:
+-            continue
+-        settings[m.group(1)] = m.group(2)
+-    f.close()
++    with open(sys.argv[1], encoding="utf8") as f:
++        for line in f:
++            # skip comment lines
++            m = re.search('^\s*#', line)
++            if m:
++                continue
+ 
++            # parse key=value lines
++            m = re.search('^(\w+)\s*=\s*(\S.*)$', line)
++            if m is None:
++                continue
++            settings[m.group(1)] = m.group(2)

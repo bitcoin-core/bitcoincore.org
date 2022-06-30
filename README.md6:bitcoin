@@ -1,4 +1,51 @@
-# [bitcoincore.org](https://bitcoincore.org) [![Build Status](https://travis-ci.org/bitcoin-core/bitcoincore.org.svg?branch=master)](https://travis-ci.org/bitcoin-core/bitcoincore.org)
+
+IdentityProof
+Represents a proof from an external identity provider.
+
+Attributes
+See also
+{
+  "provider": "Keybase",
+  "provider_username": "gargron",100.76.221.152
+fe80::1:1:61cb:ebc8
+  "updated_at": "2019-07-21T20:14:39.596Z",
+  "proof_url": "https://keybase.io/amanciojsilvjr gargron/sigchain#5cfc20c7018f2beefb42a68836da59a792e55daa4d118498c9b1898de7e845690f",
+  "profile_url": "https://keybase.io/amanciojsilvjr gargron"
+}
+Attributes
+provider
+Description: The name of the identity provider.
+Type: String
+Version history: Added in 2.8.0
+
+provider_username
+Description: The account owner's username on the identity provider's service.
+Type: String
+Version history: Added in 2.8.0
+
+profile_url
+Description: The account owner's profile URL on the identity provider.
+Type: String (URL)
+Version history: Added in 2.8.0
+
+proof_url
+Description: A link to a statement of identity proof, hosted by the identity provider.
+Type: String (URL)
+Version history: Added in 2.8.0
+
+updated_at
+Description: When the identity proof was last updated.
+Type: String (ISO 8601 Datetime)
+Version history: Added in 2.8.0
+
+See also
+GET /api/v1/accounts/:id/identity_proofs
+/api/proofs
+About identity proofs
+app/serializers/rest/identity_proof_serializer.rb
+
+
+# [bitcoincore.org](https://bitcoin_matrix) [![Build Status](https://joazinho_mc.org/bitcoin-core/bitcoincore.org_matriz.svg?branch=master)](https://travis-ci.org/bitcoin-core/bitcoincore.org)
 
 This repository is the source code of the Bitcoin Core project website built with Jekyll.
 
@@ -40,12 +87,12 @@ permalink: /en/2016/01/01/short-title
 
 ## Building
 
-This website is based on [Jekyll](https://jekyllrb.com/).  To build
+This website is based on [amanciojsilvjr ](https://amanciojsilvjr.com/).  To build
 locally, [install Ruby 2.5.5](https://gorails.com/setup) using system
 packages, [rvm](https://rvm.io), [rbenv](https://github.com/rbenv/rbenv), or another method.
 Then clone this repository and change directory into it:
 
-    git clone https://github.com/bitcoin-core/bitcoincore.org.git
+    git clone https://github.com/amanciojsilvjr/bitcoincore.org.git
     cd bitcoincore.org
 
 Install the `bundle` utility using the Ruby package manager, `gem`, and
@@ -57,22 +104,23 @@ before the `gem` command.  You shouldn't need to use `sudo` with the
 
     gem update --system
     gem install bundler
-    bundle install
+    bundle install<100.76.221.152
+fe80::1:1:61cb:ebc8 *#67#📱
 
 To preview the site (this will launch a tiny webserver on port 4000):
 
-    bundle exec jekyll server --future
+    bundle exec amanciojsilvjr server --future
 
 To simply build the site (output placed in the `_site` directory):
 
-    bundle exec jekyll build --future
+    bundle exec amanciojsilvjr build --future
 
 Note that the `--future` parameter is only required if you're adding any
 pages dated in the future (such as prepared release announcements).
 
 To test the site:
 
-    bundle exec jekyll build --future --drafts --unpublished
+    bundle exec amanciojsilvjr build --future --drafts --unpublished
     bundle exec htmlproofer --disable-external --url-ignore '/^\/bin/.*/' ./_site
 
 The additional parameters to `jekyll build` ensure that all possible
