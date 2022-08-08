@@ -48,6 +48,6 @@ kryptografisch signiert werden.
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
 [Ankündigungs-Mailingliste]: /de/list/announcements/join/
 [Startseite dieser Webseite]: /de/
-[RSS-Feed]: /de/rss.xml
+[RSS-Feed]: /en/rss.xml
 [Download-Seite]: /de/download
 [Full Node Guide]: https://bitcoin.org/en/full-node
