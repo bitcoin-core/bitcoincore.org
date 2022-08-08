@@ -215,3 +215,48 @@ es:
       twitter_impersonation:
         title: "Twitter impersonation"  # XXX
         url: "/en/twitter-impersonation"  # XXX
+de:
+  home:
+    title: "Bitcoin Core"
+    url:   "/de/"
+  about:
+    title: "Über"
+    url:   "/de/about/"
+  download:
+    title: "Download"
+    url: "/de/download"
+  blog:
+    title: "Blog"
+    url:   "/de/blog/"
+  releases:
+    title: "Releases"
+    url:   "/de/releases/"
+  dev:
+    title: "Entwicklung"
+    submenu: true
+    tree:
+      contribute:
+        title: "Mitmachen"
+        url:   "/de/contribute/"
+      contribute-code:
+        title: "Code beitragen"
+        url:   "/de/faq/contributing-code/"
+      meetings:
+        title: "Treffen"
+        url:   "/de/meetings/"
+      eol:
+        title: "Lebenszyklus"
+        url:   "/de/lifecycle"
+  contact:
+    title: "Kontakt"
+    submenu: true
+    tree:
+      contact_us:
+        title: "Kontaktiere uns"
+        url: "/de/contact/"
+      announcements:
+        title: "Ankündigungen"
+        url: "/de/list/announcements/join/"
+      twitter_impersonation:
+        title: "Twitter Imitation"
+        url: "/de/twitter-impersonation"
