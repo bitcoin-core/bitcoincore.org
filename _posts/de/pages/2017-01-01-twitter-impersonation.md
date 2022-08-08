@@ -29,16 +29,16 @@ Die neueste Version von Bitcoin Core kann immer von der [Download-Seite][] bezog
 und für mehr Sicherheit wird empfohlen, die binäre Integrität mit PGP zu überprüfen 
 Anweisungen findest du im [Full Node Guide][]).
 
-Das Bitcoin Core Projekt wird dich niemals kontaktieren, um dich um eine Offenlegung zu bitten
-Informationen aus Ihrer Wallet, einschließlich deines Guthabens, deine Adressen,
-Transaktionen oder privaten Schlüssel. Wenn du eine Sicherheitsmitteilung erhälst und dir
+Das Bitcoin Core Projekt wird dich niemals kontaktieren, um dich um 
+Informationen aus deiner Wallet, einschließlich deines Guthabens, deine Adressen,
+Transaktionen oder privaten Schlüssel zu bitten. Wenn du eine Sicherheitsmitteilung erhälst und dir
 nicht sicher bist, ob sie legitim ist oder nicht, kannst du dein Bitcoin Core Programm sicher
 herunterfahren, um alle unmittelbaren Probleme zu beseitigen und um dir Zeit zum Nachforschen zu geben.
 
 Obwohl Bitcoin Core einen offiziellen Twitter-Account hat,
 [@bitcoincoreorg][], alle wichtigen Ankündigungen zum Projekt werden auch an unsere 
-wenig frequentierte [Ankündigungs-Mailingliste][] gesendet oder auf der 
-[Startseite dieser Website][] (die auch einen [RSS-Feed][] hat). Wenn du mit der 
+wenig frequentierte [Ankündigungs-Mailingliste][] gesendet oder auf der [Startseite dieser Webseite][] 
+(die auch einen [RSS-Feed][] hat). Wenn du mit der 
 Verwendung von PGP-Sicherheitssoftware vertraut bist, wird das Abonnieren der 
 Mailingliste besonders empfohlen, da alle Ankündigungen von einem Entwickler 
 kryptografisch signiert werden.
@@ -47,7 +47,7 @@ kryptografisch signiert werden.
 [an Twitter melden]: https://support.twitter.com/forms/impersonation
 [@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
 [Ankündigungs-Mailingliste]: /de/list/announcements/join/
-[Startseite dieser Website]: /
-[RSS feed]: /de/rss.xml
+[Startseite dieser Webseite]: /de/
+[RSS-Feed]: /de/rss.xml
 [Download-Seite]: /de/download
 [Full Node Guide]: https://bitcoin.org/en/full-node
