@@ -19,9 +19,9 @@
 {% capture BUILDER_KEYS_TXT_URL %}{{page.builder_keys_url}}/keys.txt{% endcapture %}
 
 {% capture OBTAIN_RELEASE_KEY %}
-  {{page.obtain_release_key | 
-    replace: '$(BUILDER_KEYS_URL)', page.builder_keys_url | 
-    replace: '$(EXAMPLE_BUILDERS_LINE)', page.example_builders_line | 
+  {{page.obtain_release_key |
+    replace: '$(BUILDER_KEYS_URL)', page.builder_keys_url |
+    replace: '$(EXAMPLE_BUILDERS_LINE)', page.example_builders_line |
     replace: '$(BUILDER_KEYS_TXT_URL)', BUILDER_KEYS_TXT_URL}}
 {% endcapture %}
 
@@ -186,7 +186,7 @@
 
       <li><p>{{page.verify_download_checksum}}</p>
 
-        <pre class="highlight"><code>shasum -a 256 --check SHA256SUMS</code></pre>
+        <pre class="highlight"><code>shasum -a 256 --ignore-missing --check SHA256SUMS</code></pre>
 
         <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.macdmg}}: {{page.localized_checksum_ok}}</code></p></li>
 
