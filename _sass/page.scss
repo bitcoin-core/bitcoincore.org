@@ -16,6 +16,7 @@ body {
 	@include container;
 	position:sticky;
 	top:0;
+	z-index:1;
 	padding: 0.3em 0 1em;
 	font-family: $heading-font;
 	font-weight: 700;
