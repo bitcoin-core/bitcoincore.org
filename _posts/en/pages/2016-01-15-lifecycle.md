@@ -55,6 +55,7 @@ Once EOL is reached, you will need to upgrade to a newer version.
 | Version | Release Date | Maintenance End | End of Life |
 |---------|--------------|-----------------|-------------|
 {% include posts/maintenance-table.md %}
+{% include posts/highlight-past-cells.md %}
 
 \* _We aim to make a major release every 6-7 months_
 
