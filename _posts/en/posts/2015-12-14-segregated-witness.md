@@ -6,7 +6,6 @@ id: en-segregated-witness
 name: segregated-witness
 title: Segregated Witness Video Presentation
 permalink: /en/2015/12/14/segregated-witness/
-author: sipa
 related: false
 tags: [scalability]
 version: 1

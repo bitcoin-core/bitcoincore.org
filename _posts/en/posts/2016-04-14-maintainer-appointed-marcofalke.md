@@ -6,7 +6,6 @@ lang: en
 permalink: /en/blog/2016/04/14/maintainer/
 type: posts
 layout: post
-author: laanwj
 tags: [bitcoin, maintainer]
 category: [announcements]
 canonical: https://lists.linuxfoundation.org/pipermail/bitcoin-core-dev/2016-April/000003.html
