@@ -6,7 +6,7 @@ permalink: /ja/contribute/
 type: pages
 layout: page
 lang: ja
-version: 3
+version: 5
 ---
 
 あなたのプロジェクトへの貢献を歓迎します！
@@ -23,7 +23,13 @@ version: 3
 
 **議論**
 
-Bitcoin Coreに関する議論の大部分は、irc.freenode.netの[#bitcoin-core-dev] IRCチャネルもしくは[bitcoin-core-dev][]メーリングリストで行われます。Bitcoinプロトコルについて議論する[bitcoin-dev][]や一般的なBitcoinの議論をする[bitcoin-discuss][]などのメーリングリストもあります。
+Bitcoin Coreに関する議論の大部分は、irc.libera.chatの以下のIRCチャンネルで行われています:
+
+- [#bitcoin-core-dev] - 主な議論
+- [#bitcoin-core-builds] - ビルドシステムとリリースに関する議論
+- [#bitcoin-core-gui] - グラフィカルユーザーインターフェースに関する議論
+
+また、Bitcoinのプロトコルに関する議論を行うメーリングリスト[bitcoin-dev][]もあります。
 
 **このウェブサイトへの貢献**
 
