@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 ## This version should match the version in Debian Stable.
-## If you update the version here, also update it in .ruby-version, .travis.yml
-## and README.md. Then push your branch and make sure Travis supports that
+## If you update the version here, also update it in .ruby-version, .cirrus.yml
+## and README.md. Then push your branch and make sure Cirrus supports that
 ## version.
 ruby '2.5.5'
 
