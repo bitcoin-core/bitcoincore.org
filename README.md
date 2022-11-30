@@ -73,7 +73,7 @@ pages dated in the future (such as prepared release announcements).
 To test the site:
 
     bundle exec jekyll build --future --drafts --unpublished
-    bundle exec htmlproofer --disable-external --url-ignore '/^\/bin/.*/' ./_site
+    bundle exec htmlproofer --check-html --disable-external --url-ignore '/^\/bin/.*/' ./_site
 
 The additional parameters to `jekyll build` ensure that all possible
 pages are built and checked.
