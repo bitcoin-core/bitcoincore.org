@@ -243,7 +243,7 @@ pt_br:
         title: "contribua com o código"
         url:   "/pt_br/faq/contributing-code/"
       meetings:
-        title: "encontros"
+        title: "reuniões"
         url:   "/pt_br/meetings/"
       eol:
         title: "Ciclo de desenvolvimento"
