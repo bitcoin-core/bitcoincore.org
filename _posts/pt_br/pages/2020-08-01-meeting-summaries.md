@@ -9,7 +9,8 @@ version: 1
 ---
 Entre 2015 e 2018, vários voluntários escreveram um resumo das
 reuniões do Bitcoin Core. Esta página liga a esses resumos. Para
-informações sobre reuniões recentes, veja a [página de reuniões][meetings page].
+informações sobre reuniões recentes, veja a
+[página de reuniões][meetings page].
 
 {% include meetings.html %}
 

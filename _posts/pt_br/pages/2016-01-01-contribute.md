@@ -11,26 +11,33 @@ version: 5
 ---
 
 Você é bem-vindo para contribuir com o projeto!
-Nosso repositório principal de código está [hospedado no GitHub](https://github.com/bitcoin/bitcoin/) e lá há diversos pontos onde você pode ajudar:
+Nosso repositório principal de código está [hospedado no GitHub]
+(https://github.com/bitcoin/bitcoin/) e lá há diversos pontos onde você pode
+ajudar:
 
-  - Melhorando nossa documentação (veja [README.md][README.md] e a [pasta doc][doc])
+  - Melhorando nossa documentação (veja [README.md][README.md] e a [pasta doc]
+  [doc])
   - [Tradução][translation_process.md]
   - Testando código, testando lançamentos
   - Participando da lista de e-mails
   - Melhorando nossa UIs
   - Codificando (consertando problemas ou implementando novas ferramentas)
 
-Sinta-se livre para reportar [problemas][issues] e abrir novos [pull requests][pulls], mas, por favor verifique o [guia de contribuição](/pt_br/faq/contributing-code) para entender nosso fluxo de trabalho.
+Sinta-se livre para reportar [problemas][issues] e abrir novos [pull requests]
+[pulls], mas, por favor verifique o [guia de contribuição]
+(/pt_br/faq/contributing-code) para entender nosso fluxo de trabalho.
 
 **Discussão**
 
-A maioria das discussões relatadas sobre o Bitcoin Core acontecem nos seguintes canais do IRC irc.libera.chat:
+A maioria das discussões relatadas sobre o Bitcoin Core acontecem nos seguintes
+canais do IRC irc.libera.chat:
 
 - [#bitcoin-core-dev] - Discussão principal
 - [#bitcoin-core-builds] - Discussão sobre lançamentos e construção do sistema
 - [#bitcoin-core-gui] - Discussão sobre Interface Gráfica do Usuário
 
-Também há a lista de e-mail para discussão sobre o protocolo Bitcoin [bitcoin-dev][].
+Também há a lista de e-mail para discussão sobre o protocolo Bitcoin
+[bitcoin-dev][].
 
 **Contribua com este website**
 
