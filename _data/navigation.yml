@@ -246,7 +246,7 @@ pt_br:
         title: "reuniões"
         url:   "/pt_br/meetings/"
       eol:
-        title: "Ciclo de desenvolvimento"
+        title: "Ciclo de Vida"
         url:   "/pt_br/lifecycle"
   contact:
     title: "Contato"
