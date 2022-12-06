@@ -18,7 +18,7 @@ a política padrão de manutenção dos softwares comerciais.
 ## Versionamento
 
 Os lançamentos do Bitcoin Core são versionados seguindo: MAJOR.MINOR e
-lançamentos candidatos são atribuidos no sufixo rc1, rc2 e etc.
+lançamentos candidatos são atribuidos com sufixo rc1, rc2 e etc.
 
 ## Lançamentos Major
 
@@ -52,12 +52,12 @@ Manutenção". Com o envelhecimento da versão major, problemas tem que ser cada
 vez mais críticos para serem reportados para ela e uma quantidade crescente de
 problemas severos é requerido  para justificar uma nova versão minor.
 Uma vez que o software chegou ao período de "Fim de Manutenção", ela só
-receberá manutenção criticas de segurança até a data do Fim Ciclo de vida(FCV).
-Após o FCV, usuários devem atualizar para a última versão para receber
+receberá manutenção criticas de segurança até a data do Fim do Ciclo de vida
+(FCV). Após o FCV, usuários devem atualizar para a última versão para receber
 atualizações de segurança, mesmo que a comunidade possa fornecer correções para
 problemas criticos baseado nos melhores esforços.
-Geralmente é recomendo executar a última versão lançada de manutenção (lançamento
-pontual) da versão atual ou anterior a major.
+Geralmente é recomendo executar a última versão de manutenção lançada (lançamento
+pontual) da versão major atual ou anterior.
 
 Por favor, verifique se a versão minor tem correções, atualizações de tradução
 e soft forks. Tradução no [Transifex][bitcoin-transifex-link] só está
@@ -76,8 +76,8 @@ para a última versão major.
 Uma vez que o FCV é atingido, você irá precisar atualizar para a versão mais
 nova.
 
-| Versão | Data de Lançamento | Fim manutenção | Fim Ciclo de vida |
-|--------|--------------------|----------------|------------------------|
+| Versão | Data de Lançamento | Fim manutenção | Fim do Ciclo de vida |
+|--------|--------------------|----------------|----------------------|
 {% include posts/maintenance-table.md %}
 
 \* _Nosso objetivo é fazer um grande lançamento a cada 6-7 meses._

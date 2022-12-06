@@ -10,8 +10,8 @@ category: faqs
 version: 3
 ---
 O projeto Bitcoin Core opera um modelo de contribuição onde qualquer pessoa é
-bem vinda para avançar com o desenvolvimento na forma de revisão, teste,
-e melhorias.
+bem vinda para avançar com o desenvolvimento na forma de revisão, teste e
+melhorias.
 
 Por favor consulte o [guia de contribuição][contribution guide] no repositório
 Git para mais detalhes.

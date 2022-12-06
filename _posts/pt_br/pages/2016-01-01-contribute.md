@@ -11,21 +11,20 @@ version: 5
 ---
 
 Você é bem-vindo para contribuir com o projeto!
-Nosso repositório principal de código está [hospedado no GitHub]
-(https://github.com/bitcoin/bitcoin/) e lá há diversos pontos onde você pode
-ajudar:
+Nosso repositório principal de código está hospedado no [GitHub][GitHub] e lá
+há diversos pontos onde você pode ajudar:
 
   - Melhorando nossa documentação (veja [README.md][README.md] e a [pasta doc]
   [doc])
   - [Tradução][translation_process.md]
   - Testando código, testando lançamentos
   - Participando da lista de e-mails
-  - Melhorando nossa UIs
+  - Melhorando a Interface do Usuário(UI)
   - Codificando (consertando problemas ou implementando novas ferramentas)
 
 Sinta-se livre para reportar [problemas][issues] e abrir novos [pull requests]
-[pulls], mas, por favor verifique o [guia de contribuição]
-(/pt_br/faq/contributing-code) para entender nosso fluxo de trabalho.
+[pulls], mas, por favor verifique o [guia de contribuição][contributing-code]
+para entender nosso fluxo de trabalho.
 
 **Discussão**
 
@@ -47,5 +46,6 @@ Você pode também traduzir ou contribuir com este site [website][website-contri
 [doc]: https://github.com/bitcoin/bitcoin/tree/master/doc
 [translation_process.md]: https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md
 [website-contrib]: https://github.com/bitcoin-core/bitcoincore.org/blob/master/CONTRIBUTING.md
-
+[contributing-code]: /pt_br/faq/contributing-code
+[GitHub]: https://github.com/bitcoin/bitcoin/
 {% include references.md %}
