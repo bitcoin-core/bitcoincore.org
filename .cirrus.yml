@@ -1,8 +1,11 @@
 container:
   image: ruby:2.5.5
+  cpu: 1
+  memory: 1G
 
-task:
-  name: website
+website_task:
+  use_compute_credits: $CIRRUS_PR != ""  # Schedule PRs faster
+  stateful: false  # https://cirrus-ci.org/guide/writing-tasks/#stateful-tasks
   env:
     JEKYLL_ENV: production
     NOKOGIRI_USE_SYSTEM_LIBRARIES: true # speeds up installation of html-proofer 
