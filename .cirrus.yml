@@ -1,5 +1,5 @@
 container:
-  image: ruby:2.5.5
+  image: ruby:2.7.4
 
 task:
   name: website
