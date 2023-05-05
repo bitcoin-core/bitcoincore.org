@@ -8,10 +8,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.11.1)
     colorator (1.1.0)
     commonmarker (0.23.9)
     concurrent-ruby (1.2.2)
@@ -35,7 +31,6 @@ GEM
       github-pages-health-check (= 1.17.9)
       jekyll (= 3.9.3)
       jekyll-avatar (= 0.7.0)
-      jekyll-coffeescript (= 1.1.1)
       jekyll-commonmark-ghpages (= 0.4.0)
       jekyll-default-layout (= 0.1.4)
       jekyll-feed (= 0.15.1)
@@ -112,9 +107,6 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-avatar (0.7.0)
       jekyll (>= 3.0, < 5.0)
-    jekyll-coffeescript (1.1.1)
-      coffee-script (~> 2.2)
-      coffee-script-source (~> 1.11.1)
     jekyll-commonmark (1.4.0)
       commonmarker (~> 0.22)
     jekyll-commonmark-ghpages (0.4.0)
