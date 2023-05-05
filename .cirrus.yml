@@ -1,12 +1,13 @@
 container:
   image: ruby:2.7.4
 
-task:
-  name: website
-  env:
+env:
     JEKYLL_ENV: production
     NOKOGIRI_USE_SYSTEM_LIBRARIES: true # speeds up installation of html-proofer
     RUBYOPT: "-KU -E utf-8:utf-8"
+
+task:
+  name: Bundler build
 
   bootstrap_script: gem install bundler
   bundler_cache:
@@ -17,3 +18,22 @@ task:
     populate_script: bundle install
 
   build_and_test_script: make all
+
+task:
+  name: debian only
+  container:
+    image: debian:bullseye
+  install_script: 
+    - apt update
+    - >
+      apt install -y 
+      curl 
+      jekyll 
+      make 
+      ruby 
+      ruby-jekyll-redirect-from 
+      ruby-kramdown-parser-gfm 
+      ruby-html-proofer
+  build_and_test_script: 
+    - rm Gemfile.lock
+    - make all
