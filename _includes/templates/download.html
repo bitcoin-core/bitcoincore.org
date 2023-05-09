@@ -24,9 +24,12 @@
 {% endcapture %}
 
 {% assign GPG_DOWNLOAD_URL = "https://www.gnupg.org/download/index.en.html#binary" %}
+{% assign GPG_VERIFY_KEYS_URL = "https://www.gnupg.org/gph/en/manual/x334.html" %}
 {% assign GPG_MACOS_DOWNLOAD_URL = "https://gpgtools.org/" %}
 {% assign GPG_WINDOWS_DOWNLOAD_URL = "https://gpg4win.org/download.html" %}
 {% assign GUIX_REPOSITORY_URL = "https://github.com/bitcoin-core/guix.sigs" %}
+{% assign GUIX_REPOSITORY_NAME = "guix.sigs" %}
+{% assign BUILDER_KEYS_DIR = "builder-keys" %}
 {% endcapture %}
 <link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
 <div class="download">
@@ -207,7 +210,9 @@
 
         <p>{{page.release_key_obtained}}</p></li>
 
-      <li><p>{{page.choosing_builders | replace: '$(BUILDER_KEYS_URL)', page.builder_keys_url }}</p></li>
+      <li>{{page.choosing_builders}}
+
+        <pre class="highlight"><code>git clone {{GUIX_REPOSITORY_URL}}</code><br><code>gpg --import {{GUIX_REPOSITORY_NAME}}/{{BUILDER_KEYS_DIR}}/*</code></pre></li>
 
       <li>{{page.verify_checksums_file}}
 
@@ -218,7 +223,9 @@
           <li><p>{{page.complete_line_saying}} <code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></p></li>
         </ol>
 
-        <p>{{page.gpg_trust_warning | replace: '$(SHORT_BUILDER_KEY)', SHORT_BUILDER_KEY }}</p></li>
+        <p>{{page.gpg_trust_warning | replace: '$(SHORT_BUILDER_KEY)', SHORT_BUILDER_KEY }}
+           <a href="{{GPG_VERIFY_KEYS_URL}}">{{page.verify_keys}}</a>
+        </p></li>
     </ol>
   </details>
 
