@@ -37,3 +37,11 @@ task:
   build_and_test_script: 
     - rm Gemfile.lock
     - make all
+
+task:
+  name: verify commits
+  only_if: $CIRRUS_BRANCH == 'master'
+  container:
+    image: debian:latest
+  verify_script:
+    - ./contrib/verify-commits/verify-commits.sh
