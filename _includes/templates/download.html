@@ -49,16 +49,16 @@
       <div>
         <img src="/assets/images/os/med_osx.png" alt="osx">
         <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macdmg }}">macOS (x86_64)</a>
-          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macdmg }}" class="dl" id="macdmg">dmg</a> -
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.maczip }}">macOS (x86_64)</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.maczip }}" class="dl" id="maczip">zip</a> -
             <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.mactar }}" class="dl" id="mactar">tar.gz</a></span>
         </span>
       </div>
       <div>
         <img src="/assets/images/os/med_osx.png" alt="osx">
         <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macarmdmg }}">macOS (arm64)</a>
-          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macarmdmg }}" class="dl" id="macarmdmg">dmg</a> -
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macarmzip }}">macOS (arm64)</a>
+          <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macarmzip }}" class="dl" id="macarmzip">zip</a> -
             <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.macarmtar }}" class="dl" id="macarmtar">tar.gz</a></span>
         </span>
       </div>
@@ -197,7 +197,7 @@
 
         <pre class="highlight"><code>shasum -a 256 --check SHA256SUMS</code></pre>
 
-        <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.macdmg}}: {{page.localized_checksum_ok}}</code></p></li>
+        <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.maczip}}: {{page.localized_checksum_ok}}</code></p></li>
 
       <li><p>{{page.install_gpg}} <a
       href="{{GPG_MACOS_DOWNLOAD_URL}}">{{page.gpg_download_page}}</a>
@@ -311,7 +311,7 @@ var linkwinexe = document.getElementById('downloadwinexe');
 var linkwinzip = document.getElementById('downloadwinzip');
 var hrefwin64exe = document.getElementById('win64exe').href;
 var hrefwin64zip = document.getElementById('win64zip').href;
-var hrefmacdmg = document.getElementById('macdmg').href;
+var hrefmaczip = document.getElementById('maczip').href;
 var hrefmactar = document.getElementById('mactar').href;
 var hreflin64 = document.getElementById('lin64').href;
 switch (os) {
@@ -328,7 +328,7 @@ case 'linux64':
 break;
 case 'mac':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
-	but.href = hrefmacdmg;
+	but.href = hrefmaczip;
 break;
 }
 
