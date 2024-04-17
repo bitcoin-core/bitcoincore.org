@@ -43,5 +43,13 @@ task:
   only_if: $CIRRUS_BRANCH == 'master'
   container:
     image: debian:latest
+  install_script:
+    - apt update
+    - >
+      apt install -y
+      git
+      gnupg
   verify_script:
+    - mapfile -t KEYS < contrib/verify-commits/trusted-keys
+    - gpg --keyserver hkps://keys.openpgp.org --recv-keys "${KEYS[@]}"
     - ./contrib/verify-commits/verify-commits.sh
