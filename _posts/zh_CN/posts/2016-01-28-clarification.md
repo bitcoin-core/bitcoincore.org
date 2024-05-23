@@ -9,7 +9,7 @@ permalink: /zh_CN/2016/01/28/clarification/
 version: 1
 excerpt: 在哪里可以找到关于比特币核心的官方信息，以及如何与其他比特币核心用户和开发者进行互动？
 ---
-最初，bitcoin.org是用作放置比特币白皮书，并成为[比特币主程序](https://bitcoin.org/en/download)的主页。后来，该网站提供了比特币教学资料，但这与现在的Bitcoin Core计划[并无关系](https://bitcoin.org/en/bitcoin-core/about-site)。 Bitcoin Core的正式网站是bitcoincore.org，而虽然其它网站仍会提供有关Bitcoin Core的资讯，他们的观点并不代表Bitcoin Core。我们明白这可能令人感到混淆，因此我们正在努力地清楚说明这些关系。
+最初，bitcoin.org是用作放置[比特币白皮书](https://bitcoin.org/bitcoin.pdf)，并成为[比特币主程序](https://bitcoin.org/en/download)的主页。后来，该网站提供了比特币教学资料，但这与现在的Bitcoin Core计划[并无关系](https://bitcoin.org/en/bitcoin-core/about-site)。 Bitcoin Core的正式网站是bitcoincore.org，而虽然其它网站仍会提供有关Bitcoin Core的资讯，他们的观点并不代表Bitcoin Core。我们明白这可能令人感到混淆，因此我们正在努力地清楚说明这些关系。
 
 在开发方面，Bitcoin Core主要使用Freenode IRC上的#bitcoin-core-dev，[Github](https://github.com/bitcoin/bitcoin)，以及[bitcoin-dev 电邮列表](http://lists.linuxfoundation.org/pipermail/bitcoin-dev/)。
 
