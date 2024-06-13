@@ -195,7 +195,7 @@
 
       <li><p>{{page.verify_download_checksum}}</p>
 
-        <pre class="highlight"><code>shasum -a 256 --check SHA256SUMS</code></pre>
+        <pre class="highlight"><code>shasum -a 256 --ignore-missing --check SHA256SUMS</code></pre>
 
         <p>{{page.checksum_warning_and_ok | replace, "$(SHASUMS_OK)", page.localized_checksum_ok}} <code>{{FILE_PREFIX}}-{{site.data.binaries.maczip}}: {{page.localized_checksum_ok}}</code></p></li>
 
