@@ -38,14 +38,14 @@ We maintain the major versions until their "Maintenance End". We generally maint
 For example, if the current release is 23.0, then 22.0 is also considered maintained.
 Once 24.0 is released, then 22.0 would be considered at its "Maintenance End".
 As a major release ages, issues have to be increasingly critical to be backported to it, and an increasing amount or severity of issues is required to warrant a new minor release.
-Once software has reached the "Maintenance End" period it will only receive critical security fixes until the EOL date.
+Once software has reached the "Maintenance End" period, it will only receive critical security fixes until the End-of-Life (EOL) date.
 After EOL, users must upgrade to a later version to receive security updates, even though the community may provide fixes for critical issues on a best effort basis.
 Generally, it is recommended to run the latest maintenance release (point release) of the current or previous major version.
 
 Please note that minor versions get bugfixes, translation updates, and soft forks. Translation on [Transifex][bitcoin-transifex-link] is only open for the last two major releases.
 
 For example, major version 22.0 was released on 2021-09-13 and we provided maintenance fixes (point releases) until 2022-11-15.
-Critical security issues would still be continued to be fixed until the End-Of-Life "EOL" date of 2024-04-01.
+Critical security issues would still be continued to be fixed until the EOL date of 2024-04-01.
 However, to take advantage of bug fixes, you would have to upgrade to a later major version.
 
 ## Schedule
