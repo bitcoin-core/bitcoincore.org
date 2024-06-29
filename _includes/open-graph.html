@@ -8,7 +8,7 @@
 <meta name="twitter:image" content="{{ site.url }}/assets/images/{{ page.image.feature }}">
 {% else %}
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}/assets/images/{{ page.image.thumb }}{% else %}{{ site.url }}/assets/images/default-thumb.png{% endif %}">
+<meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}/assets/images/{{ page.image.thumb }}{% else %}{{ site.url }}/assets/images/bitcoin_core_logo.png{% endif %}">
 {% endif %}
 <!-- Open Graph -->
 <meta property="og:locale" content="{{ page.lang}}">
@@ -20,5 +20,5 @@
 {% if page.image.feature %}
 <meta property="og:image" content="{{ site.url }}/assets/images/{{ page.image.feature }}">
 {% else %}
-<meta property="og:image" content="{% if page.image.thumb %}{{ site.url }}/assets/images/{{ page.image.thumb }}{% else %}{{ site.url }}/assets/images/default-thumb.png{% endif %}">
+<meta property="og:image" content="{% if page.image.thumb %}{{ site.url }}/assets/images/{{ page.image.thumb }}{% else %}{{ site.url }}/assets/images/bitcoin_core_logo.png{% endif %}">
 {% endif %}
