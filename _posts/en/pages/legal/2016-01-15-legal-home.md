@@ -5,6 +5,11 @@ permalink: /en/legal/
 type: pages
 layout: page
 lang: en
+redirect_from:
+  - /es/legal/
+  - /ja/legal/
+  - /zh_CN/legal/
+  - /zh_TW/legal/
 version: 1
 ---
 
