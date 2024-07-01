@@ -14,6 +14,9 @@ body {
 
 .navigation-wrapper {
 	@include container;
+	position:sticky;
+	top:0;
+	z-index:1;
 	padding: 0.3em 0 1em;
 	font-family: $heading-font;
 	font-weight: 700;
@@ -198,7 +201,7 @@ $button-size: 1.5rem;
 	}
 }
 .nav {
-	padding-top: 1.5em;
+	padding-top: 1.2em;
 }
 
 .nav li {
