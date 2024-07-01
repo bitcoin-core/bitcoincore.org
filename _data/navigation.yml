@@ -31,6 +31,9 @@ en:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+      disclosures:
+        title: "Security Advisories"
+        url: "/en/security-advisories/"
   contact:
     title: "Contact"
     submenu: true
