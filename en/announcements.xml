@@ -10,7 +10,9 @@ lang: en
         <link>{{ site.url }}</link>
         <atom:link href="{{ site.url }}/{{ page.lang }}/announcements.xml" rel="self" type="application/rss+xml" />
         {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' | where: "announcement", 1 %}
-        {% for post in posts limit:5 %}
+        {% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' %}
+        {% assign all=advisories | concat: posts | sort: "date" | reverse %}
+        {% for post in all limit:5 %}
         <item>
             <title>{{ post.title | strip_html }}</title>
             <description>{{ post.content | xml_escape | replace: "[[", " (" | replace: "]]", ")"}}</description>

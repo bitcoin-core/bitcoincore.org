@@ -34,8 +34,10 @@
     <h1>{{ page.title | xml_escape }}</h1>
     {% capture written_year %}'None'{% endcapture %}
     {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'posts' %}
+    {% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' %}
+    {% assign all=advisories | concat: english_posts | sort: "date" | reverse %}
     {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
-    {% for default_post in english_posts %}
+    {% for default_post in all %}
       {% assign post=default_post %}
       {% for tpost in translated_posts %}
         {% if tpost.name == post.name %}{% assign found=true %}{% assign post=tpost %}{% break %}{% endif %}
