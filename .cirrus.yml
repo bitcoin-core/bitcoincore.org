@@ -9,7 +9,7 @@ env:
 task:
   name: Bundler build
 
-  bootstrap_script: gem install bundler -v 2.4.22
+  bootstrap_script: gem install bundler
   bundler_cache:
     folder: /usr/local/bundle
     fingerprint_script:
