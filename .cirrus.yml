@@ -1,5 +1,5 @@
 container:
-  image: ruby:2.7.4
+  image: ruby:3.1.2
 
 env:
     JEKYLL_ENV: production
@@ -9,7 +9,7 @@ env:
 task:
   name: Bundler build
 
-  bootstrap_script: gem install bundler -v 2.4.22
+  bootstrap_script: gem install bundler
   bundler_cache:
     folder: /usr/local/bundle
     fingerprint_script:
@@ -22,7 +22,7 @@ task:
 task:
   name: debian only
   container:
-    image: debian:bullseye
+    image: debian:bookworm
   install_script: 
     - apt update
     - >
