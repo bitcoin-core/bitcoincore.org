@@ -40,9 +40,9 @@ differentiate between 4 classes of vulnerabilities:
 
 ## Past Security Advisories
 
-{% assign disclosures=site.posts | where:"lang", 'en' | where:"type", 'disclosure' %}
-{% for default_disclosure in disclosures %}
-{% assign post=default_disclosure %}
+{% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' %}
+{% for advisory in advisories %}
+{% assign post=advisory %}
   <article>
     <h2><a href="{{ post.url }}" title="{{ post.title | xml_escape }}">{{ post.title }}</a></h2>
     <p>{{ post.excerpt | markdownify | strip_html | truncate: 200 }}</p>
