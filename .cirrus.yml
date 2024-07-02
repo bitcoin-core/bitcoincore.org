@@ -1,5 +1,5 @@
 container:
-  image: ruby:2.7.4
+  image: ruby:3.1.2
 
 env:
     JEKYLL_ENV: production
@@ -22,7 +22,7 @@ task:
 task:
   name: debian only
   container:
-    image: debian:bullseye
+    image: debian:bookworm
   install_script: 
     - apt update
     - >
