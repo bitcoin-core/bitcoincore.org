@@ -7,7 +7,7 @@ type: advisory
 layout: post
 
 ## If this is a new post, reset this counter to 1.
-version: 1
+version: 2
 
 ## Only true if release announcement or security annoucement. English posts only
 announcement: 1
@@ -40,7 +40,7 @@ Credits go to Michael Ford (Fanquake) for responsibly disclosing the issue and p
 - 2019-10-16 Michael Ford opens PR [#17165](https://github.com/bitcoin/bitcoin/pull/17165) to get rid of BIP70 support entirely
 - 2019-10-26 Michael's PR is merged into Bitcoin Core
 - 2020-06-03 Bitcoin Core version 0.20.0 is released
-- 2021-09-13 The last vulnerable Bitcoin Core version (0.19.0) goes EOL
+- 2021-09-13 The last vulnerable Bitcoin Core version (0.19.x) goes EOL
 - 2024-07-03 Public disclosure
 
 {% include references.md %}
