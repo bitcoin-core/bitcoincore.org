@@ -40,7 +40,7 @@ differentiate between 4 classes of vulnerabilities:
 
 ## Past Security Advisories
 
-{% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' %}
+{% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' | sort: "date" | reverse %}
 {% for advisory in advisories %}
 {% assign post=advisory %}
   <article>
