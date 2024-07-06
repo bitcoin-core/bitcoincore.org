@@ -1,5 +1,5 @@
 ---
-title: Disclosure of CPU DoS due to malicious P2P message (&le; version 0.19.2)
+title: Disclosure of DoS using huge GETDATA messages
 name: blog-disclose-getdata-cpu
 id: en-blog-disclose-getdata-cpu
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  A malformed `GETDATA` message could trigger an infinite loop on the receiving node, using 100% of the CPU allocated to this thread.
+  A malformed `GETDATA` message could trigger 100% CPU usage on the receiving node. A fix was released on June 3rd, 2020 in Bitcoin Core 0.20.0.
 ---
 
 A malformed `GETDATA` message could trigger an infinite loop on the receiving node, using 100% of

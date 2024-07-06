@@ -1,5 +1,5 @@
 ---
-title: Disclosure of CPU DoS / stalling due to malicious P2P message (&le; version 0.17.2)
+title: Disclosure of significant DoS due to orphan handling
 name: blog-disclose-orphan-dos
 id: en-blog-disclose-orphan-dos
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  A node could be stalled for hours when processing the orphans of a specially crafted unconfirmed transaction.
+  A node could be stalled for hours when receiving a specially crafted unconfirmed transaction. A fix was released on May 18th, 2019 in Bitcoin Core 0.18.0.
 ---
 
 A node could be stalled for hours when processing the orphans of a specially crafted unconfirmed

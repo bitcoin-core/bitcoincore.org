@@ -1,5 +1,5 @@
 ---
-title: Disclosure of crash due to malicious BIP72 URI (&le; version 0.19.2)
+title: Disclosure of crash using malicious BIP72 URI
 name: blog-disclose-bip70-crash
 id: en-blog-disclose-bip70-crash
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  The BIP70 implementation in Bitcoin Core could silently crash when opening a BIP72 URI.
+  The BIP70 implementation in Bitcoin-Qt could silently crash when opening a BIP72 URI. A fix was released on June 3rd, 2020 in Bitcoin Core 0.20.0.
 ---
 
 Bitcoin-Qt could crash upon opening a [BIP72](https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki) URI.

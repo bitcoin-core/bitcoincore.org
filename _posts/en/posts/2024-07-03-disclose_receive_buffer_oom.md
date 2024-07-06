@@ -1,5 +1,5 @@
 ---
-title: Disclosure of memory DoS due to malicious P2P message from many peers (&le; version 0.10.0)
+title: Disclosure of CVE-2015-3641
 name: blog-disclose-receive-buffer-oom
 id: en-blog-disclose-receive-buffer-oom
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  A node could be forced to allocate large buffers when receiving a message, which could be leveraged to remotely crash it by OOM.
+  Attackers sending large incomplete messages would cause high memory usage. A fix was released on April 27th, 2015 in Bitcoin Core 0.10.1.
 ---
 
 A node could be forced to allocate large buffers when receiving a message, which could be leveraged to remotely crash it by OOM.

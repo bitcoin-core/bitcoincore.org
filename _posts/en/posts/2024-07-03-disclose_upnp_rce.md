@@ -1,5 +1,5 @@
 ---
-title: Disclosure of potential remote code execution due to bug in miniupnpc (&le; version 0.11.1)
+title: Disclosure of remote code execution due to bug in miniupnpc
 name: blog-disclose-upnp-rce
 id: en-blog-disclose-upnp-rce
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  Public disclosure of a buffer overflow in miniupnpc which could have led to a remote code execution in Bitcoin Core.
+  A bug in the miniupnpc library could have led to a remote code execution in Bitcoin Core. A fix was released on October 15th, 2015 in Bitcoin Core 0.11.1.
 ---
 
 A buffer overflow enabling a significant data leak was discovered in `miniupnpc`. Combined with the then
