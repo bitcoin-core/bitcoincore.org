@@ -1,5 +1,5 @@
 ---
-title: Disclosure of memory DoS using low-difficulty headers (&le; version 0.14.3)
+title: Disclosure of memory DoS using low-difficulty headers
 name: blog-disclose-header-spam-checkpoint-bypass
 id: en-blog-disclose-header-spam-checkpoint-bypass
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  After Bitcoin Core 0.12.0 and before Bitcoin Core 0.15.0 a node could be spammed with minimum difficulty headers, which could possibly be leveraged to crash it by OOM.
+  Nodes could be spammed with low-difficulty headers, which could be used to crash it. A fix was released on September 14th, 2017 in Bitcoin Core 0.15.0.
 ---
 
 After Bitcoin Core 0.12.0 and before Bitcoin Core 0.15.0 a node could be spammed with minimum

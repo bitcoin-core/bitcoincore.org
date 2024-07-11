@@ -1,5 +1,5 @@
 ---
-title: Disclosure of memory DoS due to malicious P2P message (&le; version 0.19.2)
+title: Disclosure of memory DoS using huge INV messages
 name: blog-disclose-inv-buffer-blowup
 id: en-blog-disclose-inv-buffer-blowup
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  Public disclosure of a DoS vulnerability affecting old versions of Bitcoin Core
+  Nodes would allocate up to 50 MB of memory per attacker sending a malicious `INV` message. A fix was released on June 3rd, 2020 in Bitcoin Core 0.20.0.
 ---
 
 A node could be forced to allocate a significant amount of memory upon receiving a specially crafted

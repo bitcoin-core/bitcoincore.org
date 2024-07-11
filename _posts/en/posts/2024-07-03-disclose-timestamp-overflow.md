@@ -1,5 +1,5 @@
 ---
-title: Disclosure of netsplit due to malicious P2P messages by first 200 peers (&le; version 0.20.1)
+title: Disclosure of netsplit due to timestamp adjustment
 name: blog-disclose-timestamp-overflow
 id: en-blog-disclose-timestamp-overflow
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  Disclosure of the details of an integer overflow bug which risked causing a network split.
+  A node could be split from the network when attacked by its first 200 peers. A fix was released on January 15th, 2021 in Bitcoin Core version 0.21.0.
 ---
 
 Disclosure of the details of an integer overflow bug which risked causing a network split, a fix for

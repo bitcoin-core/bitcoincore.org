@@ -1,5 +1,5 @@
 ---
-title: Disclosure of censoring unconfirmed transactions to a specific victim (&le; version 0.20.2)
+title: Disclosure of censorship due to transaction re-request handling
 name: blog-disclose-already-asked-for
 id: en-blog-disclose-already-asked-for
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  Public disclosure of a transaction relay censorship vulnerability affecting old versions of Bitcoin Core.
+  Nodes could be prevented from seeing specific unconfirmed transactions by a malicious peer. A fix was released on January 14th, 2021 in Bitcoin Core 0.21.0.
 ---
 
 An attacker could prevent a node from seeing a specific unconfirmed transaction.

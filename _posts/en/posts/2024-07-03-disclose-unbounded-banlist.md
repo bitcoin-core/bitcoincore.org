@@ -1,5 +1,5 @@
 ---
-title: Disclosure of CPU/memory DoS due to many malicious peers (&le; version 0.20.0)
+title: Disclosure of CVE-2020-14198
 name: blog-disclose-unbounded-banlist
 id: en-blog-disclose-unbounded-banlist
 lang: en
@@ -13,7 +13,7 @@ version: 1
 announcement: 1
 
 excerpt: >
-  Bitcoin Core maintained an unlimited list of banned IP addresses and performed a quadratic operation on it. This could lead to an OOM crash and a CPU Dos.
+  Nodes could be subject to CPU and memory DoS when attacked by lots of distinct IPs. A fix was released on August 1st, 2020 in Bitcoin Core 0.20.1.
 ---
 
 Bitcoin Core maintained an unlimited list of banned IP addresses and performed a quadratic operation
