@@ -167,8 +167,8 @@ ja:
         title: "ライフサイクル"
         url:   "/ja/lifecycle"
       security-advisories:
-        title: "Security Advisories"
-        url:   "/en/security-advisories/"
+        title: "セキュリティアドバイザリ"
+        url:   "/ja/security-advisories/"
   contact:
     title: "コンタクト"
     submenu: true
