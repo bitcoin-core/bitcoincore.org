@@ -1,5 +1,5 @@
 ---
-title: 低難易度ヘッダーを使用したメモリDoSの開示（バージョン0.14.3以下）
+title: 低難易度ヘッダーを使用したメモリDoSの開示
 name: blog-disclose-header-spam-checkpoint-bypass
 id: ja-blog-disclose-header-spam-checkpoint-bypass
 lang: ja
@@ -14,7 +14,8 @@ version: 1
 announcement: 0
 
 excerpt: >
-  Bitcoin Core 0.12.0からBitcoin Core 0.15.0未満で、ノードに最小難易度のヘッダーがスパム送信される可能性があり、これを利用してOOMによりクラッシュする可能性がありました。
+  ノードに低難易度のヘッダーがスパム送信され、それによりクラッシュする可能性がありました。
+  修正は、2017年9月14日に、Bitcoin Core 0.15.0 でリリースされました。
 ---
 
 Bitcoin Core 0.12.0からBitcoin Core 0.15.0未満で、ノードに最小難易度のヘッダーがスパム送信される可能性があり、これを利用してOOMによりクラッシュする可能性がありました。

@@ -1,5 +1,5 @@
 ---
-title: 悪意あるBIP72 URIによるクラッシュの開示（バージョン 0.19.2 以下）
+title: 悪意あるBIP72 URIを使用したクラッシュの開示
 name: blog-disclose-bip70-crash
 id: ja-blog-disclose-bip70-crash
 lang: ja
@@ -14,7 +14,8 @@ version: 1
 announcement: 0
 
 excerpt: >
-  Bitcoin CoreのBIP70の実装は、BIP72 URIを開くと密かにクラッシュする可能性があります。
+  Bitcoin-QtのBIP70の実装は、BIP72 URIを開くと密かにクラッシュする可能性がありました。
+  修正は、2020年6月3日に、Bitcoin Core 0.20.0でリリースされました。
 ---
 
 Bitcoin-Qtは、[BIP72](https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki) URIを開く際にクラッシュする可能性がありました。

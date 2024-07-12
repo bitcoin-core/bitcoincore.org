@@ -1,5 +1,5 @@
 ---
-title: miniupnpcのバグによるリモートコード実行の可能性の開示（バージョン0.11.1以下）
+title: miniupnpcのバグによるリモートコード実行の開示
 name: blog-disclose-upnp-rce
 id: ja-blog-disclose-upnp-rce
 lang: ja
@@ -14,7 +14,8 @@ version: 1
 announcement: 0
 
 excerpt: >
-  Bitcoin Coreでリモートコード実行につながる可能性のあるminiupnpcでのバッファーオーバーフローが開示されました。
+  miniupnpcライブラリのバグにより、Bitcoin Coreでリモートコードが実行される可能性がありました。
+  修正は、2015年10月15日に、Bitcoin Core 0.11.1 でリリースされました。
 ---
 
 `miniupnpc`で、重大なデータ漏洩を引き起こすバッファオーバーフローが発見されました。

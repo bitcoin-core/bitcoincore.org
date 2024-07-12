@@ -1,5 +1,5 @@
 ---
-title: 悪意あるP2PメッセージによるメモリDoSの開示（バージョン0.19.2以下）
+title: 巨大なINVメッセージを使用したメモリDoSの開示
 name: blog-disclose-inv-buffer-blowup
 id: ja-blog-disclose-inv-buffer-blowup
 lang: ja
@@ -14,7 +14,8 @@ version: 1
 announcement: 0
 
 excerpt: >
-  Bitcoin Coreの旧バージョンに影響するDoS脆弱性の開示
+  ノードは、悪意ある`INV`メッセージを送信する攻撃者毎に最大50MBのメモリを割り当てます。
+  修正は、2020年6月3日に、Bitcoin Core 0.20.0 でリリースされました。
 ---
 
 特別に細工された`INV`メッセージを受信すると、ノードは大量のメモリを強制的に割り当てざるを得なくなる可能性がありました。

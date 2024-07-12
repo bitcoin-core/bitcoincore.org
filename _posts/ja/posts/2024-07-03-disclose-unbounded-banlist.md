@@ -1,5 +1,5 @@
 ---
-title: 多数の悪意あるピアによるCPU/メモリDoSの開示（バージョン0.20.0以下）
+title: CVE-2020-14198の開示
 name: blog-disclose-unbounded-banlist
 id: ja-blog-disclose-unbounded-banlist
 lang: ja
@@ -14,7 +14,8 @@ version: 1
 announcement: 0
 
 excerpt: >
-  Bitcoin Coreは、禁止されたIPアドレスの無制限のリストを保持し、それに対して2次関数的な操作を行います。これによりOOMクラッシュやCPU DoSが発生する可能性がありました。
+  ノードは、多数の個別のIPによって攻撃されると、CPUおよびメモリのDoSを受ける可能性がありました。
+  修正は、2020年8月1日に、Bitcoin Core 0.20.1 でリリースされました。
 ---
 
 Bitcoin Coreは、禁止されたIPアドレスの無制限のリストを保持し、それに対して2次関数的な操作を行います。これによりOOMクラッシュやCPU DoSが発生する可能性がありました。

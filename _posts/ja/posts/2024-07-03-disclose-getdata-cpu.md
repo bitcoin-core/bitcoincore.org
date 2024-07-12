@@ -1,5 +1,5 @@
 ---
-title: 悪意あるP2PメッセージによるCPU DoSの開示（バージョン0.19.2以下）
+title: 巨大なGETDATAメッセージを使用したDoSの開示
 name: blog-disclose-getdata-cpu
 id: ja-blog-disclose-getdata-cpu
 lang: ja
@@ -14,7 +14,8 @@ version: 1
 announcement: 0
 
 excerpt: >
-  不正な`GETDATA`メッセージが受信ノードで無限ループを引き起こし、スレッドに割り当てられたCPUの100%を使用します。
+  不正な`GETDATA`メッセージにより、受信ノードのCPU使用率が100%になる可能性がありました。
+  修正は、2020年6月3日に、Bitcoin Core 0.20.0 でリリースされました。
 ---
 
 不正な`GETDATA`が受信ノードで無限ループを引き起こし、このスレッドに割り当てられたCPUを100%使用し、

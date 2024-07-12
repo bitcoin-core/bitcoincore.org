@@ -1,5 +1,5 @@
 ---
-title: 特定の被害者に対する未承認トランザクションの検閲の開示（バージョン0.20.2以下）
+title: トランザクションの再要求処理による検閲の開示
 name: blog-disclose-already-asked-for
 id: ja-blog-disclose-already-asked-for
 lang: ja
@@ -14,7 +14,8 @@ version: 1
 announcement: 0
 
 excerpt: >
-  Bitcoin Coreの旧バージョンに影響するトランザクションリレーの検閲の脆弱性の開示
+  悪意あるピアによって、ノードが特定の未承認トランザクションを参照できないようにすることができました。
+  修正は、2021年1月14日に、Bitcoin Core 0.21.0 でリリースされました。
 ---
 
 攻撃者によりノードが特定の未承認トランザクションを参照できないようになる可能性がありました。
