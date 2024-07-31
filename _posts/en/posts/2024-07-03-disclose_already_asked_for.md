@@ -7,7 +7,7 @@ type: advisory
 layout: post
 
 ## If this is a new post, reset this counter to 1.
-version: 1
+version: 2
 
 ## Only true if release announcement or security annoucement. English posts only
 announcement: 1
@@ -45,7 +45,7 @@ Responsibly disclosed by John Newbery, claiming discovery by Amiti Uttarwar and 
 - 2020-09-21 Pieter Wuille opens [PR #19988](https://github.com/bitcoin/bitcoin/pull/19988) as a comprehensive approach to fixing this and other bugs
 - 2020-10-14 Pieter's PR is merged
 - 2021-01-14 Bitcoin Core version 0.21.0 is released with a fix
-- 2022-04-25 The last vulnerable Bitcoin Core version (0.20.0) goes EOL
+- 2022-04-25 The last vulnerable Bitcoin Core version (0.20.x) goes EOL
 - 2024-07-03 Public disclosure
 
 {% include references.md %}
