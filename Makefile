@@ -2,11 +2,11 @@ all: build test
 
 preview:
 	bundle exec jekyll clean
-	bundle exec jekyll serve --future --drafts --unpublished --incremental
+	bundle exec jekyll serve --future --drafts --unpublished --incremental --strict_front_matter
 
 build:
 	bundle exec jekyll clean
-	bundle exec jekyll build --future --drafts --unpublished
+	bundle exec jekyll build --future --drafts --unpublished --strict_front_matter
 
 test: test-fast test-slow
 

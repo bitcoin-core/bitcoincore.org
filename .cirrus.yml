@@ -1,12 +1,13 @@
 container:
-  image: ruby:2.5.5
+  image: ruby:3.1.2
+
+env:
+    JEKYLL_ENV: production
+    NOKOGIRI_USE_SYSTEM_LIBRARIES: true # speeds up installation of html-proofer
+    RUBYOPT: "-KU -E utf-8:utf-8"
 
 task:
-  name: website
-  env:
-    JEKYLL_ENV: production
-    NOKOGIRI_USE_SYSTEM_LIBRARIES: true # speeds up installation of html-proofer 
-    RUBYOPT: "-KU -E utf-8:utf-8"
+  name: Bundler build
 
   bootstrap_script: gem install bundler
   bundler_cache:
@@ -17,3 +18,38 @@ task:
     populate_script: bundle install
 
   build_and_test_script: make all
+
+task:
+  name: debian only
+  container:
+    image: debian:bookworm
+  install_script: 
+    - apt update
+    - >
+      apt install -y 
+      curl 
+      jekyll 
+      make 
+      ruby 
+      ruby-jekyll-redirect-from 
+      ruby-kramdown-parser-gfm 
+      ruby-html-proofer
+  build_and_test_script: 
+    - rm Gemfile.lock
+    - make all
+
+task:
+  name: verify commits
+  only_if: $CIRRUS_BRANCH == 'master'
+  container:
+    image: debian:latest
+  install_script:
+    - apt update
+    - >
+      apt install -y
+      git
+      gnupg
+  verify_script:
+    - mapfile -t KEYS < contrib/verify-commits/trusted-keys
+    - gpg --keyserver hkps://keys.openpgp.org --recv-keys "${KEYS[@]}"
+    - ./contrib/verify-commits/verify-commits.sh

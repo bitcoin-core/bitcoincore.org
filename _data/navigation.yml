@@ -31,6 +31,9 @@ en:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle"
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
   contact:
     title: "Contact"
     submenu: true
@@ -76,6 +79,9 @@ zh_CN:
       eol:
         title: "生命周期"
         url:   "/zh_CN/lifecycle/"
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
   contact:
     title: "联系"
     submenu: true
@@ -115,6 +121,9 @@ zh_TW:
       eol:
         title: "Lifecycle"
         url:   "/en/lifecycle/"
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
   contact:
     title: "Contact"
     submenu: true
@@ -157,6 +166,9 @@ ja:
       eol:
         title: "ライフサイクル"
         url:   "/ja/lifecycle"
+      security-advisories:
+        title: "セキュリティアドバイザリ"
+        url:   "/ja/security-advisories/"
   contact:
     title: "コンタクト"
     submenu: true
@@ -202,6 +214,9 @@ es:
       eol:
         title: "Lifecycle"  # XXX
         url:   "/en/lifecycle"  # XXX
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
   contact:
     title: "Contact"  # XXX
     submenu: true
