@@ -8,7 +8,7 @@ type: advisory
 layout: post
 
 ## If this is a new post, reset this counter to 1.
-version: 1
+version: 2
 
 ## Only true if release announcement or security annoucement. English posts only
 announcement: 0
@@ -52,7 +52,7 @@ John Newberyによって責任を持って開示され、Amiti Uttarwarと彼に
 - 2020-09-21 Pieter Wuilleが、このバグやその他のバグを修正するための包括的なアプローチとして[PR #19988](https://github.com/bitcoin/bitcoin/pull/19988)を公開
 - 2020-10-14 PieterのPRがマージされる
 - 2021-01-14 Bitcoin Core バージョン 0.21.0が修正と共にリリースされる
-- 2022-04-25 脆弱性のある最後のバージョンのBitcoin Core (0.20.0) がEOLになる
+- 2022-04-25 脆弱性のある最後のバージョンのBitcoin Core (0.20.x) がEOLになる
 - 2024-07-03 公開
 
 {% include references.md %}

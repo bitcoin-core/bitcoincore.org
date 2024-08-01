@@ -8,7 +8,7 @@ type: advisory
 layout: post
 
 ## If this is a new post, reset this counter to 1.
-version: 1
+version: 2
 
 ## Only true if release announcement or security annoucement. English posts only
 announcement: 0
@@ -41,7 +41,7 @@ Bitcoin-Qtは十分なメモリを割り当てようとし、クラッシュし�
 - 2019-10-16 Michael FordはBIP70のサポートを完全に廃止するためにPR[#17165](https://github.com/bitcoin/bitcoin/pull/17165)を公開
 - 2019-10-26 MichaelのPRがBitcoin Coreにマージされる
 - 2020-06-03 Bitcoin Core バージョン 0.20.0がリリースされる
-- 2021-09-13 脆弱性のある最後のBitcoin Coreのバージョン (0.19.0)がEOLになる
+- 2021-09-13 脆弱性のある最後のBitcoin Coreのバージョン (0.19.x)がEOLになる
 - 2024-07-03 公開
 
 {% include references.md %}
