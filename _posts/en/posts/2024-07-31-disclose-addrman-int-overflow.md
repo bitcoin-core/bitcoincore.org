@@ -37,9 +37,9 @@ https://github.com/bitcoin/bitcoin/pull/22387.
 
 ## Timeline
 
-* 21-06-2021 - Initial report sent to security@bitcoincore.org by Eugene Siegel
-* 19-07-2021 - Fix is merged (https://github.com/bitcoin/bitcoin/pull/22387)
-* 13-09-2021 - v22.0 is released
-* 31-07-2024 - Public disclosure
+* 2021-06-21 - Initial report sent to security@bitcoincore.org by Eugene Siegel
+* 2021-07-19 - Fix is merged (https://github.com/bitcoin/bitcoin/pull/22387)
+* 2021-09-13 - v22.0 is released
+* 2024-07-31 - Public disclosure
 
 {% include references.md %}
