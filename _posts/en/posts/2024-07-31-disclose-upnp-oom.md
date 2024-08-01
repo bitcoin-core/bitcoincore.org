@@ -43,10 +43,10 @@ bump the dependency (containing the fix).
 
 ## Timeline
 
-* 17-09-2020 - Initial report of infinite loop bug to miniupnp by Ronald Huveneers
-* 13-10-2020 - Initial report sent to security@bitcoincore.org by Michael Ford
-* 23-03-2021 - Fix is merged (https://github.com/bitcoin/bitcoin/pull/20421)
-* 13-09-2021 - v22.0 is released
-* 31-07-2024 - Public disclosure
+* 2020-09-17 - Initial report of infinite loop bug to miniupnp by Ronald Huveneers
+* 2020-10-13 - Initial report sent to security@bitcoincore.org by Michael Ford
+* 2021-03-23 - Fix is merged (https://github.com/bitcoin/bitcoin/pull/20421)
+* 2021-09-13 - v22.0 is released
+* 2024-07-31 - Public disclosure
 
 {% include references.md %}
