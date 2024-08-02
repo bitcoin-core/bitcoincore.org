@@ -37,6 +37,9 @@ exclude:
   - contrib
   - Makefile
 
+include:
+  - .well-known
+
 defaults:
   -
     scope:
