@@ -45,11 +45,6 @@ document.onclick = function(e) {
 
 /*! Plugin options and other jQuery stuff */
 
-// FitVids options
-$(function() {
-	$("article").fitVids();
-});
-
 // Table of Contents toggle
 $(function() {
   $(".toc header").each(function(){
