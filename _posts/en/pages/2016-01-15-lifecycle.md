@@ -44,8 +44,8 @@ Generally, it is recommended to run the latest maintenance release (point releas
 
 Please note that minor versions get bugfixes, translation updates, and soft forks. Translation on [Transifex][bitcoin-transifex-link] is only open for the last two major releases.
 
-For example, major version 22.0 was released on 2021-09-13 and we provided maintenance fixes (point releases) until 2022-11-15.
-Critical security issues would still be continued to be fixed until the EOL date of 2024-04-01.
+For example, major version 22.0 was released on 2021-09-13 and we provided maintenance fixes (point releases) until 2022-12-14.
+Critical security issues would still be continued to be fixed until the EOL date of 2023-04-01.
 However, to take advantage of bug fixes, you would have to upgrade to a later major version.
 
 ## Schedule
