@@ -14,7 +14,7 @@ GEM
     eventmachine (1.2.7)
     ffi (1.17.0)
     forwardable-extended (2.6.0)
-    google-protobuf (4.27.2)
+    google-protobuf (4.27.5)
       bigdecimal
       rake (>= 13)
     html-proofer (3.19.4)
