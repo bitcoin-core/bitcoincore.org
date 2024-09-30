@@ -1,0 +1,19 @@
+---
+name: uptime
+btcversion: 28.0.0
+btcgroup: control
+permalink: en/doc/28.0.0/rpc/control/uptime/
+---
+
+uptime
+
+Returns the total uptime of the server.
+
+Result:
+n    (numeric) The number of seconds that the server has been running
+
+Examples:
+> bitcoin-cli uptime 
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "uptime", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
+
+
