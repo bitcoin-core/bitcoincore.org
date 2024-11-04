@@ -27,7 +27,7 @@ differentiate between 4 classes of vulnerabilities:
 
 * **Critical**: bugs which threaten the whole network's integrity. For instance an inflation or coin theft bug.
 
-**Low** severity bugs will be disclosed 2 weeks after a fixed version is released.
+**Low** severity bugs will be disclosed 2 weeks after a fixed version exists on the current major release branch.
   A pre-announcement will be made at the same time as the release.
 
 **Medium** and **High** severity bugs will be disclosed 2 weeks after the [last
