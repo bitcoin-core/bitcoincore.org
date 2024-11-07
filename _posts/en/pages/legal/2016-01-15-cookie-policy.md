@@ -5,6 +5,11 @@ permalink: /en/legal/cookie/
 type: pages
 layout: page
 lang: en
+redirect_from:
+  - /es/legal/cookie/
+  - /ja/legal/cookie/
+  - /zh_CN/legal/cookie/
+  - /zh_TW/legal/cookie/
 version: 1
 ---
 ## Introduction
