@@ -1,5 +1,5 @@
 ---
-title: Disclosure of memory DoS using low-difficulty headers
+title: Disclosure of CVE-2024-52916
 name: blog-disclose-header-spam-checkpoint-bypass
 id: en-blog-disclose-header-spam-checkpoint-bypass
 lang: en

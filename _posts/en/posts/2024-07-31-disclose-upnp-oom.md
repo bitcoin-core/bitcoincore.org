@@ -1,5 +1,5 @@
 ---
-title: Disclosure of the impact of an infinite loop bug in the miniupnp dependency
+title: Disclosure of CVE-2024-52917
 name: blog-disclose-miniupnp-bug-impact
 id: en-blog-disclose-miniupnp-bug-impact
 lang: en

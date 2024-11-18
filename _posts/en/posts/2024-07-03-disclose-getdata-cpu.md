@@ -1,5 +1,5 @@
 ---
-title: Disclosure of DoS using huge GETDATA messages
+title: Disclosure of CVE-2024-52920
 name: blog-disclose-getdata-cpu
 id: en-blog-disclose-getdata-cpu
 lang: en

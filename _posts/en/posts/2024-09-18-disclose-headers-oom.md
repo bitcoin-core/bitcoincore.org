@@ -1,5 +1,5 @@
 ---
-title: Disclosure of memory DoS due to headers spam
+title: Disclosure of CVE-2019-25220
 name: blog-disclose-headers-oom
 id: en-blog-disclose-headers-oom
 lang: en

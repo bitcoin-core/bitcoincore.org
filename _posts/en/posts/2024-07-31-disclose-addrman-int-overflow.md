@@ -1,5 +1,5 @@
 ---
-title: Disclosure of remote crash due to addr message spam
+title: Disclosure of CVE-2024-52919
 name: blog-disclose-addrman-idcount-in-overflow
 id: blog-disclose-addrman-idcount-in-overflow
 lang: en

@@ -1,5 +1,5 @@
 ---
-title: Disclosure of significant DoS due to orphan handling
+title: Disclosure of CVE-2024-52914
 name: blog-disclose-orphan-dos
 id: en-blog-disclose-orphan-dos
 lang: en
