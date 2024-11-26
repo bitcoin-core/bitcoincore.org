@@ -230,3 +230,48 @@ es:
       twitter_impersonation:
         title: "Twitter impersonation"  # XXX
         url: "/en/twitter-impersonation"  # XXX
+tr:
+  home:
+    title: "Bitcoin Core"
+    url:   "/tr/"
+  about:
+    title: "Hakkında"
+    url:   "/tr/about/"
+  download:
+    title: "İndir"
+    url: "/tr/download/"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "Versiyonlar"
+    url:   "/tr/releases/"
+  dev:
+    title: "Geliştirme"
+    submenu: true
+    tree:
+      contribute:
+        title: "Katkıda Bulun"
+        url:   "/tr/contribute/"
+      contribute-code:
+        title: "Bitcoin Core'a kod ekle"
+        url:   "/tr/contributing-code/"
+      meetings:
+        title: "Toplantılar"
+        url:   "/tr/meetings/"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle/"
+  contact:
+    title: "İletişim"
+    submenu: true
+    tree:
+      contact_us:
+        title: "Bize Ulaşın"
+        url: "/tr/contact/"
+      announcements:
+        title: "Duyurular"
+        url: "/tr/join/"
+      twitter_impersonation:
+        title: "Twitter' da Biz"
+        url: "/tr/twitter-impersonation/"
