@@ -1,5 +1,5 @@
 ---
-title: Disclosure of hindered block propagation due to stalling peers
+title: CVE-2024-52922 - Hindered block propagation due to stalling peers
 name: blog-disclose-stalling-peers-hindering-propagation
 id: en-blog-disclose-stalling-peers-hindering-propagation
 lang: en
