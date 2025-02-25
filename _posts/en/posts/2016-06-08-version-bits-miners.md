@@ -9,6 +9,8 @@ permalink: /en/2016/06/08/version-bits-miners-faq/
 categories: [FAQ, mining]
 tags: [soft fork, soft forks, bip9, version bits, mining]
 version: 1
+redirect_from:
+  - /pt_br/2016/06/08/version-bits-miners-faq/
 excerpt: The "version bits" BIP9 system is a way to introduce backward compatible rule changes to the Bitcoin consensus rules, known as a soft fork.
 ---
 {% include toc.html %}
@@ -29,7 +31,7 @@ Soft forks have a start time and a _timeout_ during which the proposal is active
 
 ## What is the activation workflow?
 
-Under _version bits_, a soft fork proposal goes through a workflow: 
+Under _version bits_, a soft fork proposal goes through a workflow:
 
 - `[DEFINED]` -> `[STARTED]` -> `[LOCKED_IN]` -> `[ACTIVE]`
 
@@ -49,7 +51,7 @@ When no soft forks are being signalled, miners should set the block version fiel
 
 ## When should miners set bits?
 
-To signal readiness for soft fork(s), miners should set the relevant version bit(s) together with `0x20000000`. This should only be done after the soft fork's _start time_. 
+To signal readiness for soft fork(s), miners should set the relevant version bit(s) together with `0x20000000`. This should only be done after the soft fork's _start time_.
 
 The bits should be unset if either the soft fork activates, or reached `[FAILED]` state.
 
