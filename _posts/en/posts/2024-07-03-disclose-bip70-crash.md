@@ -1,5 +1,5 @@
 ---
-title: Disclosure of crash using malicious BIP72 URI
+title: CVE-2024-52918 - Crash using malicious BIP72 URI
 name: blog-disclose-bip70-crash
 id: en-blog-disclose-bip70-crash
 lang: en

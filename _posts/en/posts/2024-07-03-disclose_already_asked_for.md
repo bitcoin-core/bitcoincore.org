@@ -1,5 +1,5 @@
 ---
-title: Disclosure of censorship due to transaction re-request handling
+title: CVE-2024-52913 - Censorship due to transaction re-request handling
 name: blog-disclose-already-asked-for
 id: en-blog-disclose-already-asked-for
 lang: en

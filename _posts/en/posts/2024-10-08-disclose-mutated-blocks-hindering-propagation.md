@@ -1,5 +1,5 @@
 ---
-title: Disclosure of hindered block propagation due to mutated blocks
+title: CVE-2024-52921 - Hindered block propagation due to mutated blocks
 name: blog-disclose-mutated-blocks-hindering-propagation
 id: en-blog-disclose-mutated-blocks-hindering-propagation
 lang: en

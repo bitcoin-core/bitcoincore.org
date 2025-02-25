@@ -1,5 +1,5 @@
 ---
-title: Disclosure of memory DoS using huge INV messages
+title: CVE-2024-52915 - Memory DoS using huge INV messages
 name: blog-disclose-inv-buffer-blowup
 id: en-blog-disclose-inv-buffer-blowup
 lang: en
