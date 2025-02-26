@@ -1,5 +1,5 @@
 ---
-title: miniupnp依存関係における無限ループバグの影響の開示
+title: CVE-2024-52917 - miniupnp依存関係における無限ループバグの影響
 name: blog-disclose-miniupnp-bug-impact
 id: ja-blog-disclose-miniupnp-bug-impact
 lang: ja

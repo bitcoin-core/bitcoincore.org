@@ -1,5 +1,5 @@
 ---
-title: トランザクションの再要求処理による検閲の開示
+title: CVE-2024-52913 - トランザクションの再要求処理による検閲
 name: blog-disclose-already-asked-for
 id: ja-blog-disclose-already-asked-for
 lang: ja

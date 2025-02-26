@@ -1,5 +1,5 @@
 ---
-title: addrメッセージスパムによるリモートクラッシュの開示
+title: CVE-2024-52919 - addrメッセージスパムによるリモートクラッシュ
 name: blog-disclose-addrman-idcount-in-overflow
 id: ja-blog-disclose-addrman-idcount-in-overflow
 lang: ja

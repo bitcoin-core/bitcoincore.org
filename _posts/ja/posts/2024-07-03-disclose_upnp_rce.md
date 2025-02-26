@@ -1,5 +1,5 @@
 ---
-title: miniupnpcのバグによるリモートコード実行の開示
+title: CVE-2015-20111 - miniupnpcのバグによるリモートコード実行
 name: blog-disclose-upnp-rce
 id: ja-blog-disclose-upnp-rce
 lang: ja

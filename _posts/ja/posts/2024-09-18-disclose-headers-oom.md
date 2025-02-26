@@ -1,5 +1,5 @@
 ---
-title: ヘッダースパムによるメモリDoSの開示
+title: CVE-2019-25220 - ヘッダースパムによるメモリDoS
 name: blog-disclose-headers-oom
 id: ja-blog-disclose-headers-oom
 lang: ja
