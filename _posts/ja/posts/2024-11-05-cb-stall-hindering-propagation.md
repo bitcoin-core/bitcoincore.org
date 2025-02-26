@@ -1,5 +1,5 @@
 ---
-title: ピアの停止によるブロック伝播の妨害の開示
+title: CVE-2024-52922 - ピアの停止によるブロック伝播の妨害
 name: blog-disclose-stalling-peers-hindering-propagation
 id: ja-blog-disclose-stalling-peers-hindering-propagation
 lang: ja

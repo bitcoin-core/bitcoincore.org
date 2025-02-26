@@ -1,5 +1,5 @@
 ---
-title: 変異ブロックによるブロック伝播阻害の開示
+title: CVE-2024-52921 - 変異ブロックによるブロック伝播阻害
 name: blog-disclose-mutated-blocks-hindering-propagation
 id: ja-blog-disclose-mutated-blocks-hindering-propagation
 lang: ja

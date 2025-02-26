@@ -1,5 +1,5 @@
 ---
-title: 悪意あるBIP72 URIを使用したクラッシュの開示
+title: CVE-2024-52918 - 悪意あるBIP72 URIを使用したクラッシュ
 name: blog-disclose-bip70-crash
 id: ja-blog-disclose-bip70-crash
 lang: ja
