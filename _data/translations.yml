@@ -11,6 +11,7 @@ en:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  date_format: "%B %d, %Y"
 
 zh_CN:
   created: "发布在"
@@ -25,6 +26,7 @@ zh_CN:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  date_format: "%B %d, %Y"
 
 zh_TW:
   created: "發表於"
@@ -39,6 +41,7 @@ zh_TW:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  date_format: "%B %d, %Y"
 
 ja:
   created: "Published on the"
@@ -53,6 +56,7 @@ ja:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  date_format: "%B %d, %Y"
 
 es:
   created: "Publicado el"
@@ -67,3 +71,4 @@ es:
   rss_feed: "Fuente RSS del Blog de Bitcoin Core"
   rss_meetings_feed: "Feed de reuniones"
   rss_blog_feed: "Feed de entradas del blog"
+  date_format: "%d de %B de %Y"
