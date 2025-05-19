@@ -81,4 +81,4 @@ Parts of Bitcoin, most notably the consensus rules, don't work that way.  In ord
 For this reason, Bitcoin Core deviates from SemVer for changes to consensus rules and other updates where network-wide adoption is necessary or desirable.  Bitcoin Core releases these changes as maintenance releases (`x.y`) instead of as major releases (`x.0`); this minimizes the size of the patch in order to make it easy for as many people as possible to inspect it, test it, and deploy it.  It also makes it possible to backport the same patch to multiple previous major releases, further increasing the number of users who can easily upgrade, although there are not always enough volunteers to manage this.
 
 [SemVer]: https://semver.org/
-[bitcoin-transifex-link]: https://www.transifex.com/bitcoin/bitcoin/
+[bitcoin-transifex-link]: https://explore.transifex.com/bitcoin/bitcoin/
