@@ -45,7 +45,7 @@ en:
         title: "Announcements"
         url: "/en/list/announcements/join/"
       twitter_impersonation:
-        title: "Twitter impersonation"
+        title: "X impersonation"
         url: "/en/twitter-impersonation"
 zh_CN:
   home:
@@ -228,5 +228,5 @@ es:
         title: "Announcements"  # XXX
         url: "/en/list/announcements/join/"  # XXX
       twitter_impersonation:
-        title: "Twitter impersonation"  # XXX
+        title: "X impersonation"  # XXX
         url: "/en/twitter-impersonation"  # XXX

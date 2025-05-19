@@ -116,7 +116,7 @@
 [BIP173]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 [BIP174]: https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki
 
-[@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
+[@bitcoincoreorg]: https://x.com/bitcoincoreorg
 [#bitcoin-core-dev]: https://web.libera.chat/#bitcoin-core-dev
 [#bitcoin-core-builds]: https://web.libera.chat/#bitcoin-core-builds
 [#bitcoin-core-gui]: https://web.libera.chat/#bitcoin-core-gui
