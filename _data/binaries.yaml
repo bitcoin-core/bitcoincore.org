@@ -8,3 +8,4 @@ lin64: "x86_64-linux-gnu.tar.gz"
 riscv64: "riscv64-linux-gnu"
 ppc64: "powerpc64-linux-gnu"
 #ppc64le: "powerpc64le-linux-gnu"
+
