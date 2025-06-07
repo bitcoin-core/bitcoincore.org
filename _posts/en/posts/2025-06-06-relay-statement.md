@@ -95,3 +95,7 @@ Signed,
 * Vasil Dimov
 * Will Clark
 * w0xlt
+
+(List of collaborators who DO NOT support this letter)
+
+* Nihsotas
