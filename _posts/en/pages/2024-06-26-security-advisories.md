@@ -15,8 +15,10 @@ as well as provides a summary of historical Security Advisories.
 
 ## Policy
 
-When reported, a vulnerability will be assigned a severity category. We
-differentiate between 4 classes of vulnerabilities:
+All vulnerabilities should be reported to security@bitcoincore.org (see
+[SECURITY.md](https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md) for
+details). When reported, a vulnerability will be assigned a severity category.
+We differentiate between 4 classes of vulnerabilities:
 
 * **Low**: bugs which are hard to exploit or have a low impact. For instance
   a wallet bug which requires access to the victim's machine.
