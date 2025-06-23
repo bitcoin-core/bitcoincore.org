@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-# Local builds and Travis CI builds of the BitcoinCore.org website do
+# Local builds and CI builds of the BitcoinCore.org website do
 # not include the /bin directory holding Bitcoin Core binaries, so this
 # test extracts the local URLs from the download page and checks that
 # they exist on the remote server.  Only the file's HTTP headers are
