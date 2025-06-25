@@ -180,7 +180,7 @@ ja:
         title: "お知らせ"
         url: "/ja/list/announcements/join/"
       twitter_impersonation:
-        title: "Twitterのなりすまし"
+        title: "Xのなりすまし"
         url: "/ja/twitter-impersonation"
 es:
   home:
