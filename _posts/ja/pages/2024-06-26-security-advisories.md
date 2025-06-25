@@ -15,6 +15,8 @@ version: 1
 
 ## ポリシー {#policy}
 
+すべての脆弱性は、security@bitcoincore.org までご報告ください（詳細は、
+[SECURITY.md](https://github.com/bitcoin/bitcoin/blob/master/SECURITY.md)をご覧ください）。
 脆弱性が報告されると、重大度のカテゴリが割り当てられます。私たちは脆弱性を4つのクラスで区別します。
 
 * **低**: 悪用が難しい、または影響が少ないバグ。たとえば、被害者のマシンへのアクセスを必要とするウォレットのバグなどです。
