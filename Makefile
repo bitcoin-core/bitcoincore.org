@@ -21,3 +21,11 @@ test-fast:
 	! find _site/ -name '*.html' | xargs grep ']\[' | grep -v skip-test | grep .
 	## Ensure that no template strings leak through liquid rendering
 	! find _site/ -name '*.html' | xargs grep '\$$(.*)'
+
+	## Check if the generated site differs
+	@if [ -n "$(shell git status --porcelain -- _site)" ]; then \
+		echo "FAILED: Built site differs from committed"; \
+		false; \
+	else \
+		echo "SUCCESS"; \
+	fi
