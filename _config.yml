@@ -12,6 +12,7 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
+  sourcemap: never
 plugins:
   - jekyll-redirect-from
 timezone: "UTC"
