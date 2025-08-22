@@ -11,7 +11,7 @@ permalink: /sitemap.xml
     {% if post.id contains "404" or post.sitemap_exlude == true %}{% else %}
       <url>
         <loc>{{ site.url }}{{ post.url }}</loc>
-        {% assign langs=site.posts | where:"name", post.name %}{% for version in langs %}
+        {% assign langs=site.posts | concat: site.releases | where:"name", post.name %}{% for version in langs %}
           {% if version.lang != 'en' %}<xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{ site.url }}{{ version.url }}" />{% endif %}
         {% endfor %}
         <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
