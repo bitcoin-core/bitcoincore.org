@@ -209,8 +209,8 @@ es:
         title: "contributing code"  # XXX
         url:   "/en/faq/contributing-code/"  # XXX
       meetings:
-        title: "meetings"  # XXX
-        url:   "/en/meetings/"  # XXX
+        title: "reuniones"
+        url:   "/es/meetings/"
       eol:
         title: "Lifecycle"  # XXX
         url:   "/en/lifecycle"  # XXX
