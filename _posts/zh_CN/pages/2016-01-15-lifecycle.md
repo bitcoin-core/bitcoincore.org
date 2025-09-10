@@ -30,4 +30,4 @@ version: 1
 
 _TBA: 将被公布_
 
-[bitcoin-transifex-link]: https://www.transifex.com/bitcoin/bitcoin/
+[bitcoin-transifex-link]: https://explore.transifex.com/bitcoin/bitcoin/
