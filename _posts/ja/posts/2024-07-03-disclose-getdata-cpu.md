@@ -1,5 +1,5 @@
 ---
-title: 巨大なGETDATAメッセージを使用したDoSの開示
+title: CVE-2024-52920 - 巨大なGETDATAメッセージを使用したDoS
 name: blog-disclose-getdata-cpu
 id: ja-blog-disclose-getdata-cpu
 lang: ja

@@ -1,5 +1,5 @@
 ---
-title: 低難易度ヘッダーを使用したメモリDoSの開示
+title: CVE-2024-52916 - 低難易度ヘッダーを使用したメモリDoS
 name: blog-disclose-header-spam-checkpoint-bypass
 id: ja-blog-disclose-header-spam-checkpoint-bypass
 lang: ja

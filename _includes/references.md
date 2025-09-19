@@ -116,17 +116,16 @@
 [BIP173]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 [BIP174]: https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki
 
-[@bitcoincoreorg]: https://twitter.com/bitcoincoreorg
+[@bitcoincoreorg]: https://x.com/bitcoincoreorg
 [#bitcoin-core-dev]: https://web.libera.chat/#bitcoin-core-dev
 [#bitcoin-core-builds]: https://web.libera.chat/#bitcoin-core-builds
 [#bitcoin-core-gui]: https://web.libera.chat/#bitcoin-core-gui
 [issues]: https://github.com/bitcoin/bitcoin/issues
 [pulls]: https://github.com/bitcoin/bitcoin/pulls
 [BitcoinCoreDocBips]: https://github.com/bitcoin/bitcoin/blob/master/doc/bips.md
-[bitcoin-discuss]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-discuss
-[bitcoin-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev
-[bitcoin-core-dev]: http://lists.linuxfoundation.org/mailman/listinfo/bitcoin-core-dev
+[bitcoin-dev]: https://groups.google.com/g/bitcoindev
 [software life cycle]: /en/lifecycle
+[bitcoin core blog]: /en/blog/
 
 [laanwj-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x71A3B16735405025D447E8F274810B012346C9A6
 [jonasschnelli-key]: https://pgp.mit.edu/pks/lookup?op=get&search=0x32EE5C4C3FA15CCADB46ABE529D4BCB6416F53EC

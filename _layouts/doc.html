@@ -24,7 +24,14 @@
     <div>
       <p>
         {% if page.btcversion != "index" %}
-          Documentation exported from <a href="https://github.com/bitcoin/bitcoin/tree/v{{page.btcversion}}">Bitcoin Core {{page.btcversion}}</a>
+          <!-- Since v22, the patch number is omitted in git tags, unless it is non-zero:
+            version  -> tag
+            0.21.0   -> v0.21.0
+            22.0.0   -> v22.0
+            24.0.1   -> v24.0.1
+          -->
+          {% assign tag_version = page.btcversion | replace: ".0.0", ".0" %}
+          Documentation exported from <a href="https://github.com/bitcoin/bitcoin/tree/v{{ tag_version }}">Bitcoin Core {{ tag_version }}</a>
         {% endif %}
       </p>
     </div>

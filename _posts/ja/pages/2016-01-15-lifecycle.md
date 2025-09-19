@@ -81,4 +81,4 @@ Bitcoinの一部、特にコンセンサスルールは、そのように機能�
 このため、Bitcoin Coreはネットワーク全体の導入が必要もしくは望ましいコンセンサスルールの変更やその他の更新についてSemVerから逸脱しています。Bitcoin Coreはこれらの変更をメジャーリリース（`x.0`）ではなくメンテナンスリリース（`x.y`）としてリリースします。これによりパッチサイズが最小限に抑えられ、できるだけ多くの人がその内容を検査、テストし、展開することが容易になります。また、同じパッチを複数の以前のメジャーリリースにバックポートすることが可能になり、簡単にアップグレードできるユーザー数が増えます。ただ、それを管理するボランティアは必ずしも十分ではありません。
 
 [SemVer]: https://semver.org/
-[bitcoin-transifex-link]: https://www.transifex.com/bitcoin/bitcoin/
+[bitcoin-transifex-link]: https://explore.transifex.com/bitcoin/bitcoin/

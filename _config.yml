@@ -33,9 +33,12 @@ exclude:
   - README.md
   - CONTRIBUTING.md
   - CNAME
-  - vendor  # Travis CI creates a vendor/ dir with files we shouldn't render
+  - vendor  # CI creates a vendor/ dir with files we shouldn't render
   - contrib
   - Makefile
+
+include:
+  - .well-known
 
 defaults:
   -

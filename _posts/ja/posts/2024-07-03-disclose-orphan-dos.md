@@ -1,5 +1,5 @@
 ---
-title: オーファンの処理による重大なDoSの開示
+title: CVE-2024-52914 - オーファンの処理による重大なDoS
 name: blog-disclose-orphan-dos
 id: ja-blog-disclose-orphan-dos
 lang: ja

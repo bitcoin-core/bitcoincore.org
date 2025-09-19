@@ -1,5 +1,5 @@
 ---
-title: タイムスタンプの調整によるネットワーク分割の開示
+title: CVE-2024-52912 - タイムスタンプの調整によるネットワーク分割
 name: blog-disclose-timestamp-overflow
 id: ja-blog-disclose-timestamp-overflow
 lang: ja

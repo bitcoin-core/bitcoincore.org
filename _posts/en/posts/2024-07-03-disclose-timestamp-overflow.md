@@ -1,5 +1,5 @@
 ---
-title: Disclosure of netsplit due to timestamp adjustment
+title: CVE-2024-52912 - Netsplit due to timestamp adjustment
 name: blog-disclose-timestamp-overflow
 id: en-blog-disclose-timestamp-overflow
 lang: en

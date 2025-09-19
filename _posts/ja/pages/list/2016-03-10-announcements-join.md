@@ -9,10 +9,10 @@ version: 3
 ---
 Bitcoin Coreの重要なセキュリティのお知らせとリリースの通知を受け取ります。
 
-以下のRSSフィードを購読するか、[bitcoin-core-dev][]メーリングリストにメールアドレスを登録してください。
+以下のRSSフィードを購読するか、[Bitcoin Coreブログ][bitcoin core blog]セクションをチェックしてください。
+
+お知らせリストは現在利用できません。
 
 {% include pages/list/announcement.html %}
-    
-お知らせのみなので送信されるメールの量はわずかです。
 
-{% include references.md %}
+[bitcoin core blog]: /ja/blog/

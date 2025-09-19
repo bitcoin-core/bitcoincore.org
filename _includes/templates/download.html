@@ -73,7 +73,7 @@
       <div>
         <img src="/assets/images/os/arm.png" alt="ARM Linux">
         <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl">ARM Linux</a>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-aarch64-linux-gnu.tar.gz" class="dl">ARM Linux</a>
           	<span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-aarch64-linux-gnu.tar.gz" class="dl" id="lin64arm">64 bit</a> -
             	<a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-arm-linux-gnueabihf.tar.gz" class="dl" id="lin32arm">32 bit</a></span>
         </span>
@@ -88,10 +88,9 @@
       <div>
         <img src="/assets/images/os/med_linux.png" alt="linux">
         <span>
-          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.ppc64le }}.tar.gz" class="dl">PPC64 Linux</a>
-            <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.ppc64 }}.tar.gz" class="dl" id="lin64ppc">64 bit</a>
-            -
-            <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.ppc64le }}.tar.gz" class="dl" id="lin64ppcle">64 bit LE</a></span>
+          <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.ppc64 }}.tar.gz" class="dl">PPC64 Linux</a>
+            <span><a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.ppc64 }}.tar.gz" class="dl" id="lin64ppc">64 bit</a></span>
+            <!-- PPC64LE Disabled for now due to guix build issue, removed from template as the binary availability check in CI doesn't ignore comments -->
         </span>
       </div>
       <div>

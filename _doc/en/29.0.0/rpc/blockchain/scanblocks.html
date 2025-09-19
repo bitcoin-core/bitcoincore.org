@@ -1,0 +1,67 @@
+---
+name: scanblocks
+btcversion: 29.0.0
+btcgroup: blockchain
+permalink: en/doc/29.0.0/rpc/blockchain/scanblocks/
+---
+
+scanblocks "action" ( [scanobjects,...] start_height stop_height "filtertype" options )
+
+Return relevant blockhashes for given descriptors (requires blockfilterindex).
+This call may take several minutes. Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)
+
+Arguments:
+1. action                        (string, required) The action to execute
+                                 "start" for starting a scan
+                                 "abort" for aborting the current scan (returns true when abort was successful)
+                                 "status" for progress report (in %) of the current scan
+2. scanobjects                   (json array, optional) Array of scan objects. Required for "start" action
+                                 Every scan object is either a string descriptor or an object:
+     [
+       "descriptor",             (string) An output descriptor
+       {                         (json object) An object with output descriptor and metadata
+         "desc": "str",          (string, required) An output descriptor
+         "range": n or [n,n],    (numeric or array, optional, default=1000) The range of HD chain indexes to explore (either end or [begin,end])
+       },
+       ...
+     ]
+3. start_height                  (numeric, optional, default=0) Height to start to scan from
+4. stop_height                   (numeric, optional, default=chain tip) Height to stop to scan
+5. filtertype                    (string, optional, default="basic") The type name of the filter
+6. options                       (json object, optional) Options object that can be used to pass named arguments, listed below.
+
+Named Arguments:
+filter_false_positives    (boolean, optional, default=false) Filter false positives (slower and may fail on pruned nodes). Otherwise they may occur at a rate of 1/M
+
+Result (when action=='status' and no scan is in progress - possibly already completed):
+null    (json null)
+
+Result (When action=='start'; only returns after scan completes):
+{                              (json object)
+  "from_height" : n,           (numeric) The height we started the scan from
+  "to_height" : n,             (numeric) The height we ended the scan at
+  "relevant_blocks" : [        (json array) Blocks that may have matched a scanobject.
+    "hex",                     (string) A relevant blockhash
+    ...
+  ],
+  "completed" : true|false     (boolean) true if the scan process was not aborted
+}
+
+Result (when action=='status' and a scan is currently in progress):
+{                          (json object)
+  "progress" : n,          (numeric) Approximate percent complete
+  "current_height" : n     (numeric) Height of the block currently being scanned
+}
+
+Result (when action=='abort'):
+true|false    (boolean) True if scan will be aborted (not necessarily before this RPC returns), or false if there is no scan to abort
+
+Examples:
+> bitcoin-cli scanblocks start '["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"]' 300000
+> bitcoin-cli scanblocks start '["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"]' 100 150 basic
+> bitcoin-cli scanblocks status
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scanblocks", "params": ["start", ["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"], 300000]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scanblocks", "params": ["start", ["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"], 100, 150, "basic"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scanblocks", "params": ["status"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+
+

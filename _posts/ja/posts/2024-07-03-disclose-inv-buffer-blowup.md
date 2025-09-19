@@ -1,5 +1,5 @@
 ---
-title: 巨大なINVメッセージを使用したメモリDoSの開示
+title: CVE-2024-52915 - 巨大なINVメッセージを使用したメモリDoS
 name: blog-disclose-inv-buffer-blowup
 id: ja-blog-disclose-inv-buffer-blowup
 lang: ja

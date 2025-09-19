@@ -1,7 +1,7 @@
 Contributing
 ============
 
- - [Fork it](https://github.com/bitcoin-core/website)
+ - [Fork it](https://github.com/bitcoin-core/bitcoincore.org)
  - Create a topic branch
  - Commit patches
  - Create pull request
@@ -18,7 +18,7 @@ Anyone may participate in the review process. All comments and ACK/NACKs will be
 
 The purpose of the website is to be an official mouthpiece for the Bitcoin Core project as well as be a resource for technical information that has a direct impact on Bitcoin Core software. This can include research, presentations, and developer blogs. 
 
-Where proposed content is about Bitcoin Core project policy, there should rough consensus of the Bitcoin Core project maintainers as a minimum bar and final decision is with the Bitcoin Core project lead.
+Where proposed content is about Bitcoin Core project policy, there should be rough consensus among the Bitcoin Core project maintainers.
 
 ## Translation Process
 
@@ -63,5 +63,5 @@ The code and documentation of this website are licensed under [MIT license][MIT]
 
 Unless specified in the header of the file, the website content in `_posts/` of this website is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: [CC-BY-SA] and all contributors agree to irrevocably license their content under the same license.
 
-[MIT]: https://github.com/bitcoin-core/website/blob/master/LICENSE
-[CC-BY-SA]: http://creativecommons.org/licenses/by-sa/4.0/
+[MIT]: https://github.com/bitcoin-core/bitcoincore.org/blob/master/LICENSE
+[CC-BY-SA]: https://creativecommons.org/licenses/by-sa/4.0/

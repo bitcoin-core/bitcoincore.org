@@ -1,5 +1,5 @@
 ---
-title: Disclosure of remote code execution due to bug in miniupnpc
+title: CVE-2015-20111 - Remote code execution due to bug in miniupnpc
 name: blog-disclose-upnp-rce
 id: en-blog-disclose-upnp-rce
 lang: en
