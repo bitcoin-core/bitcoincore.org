@@ -8,7 +8,11 @@
   {% else %}{% comment %}fallback to English{% endcomment %}
     {% assign _includes_dev_keys-name = "Name" %}
     {% assign _includes_dev_keys-fingerprint = "Fingerprint" %}
-    {% capture _includes_dev_keys-import %}You can import a key by running the following command with that individual's fingerprint: `gpg{{site.strings.gpg_keyserver}} --recv-keys "<fingerprint>"`  Ensure that you put quotes around fingerprints containing spaces.{% endcapture %}
+    {% capture _includes_dev_keys-import %}You can import a key by running the following command with that individual's fingerprint: 
+
+<pre class="highlight code-pad"><code>gpg{{ site.strings.gpg_keyserver }} --recv-keys "&lt;fingerprint&gt;"</code></pre>
+
+Ensure that you put quotes around fingerprints containing spaces.{% endcapture %}
 {% endcase %}
 {% endcapture %}
 
