@@ -109,8 +109,15 @@
       <a href="/en/releases">{{ page.versionhistory }}</a>
     </p>
     <p class="downloadkeys">
-      {% if page.version > 2 %}<i>{{page.key_refresh}}</i><br><code>gpg{{site.strings.gpg_keyserver}} --refresh-keys</code>{% endif %}
-    </p>
+  {% if page.version > 2 %}
+    <i>{{ page.key_refresh }}</i><br>
+  {% endif %}
+</p>
+{% if page.version > 2 %}
+  <pre class="highlight code-pad" style="white-space: normal; word-break: break-word; overflow-wrap: anywhere; padding: 0.5rem;">
+    <code>gpg{{site.strings.gpg_keyserver}} --refresh-keys</code>
+  </pre>
+{% endif %}
   </div>
 
 </div>
@@ -168,8 +175,13 @@
         <pre class="highlight"><code>{{GPG}} --verify SHA256SUMS.asc</code></pre></li>
 
       <li><p>{{page.check_gpg_output}}</p>
-        <ol><li><p>{{page.line_starts_with}} <code>gpg: {{page.localized_gpg_good_sig}}</code></p></li>
-          <li><p>{{page.complete_line_saying}} <code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></p></li>
+        <ol>
+          <li><p>{{page.line_starts_with}}</p>
+            <pre class="highlight"><code>gpg: {{page.localized_gpg_good_sig}}</code></pre>
+          </li>
+          <li><p>{{page.complete_line_saying}}</p>
+            <pre class="highlight"><code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></pre>
+          </li>
         </ol>
 
         <p>{{page.gpg_trust_warning | replace: '$(SHORT_BUILDER_KEY)', SHORT_BUILDER_KEY }}</p></li>
@@ -218,8 +230,13 @@
         <pre class="highlight"><code>gpg --verify SHA256SUMS.asc</code></pre></li>
 
       <li><p>{{page.check_gpg_output}}</p>
-        <ol><li><p>{{page.line_starts_with}} <code>gpg: {{page.localized_gpg_good_sig}}</code></p></li>
-          <li><p>{{page.complete_line_saying}} <code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></p></li>
+        <ol>
+          <li><p>{{page.line_starts_with}}</p>
+            <pre class="highlight"><code>gpg: {{page.localized_gpg_good_sig}}</code></pre>
+          </li>
+          <li><p>{{page.complete_line_saying}}</p>
+            <pre class="highlight"><code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></pre>
+          </li>
         </ol>
 
         <p>{{page.gpg_trust_warning | replace: '$(SHORT_BUILDER_KEY)', SHORT_BUILDER_KEY }}
@@ -264,8 +281,13 @@
         <pre class="highlight"><code>gpg --verify SHA256SUMS.asc</code></pre></li>
 
       <li><p>{{page.check_gpg_output}}</p>
-        <ol><li><p>{{page.line_starts_with}} <code>gpg: {{page.localized_gpg_good_sig}}</code></p></li>
-          <li><p>{{page.complete_line_saying}} <code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></p></li>
+        <ol>
+          <li><p>{{page.line_starts_with}}</p>
+            <pre class="highlight"><code>gpg: {{page.localized_gpg_good_sig}}</code></pre>
+          </li>
+          <li><p>{{page.complete_line_saying}}</p>
+            <pre class="highlight"><code>{{page.localized_gpg_primary_fingerprint}} {{SIGNING_KEY_FINGERPRINT_EXPLODED}}</code></pre>
+          </li>
         </ol>
 
         <p>{{page.gpg_trust_warning | replace: '$(SHORT_BUILDER_KEY)', SHORT_BUILDER_KEY }}
