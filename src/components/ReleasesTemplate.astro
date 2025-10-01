@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get all releases
+const releases = await getCollection('releases');
+
+// Sort releases by version (descending)
+const sortedReleases = releases
+  .filter(release => release.data.release && Array.isArray(release.data.release))
+  .sort((a, b) => {
+    const aRelease = a.data.release;
+    const bRelease = b.data.release;
+    
+    for (let i = 0; i < Math.max(aRelease.length, bRelease.length); i++) {
+      const aNum = aRelease[i] || 0;
+      const bNum = bRelease[i] || 0;
+      if (aNum !== bNum) {
+        return bNum - aNum;
+      }
+    }
+    return 0;
+  });
+---
+
+<ul class="releases">
+  {sortedReleases.map((release) => {
+    const title = release.data.title || `Bitcoin Core ${release.data.release.join('.')}`;
+    const description = release.data.excerpt || `Release notes for Bitcoin Core version ${release.data.release.join('.')}`;
+    const releaseUrl = release.data.permalink || `/en/releases/${release.data.release.join('.')}/`;
+    
+    return (
+      <li>
+        <a href={releaseUrl}>
+          {title.replace(/<br\/?>/g, '')}
+        </a>
+        <div class="desc">{description}</div>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+.releases {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.releases li {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 0;
+}
+
+.releases li:last-child {
+  border-bottom: none;
+}
+
+.releases a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.releases a:hover {
+  text-decoration: underline;
+  color: #0052a3;
+}
+
+.releases .desc {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .releases li {
+    padding: 1rem;
+  }
+  
+  .releases a {
+    font-size: 1.1rem;
+  }
+}
+</style>

@@ -1,0 +1,85 @@
+---
+import Navigation from '../components/Navigation.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  bodyClass?: string;
+  image?: {
+    feature?: string;
+    alt?: string;
+    byline?: string;
+    credit?: string;
+    creditlink?: string;
+  };
+}
+
+const { title, description, lang = 'en', bodyClass, image } = Astro.props;
+const siteTitle = 'Bitcoin Core';
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8">
+  <title>{siteTitle}{title ? ` :: ${title}` : ''}</title>
+  {description && <meta name="description" content={description}>}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="onion-location" content={`http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion${Astro.url.pathname}`} />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title || siteTitle}>
+  <meta property="og:site_name" content={siteTitle}>
+  {description && <meta property="og:description" content={description}>}
+  <meta property="og:url" content={Astro.url}>
+  
+  <link rel="canonical" href={Astro.url}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+</head>
+
+<body class={`${bodyClass || ''} bg-gray-50 text-gray-900`}>
+  <!-- Browser upgrade notice placeholder -->
+  
+  <Navigation lang={lang} />
+  
+  {image?.feature && (
+    <div class="w-full">
+      <img 
+        src={image.feature.includes('http') ? image.feature : `/assets/images/${image.feature}`}
+        alt={image.alt || title}
+        class="w-full h-auto"
+      >
+      {image.byline && <span class="text-sm italic text-gray-600 block text-right mt-2">{image.byline}</span>}
+      {image.credit && (
+        <span class="text-sm italic text-gray-600 block text-right mt-1">
+          Photo Credit: <a href={image.creditlink} class="text-blue-600 hover:text-blue-800">{image.credit}</a>
+        </span>
+      )}
+    </div>
+  )}
+  
+  <slot />
+  
+  <footer class="bg-gray-800 text-white py-12 mt-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center space-y-4 text-base">
+        <div class="space-x-3">
+          <a href="https://x.com/bitcoincoreorg" target="_blank" class="text-gray-300 hover:text-orange-500">X</a>
+          <span class="text-gray-500">|</span>
+          <a href="/en/legal/" class="text-gray-300 hover:text-orange-500">Legal</a>
+          <span class="text-gray-500">|</span>
+          <a href="/en/legal/privacy" class="text-gray-300 hover:text-orange-500">Privacy Policy</a>
+          <span class="text-gray-500">|</span>
+          <a href="/en/rss/" class="text-gray-300 hover:text-orange-500 inline-flex items-center gap-1">RSS <img src="/assets/images/rss-24x24.png" alt="rss feeds" width="14" height="14"></a>
+        </div>
+        <div class="text-gray-400">
+          &copy; 2025 Bitcoin Core
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

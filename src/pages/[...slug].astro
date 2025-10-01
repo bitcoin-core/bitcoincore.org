@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import PostLayout from '../layouts/PostLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const pages = await getCollection('pages');
+  
+  const allContent = [...posts, ...pages];
+  
+  return allContent
+    .map((post) => {
+      let slug;
+      
+      if (post.data.permalink) {
+        // Use explicit permalink, removing leading/trailing slashes
+        slug = post.data.permalink.replace(/^\//, '').replace(/\/$/, '');
+        
+        // Handle homepage special case - if permalink is just "/" it becomes empty
+        // We'll skip this in [...slug] routing since homepage should be handled by index.astro
+        if (post.data.permalink === '/') {
+          return null; // Skip homepage in [...slug] routing
+        }
+      } else {
+        // Generate slug from file structure
+        // post.id contains the raw file path, post.slug is sanitized
+        const idParts = post.id.split('/');
+        const filename = idParts[idParts.length - 1]; // Get the actual filename
+        const pathParts = post.slug.split('/');
+        const lang = pathParts[0];
+        const currentType = pathParts[1]; // "posts", "pages", etc.
+        
+        // For posts, check if filename has date pattern (YYYY-MM-DD-title)
+        if (currentType === 'posts') {
+          const dateMatch = filename.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)\.md$/);
+          if (dateMatch) {
+            const [, year, month, day, postName] = dateMatch;
+            // Keep the original post name exactly as it is (including dots, dashes, etc.)
+            slug = `${lang}/${year}/${month}/${day}/${postName}`;
+          } else {
+            // Fallback to file structure
+            slug = post.slug;
+          }
+        } else {
+          // For non-posts (pages, etc.), use file structure as-is
+          slug = post.slug;
+        }
+      }
+      
+      // Validate slug - return null for invalid slugs to filter them out
+      if (!slug || slug.trim() === '' || slug === '/') {
+        console.warn(`Warning: Empty or invalid slug generated for post: ${post.slug}`);
+        return null;
+      }
+      
+      return {
+        params: { slug: slug },
+        props: { post },
+      };
+    })
+    .filter(Boolean); // Remove null entries
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Determine layout based on post type
+const isPage = post.data.type === 'pages';
+const LayoutComponent = isPage ? PageLayout : PostLayout;
+---
+
+<LayoutComponent 
+  title={post.data.title}
+  description={post.data.excerpt}
+  lang={post.data.lang}
+  date={post.data.date}
+  tags={post.data.tags}
+>
+  <Content />
+</LayoutComponent>

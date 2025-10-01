@@ -1,0 +1,11 @@
+export const binaries = {
+  win64zip: "win64.zip",
+  win64exe: "win64-setup.exe",
+  maczip: "x86_64-apple-darwin.zip",
+  mactar: "x86_64-apple-darwin.tar.gz",
+  macarmzip: "arm64-apple-darwin.zip",
+  macarmtar: "arm64-apple-darwin.tar.gz",
+  lin64: "x86_64-linux-gnu.tar.gz",
+  riscv64: "riscv64-linux-gnu",
+  ppc64: "powerpc64-linux-gnu"
+} as const;

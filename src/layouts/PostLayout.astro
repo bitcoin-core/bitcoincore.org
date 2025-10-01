@@ -1,0 +1,73 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  date?: Date;
+  tags?: string[];
+  author?: string;
+  image?: {
+    feature?: string;
+    alt?: string;
+    byline?: string;
+    credit?: string;
+    creditlink?: string;
+  };
+}
+
+const { title, description, lang = 'en', date, tags, author, image } = Astro.props;
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+---
+
+
+<BaseLayout title={title} description={description} lang={lang} bodyClass="post" image={image}>
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <article class="max-w-3xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4 text-gray-900">
+          <a href={Astro.url.pathname} rel="bookmark" title={title} class="text-gray-900 hover:text-orange-500 no-underline">
+            {title}
+          </a>
+        </h1>
+        {author && (
+          <span class="hidden">
+            by {author}.
+          </span>
+        )}
+        {date && (
+          <div class="text-gray-600 text-sm">
+            <time datetime={date.toISOString()}>
+              {formatDate(date)}
+            </time>
+          </div>
+        )}
+      </header>
+      
+      <div class="prose prose-lg max-w-none prose-a:text-orange-500 prose-a:no-underline hover:prose-a:text-orange-600">
+        <slot />
+      </div>
+
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <p class="text-sm text-gray-600 italic">
+          <strong class="text-gray-900 font-semibold not-italic">{title}</strong>
+          was published on
+          {date && (
+            <time datetime={date.toISOString()}>
+              {formatDate(date)}
+            </time>
+          )}
+        </p>
+      </footer>
+    </article>
+  </main>
+</BaseLayout>
+

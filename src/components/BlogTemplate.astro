@@ -1,0 +1,145 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get all blog posts (exclude pages and releases)
+const allPosts = await getCollection('posts');
+
+// Filter for actual posts (not pages) and sort by date (descending)
+const blogPosts = allPosts
+  .filter((post) => post.data.type === 'posts' && post.data.lang === 'en')
+  .sort((a, b) => {
+    const aTime = a.data.date?.getTime() || 0;
+    const bTime = b.data.date?.getTime() || 0;
+    return bTime - aTime;
+  });
+
+// Group posts by year (posts without dates go to "No Date" group)
+const postsByYear = blogPosts.reduce((acc, post) => {
+  const year = post.data.date ? post.data.date.getFullYear().toString() : 'No Date';
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {} as Record<string, typeof blogPosts>);
+
+// Sort years in descending order (put "No Date" at the end)
+const sortedYears = Object.keys(postsByYear).sort((a, b) => {
+  if (a === 'No Date') return 1;
+  if (b === 'No Date') return -1;
+  return parseInt(b) - parseInt(a);
+});
+---
+
+<div id="blog-index">
+  {sortedYears.map((year) => (
+    <div class="year-section">
+      <h3 class="year">{year}</h3>
+      {postsByYear[year].map((post) => {
+        const title = post.data.title;
+        const excerpt = post.data.excerpt || post.body.substring(0, 300) + '...';
+        const postUrl = post.data.permalink || `/${post.data.lang}/${post.data.type}/${post.slug}/`;
+        
+        return (
+          <article class="blog-post">
+            <h2>
+              <a href={postUrl} title={title}>
+                {title}
+              </a>
+            </h2>
+            <p class="excerpt">
+              {excerpt.replace(/<[^>]*>/g, '').substring(0, 160)}
+            </p>
+            <div class="post-meta">
+              {post.data.date && (
+                <time datetime={post.data.date.toISOString()}>
+                  {post.data.date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  ))}
+</div>
+
+<style>
+#blog-index {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.year-section {
+  margin-bottom: 3rem;
+}
+
+.year {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 0.5rem;
+}
+
+.blog-post {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.blog-post:last-child {
+  border-bottom: none;
+}
+
+.blog-post h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.blog-post h2 a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.blog-post h2 a:hover {
+  text-decoration: underline;
+  color: #0052a3;
+}
+
+.excerpt {
+  color: #6c757d;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.post-meta {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  #blog-index {
+    padding: 0 1rem;
+  }
+  
+  .blog-post {
+    padding: 1rem 0;
+  }
+  
+  .blog-post h2 {
+    font-size: 1.2rem;
+  }
+  
+  .year {
+    font-size: 1.5rem;
+  }
+}
+</style>

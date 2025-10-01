@@ -1,0 +1,26 @@
+{
+  "name": "bitcoincore.org",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.5.1",
+    "@fontsource/crimson-text": "^5.2.6",
+    "@fontsource/inter": "^5.2.6",
+    "@fontsource/pt-sans-narrow": "^5.2.6",
+    "@fontsource/pt-serif": "^5.2.6",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.12",
+    "@types/js-yaml": "^4.0.9",
+    "astro": "^5.13.3",
+    "js-yaml": "^4.1.0",
+    "tailwindcss": "^4.1.12"
+  }
+}

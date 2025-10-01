@@ -1,0 +1,94 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  name: string;
+  btcversion?: string;
+  btcgroup?: string;
+}
+
+const { title, description, name, btcversion, btcgroup } = Astro.props;
+
+// Generate title from name if not provided
+const pageTitle = title || name;
+---
+
+<BaseLayout title={pageTitle} description={description}>
+  <main class="docs-content">
+    <div class="container">
+      {btcversion && btcgroup && (
+        <nav class="docs-breadcrumb">
+          <a href="/docs/">Documentation</a>
+          <span>/</span>
+          <a href={`/docs/${btcversion}/`}>{btcversion}</a>
+          <span>/</span>
+          <a href={`/docs/${btcversion}/rpc/`}>RPC</a>
+          <span>/</span>
+          <a href={`/docs/${btcversion}/rpc/${btcgroup}/`}>{btcgroup}</a>
+          <span>/</span>
+          <span>{name}</span>
+        </nav>
+      )}
+      
+      <article class="docs-article">
+        <h1>{pageTitle}</h1>
+        <div class="docs-text">
+          <slot />
+        </div>
+      </article>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .docs-content {
+    padding: 2rem 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .docs-breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .docs-breadcrumb a {
+    color: #007acc;
+    text-decoration: none;
+  }
+  
+  .docs-breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  
+  .docs-breadcrumb span {
+    margin: 0 0.5rem;
+  }
+  
+  .docs-article h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+  }
+  
+  .docs-text {
+    font-family: 'Courier New', Monaco, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    background: #f8f8f8;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+  }
+</style>

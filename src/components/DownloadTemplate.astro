@@ -1,0 +1,309 @@
+---
+import { getCollection } from 'astro:content';
+import { binaries } from '../data/binaries.ts';
+
+// Get the latest release
+const releases = await getCollection('releases');
+const sortedReleases = releases
+  .filter(release => release.data.release && Array.isArray(release.data.release))
+  .sort((a, b) => {
+    const aRelease = a.data.release;
+    const bRelease = b.data.release;
+    
+    for (let i = 0; i < Math.max(aRelease.length, bRelease.length); i++) {
+      const aNum = aRelease[i] || 0;
+      const bNum = bRelease[i] || 0;
+      if (aNum !== bNum) {
+        return bNum - aNum;
+      }
+    }
+    return 0;
+  });
+
+const latestRelease = sortedReleases[0];
+if (!latestRelease) {
+  throw new Error('No releases found with valid release data');
+}
+
+const currentRelease = latestRelease.data.release.join('.');
+const pathPrefix = `/bin/bitcoin-core-${currentRelease}`;
+const filePrefix = `bitcoin-${currentRelease}`;
+const magnet = latestRelease.data.optional_magnetlink;
+
+// Extract props from the page data (passed from the parent)
+const {
+  latestversion = "Latest version:",
+  download = "Download Bitcoin Core",
+  downloados = "Or choose your operating system",
+  download_sha = "SHA256 binary hashes",
+  download_sig = "SHA256 hash signatures",
+  downloadtorrent = "Download torrent",
+  source = "Source code",
+  versionhistory = "Show version history",
+  notelicense = "Bitcoin Core is a community-driven <a href=\"https://www.fsf.org/about/what-is-free-software\">free software</a> project, released under the open source <a href=\"http://opensource.org/licenses/mit-license.php\">MIT license</a>.",
+  notesync = "Bitcoin Core requires a one-time download of about 650GB of data plus a further 10-20GB per month. By default, you will need to store all of that data, but if you <a href=\"https://bitcoin.org/en/full-node#reduce-storage\">enable pruning</a>, you can store as little as 6GB total without sacrificing any security.",
+  full_node_guide = "For more information about setting up Bitcoin Core, please read the <a href=\"https://bitcoin.org/en/full-node\">full node guide</a>.",
+  patient = "Check your bandwidth and space",
+  verify_download = "Verify your download",
+  verification_recommended = "Download verification is optional but highly recommended. Performing the verification steps here ensures that you have not downloaded an unexpected or tampered version of Bitcoin, which may result in loss of funds."
+} = Astro.props;
+---
+
+<link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
+
+<div class="download">
+  <h2>
+    {latestversion} {currentRelease}
+    <a type="application/rss+xml" href="/en/releasesrss.xml">
+      <img src="/assets/images/icons/icon_rss.svg" alt="rss" class="rssicon">
+    </a>
+  </h2>
+  
+  <div class="mainbutton">
+    <a id="downloadbutton" href={`${pathPrefix}/${filePrefix}-${binaries.win64exe}`}>
+      <img src="/assets/images/os/but_windows.svg" alt="icon">
+      <span>{download}</span>
+    </a>
+  </div>
+  
+  <div class="downloadbox">
+    <p>{downloados}</p>
+    
+    <div>
+      <div>
+        <img src="/assets/images/os/med_win.png" alt="windows">
+        <span>
+          <a href={`${pathPrefix}/${filePrefix}-${binaries.win64exe}`} class="dl" id="downloadwinexe">Windows</a>
+          <span>
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.win64exe}`} class="dl" id="win64exe">exe</a> -
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.win64zip}`} class="dl" id="win64zip">zip</a>
+          </span>
+        </span>
+      </div>
+      
+      <div>
+        <img src="/assets/images/os/med_osx.png" alt="osx">
+        <span>
+          <a href={`${pathPrefix}/${filePrefix}-${binaries.maczip}`}>macOS (x86_64)</a>
+          <span>
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.maczip}`} class="dl" id="maczip">zip</a> -
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.mactar}`} class="dl" id="mactar">tar.gz</a>
+          </span>
+        </span>
+      </div>
+      
+      <div>
+        <img src="/assets/images/os/med_osx.png" alt="osx">
+        <span>
+          <a href={`${pathPrefix}/${filePrefix}-${binaries.macarmzip}`}>macOS (arm64)</a>
+          <span>
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.macarmzip}`} class="dl" id="macarmzip">zip</a> -
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.macarmtar}`} class="dl" id="macarmtar">tar.gz</a>
+          </span>
+        </span>
+      </div>
+      
+      <div>
+        <img src="/assets/images/os/med_linux.png" alt="linux">
+        <span>
+          <a href={`${pathPrefix}/${filePrefix}-${binaries.lin64}`} class="dl" id="lin64">Linux (tgz)</a>
+        </span>
+      </div>
+    </div>
+    
+    <div>
+      <div>
+        <img src="/assets/images/os/arm.png" alt="ARM Linux">
+        <span>
+          <a href={`${pathPrefix}/${filePrefix}-aarch64-linux-gnu.tar.gz`} class="dl">ARM Linux</a>
+          <span>
+            <a href={`${pathPrefix}/${filePrefix}-aarch64-linux-gnu.tar.gz`} class="dl" id="lin64arm">64 bit</a> -
+            <a href={`${pathPrefix}/${filePrefix}-arm-linux-gnueabihf.tar.gz`} class="dl" id="lin32arm">32 bit</a>
+          </span>
+        </span>
+      </div>
+      
+      <div>
+        <img src="/assets/images/os/but_riscv.svg" alt="RISC-V Linux">
+        <span>
+          <a href={`${pathPrefix}/${filePrefix}-${binaries.riscv64}.tar.gz`} class="dl">RISC-V Linux</a>
+          <span>
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.riscv64}.tar.gz`} class="dl" id="lin64riscv">64 bit</a>
+          </span>
+        </span>
+      </div>
+      
+      <div>
+        <img src="/assets/images/os/med_linux.png" alt="linux">
+        <span>
+          <a href={`${pathPrefix}/${filePrefix}-${binaries.ppc64}.tar.gz`} class="dl">PPC64 Linux</a>
+          <span>
+            <a href={`${pathPrefix}/${filePrefix}-${binaries.ppc64}.tar.gz`} class="dl" id="lin64ppc">64 bit</a>
+          </span>
+        </span>
+      </div>
+      
+      <div>
+        <img src="/assets/images/os/med_snap.svg" alt="Snap Store Linux">
+        <span>
+          <a href="https://snapcraft.io/bitcoin-core" class="dl">Snap Store Linux</a>
+        </span>
+      </div>
+    </div>
+    
+    <p class="downloadmore">
+      <a href={`${pathPrefix}/SHA256SUMS`} class="dl">{download_sha}</a><br>
+      <a href={`${pathPrefix}/SHA256SUMS.asc`} class="dl">{download_sig}</a><br>
+      <a href={`${pathPrefix}/${filePrefix}.torrent`} class="dl">{downloadtorrent}</a>
+      {magnet && <a href={magnet} class="magnetlink" data-proofer-ignore></a>}<br>
+      <a href={`${pathPrefix}/${filePrefix}.tar.gz`} class="dl">{source}</a><br>
+      <a href="/en/releases">{versionhistory}</a>
+    </p>
+  </div>
+</div>
+
+<h2 style="text-align: center">{patient}</h2>
+<p set:html={`${notesync} ${full_node_guide}`} />
+
+<h2 style="text-align: center" id="verify-download">{verify_download}</h2>
+<p set:html={verification_recommended} />
+
+<hr>
+
+<p set:html={notelicense} />
+
+<script>
+var os = 'windows64';
+if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
+else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
+else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
+
+var but = document.getElementById('downloadbutton');
+var linkwinexe = document.getElementById('downloadwinexe');
+var linkwinzip = document.getElementById('downloadwinzip');
+var hrefwin64exe = document.getElementById('win64exe').href;
+var hrefwin64zip = document.getElementById('win64zip').href;
+var hrefmaczip = document.getElementById('macarmzip').href;
+var hreflin64 = document.getElementById('lin64').href;
+
+switch (os) {
+case 'windows64':
+  but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
+  but.href = hrefwin64exe;
+  linkwinexe.href = hrefwin64exe;
+  linkwinzip.href = hrefwin64zip;
+break;
+case 'linux64':
+  but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
+  but.href = hreflin64;
+break;
+case 'mac':
+  but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
+  but.href = hrefmaczip;
+break;
+}
+</script>
+
+<style>
+.download {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.download h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.rssicon {
+  width: 16px;
+  height: 16px;
+}
+
+.mainbutton {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mainbutton a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0066cc;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.mainbutton a:hover {
+  background: #0052a3;
+}
+
+.mainbutton img {
+  width: 24px;
+  height: 24px;
+}
+
+.downloadbox > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.downloadbox > div > div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.downloadbox img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.downloadbox span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.downloadbox a.dl {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.downloadbox a.dl:hover {
+  text-decoration: underline;
+}
+
+.downloadmore {
+  text-align: center;
+  line-height: 1.8;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd;
+}
+
+.magnetlink::after {
+  content: "🧲";
+  margin-left: 0.25rem;
+}
+</style>

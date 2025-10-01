@@ -1,0 +1,247 @@
+# Site navigation links
+en:
+  home:
+    title: "Bitcoin Core"
+    url:   "/"
+  about:
+    title: "About"
+    url:   "/en/about/"
+  download:
+    title: "Download"
+    url: "/en/download"
+  blog:
+    title: "blog"
+    url:   "/en/blog/"
+  releases:
+    title: "releases"
+    url:   "/en/releases/"
+  docs:
+    title: "Documentation"
+    url:   "/en/doc/"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "contribute"
+        url:   "/en/contribute/"
+      contribute-code:
+        title: "contributing code"
+        url:   "/en/faq/contributing-code/"
+      meetings:
+        title: "meetings"
+        url:   "/en/meetings/"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle"
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
+  contact:
+    title: "Contact"
+    submenu: true
+    tree:
+      contact_us:
+        title: "Contact Us"
+        url: "/en/contact/"
+      announcements:
+        title: "Announcements"
+        url: "/en/list/announcements/join/"
+      twitter_impersonation:
+        title: "X impersonation"
+        url: "/en/twitter-impersonation"
+zh_CN:
+  home:
+    title: "Bitcoin Core"
+    url:   "/zh_CN/"
+  about:
+    title: "关于我们"
+    url:   "/zh_CN/about/"
+  blog:
+    title: "博客"
+    url:   "/zh_CN/blog/"
+  releases:
+    title: "软件发行"
+    url:   "/zh_CN/releases/"
+  docs:
+    title: "文档"
+    url:   "/en/doc/"
+  dev:
+    title: "开发"
+    submenu: true
+    tree:
+      contribute:
+        title: "貢獻"
+        url:   "/zh_CN/contribute/"
+      contribute-code:
+        title: "贡献码"
+        url:   "/en/faq/contributing-code/"
+      meetings:
+        title: "会议"
+        url:   "/zh_CN/meetings/"
+      bips:
+        title: "支持的比特币改进协议 BIPs"
+        url:   "/zh_CN/bips"
+      eol:
+        title: "生命周期"
+        url:   "/zh_CN/lifecycle/"
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
+  contact:
+    title: "联系"
+    submenu: true
+    tree:
+      contact_us:
+        title: "联系我们"
+        url: "/zh_CN/contact/"
+      announcements:
+        title: "声明"
+        url: "/zh_CN/list/announcements/join/"
+zh_TW:
+  home:
+    title: "Bitcoin Core"
+    url:   "/zh_TW/"
+  about:
+    title: "關於我們"
+    url:   "/en/about/"
+  blog:
+    title: "網誌"
+    url:   "/zh_TW/blog/"
+  releases:
+    title: "軟件發行"
+    url:   "/zh_TW/releases/"
+  docs:
+    title: "文檔"
+    url:   "/en/doc/"
+  dev:
+    title: "Development"
+    submenu: true
+    tree:
+      contribute:
+        title: "貢獻"
+        url:   "/zh_TW/contribute/"
+      contribute-code:
+        title: "contributing code"
+        url:   "/en/faq/contributing-code/"
+      meetings:
+        title: "meetings"
+        url:   "/en/meetings/"
+      eol:
+        title: "Lifecycle"
+        url:   "/en/lifecycle/"
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
+  contact:
+    title: "Contact"
+    submenu: true
+    tree:
+      contact_us:
+        title: "Contact Us"
+        url: "/en/contact/"
+      announcements:
+        title: "Announcements"
+        url: "/en/list/announcements/join/"
+ja:
+  home:
+    title: "Bitcoin Core"
+    url:   "/ja/"
+  about:
+    title: "概要"
+    url:   "/ja/about/"
+  download:
+    title: "ダウンロード"
+    url: "/ja/download/"
+  blog:
+    title: "ブログ"
+    url:   "/ja/blog/"
+  releases:
+    title: "リリース"
+    url:   "/ja/releases/"
+  docs:
+    title: "ドキュメント"
+    url:   "/en/doc/"
+  dev:
+    title: "開発"
+    submenu: true
+    tree:
+      contribute:
+        title: "貢献"
+        url:   "/ja/contribute/"
+      contribute-code:
+        title: "コードの貢献"
+        url:   "/ja/faq/contributing-code/"
+      meetings:
+        title: "ミーティング"
+        url:   "/ja/meetings/"
+      eol:
+        title: "ライフサイクル"
+        url:   "/ja/lifecycle"
+      security-advisories:
+        title: "セキュリティアドバイザリ"
+        url:   "/ja/security-advisories/"
+  contact:
+    title: "コンタクト"
+    submenu: true
+    tree:
+      contact_us:
+        title: "お問い合わせ"
+        url: "/ja/contact/"
+      announcements:
+        title: "お知らせ"
+        url: "/ja/list/announcements/join/"
+      twitter_impersonation:
+        title: "Xのなりすまし"
+        url: "/ja/twitter-impersonation"
+es:
+  home:
+    title: "Bitcoin Core"
+    url:   "/es/"
+  about:
+    title: "Acerca de "
+    url:   "/es/about/"
+  download:
+    title: "Descargas"
+    url: "/es/download/"
+  blog:
+    title: "Blog"  # XXX
+    url:   "/en/blog/"  # XXX
+  releases:
+    title: "Versiones"
+    url:   "/es/releases/"
+  docs:
+    title: "Documentación"
+    url:   "/en/doc/"
+  dev:
+    title: "Development"  # XXX
+    submenu: true
+    tree:
+      contribute:
+        title: "contribute"  # XXX
+        url:   "/en/contribute/"  # XXX
+      contribute-code:
+        title: "contributing code"  # XXX
+        url:   "/en/faq/contributing-code/"  # XXX
+      meetings:
+        title: "meetings"  # XXX
+        url:   "/en/meetings/"  # XXX
+      eol:
+        title: "Lifecycle"  # XXX
+        url:   "/en/lifecycle"  # XXX
+      security-advisories:
+        title: "Security Advisories"
+        url:   "/en/security-advisories/"
+  contact:
+    title: "Contact"  # XXX
+    submenu: true
+    tree:
+      contact_us:
+        title: "Contact Us"  # XXX
+        url: "/en/contact/"  # XXX
+      announcements:
+        title: "Announcements"  # XXX
+        url: "/en/list/announcements/join/"  # XXX
+      twitter_impersonation:
+        title: "X impersonation"  # XXX
+        url: "/en/twitter-impersonation"  # XXX

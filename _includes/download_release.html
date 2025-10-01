@@ -1,8 +1,0 @@
-{% capture RELEASE %}{% for subver in page.release %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
-{% capture PATH_PREFIX %}/bin/bitcoin-core-{{RELEASE}}{% endcapture %}
-{% capture FILE_PREFIX %}bitcoin-{{RELEASE}}{% endcapture %}
-{% assign magnet=page.optional_magnetlink %}
-<https://bitcoincore.org{{ PATH_PREFIX }}/>
-
-<a href="https://bitcoincore.org{{ PATH_PREFIX }}/{{ FILE_PREFIX }}.torrent" class="dl">Download torrent</a>
-  {% if magnet %} <a href="{{ magnet | replace: '&', '\&amp;'}}" class="magnetlink" data-proofer-ignore></a>{% endif %}<br>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  
+  return docs.map((doc) => {
+    // Generate slug from file path or use permalink
+    let slug = doc.slug;
+    
+    // If there's a permalink, use it (removing leading/trailing slashes and en/doc prefix)
+    if (doc.data.permalink) {
+      slug = doc.data.permalink.replace(/^\//, '').replace(/\/$/, '');
+      // Remove 'en/doc/' prefix since we're already in /en/doc/
+      slug = slug.replace(/^en\/doc\//, '');
+    }
+    
+    // Also remove en/ prefix from file slug if present
+    slug = slug.replace(/^en\//, '');
+    
+    // Handle empty slug for index pages
+    if (!slug) {
+      slug = 'index';
+    }
+    
+    return {
+      params: { slug: slug },
+      props: { doc },
+    };
+  });
+}
+
+const { doc } = Astro.props;
+const { Content } = await doc.render();
+---
+
+<DocsLayout 
+  title={doc.data.title}
+  name={doc.data.name}
+  btcversion={doc.data.btcversion}
+  btcgroup={doc.data.btcgroup}
+>
+  <Content />
+</DocsLayout>

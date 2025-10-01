@@ -1,0 +1,147 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+// Get all docs and organize by version
+const docs = await getCollection('docs');
+
+// Group docs by version
+const versions = [...new Set(docs.map(doc => doc.data.btcversion).filter(Boolean))].sort((a, b) => {
+  // Sort versions in descending order using proper version comparison
+  const parseVersion = (version) => {
+    return version.split('.').map(part => parseInt(part, 10));
+  };
+  
+  const aParts = parseVersion(a);
+  const bParts = parseVersion(b);
+  
+  for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
+    const aPart = aParts[i] || 0;
+    const bPart = bParts[i] || 0;
+    if (aPart !== bPart) {
+      return bPart - aPart; // descending order
+    }
+  }
+  return 0;
+});
+
+// Group docs by version and group
+const docsByVersion = docs.reduce((acc, doc) => {
+  const version = doc.data.btcversion || 'other';
+  const group = doc.data.btcgroup || 'other';
+  
+  if (!acc[version]) acc[version] = {};
+  if (!acc[version][group]) acc[version][group] = [];
+  
+  acc[version][group].push(doc);
+  return acc;
+}, {});
+---
+
+<BaseLayout title="Bitcoin Core Documentation" description="Bitcoin Core RPC API Documentation">
+  <main class="docs-index">
+    <div class="container">
+      <h1>Bitcoin Core Documentation</h1>
+      <p>Complete API documentation for Bitcoin Core RPC methods organized by version.</p>
+      
+      {versions.map((version) => (
+        <section class="version-section">
+          <h2>Version {version}</h2>
+          
+          {Object.entries(docsByVersion[version] || {}).map(([group, groupDocs]) => (
+            group !== 'other' && (
+              <div class="group-section">
+                <h3>{group.charAt(0).toUpperCase() + group.slice(1)}</h3>
+                <div class="docs-grid">
+                  {groupDocs.map((doc) => {
+                    // Use permalink if available, otherwise construct URL from slug
+                    const url = doc.data.permalink ? `/${doc.data.permalink.replace(/^\//, '').replace(/\/$/, '')}` : `/en/doc/${doc.slug.replace(/^en\//, '')}`;
+                    return (
+                      <a href={url} class="doc-link">
+                        <div class="doc-card">
+                          <h4>{doc.data.name}</h4>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )
+          ))}
+        </section>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .docs-index {
+    padding: 2rem 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .version-section {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+  }
+  
+  .version-section h2 {
+    color: #007acc;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .group-section {
+    margin-bottom: 2rem;
+  }
+  
+  .group-section h3 {
+    color: #555;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .doc-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .doc-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .doc-card:hover {
+    background: #e9ecef;
+    border-color: #007acc;
+    transform: translateY(-2px);
+  }
+  
+  .doc-card h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-family: 'Courier New', Monaco, monospace;
+  }
+</style>

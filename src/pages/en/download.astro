@@ -1,0 +1,42 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import DownloadTemplate from '../../components/DownloadTemplate.astro';
+
+// Page data - these would normally come from the markdown frontmatter
+const pageData = {
+  title: "Download - Bitcoin",
+  latestversion: "Latest version:",
+  download: "Download Bitcoin Core",
+  downloados: "Or choose your operating system",
+  download_sha: "SHA256 binary hashes",
+  download_sig: "SHA256 hash signatures",
+  downloadtorrent: "Download torrent",
+  source: "Source code",
+  versionhistory: "Show version history",
+  notelicense: "Bitcoin Core is a community-driven <a href=\"https://www.fsf.org/about/what-is-free-software\">free software</a> project, released under the open source <a href=\"http://opensource.org/licenses/mit-license.php\">MIT license</a>.",
+  notesync: "Bitcoin Core requires a one-time download of about 650GB of data plus a further 10-20GB per month. By default, you will need to store all of that data, but if you <a href=\"https://bitcoin.org/en/full-node#reduce-storage\">enable pruning</a>, you can store as little as 6GB total without sacrificing any security.",
+  full_node_guide: "For more information about setting up Bitcoin Core, please read the <a href=\"https://bitcoin.org/en/full-node\">full node guide</a>.",
+  patient: "Check your bandwidth and space",
+  verify_download: "Verify your download",
+  verification_recommended: "Download verification is optional but highly recommended. Performing the verification steps here ensures that you have not downloaded an unexpected or tampered version of Bitcoin, which may result in loss of funds."
+};
+---
+
+<PageLayout title={pageData.title} lang="en">
+  <DownloadTemplate 
+    latestversion={pageData.latestversion}
+    download={pageData.download}
+    downloados={pageData.downloados}
+    download_sha={pageData.download_sha}
+    download_sig={pageData.download_sig}
+    downloadtorrent={pageData.downloadtorrent}
+    source={pageData.source}
+    versionhistory={pageData.versionhistory}
+    notelicense={pageData.notelicense}
+    notesync={pageData.notesync}
+    full_node_guide={pageData.full_node_guide}
+    patient={pageData.patient}
+    verify_download={pageData.verify_download}
+    verification_recommended={pageData.verification_recommended}
+  />
+</PageLayout>

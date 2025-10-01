@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const releases = await getCollection('releases');
+  
+  return releases.map((release) => {
+    // Extract language and slug from permalink or generate
+    let lang = release.data.lang || 'en';
+    let slug = release.slug;
+    
+    if (release.data.permalink) {
+      const parts = release.data.permalink.split('/').filter(p => p);
+      if (parts.length > 0) {
+        lang = parts[0];
+        slug = parts.slice(2).join('/') || slug;
+      }
+    }
+    
+    return {
+      params: { 
+        lang: lang,
+        slug: slug 
+      },
+      props: { release },
+    };
+  });
+}
+
+const { release } = Astro.props;
+const { Content } = await release.render();
+---
+
+<PageLayout 
+  title={release.data.title}
+  description={release.data.excerpt}
+  lang={release.data.lang || 'en'}
+>
+  <Content />
+</PageLayout>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+}
+
+const { title, description, lang = 'en' } = Astro.props;
+
+// Get recent posts for the homepage (only those with dates)
+const allPosts = await getCollection('posts', (entry) => {
+  return entry.data.lang === lang && entry.data.type === 'posts' && entry.data.date;
+});
+
+const recentPosts = allPosts
+  .sort((a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0))
+  .slice(0, 5);
+---
+
+<BaseLayout title={title} description={description} lang={lang} bodyClass="home">
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-8">
+      <h3 class="text-2xl font-bold mb-6"><a href="/blog/" class="text-gray-900 hover:text-orange-500">Recent Posts</a></h3>
+      <div class="space-y-6">
+        {recentPosts.map((post) => (
+          <article class="bg-white p-6 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+            <h2 class="text-xl font-semibold mb-3">
+              <a href={`/posts/${post.slug}/`} title={post.data.title} class="text-gray-900 hover:text-orange-500">
+                {post.data.title}
+              </a>
+            </h2>
+            <p class="text-gray-600 mb-3">{post.data.excerpt}</p>
+            {post.data.date && (
+              <p class="text-sm text-gray-500">
+                Published on <time datetime={post.data.date.toISOString()}>
+                  {post.data.date.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </time>
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </main>
+</BaseLayout>

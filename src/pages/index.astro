@@ -1,0 +1,113 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get recent posts - filter for actual blog posts
+const posts = await getCollection('posts', ({ data }) => 
+  data.lang === 'en' && 
+  data.type === 'posts' &&
+  !data.draft
+);
+
+// Extract dates from filename or use file dates, then sort
+const postsWithDates = posts.map((post) => {
+  let extractedDate = post.data.date;
+  
+  // Try to extract date from filename (YYYY-MM-DD format)
+  if (!extractedDate) {
+    const dateMatch = post.slug.match(/(\d{4}-\d{2}-\d{2})/);
+    if (dateMatch) {
+      extractedDate = new Date(dateMatch[1]);
+    }
+  }
+  
+  return {
+    ...post,
+    extractedDate: extractedDate || new Date(0) // fallback to epoch
+  };
+});
+
+const recentPosts = postsWithDates
+  .sort((a, b) => b.extractedDate.getTime() - a.extractedDate.getTime())
+  .slice(0, 6);
+
+// Get latest release
+const releases = await getCollection('releases');
+const latestRelease = releases
+  .sort((a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0))[0];
+---
+
+<PageLayout title="Bitcoin Core" description="Bitcoin Core - Open source P2P money">
+  <!-- Hero Section -->
+  <div class="text-center py-16 bg-gradient-to-br from-gray-50 to-gray-200 rounded-xl mb-16">
+    <h1 class="text-6xl mb-6 text-gray-900 font-bold">Bitcoin Core</h1>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+      Connect to the Bitcoin peer-to-peer network to download and verify the entire blockchain with the most trusted wallet.
+    </p>
+    
+    <div class="flex gap-4 justify-center flex-wrap mb-8">
+      <a href="/en/download/" class="bg-orange-500 text-white px-10 py-4 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-lg no-underline">
+        Download Bitcoin Core
+      </a>
+      <a href="/en/releases/" class="border-2 border-gray-900 text-gray-900 px-10 py-4 rounded-lg font-semibold hover:bg-gray-900 hover:text-white transition-colors text-lg no-underline">
+        View All Releases
+      </a>
+    </div>
+
+    {/* Latest Release Info */}
+    {latestRelease && (
+      <div class="bg-white/80 backdrop-blur-sm rounded-lg p-4 max-w-md mx-auto">
+        <div class="text-sm text-gray-600 mb-1">Latest Release</div>
+        <div class="text-lg font-semibold text-gray-900">{latestRelease.data.title}</div>
+        {latestRelease.data.date && (
+          <div class="text-sm text-gray-500">
+            {latestRelease.data.date.toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+
+  <!-- Recent Posts Section -->
+  <div class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-bold text-gray-900">Latest News</h2>
+      <a href="/en/blog/" class="text-orange-500 hover:text-orange-600 font-medium">View All Posts →</a>
+    </div>
+
+    <div class="space-y-4">
+      {recentPosts.length > 0 ? (
+        recentPosts.map((post) => (
+          <article class="border-b border-gray-200 pb-4 last:border-b-0">
+            <h3 class="text-lg font-semibold mb-2">
+              <a href={`/posts/${post.slug}/`} class="text-gray-900 hover:text-orange-500 transition-colors no-underline">
+                {post.data.title}
+              </a>
+            </h3>
+            {post.data.excerpt && (
+              <p class="text-gray-600 text-sm mb-2">{post.data.excerpt}</p>
+            )}
+            {post.data.date && (
+              <div class="text-xs text-gray-500">
+                {post.data.date.toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'short', 
+                  day: 'numeric' 
+                })}
+              </div>
+            )}
+          </article>
+        ))
+      ) : (
+        <div class="text-center py-8 text-gray-500">
+          <p>No recent posts available.</p>
+        </div>
+      )}
+    </div>
+  </div>
+</PageLayout>
+

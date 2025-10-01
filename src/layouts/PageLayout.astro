@@ -1,0 +1,30 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  image?: {
+    feature?: string;
+    alt?: string;
+    byline?: string;
+    credit?: string;
+    creditlink?: string;
+  };
+}
+
+const { title, description, lang = 'en', image } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} lang={lang} bodyClass="page" image={image}>
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <article class="max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold mb-8 text-gray-900">{title}</h1>
+      <div class="prose prose-lg max-w-none">
+        <slot />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+

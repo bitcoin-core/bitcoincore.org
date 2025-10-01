@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import { navigation } from '../data/navigation';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+
+// Get RPC docs for dynamic navigation
+const docs = await getCollection('docs', ({ data }) => data.btcversion === 'index');
+const rpcVersions = await getCollection('docs', ({ data }) => data.btcversion !== 'index');
+
+// Group RPC docs by version and sort
+const versionGroups = rpcVersions.reduce((acc, doc) => {
+  if (!acc[doc.data.btcversion]) {
+    acc[doc.data.btcversion] = [];
+  }
+  acc[doc.data.btcversion].push(doc);
+  return acc;
+}, {} as Record<string, typeof rpcVersions>);
+
+const sortedVersions = Object.keys(versionGroups).sort().reverse();
+---
+
+<div class="flex items-center justify-between p-4 bg-black border-b border-gray-800">
+  <div>
+    <a href={navigation[lang]?.home?.url || "/"}>
+      <img src="/assets/images/bitcoin_core_logo_colored_reversed.png" alt="bitcoin core logo" class="h-10">
+    </a>
+  </div>
+
+  <nav>
+    <ul class="flex items-center space-x-6">
+        {navigation[lang] && Object.entries(navigation[lang]).map(([key, item]) => {
+          if (key === 'home' || item.disabled) return null;
+
+          if (item.submenu && item.tree) {
+            return (
+              <li class="relative group">
+                {item.url ? (
+                  <a href={item.url} class="text-gray-300 hover:text-orange-500 font-medium tracking-wide nav-text">{item.title}</a>
+                ) : (
+                  <a href="javascript:;" class="text-gray-300 hover:text-orange-500 font-medium tracking-wide nav-text">{item.title}</a>
+                )}
+                <ul class="absolute top-full left-0 bg-white border rounded shadow-lg min-w-48 hidden group-hover:block z-10">
+                  {Object.entries(item.tree).map(([subKey, subItem]) => {
+                    if (subItem.disabled) return null;
+                    
+                    if (subItem.submenu && subItem.tree) {
+                      return (
+                        <li class="group/sub">
+                          {subItem.url ? (
+                            <a href={subItem.url} class="block px-4 py-2 text-sm hover:bg-gray-50">{subItem.title}</a>
+                          ) : (
+                            <a href="javascript:;" class="block px-4 py-2 text-sm hover:bg-gray-50">{subItem.title}</a>
+                          )}
+                          <ul class="absolute top-0 left-full bg-white border rounded shadow-lg min-w-48 hidden group-hover/sub:block">
+                            {Object.entries(subItem.tree).map(([subKey2, subItem2]) => (
+                              <li><a href={subItem2.url} class="block px-4 py-2 text-sm hover:bg-gray-50">{subItem2.title}</a></li>
+                            ))}
+                          </ul>
+                        </li>
+                      );
+                    }
+                    
+                    return (
+                      <li><a href={subItem.url} class="block px-4 py-2 text-sm hover:bg-gray-50">{subItem.title}</a></li>
+                    );
+                  })}
+                  
+                  {/* Add RPC Docs to Development menu */}
+                  {key === 'dev' && (
+                    <li class="group/sub">
+                      <a href="/en/doc/" class="block px-4 py-2 text-sm hover:bg-gray-50">RPC Docs</a>
+                      <ul class="absolute top-0 left-full bg-white border rounded shadow-lg min-w-48 hidden group-hover/sub:block">
+                        {sortedVersions.map(version => {
+                          const indexDoc = versionGroups[version].find(doc => doc.slug.endsWith('index'));
+                          if (indexDoc) {
+                            // Remove 'en/' prefix from slug to avoid /en/doc/en/ duplication
+                            const cleanSlug = indexDoc.slug.replace(/^en\//, '');
+                            return (
+                              <li><a href={`/en/doc/${cleanSlug}`} class="block px-4 py-2 text-sm hover:bg-gray-50">{version}</a></li>
+                            );
+                          }
+                          return null;
+                        })}
+                      </ul>
+                    </li>
+                  )}
+                </ul>
+              </li>
+            );
+          }
+
+          return (
+            <li><a href={item.url} class="text-gray-300 hover:text-orange-500 font-medium tracking-wide nav-text">{item.title}</a></li>
+          );
+        })}
+
+        {/* Language selector - simplified for now */}
+        <li>
+          <select onchange="window.location=this.value;" class="bg-gray-800 border border-gray-600 rounded px-2 py-1 text-sm text-gray-300">
+            <option value="">{lang.replace('_', '-').toUpperCase()}</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+</div>
+
