@@ -90,11 +90,14 @@ Examples:
 ---
 
 **Low** severity bugs will be disclosed 2 weeks after a fixed version exists on the current major release branch.
-  A pre-announcement will be made at the same time as the release.
 
 **Medium** and **High** severity bugs will be disclosed 2 weeks after the [last
   affected release goes EOL](/en/lifecycle/). This is a year after a fixed version was first
-  released. A pre-announcement will be made 2 weeks prior to disclosure.
+  released.
+
+A pre-announcement will be made two weeks prior to releasing the details of a vulnerability. This
+pre-announcement will coincide with the release of a new major version and contain the number of
+fixed vulnerabilities and their severity levels.
 
 **Critical** bugs are not considered in the standard policy, as they would most likely require an
   ad-hoc procedure. Also, a bug may not be considered a vulnerability at all. Any reported issue
