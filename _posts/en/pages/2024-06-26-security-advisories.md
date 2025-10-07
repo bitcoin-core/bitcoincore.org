@@ -89,11 +89,10 @@ Examples:
 
 ---
 
-**Low** severity bugs will be disclosed 2 weeks after a fixed version exists on the current major release branch.
-
-**Medium** and **High** severity bugs will be disclosed 2 weeks after the [last
-  affected release goes EOL](/en/lifecycle/). This is a year after a fixed version was first
-  released.
+**Low** severity vulnerabilities will be disclosed 2 weeks after the release of a major version
+containing the fix. **Medium** and **High** severity vulnerabilities will be disclosed 2 weeks after
+the last affected release goes [End of Life](/en/lifecycle/) (approximately a year after a major
+version containing the fix was first released).
 
 A pre-announcement will be made two weeks prior to releasing the details of a vulnerability. This
 pre-announcement will coincide with the release of a new major version and contain the number of
