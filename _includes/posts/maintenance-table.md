@@ -1,4 +1,4 @@
-| 31.x   | TBA*       | after v32.0 | after v33.0  |
+| 31.x   | TBA*       | after v33.0 | after v34.0  |
 | 30.x   | 2025-10-10 | after v32.0 | after v33.0  |
 | 29.x   | 2025-04-14 | after v31.0 | after v32.0  |
 | 28.x   | 2024-10-02 | 2025-10-10  | after v31.0  |
