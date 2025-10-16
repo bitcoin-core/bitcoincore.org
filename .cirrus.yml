@@ -20,25 +20,6 @@ task:
   build_and_test_script: make all
 
 task:
-  name: debian only
-  container:
-    image: debian:bookworm
-  install_script: 
-    - apt update
-    - >
-      apt install -y 
-      curl 
-      jekyll 
-      make 
-      ruby 
-      ruby-jekyll-redirect-from 
-      ruby-kramdown-parser-gfm 
-      ruby-html-proofer
-  build_and_test_script: 
-    - rm Gemfile.lock
-    - make all
-
-task:
   name: verify commits
   only_if: $CIRRUS_BRANCH == 'master'
   container:
