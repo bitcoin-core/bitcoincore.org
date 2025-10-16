@@ -53,7 +53,7 @@ defaults:
       type: releases
     values:
       type: releases
-      layout: page
+      layout: release
       lang: en
   - scope:
       path: ""
