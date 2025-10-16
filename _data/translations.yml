@@ -11,6 +11,8 @@ en:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  released: "Bitcoin Core %version Released"
+  release_excerpt: "Bitcoin Core version %version is now available"
 
 zh_CN:
   created: "发布在"
@@ -25,6 +27,8 @@ zh_CN:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  released: ""
+  release_excerpt: ""
 
 zh_TW:
   created: "發表於"
@@ -39,6 +43,8 @@ zh_TW:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  released: ""
+  release_excerpt: ""
 
 ja:
   created: "Published on the"
@@ -53,6 +59,8 @@ ja:
   rss_feed: "Bitcoin Core Blog RSS Feed"
   rss_meetings_feed: "Meetings feed"
   rss_blog_feed: "Blog posts feed"
+  released: "Bitcoin Core 29.0 リリース"
+  release_excerpt: "Bitcoin Core バージョン %version が利用可能になりました"
 
 es:
   created: "Publicado el"
@@ -67,3 +75,5 @@ es:
   rss_feed: "Fuente RSS del Blog de Bitcoin Core"
   rss_meetings_feed: "Feed de reuniones"
   rss_blog_feed: "Feed de entradas del blog"
+  released: "Lanzamiento de Bitcoin Core %version"
+  release_excerpt: "Bitcoin Core versión %version ya está disponible"
