@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Bitcoin Core</title>
+        <description></description>
+        <link>https://bitcoincore.org</link>
+        <atom:link href="https://bitcoincore.org/zh_CN/rss.xml" rel="self" type="application/rss+xml" />
+        
+        
+    </channel>
+</rss>
