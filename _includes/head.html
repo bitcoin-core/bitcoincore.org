@@ -18,8 +18,8 @@
 
 {% include open-graph.html %}
 
-{% assign posts=site.posts |where:"name", page.name %}
-{% for hrefpost in posts %}<link rel="alternate" hreflang="{{ hrefpost.lang }}" href="{{ site.url }}{{ hrefpost.permalink }}" />{% endfor %}
+{% assign posts=site.posts | concat: site.releases | where:"name", page.name %}
+{% for hrefpost in posts %}<link rel="alternate" hreflang="{{ hrefpost.lang }}" href="{{ site.url }}{{ hrefpost.url }}" />{% endfor %}
 {% if page.canonical != null %}<link rel="canonical" href="{{ page.canonical }}">{% else %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}
 <link href="{{ site.url }}/{{ page.lang }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title | xml_escape }} Blog XML Feed">
 <link href="{{ site.url }}/{{ page.lang }}/rss.xml" type="application/rss+xml" rel="alternate" title="{{ site.title | xml_escape }} Blog RSS Feed">
