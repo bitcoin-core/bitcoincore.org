@@ -24,3 +24,20 @@ gribble (18)
 | luke-jr         | [Luke Dashjr][]           |
 [...]
 ```
+
+Dockerfile
+==========
+
+Run the website locally without having to install the dependencies on your machine.
+
+To build the image (from the root of the repository):
+```
+docker build -f ./contrib/devtools/Dockerfile -t corewebsite .
+```
+
+Then the container can be run like so:
+```
+docker run -it --rm -v "$PWD":/site -p 4000:4000 corewebsite
+```
+
+And the website can be accessed at https://localhost:4000.
