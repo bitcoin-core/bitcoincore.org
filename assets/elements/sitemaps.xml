@@ -14,7 +14,7 @@ permalink: /sitemap.xml
         {% assign langs=site.posts | where:"name", post.name %}{% for version in langs %}
           {% if version.lang != 'en' %}<xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{ site.url }}{{ version.url }}" />{% endif %}
         {% endfor %}
-        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+        <lastmod>{{ post.git-last-modified-date | date_to_xmlschema }}</lastmod>
         {% if page.changefreq != null %}<changefreq>{{ page.changefreq }}</changefreq>{% endif %}
         {% if page.priority != null %}<priority>{{ page.priority }}</priority>{% endif %}
       </url>

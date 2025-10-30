@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Bitcoin Core</title>
+        <description></description>
+        <link>https://bitcoincore.org</link>
+        <atom:link href="https://bitcoincore.org/en/announcements.xml" rel="self" type="application/rss+xml" />
+        
+        
+        
+        
+        <item>
+            <title>CVE-2025-46597 - Highly unlikely remote crash on 32-bit systems</title>
+            <description>&lt;p&gt;Disclosure of the details of a bug on 32-bit systems which may, in a rare edge case, cause the node
+to crash when receiving a pathological block. This bug would be extremely hard to exploit. A fix was
+released on October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Before writing a block to disk, Bitcoin Core checks that its size is within a normal range. This
+check would overflow on 32-bit systems for blocks over 1GB, and make the node crash when writing it
+to disk. Such a block cannot be sent using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BLOCK&lt;/code&gt; message, but could in theory be sent as a
+compact block if the victim node has a non-default large mempool which already contains 1GB of
+transactions. This would require the victim to have set their &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-maxmempool&lt;/code&gt; option to a value
+greater than 3GB, while 32-bit systems may have at most 4GiB of memory.&lt;/p&gt;
+
+&lt;p&gt;This issue was indirectly prevented by capping the maximum value of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-maxmempool&lt;/code&gt; setting on
+32-bit systems.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Pieter Wuille discovered this bug and disclosed it responsibly.&lt;/p&gt;
+
+&lt;p&gt;Antoine Poinsot proposed and implemented a covert mitigation.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2025-04-24 - Pieter Wuille reports the issue&lt;/li&gt;
+  &lt;li&gt;2025-05-16 - Antoine Poinsot opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32530&quot;&gt;#32530&lt;/a&gt; with
+a covert fix&lt;/li&gt;
+  &lt;li&gt;2025-06-26 - PR #32530 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-09-04 - Version 29.1 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+            <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46597/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46597/</guid>
+        </item>
+        
+        <item>
+            <title>CVE-2025-46598 - CPU DoS from unconfirmed transaction processing</title>
+            <description>&lt;p&gt;Disclosure of the details of a resource exhaustion issue when processing an unconfirmed transaction.
+A fix was released on October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;An attacker could send specially-crafted unconfirmed transactions that would take a victim node a
+few seconds each to validate. The non-standard transactions would be rejected but not lead to a
+disconnection and the process could be repeated. This could be exploited to delay block propagation.&lt;/p&gt;
+
+&lt;p&gt;The issue was mitigated in multiple steps by reducing the validation time in different Script
+contexts.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Antoine Poinsot reported this issue to the Bitcoin Core security mailing list.&lt;/p&gt;
+
+&lt;p&gt;Pieter Wuille, Anthony Towns and Antoine Poinsot implemented mitigations to reduce the worst case
+validation time of unconfirmed transactions.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2025-04-25 - Antoine Poinsot reports the issue&lt;/li&gt;
+  &lt;li&gt;2025-05-12 - Pieter Wuille opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32473&quot;&gt;#32473&lt;/a&gt; to
+mitigate the worst case quadratic signature hashing in legacy Script context&lt;/li&gt;
+  &lt;li&gt;2025-07-24 - Anthony Towns opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/33050&quot;&gt;#33050&lt;/a&gt; to
+mitigate the worst case hashing in Tapscript context&lt;/li&gt;
+  &lt;li&gt;2025-07-30 - Antoine Poinsot opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/33105&quot;&gt;#33105&lt;/a&gt; to
+further mitigate the worst case in legacy Script context&lt;/li&gt;
+  &lt;li&gt;2025-08-08 - PR #33105 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-08-11 - PR #32473 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-08-12 - PR #33050 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the mitigations&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+            <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46598/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46598/</guid>
+        </item>
+        
+        <item>
+            <title>CVE-2025-54604 - Disk filling from spoofed self connections</title>
+            <description>&lt;p&gt;Disclosure of the details of a log-filling bug which allowed an attacker to fill up the disk space
+of a victim node by faking self-connections. Exploitability of this bug is limited, and it would
+take a long time before it would cause the victim to run out of disk space.  A fix was released on
+October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Bitcoin Core would unconditionally log in case of self-connection. This could be exploited by an
+attacker by waiting for a victim to connect to it and reusing the version message nonce to establish
+many connections to the victim, causing it to detect those attempts as self-connections. However,
+exploitability is limited because the initial connection from the victim will timeout after 60
+seconds by default.&lt;/p&gt;
+
+&lt;p&gt;This issue was fixed by implementing log rate-limiting across the board, also preventing future
+issues of the same type from happening.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Niklas Goegge discovered this bug and disclosed it responsibly.&lt;/p&gt;
+
+&lt;p&gt;Eugene Siegel and Niklas Goegge worked on a fix mitigating all types of log-filling attacks.&lt;/p&gt;
+
+&lt;p&gt;Credits also to contributor “practicalswift” who previously raised concerns
+about disk-filling vectors in Bitcoin Core and worked to address them.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2022-03-16 - Niklas Goegge reports this issue to the Bitcoin Core security mailing list&lt;/li&gt;
+  &lt;li&gt;2025-05-23 - Eugene Siegel opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32604&quot;&gt;#32604&lt;/a&gt; to
+introduce log rate-limiting, based on earlier work from Niklas Goegge&lt;/li&gt;
+  &lt;li&gt;2025-07-09 - PR #32604 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-09-04 - Version 29.1 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+            <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54604/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54604/</guid>
+        </item>
+        
+        <item>
+            <title>CVE-2025-54605 - Disk filling from invalid blocks</title>
+            <description>&lt;p&gt;Disclosure of the details of a log-filling bug which allowed an attacker to cause a victim node to
+fill up its disk space by repeatedly sending invalid blocks. Exploitability of this bug is limited,
+as it would take a long time before it would cause the victim to run out of disk space. A fix was
+released on October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;A node would unconditionally log when receiving a block that fails basic sanity checks, or when
+receiving a block that branches off prior to the last checkpoint. By repeatedly sending such an
+invalid block to a victim node, an attacker could cause the victim to run out of disk space.&lt;/p&gt;
+
+&lt;p&gt;This issue was fixed by implementing log rate-limiting across the board, also preventing future
+issues of the same type from happening.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Niklas Goegge discovered this bug and disclosed it responsibly. Eugene Siegel independently
+re-discovered this bug and disclosed it responsibly.&lt;/p&gt;
+
+&lt;p&gt;Eugene Siegel and Niklas Goegge worked on a fix mitigating all types of log-filling attacks.&lt;/p&gt;
+
+&lt;p&gt;Credits also to contributor “practicalswift” who previously raised concerns
+about disk-filling vectors in Bitcoin Core and worked to address them.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2022-05-16 - Niklas Goegge reports this issue to the Bitcoin Core security mailing list&lt;/li&gt;
+  &lt;li&gt;2025-03-13 - Eugene Siegel reports this issue to the Bitcoin Core security mailing list&lt;/li&gt;
+  &lt;li&gt;2025-04-24 - Eugene Siegel reports to the security mailing list about his research on the worst
+case disk filling rate.&lt;/li&gt;
+  &lt;li&gt;2025-05-23 - Eugene Siegel opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32604&quot;&gt;#32604&lt;/a&gt; to
+introduce log rate-limiting, based on earlier work from Niklas Goegge&lt;/li&gt;
+  &lt;li&gt;2025-07-09 - PR #32604 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-09-04 - Version 29.1 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+            <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54605/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54605/</guid>
+        </item>
+        
+        <item>
+            <title>Bitcoin Core 28.3 released</title>
+            <description>&lt;p&gt;Bitcoin Core version 28.3 is now available for &lt;a href=&quot;/en/download&quot;&gt;download&lt;/a&gt;.  See the &lt;a href=&quot;/en/releases/28.3/&quot;&gt;release notes&lt;/a&gt; for more information about the
+bug fixes in this release.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions, please stop by the #bitcoin IRC chatroom
+(&lt;a href=&quot;irc://irc.libera.chat/bitcoin&quot;&gt;IRC&lt;/a&gt;, &lt;a href=&quot;https://web.libera.chat/#bitcoin&quot;&gt;web&lt;/a&gt;) and we’ll do our best to help you.&lt;/p&gt;
+
+</description>
+            <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2025/10/17/release-28.3/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2025/10/17/release-28.3/</guid>
+        </item>
+        
+    </channel>
+</rss>
