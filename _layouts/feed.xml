@@ -5,7 +5,7 @@
     <link rel="alternate" type="text/html" href="{{ site.url }}" />
     {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
     {% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' %}
-    {% assign all=advisories | concat: posts | sort: "date" | reverse %}
+    {% assign all=advisories | concat: posts | sort: "name" | reverse | sort: "date" | reverse %}
     <updated>{{ all.first.git-last-modified-date | date_to_xmlschema }}</updated>
     <id>{{ post.id }}</id>
     <author>
