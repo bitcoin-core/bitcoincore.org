@@ -67,6 +67,12 @@ defaults:
       lang: en
     values:
       permalink: /en/:year/:month/:day/:title/
+  - scope:
+      path: "_posts/zh_TW/posts"
+      type: posts
+      lang: zh_TW
+    values:
+      permalink: /zh_TW/:year/:month/:day/:title/
 
 collections:
   releases:
