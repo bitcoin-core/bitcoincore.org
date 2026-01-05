@@ -4,8 +4,8 @@
      This file is licensed under the MIT License (MIT) available on
      http://opensource.org/licenses/MIT. -->
 {% assign VERSION_SORTED_RELEASES = site.releases | sort: 'release' | reverse %}
-{% capture CURRENT_RELEASE %}{% for subver in VERSION_SORTED_RELEASES[0].release %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
-{% assign magnet = VERSION_SORTED_RELEASES[0].optional_magnetlink %}
+{% capture CURRENT_RELEASE %}{% for subver in VERSION_SORTED_RELEASES[2].release %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
+{% assign magnet = VERSION_SORTED_RELEASES[2].optional_magnetlink %}
 {% capture PATH_PREFIX %}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
 {% capture FILE_PREFIX %}bitcoin-{{CURRENT_RELEASE}}{% endcapture %}
 {% assign builder_line_arr = page.example_builders_line | split: ' ' %}
