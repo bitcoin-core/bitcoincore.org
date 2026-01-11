@@ -35,10 +35,10 @@
     {% capture written_year %}'None'{% endcapture %}
     {% assign english_posts=site.posts | where:"lang", 'en' | where:"type", 'posts' %}
     {% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' %}
-    {% assign all=advisories | concat: english_posts | sort: "date" | reverse %}
+    {% assign all=advisories | concat: english_posts | sort: "name" | reverse | sort: "date" | reverse %}
     {% assign translated_posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
     {% assign translated_advisories=site.posts | where:"lang", page.lang | where:"type", 'advisory' %}
-    {% assign translated_all=translated_advisories | concat: translated_posts | sort: "date" | reverse %}
+    {% assign translated_all=translated_advisories | concat: translated_posts | sort: "name" | reverse | sort: "date" | reverse %}
     {% for default_post in all %}
       {% assign post=default_post %}
       {% for tpost in translated_all %}

@@ -100,7 +100,7 @@ version: 1
 
 ## 過去のセキュリティアドバイザリ {#past-security-advisories}
 
-{% assign advisories=site.posts | where:"lang", 'ja' | where:"type", 'advisory' | sort: "date" | reverse %}
+{% assign advisories=site.posts | where:"lang", 'ja' | where:"type", 'advisory' | sort: "name" | reverse | sort: "date" | reverse %}
 {% for advisory in advisories %}
 {% assign post=advisory %}
   <article>
