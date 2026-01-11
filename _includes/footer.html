@@ -1,12 +1,36 @@
-<div>
-    <span>
-        <a href="https://x.com/bitcoincoreorg" target="_blank" class="">X</a><br />
-        <a href="/en/legal/">Legal</a> | <a href="/en/legal/privacy">Privacy Policy</a> | <a href="/{{ page.lang }}/rss/">RSS <img src="/assets/images/rss-24x24.png" alt="rss feeds" width="14" height="14"></a>
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-unit footer-unit--social">
+    <a href="https://x.com/bitcoincoreorg"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="footer-button"
+       aria-label="Bitcoin Core on X (@bitcoincoreorg)">
+      <img src="/assets/images/icons/x.png" alt="" aria-hidden="true" class="x-icon">
+      <span>@bitcoincoreorg</span>
+    </a>
+
+    <div class="footer-links">
+      <a href="/en/legal/">Legal</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/en/legal/privacy">Privacy Policy</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/{{ page.lang }}/rss/">
+        RSS <img src="/assets/images/rss-24x24.png" alt="" aria-hidden="true" class="rss-icon">
+      </a>
+    </div>
+  </div>
+
+   <div class="footer-unit footer-unit--branding">
+    <a href="{% if page.lang and page.lang != 'en' %}/{{ page.lang }}/{% else %}/{% endif %}"
+   class="footer-logo-link"
+   aria-label="Home — Bitcoin Core">
+  <img src="/assets/images/bitcoin_core_logo.png" alt="Bitcoin Core logo" class="footer-logo">
+    </a>
+
+    <span class="copyright">
+      &copy; {{ site.time | date: '%Y' }} {{ site.owner.name }}
     </span>
-</div>
-<div>
-    <img src="/assets/images/bitcoin_core_logo.png" alt="bitcoin core logo" width="160"><br />
-    <span class="copyright">&copy; {{ site.time | date: '%Y' }} {{ site.owner.name }}</span>
-</div>
+  </div>
+</footer>
 
 <link rel="stylesheet" href="/assets/css/fonts.css">
