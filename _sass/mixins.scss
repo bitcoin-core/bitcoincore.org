@@ -57,7 +57,7 @@
 @mixin font-size($size) {
   font-size: 0px + $size;
   font-size: 0rem + $size / $doc-font-size;
-  line-height: 0 + round($doc-line-height / $size*10000) / 10000;
+  line-height: max(1.2, $doc-line-height / $size);
   margin-bottom: 0px + $doc-line-height;
   margin-bottom: 0rem + ($doc-line-height / $doc-font-size);
 }
@@ -80,7 +80,7 @@
 @mixin font($size) {
   font-size: 0px + $size;
   font-size: 0rem + $size / $doc-font-size;
-  line-height: 0 + round($doc-line-height / $size*10000) / 10000;
+  line-height: max(1.2, $doc-line-height / $size);
 }
 
 /*
