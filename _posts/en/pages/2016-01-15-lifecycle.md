@@ -16,17 +16,11 @@ This document describes the life-cycle of the Bitcoin Core software package rele
 
 Bitcoin Core releases are versioned as follows: MAJOR.MINOR, and release candidates are suffixed with rc1, rc2 etc.
 
-## Major releases
+We aim to make a major release every 6 months. These will be numbered 29.0, 30.0 etc.
 
-We aim to make a major release every 6-7 months.
-
-These will be numbered 22.0, 23.0 etc.
-
-## Maintenance releases
-
-We will provide maintenance "minor releases" that fix bugs within the major releases. As a general rule we do not introduce major new features in a maintenance release (except for consensus rules). However, we may add minor features where necessary, and we will back-port consensus rule changes such as soft forks.
-
-Minor releases will be numbered 22.1, 22.2, 23.1, 23.2 etc.
+We will provide minor ("maintenance") releases that fix bugs (security and otherwise) for each major release. These
+will be numbered 29.3, 30.1, etc. We will not introduce major new features in maintenance releases (besides consensus
+rules change, see below).
 
 ## Consensus rules
 
@@ -34,26 +28,21 @@ Proposals to change consensus rules are always shipped first in maintenance vers
 
 ## Maintenance period
 
-We maintain the major versions until their "Maintenance End". We generally maintain the current and previous major release.
-For example, if the current release is 23.0, then 22.0 is also considered maintained.
-Once 24.0 is released, then 22.0 would be considered at its "Maintenance End".
-As a major release ages, issues have to be increasingly critical to be backported to it, and an increasing amount or severity of issues is required to warrant a new minor release.
-Once software has reached the "Maintenance End" period, it will only receive critical security fixes until the End-of-Life (EOL) date.
-After EOL, users must upgrade to a later version to receive security updates, even though the community may provide fixes for critical issues on a best effort basis.
-Generally, it is recommended to run the latest maintenance release (point release) of the current or previous major version.
+We always maintain the latest three major versions. When a new major version is released, the oldest one falls out of
+the maintenance window and becomes "End of Life". For example, if the last major release is 30.0, then 29.x and 28.x are
+also considered maintained. Once 31.0 is released, 28.x becomes "End of Life". The threshold for backporting a change
+to an older major version increases as it ages.
 
-Please note that minor versions get bugfixes, translation updates, and soft forks. Translation on [Transifex][bitcoin-transifex-link] is only open for the last two major releases.
-
-For example, major version 22.0 was released on 2021-09-13 and we provided maintenance fixes (point releases) until 2022-12-14.
-Critical security issues would still be continued to be fixed until the EOL date of 2023-04-01.
-However, to take advantage of bug fixes, you would have to upgrade to a later major version.
+Major versions that are "End of Life" do not generally receive security fixes. For more about our policy on security
+fixes, see our [security advisories][] page. We recommend running the latest maintenance release of the most recent
+major version you are able to upgrade to.
 
 ## Schedule
 
 Once EOL is reached, you will need to upgrade to a newer version.
 
-| Version | Release Date | Maintenance End | End of Life |
-|---------|--------------|-----------------|-------------|
+| Version | Release Date | End of Life |
+|---------|--------------|-------------|
 {% include posts/maintenance-table.md %}
 
 \* _We aim to make a major release every 6-7 months_
@@ -82,3 +71,4 @@ For this reason, Bitcoin Core deviates from SemVer for changes to consensus rule
 
 [SemVer]: https://semver.org/
 [bitcoin-transifex-link]: https://explore.transifex.com/bitcoin/bitcoin/
+[security advisories]: /en/security-advisories
