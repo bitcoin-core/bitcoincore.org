@@ -114,7 +114,7 @@ fixed vulnerabilities and their severity levels.
 
 ## Past Security Advisories
 
-{% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' | sort: "date" | reverse %}
+{% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' | sort: "name" | reverse | sort: "date" | reverse %}
 {% for advisory in advisories %}
 {% assign post=advisory %}
   <article>

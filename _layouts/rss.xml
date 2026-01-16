@@ -7,7 +7,7 @@
         <atom:link href="{{ site.url }}/{{ page.lang }}/rss.xml" rel="self" type="application/rss+xml" />
         {% assign posts=site.posts | where:"lang", page.lang | where:"type", 'posts' %}
         {% assign advisories=site.posts | where:"lang", 'en' | where:"type", 'advisory' %}
-        {% assign all=advisories | concat: posts | sort: "date" | reverse %}
+        {% assign all=advisories | concat: posts | sort: "name" | reverse | sort: "date" | reverse %}
         {% for post in all %}
         <item>
             <title>{{ post.title | strip_html }}</title>

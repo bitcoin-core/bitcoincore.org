@@ -2,6 +2,8 @@
    Grid mixins
    ========================================================================== */
 
+@use "sass:math";
+
 /*
    Define number of columns in the grid
    Common values would be 12, 16 or 24
@@ -24,7 +26,7 @@ $margin: 0;
 @mixin grid($grid:$def_grid,$cols:'',$float:left,$display:inline){
   display:$display;
   float:$float;
-  width:(100%/$grid * $cols) - ($margin * 2);
+  width:(math.div(100%, $grid) * $cols) - ($margin * 2);
 }
 
 /*
@@ -33,7 +35,7 @@ $margin: 0;
    ========================================================================== */
 
 @mixin prefix($grid:$def_grid,$cols:''){
-  margin-left:(100%/$grid * $cols);
+  margin-left:(math.div(100%, $grid) * $cols);
 }
 
 /*
@@ -42,7 +44,7 @@ $margin: 0;
    ========================================================================== */
 
 @mixin suffix($grid:$def_grid,$cols:''){
-  margin-right:(100%/$grid * $cols);
+  margin-right:(math.div(100%, $grid) * $cols);
 }
 
 /*
@@ -70,7 +72,7 @@ $margin: 0;
 
 @mixin push($grid:$def_grid,$move:'') {
   position:relative;
-  left:(100%/$grid * $move);
+  left:(math.div(100%, $grid) * $move);
 }
 
 /*
@@ -80,5 +82,5 @@ $margin: 0;
 
 @mixin pull($grid:$def_grid,$move:''){
   position:relative;
-  left:(100%/$grid * $move) * -1;
+  left:(math.div(100%, $grid) * $move) * -1;
 }

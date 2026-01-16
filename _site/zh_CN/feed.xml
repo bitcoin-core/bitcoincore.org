@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh_CN">
+    <title type="text">Bitcoin Core</title>
+    <link rel="self" type="application/atom+xml" href="https://bitcoincore.org/zh_CN/feed.xml" />
+    <link rel="alternate" type="text/html" href="https://bitcoincore.org" />
+    
+    
+    
+    <updated>2025-10-24T12:50:29+00:00</updated>
+    <id></id>
+    <author>
+        <name>Bitcoin Core</name>
+        <uri>https://bitcoincore.org</uri>
+    </author>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2025-46597 - Highly unlikely remote crash on 32-bit systems]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46597/" />
+        <id>/en/2025/10/24/disclose-cve-2025-46597</id>
+        <published>2025-10-24T00:00:00+00:00</published>
+        <updated>2025-10-24T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46597/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the details of a bug on 32-bit systems which may, in a rare edge case, cause the node
+to crash when receiving a pathological block. This bug would be extremely hard to exploit. A fix was
+released on October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Before writing a block to disk, Bitcoin Core checks that its size is within a normal range. This
+check would overflow on 32-bit systems for blocks over 1GB, and make the node crash when writing it
+to disk. Such a block cannot be sent using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BLOCK&lt;/code&gt; message, but could in theory be sent as a
+compact block if the victim node has a non-default large mempool which already contains 1GB of
+transactions. This would require the victim to have set their &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-maxmempool&lt;/code&gt; option to a value
+greater than 3GB, while 32-bit systems may have at most 4GiB of memory.&lt;/p&gt;
+
+&lt;p&gt;This issue was indirectly prevented by capping the maximum value of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-maxmempool&lt;/code&gt; setting on
+32-bit systems.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Pieter Wuille discovered this bug and disclosed it responsibly.&lt;/p&gt;
+
+&lt;p&gt;Antoine Poinsot proposed and implemented a covert mitigation.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2025-04-24 - Pieter Wuille reports the issue&lt;/li&gt;
+  &lt;li&gt;2025-05-16 - Antoine Poinsot opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32530&quot;&gt;#32530&lt;/a&gt; with
+a covert fix&lt;/li&gt;
+  &lt;li&gt;2025-06-26 - PR #32530 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-09-04 - Version 29.1 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46597/&quot;&gt;CVE-2025-46597 - Highly unlikely remote crash on 32-bit systems&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on October 24, 2025.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2025-46598 - CPU DoS from unconfirmed transaction processing]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46598/" />
+        <id>/en/2025/10/24/disclose-cve-2025-46598</id>
+        <published>2025-10-24T00:00:00+00:00</published>
+        <updated>2025-10-24T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46598/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the details of a resource exhaustion issue when processing an unconfirmed transaction.
+A fix was released on October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;An attacker could send specially-crafted unconfirmed transactions that would take a victim node a
+few seconds each to validate. The non-standard transactions would be rejected but not lead to a
+disconnection and the process could be repeated. This could be exploited to delay block propagation.&lt;/p&gt;
+
+&lt;p&gt;The issue was mitigated in multiple steps by reducing the validation time in different Script
+contexts.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Antoine Poinsot reported this issue to the Bitcoin Core security mailing list.&lt;/p&gt;
+
+&lt;p&gt;Pieter Wuille, Anthony Towns and Antoine Poinsot implemented mitigations to reduce the worst case
+validation time of unconfirmed transactions.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2025-04-25 - Antoine Poinsot reports the issue&lt;/li&gt;
+  &lt;li&gt;2025-05-12 - Pieter Wuille opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32473&quot;&gt;#32473&lt;/a&gt; to
+mitigate the worst case quadratic signature hashing in legacy Script context&lt;/li&gt;
+  &lt;li&gt;2025-07-24 - Anthony Towns opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/33050&quot;&gt;#33050&lt;/a&gt; to
+mitigate the worst case hashing in Tapscript context&lt;/li&gt;
+  &lt;li&gt;2025-07-30 - Antoine Poinsot opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/33105&quot;&gt;#33105&lt;/a&gt; to
+further mitigate the worst case in legacy Script context&lt;/li&gt;
+  &lt;li&gt;2025-08-08 - PR #33105 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-08-11 - PR #32473 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-08-12 - PR #33050 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the mitigations&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-46598/&quot;&gt;CVE-2025-46598 - CPU DoS from unconfirmed transaction processing&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on October 24, 2025.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2025-54604 - Disk filling from spoofed self connections]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54604/" />
+        <id>/en/2025/10/24/disclose-cve-2025-54604</id>
+        <published>2025-10-24T00:00:00+00:00</published>
+        <updated>2025-10-24T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54604/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the details of a log-filling bug which allowed an attacker to fill up the disk space
+of a victim node by faking self-connections. Exploitability of this bug is limited, and it would
+take a long time before it would cause the victim to run out of disk space.  A fix was released on
+October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Bitcoin Core would unconditionally log in case of self-connection. This could be exploited by an
+attacker by waiting for a victim to connect to it and reusing the version message nonce to establish
+many connections to the victim, causing it to detect those attempts as self-connections. However,
+exploitability is limited because the initial connection from the victim will timeout after 60
+seconds by default.&lt;/p&gt;
+
+&lt;p&gt;This issue was fixed by implementing log rate-limiting across the board, also preventing future
+issues of the same type from happening.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Niklas Goegge discovered this bug and disclosed it responsibly.&lt;/p&gt;
+
+&lt;p&gt;Eugene Siegel and Niklas Goegge worked on a fix mitigating all types of log-filling attacks.&lt;/p&gt;
+
+&lt;p&gt;Credits also to contributor “practicalswift” who previously raised concerns
+about disk-filling vectors in Bitcoin Core and worked to address them.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2022-03-16 - Niklas Goegge reports this issue to the Bitcoin Core security mailing list&lt;/li&gt;
+  &lt;li&gt;2025-05-23 - Eugene Siegel opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32604&quot;&gt;#32604&lt;/a&gt; to
+introduce log rate-limiting, based on earlier work from Niklas Goegge&lt;/li&gt;
+  &lt;li&gt;2025-07-09 - PR #32604 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-09-04 - Version 29.1 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54604/&quot;&gt;CVE-2025-54604 - Disk filling from spoofed self connections&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on October 24, 2025.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2025-54605 - Disk filling from invalid blocks]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54605/" />
+        <id>/en/2025/10/24/disclose-cve-2025-54605</id>
+        <published>2025-10-24T00:00:00+00:00</published>
+        <updated>2025-10-24T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54605/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the details of a log-filling bug which allowed an attacker to cause a victim node to
+fill up its disk space by repeatedly sending invalid blocks. Exploitability of this bug is limited,
+as it would take a long time before it would cause the victim to run out of disk space. A fix was
+released on October 10th 2025 in Bitcoin Core v30.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;A node would unconditionally log when receiving a block that fails basic sanity checks, or when
+receiving a block that branches off prior to the last checkpoint. By repeatedly sending such an
+invalid block to a victim node, an attacker could cause the victim to run out of disk space.&lt;/p&gt;
+
+&lt;p&gt;This issue was fixed by implementing log rate-limiting across the board, also preventing future
+issues of the same type from happening.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Niklas Goegge discovered this bug and disclosed it responsibly. Eugene Siegel independently
+re-discovered this bug and disclosed it responsibly.&lt;/p&gt;
+
+&lt;p&gt;Eugene Siegel and Niklas Goegge worked on a fix mitigating all types of log-filling attacks.&lt;/p&gt;
+
+&lt;p&gt;Credits also to contributor “practicalswift” who previously raised concerns
+about disk-filling vectors in Bitcoin Core and worked to address them.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2022-05-16 - Niklas Goegge reports this issue to the Bitcoin Core security mailing list&lt;/li&gt;
+  &lt;li&gt;2025-03-13 - Eugene Siegel reports this issue to the Bitcoin Core security mailing list&lt;/li&gt;
+  &lt;li&gt;2025-04-24 - Eugene Siegel reports to the security mailing list about his research on the worst
+case disk filling rate.&lt;/li&gt;
+  &lt;li&gt;2025-05-23 - Eugene Siegel opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/32604&quot;&gt;#32604&lt;/a&gt; to
+introduce log rate-limiting, based on earlier work from Niklas Goegge&lt;/li&gt;
+  &lt;li&gt;2025-07-09 - PR #32604 is merged into master&lt;/li&gt;
+  &lt;li&gt;2025-09-04 - Version 29.1 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-10 - Version 30.0 is released with the fix&lt;/li&gt;
+  &lt;li&gt;2025-10-24 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2025/10/24/disclose-cve-2025-54605/&quot;&gt;CVE-2025-54605 - Disk filling from invalid blocks&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on October 24, 2025.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52919 - Remote crash due to addr message spam (part 2)]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2025/04/28/disclose-cve-2024-52919/" />
+        <id>/en/2025/04/28/disclose-cve-2024-52919</id>
+        <published>2025-04-28T00:00:00+00:00</published>
+        <updated>2025-04-28T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2025/04/28/disclose-cve-2024-52919/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the details of an integer overflow bug which causes a crash if a node is getting
+spammed &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;addr&lt;/code&gt; messages continuously for a very long time (years). A fix was released on April 14th
+2025 in Bitcoin Core v29.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;The address manager in Bitcoin Core uses a 32-bit identifier for each entry, incremented on every
+insertion. An &lt;a href=&quot;https://bitcoincore.org/en/2024/07/31/disclose-addrman-int-overflow&quot;&gt;earlier security
+advisory&lt;/a&gt; explained how it
+enabled an attacker to remotely trigger an assertion failure by spamming a node with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;addr&lt;/code&gt; messages
+until the 32-bit identifier overflow.&lt;/p&gt;
+
+&lt;p&gt;This was partially addressed in Bitcoin Core v22.0 by rate-limiting insertions in the address
+manager to 1 address per peer every 10 seconds. This made the attack a lot more expensive if not
+impractical: even with 1000 peers continuously attacking it would still take more than a year to get
+the 32-bit identifier to overflow.&lt;/p&gt;
+
+&lt;p&gt;The remaining, more expensive attack vector was addressed in Bitcoin Core version 29.0 by making the
+identifier a 64-bit identifier.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to Eugene Siegel for discovering and disclosing the vulnerability, and to Martin
+Zumsande for changing the identifier to 64-bit.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2021-06-21 - Initial report sent to security@bitcoincore.org by Eugene Siegel&lt;/li&gt;
+  &lt;li&gt;2021-07-19 - Rate limiting is merged in PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/22387&quot;&gt;#22387&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2021-09-13 - v22.0 is released with rate-limiting&lt;/li&gt;
+  &lt;li&gt;2024-07-31 - Publication of the &lt;a href=&quot;https://bitcoincore.org/en/2024/07/31/disclose-addrman-int-overflow&quot;&gt;first security advisory&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2024-09-20 - Change to 64-bit identifier is merged in PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/30568&quot;&gt;#30568&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2025-04-14 - Bitcoin Core v29.0 is released with the 64-bit identifier&lt;/li&gt;
+  &lt;li&gt;2025-04-28 - Public Disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2025/04/28/disclose-cve-2024-52919/&quot;&gt;CVE-2024-52919 - Remote crash due to addr message spam (part 2)&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on April 28, 2025.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52922 - Hindered block propagation due to stalling peers]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/11/05/cb-stall-hindering-propagation/" />
+        <id>/en/2024/11/05/cb-stall-hindering-propagation</id>
+        <published>2024-11-05T00:00:00+00:00</published>
+        <updated>2024-11-05T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/11/05/cb-stall-hindering-propagation/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Before Bitcoin Core v25.1, an attacker can cause a node to not
+download the latest block.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;When receiving a new block announcement via a headers or compact
+blocks message, the delivering peer is requested either the full
+block or missing transaction details by the receiving node. If
+the announcing peer then doesn’t respond as the peer to peer
+protocol requires, the affected Bitcoin Core node will wait
+up to 10 minutes before disconnecting the peer and making another
+block download attempt. If the attacker is able to
+make multiple incoming or outgoing connections, this process
+can be repeated.&lt;/p&gt;
+
+&lt;p&gt;Delaying block delivery can cause network degradation by slowing down network convergence,
+making mining payouts less fair, and causing liveliness issues.&lt;/p&gt;
+
+&lt;p&gt;This issue was further exacerbated by other issues disclosed recently (for
+instance the &lt;a href=&quot;https://bitcoincore.org/en/2024/10/08/disclose-large-inv-to-send/&quot;&gt;inventory build-up&lt;/a&gt;),
+when mempools were relatively heterogeneous, disallowing
+opportunistic reconstruction of compact blocks by honest peers.&lt;/p&gt;
+
+&lt;p&gt;A mitigation was introduced in &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/27626&quot;&gt;#27626&lt;/a&gt;,
+introduced in Bitcoin Core v26.0 and backported to v25.1.
+It ensures that blocks can be requested concurrently from up to 3
+high-bandwidth compact block peers, one of which is required
+to be an outbound connection.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Reported and fixed by Greg Sanders.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2023-05-08 - Users reporting block timeouts in the &lt;a href=&quot;https://bitcoin-irc.chaincode.com/bitcoin-core-dev/2023-05-08&quot;&gt;#bitcoin-core-dev IRC channel&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2023-05-09 - First github issues describing the issue https://github.com/bitcoin/bitcoin/issues/25258#issuecomment-1540028533&lt;/li&gt;
+  &lt;li&gt;2023-05-11 - Mitigation PR opened https://github.com/bitcoin/bitcoin/pull/27626&lt;/li&gt;
+  &lt;li&gt;2023-05-24 - PR merged prior to Bitcoin Core v26.0&lt;/li&gt;
+  &lt;li&gt;2023-05-25 - Backport to Bitcoin Core v25.1 merged https://github.com/bitcoin/bitcoin/pull/27752&lt;/li&gt;
+  &lt;li&gt;2023-10-19 - Bitcoin Core v25.1 Released&lt;/li&gt;
+  &lt;li&gt;2024-11-05 - Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/11/05/cb-stall-hindering-propagation/&quot;&gt;CVE-2024-52922 - Hindered block propagation due to stalling peers&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on November 05, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[Disclosure of CVE-2024-35202]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/10/08/disclose-blocktxn-crash/" />
+        <id>/en/2024/10/08/disclose-blocktxn-crash</id>
+        <published>2024-10-08T00:00:00+00:00</published>
+        <updated>2024-10-08T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/10/08/disclose-blocktxn-crash/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Before Bitcoin Core v25.0, an attacker could remotely crash Bitcoin Core
+nodes by triggering an assertion in the blocktxn message handling logic.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;High&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;When receiving a block announcement via a cmpctblock message, Bitcoin Core
+attempts to reconstruct the announced block using the transactions in its own
+mempool as well as other available transactions. If reconstruction fails due to
+missing transactions it will request them from the announcing peer via a
+getblocktxn message. In response a blocktxn message is expected, which should
+contain the requested transactions.&lt;/p&gt;
+
+&lt;p&gt;The compact block protocol employs shortened transaction identifiers to reduce
+bandwidth. These short-ids are 6 byte in size, resulting in a small chance for
+collisions (i.e. transaction A has the same short-id as transaction B) upon
+block reconstruction. Collisions will be detected as the merkle root computed
+from the reconstructed set of transactions will not match the merkle root from
+the block announcement. Peers should not be punished for collisions as they may
+happen spuriously, therefore they are handled by falling back to requesting the
+full block.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin Core will create an instance of &lt;code&gt;PartiallyDownloadedBlock&lt;/code&gt;
+whenever a new compact block is received. If missing transactions are
+requested, the instance is persisted until the corresponding blocktxn message
+is processed. Upon receiving the blocktxn message,
+&lt;code&gt;PartiallyDownloadedBlock::FillBlock&lt;/code&gt; is called, attempting to
+reconstruct the full block. In the collision case described above, the full
+block is requested but the &lt;code&gt;PartiallyDownloadedBlock&lt;/code&gt; instance as
+well as the other state related to the underlying block request is left
+untouched. This leaves room for a second blocktxn message for the same block to
+be processed and trigger &lt;code&gt;FillBlock&lt;/code&gt; to be called again. This
+violates the assumption (documented as an &lt;code&gt;assert&lt;/code&gt; statement) that
+&lt;code&gt;FillBlock&lt;/code&gt; can only be called once and causes the node to crash.&lt;/p&gt;
+
+&lt;p&gt;An attacker does not need to get lucky by triggering a collision, as the
+collision handling logic can easily be triggered by simply including
+transactions in the blocktxn message that are not committed to in the block’s
+merkle root.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to Niklas Gögge for discovering and disclosing the vulnerability,
+as well as fixing the issue in https://github.com/bitcoin/bitcoin/pull/26898.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2022-10-05 - Niklas Gögge reports the issue to the Bitcoin Core security mailing list.&lt;/li&gt;
+  &lt;li&gt;2023-01-24 - PR #26898 containing the fix is merged.&lt;/li&gt;
+  &lt;li&gt;2023-05-25 - Bitcoin Core 25.0 is released with the fix.&lt;/li&gt;
+  &lt;li&gt;2024-10-09 - Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/10/08/disclose-blocktxn-crash/&quot;&gt;Disclosure of CVE-2024-35202&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on October 08, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[Disclosure of DoS due to inv-to-send sets growing too large]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/10/08/disclose-large-inv-to-send/" />
+        <id>/en/2024/10/08/disclose-large-inv-to-send</id>
+        <published>2024-10-08T00:00:00+00:00</published>
+        <updated>2024-10-08T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/10/08/disclose-large-inv-to-send/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Before Bitcoin Core v25.0, the per-peer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_tx_inventory_to_send&lt;/code&gt; sets could grow
+too large to a point where sorting these sets when constructing inventory
+messages would affect the node’s ability to communicate with its peers. Network
+conditions in early May 2023 triggered this DoS and affected block and transaction
+propagation.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;As part of transaction relay, Bitcoin Core maintains a per-peer
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_tx_inventory_to_send&lt;/code&gt; set with transactions that should be announced to the
+peer. When constructing an inventory message for a peer, the set is sorted by
+transaction dependencies and feerate to prioritize high-feerate transactions and
+to avoid leaking the order the node learned about the transactions. Before
+Bitcoin Core v25.0, when constructing inventory messages, relevant (still in
+mempool, not yet announced to us by the peer, above the fee filter) transactions
+were being drained at a rate of 7 transactions per second.&lt;/p&gt;
+
+&lt;p&gt;In early May 2023, increased network activity caused the sets to grow faster
+than they were being drained resulting in significant time spent sorting the
+sets in the P2P communication thread. Additionally, peers that only listen for
+transaction announcements but never announce any themselves (commonly referred
+to as “spy nodes”), amplified this by having huge sets (with transactions they
+already know about) that take a long time to sort. It was observed that sorting
+took up nearly the complete time spent in the P2P communication thread, which
+significantly affected block and transaction propagation as well as keeping
+connection with peers alive.&lt;/p&gt;
+
+&lt;p&gt;This was fixed in &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/27610&quot;&gt;#27610&lt;/a&gt; by 1)
+earlier removing transactions that aren’t in the mempool anymore and 2) by
+dynamically increasing the set drainage rate depending on the set size.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to Anthony Towns for working on a fix and to b10c for initially
+reporting and narrowing the problem down to the slow inv-to-send sorting.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2023-05-02 - Problem first observed and reported&lt;/li&gt;
+  &lt;li&gt;2023-05-11 - Fix is merged (&lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/27610&quot;&gt;#27610&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;2023-05-25 - v25.0 is released&lt;/li&gt;
+  &lt;li&gt;2024-10-09 - Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/10/08/disclose-large-inv-to-send/&quot;&gt;Disclosure of DoS due to inv-to-send sets growing too large&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on October 08, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52921 - Hindered block propagation due to mutated blocks]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/10/08/disclose-mutated-blocks-hindering-propagation/" />
+        <id>/en/2024/10/08/disclose-mutated-blocks-hindering-propagation</id>
+        <published>2024-10-08T00:00:00+00:00</published>
+        <updated>2024-10-08T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/10/08/disclose-mutated-blocks-hindering-propagation/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Before Bitcoin Core v25.0, a peer sending mutated blocks could clear the
+download state of other peers that also announced the block to us, which would
+hinder block propagation.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Bitcoin Core treats a block as mutated when, for example, the Merkle root in the
+header or the witness commitment in the coinbase transaction doesn’t match the
+transactions in the block.&lt;/p&gt;
+
+&lt;p&gt;Before Bitcoin Core v25.0, a peer could clear the block download state of
+other peers by sending an unrequested mutated block. This was a problem for, for
+example, compact block relay. After receiving a compact block and while waiting
+for a response to a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getblocktxn&lt;/code&gt; request to reconstruct the full block,
+receiving the mutated block would let Bitcoin Core forget about the compact
+block reconstruction state. A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blocktxn&lt;/code&gt; response arriving after the mutated
+block couldn’t be used to reconstruct the block. This hindered block propagation.&lt;/p&gt;
+
+&lt;p&gt;This was fixed in &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/27608&quot;&gt;#27608&lt;/a&gt; by
+making sure that a peer can only affect its own block download state and not the
+download state of other peers.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to Suhas Daftuar for noticing the problem and working on a fix.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2023-05-08 - A problem with mutated blocks is first reported in the &lt;a href=&quot;https://bitcoin-irc.chaincode.com/bitcoin-core-dev/2023-05-08&quot;&gt;#bitcoin-core-dev IRC channel&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;2023-05-10 - Fix is merged (&lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/27608&quot;&gt;#27608&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;2023-05-25 - v25.0 is released&lt;/li&gt;
+  &lt;li&gt;2024-10-09 - Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/10/08/disclose-mutated-blocks-hindering-propagation/&quot;&gt;CVE-2024-52921 - Hindered block propagation due to mutated blocks&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on October 08, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2019-25220 - Memory DoS due to headers spam]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/09/18/disclose-headers-oom/" />
+        <id>/en/2024/09/18/disclose-headers-oom</id>
+        <published>2024-09-18T00:00:00+00:00</published>
+        <updated>2024-09-18T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/09/18/disclose-headers-oom/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Before Bitcoin Core v24.0.1, attackers could spam nodes with low-difficulty headers chains, which
+could be used to remotely crash peers.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;High&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Bitcoin Core stores the blockchain headers in memory. This makes it susceptible to being DoSed, by
+having it download and store extremely long chains of headers, even if they are of low difficulty.
+It is important to note that once crafted, an attack chain could be reused to crash any node on the
+network.&lt;/p&gt;
+
+&lt;p&gt;The possibility of using this to attack nodes has long been known, and was the primary reason why
+the checkpoint system was still in place: making an attacker start an attack at the last checkpoint
+makes it far more costly than starting at the genesis block. However, over time, with decreasing
+hashrate costs, even this mitigation became less effective.&lt;/p&gt;
+
+&lt;p&gt;This attack was independently discovered and reported to the Bitcoin Core project in January 2019 by
+David Jaenson, who suggested introducing newer checkpoints as a practical mitigation. However:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;This still leaves nodes performing IBD with no protection before they receive checkpoint blocks.&lt;/li&gt;
+  &lt;li&gt;It relies on the ecosystem semi-regularly adopting updated software with new checkpoints, a
+practice which Bitcoin Core contributors have long been uncomfortable with.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It later got increased attention when Braydon Fuller &lt;a href=&quot;https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2019-October/017354.html&quot;&gt;posted his “Chain width expansion”
+writeup&lt;/a&gt; to the
+bitcoin-dev mailing list in October 2019. He had previously responsibly reported it to the Bitcoin
+Core security list. The suggested approach was not adopted in Bitcoin Core due to concerns about
+network convergence when limiting the number of parallel chains.&lt;/p&gt;
+
+&lt;p&gt;At the time, the computational cost of creating a huge low-difficulty headers chain was equal to
+about 32.28% of mining one block at the tip. That is a cost of about 4.12 BTC since the block reward
+then was about 12.77 BTC.&lt;/p&gt;
+
+&lt;p&gt;By February 2022, the cost of the attack had dropped further to around 14.73% of the cost of mining
+a block, and this prompted investigation of alternative solutions. If unaddressed, the cost today
+(September 2024) would just be 4.44% of a block. These figures translate to a cost of about 1.07 BTC
+and 0.14 BTC respectively, given the block reward at these dates.&lt;/p&gt;
+
+&lt;p&gt;A protection against this DoS was implemented in Bitcoin Core PR
+&lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/25717&quot;&gt;#25717&lt;/a&gt;, whereby the node will first verify a
+presented chain has enough work before committing to store it. With that, Bitcoin Core no longer
+relies on having checkpoints to protect against any known attacks.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to David Jaenson and Braydon Fuller for independently re-discovering the attack,
+estimating its cost and suggesting modifications.&lt;/p&gt;
+
+&lt;p&gt;Credit goes to Suhas Daftuar and Pieter Wuille for researching a satisfying fix and implementing it.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2010-07-17 - Bitcoin 0.3.2 is released, which introduces checkpoints. They protect among other
+things against low-difficulty block spam.&lt;/li&gt;
+  &lt;li&gt;2011-11-21 - Bitcoin 0.5.0 is released, which skips script validation for blocks before the last
+checkpoint. This makes the role of checkpoints even more security-critical.&lt;/li&gt;
+  &lt;li&gt;2014-04-09 - Block 295000 is mined, which becomes the last Bitcoin Core checkpoint. The protection
+offered by checkpoints against block spam starts eroding from this point on as hashrate costs
+decrease.&lt;/li&gt;
+  &lt;li&gt;2015-02-16 - Bitcoin Core 0.10.0 is released, with headers-first synchronization. This weakens the
+low-difficulty block spam attack to a block &lt;em&gt;header&lt;/em&gt; spam attack.&lt;/li&gt;
+  &lt;li&gt;2017-03-08 - Bitcoin Core 0.14.0 is released, which disentangles the skipping of script validation
+from checkpoints, leaving them only relevant for protecting against block header spam.&lt;/li&gt;
+  &lt;li&gt;2019-01-28 - David Jaenson reports this issue to the Bitcoin Core security mailing list.&lt;/li&gt;
+  &lt;li&gt;2019-09-18 - Braydon Fuller emails the Bitcoin Core security list with a paper titled “&lt;a href=&quot;https://bcoin.io/papers/bitcoin-chain-expansion.pdf&quot;&gt;Bitcoin
+Chain Width Expansion Denial-of-Service
+Attacks&lt;/a&gt;”, which discusses the dangers of
+block and block header spam, a cost analysis, and a proposed solution.&lt;/li&gt;
+  &lt;li&gt;2019-09-26 - Suhas Daftuar replies to Braydon Fuller that it’s a known issue, and invites him to
+post his writeup to the bitcoin-dev mailing list.&lt;/li&gt;
+  &lt;li&gt;2019-10-04 - Braydon Fuller sends his paper to the bitcoin-dev mailing list.&lt;/li&gt;
+  &lt;li&gt;2019-10-31 - In response to the above events, Suhas Daftuar opens PR
+&lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/17332&quot;&gt;#17332&lt;/a&gt; with an earlier but impractical proof of
+concept he worked on to improve the situation, with the hope of causing more discussion on the
+topic.&lt;/li&gt;
+  &lt;li&gt;2022-02    - Suhas Daftuar and Pieter Wuille discuss this issue and estimate that the cost of this
+attack has now actually become so low that it warrants immediate action, and the need to avoid
+talking about it publicly.&lt;/li&gt;
+  &lt;li&gt;2022-06-22 - Suhas Daftuar opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/25454&quot;&gt;#25454&lt;/a&gt; as
+preparatory work toward implementing a fix.&lt;/li&gt;
+  &lt;li&gt;2022-06-22 - Suhas Daftuar messages a group of long-term contributors detailing the attack, its
+cost and the fix Pieter Wuille and him have been working on.&lt;/li&gt;
+  &lt;li&gt;2022-07-26 - Suhas Daftuar opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/25717&quot;&gt;#25717&lt;/a&gt;,
+co-authored with Pieter Wuille, which implements the fix.&lt;/li&gt;
+  &lt;li&gt;2022-08-30 - PR #25717 is merged.&lt;/li&gt;
+  &lt;li&gt;2022-10-21 - Niklas Gögge’s PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/26355&quot;&gt;#26355&lt;/a&gt; is merged,
+which fixes a bug in the headers pre-synchronization step that was introduced in PR #25717.
+Without this, it would still have been possible to spam block headers.  The discovery of this bug,
+and the possibility of potential undiscovered ones, is the reason why the old checkpoints have not
+been removed entirely yet.&lt;/li&gt;
+  &lt;li&gt;2022-12-12 - Bitcoin Core 24.0.1 is released with the fix.&lt;/li&gt;
+  &lt;li&gt;2023-12-07 - The last vulnerable version of Bitcoin Core (23.2) goes end of life.&lt;/li&gt;
+  &lt;li&gt;2024-09-18 - Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/09/18/disclose-headers-oom/&quot;&gt;CVE-2019-25220 - Memory DoS due to headers spam&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on September 18, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52919 - Remote crash due to addr message spam]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/31/disclose-addrman-int-overflow/" />
+        <id>/en/2024/07/31/disclose-addrman-int-overflow</id>
+        <published>2024-07-31T00:00:00+00:00</published>
+        <updated>2024-07-31T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/31/disclose-addrman-int-overflow/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the details of an integer overflow bug which causes an assertion
+crash, a fix for which was released on September 14th, 2021 in Bitcoin Core
+version v22.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;High&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CAddrMan&lt;/code&gt; has a 32-bit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nIdCount&lt;/code&gt; field that is incremented on every insertion
+into addrman, and which then becomes the identifier for the new entry. By
+getting the victim to insert 2&lt;sup&gt;32&lt;/sup&gt; entries (through e.g. spamming addr
+messages), this identifier overflows, which leads to an assertion crash.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to Eugene Siegel for discovering and disclosing the vulnerability,
+and to Pieter Wuille for fixing the issue in
+https://github.com/bitcoin/bitcoin/pull/22387.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2021-06-21 - Initial report sent to security@bitcoincore.org by Eugene Siegel&lt;/li&gt;
+  &lt;li&gt;2021-07-19 - Fix is merged (https://github.com/bitcoin/bitcoin/pull/22387)&lt;/li&gt;
+  &lt;li&gt;2021-09-13 - v22.0 is released&lt;/li&gt;
+  &lt;li&gt;2024-07-31 - Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/31/disclose-addrman-int-overflow/&quot;&gt;CVE-2024-52919 - Remote crash due to addr message spam&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 31, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52917 - Infinite loop bug in the miniupnp dependency]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/31/disclose-upnp-oom/" />
+        <id>/en/2024/07/31/disclose-upnp-oom</id>
+        <published>2024-07-31T00:00:00+00:00</published>
+        <updated>2024-07-31T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/31/disclose-upnp-oom/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the impact of an infinite loop bug in the miniupnp dependency on
+Bitcoin Core, a fix for which was released on September 14th, 2021 in Bitcoin
+Core version v22.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Miniupnp, the UPnP library used by Bitcoin Core, would be waiting upon
+discovery for as long as it receives random data from a device on the network.
+In addition it would allocate memory for every new device information. An
+attacker on the local network could pretend to be a UPnP device and keep
+sending bloated M-SEARCH replies to the Bitcoin Core node until it runs out of
+memory.&lt;/p&gt;
+
+&lt;p&gt;Only users running with the &lt;code&gt;-miniupnp&lt;/code&gt; option would have been
+affected by this bug as Miniupnp is otherwise turned off by default.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to Ronald Huveneers for reporting the infinite loop bug to the
+miniupnp project, and to Michael Ford (Fanquake) for the report to the Bitcoin
+Core project along with a PoC exploit to trigger an OOM and a pull request to
+bump the dependency (containing the fix).&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2020-09-17 - Initial report of infinite loop bug to miniupnp by Ronald Huveneers&lt;/li&gt;
+  &lt;li&gt;2020-10-13 - Initial report sent to security@bitcoincore.org by Michael Ford&lt;/li&gt;
+  &lt;li&gt;2021-03-23 - Fix is merged (https://github.com/bitcoin/bitcoin/pull/20421)&lt;/li&gt;
+  &lt;li&gt;2021-09-13 - v22.0 is released&lt;/li&gt;
+  &lt;li&gt;2024-07-31 - Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/31/disclose-upnp-oom/&quot;&gt;CVE-2024-52917 - Infinite loop bug in the miniupnp dependency&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 31, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52913 - Censorship due to transaction re-request handling]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose_already_asked_for/" />
+        <id>/en/2024/07/03/disclose_already_asked_for</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose_already_asked_for/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;An attacker could prevent a node from seeing a specific unconfirmed transaction.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Before this issue was fixed in PR 19988, the “g_already_asked_for” mechanism was used to schedule &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt; requests for transactions. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SendMessages()&lt;/code&gt; function would send out &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt;s for transactions recently announced by peers, remembering when that request was sent out in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;g_already_asked_for&lt;/code&gt;. However, this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;g_already_asked_for&lt;/code&gt; was a “limitedmap” data structure, with a bounded size that would forget the oldest entries if it reaches 50000 entries. This makes the following attack possible:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The attacker is the first to announce a legitimate transaction T to the victim.&lt;/li&gt;
+  &lt;li&gt;The victim requests T from the attacker using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;The attacker does not respond to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt; until close to the time when the victim would request T from other peers (~60 seconds).&lt;/li&gt;
+  &lt;li&gt;Then, the attacker carefully spams the victim with bogus announcements, causing the victim’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;g_already_asked_for&lt;/code&gt; to evict T.&lt;/li&gt;
+  &lt;li&gt;The attacker announces T again to the victim (due to how the queueing works in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_tx_process_time&lt;/code&gt;, this does not need to be timed particularly accurately).&lt;/li&gt;
+  &lt;li&gt;The victim, not finding T in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;g_already_asked_for&lt;/code&gt; will treat it as a new announcement, sending a new &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt; for it to the attacker.&lt;/li&gt;
+  &lt;li&gt;The attacker again does not respond to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This way, the attacker can prevent the victim from ever requesting the transaction from anyone but the attacker.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Responsibly disclosed by John Newbery, claiming discovery by Amiti Uttarwar and him.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2020-04-03 John Newbery reports the bug in an email to Suhas Daftuar and others&lt;/li&gt;
+  &lt;li&gt;2020-05-08 John Newbery suggests an approach to fixing the bug&lt;/li&gt;
+  &lt;li&gt;2020-09-21 Pieter Wuille opens &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/19988&quot;&gt;PR #19988&lt;/a&gt; as a comprehensive approach to fixing this and other bugs&lt;/li&gt;
+  &lt;li&gt;2020-10-14 Pieter’s PR is merged&lt;/li&gt;
+  &lt;li&gt;2021-01-14 Bitcoin Core version 0.21.0 is released with a fix&lt;/li&gt;
+  &lt;li&gt;2022-04-25 The last vulnerable Bitcoin Core version (0.20.x) goes EOL&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose_already_asked_for/&quot;&gt;CVE-2024-52913 - Censorship due to transaction re-request handling&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52918 - Crash using malicious BIP72 URI]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose-bip70-crash/" />
+        <id>/en/2024/07/03/disclose-bip70-crash</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose-bip70-crash/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Bitcoin-Qt could crash upon opening a &lt;a href=&quot;https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki&quot;&gt;BIP72&lt;/a&gt; URI.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki&quot;&gt;BIP72&lt;/a&gt; extends the BIP21 URI scheme
+with an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r&lt;/code&gt; parameter to fetch a payment request from. An attacker could simply point the URL
+contained in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r&lt;/code&gt; parameter to a very large file, for which Bitcoin-Qt would try to allocate
+enough memory and crash.&lt;/p&gt;
+
+&lt;p&gt;The victim could get tricked into opening a rogue payment request. The large download would happen
+in the background with little to no output in the GUI until the application runs out of memory.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credits go to Michael Ford (Fanquake) for responsibly disclosing the issue and providing a PoC.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2019-08-12 Michael Ford reports the bug to Cory Fields and Wladimir Van Der Laan&lt;/li&gt;
+  &lt;li&gt;2019-10-16 Michael Ford opens PR &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/17165&quot;&gt;#17165&lt;/a&gt; to get rid of BIP70 support entirely&lt;/li&gt;
+  &lt;li&gt;2019-10-26 Michael’s PR is merged into Bitcoin Core&lt;/li&gt;
+  &lt;li&gt;2020-06-03 Bitcoin Core version 0.20.0 is released&lt;/li&gt;
+  &lt;li&gt;2021-09-13 The last vulnerable Bitcoin Core version (0.19.x) goes EOL&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose-bip70-crash/&quot;&gt;CVE-2024-52918 - Crash using malicious BIP72 URI&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52920 - DoS using huge GETDATA messages]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose-getdata-cpu/" />
+        <id>/en/2024/07/03/disclose-getdata-cpu</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose-getdata-cpu/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;A malformed &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt; message could trigger an infinite loop on the receiving node, using 100% of
+the CPU allocated to this thread and not making further progress on this connection.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Low&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Before Bitcoin Core 0.20.0, an attacker (or buggy client, even) could send us a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATA&lt;/code&gt; message
+that would cause our net_processing thread to start spinning at 100%, and not make progress
+processing messages for the attacker peer anymore. It would still make progress processing messages
+from other peers, so it is just a CPU DoS with low impact beyond that (not making progress for
+attacker peers is a non-issue). It also increases per-peer long-term memory usage up by 1.5 MB per
+attacker peer.&lt;/p&gt;
+
+&lt;p&gt;John Newbery opened &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/18808&quot;&gt;PR #18808&lt;/a&gt; to fix this issue by
+only disclosing the lack of progress.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credits to John Newbery for finding this bug, responsibly disclosing it and fixing it.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2020-04-29 John Newbery opens #18808&lt;/li&gt;
+  &lt;li&gt;2020-05-08 John Newbery reports his finding by email&lt;/li&gt;
+  &lt;li&gt;2020-05-12 #18808 is merged&lt;/li&gt;
+  &lt;li&gt;2020-06-03 Bitcoin Core version 0.20.0 is released with a fix&lt;/li&gt;
+  &lt;li&gt;2021-09-13 The last vulnerable Bitcoin Core version (0.19.x) goes EOL&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose-getdata-cpu/&quot;&gt;CVE-2024-52920 - DoS using huge GETDATA messages&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52916 - Memory DoS using low-difficulty headers]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose-header-spam/" />
+        <id>/en/2024/07/03/disclose-header-spam</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose-header-spam/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;After Bitcoin Core 0.12.0 and before Bitcoin Core 0.15.0 a node could be spammed with minimum
+difficulty headers, which could possibly be leveraged to crash it by OOM.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Before the introduction of &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/25717&quot;&gt;headers
+pre-synchronisation&lt;/a&gt;, nodes relied exclusively on
+checkpoints to avoid getting spammed by low-difficulty headers.&lt;/p&gt;
+
+&lt;p&gt;In Bitcoin Core 0.12.0 a check for headers forking before the last checkpoint’s height was moved to
+after storing the header in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapBlockIndex&lt;/code&gt;. This allowed an attacker to grow the map unboundedly by
+spamming headers whose parent is the genesis block (which only need difficulty 1 to create), as such
+blocks bypassed the checkpoint logic.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credits to Cory Fields for finding and responsibly disclosing the bug.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2017-08-08 Cory Fields privately reports the bug&lt;/li&gt;
+  &lt;li&gt;2017-08-11 Pieter Wuille opens &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/11028&quot;&gt;PR #11028&lt;/a&gt; to fix it&lt;/li&gt;
+  &lt;li&gt;2017-08-14 PR #11028 is merged&lt;/li&gt;
+  &lt;li&gt;2017-09-14 Bitcoin Core version 0.15.0 is released with a fix&lt;/li&gt;
+  &lt;li&gt;2018-10-03 The last vulnerable version of Bitcoin Core (0.14.3) goes end of life&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose-header-spam/&quot;&gt;CVE-2024-52916 - Memory DoS using low-difficulty headers&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52915 - Memory DoS using huge INV messages]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose-inv-buffer-blowup/" />
+        <id>/en/2024/07/03/disclose-inv-buffer-blowup</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose-inv-buffer-blowup/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;A node could be forced to allocate a significant amount of memory upon receiving a specially crafted
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INV&lt;/code&gt; message. This was particularly an issue for nodes with little available memory or a large
+number of connections.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;An &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INV&lt;/code&gt; message filled with 50,000 block items could cause 50,000 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getheaders&lt;/code&gt; responses to be sent
+in a single &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProcessMessages()&lt;/code&gt; call. Each response contains a locator and is around 1 kB. All would
+be put into the send buffer at once. The attacker could just refuse to receive data to prevent the
+50 MB buffer from draining.&lt;/p&gt;
+
+&lt;p&gt;John Newbery opened &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/18962&quot;&gt;PR #18962&lt;/a&gt; to fix this issue
+pretexting a bandwidth gain from sending a single &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETHEADERS&lt;/code&gt; per received &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INV&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credits to John Newbery for finding this bug, responsibly disclosing it and fixing it.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2020-05-08 John Newbery reports his finding by email&lt;/li&gt;
+  &lt;li&gt;2020-05-12 John Newbery opens #18962&lt;/li&gt;
+  &lt;li&gt;2020-05-14 #18962 is merged&lt;/li&gt;
+  &lt;li&gt;2020-06-03 Bitcoin Core version 0.20.0 is released with a fix&lt;/li&gt;
+  &lt;li&gt;2021-09-13 The last vulnerable Bitcoin Core version (0.19.x) goes EOL&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose-inv-buffer-blowup/&quot;&gt;CVE-2024-52915 - Memory DoS using huge INV messages&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52914 - Significant DoS due to orphan handling]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose-orphan-dos/" />
+        <id>/en/2024/07/03/disclose-orphan-dos</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose-orphan-dos/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;A node could be stalled for hours when processing the orphans of a specially crafted unconfirmed
+transaction.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;High&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;After accepting a transaction into its mempool, the node would go through its cache of orphan
+transactions to find if this new accepted transaction makes it possible to accept any. This search
+was quadratic: for each output in the newly accepted transaction it would go through all cached
+orphan transactions (limited to 100). By specially crafting the orphan transactions to be invalid
+yet expensive to validate a node could be stalled for several hours.&lt;/p&gt;
+
+&lt;p&gt;The stall was fixed by Pieter Wuille in &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/15644&quot;&gt;PR #15644&lt;/a&gt;
+by interrupting the orphan resolution to process new messages when a match is found (whether the
+orphan turns out to be valid or not).&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credits to sec.eine for responsibly disclosing the bug and providing feedback on the fix.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2019-03-19 sec.eine reports the issue to Greg Maxwell by email&lt;/li&gt;
+  &lt;li&gt;2019-03-21 Greg Maxwell responds with information about the proposed patch&lt;/li&gt;
+  &lt;li&gt;2019-03-22 sec.eine gives feedback on the patch (“seems solid and [..] doesn’t attract attention”)&lt;/li&gt;
+  &lt;li&gt;2019-03-22 Pieter Wuille opens PR #15644&lt;/li&gt;
+  &lt;li&gt;2019-04-01 PR #15644 is merged&lt;/li&gt;
+  &lt;li&gt;2019-05-18 Bitcoin Core version 0.18.0 is released with a fix&lt;/li&gt;
+  &lt;li&gt;2020-07-22 The issue is &lt;a href=&quot;https://bitcoincore.reviews/15644#l-285&quot;&gt;partially disclosed&lt;/a&gt; during a PR review club&lt;/li&gt;
+  &lt;li&gt;2020-08-01 The last vulnerable Bitcoin Core version (0.17.x) goes EOL&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose-orphan-dos/&quot;&gt;CVE-2024-52914 - Significant DoS due to orphan handling&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[Disclosure of CVE-2015-3641]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose_receive_buffer_oom/" />
+        <id>/en/2024/07/03/disclose_receive_buffer_oom</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose_receive_buffer_oom/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;A node could be forced to allocate large buffers when receiving a message, which could be leveraged to remotely crash it by OOM.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;Without a tighter bound, received messages’ size was limited by the maximum serialized message size
+of 32 MiB. An attacker could force a node to allocate this much RAM per connection, which may lead
+to an OOM.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/5843&quot;&gt;PR #5843&lt;/a&gt; reduced the size P2P messages can have
+before receiving the payload. This reduces the per-peer receive buffer memory size a malicious peer
+can cause. The PR reduced the number from 32 MiB to 2 MiB, which was later increased back to 4 MB as
+part of the Segwit BIP144 changes.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Reported to Greg Maxwell by bitcointalk user Evil-Knievel. Fixed by Pieter Wuille.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2015-02-05 Evil-Knievel reports the vulnerability to Greg Maxwell through bitcointalk private messages.&lt;/li&gt;
+  &lt;li&gt;2015-??-?? &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CVE-2015-3641&lt;/code&gt; is registered for it.&lt;/li&gt;
+  &lt;li&gt;2015-03-01 &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/5843&quot;&gt;PR #5843&lt;/a&gt; is opened to fix it.&lt;/li&gt;
+  &lt;li&gt;2015-03-06 PR #5843 is merged.&lt;/li&gt;
+  &lt;li&gt;2015-03-09 The fix is backported to version 0.10.1.&lt;/li&gt;
+  &lt;li&gt;2015-04-27 Bitcoin Core version &lt;a href=&quot;https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-April/007828.html&quot;&gt;0.10.1 is released&lt;/a&gt; with a fix.&lt;/li&gt;
+  &lt;li&gt;2015-06-25 A disclosure is &lt;a href=&quot;https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-June/009135.html&quot;&gt;pre-announced&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;2015-07-07 Disclosure is &lt;a href=&quot;https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-July/009362.html&quot;&gt;postponed&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;2016-08-23 The last vulnerable Bitcoin Core Version (0.10.x) goes EOL&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose_receive_buffer_oom/&quot;&gt;Disclosure of CVE-2015-3641&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+    
+    <entry>
+        <title type="html"><![CDATA[CVE-2024-52912 - Netsplit due to timestamp adjustment]]></title>
+        <link rel="alternate" type="text/html" href="https://bitcoincore.org/en/2024/07/03/disclose-timestamp-overflow/" />
+        <id>/en/2024/07/03/disclose-timestamp-overflow</id>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Bitcoin Core</name>
+            <uri>https://bitcoincore.org/en/2024/07/03/disclose-timestamp-overflow/</uri>
+            
+        </author>
+        <content type="html">
+            &lt;p&gt;Disclosure of the details of an integer overflow bug which risked causing a network split, a fix for
+which was released on January 15th, 2021 in Bitcoin Core version 0.21.0.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;Medium&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;technical-details&quot;&gt;Technical details&lt;/h2&gt;
+
+&lt;p&gt;A network split vulnerability resulted from two separate bugs in the processing code of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;version&lt;/code&gt;
+messages:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Signed-integer overflow when calculating the time offset for newly connecting peers.&lt;/li&gt;
+  &lt;li&gt;abs64 logic bug (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;abs64(std::numeric_limits&amp;lt;int64_t&amp;gt;::min()) ==
+std::numeric_limits&amp;lt;int64_t&amp;gt;::min()&lt;/code&gt;), resulting in a bypass of the maximum time adjustment limit.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The two bugs allow an attacker to force a victims adjusted time (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;system time + network time
+offset&lt;/code&gt;) to be skewed such that any new blocks are rejected for having a timestamp that is dated too
+far in the future. It should be noted that this attack assumes the attacker is among the first 200
+peers to connect to the victim, as only the time offsets from those initial connections are factored
+into adjusted time.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Credit goes to &lt;a href=&quot;https://github.com/practicalswift&quot;&gt;practicalswift&lt;/a&gt; for discovering and providing the
+initial fix for the vulnerability, and Pieter Wuille for the fix as well as general cleanup to the
+at-risk code.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2020-10-10 Initial report send to security@bitcoincore.org&lt;/li&gt;
+  &lt;li&gt;2020-10-13 Fix merged into Bitcoin Core (https://github.com/bitcoin/bitcoin/pull/20141)&lt;/li&gt;
+  &lt;li&gt;2021-01-15 v0.21.0 released&lt;/li&gt;
+  &lt;li&gt;2022-04-25 The last vulnerable Bitcoin Core version (0.20.x) goes EOL&lt;/li&gt;
+  &lt;li&gt;2024-07-03 Public disclosure&lt;/li&gt;
+&lt;/ul&gt;
+
+
+            &lt;p&gt;&lt;a href=&quot;https://bitcoincore.org/en/2024/07/03/disclose-timestamp-overflow/&quot;&gt;CVE-2024-52912 - Netsplit due to timestamp adjustment&lt;/a&gt; was originally published by Bitcoin Core at &lt;a href=&quot;https://bitcoincore.org&quot;&gt;Bitcoin Core&lt;/a&gt; on July 03, 2024.&lt;/p&gt;
+        </content>
+    </entry>
+    
+</feed>
+
