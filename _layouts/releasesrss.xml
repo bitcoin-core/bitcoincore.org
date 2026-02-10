@@ -5,7 +5,7 @@
         <description>{{ site.translations[page.lang].description }}</description>
         <link>{{ site.url }}</link>
         <atom:link href="{{ site.url }}/{{ page.lang }}/rss.xml" rel="self" type="application/rss+xml" />
-        {% assign posts=site.releases | sort: 'release' | reverse %}
+        {% assign posts=site.releases | where: "lang", "en" | sort: 'release' | reverse %}
         {% for post in posts %}
         <item>
             <title>{{ post.title | strip_html }}</title>
