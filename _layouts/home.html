@@ -52,7 +52,9 @@
         <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
         <p>{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
         <p class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
-          <small>Published on {{ post.date | date: "%B %d, %Y" }}</small>
+          {% assign dateformat=site.data.translations[page.lang].date_format %}
+          <small>{{ site.data.home[page.lang]['published_on'] }}
+          {% include translated_date.html date=post.date format=dateformat lang=page.lang %}</small>
         </p>
       {% endif %}
     </article>

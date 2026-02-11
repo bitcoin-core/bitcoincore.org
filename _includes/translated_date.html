@@ -1,0 +1,83 @@
+{% comment %}
+
+MIT License
+
+Copyright (c) 2016 Oncleben31
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+{% endcomment %}
+
+{% comment %}
+This include allows to translate the days and months in the date by using strings in _data/locales/[lang].yml
+This include can be called with three parameters:
+ - include.date: the date to be processed
+ - include.format: the date format. (If empty a default format will be used)
+ - include.lang: lang to use for translation.
+{% endcomment %}
+
+{% comment %}
+If the parameter date format is empty the default format set in _config.yml is used.
+If there is no default in _config, "%b %-d, %Y" is used.
+{% endcomment %}
+
+{% assign date_format_to_be_translated = include.format | default: site.date_format | default: "%b %-d, %Y" %}
+
+{% comment %}
+Init to have the indice of the day in the week (num_day) and the indice of the month in the year (num_mont)
+Init the lang parameter depending if it's set in the include call, in the page or in the site settings
+{% endcomment %}
+
+{% assign num_day = include.date | date: "%w" | plus: 0 %}
+{% assign num_month = include.date | date: "%-m" | plus: -1 %}
+{% assign lang = include.lang | default: page.lang | default: site.lang %}
+
+{% comment %}
+Use translated abbreviated weekday if "%a" is used in the format and the translation is available in _data/locales/[lang].yml
+{% endcomment %}
+
+{% if site.data.locales[lang].abbreviated_weekday[num_day] %}
+  {% assign date_format_to_be_translated = date_format_to_be_translated | replace: "%a",  site.data.locales[lang].abbreviated_weekday[num_day] %}
+{% endif %}
+
+{% comment %}
+Use translated full weekday if "%A" is used in the format and the translation is available in _data/locales/[lang].yml
+{% endcomment %}
+
+{% if site.data.locales[lang].full_weekday[num_day] %}
+  {% assign date_format_to_be_translated = date_format_to_be_translated | replace: "%A",  site.data.locales[lang].full_weekday[num_day] %}
+{% endif %}
+
+{% comment %}
+Use translated abbreviated month if "%b" is used in the format and the translation is available in _data/locales/[lang].yml
+{% endcomment %}
+
+{% if site.data.locales[lang].abbreviated_month[num_month] %}
+  {% assign date_format_to_be_translated = date_format_to_be_translated | replace: "%b",  site.data.locales[lang].abbreviated_month[num_month] %}
+{% endif %}
+
+{% comment %}
+Use translated abbreviated weekday if "%B" is used in the format and the translation is available in _data/locales/[lang].yml
+{% endcomment %}
+
+{% if site.data.locales[lang].full_month[num_month] %}
+  {% assign date_format_to_be_translated = date_format_to_be_translated | replace: "%B",  site.data.locales[lang].full_month[num_month] %}
+{% endif %}
+
+{{ include.date | date: date_format_to_be_translated }}
