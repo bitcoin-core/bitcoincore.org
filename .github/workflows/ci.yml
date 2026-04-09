@@ -52,8 +52,6 @@ jobs:
   verify-commits:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    container:
-      image: debian:latest
     steps:
       - uses: actions/checkout@v6
         with:
@@ -61,8 +59,8 @@ jobs:
 
       - name: Install packages
         run: |
-          apt-get update
-          apt-get install -y \
+          sudo apt-get update
+          sudo apt-get install -y \
             git \
             gnupg
 
