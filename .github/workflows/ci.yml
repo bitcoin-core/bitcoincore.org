@@ -1,0 +1,74 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+env:
+  JEKYLL_ENV: production
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: true # speeds up installation of html-proofer
+  RUBYOPT: "-KU -E utf-8:utf-8"
+jobs:
+  bundler:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:3.1.2
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install bundler
+        run: gem install bundler
+
+      - name: Install gems
+        run: bundle install
+
+      - name: Build and test
+        run: make all
+
+  debian-only:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:bookworm
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install packages
+        run: |
+          apt-get update
+          apt-get install -y \
+            curl \
+            jekyll \
+            make \
+            ruby \
+            ruby-jekyll-redirect-from \
+            ruby-kramdown-parser-gfm \
+            ruby-html-proofer
+
+      - name: Build and test
+        run: |
+          rm Gemfile.lock
+          make all
+
+  verify-commits:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    container:
+      image: debian:latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install packages
+        run: |
+          apt-get update
+          apt-get install -y \
+            git \
+            gnupg
+
+      - name: Verify commits
+        shell: bash
+        run: |
+          mapfile -t KEYS < contrib/verify-commits/trusted-keys
+          gpg --keyserver hkps://keys.openpgp.org --recv-keys "${KEYS[@]}"
+          ./contrib/verify-commits/verify-commits.sh
