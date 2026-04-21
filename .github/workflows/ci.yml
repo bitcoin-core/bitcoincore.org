@@ -9,6 +9,12 @@ env:
   NOKOGIRI_USE_SYSTEM_LIBRARIES: true # speeds up installation of html-proofer
   RUBYOPT: "-KU -E utf-8:utf-8"
 jobs:
+  check-maintenance-table:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: ./contrib/check-maintenance-table.sh
+
   bundler:
     runs-on: ubuntu-latest
     container:
