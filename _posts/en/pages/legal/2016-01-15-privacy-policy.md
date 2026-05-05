@@ -5,6 +5,11 @@ permalink: /en/legal/privacy/
 type: pages
 layout: page
 lang: en
+redirect_from:
+  - /es/legal/privacy/
+  - /ja/legal/privacy/
+  - /zh_CN/legal/privacy/
+  - /zh_TW/legal/privacy/
 version: 1
 ---
 ## Introduction
@@ -23,7 +28,7 @@ We will likely place a cookie on your hard drive during the web visit. If you do
 
 Basic usage information. We use basic usage information to monitor and improve the availability, performance and content of this website.
 
-Personally identifiable information. We may use the information we collect to improve the content of the website. We may use this information to prevent or detect fraud or abuses of our websites and to enable third parties to carry out technical, logistical or other functions on our behalf.  
+Personally identifiable information. We may use the information we collect to improve the content of the website. We may use this information to prevent or detect fraud or abuses of our websites and to enable third parties to carry out technical, logistical or other functions on our behalf.
 
 ## Disclosure of personal information
 
@@ -36,10 +41,10 @@ We will not disclose any information we collect to any third party unless it is:
 
 In particular, we may release the information we collect to third parties when we believe it is appropriate to comply with the law, to enforce our legal rights, to protect the rights and safety of others, or to assist with industry efforts to control fraud, spam or other undesirable conduct.
 
-If we contract with a third party to provide a particular service, we may release the information we collect to that third party, provided that the third party has agreed to use at least the same level of privacy protections described in this Privacy Policy, and is permitted to use the information only for the purpose of providing services to us.  
+If we contract with a third party to provide a particular service, we may release the information we collect to that third party, provided that the third party has agreed to use at least the same level of privacy protections described in this Privacy Policy, and is permitted to use the information only for the purpose of providing services to us.
 
 ## Changes
 
-Our Privacy Policy may change from time to time, and the new policy will be posted prominently on this website. We will never materially change our policies and practices to make them less protective of personal information collected in the past without your prior consent. 
+Our Privacy Policy may change from time to time, and the new policy will be posted prominently on this website. We will never materially change our policies and practices to make them less protective of personal information collected in the past without your prior consent.
 
 Last updated on 2015-01-15.
