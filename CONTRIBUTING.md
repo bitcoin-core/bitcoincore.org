@@ -12,6 +12,9 @@ Changes to the website are made by pull-request in order to facilitate review pr
 
 All pull-requests must pass the continuous integration tests which test HTML validity, links and images.
 
+All pull requests must include the generated HTML of the website. This can be generated using `make build`.
+CI will check that the committed HTML is built from the source.
+
 Anyone may participate in the review process. All comments and ACK/NACKs will be taken into consideration but the decision about merging rests with the website maintainers.
 
 ## Content Policy

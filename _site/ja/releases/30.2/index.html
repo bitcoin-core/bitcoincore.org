@@ -1,0 +1,288 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="ja"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="ja"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+<!-- source: '_posts/ja/releases/2026-01-10-release-30.2.md' -->
+<!-- name: 'release-30.2' -->
+<!-- version:  -->
+<!-- translated:  -->
+<meta charset="utf-8">
+
+<title>Bitcoin Core :: Bitcoin Core 30.2</title>
+<meta name="description" content="Bitcoin Core 30.2">
+<meta name="keywords" content="">
+<meta http-equiv="onion-location" content="http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/ja/releases/30.2/" />
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Bitcoin Core 30.2">
+<meta name="twitter:description" content="Bitcoin Core 30.2">
+<meta name="twitter:site" content="@bitcoincoreorg">
+<meta name="twitter:creator" content="@bitcoincoreorg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="ja">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bitcoin Core 30.2">
+<meta property="og:description" content="Bitcoin Core 30.2">
+<meta property="og:url" content="https://bitcoincore.org/ja/releases/30.2/">
+<meta property="og:site_name" content="Bitcoin Core">
+
+<meta property="og:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+
+
+<link rel="alternate" hreflang="ja" href="https://bitcoincore.org/ja/releases/30.2/" />
+<link rel="canonical" href="https://bitcoincore.org/ja/releases/30.2/">
+<link href="https://bitcoincore.org/ja/feed.xml" type="application/atom+xml" rel="alternate" title="Bitcoin Core Blog XML Feed">
+<link href="https://bitcoincore.org/ja/rss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Blog RSS Feed">
+<link href="https://bitcoincore.org/ja/meetingrss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Meeting RSS Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+
+<!-- Icons -->
+<link rel="shortcut icon" href="/assets/images/favicon.ico"><!-- 16x16 -->
+<link rel="shortcut icon" href="/assets/images/favicon.png"><!-- 32x32 -->
+<link rel="apple-touch-icon-precomposed" href="/assets/images/apple-touch-icon-precomposed.png"><!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/apple-touch-icon-72x72-precomposed.png"><!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/apple-touch-icon-114x114-precomposed.png"><!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-144x144-precomposed.png"><!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+
+<!-- Hide Searchbar if nojs -->
+<noscript>
+  <style>
+      #searchbar { display:none; }
+  </style>
+</noscript>
+
+</head>
+
+<body class="page">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+    <div class="site-name">
+        <a href="/ja/"><img src="/assets/images/bitcoin_core_logo_colored_reversed.png" alt="bitcoin core logo"></a>
+    </div><!-- /.site-name -->
+    <div class="top-navigation">
+        <nav role="navigation" id="site-nav" class="nav">
+            <ul>
+                    <li><a href="/ja/about/">概要</a></li>
+                    <li><a href="/ja/download/">ダウンロード</a></li>
+                    <li><a href="/ja/blog/">ブログ</a></li>
+                    <li><a href="/ja/releases/">リリース</a></li>
+                    <li><a href="/ja/security-advisories/">セキュリティアドバイザリ</a></li>
+                    <li><a href="javascript:;">開発</a>
+                            <ul>
+                                <li><a href="/ja/contribute/">貢献</a></li>
+                                <li><a href="/ja/faq/contributing-code/">コードの貢献</a></li>
+                                <li><a href="/ja/meetings/">ミーティング</a></li>
+                                <li><a href="/ja/lifecycle">ライフサイクル</a></li>
+                            <li>
+                                        <a href="/en/doc/">RPC Docs</a>
+                                <ul>
+                                                <li><a href="/en/doc/30.0.0/">30.0.0</a></li>
+                                                <li><a href="/en/doc/29.0.0/">29.0.0</a></li>
+                                                <li><a href="/en/doc/28.0.0/">28.0.0</a></li>
+                                                <li><a href="/en/doc/27.0.0/">27.0.0</a></li>
+                                                <li><a href="/en/doc/26.0.0/">26.0.0</a></li>
+                                                <li><a href="/en/doc/25.0.0/">25.0.0</a></li>
+                                                <li><a href="/en/doc/24.0.0/">24.0.0</a></li>
+                                                <li><a href="/en/doc/23.0.0/">23.0.0</a></li>
+                                                <li><a href="/en/doc/22.0.0/">22.0.0</a></li>
+                                                <li><a href="/en/doc/0.21.0/">0.21.0</a></li>
+                                                <li><a href="/en/doc/0.20.0/">0.20.0</a></li>
+                                                <li><a href="/en/doc/0.19.0/">0.19.0</a></li>
+                                                <li><a href="/en/doc/0.18.0/">0.18.0</a></li>
+                                                <li><a href="/en/doc/0.17.0/">0.17.0</a></li>
+                                                <li><a href="/en/doc/0.16.3/">0.16.3</a></li>
+                                                <li><a href="/en/doc/0.16.2/">0.16.2</a></li>
+                                                <li><a href="/en/doc/0.16.1/">0.16.1</a></li>
+                                                <li><a href="/en/doc/0.16.0/">0.16.0</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:;">コンタクト</a>
+                            <ul>
+                                <li><a href="/ja/contact/">お問い合わせ</a></li>
+                                <li><a href="/ja/list/announcements/join/">お知らせ</a></li>
+                                <li><a href="/ja/twitter-impersonation">Xのなりすまし</a></li>
+                        </ul>
+                    </li>
+
+                <li id="langselect" class="lang">
+                    <select onchange="window.location=this.value;">
+                        <option value="">日本語</option>
+                        <option value="/en/releases/30.2/">English</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">&nbsp;</div>
+  <article class="page">
+    <h1>Bitcoin Core 30.2</h1>
+    <div class="article-wrap">
+      <p><strong>Bitcoin Core installation binaries can be downloaded from <a href="/en/download">bitcoincore.org</a> and the source-code is available from the <a href="https://github.com/bitcoin/bitcoin">Bitcoin Core</a> source repository.</strong></p>
+
+<h1 id="v302-リリースノート">v30.2 リリースノート</h1>
+
+<p>Bitcoin Core バージョン 30.2 は以下から入手可能です:</p>
+
+<p><a href="https://bitcoincore.org/bin/bitcoin-core-30.2/">https://bitcoincore.org/bin/bitcoin-core-30.2/</a></p>
+
+<p>このリリースには、新しい機能およびさまざまなバグ修正とパフォーマンスの改善および更新された翻訳が含まれています。</p>
+
+<p>バグの報告にはGitHubのIssue Trackerを使用してください:</p>
+
+<p><a href="https://github.com/bitcoin/bitcoin/issues">https://github.com/bitcoin/bitcoin/issues</a></p>
+
+<p>セキュリティやアップデートの通知を受け取りたい場合は、以下に登録してください:</p>
+
+<p><a href="https://bitcoincore.org/en/list/announcements/join/">https://bitcoincore.org/en/list/announcements/join/</a></p>
+
+<h1 id="how-to-upgrade">アップグレード方法</h1>
+
+<p>旧バージョンを起動している場合はシャットダウンしてください。
+完全にシャットダウンするのを待ってから（数分かかる場合があります）、
+Windowsの場合はインストーラーを実行、Macの場合は<code class="language-plaintext highlighter-rouge">/Applications/Bitcoin-Qt</code>を上書き、
+Linuxの場合は<code class="language-plaintext highlighter-rouge">bitcoind</code>/<code class="language-plaintext highlighter-rouge">bitcoin-qt</code>を上書きしてください。</p>
+
+<p>EOLに達したBitcoin Coreのバージョンから直接アップグレードすることは可能ですが、
+データディレクトリを移行する必要がある場合は時間がかかる可能性があります。
+Bitcoin Coreの旧ウォレットバージョンが一般的にサポートされます。</p>
+
+<h1 id="compatibility">互換性</h1>
+
+<p>Bitcoin CoreはLinuxカーネル3.17以降やmacOS 13以降、Windows 10以降を使用している
+オペレーティングシステムでサポートされ、広範囲にテストされています。
+Bitcoin Coreは他のほとんどのUNIXライクなシステムでも動作するはずですが、
+それらの環境では頻繁にテストされていません。
+サポートされていないシステムでBitcoin Coreを使用するのはお勧めできません。</p>
+
+<h1 id="notable-changes">主な変更点</h1>
+
+<h3 id="wallet">ウォレット</h3>
+
+<ul>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34156">#34156</a> wallet: fix unnamed legacy wallet migration failure</li>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34215">#34215</a> wallettool: fix unnamed createfromdump failure walletsdir deletion</li>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34221">#34221</a> test: migration, avoid backup name mismatch in default_wallet_failure</li>
+</ul>
+
+<h3 id="ipc">IPC</h3>
+
+<ul>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/33511">#33511</a> init: Fix Ctrl-C shutdown hangs during wait calls</li>
+</ul>
+
+<h3 id="build">ビルド</h3>
+
+<ul>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/33950">#33950</a> guix: reduce allowed exported symbols</li>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34107">#34107</a> build: Update minimum required Boost version</li>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34227">#34227</a> guix: Fix osslsigncode tests</li>
+</ul>
+
+<h3 id="test">テスト</h3>
+
+<ul>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34137">#34137</a> test: Avoid hard time.sleep(1) in feature_init.py</li>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34226">#34226</a> wallet: test: Relative wallet failed migration cleanup</li>
+</ul>
+
+<h3 id="fuzz">ファジング</h3>
+
+<ul>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34091">#34091</a> fuzz: doc: remove any mention to address_deserialize_v2</li>
+</ul>
+
+<h3 id="doc">ドキュメント</h3>
+
+<ul>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34182">#34182</a> doc: Update OpenBSD Build Guide</li>
+</ul>
+
+<h3 id="misc">その他</h3>
+
+<ul>
+  <li><a href="https://github.com/bitcoin/bitcoin/pull/34174">#34174</a> doc: update copyright year to 2026</li>
+</ul>
+
+<h1 id="credit">クレジット</h1>
+
+<p>このリリースに直接貢献されたみなさん、ありがとうございます:</p>
+
+<ul>
+  <li>Ava Chow</li>
+  <li>brunoerg</li>
+  <li>davidgumberg</li>
+  <li>fanquake</li>
+  <li>furszy</li>
+  <li>Hennadii Stepanov</li>
+  <li>MarcoFalke</li>
+  <li>Ryan Ofsky</li>
+</ul>
+
+<p><a href="https://explore.transifex.com/bitcoin/bitcoin/">Transifex</a>での翻訳を手伝ってくれたみなさんもありがとうございます。</p>
+
+
+
+      <footer role="contentinfo">
+        <p class="byline">
+          <strong>Bitcoin Core 30.2</strong>
+          was published on
+          <time class="dt-published" datetime="2026-01-10T00:00:00+00:00">
+            January 10, 2026</time>.
+        </p>
+      </footer>
+
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#index -->
+
+<div class="footer-wrap">
+  <footer>
+    <div>
+    <span>
+        <a href="https://x.com/bitcoincoreorg" target="_blank" class="">X</a><br />
+        <a href="/en/legal/">Legal</a> | <a href="/en/legal/privacy">Privacy Policy</a> | <a href="/ja/rss/">RSS <img src="/assets/images/rss-24x24.png" alt="rss feeds" width="14" height="14"></a>
+    </span>
+</div>
+<div>
+    <img src="/assets/images/bitcoin_core_logo.png" alt="bitcoin core logo" width="160"><br />
+    <span class="copyright">&copy; 2026 Bitcoin Core</span>
+</div>
+
+<link rel="stylesheet" href="/assets/css/fonts.css">
+
+  </footer>
+
+</div><!-- /.footer-wrap -->
+
+<script src="/assets/js/scripts.js"></script>
+
+
+</body>
+</html>

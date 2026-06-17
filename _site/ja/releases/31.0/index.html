@@ -1,0 +1,553 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="ja"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="ja"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+<!-- source: '_posts/ja/releases/2026-04-19-release-31.0.md' -->
+<!-- name: 'release-31.0' -->
+<!-- version:  -->
+<!-- translated:  -->
+<meta charset="utf-8">
+
+<title>Bitcoin Core :: Bitcoin Core 31.0</title>
+<meta name="description" content="Bitcoin Core 31.0">
+<meta name="keywords" content="">
+<meta http-equiv="onion-location" content="http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/ja/releases/31.0/" />
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Bitcoin Core 31.0">
+<meta name="twitter:description" content="Bitcoin Core 31.0">
+<meta name="twitter:site" content="@bitcoincoreorg">
+<meta name="twitter:creator" content="@bitcoincoreorg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="ja">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bitcoin Core 31.0">
+<meta property="og:description" content="Bitcoin Core 31.0">
+<meta property="og:url" content="https://bitcoincore.org/ja/releases/31.0/">
+<meta property="og:site_name" content="Bitcoin Core">
+
+<meta property="og:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+
+
+<link rel="alternate" hreflang="ja" href="https://bitcoincore.org/ja/releases/31.0/" />
+<link rel="canonical" href="https://bitcoincore.org/ja/releases/31.0/">
+<link href="https://bitcoincore.org/ja/feed.xml" type="application/atom+xml" rel="alternate" title="Bitcoin Core Blog XML Feed">
+<link href="https://bitcoincore.org/ja/rss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Blog RSS Feed">
+<link href="https://bitcoincore.org/ja/meetingrss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Meeting RSS Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+
+<!-- Icons -->
+<link rel="shortcut icon" href="/assets/images/favicon.ico"><!-- 16x16 -->
+<link rel="shortcut icon" href="/assets/images/favicon.png"><!-- 32x32 -->
+<link rel="apple-touch-icon-precomposed" href="/assets/images/apple-touch-icon-precomposed.png"><!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/apple-touch-icon-72x72-precomposed.png"><!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/apple-touch-icon-114x114-precomposed.png"><!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-144x144-precomposed.png"><!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+
+<!-- Hide Searchbar if nojs -->
+<noscript>
+  <style>
+      #searchbar { display:none; }
+  </style>
+</noscript>
+
+</head>
+
+<body class="page">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+    <div class="site-name">
+        <a href="/ja/"><img src="/assets/images/bitcoin_core_logo_colored_reversed.png" alt="bitcoin core logo"></a>
+    </div><!-- /.site-name -->
+    <div class="top-navigation">
+        <nav role="navigation" id="site-nav" class="nav">
+            <ul>
+                    <li><a href="/ja/about/">概要</a></li>
+                    <li><a href="/ja/download/">ダウンロード</a></li>
+                    <li><a href="/ja/blog/">ブログ</a></li>
+                    <li><a href="/ja/releases/">リリース</a></li>
+                    <li><a href="/ja/security-advisories/">セキュリティアドバイザリ</a></li>
+                    <li><a href="javascript:;">開発</a>
+                            <ul>
+                                <li><a href="/ja/contribute/">貢献</a></li>
+                                <li><a href="/ja/faq/contributing-code/">コードの貢献</a></li>
+                                <li><a href="/ja/meetings/">ミーティング</a></li>
+                                <li><a href="/ja/lifecycle">ライフサイクル</a></li>
+                            <li>
+                                        <a href="/en/doc/">RPC Docs</a>
+                                <ul>
+                                                <li><a href="/en/doc/30.0.0/">30.0.0</a></li>
+                                                <li><a href="/en/doc/29.0.0/">29.0.0</a></li>
+                                                <li><a href="/en/doc/28.0.0/">28.0.0</a></li>
+                                                <li><a href="/en/doc/27.0.0/">27.0.0</a></li>
+                                                <li><a href="/en/doc/26.0.0/">26.0.0</a></li>
+                                                <li><a href="/en/doc/25.0.0/">25.0.0</a></li>
+                                                <li><a href="/en/doc/24.0.0/">24.0.0</a></li>
+                                                <li><a href="/en/doc/23.0.0/">23.0.0</a></li>
+                                                <li><a href="/en/doc/22.0.0/">22.0.0</a></li>
+                                                <li><a href="/en/doc/0.21.0/">0.21.0</a></li>
+                                                <li><a href="/en/doc/0.20.0/">0.20.0</a></li>
+                                                <li><a href="/en/doc/0.19.0/">0.19.0</a></li>
+                                                <li><a href="/en/doc/0.18.0/">0.18.0</a></li>
+                                                <li><a href="/en/doc/0.17.0/">0.17.0</a></li>
+                                                <li><a href="/en/doc/0.16.3/">0.16.3</a></li>
+                                                <li><a href="/en/doc/0.16.2/">0.16.2</a></li>
+                                                <li><a href="/en/doc/0.16.1/">0.16.1</a></li>
+                                                <li><a href="/en/doc/0.16.0/">0.16.0</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:;">コンタクト</a>
+                            <ul>
+                                <li><a href="/ja/contact/">お問い合わせ</a></li>
+                                <li><a href="/ja/list/announcements/join/">お知らせ</a></li>
+                                <li><a href="/ja/twitter-impersonation">Xのなりすまし</a></li>
+                        </ul>
+                    </li>
+
+                <li id="langselect" class="lang">
+                    <select onchange="window.location=this.value;">
+                        <option value="">日本語</option>
+                        <option value="/en/releases/31.0/">English</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">&nbsp;</div>
+  <article class="page">
+    <h1>Bitcoin Core 31.0</h1>
+    <div class="article-wrap">
+      <p><strong>Bitcoin Core installation binaries can be downloaded from <a href="/en/download">bitcoincore.org</a> and the source-code is available from the <a href="https://github.com/bitcoin/bitcoin">Bitcoin Core</a> source repository.</strong></p>
+
+<h1 id="v310-リリースノート">v31.0 リリースノート</h1>
+
+<p>Bitcoin Core バージョン 31.0 は以下から入手可能です:</p>
+
+<p><a href="https://bitcoincore.org/bin/bitcoin-core-31.0/">https://bitcoincore.org/bin/bitcoin-core-31.0/</a></p>
+
+<p>このリリースには、新しい機能やさまざまなバグ修正とパフォーマンスの改善および更新された翻訳が含まれています。</p>
+
+<p>バグの報告にはGitHubのIssue Trackerを使用してください:</p>
+
+<p><a href="https://github.com/bitcoin/bitcoin/issues">https://github.com/bitcoin/bitcoin/issues</a></p>
+
+<p>セキュリティやアップデートの通知を受け取りたい場合は、以下に登録してください:</p>
+
+<p><a href="https://bitcoincore.org/en/list/announcements/join/">https://bitcoincore.org/en/list/announcements/join/</a></p>
+
+<h1 id="how-to-upgrade">アップグレード方法</h1>
+
+<p>旧バージョンを起動している場合はシャットダウンしてください。
+完全にシャットダウンするのを待ってから（数分かかる場合があります）、
+Windowsの場合はインストーラーを実行、Macの場合は<code class="language-plaintext highlighter-rouge">/Applications/Bitcoin-Qt</code>を上書き、
+Linuxの場合は<code class="language-plaintext highlighter-rouge">bitcoind</code>/<code class="language-plaintext highlighter-rouge">bitcoin-qt</code>を上書きしてください。</p>
+
+<p>EOLに達したBitcoin Coreのバージョンから直接アップグレードすることは可能ですが、
+データディレクトリを移行する必要がある場合は時間がかかる可能性があります。
+Bitcoin Coreの旧ウォレットバージョンが一般的にサポートされます。</p>
+
+<h1 id="compatibility">互換性</h1>
+
+<p>Bitcoin CoreはLinuxカーネル3.17以降やmacOS 14以降、Windows 10（バージョン 1903）以降を使用している
+オペレーティングシステムでサポートされ、広範囲にテストされています。
+Bitcoin Coreは他のほとんどのUNIXライクなシステムでも動作するはずですが、
+それらの環境では頻繁にテストされていません。
+サポートされていないシステムでBitcoin Coreを使用するのはお勧めできません。</p>
+
+<h1 id="notable-changes">主な変更点</h1>
+
+<p><code class="language-plaintext highlighter-rouge">-dbcache</code>のデフォルト値が、4096 MiB以上のRAMを検出したシステムにおいて、
+450 MiBから1024 MiBに引き上げられました。これによりパフォーマンスが向上しますが、メモリ使用量は増加します。
+一部のシステム（たとえばコンテナ内で動作している場合）では、検出されるRAMが実際に利用可能なメモリを超えることがあり、
+メモリ不足（OOM）を引き起こす可能性があります。従来の挙動を維持するには、
+<code class="language-plaintext highlighter-rouge">-dbcache=450</code>を設定してください。低メモリシステム向けのガイドについては、
+<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/reduce-memory.md">reduce-memory.md</a>
+をご覧ください。(<a href="https://github.com/bitcoin/bitcoin/pull/34692">#34692</a>)</p>
+
+<h2 id="mempool">Mempool</h2>
+
+<p>mempoolは新しい設計「クラスターmempool」で再実装されました。これにより、
+ブロックテンプレートの構築、トランザクションの排除、トランザクションのリレーおよび、
+置換トランザクション（RBF）の検証における意思決定が改善されます。
+ほとんどの変更はユーザーから見て透過的ですが、以下のいくつかの挙動変更があります:</p>
+
+<ul>
+  <li>
+    <p>mempoolは、祖先（ancestor）や子孫（descendant）のサイズ/個数制限を強制しなくなりました。
+代わりに、mempool内の連結コンポーネント、すなわちクラスターを対象とする2つの新しいデフォルトポリシー制限が導入されました。
+クラスターは最大64個のトランザクション、かつ仮想サイズで最大101kBに制限されます。
+mempool内で親子関係の任意の組み合わせによって相互に接続されているトランザクションは、
+同一クラスターに属することになります。これらの制限はコマンドライン引数で上書き可能です。
+詳細は、拡張ヘルプ（<code class="language-plaintext highlighter-rouge">-help-debug</code>）をご覧ください。</p>
+  </li>
+  <li>
+    <p>mempool内において、トランザクションはマイニングされると予想される手数料率に基づいて順序付けされます。
+この時、一緒に含まれることになるトランザクションの集合全体、すなわち「チャンク」（例：
+親とその子、またはより複雑なトランザクションの部分集合）が考慮されます。この順序は、
+ブロックテンプレート構築のためのトランザクション選択、mempoolがいっぱいになった時の排除、
+ピアへのトランザクションリレー通知を実装するアルゴリズムで利用されます。</p>
+  </li>
+  <li>
+    <p>RBF（Replace-By-Fee）の検証ロジックが更新され、置換後のmempoolの手数料率ダイアグラムが
+置換前よりも厳密に改善される場合のみ、トランザクションの置換が受け入れられるようになりました。
+これにより、従来のRBFルールでは起こり得たmempoolの状態を悪化させる置換の既知のケースがすべて排除されます。
+単独トランザクション（それ自身のみがクラスターを構成するもの）の場合は、
+置換トランザクションの手数料と手数料率が元のものより高ければ十分です。詳細は、
+<a href="https://delvingbitcoin.org/t/an-overview-of-the-cluster-mempool-proposal/393#rbf-can-now-be-made-incentive-compatible-for-miners-11">delvingbitcoin.orgの投稿</a>
+をご覧ください。</p>
+  </li>
+  <li>
+    <p>2つの新しいRPCが追加されました: <code class="language-plaintext highlighter-rouge">getmempoolcluster</code>は指定したトランザクションと同じクラスターに属するトランザクション群を、
+その順序およびチャンクへのグルーピングと一緒に返します。<code class="language-plaintext highlighter-rouge">getmempoolfeeratediagram</code>は、
+mempool全体の手数料率ダイアグラムを返します。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">getmempoolentry</code>の出力に、チャンクサイズとチャンク手数料も含まれるようになりました。</p>
+  </li>
+  <li>
+    <p>mempoolのロジックから「CPFP Carveout」が削除されました。CPFP carveoutは、
+既に子孫の制限に達しているパッケージに対して追加の子トランザクションを1つだけ許可するものでしたが、
+その子が厳密に1つだけの祖先（パッケージのルート）を持ち、かつ小さい（10kvB以下）場合に限られていました。
+今後はクラスターの個数制限を回避することは何も許されません。
+同様の機能を必要とするスマートコントラクトのユースケースでは、
+TRUCトランザクションおよび兄弟の排除を代わりに採用することが期待されます。</p>
+  </li>
+  <li>
+    <p>その他の検討事項は<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/policy/mempool-terminology.md">doc/policy/mempool-terminology.md</a>
+および<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/policy/mempool-replacements.md">doc/policy/mempool-replacements.md</a>で確認できます。</p>
+  </li>
+</ul>
+
+<h2 id="p2p-and-network-changes">P2Pとネットワークの変更</h2>
+
+<ul>
+  <li>通常、ローカルトランザクションは、トランザクションのリレーを行う接続中のすべてのピアにブロードキャストされます。
+今回、<code class="language-plaintext highlighter-rouge">sendrawtransaction</code> RPCについて、このブロードキャストをTorまたはI2Pネットワーク経由のみに限定するように
+挙動を変更できるようになりました。この挙動を有効にするために、新しいブールオプション
+<code class="language-plaintext highlighter-rouge">-privatebroadcast</code>が追加されています。これにより、トランザクション発信者のプライバシーが
+以下の2つの面で改善されます:
+    <ol>
+      <li>発信者のIPアドレス（つまり地理情報）が受信者に知られることがない</li>
+      <li>発信者が互いに関連しない2つのトランザクションを送信した場合、
+それらをリンクできない。これは各トランザクションのブロードキャストに別の接続が使用されるためです。(<a href="https://github.com/bitcoin/bitcoin/pull/29415">#29415</a>)</li>
+    </ol>
+  </li>
+  <li>
+    <p>プライベートブロードキャストを参照・制御するための新しいRPCが追加されました:
+<code class="language-plaintext highlighter-rouge">getprivatebroadcastinfo</code>は、現在プライベートブロードキャスト中のトランザクションを報告し、
+<code class="language-plaintext highlighter-rouge">abortprivatebroadcast</code>は、条件に一致するトランザクションをプライベートブロードキャストキューから取り除きます。(<a href="https://github.com/bitcoin/bitcoin/pull/34329">#34329</a>)</p>
+  </li>
+  <li>
+    <p>1P1C（one-parent-one-child）パッケージリレーに参加するトランザクションにおいて、
+親トランザクションが<code class="language-plaintext highlighter-rouge">-minrelaytxfee</code>手数料率より低い手数料率（手数料ゼロでも可）であることが許容されるようになりました。
+これは28.0での変更を非TRUCトランザクションのパッケージにも拡張するものです。
+なお、一般的にパッケージの子トランザクションは別の未承認の親を持ち得ますが、
+それらは新しいパッケージをリレーする時点で既にmempool内に存在していなければなりません。(<a href="https://github.com/bitcoin/bitcoin/pull/33892">#33892</a>)</p>
+  </li>
+  <li>本リリースで初めてasmapデータが埋め込まれ、外部からファイルを取得することなくasmap機能を使用できるようになりました。
+埋め込まれたマップは<a href="https://github.com/bitcoin/bitcoin/pull/34696">2026-03-05に作成されたもの</a>です。データが利用可能になったものの、
+このオプションはデフォルトで無効なままです。ピアのASN（ISP/ホスティング事業者の識別子）を
+netgroupのバケッティングに利用し、ピアセットの多様性を高めるためには、引き続きユーザーが明示的に
+<code class="language-plaintext highlighter-rouge">-asmap</code>または<code class="language-plaintext highlighter-rouge">-asmap=1</code>を設定する必要があります。</li>
+</ul>
+
+<h2 id="updated-rpcs">RPCの更新</h2>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">gettxspendingprevout</code>に2つの新しいオプション引数<code class="language-plaintext highlighter-rouge">mempool_only</code>と<code class="language-plaintext highlighter-rouge">return_spending_tx</code>が追加されました。
+<code class="language-plaintext highlighter-rouge">mempool_only</code>がtrueの場合、<code class="language-plaintext highlighter-rouge">txospenderindex</code>が利用可能であってもスキャンはmempoolに限定されます。
+<code class="language-plaintext highlighter-rouge">return_spending_tx</code>がtrueの場合、完全な支払いトランザクションが返されます。さらに、
+<code class="language-plaintext highlighter-rouge">txospenderindex</code>が利用可能で、承認済みの支払いトランザクションが見つかった場合、
+そのブロックハッシュが返されます。(<a href="https://github.com/bitcoin/bitcoin/pull/24539">#24539</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">getpeerinfo</code> RPCは、設定オプション<code class="language-plaintext highlighter-rouge">-deprecatedrpc=startingheight</code>を使用しない限り、
+<code class="language-plaintext highlighter-rouge">startingheight</code>フィールドを返さなくなりました。
+<code class="language-plaintext highlighter-rouge">startingheight</code>フィールドは次のメジャーリリースで完全に削除されます。(<a href="https://github.com/bitcoin/bitcoin/pull/34197">#34197</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">getblock</code> RPCは、冗長度レベル1, 2, 3において<code class="language-plaintext highlighter-rouge">coinbase_tx</code>オブジェクトを返すようになりました。
+これには、<code class="language-plaintext highlighter-rouge">version</code>、<code class="language-plaintext highlighter-rouge">locktime</code>、<code class="language-plaintext highlighter-rouge">sequence</code>、<code class="language-plaintext highlighter-rouge">coinbase</code>、<code class="language-plaintext highlighter-rouge">witness</code>が含まれます。
+これにより、冗長度2以上でトランザクションデータ全体を取得することなく、
+コインベーストランザクションのプロパティを効率的にクエリできます。(<a href="https://github.com/bitcoin/bitcoin/pull/34512">#34512</a>)</p>
+  </li>
+</ul>
+
+<h2 id="rest-api">REST API</h2>
+
+<ul>
+  <li>新しいREST APIエンドポイント(<code class="language-plaintext highlighter-rouge">/rest/blockpart/&lt;BLOCK-HASH&gt;.&lt;bin|hex&gt;?offset=&lt;OFFSET&gt;&amp;size=&lt;SIZE&gt;</code>)が導入され、
+ブロック<code class="language-plaintext highlighter-rouge">&lt;BLOCK-HASH&gt;</code>から指定バイトの範囲を効率的に取得できるようになりました。(<a href="https://github.com/bitcoin/bitcoin/pull/33657">#33657</a>)</li>
+</ul>
+
+<h2 id="build-system">ビルドシステム</h2>
+
+<ul>
+  <li>サポート対象のClangコンパイラの最低バージョンが17.0に引き上げられました。(<a href="https://github.com/bitcoin/bitcoin/pull/33555">#33555</a>)</li>
+  <li>サポート対象のGCCコンパイラの最低バージョンが12.1に引き上げられました。(<a href="https://github.com/bitcoin/bitcoin/pull/33842">#33842</a>)</li>
+</ul>
+
+<h2 id="updated-settings">設定の更新</h2>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-paytxfee</code>起動オプションおよび<code class="language-plaintext highlighter-rouge">settxfee</code> RPCは、Bitcoin Core 30.0で非推奨とされた後、
+本リリースで削除されました。これらはユーザーがウォレットトランザクションに対して
+静的な手数料を設定できるようにするものでしたが、過払いや過小払いを引き起こす可能性がありました。
+ユーザーは代わりに手数料推定に依存するか、<code class="language-plaintext highlighter-rouge">fundrawtransaction</code>、<code class="language-plaintext highlighter-rouge">sendtoaddress</code>、<code class="language-plaintext highlighter-rouge">send</code>、
+<code class="language-plaintext highlighter-rouge">sendall</code>、<code class="language-plaintext highlighter-rouge">sendmany</code>などのRPCで<code class="language-plaintext highlighter-rouge">fee_rate</code>引数を使ってトランザクション毎に手数料率を指定してください。(<a href="https://github.com/bitcoin/bitcoin/pull/32138">#32138</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-asmap</code>または<code class="language-plaintext highlighter-rouge">-asmap=1</code>を指定すると、外部ファイルではなく埋め込みのasmapデータがロードされるようになりました。
+これまでのリリースでは、<code class="language-plaintext highlighter-rouge">-asmap</code>をファイル名無しで指定すると、<code class="language-plaintext highlighter-rouge">ip_asn.map</code>データファイルのロードが試行されていました。
+今後外部のasmapファイルのロードには常に<code class="language-plaintext highlighter-rouge">-asmap=ip_asn.map</code>のように明示的なファイル名の指定が必要です。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-maxorphantx</code>起動オプションが削除されました。これは以前から非推奨で、
+v30.0以降は効果のないものになっていました。(<a href="https://github.com/bitcoin/bitcoin/pull/33872">#33872</a>)</p>
+  </li>
+  <li>
+    <p>ネットワーク指定として<code class="language-plaintext highlighter-rouge">tor</code>が削除されました。これは、v0.17.0での<code class="language-plaintext highlighter-rouge">onion</code>への置換により非推奨とされていたものです。(<a href="https://github.com/bitcoin/bitcoin/pull/34031">#34031</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-logsourcelocations</code>が有効な場合、ログ出力には関数シグネチャ全体ではなく関数名のみが含まれるようになりました。(<a href="https://github.com/bitcoin/bitcoin/pull/34088">#34088</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">4096</code> MiB以上のRAMを検出したシステムにおいて、<code class="language-plaintext highlighter-rouge">-dbcache</code>のデフォルト値が<code class="language-plaintext highlighter-rouge">450</code> MiBから
+<code class="language-plaintext highlighter-rouge">1024</code> MiBに引き上げられました。これはパフォーマンスの向上となりますが、より多くのメモリを使用します。
+従来の挙動を維持するには<code class="language-plaintext highlighter-rouge">-dbcache=450</code>を設定してください。(<a href="https://github.com/bitcoin/bitcoin/pull/34692">#34692</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sendrawtransaction</code>でプライベートブロードキャストの挙動を有効にするための<code class="language-plaintext highlighter-rouge">-privatebroadcast</code>が追加されました。</p>
+  </li>
+</ul>
+
+<h2 id="new-settings">新しい設定</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-txospenderindex</code>を有効にすると、トランザクションアウトプットの使用に関するインデックスが作成されます。
+これが存在する場合、支払いトランザクションがmempool内に見つからなかったときに、
+<code class="language-plaintext highlighter-rouge">gettxspendingprevout</code>によってスキャンされます。(<a href="https://github.com/bitcoin/bitcoin/pull/24539">#24539</a>)</li>
+</ul>
+
+<h2 id="gui-changes">GUIの変更</h2>
+
+<ul>
+  <li>
+    <p>GUIがQt 6.8にアップデートされました。(<a href="https://github.com/bitcoin/bitcoin/pull/34650">#34650</a>)</p>
+  </li>
+  <li>
+    <p>セキュリティとプライバシーの向上のため、<code class="language-plaintext highlighter-rouge">createwallet</code>、<code class="language-plaintext highlighter-rouge">createwalletdescriptor</code>、
+<code class="language-plaintext highlighter-rouge">migratewallet</code>コマンドがコンソール履歴からフィルタされるようになりました。(<a href="https://github.com/bitcoin-core/gui/pull/901">gui#901</a>)</p>
+  </li>
+  <li>
+    <p>Restore Wallet（ウォレットの復元）ダイアログで、復元するウォレット名が空の場合にエラーメッセージを表示するようになりました。(<a href="https://github.com/bitcoin-core/gui/pull/924">gui#924</a>)</p>
+  </li>
+</ul>
+
+<h2 id="fee-estimation">手数料推定</h2>
+
+<p>Bitcoin Coreの手数料推定器の最小手数料率バケットが、<strong>1 sat/vB</strong>から<strong>0.1 sat/vB</strong>に更新されました。
+これはノードのデフォルトの<code class="language-plaintext highlighter-rouge">minrelaytxfee</code>と一致します。これにより、指定された承認目標に対して、
+十分なデータを持つ、追跡対象の最小バケットが1 sat/vB未満であった場合、その平均値が手数料率の推定値として返されることになります。</p>
+
+<p>この変更により、ノードを再起動すると、<code class="language-plaintext highlighter-rouge">fee_estimates.dat</code>に以前保存されていた推定値は無効となり、
+手数料推定器は統計の追跡を新たに開始します。</p>
+
+<h2 id="ipc-interface">IPCインターフェース</h2>
+
+<ul>
+  <li>IPCマイニングインターフェースは、マイニングクライアントが最新の<code class="language-plaintext highlighter-rouge">mining.capnp</code>スキーマを使用することを必須としました。
+古いスキーマに対してビルドされたクライアントは、<code class="language-plaintext highlighter-rouge">Init.makeMining</code>呼び出し時に失敗し、
+古いマイニングインターフェースはサポートされない旨のRPCエラーを受け取ります。
+マイニングクライアントは動作を継続するために、最新スキーマへの更新とバインディングの再生成を行う必要があります。(<a href="https://github.com/bitcoin/bitcoin/pull/34568">#34568</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.createNewBlock</code>に<code class="language-plaintext highlighter-rouge">cooldown</code>の挙動（デフォルトで有効）が追加されました。
+これはIBDの完了および先端への追いつきを待機するものです。通常、これにより起動時のテンプレートの大量発生を防ぎますが、
+保証はされません。(<a href="https://github.com/bitcoin/bitcoin/pull/34184">#34184</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.interrupt()</code>を使って<code class="language-plaintext highlighter-rouge">Mining.waitTipChanged</code>および<code class="language-plaintext highlighter-rouge">Mining.createNewBlock</code>を中断できます。(<a href="https://github.com/bitcoin/bitcoin/pull/34184">#34184</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.createNewBlock</code>および<code class="language-plaintext highlighter-rouge">Mining.checkBlock</code>は、<code class="language-plaintext highlighter-rouge">context</code>パラメーターを必須とするようになりました。</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.waitTipChanged</code>は、クライアントが省略した場合に、デフォルトの<code class="language-plaintext highlighter-rouge">timeout</code>（実質的に無限、<code class="language-plaintext highlighter-rouge">maxDouble</code>）を持つようになりました。</li>
+  <li><code class="language-plaintext highlighter-rouge">BlockTemplate.getCoinbaseTx()</code>は、素のbyteの代わりに構造化された<code class="language-plaintext highlighter-rouge">CoinbaseTx</code>を返すようになりました。</li>
+  <li><code class="language-plaintext highlighter-rouge">BlockTemplate.getCoinbaseCommitment()</code>および
+<code class="language-plaintext highlighter-rouge">BlockTemplate.getWitnessCommitmentIndex()</code>は削除されました。</li>
+  <li>マイニング関連のオプション構造体（例：<code class="language-plaintext highlighter-rouge">BlockCreateOptions</code>、<code class="language-plaintext highlighter-rouge">BlockWaitOptions</code>、
+<code class="language-plaintext highlighter-rouge">BlockCheckOptions</code>）について、Cap’n Protoのデフォルト値が対応するC++のデフォルト値と一致するよう更新されました。</li>
+</ul>
+
+<h1 id="credits">クレジット</h1>
+
+<p>本リリースに直接貢献してくれた皆様に感謝します:</p>
+
+<ul>
+  <li>0xb10c</li>
+  <li>Alexander Wiederin</li>
+  <li>Alfonso Roman Zubeldia</li>
+  <li>amisha</li>
+  <li>ANAVHEOBA</li>
+  <li>Andrew Toth</li>
+  <li>Anthony Towns</li>
+  <li>Antoine Poinsot</li>
+  <li>ANtutov</li>
+  <li>Anurag chavan</li>
+  <li>Ava Chow</li>
+  <li>bensig</li>
+  <li>Ben Westgate</li>
+  <li>billymcbip</li>
+  <li>b-l-u-e</li>
+  <li>Brandon Odiwuor</li>
+  <li>brunoerg</li>
+  <li>Bruno Garcia</li>
+  <li>Calin Culianu</li>
+  <li>Carl Dong</li>
+  <li>Chandra Pratap</li>
+  <li>Chris Stewart</li>
+  <li>Coder</li>
+  <li>Cory Fields</li>
+  <li>da1sychain</li>
+  <li>Daniela Brozzoni</li>
+  <li>Daniel Pfeifer</li>
+  <li>David Gumberg</li>
+  <li>dergoegge</li>
+  <li>Dmitry Goncharov</li>
+  <li>Enoch Azariah</li>
+  <li>Eugene Siegel</li>
+  <li>Fabian Jahr</li>
+  <li>fanquake</li>
+  <li>Fibonacci747</li>
+  <li>flack</li>
+  <li>frankomosh</li>
+  <li>furszy</li>
+  <li>glozow</li>
+  <li>Greg Sanders</li>
+  <li>Hao Xu</li>
+  <li>Hennadii Stepanov</li>
+  <li>Henry Romp</li>
+  <li>Hodlinator</li>
+  <li>ismaelsadeeq</li>
+  <li>janb84</li>
+  <li>jayvaliya</li>
+  <li>joaonevess</li>
+  <li>John Moffett</li>
+  <li>Josh Doman</li>
+  <li>kevkevinpal</li>
+  <li>l0rinc</li>
+  <li>Luke Dashjr</li>
+  <li>Mara van der Laan</li>
+  <li>MarcoFalke</li>
+  <li>marcofleon</li>
+  <li>Martin Zumsande</li>
+  <li>Matthew Zipkin</li>
+  <li>Max Edwards</li>
+  <li>Murch</li>
+  <li>Musa Haruna</li>
+  <li>naiyoma</li>
+  <li>nervana21</li>
+  <li>Novo</li>
+  <li>optout</li>
+  <li>pablomartin4btc</li>
+  <li>Padraic Slattery</li>
+  <li>Pieter Wuille</li>
+  <li>Pol Espinasa</li>
+  <li>pythcoiner</li>
+  <li>rkrux</li>
+  <li>Robin David</li>
+  <li>Roman Zeyde</li>
+  <li>rustaceanrob</li>
+  <li>Ryan Ofsky</li>
+  <li>SatsAndSports</li>
+  <li>scgbckbone</li>
+  <li>Sebastian Falbesoner</li>
+  <li>sedited</li>
+  <li>seduless</li>
+  <li>Sergi Delgado Segura</li>
+  <li>Sjors Provoost</li>
+  <li>SomberNight</li>
+  <li>sstone</li>
+  <li>stickies-v</li>
+  <li>stratospher</li>
+  <li>stringintech</li>
+  <li>Suhas Daftuar</li>
+  <li>tboy1337</li>
+  <li>TheCharlatan</li>
+  <li>Tim Ruffing</li>
+  <li>Vasil Dimov</li>
+  <li>w0xlt</li>
+  <li>WakeTrainDev</li>
+  <li>Weixie Cui</li>
+  <li>willcl-ark</li>
+  <li>Woolfgm</li>
+  <li>yancy</li>
+  <li>Yash Bhutwala</li>
+  <li>yuvicc</li>
+  <li>zaidmstrr</li>
+</ul>
+
+<p>さらに<a href="https://explore.transifex.com/bitcoin/bitcoin/">Transifex</a>で翻訳を手伝ってくださった皆様にも感謝します。</p>
+
+
+
+      <footer role="contentinfo">
+        <p class="byline">
+          <strong>Bitcoin Core 31.0</strong>
+          was published on
+          <time class="dt-published" datetime="2026-04-19T00:00:00+00:00">
+            April 19, 2026</time>.
+        </p>
+      </footer>
+
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#index -->
+
+<div class="footer-wrap">
+  <footer>
+    <div>
+    <span>
+        <a href="https://x.com/bitcoincoreorg" target="_blank" class="">X</a><br />
+        <a href="/en/legal/">Legal</a> | <a href="/en/legal/privacy">Privacy Policy</a> | <a href="/ja/rss/">RSS <img src="/assets/images/rss-24x24.png" alt="rss feeds" width="14" height="14"></a>
+    </span>
+</div>
+<div>
+    <img src="/assets/images/bitcoin_core_logo.png" alt="bitcoin core logo" width="160"><br />
+    <span class="copyright">&copy; 2026 Bitcoin Core</span>
+</div>
+
+<link rel="stylesheet" href="/assets/css/fonts.css">
+
+  </footer>
+
+</div><!-- /.footer-wrap -->
+
+<script src="/assets/js/scripts.js"></script>
+
+
+</body>
+</html>

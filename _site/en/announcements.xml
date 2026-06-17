@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Bitcoin Core</title>
+        <description></description>
+        <link>https://bitcoincore.org</link>
+        <atom:link href="https://bitcoincore.org/en/announcements.xml" rel="self" type="application/rss+xml" />
+        
+        
+        
+        
+        <item>
+            <title>CVE-2024-52911 - Script Interpreter Remote Crash</title>
+            <description>&lt;p&gt;After Bitcoin Core 0.14.0 and before Bitcoin Core 29.0, validating a specially-crafted block may
+cause the node to access previously freed memory.&lt;/p&gt;
+
+&lt;p&gt;During validation, necessary data required for checking inputs for each transaction is
+pre-calculated and cached. For specially crafted invalid blocks, it was possible for this data to be
+destroyed while it was still being accessed by a background validation thread. An attacker capable
+of mining a block with sufficient proof-of-work could have exploited this to crash victim nodes.
+Because of the nature of use-after-free bugs, it is possible that the crash could have been used for
+remote code execution, though constraints on the input (block) data make this unlikely.&lt;/p&gt;
+
+&lt;p&gt;This issue is considered &lt;strong&gt;High&lt;/strong&gt; severity.&lt;/p&gt;
+
+&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;By default, script validation for new blocks is dispatched to background threads via a vector of
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CScriptCheck&lt;/code&gt; functors. Each CScriptCheck holds a pointer to a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PrecomputedTransactionData&lt;/code&gt; object
+which stores some data needed by each input in the transaction. Because it stores a pointer and not
+the data itself, care must be taken to ensure that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PrecomputedTransactionData&lt;/code&gt; outlives the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CScriptCheck&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The script checks lifetime is enforced by an RAII class, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CCheckQueueControl&lt;/code&gt;. However, the control
+is intantiated before the precomputed transaction data. Because local objects in C++ are
+&lt;a href=&quot;https://isocpp.org/wiki/faq/dtors#order-dtors-for-locals&quot;&gt;destructed in reverse order of construction&lt;/a&gt;,
+this means the vector of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PrecomputedTransactionData&lt;/code&gt; is destroyed &lt;em&gt;before&lt;/em&gt; the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CCheckQueueControl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is not an issue when the block is valid, as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CCheckQueueControl::Wait()&lt;/code&gt; will be called before
+the function returns and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PrecomputedTransactionData&lt;/code&gt; gets destroyed. However, in case of an
+early return (when a separate check fails) a background script thread may read the precomputed
+transaction data after it was destroyed. An attacker could exploit this to crash victim nodes at the
+expense of a valid PoW at tip.&lt;/p&gt;
+
+&lt;h2 id=&quot;attribution&quot;&gt;Attribution&lt;/h2&gt;
+
+&lt;p&gt;Cory Fields (MIT DCI) discovered this vulnerability and responsibly disclosed it in a detailed
+report containing a proof of concept for reproduction and a proposed mitigation.&lt;/p&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2024-11-02 Cory Fields privately reports the bug&lt;/li&gt;
+  &lt;li&gt;2024-11-06 Pieter Wuille pushes a covert fix to already open &lt;a href=&quot;https://github.com/bitcoin/bitcoin/pull/31112&quot;&gt;PR
+#31112&lt;/a&gt; which works around the issue by removing
+the early returns&lt;/li&gt;
+  &lt;li&gt;2024-12-03 PR #31112 is merged&lt;/li&gt;
+  &lt;li&gt;2025-04-12 Bitcoin Core version 29.0 is released with a fix&lt;/li&gt;
+  &lt;li&gt;2026-04-19 The last vulnerable Bitcoin Core version (28.x) goes end of life&lt;/li&gt;
+  &lt;li&gt;2026-05-05 Public disclosure.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+            <pubDate>Tue, 05 May 2026 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2026/05/05/disclose-cve-2024-52911/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2026/05/05/disclose-cve-2024-52911/</guid>
+        </item>
+        
+        <item>
+            <title>Bitcoin Core 31.0 released</title>
+            <description>&lt;p&gt;Bitcoin Core version 31.0 is now available for &lt;a href=&quot;/en/download&quot;&gt;download&lt;/a&gt;.  See the &lt;a href=&quot;/en/releases/31.0/&quot;&gt;release notes&lt;/a&gt; for more information about the
+bug fixes in this release.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions, please stop by the #bitcoin IRC chatroom
+(&lt;a href=&quot;irc://irc.libera.chat/bitcoin&quot;&gt;IRC&lt;/a&gt;, &lt;a href=&quot;https://web.libera.chat/#bitcoin&quot;&gt;web&lt;/a&gt;) and we’ll do our best to help you.&lt;/p&gt;
+
+</description>
+            <pubDate>Sun, 19 Apr 2026 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2026/04/19/release-31.0/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2026/04/19/release-31.0/</guid>
+        </item>
+        
+        <item>
+            <title>Bitcoin Core 28.4 released</title>
+            <description>&lt;p&gt;Bitcoin Core version 28.4 is now available for &lt;a href=&quot;/en/download&quot;&gt;download&lt;/a&gt;.  See the &lt;a href=&quot;/en/releases/28.4/&quot;&gt;release notes&lt;/a&gt; for more information about the
+bug fixes in this release.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions, please stop by the #bitcoin IRC chatroom
+(&lt;a href=&quot;irc://irc.libera.chat/bitcoin&quot;&gt;IRC&lt;/a&gt;, &lt;a href=&quot;https://web.libera.chat/#bitcoin&quot;&gt;web&lt;/a&gt;) and we’ll do our best to help you.&lt;/p&gt;
+
+</description>
+            <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2026/03/18/release-28.4/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2026/03/18/release-28.4/</guid>
+        </item>
+        
+        <item>
+            <title>Bitcoin Core 29.3 released</title>
+            <description>&lt;p&gt;Bitcoin Core version 29.3 is now available for &lt;a href=&quot;/en/download&quot;&gt;download&lt;/a&gt;.  See the &lt;a href=&quot;/en/releases/29.3/&quot;&gt;release notes&lt;/a&gt; for more information about the
+bug fixes in this release.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions, please stop by the #bitcoin IRC chatroom
+(&lt;a href=&quot;irc://irc.libera.chat/bitcoin&quot;&gt;IRC&lt;/a&gt;, &lt;a href=&quot;https://web.libera.chat/#bitcoin&quot;&gt;web&lt;/a&gt;) and we’ll do our best to help you.&lt;/p&gt;
+
+</description>
+            <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2026/02/10/release-29.3/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2026/02/10/release-29.3/</guid>
+        </item>
+        
+        <item>
+            <title>Bitcoin Core 30.2 released</title>
+            <description>&lt;p&gt;Bitcoin Core version 30.2 is now available for &lt;a href=&quot;/en/download&quot;&gt;download&lt;/a&gt;.  See the &lt;a href=&quot;/en/releases/30.2/&quot;&gt;release notes&lt;/a&gt; for more information about the
+bug fixes in this release.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions, please stop by the #bitcoin IRC chatroom
+(&lt;a href=&quot;irc://irc.libera.chat/bitcoin&quot;&gt;IRC&lt;/a&gt;, &lt;a href=&quot;https://web.libera.chat/#bitcoin&quot;&gt;web&lt;/a&gt;) and we’ll do our best to help you.&lt;/p&gt;
+
+</description>
+            <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
+            <link>https://bitcoincore.org/en/2026/01/10/release-30.2/</link>
+            <guid isPermaLink="true">https://bitcoincore.org/en/2026/01/10/release-30.2/</guid>
+        </item>
+        
+    </channel>
+</rss>

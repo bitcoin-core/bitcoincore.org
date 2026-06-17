@@ -1,0 +1,607 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<!-- source: '_releases/31.0.md' -->
+<!-- name: 'release-31.0' -->
+<!-- version:  -->
+<!-- translated:  -->
+<meta charset="utf-8">
+
+<title>Bitcoin Core :: Bitcoin Core 31.0</title>
+<meta name="description" content="Bitcoin Core 31.0">
+<meta name="keywords" content="">
+<meta http-equiv="onion-location" content="http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/en/releases/31.0/" />
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Bitcoin Core 31.0">
+<meta name="twitter:description" content="Bitcoin Core 31.0">
+<meta name="twitter:site" content="@bitcoincoreorg">
+<meta name="twitter:creator" content="@bitcoincoreorg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bitcoin Core 31.0">
+<meta property="og:description" content="Bitcoin Core 31.0">
+<meta property="og:url" content="https://bitcoincore.org/en/releases/31.0/">
+<meta property="og:site_name" content="Bitcoin Core">
+
+<meta property="og:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+
+
+<link rel="alternate" hreflang="ja" href="https://bitcoincore.org/ja/releases/31.0/" />
+<link rel="canonical" href="https://bitcoincore.org/en/releases/31.0/">
+<link href="https://bitcoincore.org/en/feed.xml" type="application/atom+xml" rel="alternate" title="Bitcoin Core Blog XML Feed">
+<link href="https://bitcoincore.org/en/rss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Blog RSS Feed">
+<link href="https://bitcoincore.org/en/meetingrss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Meeting RSS Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+
+<!-- Icons -->
+<link rel="shortcut icon" href="/assets/images/favicon.ico"><!-- 16x16 -->
+<link rel="shortcut icon" href="/assets/images/favicon.png"><!-- 32x32 -->
+<link rel="apple-touch-icon-precomposed" href="/assets/images/apple-touch-icon-precomposed.png"><!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/apple-touch-icon-72x72-precomposed.png"><!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/apple-touch-icon-114x114-precomposed.png"><!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-144x144-precomposed.png"><!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+
+<!-- Hide Searchbar if nojs -->
+<noscript>
+  <style>
+      #searchbar { display:none; }
+  </style>
+</noscript>
+
+</head>
+
+<body class="page">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+    <div class="site-name">
+        <a href="/"><img src="/assets/images/bitcoin_core_logo_colored_reversed.png" alt="bitcoin core logo"></a>
+    </div><!-- /.site-name -->
+    <div class="top-navigation">
+        <nav role="navigation" id="site-nav" class="nav">
+            <ul>
+                    <li><a href="/en/about/">About</a></li>
+                    <li><a href="/en/download">Download</a></li>
+                    <li><a href="/en/blog/">blog</a></li>
+                    <li><a href="/en/releases/">releases</a></li>
+                    <li><a href="/en/security-advisories/">Security Advisories</a></li>
+                    <li><a href="javascript:;">Development</a>
+                            <ul>
+                                <li><a href="/en/contribute/">contribute</a></li>
+                                <li><a href="/en/faq/contributing-code/">contributing code</a></li>
+                                <li><a href="/en/meetings/">meetings</a></li>
+                                <li><a href="/en/lifecycle">Lifecycle</a></li>
+                            <li>
+                                        <a href="/en/doc/">RPC Docs</a>
+                                <ul>
+                                                <li><a href="/en/doc/30.0.0/">30.0.0</a></li>
+                                                <li><a href="/en/doc/29.0.0/">29.0.0</a></li>
+                                                <li><a href="/en/doc/28.0.0/">28.0.0</a></li>
+                                                <li><a href="/en/doc/27.0.0/">27.0.0</a></li>
+                                                <li><a href="/en/doc/26.0.0/">26.0.0</a></li>
+                                                <li><a href="/en/doc/25.0.0/">25.0.0</a></li>
+                                                <li><a href="/en/doc/24.0.0/">24.0.0</a></li>
+                                                <li><a href="/en/doc/23.0.0/">23.0.0</a></li>
+                                                <li><a href="/en/doc/22.0.0/">22.0.0</a></li>
+                                                <li><a href="/en/doc/0.21.0/">0.21.0</a></li>
+                                                <li><a href="/en/doc/0.20.0/">0.20.0</a></li>
+                                                <li><a href="/en/doc/0.19.0/">0.19.0</a></li>
+                                                <li><a href="/en/doc/0.18.0/">0.18.0</a></li>
+                                                <li><a href="/en/doc/0.17.0/">0.17.0</a></li>
+                                                <li><a href="/en/doc/0.16.3/">0.16.3</a></li>
+                                                <li><a href="/en/doc/0.16.2/">0.16.2</a></li>
+                                                <li><a href="/en/doc/0.16.1/">0.16.1</a></li>
+                                                <li><a href="/en/doc/0.16.0/">0.16.0</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:;">Contact</a>
+                            <ul>
+                                <li><a href="/en/contact/">Contact Us</a></li>
+                                <li><a href="/en/list/announcements/join/">Announcements</a></li>
+                                <li><a href="/en/twitter-impersonation">X impersonation</a></li>
+                        </ul>
+                    </li>
+
+                <li id="langselect" class="lang">
+                    <select onchange="window.location=this.value;">
+                        <option value="">English</option>
+                        <option value="/ja/releases/31.0/">日本語</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">&nbsp;</div>
+  <article class="page">
+    <h1>Bitcoin Core 31.0</h1>
+    <div class="article-wrap">
+      <p><strong>Bitcoin Core installation binaries can be downloaded from <a href="/en/download">bitcoincore.org</a> and the source-code is available from the <a href="https://github.com/bitcoin/bitcoin">Bitcoin Core</a> source repository.</strong></p>
+
+<h1 id="v310-release-notes">v31.0 Release Notes</h1>
+
+<p>Bitcoin Core version 31.0 is now available from:</p>
+
+<p><a href="https://bitcoincore.org/bin/bitcoin-core-31.0/">https://bitcoincore.org/bin/bitcoin-core-31.0/</a></p>
+
+<p>This release includes new features, various bug fixes and performance
+improvements, as well as updated translations.</p>
+
+<p>Please report bugs using the issue tracker at GitHub:</p>
+
+<p><a href="https://github.com/bitcoin/bitcoin/issues">https://github.com/bitcoin/bitcoin/issues</a></p>
+
+<p>To receive security and update notifications, please subscribe to:</p>
+
+<p><a href="https://bitcoincore.org/en/list/announcements/join/">https://bitcoincore.org/en/list/announcements/join/</a></p>
+
+<p>With the release of this new major version, versions <code class="language-plaintext highlighter-rouge">28.x</code> and
+older are at “End of Life” and will no longer receive updates.</p>
+
+<p>In accordance with the security policy, we will in two weeks disclose:</p>
+
+<ul>
+  <li>
+    <p>Medium and high severity vulnerabilities fixed in <code class="language-plaintext highlighter-rouge">29.0</code>. There is one of these.</p>
+  </li>
+  <li>
+    <p>Low severity vulnerabilities fixed in <code class="language-plaintext highlighter-rouge">31.0</code>. There are none of these.</p>
+  </li>
+</ul>
+
+<h1 id="how-to-upgrade">How to Upgrade</h1>
+
+<p>If you are running an older version, shut it down. Wait until it has completely
+shut down (which might take a few minutes in some cases), then run the installer
+(on Windows) or just copy over <code class="language-plaintext highlighter-rouge">/Applications/Bitcoin-Qt</code> (on macOS) or
+<code class="language-plaintext highlighter-rouge">bitcoind</code>/<code class="language-plaintext highlighter-rouge">bitcoin-qt</code> (on Linux).</p>
+
+<p>Upgrading directly from a version of Bitcoin Core that has reached its EOL is
+possible, but it might take some time if the data directory needs to be
+migrated. Old wallet versions of Bitcoin Core are generally supported.</p>
+
+<h1 id="compatibility">Compatibility</h1>
+
+<p>Bitcoin Core is supported and tested on the following operating systems or
+newer: Linux Kernel 3.17, macOS 14, and Windows 10 (version 1903). Bitcoin Core
+should also work on most other Unix-like systems but is not as frequently tested
+on them. It is not recommended to use Bitcoin Core on unsupported systems.</p>
+
+<h1 id="notable-changes">Notable changes</h1>
+
+<p>The default <code class="language-plaintext highlighter-rouge">-dbcache</code> value has been increased to 1024 MiB from 450 MiB on
+systems where at least 4096 MiB of RAM is detected. This improves performance
+but increases memory usage. On some systems (for example when running in
+containers), the detected RAM may exceed the memory actually available, which
+can lead to out-of-memory conditions. To maintain the previous behavior, set
+<code class="language-plaintext highlighter-rouge">-dbcache=450</code>. See
+<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/reduce-memory.md">reduce-memory.md</a>
+for further guidance on low-memory systems. (<a href="https://github.com/bitcoin/bitcoin/pull/34692">#34692</a>)</p>
+
+<h2 id="mempool">Mempool</h2>
+
+<p>The mempool has been reimplemented with a new design (“cluster mempool”), to
+facilitate better decision-making when constructing block templates, evicting
+transactions, relaying transactions, and validating replacement transactions
+(RBF). Most changes should be transparent to users, but some behavior changes
+are noted:</p>
+
+<ul>
+  <li>
+    <p>The mempool no longer enforces ancestor or descendant size/count limits.
+Instead, two new default policy limits are introduced governing connected
+components, or clusters, in the mempool, limiting clusters to 64 transactions
+and up to 101 kB in virtual size.  Transactions are considered to be in the same
+cluster if they are connected to each other via any combination of parent/child
+relationships in the mempool. These limits can be overridden using command-line
+arguments; see the extended help (<code class="language-plaintext highlighter-rouge">-help-debug</code>) for more information.</p>
+  </li>
+  <li>
+    <p>Within the mempool, transactions are ordered based on the feerate at which
+they are expected to be mined, which takes into account the full set, or
+“chunk”, of transactions that would be included together (e.g., a parent and its
+child, or more complicated subsets of transactions). This ordering is utilized
+by the algorithms that implement transaction selection for constructing block
+templates; eviction from the mempool when it is full; and transaction relay
+announcements to peers.</p>
+  </li>
+  <li>
+    <p>The replace-by-fee validation logic has been updated so that transaction
+replacements are only accepted if the resulting mempool’s feerate diagram is
+strictly better than before the replacement. This eliminates all known cases of
+replacements occurring that make the mempool worse off, which was possible under
+previous RBF rules. For singleton transactions (that are in clusters by
+themselves) it’s sufficient for a replacement to have a higher fee and feerate
+than the original. See <a href="https://delvingbitcoin.org/t/an-overview-of-the-cluster-mempool-proposal/393#rbf-can-now-be-made-incentive-compatible-for-miners-11">delvingbitcoin.org
+post</a>
+for more information.</p>
+  </li>
+  <li>
+    <p>Two new RPCs have been added: <code class="language-plaintext highlighter-rouge">getmempoolcluster</code> will provide the set of
+transactions in the same cluster as the given transaction, along with the
+ordering of those transactions and grouping into chunks; and
+<code class="language-plaintext highlighter-rouge">getmempoolfeeratediagram</code> will return the feerate diagram of the entire
+mempool.</p>
+  </li>
+  <li>
+    <p>Chunk size and chunk fees are now also included in the output of
+<code class="language-plaintext highlighter-rouge">getmempoolentry</code>.</p>
+  </li>
+  <li>
+    <p>The “CPFP Carveout” has been removed from the mempool logic. The CPFP carveout
+allowed one additional child transaction to be added to a package that’s already
+at its descendant limit, but only if that child has exactly one ancestor (the
+package’s root) and is small (no larger than 10kvB). Nothing is allowed to
+bypass the cluster count limit. It is expected that smart contracting use-cases
+requiring similar functionality employ TRUC transactions and sibling eviction
+instead going forward.</p>
+  </li>
+  <li>
+    <p>Some additional discussion can be found at
+<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/policy/mempool-terminology.md">doc/policy/mempool-terminology.md</a>
+and
+<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/policy/mempool-replacements.md">doc/policy/mempool-replacements.md</a>.</p>
+  </li>
+</ul>
+
+<h2 id="p2p-and-network-changes">P2P and network changes</h2>
+
+<ul>
+  <li>Normally local transactions are broadcast to all connected peers with which we
+do transaction relay. Now, for the <code class="language-plaintext highlighter-rouge">sendrawtransaction</code> RPC this behavior can be
+changed to only do the broadcast via the Tor or I2P networks. A new boolean
+option <code class="language-plaintext highlighter-rouge">-privatebroadcast</code> has been added to enable this behavior. This improves
+the privacy of the transaction originator in two aspects:
+    <ol>
+      <li>Their IP address (and thus geolocation) is never known to the recipients.</li>
+      <li>If the originator sends two otherwise unrelated transactions, they will not
+be linkable. This is because a separate connection is used for broadcasting
+each transaction. (<a href="https://github.com/bitcoin/bitcoin/pull/29415">#29415</a>)</li>
+    </ol>
+  </li>
+  <li>
+    <p>New RPCs have been added to introspect and control private broadcast:
+<code class="language-plaintext highlighter-rouge">getprivatebroadcastinfo</code> reports transactions currently being privately
+broadcast, and <code class="language-plaintext highlighter-rouge">abortprivatebroadcast</code> removes matching transactions from the
+private broadcast queue. (<a href="https://github.com/bitcoin/bitcoin/pull/34329">#34329</a>)</p>
+  </li>
+  <li>
+    <p>Transactions participating in one-parent-one-child package relay can now have
+the parent with a feerate lower than the <code class="language-plaintext highlighter-rouge">-minrelaytxfee</code> feerate, even 0 fee.
+This expands the change from 28.0 to also cover packages of non-TRUC
+transactions. Note that in general the package child can have additional
+unconfirmed parents, but they must already be in-mempool for the new package to
+be relayed. (<a href="https://github.com/bitcoin/bitcoin/pull/33892">#33892</a>)</p>
+  </li>
+  <li>The release has asmap data embedded for the first time, allowing the asmap
+feature to be used without any externally sourced file. The embedded map <a href="https://github.com/bitcoin/bitcoin/pull/34696">was
+created on 2026-03-05</a>. Despite
+the data being available, the option remains off-by-default. Users still need to
+set <code class="language-plaintext highlighter-rouge">-asmap</code> or <code class="language-plaintext highlighter-rouge">-asmap=1</code> explicitly to make it possible to use a peer’s ASN
+(ISP/hoster identifier) in netgroup bucketing in order to ensure a higher
+diversity in their peer set.</li>
+</ul>
+
+<h2 id="updated-rpcs">Updated RPCs</h2>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">gettxspendingprevout</code> has 2 new optional arguments: <code class="language-plaintext highlighter-rouge">mempool_only</code> and
+<code class="language-plaintext highlighter-rouge">return_spending_tx</code>. If <code class="language-plaintext highlighter-rouge">mempool_only</code> is true it will limit scans to the
+mempool even if <code class="language-plaintext highlighter-rouge">txospenderindex</code> is available. If <code class="language-plaintext highlighter-rouge">return_spending_tx</code> is true,
+the full spending tx will be returned. In addition if <code class="language-plaintext highlighter-rouge">txospenderindex</code> is
+available and a confirmed spending transaction is found, its block hash will be
+returned. (<a href="https://github.com/bitcoin/bitcoin/pull/24539">#24539</a>)</p>
+  </li>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">getpeerinfo</code> RPC no longer returns the <code class="language-plaintext highlighter-rouge">startingheight</code> field unless the
+configuration option <code class="language-plaintext highlighter-rouge">-deprecatedrpc=startingheight</code> is used. The
+<code class="language-plaintext highlighter-rouge">startingheight</code> field will be fully removed in the next major release. (<a href="https://github.com/bitcoin/bitcoin/pull/34197">#34197</a>)</p>
+  </li>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">getblock</code> RPC now returns a <code class="language-plaintext highlighter-rouge">coinbase_tx</code> object at verbosity levels 1,
+2, and 3. It contains <code class="language-plaintext highlighter-rouge">version</code>, <code class="language-plaintext highlighter-rouge">locktime</code>, <code class="language-plaintext highlighter-rouge">sequence</code>, <code class="language-plaintext highlighter-rouge">coinbase</code> and
+<code class="language-plaintext highlighter-rouge">witness</code>. This allows for efficiently querying coinbase transaction properties
+without fetching the full transaction data at verbosity 2+. (<a href="https://github.com/bitcoin/bitcoin/pull/34512">#34512</a>)</p>
+  </li>
+</ul>
+
+<h2 id="rest-api">REST API</h2>
+
+<ul>
+  <li>A new REST API endpoint
+(<code class="language-plaintext highlighter-rouge">/rest/blockpart/&lt;BLOCK-HASH&gt;.&lt;bin|hex&gt;?offset=&lt;OFFSET&gt;&amp;size=&lt;SIZE&gt;</code>) has been
+introduced for efficiently fetching a range of bytes from block <code class="language-plaintext highlighter-rouge">&lt;BLOCK-HASH&gt;</code>.
+(<a href="https://github.com/bitcoin/bitcoin/pull/33657">#33657</a>)</li>
+</ul>
+
+<h2 id="build-system">Build System</h2>
+
+<ul>
+  <li>The minimum supported Clang compiler version has been raised to 17.0 (<a href="https://github.com/bitcoin/bitcoin/pull/33555">#33555</a>).</li>
+  <li>The minimum supported GCC compiler version has been raised to 12.1 (<a href="https://github.com/bitcoin/bitcoin/pull/33842">#33842</a>).</li>
+</ul>
+
+<h2 id="updated-settings">Updated settings</h2>
+
+<ul>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">-paytxfee</code> startup option and the <code class="language-plaintext highlighter-rouge">settxfee</code> RPC are now deleted after
+being deprecated in Bitcoin Core 30.0. They used to allow the user to set a
+static fee rate for wallet transactions, which could potentially lead to
+overpaying or underpaying. Users should instead rely on fee estimation or
+specify a fee rate per transaction using the <code class="language-plaintext highlighter-rouge">fee_rate</code> argument in RPCs such as
+<code class="language-plaintext highlighter-rouge">fundrawtransaction</code>, <code class="language-plaintext highlighter-rouge">sendtoaddress</code>, <code class="language-plaintext highlighter-rouge">send</code>, <code class="language-plaintext highlighter-rouge">sendall</code>, and <code class="language-plaintext highlighter-rouge">sendmany</code>.
+(<a href="https://github.com/bitcoin/bitcoin/pull/32138">#32138</a>)</p>
+  </li>
+  <li>
+    <p>Specifying <code class="language-plaintext highlighter-rouge">-asmap</code> or <code class="language-plaintext highlighter-rouge">-asmap=1</code> will load the embedded asmap data instead of
+an external file. In previous releases, if <code class="language-plaintext highlighter-rouge">-asmap</code> was specified without a
+filename, this would try to load an <code class="language-plaintext highlighter-rouge">ip_asn.map</code> data file. Now loading an
+external asmap file always requires an explicit filename like
+<code class="language-plaintext highlighter-rouge">-asmap=ip_asn.map</code>.</p>
+  </li>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">-maxorphantx</code> startup option has been removed. It was previously
+deprecated and has no effect anymore since v30.0. (<a href="https://github.com/bitcoin/bitcoin/pull/33872">#33872</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">tor</code> has been removed as a network specification. It was deprecated in favour
+of <code class="language-plaintext highlighter-rouge">onion</code> in v0.17.0. (<a href="https://github.com/bitcoin/bitcoin/pull/34031">#34031</a>)</p>
+  </li>
+  <li>
+    <p>When <code class="language-plaintext highlighter-rouge">-logsourcelocations</code> is enabled, the log output now contains just the
+function name instead of the entire function signature. (<a href="https://github.com/bitcoin/bitcoin/pull/34088">#34088</a>)</p>
+  </li>
+  <li>
+    <p>The default <code class="language-plaintext highlighter-rouge">-dbcache</code> value has been increased to <code class="language-plaintext highlighter-rouge">1024</code> MiB from <code class="language-plaintext highlighter-rouge">450</code> MiB
+on systems where at least <code class="language-plaintext highlighter-rouge">4096</code> MiB of RAM is detected. This is a performance
+increase, but will use more memory. To maintain the previous behaviour, set
+<code class="language-plaintext highlighter-rouge">-dbcache=450</code>. (<a href="https://github.com/bitcoin/bitcoin/pull/34692">#34692</a>)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-privatebroadcast</code> is added to enable private broadcast behavior for
+<code class="language-plaintext highlighter-rouge">sendrawtransaction</code>.</p>
+  </li>
+</ul>
+
+<h2 id="new-settings">New settings</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-txospenderindex</code> enables the creation of a transaction output spender index
+that, if present, will be scanned by <code class="language-plaintext highlighter-rouge">gettxspendingprevout</code> if a spending
+transaction was not found in the mempool. (<a href="https://github.com/bitcoin/bitcoin/pull/24539">#24539</a>)</li>
+</ul>
+
+<h2 id="gui-changes">GUI changes</h2>
+
+<ul>
+  <li>
+    <p>The GUI has been updated to Qt 6.8. (<a href="https://github.com/bitcoin/bitcoin/pull/34650">#34650</a>)</p>
+  </li>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">createwallet</code>, <code class="language-plaintext highlighter-rouge">createwalletdescriptor</code> and <code class="language-plaintext highlighter-rouge">migratewallet</code> commands are
+filtered from the console history to improve security and privacy. (<a href="https://github.com/bitcoin-core/gui/pull/901">gui#901</a>)</p>
+  </li>
+  <li>
+    <p>The Restore Wallet dialog shows an error message if the restored wallet name
+is empty. (<a href="https://github.com/bitcoin-core/gui/pull/924">gui#924</a>)</p>
+  </li>
+</ul>
+
+<h2 id="fee-estimation">Fee Estimation</h2>
+
+<p>The Bitcoin Core fee estimator minimum fee rate bucket was updated from <strong>1
+sat/vB</strong> to <strong>0.1 sat/vB</strong>, which matches the node’s default <code class="language-plaintext highlighter-rouge">minrelaytxfee</code>. This
+means that for a given confirmation target, if a sub-1 sat/vB fee rate bucket is
+the minimum tracked with sufficient data, its average value will be returned as
+the fee rate estimate.</p>
+
+<p>Restarting a node with this change invalidates previously saved
+estimates in <code class="language-plaintext highlighter-rouge">fee_estimates.dat</code>, the fee estimator will start tracking fresh
+stats.</p>
+
+<h2 id="ipc-interface">IPC Interface</h2>
+
+<ul>
+  <li>The IPC mining interface now requires mining clients to use the latest
+<code class="language-plaintext highlighter-rouge">mining.capnp</code> schema. Clients built against older schemas will fail when
+calling <code class="language-plaintext highlighter-rouge">Init.makeMining</code> and receive an RPC error indicating the old mining
+interface is no longer supported. Mining clients must update to the latest
+schema and regenerate bindings to continue working. (<a href="https://github.com/bitcoin/bitcoin/pull/34568">#34568</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.createNewBlock</code> now has a <code class="language-plaintext highlighter-rouge">cooldown</code> behavior (enabled by default)
+that waits for IBD to finish and for the tip to catch up. This usually prevents
+a flood of templates during startup, but is not guaranteed. (<a href="https://github.com/bitcoin/bitcoin/pull/34184">#34184</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.interrupt()</code> can be used to interrupt <code class="language-plaintext highlighter-rouge">Mining.waitTipChanged</code> and
+<code class="language-plaintext highlighter-rouge">Mining.createNewBlock</code>. (<a href="https://github.com/bitcoin/bitcoin/pull/34184">#34184</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.createNewBlock</code> and <code class="language-plaintext highlighter-rouge">Mining.checkBlock</code> now require a <code class="language-plaintext highlighter-rouge">context</code>
+parameter.</li>
+  <li><code class="language-plaintext highlighter-rouge">Mining.waitTipChanged</code> now has a default <code class="language-plaintext highlighter-rouge">timeout</code> (effectively infinite /
+<code class="language-plaintext highlighter-rouge">maxDouble</code>) if the client omits it.</li>
+  <li><code class="language-plaintext highlighter-rouge">BlockTemplate.getCoinbaseTx()</code> now returns a structured <code class="language-plaintext highlighter-rouge">CoinbaseTx</code> instead
+of raw bytes.</li>
+  <li>Removed <code class="language-plaintext highlighter-rouge">BlockTemplate.getCoinbaseCommitment()</code> and
+<code class="language-plaintext highlighter-rouge">BlockTemplate.getWitnessCommitmentIndex()</code>.</li>
+  <li>Cap’n Proto default values were updated to match the corresponding C++
+defaults for mining-related option structs (e.g. <code class="language-plaintext highlighter-rouge">BlockCreateOptions</code>,
+<code class="language-plaintext highlighter-rouge">BlockWaitOptions</code>, <code class="language-plaintext highlighter-rouge">BlockCheckOptions</code>).</li>
+</ul>
+
+<h1 id="credits">Credits</h1>
+
+<p>Thanks to everyone who directly contributed to this release:</p>
+
+<ul>
+  <li>0xb10c</li>
+  <li>Alexander Wiederin</li>
+  <li>Alfonso Roman Zubeldia</li>
+  <li>amisha</li>
+  <li>ANAVHEOBA</li>
+  <li>Andrew Toth</li>
+  <li>Anthony Towns</li>
+  <li>Antoine Poinsot</li>
+  <li>ANtutov</li>
+  <li>Anurag chavan</li>
+  <li>Ava Chow</li>
+  <li>bensig</li>
+  <li>Ben Westgate</li>
+  <li>billymcbip</li>
+  <li>b-l-u-e</li>
+  <li>Brandon Odiwuor</li>
+  <li>brunoerg</li>
+  <li>Bruno Garcia</li>
+  <li>Calin Culianu</li>
+  <li>Carl Dong</li>
+  <li>Chandra Pratap</li>
+  <li>Chris Stewart</li>
+  <li>Coder</li>
+  <li>Cory Fields</li>
+  <li>da1sychain</li>
+  <li>Daniela Brozzoni</li>
+  <li>Daniel Pfeifer</li>
+  <li>David Gumberg</li>
+  <li>dergoegge</li>
+  <li>Dmitry Goncharov</li>
+  <li>Enoch Azariah</li>
+  <li>Eugene Siegel</li>
+  <li>Fabian Jahr</li>
+  <li>fanquake</li>
+  <li>Fibonacci747</li>
+  <li>flack</li>
+  <li>frankomosh</li>
+  <li>furszy</li>
+  <li>glozow</li>
+  <li>Greg Sanders</li>
+  <li>Hao Xu</li>
+  <li>Hennadii Stepanov</li>
+  <li>Henry Romp</li>
+  <li>Hodlinator</li>
+  <li>ismaelsadeeq</li>
+  <li>janb84</li>
+  <li>jayvaliya</li>
+  <li>joaonevess</li>
+  <li>John Moffett</li>
+  <li>Josh Doman</li>
+  <li>kevkevinpal</li>
+  <li>l0rinc</li>
+  <li>Luke Dashjr</li>
+  <li>Mara van der Laan</li>
+  <li>MarcoFalke</li>
+  <li>marcofleon</li>
+  <li>Martin Zumsande</li>
+  <li>Matthew Zipkin</li>
+  <li>Max Edwards</li>
+  <li>Murch</li>
+  <li>Musa Haruna</li>
+  <li>naiyoma</li>
+  <li>nervana21</li>
+  <li>Novo</li>
+  <li>optout</li>
+  <li>pablomartin4btc</li>
+  <li>Padraic Slattery</li>
+  <li>Pieter Wuille</li>
+  <li>Pol Espinasa</li>
+  <li>pythcoiner</li>
+  <li>rkrux</li>
+  <li>Robin David</li>
+  <li>Roman Zeyde</li>
+  <li>rustaceanrob</li>
+  <li>Ryan Ofsky</li>
+  <li>SatsAndSports</li>
+  <li>scgbckbone</li>
+  <li>Sebastian Falbesoner</li>
+  <li>sedited</li>
+  <li>seduless</li>
+  <li>Sergi Delgado Segura</li>
+  <li>Sjors Provoost</li>
+  <li>SomberNight</li>
+  <li>sstone</li>
+  <li>stickies-v</li>
+  <li>stratospher</li>
+  <li>stringintech</li>
+  <li>Suhas Daftuar</li>
+  <li>tboy1337</li>
+  <li>TheCharlatan</li>
+  <li>Tim Ruffing</li>
+  <li>Vasil Dimov</li>
+  <li>w0xlt</li>
+  <li>WakeTrainDev</li>
+  <li>Weixie Cui</li>
+  <li>willcl-ark</li>
+  <li>Woolfgm</li>
+  <li>yancy</li>
+  <li>Yash Bhutwala</li>
+  <li>yuvicc</li>
+  <li>zaidmstrr</li>
+</ul>
+
+<p>As well as to everyone that helped with translations on
+<a href="https://explore.transifex.com/bitcoin/bitcoin/">Transifex</a>.</p>
+
+
+
+      <footer role="contentinfo">
+        <p class="byline">
+          <strong>Bitcoin Core 31.0</strong>
+          was published on
+          <time class="dt-published" datetime="2026-04-19T00:00:00+00:00">
+            April 19, 2026</time>.
+        </p>
+      </footer>
+
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#index -->
+
+<div class="footer-wrap">
+  <footer>
+    <div>
+    <span>
+        <a href="https://x.com/bitcoincoreorg" target="_blank" class="">X</a><br />
+        <a href="/en/legal/">Legal</a> | <a href="/en/legal/privacy">Privacy Policy</a> | <a href="/en/rss/">RSS <img src="/assets/images/rss-24x24.png" alt="rss feeds" width="14" height="14"></a>
+    </span>
+</div>
+<div>
+    <img src="/assets/images/bitcoin_core_logo.png" alt="bitcoin core logo" width="160"><br />
+    <span class="copyright">&copy; 2026 Bitcoin Core</span>
+</div>
+
+<link rel="stylesheet" href="/assets/css/fonts.css">
+
+  </footer>
+
+</div><!-- /.footer-wrap -->
+
+<script src="/assets/js/scripts.js"></script>
+
+
+</body>
+</html>

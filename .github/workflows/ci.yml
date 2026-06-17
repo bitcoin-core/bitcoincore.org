@@ -31,30 +31,6 @@ jobs:
       - name: Build and test
         run: make all
 
-  debian-only:
-    runs-on: ubuntu-latest
-    container:
-      image: debian:bookworm
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Install packages
-        run: |
-          apt-get update
-          apt-get install -y \
-            curl \
-            jekyll \
-            make \
-            ruby \
-            ruby-jekyll-redirect-from \
-            ruby-kramdown-parser-gfm \
-            ruby-html-proofer
-
-      - name: Build and test
-        run: |
-          rm Gemfile.lock
-          make all
-
   verify-commits:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'

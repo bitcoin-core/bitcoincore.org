@@ -1,0 +1,211 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<!-- source: '_posts/en/posts/2026-01-05-wallet-migration-bug.md' -->
+<!-- name: 'wallet-deletion-migration-bug' -->
+<!-- version:  -->
+<!-- translated:  -->
+<meta charset="utf-8">
+
+<title>Bitcoin Core :: Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1</title>
+<meta name="description" content="Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1">
+<meta name="keywords" content="">
+<meta http-equiv="onion-location" content="http://6hasakffvppilxgehrswmffqurlcjjjhd76jgvaqmsg6ul25s7t3rzyd.onion/en/2026/01/05/wallet-migration-bug/" />
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1">
+<meta name="twitter:description" content="Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1">
+<meta name="twitter:site" content="@bitcoincoreorg">
+<meta name="twitter:creator" content="@bitcoincoreorg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1">
+<meta property="og:description" content="Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1">
+<meta property="og:url" content="https://bitcoincore.org/en/2026/01/05/wallet-migration-bug/">
+<meta property="og:site_name" content="Bitcoin Core">
+
+<meta property="og:image" content="https://bitcoincore.org/assets/images/default-thumb.png">
+
+
+
+<link rel="alternate" hreflang="ja" href="https://bitcoincore.org/ja/2026/01/05/wallet-migration-bug/" />
+<link rel="alternate" hreflang="en" href="https://bitcoincore.org/en/2026/01/05/wallet-migration-bug/" />
+<link rel="canonical" href="https://bitcoincore.org/en/2026/01/05/wallet-migration-bug/">
+<link href="https://bitcoincore.org/en/feed.xml" type="application/atom+xml" rel="alternate" title="Bitcoin Core Blog XML Feed">
+<link href="https://bitcoincore.org/en/rss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Blog RSS Feed">
+<link href="https://bitcoincore.org/en/meetingrss.xml" type="application/rss+xml" rel="alternate" title="Bitcoin Core Meeting RSS Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+
+<!-- Icons -->
+<link rel="shortcut icon" href="/assets/images/favicon.ico"><!-- 16x16 -->
+<link rel="shortcut icon" href="/assets/images/favicon.png"><!-- 32x32 -->
+<link rel="apple-touch-icon-precomposed" href="/assets/images/apple-touch-icon-precomposed.png"><!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/apple-touch-icon-72x72-precomposed.png"><!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/apple-touch-icon-114x114-precomposed.png"><!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-144x144-precomposed.png"><!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+
+<!-- Hide Searchbar if nojs -->
+<noscript>
+  <style>
+      #searchbar { display:none; }
+  </style>
+</noscript>
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+    <div class="site-name">
+        <a href="/"><img src="/assets/images/bitcoin_core_logo_colored_reversed.png" alt="bitcoin core logo"></a>
+    </div><!-- /.site-name -->
+    <div class="top-navigation">
+        <nav role="navigation" id="site-nav" class="nav">
+            <ul>
+                    <li><a href="/en/about/">About</a></li>
+                    <li><a href="/en/download">Download</a></li>
+                    <li><a href="/en/blog/">blog</a></li>
+                    <li><a href="/en/releases/">releases</a></li>
+                    <li><a href="/en/security-advisories/">Security Advisories</a></li>
+                    <li><a href="javascript:;">Development</a>
+                            <ul>
+                                <li><a href="/en/contribute/">contribute</a></li>
+                                <li><a href="/en/faq/contributing-code/">contributing code</a></li>
+                                <li><a href="/en/meetings/">meetings</a></li>
+                                <li><a href="/en/lifecycle">Lifecycle</a></li>
+                            <li>
+                                        <a href="/en/doc/">RPC Docs</a>
+                                <ul>
+                                                <li><a href="/en/doc/30.0.0/">30.0.0</a></li>
+                                                <li><a href="/en/doc/29.0.0/">29.0.0</a></li>
+                                                <li><a href="/en/doc/28.0.0/">28.0.0</a></li>
+                                                <li><a href="/en/doc/27.0.0/">27.0.0</a></li>
+                                                <li><a href="/en/doc/26.0.0/">26.0.0</a></li>
+                                                <li><a href="/en/doc/25.0.0/">25.0.0</a></li>
+                                                <li><a href="/en/doc/24.0.0/">24.0.0</a></li>
+                                                <li><a href="/en/doc/23.0.0/">23.0.0</a></li>
+                                                <li><a href="/en/doc/22.0.0/">22.0.0</a></li>
+                                                <li><a href="/en/doc/0.21.0/">0.21.0</a></li>
+                                                <li><a href="/en/doc/0.20.0/">0.20.0</a></li>
+                                                <li><a href="/en/doc/0.19.0/">0.19.0</a></li>
+                                                <li><a href="/en/doc/0.18.0/">0.18.0</a></li>
+                                                <li><a href="/en/doc/0.17.0/">0.17.0</a></li>
+                                                <li><a href="/en/doc/0.16.3/">0.16.3</a></li>
+                                                <li><a href="/en/doc/0.16.2/">0.16.2</a></li>
+                                                <li><a href="/en/doc/0.16.1/">0.16.1</a></li>
+                                                <li><a href="/en/doc/0.16.0/">0.16.0</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:;">Contact</a>
+                            <ul>
+                                <li><a href="/en/contact/">Contact Us</a></li>
+                                <li><a href="/en/list/announcements/join/">Announcements</a></li>
+                                <li><a href="/en/twitter-impersonation">X impersonation</a></li>
+                        </ul>
+                    </li>
+
+                <li id="langselect" class="lang">
+                    <select onchange="window.location=this.value;">
+                        <option value="">English</option>
+                        <option value="/ja/2026/01/05/wallet-migration-bug/">日本語</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">&nbsp;</div>
+  <article class="post h-entry">
+    <div class="headline-wrap">
+      
+        <h1 class="p-name"><a href="/en/2026/01/05/wallet-migration-bug/" rel="bookmark" title="Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1">Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1</a></h1>
+      
+      
+        <span hidden class="p-author">
+          by .
+        </span>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <div class="e-content">
+        <p>We have become aware of a wallet migration bug introduced in Bitcoin Core 30.0 and 30.1. Under rare circumstances, when the migration of a wallet.dat file fails, all files in the wallet directory may be deleted in the process, potentially resulting in a loss of funds. A fix is forthcoming and will be released as 30.2, but out of an abundance of caution we have removed the binaries for affected releases from bitcoincore.org.</p>
+
+<p>At this time, we ask users to not attempt wallet migrations using the GUI or RPC until v30.2 is released. All other users, including existing wallet users, are unaffected and can keep using existing installations.</p>
+
+<p>Specifically, it requires the presence of a default (unnamed) wallet.dat file, which has not been created by default since 0.21 (released 5 years ago), that fails to be migrated or loaded. One condition that may trigger this is when pruning is enabled, and the wallet was unloaded while pruning happened.</p>
+
+
+      </div>
+      <hr />
+      <footer role="contentinfo">
+        <p class="byline">
+          <strong>Wallet Migration Failure May Delete Unrelated Wallet Files In Bitcoin Core 30.0 and 30.1</strong>
+          was published on
+          <time class="dt-published" datetime="2026-01-05T00:00:00+00:00">
+            January 05, 2026</time>.
+        </p>
+      </footer>
+
+    </div><!-- /.article-wrap -->
+  </article>
+  
+<div class="related-articles">
+    <h4>Recommended <small class="pull-right">(<a href="/en/blog/">View all posts</a>)</small></h4>
+    <ul>
+        <li><a href="/en/2026/04/19/release-31.0/" title="Bitcoin Core 31.0 released">Bitcoin Core 31.0 released</a></li>
+        <li><a href="/en/2026/03/18/release-28.4/" title="Bitcoin Core 28.4 released">Bitcoin Core 28.4 released</a></li>
+    </ul>
+    <hr />
+</div><!-- /.related-articles -->
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <footer>
+    <div>
+    <span>
+        <a href="https://x.com/bitcoincoreorg" target="_blank" class="">X</a><br />
+        <a href="/en/legal/">Legal</a> | <a href="/en/legal/privacy">Privacy Policy</a> | <a href="/en/rss/">RSS <img src="/assets/images/rss-24x24.png" alt="rss feeds" width="14" height="14"></a>
+    </span>
+</div>
+<div>
+    <img src="/assets/images/bitcoin_core_logo.png" alt="bitcoin core logo" width="160"><br />
+    <span class="copyright">&copy; 2026 Bitcoin Core</span>
+</div>
+
+<link rel="stylesheet" href="/assets/css/fonts.css">
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="/assets/js/scripts.js"></script>
+
+
+</body>
+</html>
