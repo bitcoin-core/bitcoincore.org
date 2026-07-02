@@ -3,65 +3,70 @@ name: scanblocks
 btcversion: 28.0.0
 btcgroup: blockchain
 permalink: en/doc/28.0.0/rpc/blockchain/scanblocks/
+openrpc: true
 ---
 
-scanblocks "action" ( [scanobjects,...] start_height stop_height "filtertype" options )
-
-Return relevant blockhashes for given descriptors (requires blockfilterindex).
-This call may take several minutes. Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)
-
-Arguments:
-1. action                        (string, required) The action to execute
-                                 "start" for starting a scan
-                                 "abort" for aborting the current scan (returns true when abort was successful)
-                                 "status" for progress report (in %) of the current scan
-2. scanobjects                   (json array, optional) Array of scan objects. Required for "start" action
-                                 Every scan object is either a string descriptor or an object:
-     [
-       "descriptor",             (string) An output descriptor
-       {                         (json object) An object with output descriptor and metadata
-         "desc": "str",          (string, required) An output descriptor
-         "range": n or [n,n],    (numeric or array, optional, default=1000) The range of HD chain indexes to explore (either end or [begin,end])
-       },
-       ...
-     ]
-3. start_height                  (numeric, optional, default=0) Height to start to scan from
-4. stop_height                   (numeric, optional, default=chain tip) Height to stop to scan
-5. filtertype                    (string, optional, default="basic") The type name of the filter
-6. options                       (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-filter_false_positives    (boolean, optional, default=false) Filter false positives (slower and may fail on pruned nodes). Otherwise they may occur at a rate of 1/M
-
-Result (when action=='status' and no scan is in progress - possibly already completed):
-null    (json null)
-
-Result (When action=='start'; only returns after scan completes):
-{                              (json object)
-  "from_height" : n,           (numeric) The height we started the scan from
-  "to_height" : n,             (numeric) The height we ended the scan at
-  "relevant_blocks" : [        (json array) Blocks that may have matched a scanobject.
-    "hex",                     (string) A relevant blockhash
-    ...
-  ],
-  "completed" : true|false     (boolean) true if the scan process was not aborted
-}
-
-Result (when action=='status' and a scan is currently in progress):
-{                          (json object)
-  "progress" : n,          (numeric) Approximate percent complete
-  "current_height" : n     (numeric) Height of the block currently being scanned
-}
-
-Result (when action=='abort'):
-true|false    (boolean) True if scan will be aborted (not necessarily before this RPC returns), or false if there is no scan to abort
-
-Examples:
-> bitcoin-cli scanblocks start '["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"]' 300000
-> bitcoin-cli scanblocks start '["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"]' 100 150 basic
-> bitcoin-cli scanblocks status
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scanblocks", "params": ["start", ["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"], 300000]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scanblocks", "params": ["start", ["addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)"], 100, 150, "basic"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scanblocks", "params": ["status"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">scanblocks &#34;action&#34; ( scanobjects ) ( start_height ) ( stop_height ) ( &#34;filtertype&#34; ) ( options )</pre>
+  <div class="rpc-description"><p>Return relevant blockhashes for given descriptors (requires blockfilterindex). This call may take several minutes. Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>action</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The action to execute<br>&#34;start&#34; for starting a scan<br>&#34;abort&#34; for aborting the current scan (returns true when abort was successful)<br>&#34;status&#34; for progress report (in %) of the current scan</td></tr>
+  <tr><td>2</td><td><code>scanobjects</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no</td><td>Array of scan objects. Required for &#34;start&#34; action<br>Every scan object is either a string descriptor or an object:
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">An output descriptor</span></li>
+            <li><code class="rpc-key">range</code> <span class="rpc-type">(one of, optional, default=1000)</span> <span class="rpc-desc">The range of HD chain indexes to explore (either end or [begin,end])</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+                  <ul class="rpc-schema">
+                    <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+                    <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+                  </ul></li>
+              </ul></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>start_height</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 0</small></td><td>Height to start to scan from</td></tr>
+  <tr><td>4</td><td><code>stop_height</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: chain tip</small></td><td>Height to stop to scan</td></tr>
+  <tr><td>5</td><td><code>filtertype</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;basic&#34;</small></td><td>The type name of the filter</td></tr>
+  <tr><td>6</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">filter_false_positives</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Filter false positives (slower and may fail on pruned nodes). Otherwise they may occur at a rate of 1/M</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(null)</span> <span class="rpc-desc">when action==&#39;status&#39; and no scan is in progress - possibly already completed</span></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">When action==&#39;start&#39;; only returns after scan completes</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">from_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The height we started the scan from</span></li>
+      <li><code class="rpc-key">to_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The height we ended the scan at</span></li>
+      <li><code class="rpc-key">relevant_blocks</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Blocks that may have matched a scanobject.</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">completed</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">true if the scan process was not aborted</span></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 3</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">when action==&#39;status&#39; and a scan is currently in progress</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">progress</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Approximate percent complete</span></li>
+      <li><code class="rpc-key">current_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Height of the block currently being scanned</span></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 4</span> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">when action==&#39;abort&#39;</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli scanblocks start &#39;[&#34;addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)&#34;]&#39; 300000
+&gt; bitcoin-cli scanblocks start &#39;[&#34;addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)&#34;]&#39; 100 150 basic
+&gt; bitcoin-cli scanblocks status
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;scanblocks&#34;, &#34;params&#34;: [&#34;start&#34;, [&#34;addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)&#34;], 300000]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;scanblocks&#34;, &#34;params&#34;: [&#34;start&#34;, [&#34;addr(bcrt1q4u4nsgk6ug0sqz7r3rj9tykjxrsl0yy4d0wwte)&#34;], 100, 150, &#34;basic&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;scanblocks&#34;, &#34;params&#34;: [&#34;status&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

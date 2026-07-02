@@ -1,0 +1,23 @@
+---
+name: getprioritisedtransactions
+btcversion: 30.2.0
+btcgroup: mining
+permalink: en/doc/30.2.0/rpc/mining/getprioritisedtransactions/raw/
+rawpage: true
+---
+
+getprioritisedtransactions
+
+Returns a map of all user-created (see prioritisetransaction) fee deltas by txid, and whether the tx is present in mempool.
+
+Arguments:
+none
+
+Result: (object)
+  ... (object)
+    fee_delta (number)  transaction fee delta in satoshis
+    in_mempool (boolean)  whether this transaction is currently in mempool
+    modified_fee (number, optional)  modified fee in satoshis. Only returned if in_mempool=true
+
+
+

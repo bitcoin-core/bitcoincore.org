@@ -1,0 +1,118 @@
+---
+name: importdescriptors
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/importdescriptors/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;importdescriptors&#34;,
+  &#34;description&#34;: &#34;Import descriptors. This will trigger a rescan of the blockchain based on the earliest timestamp of all descriptors being imported. Requires a new wallet backup.\n\nNote: This call can take over an hour to complete if using an early timestamp; during that time, other rpc calls\nmay report that the imported keys, addresses or scripts exist but related transactions are still missing.\nThe rescan is significantly faster if block filters are available (using startup option \&#34;-blockfilterindex=1\&#34;).&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;requests&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;desc&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Descriptor to import.&#34;
+            },
+            &#34;active&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;default&#34;: false,
+              &#34;description&#34;: &#34;Set this descriptor to be the active descriptor for the corresponding output type/externality&#34;
+            },
+            &#34;range&#34;: {
+              &#34;oneOf&#34;: [
+                {
+                  &#34;type&#34;: &#34;number&#34;
+                },
+                {
+                  &#34;type&#34;: &#34;array&#34;,
+                  &#34;prefixItems&#34;: [
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    },
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    }
+                  ],
+                  &#34;minItems&#34;: 2,
+                  &#34;maxItems&#34;: 2
+                }
+              ],
+              &#34;description&#34;: &#34;If a ranged descriptor is used, this specifies the end or the range (in the form [begin,end]) to import&#34;
+            },
+            &#34;next_index&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;If a ranged descriptor is set to active, this specifies the next index to generate addresses from&#34;
+            },
+            &#34;timestamp&#34;: {
+              &#34;oneOf&#34;: [
+                {
+                  &#34;type&#34;: &#34;number&#34;
+                },
+                {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              ],
+              &#34;description&#34;: &#34;Time from which to start rescanning the blockchain for this descriptor, in UNIX epoch time\nUse the string \&#34;now\&#34; to substitute the current synced blockchain time.\n\&#34;now\&#34; can be specified to bypass scanning, for outputs which are known to never have been used, and\n0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest timestamp\nof all descriptors being imported will be scanned as well as the mempool.&#34;
+            },
+            &#34;internal&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;default&#34;: false,
+              &#34;description&#34;: &#34;Whether matching outputs should be treated as not incoming payments (e.g. change)&#34;
+            },
+            &#34;label&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;default&#34;: &#34;&#34;,
+              &#34;description&#34;: &#34;Label to assign to the address, only allowed with internal=false. Disabled for ranged descriptors&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;desc&#34;,
+            &#34;timestamp&#34;
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;Data to be imported&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;success&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;
+          },
+          &#34;warnings&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            }
+          },
+          &#34;error&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {},
+            &#34;additionalProperties&#34;: true
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;success&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

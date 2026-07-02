@@ -1,0 +1,57 @@
+---
+name: importaddress
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/importaddress/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;importaddress&#34;,
+  &#34;description&#34;: &#34;Adds an address or script (in hex) that can be watched as if it were in your wallet but cannot be used to spend. Requires a new wallet backup.\n\nNote: This call can take over an hour to complete if rescan is true, during that time, other rpc calls\nmay report that the imported address exists but related transactions are still missing, leading to temporarily incorrect/bogus balances and unspent outputs until rescan completes.\nThe rescan parameter can be set to false if the key was never used to create transactions. If it is set to false,\nbut the key was used to create transactions, rescanblockchain needs to be called with the appropriate block range.\nIf you have the full public key, you should call importpubkey instead of this.\nHint: use importmulti to import more than one address.\n\nNote: If you import a non-standard raw script in hex form, outputs sending to it will be treated\nas change, and not show up in many RPCs.\nNote: Use \&#34;getwalletinfo\&#34; to query the scanning progress.\nNote: This command is only compatible with legacy wallets. Use \&#34;importdescriptors\&#34; for descriptor wallets.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;address&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The Bitcoin address (or hex-encoded script)&#34;
+    },
+    {
+      &#34;name&#34;: &#34;label&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;&#34;
+      },
+      &#34;description&#34;: &#34;An optional label&#34;
+    },
+    {
+      &#34;name&#34;: &#34;rescan&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Scan the chain and mempool for wallet transactions.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;p2sh&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Add the P2SH version of the script as well&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

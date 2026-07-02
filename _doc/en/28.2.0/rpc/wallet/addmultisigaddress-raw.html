@@ -1,0 +1,33 @@
+---
+name: addmultisigaddress
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/addmultisigaddress/raw/
+rawpage: true
+---
+
+addmultisigaddress nrequired keys ( "label" ) ( "address_type" )
+
+Add an nrequired-to-sign multisignature address to the wallet. Requires a new wallet backup.
+Each key is a Bitcoin address or hex-encoded public key.
+This functionality is only intended for use with non-watchonly addresses.
+See `importaddress` for watchonly p2sh address support.
+If 'label' is specified, assign address to that label.
+Note: This command is only compatible with legacy wallets.
+
+Arguments:
+1. nrequired (number)  The number of required signatures out of the n keys or addresses.
+2. keys (array)  The bitcoin addresses or hex-encoded public keys
+  each item (string)
+3. label (string, optional)  A label to assign the addresses to.
+4. address_type (string, optional, default: set by -addresstype)  The address type to use. Options are "legacy", "p2sh-segwit", and "bech32".
+
+Result: (object)
+  address (string)  The value of the new multisig address
+  redeemScript (string)  The string value of the hex-encoded redemption script
+  descriptor (string)  The descriptor for this multisig
+  warnings (array, optional)  Any warnings resulting from the creation of this multisig
+    each item (string)
+
+
+

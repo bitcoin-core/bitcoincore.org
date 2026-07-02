@@ -1,0 +1,25 @@
+---
+name: finalizepsbt
+btcversion: 30.2.0
+btcgroup: rawtransactions
+permalink: en/doc/30.2.0/rpc/rawtransactions/finalizepsbt/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">finalizepsbt &#34;psbt&#34; ( extract )</pre>
+  <div class="rpc-description"><p>Finalize the inputs of a PSBT. If the transaction is fully signed, it will produce a network serialized transaction which can be broadcast with sendrawtransaction. Otherwise a PSBT will be created which has the final_scriptSig and final_scriptwitness fields filled for inputs that are complete. Implements the Finalizer and Extractor roles.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>psbt</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>A base64 string of a PSBT</td></tr>
+  <tr><td>2</td><td><code>extract</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>If true and the transaction is complete,<br>                             extract and return the complete transaction in normal network serialization instead of the PSBT.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">psbt</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The base64-encoded partially signed transaction if not extracted</span></li>
+  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hex-encoded network transaction if extracted</span></li>
+  <li><code class="rpc-key">complete</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">If the transaction has a complete set of signatures</span></li>
+</ul>
+</div>

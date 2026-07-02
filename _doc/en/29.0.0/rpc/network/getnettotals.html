@@ -3,30 +3,32 @@ name: getnettotals
 btcversion: 29.0.0
 btcgroup: network
 permalink: en/doc/29.0.0/rpc/network/getnettotals/
+openrpc: true
 ---
 
-getnettotals
-
-Returns information about network traffic, including bytes in, bytes out,
-and current system time.
-
-Result:
-{                                              (json object)
-  "totalbytesrecv" : n,                        (numeric) Total bytes received
-  "totalbytessent" : n,                        (numeric) Total bytes sent
-  "timemillis" : xxx,                          (numeric) Current system UNIX epoch time in milliseconds
-  "uploadtarget" : {                           (json object)
-    "timeframe" : n,                           (numeric) Length of the measuring timeframe in seconds
-    "target" : n,                              (numeric) Target in bytes
-    "target_reached" : true|false,             (boolean) True if target is reached
-    "serve_historical_blocks" : true|false,    (boolean) True if serving historical blocks
-    "bytes_left_in_cycle" : n,                 (numeric) Bytes left in current time cycle
-    "time_left_in_cycle" : n                   (numeric) Seconds left in current time cycle
-  }
-}
-
-Examples:
-> bitcoin-cli getnettotals 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getnettotals", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">getnettotals</pre>
+  <div class="rpc-description"><p>Returns information about network traffic, including bytes in, bytes out, and current system time.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">totalbytesrecv</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Total bytes received</span></li>
+  <li><code class="rpc-key">totalbytessent</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Total bytes sent</span></li>
+  <li><code class="rpc-key">timemillis</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">Current system UNIX epoch time in milliseconds</span></li>
+  <li><code class="rpc-key">uploadtarget</code> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">timeframe</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Length of the measuring timeframe in seconds</span></li>
+      <li><code class="rpc-key">target</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Target in bytes</span></li>
+      <li><code class="rpc-key">target_reached</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">True if target is reached</span></li>
+      <li><code class="rpc-key">serve_historical_blocks</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">True if serving historical blocks</span></li>
+      <li><code class="rpc-key">bytes_left_in_cycle</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Bytes left in current time cycle</span></li>
+      <li><code class="rpc-key">time_left_in_cycle</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Seconds left in current time cycle</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getnettotals 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getnettotals&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

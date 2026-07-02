@@ -1,0 +1,85 @@
+---
+name: getmemoryinfo
+btcversion: 26.0.0
+btcgroup: control
+permalink: en/doc/26.0.0/rpc/control/getmemoryinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getmemoryinfo&#34;,
+  &#34;description&#34;: &#34;Returns an object containing information about memory usage.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;mode&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;stats&#34;
+      },
+      &#34;description&#34;: &#34;determines what kind of information is returned.\n  - \&#34;stats\&#34; returns general statistics about memory usage in the daemon.\n  - \&#34;mallocinfo\&#34; returns an XML string describing low-level heap state (only available if compiled with glibc).&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;locked&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;used&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;Number of bytes used&#34;
+                },
+                &#34;free&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;Number of bytes available in current arenas&#34;
+                },
+                &#34;total&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;Total number of bytes managed&#34;
+                },
+                &#34;locked&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;Amount of bytes that succeeded locking. If this number is smaller than total, locking pages failed at some point and key data could be swapped to disk.&#34;
+                },
+                &#34;chunks_used&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;Number allocated chunks&#34;
+                },
+                &#34;chunks_free&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;Number unused chunks&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;used&#34;,
+                &#34;free&#34;,
+                &#34;total&#34;,
+                &#34;locked&#34;,
+                &#34;chunks_used&#34;,
+                &#34;chunks_free&#34;
+              ],
+              &#34;description&#34;: &#34;Information about locked memory manager&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;locked&#34;
+          ],
+          &#34;description&#34;: &#34;mode \&#34;stats\&#34;&#34;
+        },
+        {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;mode \&#34;mallocinfo\&#34;&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;control&#34;
+}</pre>

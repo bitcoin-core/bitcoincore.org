@@ -3,40 +3,42 @@ name: gethdkeys
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/gethdkeys/
+openrpc: true
 ---
 
-gethdkeys ( {"active_only":bool,"private":bool,...} )
-
-List all BIP 32 HD keys in the wallet and which descriptors use them.
-
-Arguments:
-1. options    (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-active_only    (boolean, optional, default=false) Show the keys for only active descriptors
-private        (boolean, optional, default=false) Show private keys
-
-Result:
-[                                  (json array)
-  {                                (json object)
-    "xpub" : "str",                (string) The extended public key
-    "has_private" : true|false,    (boolean) Whether the wallet has the private key for this xpub
-    "xprv" : "str",                (string, optional) The extended private key if "private" is true
-    "descriptors" : [              (json array) Array of descriptor objects that use this HD key
-      {                            (json object)
-        "desc" : "str",            (string) Descriptor string representation
-        "active" : true|false      (boolean) Whether this descriptor is currently used to generate new addresses
-      },
-      ...
-    ]
-  },
-  ...
-]
-
-Examples:
-> bitcoin-cli gethdkeys 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "gethdkeys", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> bitcoin-cli -named gethdkeys active_only=true private=true
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "gethdkeys", "params": {"active_only":"true","private":"true"}}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">gethdkeys ( options )</pre>
+  <div class="rpc-description"><p>List all BIP 32 HD keys in the wallet and which descriptors use them.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">active_only</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Show the keys for only active descriptors</span></li>
+    <li><code class="rpc-key">private</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Show private keys</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">xpub</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The extended public key</span></li>
+      <li><code class="rpc-key">has_private</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the wallet has the private key for this xpub</span></li>
+      <li><code class="rpc-key">xprv</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The extended private key if &#34;private&#34; is true</span></li>
+      <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Array of descriptor objects that use this HD key</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Descriptor string representation</span></li>
+              <li><code class="rpc-key">active</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this descriptor is currently used to generate new addresses</span></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli gethdkeys 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;gethdkeys&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; bitcoin-cli -named gethdkeys active_only=true private=true
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;gethdkeys&#34;, &#34;params&#34;: {&#34;active_only&#34;:&#34;true&#34;,&#34;private&#34;:&#34;true&#34;}}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

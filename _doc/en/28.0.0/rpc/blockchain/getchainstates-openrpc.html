@@ -1,0 +1,85 @@
+---
+name: getchainstates
+btcversion: 28.0.0
+btcgroup: blockchain
+permalink: en/doc/28.0.0/rpc/blockchain/getchainstates/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getchainstates&#34;,
+  &#34;description&#34;: &#34;Return information about chainstates.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;headers&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the number of headers seen so far&#34;
+        },
+        &#34;chainstates&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;blocks&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;number of blocks in this chainstate&#34;
+              },
+              &#34;bestblockhash&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;blockhash of the tip&#34;
+              },
+              &#34;difficulty&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;difficulty of the tip&#34;
+              },
+              &#34;verificationprogress&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;progress towards the network tip&#34;
+              },
+              &#34;snapshot_blockhash&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;the base block of the snapshot this chainstate is based on, if any&#34;
+              },
+              &#34;coins_db_cache_bytes&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;size of the coinsdb cache&#34;
+              },
+              &#34;coins_tip_cache_bytes&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;size of the coinstip cache&#34;
+              },
+              &#34;validated&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;whether the chainstate is fully validated. True if all blocks in the chainstate were validated, false if the chain is based on a snapshot and the snapshot has not yet been validated.&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;blocks&#34;,
+              &#34;bestblockhash&#34;,
+              &#34;difficulty&#34;,
+              &#34;verificationprogress&#34;,
+              &#34;coins_db_cache_bytes&#34;,
+              &#34;coins_tip_cache_bytes&#34;,
+              &#34;validated&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;list of the chainstates ordered by work, with the most-work (active) chainstate last&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;headers&#34;,
+        &#34;chainstates&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

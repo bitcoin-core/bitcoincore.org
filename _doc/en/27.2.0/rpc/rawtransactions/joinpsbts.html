@@ -1,0 +1,22 @@
+---
+name: joinpsbts
+btcversion: 27.2.0
+btcgroup: rawtransactions
+permalink: en/doc/27.2.0/rpc/rawtransactions/joinpsbts/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">joinpsbts txs</pre>
+  <div class="rpc-description"><p>Joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs No input in any of the PSBTs can be in more than one of the PSBTs.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The base64 strings of partially signed transactions
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+</div>

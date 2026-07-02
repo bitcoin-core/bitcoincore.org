@@ -1,0 +1,31 @@
+---
+name: getbalances
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/getbalances/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">getbalances</pre>
+  <div class="rpc-description"><p>Returns an object with all balances in BTC.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">mine</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">balances from outputs that the wallet can sign</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">trusted</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">trusted balance (outputs created by the wallet or confirmed outputs)</span></li>
+      <li><code class="rpc-key">untrusted_pending</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">untrusted pending balance (outputs created by others that are in the mempool)</span></li>
+      <li><code class="rpc-key">immature</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">balance from immature coinbase outputs</span></li>
+      <li><code class="rpc-key">used</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">(only present if avoid_reuse is set) balance from coins sent to addresses that were previously spent from (potentially privacy violating)</span></li>
+    </ul></li>
+  <li><code class="rpc-key">lastprocessedblock</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">hash and height of the block this information was generated on</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">hash of the block this information was generated on</span></li>
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">height of the block this information was generated on</span></li>
+    </ul></li>
+</ul>
+</div>

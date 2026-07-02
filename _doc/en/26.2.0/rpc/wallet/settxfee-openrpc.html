@@ -1,0 +1,37 @@
+---
+name: settxfee
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/settxfee/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;settxfee&#34;,
+  &#34;description&#34;: &#34;Set the transaction fee rate in BTC/kvB for this wallet. Overrides the global -paytxfee command line parameter.\nCan be deactivated by passing 0 as the fee. In that case automatic fee selection will be used by default.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;amount&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;oneOf&#34;: [
+          {
+            &#34;type&#34;: &#34;number&#34;
+          },
+          {
+            &#34;type&#34;: &#34;string&#34;
+          }
+        ]
+      },
+      &#34;description&#34;: &#34;The transaction fee rate in BTC/kvB&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;boolean&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

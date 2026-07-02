@@ -1,0 +1,37 @@
+---
+name: createpsbt
+btcversion: 30.2.0
+btcgroup: rawtransactions
+permalink: en/doc/30.2.0/rpc/rawtransactions/createpsbt/raw/
+rawpage: true
+---
+
+createpsbt inputs outputs ( locktime ) ( replaceable ) ( version )
+
+Creates a transaction in the Partially Signed Transaction format.
+Implements the Creator role.
+Note that the transaction's inputs are not signed, and
+it is not stored in the wallet or transmitted to the network.
+
+Arguments:
+1. inputs (array)  The inputs
+  each item (object)
+    txid (string)  The transaction id
+    vout (number)  The output number
+    sequence (number, optional, default: depends on the value of the 'replaceable' and 'locktime' arguments)  The sequence number
+2. outputs (array)  The outputs specified as key-value pairs. Each key may only appear once, i.e. there can only be one 'data' output, and no address may be duplicated. At least one output of either type must be specified. For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also accepted as second parameter.
+  each item (one of)
+    option 1: (object)
+      ... (one of)
+        option 1: (number)
+        option 2: (string)
+    option 2: (object)
+      data (string)  A key-value pair. The key must be "data", the value is hex-encoded data that becomes a part of an OP_RETURN output
+3. locktime (number, optional, default=0)  Raw locktime. Non-0 value also locktime-activates inputs
+4. replaceable (boolean, optional, default=true)  Marks this transaction as BIP125-replaceable. Allows this transaction to be replaced by a transaction with higher fees. If provided, it is an error if explicit sequence numbers are incompatible.
+5. version (number, optional, default=2)  Transaction version
+
+Result: (string)
+
+
+

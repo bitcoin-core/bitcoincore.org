@@ -1,0 +1,30 @@
+---
+name: getnodeaddresses
+btcversion: 30.2.0
+btcgroup: network
+permalink: en/doc/30.2.0/rpc/network/getnodeaddresses/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">getnodeaddresses ( count ) ( &#34;network&#34; )</pre>
+  <div class="rpc-description"><p>Return known addresses, after filtering for quality and recency. These can potentially be used to find new peers in the network. The total number of addresses known to the node may be higher.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>count</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 1</small></td><td>The maximum number of addresses to return. Specify 0 to return all known addresses.</td></tr>
+  <tr><td>2</td><td><code>network</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: all networks</small></td><td>Return only addresses of the specified network. Can be one of: ipv4, ipv6, onion, i2p, cjdns.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The UNIX epoch time when the node was last seen</span></li>
+      <li><code class="rpc-key">services</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The services offered by the node</span></li>
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The address of the node</span></li>
+      <li><code class="rpc-key">port</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The port number of the node</span></li>
+      <li><code class="rpc-key">network</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The network (ipv4, ipv6, onion, i2p, cjdns) the node connected through</span></li>
+    </ul></li>
+</ul>
+</div>

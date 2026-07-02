@@ -1,0 +1,63 @@
+---
+name: createwalletdescriptor
+btcversion: 29.0.0
+btcgroup: wallet
+permalink: en/doc/29.0.0/rpc/wallet/createwalletdescriptor/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;createwalletdescriptor&#34;,
+  &#34;description&#34;: &#34;Creates the wallet&#39;s descriptor for the given address type. The address type must be one that the wallet does not already have a descriptor for.\nRequires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;type&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The address type the descriptor will produce. Options are \&#34;legacy\&#34;, \&#34;p2sh-segwit\&#34;, \&#34;bech32\&#34;, and \&#34;bech32m\&#34;.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;internal&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;Both external and internal will be generated unless this parameter is specified&#34;,
+            &#34;description&#34;: &#34;Whether to only make one descriptor that is internal (if parameter is true) or external (if parameter is false)&#34;
+          },
+          &#34;hdkey&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;The HD key used by all other active descriptors&#34;,
+            &#34;description&#34;: &#34;The HD key that the wallet knows the private key of, listed using &#39;gethdkeys&#39;, to use for this descriptor&#39;s key&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;descs&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;The public descriptors that were added to the wallet&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;descs&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

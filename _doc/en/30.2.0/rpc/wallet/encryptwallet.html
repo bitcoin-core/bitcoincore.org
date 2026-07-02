@@ -1,0 +1,19 @@
+---
+name: encryptwallet
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/encryptwallet/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">encryptwallet &#34;passphrase&#34;</pre>
+  <div class="rpc-description"><p>Encrypts the wallet with &#39;passphrase&#39;. This is for first time encryption. After this, any calls that interact with private keys such as sending or signing will require the passphrase to be set prior to making these calls. Use the walletpassphrase call for this, and then walletlock call. If the wallet is already encrypted, use the walletpassphrasechange call. ** IMPORTANT ** For security reasons, the encryption process will generate a new HD seed, resulting in the creation of a fresh set of active descriptors. Therefore, it is crucial to securely back up the newly generated wallet file using the backupwallet RPC.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>passphrase</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+</div>

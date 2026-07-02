@@ -1,0 +1,34 @@
+---
+name: addmultisigaddress
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/addmultisigaddress/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">addmultisigaddress nrequired keys ( &#34;label&#34; ) ( &#34;address_type&#34; )</pre>
+  <div class="rpc-description"><p>Add an nrequired-to-sign multisignature address to the wallet. Requires a new wallet backup. Each key is a Bitcoin address or hex-encoded public key. This functionality is only intended for use with non-watchonly addresses. See `importaddress` for watchonly p2sh address support. If &#39;label&#39; is specified, assign address to that label. Note: This command is only compatible with legacy wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>nrequired</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>The number of required signatures out of the n keys or addresses.</td></tr>
+  <tr><td>2</td><td><code>keys</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The bitcoin addresses or hex-encoded public keys
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>label</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>A label to assign the addresses to.</td></tr>
+  <tr><td>4</td><td><code>address_type</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: set by -addresstype</small></td><td>The address type to use. Options are &#34;legacy&#34;, &#34;p2sh-segwit&#34;, and &#34;bech32&#34;.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The value of the new multisig address</span></li>
+  <li><code class="rpc-key">redeemScript</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The string value of the hex-encoded redemption script</span></li>
+  <li><code class="rpc-key">descriptor</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The descriptor for this multisig</span></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Any warnings resulting from the creation of this multisig</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+</div>

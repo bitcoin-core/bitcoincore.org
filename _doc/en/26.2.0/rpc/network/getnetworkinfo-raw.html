@@ -1,0 +1,46 @@
+---
+name: getnetworkinfo
+btcversion: 26.2.0
+btcgroup: network
+permalink: en/doc/26.2.0/rpc/network/getnetworkinfo/raw/
+rawpage: true
+---
+
+getnetworkinfo
+
+Returns an object containing various state info regarding P2P networking.
+
+Arguments:
+none
+
+Result: (object)
+  version (number)  the server version
+  subversion (string)  the server subversion string
+  protocolversion (number)  the protocol version
+  localservices (string)  the services we offer to the network
+  localservicesnames (array)  the services we offer to the network, in human-readable form
+    each item (string)
+  localrelay (boolean)  true if transaction relay is requested from peers
+  timeoffset (number)  the time offset
+  connections (number)  the total number of connections
+  connections_in (number)  the number of inbound connections
+  connections_out (number)  the number of outbound connections
+  networkactive (boolean)  whether p2p networking is enabled
+  networks (array)  information per network
+    each item (object)
+      name (string)  network (ipv4, ipv6, onion, i2p, cjdns)
+      limited (boolean)  is the network limited using -onlynet?
+      reachable (boolean)  is the network reachable?
+      proxy (string)  ("host:port") the proxy that is used for this network, or empty if none
+      proxy_randomize_credentials (boolean)  Whether randomized credentials are used
+  relayfee (number)  minimum relay fee rate for transactions in BTC/kvB
+  incrementalfee (number)  minimum fee rate increment for mempool limiting or replacement in BTC/kvB
+  localaddresses (array)  list of local addresses
+    each item (object)
+      address (string)  network address
+      port (number)  network port
+      score (number)  relative score
+  warnings (string)  any network and blockchain warnings
+
+
+

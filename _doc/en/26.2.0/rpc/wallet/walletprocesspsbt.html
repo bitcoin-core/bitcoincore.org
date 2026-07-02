@@ -1,0 +1,28 @@
+---
+name: walletprocesspsbt
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/walletprocesspsbt/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">walletprocesspsbt &#34;psbt&#34; ( sign ) ( &#34;sighashtype&#34; ) ( bip32derivs ) ( finalize )</pre>
+  <div class="rpc-description"><p>Update a PSBT with input information from our wallet and then sign inputs that we can sign for. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>psbt</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The transaction base64 string</td></tr>
+  <tr><td>2</td><td><code>sign</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Also sign the transaction when updating (requires wallet to be unlocked)</td></tr>
+  <tr><td>3</td><td><code>sighashtype</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;DEFAULT for Taproot, ALL otherwise&#34;</small></td><td>The signature hash type to sign with if not specified by the PSBT. Must be one of<br>       &#34;DEFAULT&#34;<br>       &#34;ALL&#34;<br>       &#34;NONE&#34;<br>       &#34;SINGLE&#34;<br>       &#34;ALL|ANYONECANPAY&#34;<br>       &#34;NONE|ANYONECANPAY&#34;<br>       &#34;SINGLE|ANYONECANPAY&#34;</td></tr>
+  <tr><td>4</td><td><code>bip32derivs</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Include BIP 32 derivation paths for public keys if we know them</td></tr>
+  <tr><td>5</td><td><code>finalize</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Also finalize inputs if possible</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">psbt</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The base64-encoded partially signed transaction</span></li>
+  <li><code class="rpc-key">complete</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">If the transaction has a complete set of signatures</span></li>
+  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hex-encoded network transaction if complete</span></li>
+</ul>
+</div>

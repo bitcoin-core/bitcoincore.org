@@ -1,0 +1,36 @@
+---
+name: submitpackage
+btcversion: 26.2.0
+btcgroup: rawtransactions
+permalink: en/doc/26.2.0/rpc/rawtransactions/submitpackage/raw/
+rawpage: true
+---
+
+submitpackage package
+
+Submit a package of raw transactions (serialized, hex-encoded) to local node.
+The package must consist of a child with its parents, and none of the parents may depend on one another.
+The package will be validated according to consensus and mempool policy rules. If all transactions pass, they will be accepted to mempool.
+This RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies.
+Warning: successful submission does not mean the transactions will propagate throughout the network.
+
+Arguments:
+1. package (array)  An array of raw transactions.
+  each item (string)
+
+Result: (object)
+  tx-results (object)  transaction results keyed by wtxid
+    ... (object)
+      txid (string)  The transaction hash in hex
+      other-wtxid (string, optional)  The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.
+      vsize (number)  Virtual transaction size as defined in BIP 141.
+      fees (object)  Transaction fees
+        base (string, amount)  transaction fee in BTC
+        effective-feerate (string, amount, optional)  if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.
+        effective-includes (array, optional)  if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.
+          each item (string)
+  replaced-transactions (array, optional)  List of txids of replaced transactions
+    each item (string)
+
+
+

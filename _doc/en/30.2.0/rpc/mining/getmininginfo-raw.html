@@ -1,0 +1,37 @@
+---
+name: getmininginfo
+btcversion: 30.2.0
+btcgroup: mining
+permalink: en/doc/30.2.0/rpc/mining/getmininginfo/raw/
+rawpage: true
+---
+
+getmininginfo
+
+Returns a json object containing mining-related information.
+
+Arguments:
+none
+
+Result: (object)
+  blocks (number)  The current block
+  currentblockweight (number, optional)  The block weight (including reserved weight for block header, txs count and coinbase tx) of the last assembled block (only present if a block was ever assembled)
+  currentblocktx (number, optional)  The number of block transactions (excluding coinbase) of the last assembled block (only present if a block was ever assembled)
+  bits (string)  The current nBits, compact representation of the block difficulty target
+  difficulty (number)  The current difficulty
+  target (string)  The current target
+  networkhashps (number)  The network hashes per second
+  pooledtx (number)  The size of the mempool
+  blockmintxfee (string, amount)  Minimum feerate of packages selected for block inclusion in BTC/kvB
+  chain (string)  current network name (main, test, testnet4, signet, regtest)
+  signet_challenge (string, optional)  The block challenge (aka. block script), in hexadecimal (only present if the current network is a signet)
+  next (object)  The next block
+    height (number)  The next height
+    bits (string)  The next target nBits
+    difficulty (number)  The next difficulty
+    target (string)  The next target
+  warnings (array)  any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)
+    each item (string)
+
+
+

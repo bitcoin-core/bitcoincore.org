@@ -1,0 +1,122 @@
+---
+name: getmininginfo
+btcversion: 31.0.0
+btcgroup: mining
+permalink: en/doc/31.0.0/rpc/mining/getmininginfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getmininginfo&#34;,
+  &#34;description&#34;: &#34;Returns a json object containing mining-related information.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;blocks&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The current block&#34;
+        },
+        &#34;currentblockweight&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The block weight (including reserved weight for block header, txs count and coinbase tx) of the last assembled block (only present if a block was ever assembled)&#34;
+        },
+        &#34;currentblocktx&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of block transactions (excluding coinbase) of the last assembled block (only present if a block was ever assembled)&#34;
+        },
+        &#34;bits&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The current nBits, compact representation of the block difficulty target&#34;
+        },
+        &#34;difficulty&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The current difficulty&#34;
+        },
+        &#34;target&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The current target&#34;
+        },
+        &#34;networkhashps&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The network hashes per second&#34;
+        },
+        &#34;pooledtx&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The size of the mempool&#34;
+        },
+        &#34;blockmintxfee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;Minimum feerate of packages selected for block inclusion in BTC/kvB&#34;
+        },
+        &#34;chain&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;current network name (main, test, testnet4, signet, regtest)&#34;
+        },
+        &#34;signet_challenge&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The block challenge (aka. block script), in hexadecimal (only present if the current network is a signet)&#34;
+        },
+        &#34;next&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The next height&#34;
+            },
+            &#34;bits&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The next target nBits&#34;
+            },
+            &#34;difficulty&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The next difficulty&#34;
+            },
+            &#34;target&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The next target&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;height&#34;,
+            &#34;bits&#34;,
+            &#34;difficulty&#34;,
+            &#34;target&#34;
+          ],
+          &#34;description&#34;: &#34;The next block&#34;
+        },
+        &#34;warnings&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;blocks&#34;,
+        &#34;bits&#34;,
+        &#34;difficulty&#34;,
+        &#34;target&#34;,
+        &#34;networkhashps&#34;,
+        &#34;pooledtx&#34;,
+        &#34;blockmintxfee&#34;,
+        &#34;chain&#34;,
+        &#34;next&#34;,
+        &#34;warnings&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;mining&#34;
+}</pre>

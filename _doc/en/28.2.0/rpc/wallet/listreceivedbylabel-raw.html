@@ -1,0 +1,27 @@
+---
+name: listreceivedbylabel
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/listreceivedbylabel/raw/
+rawpage: true
+---
+
+listreceivedbylabel ( minconf ) ( include_empty ) ( include_watchonly ) ( include_immature_coinbase )
+
+List received transactions by label.
+
+Arguments:
+1. minconf (number, optional, default=1)  The minimum number of confirmations before payments are included.
+2. include_empty (boolean, optional, default=false)  Whether to include labels that haven't received any payments.
+3. include_watchonly (boolean, optional, default: true for watch-only wallets, otherwise false)  Whether to include watch-only addresses (see 'importaddress')
+4. include_immature_coinbase (boolean, optional, default=false)  Include immature coinbase transactions.
+
+Result: (array)
+  each item (object)
+    involvesWatchonly (boolean, optional)  Only returns true if imported addresses were involved in transaction
+    amount (string, amount)  The total amount received by addresses with this label
+    confirmations (number)  The number of confirmations of the most recent transaction included
+    label (string)  The label of the receiving address. The default label is ""
+
+
+
