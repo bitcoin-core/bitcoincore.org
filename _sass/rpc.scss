@@ -329,3 +329,35 @@ article.page:has(.toc) .rpc-titlebar {
 	border-left: 3px solid $basecolor;
 	overflow-x: auto;
 }
+
+.rpc-copy-host {
+	position: relative;
+}
+
+.doc > .rpc-copy-host {
+	margin-top: 1em;
+}
+
+.rpc-copy {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	padding: 4px 8px;
+	border: 1px solid lighten($basecolor, 50%);
+	border-radius: 3px;
+	background-color: lighten($basecolor, 73%);
+	color: lighten($textcolor, 20%);
+	font-size: 13px;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0.75;
+
+	.fa {
+		margin-right: 0;
+	}
+
+	&:hover {
+		opacity: 1;
+		color: $textcolor;
+	}
+}
