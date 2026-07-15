@@ -67,3 +67,17 @@ es:
   rss_feed: "Fuente RSS del Blog de Bitcoin Core"
   rss_meetings_feed: "Feed de reuniones"
   rss_blog_feed: "Feed de entradas del blog"
+
+tr:
+  created: "Tarafından yayınlandı"
+  author: "tarafından"
+  description: "Bitcoin Core Websitesi"
+  footer: "Bitcoin Core Projesi"
+  related: "Önerilen"
+  viewallposts: "Tüm gönderileri gör"
+  not_translated: "Not: Bu sayfa çevrilmemiştir."
+  tocoverview: "Genel bakış"
+  translation_outdated: "Bu çeviri güncelliğini yitirmiş olabilir. Lütfen İngilizce sürümle karşılaştırın."
+  rss_feed: "Bitcoin Core Blog RSS Beslemesi"
+  rss_meetings_feed: "Toplantı gönderileri"
+  rss_blog_feed: "Blog gönderileri beslemesi"
