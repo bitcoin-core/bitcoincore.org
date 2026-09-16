@@ -7,8 +7,6 @@ type: pages
 layout: page
 lang: en
 version: 5
-redirect_from:
-  - /zh_TW/contribute/
 ---
 
 You are welcome to contribute to the project!

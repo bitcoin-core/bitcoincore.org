@@ -98,42 +98,48 @@ zh_TW:
     url:   "/zh_TW/"
   about:
     title: "關於我們"
-    url:   "/en/about/"
+    url:   "/zh_TW/about/"
+  download:
+    title: "下載"
+    url:   "/zh_TW/download/"
   blog:
     title: "網誌"
     url:   "/zh_TW/blog/"
   releases:
-    title: "軟件發行"
+    title: "版本發布"
     url:   "/zh_TW/releases/"
   security-advisories:
-    title: "Security Advisories"
-    url:   "/en/security-advisories/"
+    title: "安全公告"
+    url:   "/zh_TW/security-advisories/"
   dev:
-    title: "Development"
+    title: "開發"
     submenu: true
     tree:
       contribute:
         title: "貢獻"
         url:   "/zh_TW/contribute/"
       contribute-code:
-        title: "contributing code"
-        url:   "/en/faq/contributing-code/"
+        title: "貢獻程式碼"
+        url:   "/zh_TW/faq/contributing-code/"
       meetings:
-        title: "meetings"
-        url:   "/en/meetings/"
+        title: "會議紀錄"
+        url:   "/zh_TW/meetings/"
       eol:
-        title: "Lifecycle"
-        url:   "/en/lifecycle/"
+        title: "生命週期"
+        url:   "/zh_TW/lifecycle/"
   contact:
-    title: "Contact"
+    title: "聯絡"
     submenu: true
     tree:
       contact_us:
-        title: "Contact Us"
-        url: "/en/contact/"
+        title: "聯絡我們"
+        url:   "/zh_TW/contact/"
       announcements:
-        title: "Announcements"
-        url: "/en/list/announcements/join/"
+        title: "公告"
+        url:   "/zh_TW/list/announcements/join/"
+      twitter_impersonation:
+        title: "X 冒充帳號"
+        url:   "/zh_TW/twitter-impersonation"
 ja:
   home:
     title: "Bitcoin Core"
