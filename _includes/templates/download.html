@@ -5,7 +5,10 @@
      http://opensource.org/licenses/MIT. -->
 {% assign VERSION_SORTED_RELEASES = site.releases | sort: 'release' | reverse %}
 {% capture CURRENT_RELEASE %}{% for subver in VERSION_SORTED_RELEASES[0].release %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
+{% capture FULL_VERSION %}{% for subver in VERSION_SORTED_RELEASES[0].btcversion %}{{subver}}{% unless forloop.last %}.{% endunless %}{% endfor %}{% endcapture %}
 {% assign magnet = VERSION_SORTED_RELEASES[0].optional_magnetlink %}
+{% assign snapshot_magnet = VERSION_SORTED_RELEASES[0].snapshot_magnet %}
+{% assign UTXO_SNAPSHOT_HEIGHT = VERSION_SORTED_RELEASES[0].snapshot_height %}
 {% capture PATH_PREFIX %}/bin/bitcoin-core-{{CURRENT_RELEASE}}{% endcapture %}
 {% capture FILE_PREFIX %}bitcoin-{{CURRENT_RELEASE}}{% endcapture %}
 {% assign builder_line_arr = page.example_builders_line | split: ' ' %}
@@ -295,6 +298,16 @@
 
   <p>{{page.verifying_and_reproducing}} <a href="{{GUIX_REPOSITORY_URL}}">{{page.guix_repository}}</a>.</p>
 {% endif %}{% comment %}END VERSION > 1 CONTENT{% endcomment %}
+
+  <h2 style="text-align: center">{{page.assume_utxo}}</h2>
+
+  <p>{{page.assume_utxo_steps | replace: '$(FULL_VERSION)', FULL_VERSION | replace: '$(UTXO_SNAPSHOT_HEIGHT)', UTXO_SNAPSHOT_HEIGHT }}</p>
+
+  <ul>
+    <li>
+      Torrent magnet: <a href="{{ snapshot_magnet | replace: '&', '\&amp;'}}" class="magnetlink" data-proofer-ignore></a><br>
+    </li>
+  </ul>
 
 <hr>
 
