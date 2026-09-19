@@ -1,0 +1,20 @@
+---
+name: getTip
+btcversion: 31.0.0
+btcgroup: mining
+btcdoctype: IPC
+btchtml: true
+permalink: en/doc/31.0.0/ipc/mining/getTip/
+---
+
+<p class="ipc-context">Method on interface <a href="../"><code>Mining</code></a>.</p>
+<div class="highlight"><pre><code><span class="nv">getTip</span> <span class="nd">@2</span> <span class="p">(</span>
+  <span class="nv">context</span> <span class="p">:</span><span class="nc">Context</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+  <span class="nv">result</span> <span class="p">:</span><a class="nc" href="../../structs/#BlockRef">BlockRef</a><span class="p">,</span>
+  <span class="nv">hasResult</span> <span class="p">:</span><span class="kt">Bool</span>
+<span class="p">)</span><span class="p">;</span></code></pre></div>
+<div class="ipc-doc">
+<p>Returns the hash and height for the tip of this chain</p>
+</div>
+

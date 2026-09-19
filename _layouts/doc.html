@@ -1,13 +1,14 @@
 <!doctype html>
 {% include browser_magic.html %}
 <head>
-{% if page.name != "index" and page.name != "rpcindex" %}
-  {% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
+{% assign doctype = page.btcdoctype | default: "RPC" %}
+{% if page.name != "index" and page.name != "rpcindex" and page.name != "ipcindex" and page.name != "ipcdocsindex" %}
+  {% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " " | append: doctype | append: ")" %}
 {% else %}
-  {% if page.btcversion != "index" %}
-    {% assign custom_title = "Bitcoin Core " | append: page.btcversion | append: " RPC" %}
+  {% if page.btcversion != "index" and page.btcversion != "ipc-index" %}
+    {% assign custom_title = "Bitcoin Core " | append: page.btcversion | append: " " | append: doctype %}
   {% else %}
-    {% assign custom_title = "Bitcoin Core RPC" %}
+    {% assign custom_title = "Bitcoin Core " | append: doctype %}
   {% endif %}
 {% endif %}
 {% include head.html %}
@@ -23,7 +24,7 @@
   <div class="article-author-side">
     <div>
       <p>
-        {% if page.btcversion != "index" %}
+        {% if page.btcversion != "index" and page.btcversion != "ipc-index" %}
           <!-- Since v22, the patch number is omitted in git tags, unless it is non-zero:
             version  -> tag
             0.21.0   -> v0.21.0
@@ -39,45 +40,90 @@
   <article class="page">
     <h1>{{ custom_title | xml_escape }}</h1>
     <div class="article-wrap">
-      {% if page.btcversion != "index" %}
-        {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
+      {% if page.btcdoctype == "IPC" %}
+        <div class="ipc-warning" style="border-left: 4px solid #d97706; background: #fff7ed; color: #7c2d12; padding: 0.75em 1em; margin: 0 0 1em;">
+          <strong>Warning:</strong> The IPC interfaces are still experimental and breaking changes are possible.
+        </div>
+      {% endif %}
+      {% if page.btcversion != "index" and page.btcversion != "ipc-index" %}
+        {% assign current_pages = site.doc | where:"btcversion", page.btcversion %}
+        {% assign filtered = "" | split: "" %}
+        {% if page.btcdoctype == "IPC" %}
+          {% for p in current_pages %}
+            {% if p.btcdoctype == "IPC" %}{% assign filtered = filtered | push: p %}{% endif %}
+          {% endfor %}
+        {% else %}
+          {% for p in current_pages %}
+            {% unless p.btcdoctype == "IPC" %}{% assign filtered = filtered | push: p %}{% endunless %}
+          {% endfor %}
+        {% endif %}
+        {% assign all_groups = filtered | group_by:"btcgroup" %}
+        {% assign init_group = all_groups | where:"name","init" %}
+        {% assign structs_group = all_groups | where:"name","structs" %}
+        {% assign other_groups_unsorted = "" | split: "" %}
+        {% for g in all_groups %}
+          {% if g.name != "init" and g.name != "structs" and g.name != "index" %}
+            {% assign other_groups_unsorted = other_groups_unsorted | push: g %}
+          {% endif %}
+        {% endfor %}
+        {% assign other_groups = other_groups_unsorted | sort: "name" %}
+        {% assign ordered_groups = init_group | concat: other_groups | concat: structs_group %}
+
         <section class="toc">
         <input id="searchbar" type="text" value="" placeholder="Search ..."/>
-        {% for group in groups %}
-          {% if group.name != "index" %}
-            <header>
-              <h3 class="toc-header">
-                <i class="fa fa-book"></i>
-                {{ group.name }}
-              </h3>
-              <div class="toc-drawer js-hide-on-start">
-                <ul>
+        {% for group in ordered_groups %}
+          <header>
+            <h3 class="toc-header">
+              <i class="fa fa-book"></i>
+              {{ group.name }}
+            </h3>
+            <div class="toc-drawer js-hide-on-start">
+              <ul>
+                {% if group.name == "structs" %}
                   {% for article in group.items %}
-                    <li class="leaf-article"><a href="{{article.url}}">{{article.name}}</a></li>
+                    {% for s in article.btcstructs %}
+                      <li class="leaf-article"><a href="{{article.url}}#{{s}}">{{s}}</a></li>
+                    {% endfor %}
                   {% endfor %}
-                </ul>
-              </div>
-            </header>
-          {% endif %}
+                {% else %}
+                  {% for article in group.items %}
+                    {% unless article.btcifaceindex %}
+                      <li class="leaf-article"><a href="{{article.url}}">{{article.name}}</a></li>
+                    {% endunless %}
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+          </header>
         {% endfor %}
         </section>
       {% endif %}
 
-      {% if page.name != "index" and page.name != "rpcindex" %}
+      {% if page.name != "index" and page.name != "rpcindex" and page.name != "ipcindex" and page.name != "ipcdocsindex" %}
+        {% if page.btchtml %}
+{{ content }}
+        {% else %}
 <span class="doc">
 {% highlight text %}{{ content }}{% endhighlight %}
 </span>
+        {% endif %}
       {% else %}
-        {% if page.btcversion != "index" %}
+        {% if page.btcversion != "index" and page.btcversion != "ipc-index" %}
           Select a command group in the menu.
         {% else %}
-          Following docs are available:
+          {% if page.name == "ipcdocsindex" %}
+            {% assign index_marker = "ipcindex" %}
+            Following IPC docs are available:
+          {% else %}
+            {% assign index_marker = "index" %}
+            Following docs are available:
+          {% endif %}
           {% assign groups = site.doc | sort: "btcversion" | reverse | group_by:"btcversion" %}
           <ul>
             {% for group in groups %}
-              {% if group.name != "index" %}
+              {% if group.name != "index" and group.name != "ipc-index" %}
                 {% for article in group.items %}
-                  {% if article.name == "index" %}
+                  {% if article.name == index_marker %}
                     <li><a href="{{article.url}}">{{group.name}}</a></li>
                   {% endif %}
                 {% endfor %}
