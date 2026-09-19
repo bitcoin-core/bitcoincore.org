@@ -1,0 +1,80 @@
+<script type="text/javascript">
+var os = 'windows64';
+if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
+else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
+else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
+var but = document.getElementById('downloadbutton');
+var linkwinexe = document.getElementById('downloadwinexe');
+var linkwinzip = document.getElementById('downloadwinzip');
+var hrefwin64exe = document.getElementById('win64exe').href;
+var hrefwin64zip = document.getElementById('win64zip').href;
+var hrefmaczip = document.getElementById('macarmzip').href;
+var hreflin64 = document.getElementById('lin64').href;
+switch (os) {
+case 'windows64':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
+	but.href = hrefwin64exe;
+	linkwinexe.href = hrefwin64exe;
+	linkwinzip.href = hrefwin64zip;
+break;
+case 'linux64':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
+	but.href = hreflin64;
+	linklin.href = hreflin64;
+break;
+case 'mac':
+	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
+	but.href = hrefmaczip;
+break;
+}
+
+function parseSelectedRelease() {
+  var params = new URLSearchParams(window.location.search);
+  var requested = params.get('version') || params.get('v');
+  if (!requested) return null;
+  if (!/^\d+(\.\d+){1,2}$/.test(requested)) return null;
+  return requested;
+}
+
+function replaceTextNodes(root, needle, replacement) {
+  if (!root || needle === replacement) return;
+  var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  var node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue.indexOf(needle) !== -1) {
+      node.nodeValue = node.nodeValue.split(needle).join(replacement);
+    }
+  }
+}
+
+var currentRelease = '{{CURRENT_RELEASE}}';
+var selectedRelease = parseSelectedRelease();
+if (selectedRelease && selectedRelease !== currentRelease) {
+  var currentPathPrefix = '/bin/bitcoin-core-' + currentRelease + '/';
+  var selectedPathPrefix = '/bin/bitcoin-core-' + selectedRelease + '/';
+  var currentFilePrefix = 'bitcoin-' + currentRelease;
+  var selectedFilePrefix = 'bitcoin-' + selectedRelease;
+
+  document.querySelectorAll('a[href]').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (!href) return;
+    href = href.split(currentPathPrefix).join(selectedPathPrefix);
+    href = href.split(currentFilePrefix).join(selectedFilePrefix);
+    link.setAttribute('href', href);
+  });
+
+  replaceTextNodes(document.querySelector('.download'), currentFilePrefix, selectedFilePrefix);
+
+  var downloadVersion = document.getElementById('download-version');
+  if (downloadVersion) downloadVersion.textContent = selectedRelease;
+
+  var versionHistoryLink = document.getElementById('versionhistory-link');
+  if (versionHistoryLink) {
+    versionHistoryLink.setAttribute('href', '/{{ page.lang }}/releases/' + selectedRelease + '/');
+  }
+
+  var magnetLink = document.querySelector('.magnetlink');
+  if (magnetLink) magnetLink.style.display = 'none';
+}
+
+</script>

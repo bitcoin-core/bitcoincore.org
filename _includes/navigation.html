@@ -56,8 +56,8 @@
                 {% assign releases=site.releases | where:"name", page.name | sort: 'path' %}
 
                 <li id="langselect" class="lang">
-                    <select onchange="window.location=this.value;">
-                        <option value="{{ post.url }}">{{ site.data.languages[page.lang] }}</option>
+                    <select onchange="switchLanguage(this);">
+                        <option value="{{ page.url }}">{{ site.data.languages[page.lang] }}</option>
                         {% for post in posts %}
                         {% if post.lang != page.lang %}<option value="{{ post.url }}">{{ site.data.languages[post.lang] }}</option>{% endif %}
                         {% endfor %}
@@ -79,3 +79,21 @@
 		</nav>
 	</div><!-- /.top-navigation -->
 </div><!-- /.navigation-wrapper -->
+
+<script>
+function switchLanguage(selectEl) {
+  var target = selectEl && selectEl.value;
+  if (!target) return;
+
+  var search = window.location.search || "";
+  var hash = window.location.hash || "";
+
+  if (search && target.indexOf("?") !== -1) {
+    target += "&" + search.replace(/^\?/, "");
+  } else {
+    target += search;
+  }
+
+  window.location = target + hash;
+}
+</script>
