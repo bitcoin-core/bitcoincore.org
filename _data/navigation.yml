@@ -278,3 +278,51 @@ pt_BR:
       twitter_impersonation:
         title: "Perfis falsos no X"  # XXX
         url: "/en/twitter-impersonation"  # XXX
+ko:
+  home:
+    title: "Bitcoin Core"
+    url:   "/ko/"
+  about:
+    title: "소개"
+    url:   "/ko/about/"
+  download:
+    title: "다운로드"
+    url: "/ko/download/"
+  blog:
+    title: "블로그"
+    url:   "/en/blog/"  # XXX
+  releases:
+    title: "릴리스"
+    url:   "/en/releases/"  # XXX
+  security-advisories:
+    title: "보안 권고"
+    url:   "/ko/security-advisories/"
+  dev:
+    title: "개발"
+    submenu: true
+    tree:
+      contribute:
+        title: "기여"
+        url:   "/ko/contribute/"
+      contribute-code:
+        title: "코드 기여"
+        url:   "/ko/faq/contributing-code/"
+      meetings:
+        title: "미팅"
+        url:   "/ko/meetings/"
+      eol:
+        title: "생명주기"
+        url:   "/ko/lifecycle"
+  contact:
+    title: "문의"
+    submenu: true
+    tree:
+      contact_us:
+        title: "문의하기"
+        url: "/ko/contact/"
+      announcements:
+        title: "공지"
+        url: "/ko/list/announcements/join/"
+      twitter_impersonation:
+        title: "X 사칭 계정"
+        url: "/ko/twitter-impersonation"
