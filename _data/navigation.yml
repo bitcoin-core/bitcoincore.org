@@ -263,8 +263,8 @@ pt_BR:
         title: "reuniões"  # XXX
         url:   "/en/meetings/"  # XXX
       eol:
-        title: "Ciclo de vida"  # XXX
-        url:   "/en/lifecycle"  # XXX
+        title: "Ciclo de vida"
+        url:   "/pt_BR/lifecycle"
   contact:
     title: "Contato"  # XXX
     submenu: true
