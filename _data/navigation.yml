@@ -260,8 +260,8 @@ pt_BR:
         title: "contribuir com código"  # XXX
         url:   "/en/faq/contributing-code/"  # XXX
       meetings:
-        title: "reuniões"  # XXX
-        url:   "/en/meetings/"  # XXX
+        title: "reuniões"
+        url:   "/pt_BR/meetings/"
       eol:
         title: "Ciclo de vida"  # XXX
         url:   "/en/lifecycle"  # XXX
