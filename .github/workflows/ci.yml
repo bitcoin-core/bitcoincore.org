@@ -18,7 +18,7 @@ jobs:
   bundler:
     runs-on: ubuntu-latest
     container:
-      image: ruby:3.1.2
+      image: ruby:3.3.8
     steps:
       - uses: actions/checkout@v6
 
@@ -34,7 +34,7 @@ jobs:
   debian-only:
     runs-on: ubuntu-latest
     container:
-      image: debian:bookworm
+      image: debian:trixie
     steps:
       - uses: actions/checkout@v6
 

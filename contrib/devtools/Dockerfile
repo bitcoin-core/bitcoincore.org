@@ -1,4 +1,4 @@
-FROM ruby:3.1.2
+FROM ruby:3.3.8
 
 ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 ENV JEKYLL_ENV=production
