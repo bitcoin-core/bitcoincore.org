@@ -1,0 +1,60 @@
+---
+name: estimatesmartfee
+btcversion: 27.2.0
+btcgroup: util
+permalink: en/doc/27.2.0/rpc/util/estimatesmartfee/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;estimatesmartfee&#34;,
+  &#34;description&#34;: &#34;Estimates the approximate fee per kilobyte needed for a transaction to begin\nconfirmation within conf_target blocks if possible and return the number of blocks\nfor which the estimate is valid. Uses virtual transaction size as defined\nin BIP 141 (witness data is discounted).&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;conf_target&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;
+      },
+      &#34;description&#34;: &#34;Confirmation target in blocks (1 - 1008)&#34;
+    },
+    {
+      &#34;name&#34;: &#34;estimate_mode&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;conservative&#34;
+      },
+      &#34;description&#34;: &#34;The fee estimate mode.\nWhether to return a more conservative estimate which also satisfies\na longer history. A conservative estimate potentially returns a\nhigher feerate and is more likely to be sufficient for the desired\ntarget, but is not as responsive to short term drops in the\nprevailing fee market. Must be one of (case insensitive):\n\&#34;unset\&#34;\n\&#34;economical\&#34;\n\&#34;conservative\&#34;&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;feerate&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;estimate fee rate in BTC/kvB (only present if no errors were encountered)&#34;
+        },
+        &#34;errors&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;Errors encountered during processing (if there are any)&#34;
+        },
+        &#34;blocks&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;block number where estimate was found\nThe request target will be clamped between 2 and the highest target\nfee estimation is able to return based on how long it has been running.\nAn error is returned if not enough transactions and blocks\nhave been observed to make an estimate for any number of blocks.&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;blocks&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;util&#34;
+}</pre>

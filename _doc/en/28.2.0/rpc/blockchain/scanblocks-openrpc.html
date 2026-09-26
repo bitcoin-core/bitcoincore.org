@@ -1,0 +1,183 @@
+---
+name: scanblocks
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/scanblocks/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;scanblocks&#34;,
+  &#34;description&#34;: &#34;Return relevant blockhashes for given descriptors (requires blockfilterindex).\nThis call may take several minutes. Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;action&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The action to execute\n\&#34;start\&#34; for starting a scan\n\&#34;abort\&#34; for aborting the current scan (returns true when abort was successful)\n\&#34;status\&#34; for progress report (in %) of the current scan&#34;
+    },
+    {
+      &#34;name&#34;: &#34;scanobjects&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;oneOf&#34;: [
+            {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;desc&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;An output descriptor&#34;
+                },
+                &#34;range&#34;: {
+                  &#34;oneOf&#34;: [
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    },
+                    {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;prefixItems&#34;: [
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        },
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        }
+                      ],
+                      &#34;minItems&#34;: 2,
+                      &#34;maxItems&#34;: 2
+                    }
+                  ],
+                  &#34;default&#34;: 1000,
+                  &#34;description&#34;: &#34;The range of HD chain indexes to explore (either end or [begin,end])&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;desc&#34;
+              ]
+            }
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;Array of scan objects. Required for \&#34;start\&#34; action\nEvery scan object is either a string descriptor or an object:&#34;
+    },
+    {
+      &#34;name&#34;: &#34;start_height&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 0
+      },
+      &#34;description&#34;: &#34;Height to start to scan from&#34;
+    },
+    {
+      &#34;name&#34;: &#34;stop_height&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;chain tip&#34;
+      },
+      &#34;description&#34;: &#34;Height to stop to scan&#34;
+    },
+    {
+      &#34;name&#34;: &#34;filtertype&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;basic&#34;
+      },
+      &#34;description&#34;: &#34;The type name of the filter&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;filter_false_positives&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;Filter false positives (slower and may fail on pruned nodes). Otherwise they may occur at a rate of 1/M&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;null&#34;,
+          &#34;description&#34;: &#34;when action==&#39;status&#39; and no scan is in progress - possibly already completed&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;from_height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The height we started the scan from&#34;
+            },
+            &#34;to_height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The height we ended the scan at&#34;
+            },
+            &#34;relevant_blocks&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+              },
+              &#34;description&#34;: &#34;Blocks that may have matched a scanobject.&#34;
+            },
+            &#34;completed&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;description&#34;: &#34;true if the scan process was not aborted&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;from_height&#34;,
+            &#34;to_height&#34;,
+            &#34;relevant_blocks&#34;,
+            &#34;completed&#34;
+          ],
+          &#34;description&#34;: &#34;When action==&#39;start&#39;; only returns after scan completes&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;progress&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Approximate percent complete&#34;
+            },
+            &#34;current_height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Height of the block currently being scanned&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;progress&#34;,
+            &#34;current_height&#34;
+          ],
+          &#34;description&#34;: &#34;when action==&#39;status&#39; and a scan is currently in progress&#34;
+        },
+        {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;when action==&#39;abort&#39;&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

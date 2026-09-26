@@ -1,0 +1,24 @@
+---
+name: importmempool
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/importmempool/raw/
+rawpage: true
+---
+
+importmempool "filepath" ( options )
+
+Import a mempool.dat file and attempt to add its contents to the mempool.
+Warning: Importing untrusted files is dangerous, especially if metadata from the file is taken over.
+
+Arguments:
+1. filepath (string)  The mempool file
+2. options (object, optional)
+  use_current_time (boolean, optional, default=true)  Whether to use the current system time or use the entry time metadata from the mempool file. Warning: Importing untrusted metadata may lead to unexpected issues and undesirable behavior.
+  apply_fee_delta_priority (boolean, optional, default=false)  Whether to apply the fee delta metadata from the mempool file. It will be added to any existing fee deltas. The fee delta can be set by the prioritisetransaction RPC. Warning: Importing untrusted metadata may lead to unexpected issues and undesirable behavior. Only set this bool if you understand what it does.
+  apply_unbroadcast_set (boolean, optional, default=false)  Whether to apply the unbroadcast set metadata from the mempool file. Warning: Importing untrusted metadata may lead to unexpected issues and undesirable behavior.
+
+Result: (object)
+
+
+

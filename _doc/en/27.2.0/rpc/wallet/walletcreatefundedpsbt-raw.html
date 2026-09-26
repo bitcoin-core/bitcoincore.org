@@ -1,0 +1,68 @@
+---
+name: walletcreatefundedpsbt
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/walletcreatefundedpsbt/raw/
+rawpage: true
+---
+
+walletcreatefundedpsbt ( inputs ) outputs ( locktime ) ( options ) ( bip32derivs )
+
+Creates and funds a transaction in the Partially Signed Transaction format.
+Implements the Creator and Updater roles.
+All existing inputs must either have their previous output transaction be in the wallet
+or be in the UTXO set. Solving data must be provided for non-wallet inputs.
+
+Arguments:
+1. inputs (array, optional)  Leave empty to add inputs automatically. See add_inputs option.
+  each item (object)
+    txid (string)  The transaction id
+    vout (number)  The output number
+    sequence (number, optional, default: depends on the value of the 'locktime' and 'options.replaceable' arguments)  The sequence number
+    weight (number, optional, default: Calculated from wallet and solving data)  The maximum weight for this input, including the weight of the outpoint and sequence number. Note that signature sizes are not guaranteed to be consistent, so the maximum DER signatures size of 73 bytes should be used when considering ECDSA signatures.Remember to convert serialized sizes to weight units when necessary.
+2. outputs (array)  The outputs specified as key-value pairs. Each key may only appear once, i.e. there can only be one 'data' output, and no address may be duplicated. At least one output of either type must be specified. For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also accepted as second parameter.
+  each item (one of)
+    option 1: (object)
+      ... (one of)
+        option 1: (number)
+        option 2: (string)
+    option 2: (object)
+      data (string)  A key-value pair. The key must be "data", the value is hex-encoded data
+3. locktime (number, optional, default=0)  Raw locktime. Non-0 value also locktime-activates inputs
+4. options (object, optional)
+  add_inputs (boolean, optional, default: false when "inputs" are specified, true otherwise)  Automatically include coins from the wallet to cover the target amount.
+  include_unsafe (boolean, optional, default=false)  Include inputs that are not safe to spend (unconfirmed transactions from outside keys and unconfirmed replacement transactions). Warning: the resulting transaction may become invalid if one of the unsafe inputs disappears. If that happens, you will need to fund the transaction with different inputs and republish it.
+  minconf (number, optional, default=0)  If add_inputs is specified, require inputs with at least this many confirmations.
+  maxconf (number, optional)  If add_inputs is specified, require inputs with at most this many confirmations.
+  changeAddress (string, optional, default: automatic)  The bitcoin address to receive the change
+  changePosition (number, optional, default: random)  The index of the change output
+  change_type (string, optional, default: set by -changetype)  The output type to use. Only valid if changeAddress is not specified. Options are "legacy", "p2sh-segwit", "bech32", and "bech32m".
+  includeWatching (boolean, optional, default: true for watch-only wallets, otherwise false)  Also select inputs which are watch only
+  lockUnspents (boolean, optional, default=false)  Lock selected unspent outputs
+  fee_rate (one of, optional, default: not set, fall back to wallet fee estimation)  Specify a fee rate in sat/vB.
+    option 1: (number)
+    option 2: (string)
+  feeRate (one of, optional, default: not set, fall back to wallet fee estimation)  Specify a fee rate in BTC/kvB.
+    option 1: (number)
+    option 2: (string)
+  subtractFeeFromOutputs (array, optional, default=[])  The outputs to subtract the fee from. The fee will be equally deducted from the amount of each specified output. Those recipients will receive less bitcoins than you enter in their corresponding amount field. If no outputs are specified here, the sender pays the fee.
+    each item (number)
+  conf_target (number, optional, default: wallet -txconfirmtarget)  Confirmation target in blocks
+  estimate_mode (string, optional, default="unset")  The fee estimate mode, must be one of (case insensitive): "unset" "economical" "conservative"
+  replaceable (boolean, optional, default: wallet default)  Marks this transaction as BIP125-replaceable. Allows this transaction to be replaced by a transaction with higher fees
+  solving_data (object, optional)  Keys and scripts needed for producing a final transaction with a dummy signature. Used for fee estimation during coin selection.
+    pubkeys (array, optional, default=[])  Public keys involved in this transaction.
+      each item (string)
+    scripts (array, optional, default=[])  Scripts involved in this transaction.
+      each item (string)
+    descriptors (array, optional, default=[])  Descriptors that provide solving data for this transaction.
+      each item (string)
+5. bip32derivs (boolean, optional, default=true)  Include BIP 32 derivation paths for public keys if we know them
+
+Result: (object)
+  psbt (string)  The resulting raw transaction (base64-encoded string)
+  fee (string, amount)  Fee in BTC the resulting transaction pays
+  changepos (number)  The position of the added change output, or -1
+
+
+

@@ -1,0 +1,27 @@
+---
+name: encryptwallet
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/encryptwallet/raw/
+rawpage: true
+---
+
+encryptwallet "passphrase"
+
+Encrypts the wallet with 'passphrase'. This is for first time encryption.
+After this, any calls that interact with private keys such as sending or signing 
+will require the passphrase to be set prior the making these calls.
+Use the walletpassphrase call for this, and then walletlock call.
+If the wallet is already encrypted, use the walletpassphrasechange call.
+** IMPORTANT **
+For security reasons, the encryption process will generate a new HD seed, resulting
+in the creation of a fresh set of active descriptors. Therefore, it is crucial to
+securely back up the newly generated wallet file using the backupwallet RPC.
+
+Arguments:
+1. passphrase (string)  The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long.
+
+Result: (string)
+
+
+

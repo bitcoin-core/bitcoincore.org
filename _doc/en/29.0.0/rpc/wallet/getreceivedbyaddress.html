@@ -3,35 +3,35 @@ name: getreceivedbyaddress
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/getreceivedbyaddress/
+openrpc: true
 ---
 
-getreceivedbyaddress "address" ( minconf include_immature_coinbase )
-
-Returns the total amount received by the given address in transactions with at least minconf confirmations.
-
-Arguments:
-1. address                      (string, required) The bitcoin address for transactions.
-2. minconf                      (numeric, optional, default=1) Only include transactions confirmed at least this many times.
-3. include_immature_coinbase    (boolean, optional, default=false) Include immature coinbase transactions.
-
-Result:
-n    (numeric) The total amount in BTC received at this address.
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">getreceivedbyaddress &#34;address&#34; ( minconf ) ( include_immature_coinbase )</pre>
+  <div class="rpc-description"><p>Returns the total amount received by the given address in transactions with at least minconf confirmations.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>address</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The bitcoin address for transactions.</td></tr>
+  <tr><td>2</td><td><code>minconf</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 1</small></td><td>Only include transactions confirmed at least this many times.</td></tr>
+  <tr><td>3</td><td><code>include_immature_coinbase</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Include immature coinbase transactions.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string, amount)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 The amount from transactions with at least 1 confirmation
-> bitcoin-cli getreceivedbyaddress "bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl"
+&gt; bitcoin-cli getreceivedbyaddress &#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;
 
 The amount including unconfirmed transactions, zero confirmations
-> bitcoin-cli getreceivedbyaddress "bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl" 0
+&gt; bitcoin-cli getreceivedbyaddress &#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34; 0
 
 The amount with at least 6 confirmations
-> bitcoin-cli getreceivedbyaddress "bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl" 6
+&gt; bitcoin-cli getreceivedbyaddress &#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34; 6
 
 The amount with at least 6 confirmations including immature coinbase outputs
-> bitcoin-cli getreceivedbyaddress "bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl" 6 true
+&gt; bitcoin-cli getreceivedbyaddress &#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34; 6 true
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getreceivedbyaddress", "params": ["bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl", 6]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getreceivedbyaddress&#34;, &#34;params&#34;: [&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;, 6]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

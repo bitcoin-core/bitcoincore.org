@@ -1,0 +1,81 @@
+---
+name: getnettotals
+btcversion: 26.2.0
+btcgroup: network
+permalink: en/doc/26.2.0/rpc/network/getnettotals/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getnettotals&#34;,
+  &#34;description&#34;: &#34;Returns information about network traffic, including bytes in, bytes out,\nand current system time.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;totalbytesrecv&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total bytes received&#34;
+        },
+        &#34;totalbytessent&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total bytes sent&#34;
+        },
+        &#34;timemillis&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+          &#34;description&#34;: &#34;Current system UNIX epoch time in milliseconds&#34;
+        },
+        &#34;uploadtarget&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;timeframe&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Length of the measuring timeframe in seconds&#34;
+            },
+            &#34;target&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Target in bytes&#34;
+            },
+            &#34;target_reached&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;description&#34;: &#34;True if target is reached&#34;
+            },
+            &#34;serve_historical_blocks&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;description&#34;: &#34;True if serving historical blocks&#34;
+            },
+            &#34;bytes_left_in_cycle&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Bytes left in current time cycle&#34;
+            },
+            &#34;time_left_in_cycle&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Seconds left in current time cycle&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;timeframe&#34;,
+            &#34;target&#34;,
+            &#34;target_reached&#34;,
+            &#34;serve_historical_blocks&#34;,
+            &#34;bytes_left_in_cycle&#34;,
+            &#34;time_left_in_cycle&#34;
+          ]
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;totalbytesrecv&#34;,
+        &#34;totalbytessent&#34;,
+        &#34;timemillis&#34;,
+        &#34;uploadtarget&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

@@ -1,0 +1,39 @@
+---
+name: getblockheader
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/getblockheader/raw/
+rawpage: true
+---
+
+getblockheader "blockhash" ( verbose )
+
+If verbose is false, returns a string that is serialized, hex-encoded data for blockheader 'hash'.
+If verbose is true, returns an Object with information about blockheader <hash>.
+
+Arguments:
+1. blockhash (string)  The block hash
+2. verbose (boolean, optional, default=true)  true for a json object, false for the hex-encoded data
+
+Result: (one of)
+  option 1: (object)  for verbose = true
+    hash (string)  the block hash (same as provided)
+    confirmations (number)  The number of confirmations, or -1 if the block is not on the main chain
+    height (number)  The block height or index
+    version (number)  The block version
+    versionHex (string)  The block version formatted in hexadecimal
+    merkleroot (string)  The merkle root
+    time (number, unix-time)  The block time expressed in UNIX epoch time
+    mediantime (number, unix-time)  The median block time expressed in UNIX epoch time
+    nonce (number)  The nonce
+    bits (string)  nBits: compact representation of the block difficulty target
+    target (string)  The difficulty target
+    difficulty (number)  The difficulty
+    chainwork (string)  Expected number of hashes required to produce the current chain
+    nTx (number)  The number of transactions in the block
+    previousblockhash (string, optional)  The hash of the previous block (if available)
+    nextblockhash (string, optional)  The hash of the next block (if available)
+  option 2: (string)  for verbose=false
+
+
+

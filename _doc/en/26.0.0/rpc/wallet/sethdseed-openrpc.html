@@ -1,0 +1,40 @@
+---
+name: sethdseed
+btcversion: 26.0.0
+btcgroup: wallet
+permalink: en/doc/26.0.0/rpc/wallet/sethdseed/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;sethdseed&#34;,
+  &#34;description&#34;: &#34;Set or generate a new HD wallet seed. Non-HD wallets will not be upgraded to being a HD wallet. Wallets that are already\nHD will have a new HD seed set so that new keys added to the keypool will be derived from this new seed.\n\nNote that you will need to MAKE A NEW BACKUP of your wallet after setting the HD wallet seed.\nRequires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.\nNote: This command is only compatible with legacy wallets.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;newkeypool&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Whether to flush old unused addresses, including change addresses, from the keypool and regenerate it.\nIf true, the next address from getnewaddress and change address from getrawchangeaddress will be from this new seed.\nIf false, addresses (including change addresses if the wallet already had HD Chain Split enabled) from the existing\nkeypool will be used until it has been depleted.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;seed&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;random seed&#34;
+      },
+      &#34;description&#34;: &#34;The WIF private key to use as the new HD seed.\nThe seed value can be retrieved using the dumpwallet command. It is the private key marked hdseed=1&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

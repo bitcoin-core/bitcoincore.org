@@ -1,0 +1,56 @@
+---
+name: importdescriptors
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/importdescriptors/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">importdescriptors requests</pre>
+  <div class="rpc-description"><p>Import descriptors. This will trigger a rescan of the blockchain based on the earliest timestamp of all descriptors being imported. Requires a new wallet backup.</p><p>Note: This call can take over an hour to complete if using an early timestamp; during that time, other rpc calls may report that the imported keys, addresses or scripts exist but related transactions are still missing. The rescan is significantly faster if block filters are available (using startup option &#34;-blockfilterindex=1&#34;).</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>requests</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>Data to be imported
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Descriptor to import.</span></li>
+        <li><code class="rpc-key">active</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Set this descriptor to be the active descriptor for the corresponding output type/externality</span></li>
+        <li><code class="rpc-key">range</code> <span class="rpc-type">(one of, optional)</span> <span class="rpc-desc">If a ranged descriptor is used, this specifies the end or the range (in the form [begin,end]) to import</span>
+          <ul class="rpc-schema rpc-variants">
+            <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+            <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+              <ul class="rpc-schema">
+                <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+                <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+              </ul></li>
+          </ul></li>
+        <li><code class="rpc-key">next_index</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">If a ranged descriptor is set to active, this specifies the next index to generate addresses from</span></li>
+        <li><code class="rpc-key">timestamp</code> <span class="rpc-type">(one of)</span> <span class="rpc-desc">Time from which to start rescanning the blockchain for this descriptor, in UNIX epoch time<br>Use the string &#34;now&#34; to substitute the current synced blockchain time.<br>&#34;now&#34; can be specified to bypass scanning, for outputs which are known to never have been used, and<br>0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest timestamp<br>of all descriptors being imported will be scanned as well as the mempool.</span>
+          <ul class="rpc-schema rpc-variants">
+            <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+            <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">internal</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Whether matching outputs should be treated as not incoming payments (e.g. change)</span></li>
+        <li><code class="rpc-key">label</code> <span class="rpc-type">(string, optional, default=&#34;&#34;)</span> <span class="rpc-desc">Label to assign to the address, only allowed with internal=false. Disabled for ranged descriptors</span></li>
+      </ul></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">success</code> <span class="rpc-type">(boolean)</span></li>
+      <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">error</code> <span class="rpc-type">(object, optional)</span>
+        <ul class="rpc-schema">
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

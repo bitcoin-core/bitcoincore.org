@@ -3,52 +3,50 @@ name: createrawtransaction
 btcversion: 27.0.0
 btcgroup: rawtransactions
 permalink: en/doc/27.0.0/rpc/rawtransactions/createrawtransaction/
+openrpc: true
 ---
 
-createrawtransaction [{"txid":"hex","vout":n,"sequence":n},...] [{"address":amount,...},{"data":"hex"},...] ( locktime replaceable )
-
-Create a transaction spending the given inputs and creating new outputs.
-Outputs can be addresses or data.
-Returns hex-encoded raw transaction.
-Note that the transaction's inputs are not signed, and
-it is not stored in the wallet or transmitted to the network.
-
-Arguments:
-1. inputs                      (json array, required) The inputs
-     [
-       {                       (json object)
-         "txid": "hex",        (string, required) The transaction id
-         "vout": n,            (numeric, required) The output number
-         "sequence": n,        (numeric, optional, default=depends on the value of the 'replaceable' and 'locktime' arguments) The sequence number
-       },
-       ...
-     ]
-2. outputs                     (json array, required) The outputs specified as key-value pairs.
-                               Each key may only appear once, i.e. there can only be one 'data' output, and no address may be duplicated.
-                               At least one output of either type must be specified.
-                               For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also
-                               accepted as second parameter.
-     [
-       {                       (json object)
-         "address": amount,    (numeric or string, required) A key-value pair. The key (string) is the bitcoin address, the value (float or string) is the amount in BTC
-         ...
-       },
-       {                       (json object)
-         "data": "hex",        (string, required) A key-value pair. The key must be "data", the value is hex-encoded data
-       },
-       ...
-     ]
-3. locktime                    (numeric, optional, default=0) Raw locktime. Non-0 value also locktime-activates inputs
-4. replaceable                 (boolean, optional, default=true) Marks this transaction as BIP125-replaceable.
-                               Allows this transaction to be replaced by a transaction with higher fees. If provided, it is an error if explicit sequence numbers are incompatible.
-
-Result:
-"hex"    (string) hex string of the transaction
-
-Examples:
-> bitcoin-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"address\":0.01}]"
-> bitcoin-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"data\":\"00010203\"}]"
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"address\":0.01}]"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"data\":\"00010203\"}]"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">createrawtransaction inputs outputs ( locktime ) ( replaceable )</pre>
+  <div class="rpc-description"><p>Create a transaction spending the given inputs and creating new outputs. Outputs can be addresses or data. Returns hex-encoded raw transaction. Note that the transaction&#39;s inputs are not signed, and it is not stored in the wallet or transmitted to the network.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>inputs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The inputs
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+        <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The output number</span></li>
+        <li><code class="rpc-key">sequence</code> <span class="rpc-type">(number, optional, default: depends on the value of the &#39;replaceable&#39; and &#39;locktime&#39; arguments)</span> <span class="rpc-desc">The sequence number</span></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>outputs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The outputs specified as key-value pairs.<br>Each key may only appear once, i.e. there can only be one &#39;data&#39; output, and no address may be duplicated.<br>At least one output of either type must be specified.<br>For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also<br>                             accepted as second parameter.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">…</code> <span class="rpc-type">(one of, optional)</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+              </ul></li>
+          </ul></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">data</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">A key-value pair. The key must be &#34;data&#34;, the value is hex-encoded data</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>locktime</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 0</small></td><td>Raw locktime. Non-0 value also locktime-activates inputs</td></tr>
+  <tr><td>4</td><td><code>replaceable</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Marks this transaction as BIP125-replaceable.<br>Allows this transaction to be replaced by a transaction with higher fees. If provided, it is an error if explicit sequence numbers are incompatible.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli createrawtransaction &#34;[{\&#34;txid\&#34;:\&#34;myid\&#34;,\&#34;vout\&#34;:0}]&#34; &#34;[{\&#34;address\&#34;:0.01}]&#34;
+&gt; bitcoin-cli createrawtransaction &#34;[{\&#34;txid\&#34;:\&#34;myid\&#34;,\&#34;vout\&#34;:0}]&#34; &#34;[{\&#34;data\&#34;:\&#34;00010203\&#34;}]&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;createrawtransaction&#34;, &#34;params&#34;: [&#34;[{\&#34;txid\&#34;:\&#34;myid\&#34;,\&#34;vout\&#34;:0}]&#34;, &#34;[{\&#34;address\&#34;:0.01}]&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;createrawtransaction&#34;, &#34;params&#34;: [&#34;[{\&#34;txid\&#34;:\&#34;myid\&#34;,\&#34;vout\&#34;:0}]&#34;, &#34;[{\&#34;data\&#34;:\&#34;00010203\&#34;}]&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

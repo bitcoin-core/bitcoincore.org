@@ -1,0 +1,51 @@
+---
+name: getdeploymentinfo
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getdeploymentinfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getdeploymentinfo ( &#34;blockhash&#34; )</pre>
+  <div class="rpc-description"><p>Returns an object containing various state info regarding deployments of consensus changes.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;hash of current chain tip&#34;</small></td><td>The block hash at which to query deployment state</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">requested block hash (or tip)</span></li>
+  <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">requested block height (or tip)</span></li>
+  <li><code class="rpc-key">deployments</code> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">one of &#34;buried&#34;, &#34;bip9&#34;</span></li>
+          <li><code class="rpc-key">height</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">height of the first block which the rules are or will be enforced (only for &#34;buried&#34; type, or &#34;bip9&#34; type with &#34;active&#34; status)</span></li>
+          <li><code class="rpc-key">active</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">true if the rules are enforced for the mempool and the next block</span></li>
+          <li><code class="rpc-key">bip9</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">status of bip9 softforks (only for &#34;bip9&#34; type)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">bit</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">the bit (0-28) in the block version field used to signal this softfork (only for &#34;started&#34; and &#34;locked_in&#34; status)</span></li>
+              <li><code class="rpc-key">start_time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">the minimum median time past of a block at which the bit gains its meaning</span></li>
+              <li><code class="rpc-key">timeout</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">the median time past of a block at which the deployment is considered failed if not yet locked in</span></li>
+              <li><code class="rpc-key">min_activation_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">minimum height of blocks for which the rules may be enforced</span></li>
+              <li><code class="rpc-key">status</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">status of deployment at specified block (one of &#34;defined&#34;, &#34;started&#34;, &#34;locked_in&#34;, &#34;active&#34;, &#34;failed&#34;)</span></li>
+              <li><code class="rpc-key">since</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">height of the first block to which the status applies</span></li>
+              <li><code class="rpc-key">status_next</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">status of deployment at the next block</span></li>
+              <li><code class="rpc-key">statistics</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">numeric statistics about signalling for a softfork (only for &#34;started&#34; and &#34;locked_in&#34; status)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">period</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the length in blocks of the signalling period</span></li>
+                  <li><code class="rpc-key">threshold</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">the number of blocks with the version bit set required to activate the feature (only for &#34;started&#34; status)</span></li>
+                  <li><code class="rpc-key">elapsed</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of blocks elapsed since the beginning of the current period</span></li>
+                  <li><code class="rpc-key">count</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of blocks with the version bit set in the current period</span></li>
+                  <li><code class="rpc-key">possible</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">returns false if there are not enough blocks left in this period to pass activation threshold (only for &#34;started&#34; status)</span></li>
+                </ul></li>
+              <li><code class="rpc-key">signalling</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">indicates blocks that signalled with a # and blocks that did not with a -</span></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

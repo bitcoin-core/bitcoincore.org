@@ -1,0 +1,108 @@
+---
+name: createwallet
+btcversion: 26.0.0
+btcgroup: wallet
+permalink: en/doc/26.0.0/rpc/wallet/createwallet/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;createwallet&#34;,
+  &#34;description&#34;: &#34;Creates and loads a new wallet.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;wallet_name&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The name for the new wallet. If this is a path, the wallet will be created at the path location.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;disable_private_keys&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Disable the possibility of private keys (only watchonlys are possible in this mode).&#34;
+    },
+    {
+      &#34;name&#34;: &#34;blank&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Create a blank wallet. A blank wallet has no keys or HD seed. One can be set using sethdseed.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;passphrase&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;Encrypt the wallet with this passphrase.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;avoid_reuse&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Keep track of coin reuse, and treat dirty and clean coins differently with privacy considerations in mind.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;descriptors&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Create a native descriptor wallet. The wallet will use descriptors internally to handle address creation. Setting to \&#34;false\&#34; will create a legacy wallet; This is only possible with the -deprecatedrpc=create_bdb setting because, the legacy wallet type is being deprecated and support for creating and opening legacy wallets will be removed in the future.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;load_on_startup&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;
+      },
+      &#34;description&#34;: &#34;Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;external_signer&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Use an external signer such as a hardware wallet. Requires -signer to be configured. Wallet creation will fail if keys cannot be fetched. Requires disable_private_keys and descriptors set to true.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;name&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The wallet name if created successfully. If the wallet was created using a full path, the wallet_name will be the full path.&#34;
+        },
+        &#34;warnings&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;Warning messages, if any, related to creating and loading the wallet.&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;name&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

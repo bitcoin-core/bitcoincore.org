@@ -1,0 +1,73 @@
+---
+name: deriveaddresses
+btcversion: 31.0.0
+btcgroup: util
+permalink: en/doc/31.0.0/rpc/util/deriveaddresses/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;deriveaddresses&#34;,
+  &#34;description&#34;: &#34;Derives one or more addresses corresponding to an output descriptor.\nExamples of output descriptors are:\n    pkh(&lt;pubkey&gt;)                                     P2PKH outputs for the given pubkey\n    wpkh(&lt;pubkey&gt;)                                    Native segwit P2PKH outputs for the given pubkey\n    sh(multi(&lt;n&gt;,&lt;pubkey&gt;,&lt;pubkey&gt;,...))              P2SH-multisig outputs for the given threshold and pubkeys\n    raw(&lt;hex script&gt;)                                 Outputs whose output script equals the specified hex-encoded bytes\n    tr(&lt;pubkey&gt;,multi_a(&lt;n&gt;,&lt;pubkey&gt;,&lt;pubkey&gt;,...))   P2TR-multisig outputs for the given threshold and pubkeys\n\nIn the above, &lt;pubkey&gt; either refers to a fixed public key in hexadecimal notation, or to an xpub/xprv optionally followed by one\nor more path elements separated by \&#34;/\&#34;, where \&#34;h\&#34; represents a hardened child key.\nFor more information on output descriptors, see the documentation in the doc/descriptors.md file.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;descriptor&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The descriptor.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;range&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;oneOf&#34;: [
+          {
+            &#34;type&#34;: &#34;number&#34;
+          },
+          {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;prefixItems&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;number&#34;
+              }
+            ],
+            &#34;minItems&#34;: 2,
+            &#34;maxItems&#34;: 2
+          }
+        ]
+      },
+      &#34;description&#34;: &#34;If a ranged descriptor is used, this specifies the end or the range (in [begin,end] notation) to derive.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;for single derivation descriptors&#34;
+        },
+        {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            }
+          },
+          &#34;description&#34;: &#34;for multipath descriptors&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;util&#34;
+}</pre>

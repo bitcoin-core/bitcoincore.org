@@ -1,0 +1,61 @@
+---
+name: listsinceblock
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/listsinceblock/raw/
+rawpage: true
+---
+
+listsinceblock ( "blockhash" ) ( target_confirmations ) ( include_watchonly ) ( include_removed ) ( include_change ) ( "label" )
+
+Get all transactions in blocks since block [blockhash], or all transactions if omitted.
+If "blockhash" is no longer a part of the main chain, transactions from the fork point onward are included.
+Additionally, if include_removed is set, transactions affecting the wallet which were removed are returned in the "removed" array.
+
+Arguments:
+1. blockhash (string, optional)  If set, the block hash to list transactions since, otherwise list all transactions.
+2. target_confirmations (number, optional, default=1)  Return the nth block hash from the main chain. e.g. 1 would mean the best block hash. Note: this is not used as a filter, but only affects [lastblock] in the return value
+3. include_watchonly (boolean, optional, default: true for watch-only wallets, otherwise false)  Include transactions to watch-only addresses (see 'importaddress')
+4. include_removed (boolean, optional, default=true)  Show transactions that were removed due to a reorg in the "removed" array (not guaranteed to work on pruned nodes)
+5. include_change (boolean, optional, default=false)  Also add entries for change outputs.
+6. label (string, optional)  Return only incoming transactions paying to addresses with the specified label.
+
+Result: (object)
+  transactions (array)
+    each item (object)
+      involvesWatchonly (boolean, optional)  Only returns true if imported addresses were involved in transaction.
+      address (string, optional)  The bitcoin address of the transaction (not returned if the output does not have an address, e.g. OP_RETURN null data).
+      category (string)  The transaction category. "send" Transactions sent. "receive" Non-coinbase transactions received. "generate" Coinbase transactions received with more than 100 confirmations. "immature" Coinbase transactions received with 100 or fewer confirmations. "orphan" Orphaned coinbase transactions received.
+      amount (string, amount)  The amount in BTC. This is negative for the 'send' category, and is positive for all other categories
+      vout (number)  the vout value
+      fee (string, amount, optional)  The amount of the fee in BTC. This is negative and only available for the 'send' category of transactions.
+      confirmations (number)  The number of confirmations for the transaction. Negative confirmations means the transaction conflicted that many blocks ago.
+      generated (boolean, optional)  Only present if the transaction's only input is a coinbase one.
+      trusted (boolean, optional)  Whether we consider the transaction to be trusted and safe to spend from. Only present when the transaction has 0 confirmations (or negative confirmations, if conflicted).
+      blockhash (string, optional)  The block hash containing the transaction.
+      blockheight (number, optional)  The block height containing the transaction.
+      blockindex (number, optional)  The index of the transaction in the block that includes it.
+      blocktime (number, unix-time, optional)  The block time expressed in UNIX epoch time.
+      txid (string)  The transaction id.
+      wtxid (string)  The hash of serialized transaction, including witness data.
+      walletconflicts (array)  Confirmed transactions that have been detected by the wallet to conflict with this transaction.
+        each item (string)
+      replaced_by_txid (string, optional)  Only if 'category' is 'send'. The txid if this tx was replaced.
+      replaces_txid (string, optional)  Only if 'category' is 'send'. The txid if this tx replaces another.
+      mempoolconflicts (array)  Transactions in the mempool that directly conflict with either this transaction or an ancestor transaction
+        each item (string)
+      to (string, optional)  If a comment to is associated with the transaction.
+      time (number, unix-time)  The transaction time expressed in UNIX epoch time.
+      timereceived (number, unix-time)  The time received expressed in UNIX epoch time.
+      comment (string, optional)  If a comment is associated with the transaction, only present if not empty.
+      bip125-replaceable (string)  ("yes|no|unknown") Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability. May be unknown for unconfirmed transactions not in the mempool because their unconfirmed ancestors are unknown.
+      parent_descs (array, optional)  Only if 'category' is 'received'. List of parent descriptors for the output script of this coin.
+        each item (string)
+      abandoned (boolean)  'true' if the transaction has been abandoned (inputs are respendable).
+      label (string, optional)  A comment for the address/transaction, if any
+  removed (array, optional)  <structure is the same as "transactions" above, only present if include_removed=true> Note: transactions that were re-added in the active chain will appear as-is in this array, and may thus have a positive confirmation count.
+    each item (any)
+  lastblock (string)  The hash of the block (target_confirmations-1) from the best block on the main chain, or the genesis hash if the referenced block does not exist yet. This is typically used to feed back into listsinceblock the next time you call it. So you would generally use a target_confirmations of say 6, so you will be continually re-notified of transactions until they've reached 6 confirmations plus any new ones
+
+
+

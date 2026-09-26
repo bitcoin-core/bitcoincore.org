@@ -1,0 +1,58 @@
+---
+name: bumpfee
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/bumpfee/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">bumpfee &#34;txid&#34; ( options )</pre>
+  <div class="rpc-description"><p>Bumps the fee of an opt-in-RBF transaction T, replacing it with a new transaction B. An opt-in RBF transaction with the given txid must be in the wallet. The command will pay the additional fee by reducing change outputs or adding inputs when necessary. It may add a new change output if one does not already exist. All inputs in the original transaction will be included in the replacement transaction. The command will fail if the wallet or mempool contains a transaction that spends one of T&#39;s outputs. By default, the new fee will be calculated automatically using the estimatesmartfee RPC. The user can specify a confirmation target for estimatesmartfee. Alternatively, the user can specify a fee rate in sat/vB for the new transaction. At a minimum, the new fee rate must be high enough to pay an additional new relay fee (incrementalfee returned by getnetworkinfo) to enter the node&#39;s mempool. * WARNING: before version 0.21, fee_rate was in BTC/kvB. As of 0.21, fee_rate is in sat/vB. *</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txid</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The txid to be bumped</td></tr>
+  <tr><td>2</td><td><code>options</code></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">conf_target</code> <span class="rpc-type">(number, optional, default: wallet -txconfirmtarget)</span> <span class="rpc-desc">Confirmation target in blocks</span></li>
+    <li><code class="rpc-key">fee_rate</code> <span class="rpc-type">(one of, optional, default: not set, fall back to wallet fee estimation)</span> <span class="rpc-desc"><br>Specify a fee rate in sat/vB instead of relying on the built-in fee estimator.<br>Must be at least 1.000 sat/vB higher than the current transaction fee rate.<br>WARNING: before version 0.21, fee_rate was in BTC/kvB. As of 0.21, fee_rate is in sat/vB.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">replaceable</code> <span class="rpc-type">(boolean, optional, default=true)</span> <span class="rpc-desc">Whether the new transaction should still be<br>marked bip-125 replaceable. If true, the sequence numbers in the transaction will<br>be left unchanged from the original. If false, any input sequence numbers in the<br>original transaction that were less than 0xfffffffe will be increased to 0xfffffffe<br>so the new transaction will not be explicitly bip-125 replaceable (though it may<br>still be replaceable in practice, for example if it has unconfirmed ancestors which<br>are replaceable).</span></li>
+    <li><code class="rpc-key">estimate_mode</code> <span class="rpc-type">(string, optional, default=&#34;unset&#34;)</span> <span class="rpc-desc">The fee estimate mode, must be one of (case insensitive):<br>&#34;unset&#34;<br>&#34;economical&#34;<br>&#34;conservative&#34;</span></li>
+    <li><code class="rpc-key">outputs</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">The outputs specified as key-value pairs.<br>Each key may only appear once, i.e. there can only be one &#39;data&#39; output, and no address may be duplicated.<br>At least one output of either type must be specified.<br>Cannot be provided if &#39;original_change_index&#39; is specified.</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+          <ul class="rpc-schema rpc-variants">
+            <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(object)</span>
+              <ul class="rpc-schema">
+                <li><code class="rpc-key">…</code> <span class="rpc-type">(one of, optional)</span>
+                  <ul class="rpc-schema rpc-variants">
+                    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+                  </ul></li>
+              </ul></li>
+            <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+              <ul class="rpc-schema">
+                <li><code class="rpc-key">data</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">A key-value pair. The key must be &#34;data&#34;, the value is hex-encoded data</span></li>
+              </ul></li>
+          </ul></li>
+      </ul></li>
+    <li><code class="rpc-key">original_change_index</code> <span class="rpc-type">(number, optional, default: not set, detect change automatically)</span> <span class="rpc-desc">The 0-based index of the change output on the original transaction. The indicated output will be recycled into the new change output on the bumped transaction. The remainder after paying the recipients and fees will be sent to the output script of the original change output. The change output’s amount can increase if bumping the transaction adds new inputs, otherwise it will decrease. Cannot be used in combination with the &#39;outputs&#39; option.</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The id of the new transaction.</span></li>
+  <li><code class="rpc-key">origfee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The fee of the replaced transaction.</span></li>
+  <li><code class="rpc-key">fee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The fee of the new transaction.</span></li>
+  <li><code class="rpc-key">errors</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Errors encountered during processing (may be empty).</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+</div>

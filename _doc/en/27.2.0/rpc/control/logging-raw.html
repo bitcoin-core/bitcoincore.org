@@ -1,0 +1,31 @@
+---
+name: logging
+btcversion: 27.2.0
+btcgroup: control
+permalink: en/doc/27.2.0/rpc/control/logging/raw/
+rawpage: true
+---
+
+logging ( include ) ( exclude )
+
+Gets and sets the logging configuration.
+When called without an argument, returns the list of categories with status that are currently being debug logged or not.
+When called with arguments, adds or removes categories from debug logging and return the lists above.
+The arguments are evaluated in order "include", "exclude".
+If an item is both included and excluded, it will thus end up being excluded.
+The valid logging categories are: addrman, bench, blockstorage, cmpctblock, coindb, estimatefee, http, i2p, ipc, leveldb, libevent, mempool, mempoolrej, net, proxy, prune, qt, rand, reindex, rpc, scan, selectcoins, tor, txpackages, txreconciliation, util, validation, walletdb, zmq
+In addition, the following are available as category names with special meanings:
+  - "all",  "1" : represent all logging categories.
+  - "none", "0" : even if other logging categories are specified, ignore all of them.
+
+Arguments:
+1. include (array, optional)  The categories to add to debug logging
+  each item (string)
+2. exclude (array, optional)  The categories to remove from debug logging
+  each item (string)
+
+Result: (object)
+  ... (boolean)
+
+
+

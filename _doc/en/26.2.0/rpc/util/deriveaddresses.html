@@ -1,0 +1,31 @@
+---
+name: deriveaddresses
+btcversion: 26.2.0
+btcgroup: util
+permalink: en/doc/26.2.0/rpc/util/deriveaddresses/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">util</span></p>
+  <pre class="rpc-synopsis">deriveaddresses &#34;descriptor&#34; ( range )</pre>
+  <div class="rpc-description"><p>Derives one or more addresses corresponding to an output descriptor. Examples of output descriptors are:<br>&nbsp;&nbsp;&nbsp;&nbsp;pkh(&lt;pubkey&gt;)                                     P2PKH outputs for the given pubkey<br>&nbsp;&nbsp;&nbsp;&nbsp;wpkh(&lt;pubkey&gt;)                                    Native segwit P2PKH outputs for the given pubkey<br>&nbsp;&nbsp;&nbsp;&nbsp;sh(multi(&lt;n&gt;,&lt;pubkey&gt;,&lt;pubkey&gt;,...))              P2SH-multisig outputs for the given threshold and pubkeys<br>&nbsp;&nbsp;&nbsp;&nbsp;raw(&lt;hex script&gt;)                                 Outputs whose scriptPubKey equals the specified hex scripts<br>&nbsp;&nbsp;&nbsp;&nbsp;tr(&lt;pubkey&gt;,multi_a(&lt;n&gt;,&lt;pubkey&gt;,&lt;pubkey&gt;,...))   P2TR-multisig outputs for the given threshold and pubkeys</p><p>In the above, &lt;pubkey&gt; either refers to a fixed public key in hexadecimal notation, or to an xpub/xprv optionally followed by one or more path elements separated by &#34;/&#34;, where &#34;h&#34; represents a hardened child key. For more information on output descriptors, see the documentation in the doc/descriptors.md file.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>descriptor</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The descriptor.</td></tr>
+  <tr><td>2</td><td><code>range</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no</td><td>If a ranged descriptor is used, this specifies the end or the range (in [begin,end] notation) to derive.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+        <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+      </ul></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+</ul>
+</div>

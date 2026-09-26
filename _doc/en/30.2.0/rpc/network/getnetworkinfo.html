@@ -1,0 +1,59 @@
+---
+name: getnetworkinfo
+btcversion: 30.2.0
+btcgroup: network
+permalink: en/doc/30.2.0/rpc/network/getnetworkinfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">getnetworkinfo</pre>
+  <div class="rpc-description"><p>Returns an object containing various state info regarding P2P networking.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the server version</span></li>
+  <li><code class="rpc-key">subversion</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the server subversion string</span></li>
+  <li><code class="rpc-key">protocolversion</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the protocol version</span></li>
+  <li><code class="rpc-key">localservices</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the services we offer to the network</span></li>
+  <li><code class="rpc-key">localservicesnames</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">the services we offer to the network, in human-readable form</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+  <li><code class="rpc-key">localrelay</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">true if transaction relay is requested from peers</span></li>
+  <li><code class="rpc-key">timeoffset</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the time offset</span></li>
+  <li><code class="rpc-key">connections</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the total number of connections</span></li>
+  <li><code class="rpc-key">connections_in</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of inbound connections</span></li>
+  <li><code class="rpc-key">connections_out</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of outbound connections</span></li>
+  <li><code class="rpc-key">networkactive</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">whether p2p networking is enabled</span></li>
+  <li><code class="rpc-key">networks</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">information per network</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">network (ipv4, ipv6, onion, i2p, cjdns)</span></li>
+          <li><code class="rpc-key">limited</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">is the network limited using -onlynet?</span></li>
+          <li><code class="rpc-key">reachable</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">is the network reachable?</span></li>
+          <li><code class="rpc-key">proxy</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">(&#34;host:port&#34;) the proxy that is used for this network, or empty if none</span></li>
+          <li><code class="rpc-key">proxy_randomize_credentials</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether randomized credentials are used</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">relayfee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">minimum relay fee rate for transactions in BTC/kvB</span></li>
+  <li><code class="rpc-key">incrementalfee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">minimum fee rate increment for mempool limiting or replacement in BTC/kvB</span></li>
+  <li><code class="rpc-key">localaddresses</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">list of local addresses</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">network address</span></li>
+          <li><code class="rpc-key">port</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">network port</span></li>
+          <li><code class="rpc-key">score</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">relative score</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+</div>

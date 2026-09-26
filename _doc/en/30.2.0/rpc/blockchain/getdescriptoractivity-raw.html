@@ -1,0 +1,62 @@
+---
+name: getdescriptoractivity
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/getdescriptoractivity/raw/
+rawpage: true
+---
+
+getdescriptoractivity blockhashes scanobjects ( include_mempool )
+
+Get spend and receive activity associated with a set of descriptors for a set of blocks. This command pairs well with the `relevant_blocks` output of `scanblocks()`.
+This call may take several minutes. If you encounter timeouts, try specifying no RPC timeout (bitcoin-cli -rpcclienttimeout=0)
+
+Arguments:
+1. blockhashes (array)  The list of blockhashes to examine for activity. Order doesn't matter. Must be along main chain or an error is thrown.
+  each item (string)
+2. scanobjects (array)  The list of descriptors (scan objects) to examine for activity. Every scan object is either a string descriptor or an object:
+  each item (one of)
+    option 1: (string)
+    option 2: (object)
+      desc (string)  An output descriptor
+      range (one of, optional, default=1000)  The range of HD chain indexes to explore (either end or [begin,end])
+        option 1: (number)
+        option 2: (array)
+          [0] (number)
+          [1] (number)
+3. include_mempool (boolean, optional, default=true)  Whether to include unconfirmed activity
+
+Result: (object)
+  activity (array)  events
+    each item (one of)
+      option 1: (object)
+        type (string)  always 'spend'
+        amount (string, amount)  The total amount in BTC of the spent output
+        blockhash (string, optional)  The blockhash this spend appears in (omitted if unconfirmed)
+        height (number, optional)  Height of the spend (omitted if unconfirmed)
+        spend_txid (string)  The txid of the spending transaction
+        spend_vin (number)  The input index of the spend
+        prevout_txid (string)  The txid of the prevout
+        prevout_vout (number)  The vout of the prevout
+        prevout_spk (object)
+          asm (string)  Disassembly of the output script
+          desc (string)  Inferred descriptor for the output
+          hex (string)  The raw output script bytes, hex-encoded
+          address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+          type (string)  The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
+      option 2: (object)
+        type (string)  always 'receive'
+        amount (string, amount)  The total amount in BTC of the new output
+        blockhash (string, optional)  The block that this receive is in (omitted if unconfirmed)
+        height (number, optional)  The height of the receive (omitted if unconfirmed)
+        txid (string)  The txid of the receiving transaction
+        vout (number)  The vout of the receiving output
+        output_spk (object)
+          asm (string)  Disassembly of the output script
+          desc (string)  Inferred descriptor for the output
+          hex (string)  The raw output script bytes, hex-encoded
+          address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+          type (string)  The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
+
+
+

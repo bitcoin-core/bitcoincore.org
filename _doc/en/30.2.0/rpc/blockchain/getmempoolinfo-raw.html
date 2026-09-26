@@ -1,0 +1,32 @@
+---
+name: getmempoolinfo
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/getmempoolinfo/raw/
+rawpage: true
+---
+
+getmempoolinfo
+
+Returns details on the active state of the TX memory pool.
+
+Arguments:
+none
+
+Result: (object)
+  loaded (boolean)  True if the initial load attempt of the persisted mempool finished
+  size (number)  Current tx count
+  bytes (number)  Sum of all virtual transaction sizes as defined in BIP 141. Differs from actual serialized size because witness data is discounted
+  usage (number)  Total memory usage for the mempool
+  total_fee (string, amount)  Total fees for the mempool in BTC, ignoring modified fees through prioritisetransaction
+  maxmempool (number)  Maximum memory usage for the mempool
+  mempoolminfee (string, amount)  Minimum fee rate in BTC/kvB for tx to be accepted. Is the maximum of minrelaytxfee and minimum mempool fee
+  minrelaytxfee (string, amount)  Current minimum relay fee for transactions
+  incrementalrelayfee (number)  minimum fee rate increment for mempool limiting or replacement in BTC/kvB
+  unbroadcastcount (number)  Current number of transactions that haven't passed initial broadcast yet
+  fullrbf (boolean)  True if the mempool accepts RBF without replaceability signaling inspection (DEPRECATED)
+  permitbaremultisig (boolean)  True if the mempool accepts transactions with bare multisig outputs
+  maxdatacarriersize (number)  Maximum number of bytes that can be used by OP_RETURN outputs in the mempool
+
+
+

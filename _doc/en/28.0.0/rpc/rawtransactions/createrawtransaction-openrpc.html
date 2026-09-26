@@ -1,0 +1,112 @@
+---
+name: createrawtransaction
+btcversion: 28.0.0
+btcgroup: rawtransactions
+permalink: en/doc/28.0.0/rpc/rawtransactions/createrawtransaction/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;createrawtransaction&#34;,
+  &#34;description&#34;: &#34;Create a transaction spending the given inputs and creating new outputs.\nOutputs can be addresses or data.\nReturns hex-encoded raw transaction.\nNote that the transaction&#39;s inputs are not signed, and\nit is not stored in the wallet or transmitted to the network.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;inputs&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;txid&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The transaction id&#34;
+            },
+            &#34;vout&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The output number&#34;
+            },
+            &#34;sequence&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-default-hint&#34;: &#34;depends on the value of the &#39;replaceable&#39; and &#39;locktime&#39; arguments&#34;,
+              &#34;description&#34;: &#34;The sequence number&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;txid&#34;,
+            &#34;vout&#34;
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;The inputs&#34;
+    },
+    {
+      &#34;name&#34;: &#34;outputs&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;oneOf&#34;: [
+            {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;additionalProperties&#34;: {
+                &#34;oneOf&#34;: [
+                  {
+                    &#34;type&#34;: &#34;number&#34;
+                  },
+                  {
+                    &#34;type&#34;: &#34;string&#34;
+                  }
+                ]
+              }
+            },
+            {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;data&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                  &#34;description&#34;: &#34;A key-value pair. The key must be \&#34;data\&#34;, the value is hex-encoded data&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;data&#34;
+              ]
+            }
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;The outputs specified as key-value pairs.\nEach key may only appear once, i.e. there can only be one &#39;data&#39; output, and no address may be duplicated.\nAt least one output of either type must be specified.\nFor compatibility reasons, a dictionary, which holds the key-value pairs directly, is also\n                             accepted as second parameter.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;locktime&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 0
+      },
+      &#34;description&#34;: &#34;Raw locktime. Non-0 value also locktime-activates inputs&#34;
+    },
+    {
+      &#34;name&#34;: &#34;replaceable&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Marks this transaction as BIP125-replaceable.\nAllows this transaction to be replaced by a transaction with higher fees. If provided, it is an error if explicit sequence numbers are incompatible.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

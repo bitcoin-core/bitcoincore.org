@@ -1,0 +1,23 @@
+---
+name: submitblock
+btcversion: 30.2.0
+btcgroup: mining
+permalink: en/doc/30.2.0/rpc/mining/submitblock/raw/
+rawpage: true
+---
+
+submitblock "hexdata" ( "dummy" )
+
+Attempts to submit new block to network.
+See https://en.bitcoin.it/wiki/BIP_0022 for full specification.
+
+Arguments:
+1. hexdata (string)  the hex-encoded block data to submit
+2. dummy (string, optional, default: ignored)  dummy value, for compatibility with BIP22. This value is ignored.
+
+Result: (one of)
+  option 1: (null)  If the block was accepted
+  option 2: (string)  Otherwise
+
+
+

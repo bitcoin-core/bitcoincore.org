@@ -1,0 +1,41 @@
+---
+name: getblockchaininfo
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/getblockchaininfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getblockchaininfo</pre>
+  <div class="rpc-description"><p>Returns an object containing various state info regarding blockchain processing.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">chain</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">current network name (main, test, testnet4, signet, regtest)</span></li>
+  <li><code class="rpc-key">blocks</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the height of the most-work fully-validated chain. The genesis block has height 0</span></li>
+  <li><code class="rpc-key">headers</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the current number of headers we have validated</span></li>
+  <li><code class="rpc-key">bestblockhash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the hash of the currently best block</span></li>
+  <li><code class="rpc-key">bits</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">nBits: compact representation of the block difficulty target</span></li>
+  <li><code class="rpc-key">target</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The difficulty target</span></li>
+  <li><code class="rpc-key">difficulty</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the current difficulty</span></li>
+  <li><code class="rpc-key">time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The block time expressed in UNIX epoch time</span></li>
+  <li><code class="rpc-key">mediantime</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The median block time expressed in UNIX epoch time</span></li>
+  <li><code class="rpc-key">verificationprogress</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">estimate of verification progress [0..1]</span></li>
+  <li><code class="rpc-key">initialblockdownload</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">(debug information) estimate of whether this node is in Initial Block Download mode</span></li>
+  <li><code class="rpc-key">chainwork</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">total amount of work in active chain, in hexadecimal</span></li>
+  <li><code class="rpc-key">size_on_disk</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the estimated size of the block and undo files on disk</span></li>
+  <li><code class="rpc-key">pruned</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">if the blocks are subject to pruning</span></li>
+  <li><code class="rpc-key">pruneheight</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">height of the last block pruned, plus one (only present if pruning is enabled)</span></li>
+  <li><code class="rpc-key">automatic_pruning</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">whether automatic pruning is enabled (only present if pruning is enabled)</span></li>
+  <li><code class="rpc-key">prune_target_size</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">the target size used by pruning (only present if automatic pruning is enabled)</span></li>
+  <li><code class="rpc-key">signet_challenge</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">the block challenge (aka. block script), in hexadecimal (only present if the current network is a signet)</span></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+</div>

@@ -3,25 +3,26 @@ name: getaddressesbylabel
 btcversion: 30.0.0
 btcgroup: wallet
 permalink: en/doc/30.0.0/rpc/wallet/getaddressesbylabel/
+openrpc: true
 ---
 
-getaddressesbylabel "label"
-
-Returns the list of addresses assigned the specified label.
-
-Arguments:
-1. label    (string, required) The label.
-
-Result:
-{                         (json object) json object with addresses as keys
-  "address" : {           (json object) json object with information about address
-    "purpose" : "str"     (string) Purpose of address ("send" for sending address, "receive" for receiving address)
-  },
-  ...
-}
-
-Examples:
-> bitcoin-cli getaddressesbylabel "tabby"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getaddressesbylabel", "params": ["tabby"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">getaddressesbylabel &#34;label&#34;</pre>
+  <div class="rpc-description"><p>Returns the list of addresses assigned the specified label.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>label</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The label.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">purpose</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Purpose of address (&#34;send&#34; for sending address, &#34;receive&#34; for receiving address)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getaddressesbylabel &#34;tabby&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getaddressesbylabel&#34;, &#34;params&#34;: [&#34;tabby&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

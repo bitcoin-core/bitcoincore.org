@@ -1,0 +1,23 @@
+---
+name: listlockunspent
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/listlockunspent/raw/
+rawpage: true
+---
+
+listlockunspent
+
+Returns list of temporarily unspendable outputs.
+See the lockunspent call to lock and unlock transactions for spending.
+
+Arguments:
+none
+
+Result: (array)
+  each item (object)
+    txid (string)  The transaction id locked
+    vout (number)  The vout value
+
+
+

@@ -3,44 +3,39 @@ name: sendrawtransaction
 btcversion: 29.0.0
 btcgroup: rawtransactions
 permalink: en/doc/29.0.0/rpc/rawtransactions/sendrawtransaction/
+openrpc: true
 ---
 
-sendrawtransaction "hexstring" ( maxfeerate maxburnamount )
-
-Submit a raw transaction (serialized, hex-encoded) to local node and network.
-
-The transaction will be sent unconditionally to all peers, so using sendrawtransaction
-for manual rebroadcast may degrade privacy by leaking the transaction's origin, as
-nodes will normally not rebroadcast non-wallet transactions already in their mempool.
-
-A specific exception, RPC_TRANSACTION_ALREADY_IN_UTXO_SET, may throw if the transaction cannot be added to the mempool.
-
-Related RPCs: createrawtransaction, signrawtransactionwithkey
-
-Arguments:
-1. hexstring        (string, required) The hex string of the raw transaction
-2. maxfeerate       (numeric or string, optional, default="0.10") Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB.
-                    Fee rates larger than 1BTC/kvB are rejected.
-                    Set to 0 to accept any fee rate.
-3. maxburnamount    (numeric or string, optional, default="0.00") Reject transactions with provably unspendable outputs (e.g. 'datacarrier' outputs that use the OP_RETURN opcode) greater than the specified value, expressed in BTC.
-                    If burning funds through unspendable outputs is desired, increase this value.
-                    This check is based on heuristics and does not guarantee spendability of outputs.
-                    
-
-Result:
-"hex"    (string) The transaction hash in hex
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">sendrawtransaction &#34;hexstring&#34; ( maxfeerate ) ( maxburnamount )</pre>
+  <div class="rpc-description"><p>Submit a raw transaction (serialized, hex-encoded) to local node and network.</p><p>The transaction will be sent unconditionally to all peers, so using sendrawtransaction for manual rebroadcast may degrade privacy by leaking the transaction&#39;s origin, as nodes will normally not rebroadcast non-wallet transactions already in their mempool.</p><p>A specific exception, RPC_TRANSACTION_ALREADY_IN_UTXO_SET, may throw if the transaction cannot be added to the mempool.</p><p>Related RPCs: createrawtransaction, signrawtransactionwithkey</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexstring</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The hex string of the raw transaction</td></tr>
+  <tr><td>2</td><td><code>maxfeerate</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;0.10&#34;</small></td><td>Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB.<br>Fee rates larger than 1BTC/kvB are rejected.<br>Set to 0 to accept any fee rate.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>maxburnamount</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;0.00&#34;</small></td><td>Reject transactions with provably unspendable outputs (e.g. &#39;datacarrier&#39; outputs that use the OP_RETURN opcode) greater than the specified value, expressed in BTC.<br>If burning funds through unspendable outputs is desired, increase this value.<br>This check is based on heuristics and does not guarantee spendability of outputs.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Create a transaction
-> bitcoin-cli createrawtransaction "[{\"txid\" : \"mytxid\",\"vout\":0}]" "{\"myaddress\":0.01}"
+&gt; bitcoin-cli createrawtransaction &#34;[{\&#34;txid\&#34; : \&#34;mytxid\&#34;,\&#34;vout\&#34;:0}]&#34; &#34;{\&#34;myaddress\&#34;:0.01}&#34;
 Sign the transaction, and get back the hex
-> bitcoin-cli signrawtransactionwithwallet "myhex"
+&gt; bitcoin-cli signrawtransactionwithwallet &#34;myhex&#34;
 
 Send the transaction (signed hex)
-> bitcoin-cli sendrawtransaction "signedhex"
+&gt; bitcoin-cli sendrawtransaction &#34;signedhex&#34;
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "sendrawtransaction", "params": ["signedhex"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;sendrawtransaction&#34;, &#34;params&#34;: [&#34;signedhex&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

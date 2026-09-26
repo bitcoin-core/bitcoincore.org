@@ -1,0 +1,30 @@
+---
+name: getchaintxstats
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/getchaintxstats/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getchaintxstats ( nblocks ) ( &#34;blockhash&#34; )</pre>
+  <div class="rpc-description"><p>Compute statistics about the total number and rate of transactions in the chain.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>nblocks</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: one month</small></td><td>Size of the window in number of blocks</td></tr>
+  <tr><td>2</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: chain tip</small></td><td>The hash of the block that ends the window.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The timestamp for the final block in the window, expressed in UNIX epoch time</span></li>
+  <li><code class="rpc-key">txcount</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The total number of transactions in the chain up to that point, if known. It may be unknown when using assumeutxo.</span></li>
+  <li><code class="rpc-key">window_final_block_hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash of the final block in the window</span></li>
+  <li><code class="rpc-key">window_final_block_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The height of the final block in the window.</span></li>
+  <li><code class="rpc-key">window_block_count</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Size of the window in number of blocks</span></li>
+  <li><code class="rpc-key">window_interval</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The elapsed time in the window in seconds. Only returned if &#34;window_block_count&#34; is &gt; 0</span></li>
+  <li><code class="rpc-key">window_tx_count</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of transactions in the window. Only returned if &#34;window_block_count&#34; is &gt; 0 and if txcount exists for the start and end of the window.</span></li>
+  <li><code class="rpc-key">txrate</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The average rate of transactions per second in the window. Only returned if &#34;window_interval&#34; is &gt; 0 and if window_tx_count exists.</span></li>
+</ul>
+</div>

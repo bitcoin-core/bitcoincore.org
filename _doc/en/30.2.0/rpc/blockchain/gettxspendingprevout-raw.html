@@ -1,0 +1,26 @@
+---
+name: gettxspendingprevout
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/gettxspendingprevout/raw/
+rawpage: true
+---
+
+gettxspendingprevout outputs
+
+Scans the mempool to find transactions spending any of the given outputs
+
+Arguments:
+1. outputs (array)  The transaction outputs that we want to check, and within each, the txid (string) vout (numeric).
+  each item (object)
+    txid (string)  The transaction id
+    vout (number)  The output number
+
+Result: (array)
+  each item (object)
+    txid (string)  the transaction id of the checked output
+    vout (number)  the vout value of the checked output
+    spendingtxid (string, optional)  the transaction id of the mempool transaction spending this output (omitted if unspent)
+
+
+

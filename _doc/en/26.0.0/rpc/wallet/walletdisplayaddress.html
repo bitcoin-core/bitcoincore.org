@@ -3,18 +3,20 @@ name: walletdisplayaddress
 btcversion: 26.0.0
 btcgroup: wallet
 permalink: en/doc/26.0.0/rpc/wallet/walletdisplayaddress/
+openrpc: true
 ---
 
-walletdisplayaddress "address"
-
-Display address on an external signer for verification.
-
-Arguments:
-1. address    (string, required) bitcoin address to display
-
-Result:
-{                       (json object)
-  "address" : "str"     (string) The address as confirmed by the signer
-}
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">walletdisplayaddress &#34;address&#34;</pre>
+  <div class="rpc-description"><p>Display address on an external signer for verification.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>address</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>bitcoin address to display</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The address as confirmed by the signer</span></li>
+</ul>
+</div>

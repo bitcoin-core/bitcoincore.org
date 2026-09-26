@@ -1,0 +1,98 @@
+---
+name: decodescript
+btcversion: 30.0.0
+btcgroup: rawtransactions
+permalink: en/doc/30.0.0/rpc/rawtransactions/decodescript/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;decodescript&#34;,
+  &#34;description&#34;: &#34;Decode a hex-encoded script.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hexstring&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;the hex-encoded script&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;asm&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Disassembly of the script&#34;
+        },
+        &#34;desc&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Inferred descriptor for the script&#34;
+        },
+        &#34;type&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The output type (e.g. nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)&#34;
+        },
+        &#34;address&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+        },
+        &#34;p2sh&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;address of P2SH script wrapping this redeem script (not returned for types that should not be wrapped)&#34;
+        },
+        &#34;segwit&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;asm&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Disassembly of the output script&#34;
+            },
+            &#34;hex&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The raw output script bytes, hex-encoded&#34;
+            },
+            &#34;type&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;The type of the output script (e.g. witness_v0_keyhash or witness_v0_scripthash)&#34;
+            },
+            &#34;address&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+            },
+            &#34;desc&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Inferred descriptor for the script&#34;
+            },
+            &#34;p2sh-segwit&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;address of the P2SH script wrapping this witness redeem script&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;asm&#34;,
+            &#34;hex&#34;,
+            &#34;type&#34;,
+            &#34;desc&#34;,
+            &#34;p2sh-segwit&#34;
+          ],
+          &#34;description&#34;: &#34;Result of a witness output script wrapping this redeem script (not returned for types that should not be wrapped)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;asm&#34;,
+        &#34;desc&#34;,
+        &#34;type&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

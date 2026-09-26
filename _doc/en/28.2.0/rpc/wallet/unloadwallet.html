@@ -1,0 +1,26 @@
+---
+name: unloadwallet
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/unloadwallet/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">unloadwallet ( &#34;wallet_name&#34; ) ( load_on_startup )</pre>
+  <div class="rpc-description"><p>Unloads the wallet referenced by the request endpoint, otherwise unloads the wallet specified in the argument. Specifying the wallet name on a wallet endpoint is invalid.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>wallet_name</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: the wallet name from the RPC endpoint</small></td><td>The name of the wallet to unload. If provided both here and in the RPC endpoint, the two must be identical.</td></tr>
+  <tr><td>2</td><td><code>load_on_startup</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no</td><td>Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Warning messages, if any, related to unloading the wallet.</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+</div>

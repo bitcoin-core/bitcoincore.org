@@ -1,0 +1,163 @@
+---
+name: importmulti
+btcversion: 28.0.0
+btcgroup: wallet
+permalink: en/doc/28.0.0/rpc/wallet/importmulti/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;importmulti&#34;,
+  &#34;description&#34;: &#34;Import addresses/scripts (with private or public keys, redeem script (P2SH)), optionally rescanning the blockchain from the earliest creation time of the imported scripts. Requires a new wallet backup.\nIf an address/script is imported without all of the private keys required to spend from that address, it will be watchonly. The &#39;watchonly&#39; option must be set to true in this case or a warning will be returned.\nConversely, if all the private keys are provided and the address/script is spendable, the watchonly option must be set to false, or a warning will be returned.\n\nNote: This call can take over an hour to complete if rescan is true, during that time, other rpc calls\nmay report that the imported keys, addresses or scripts exist but related transactions are still missing.\nThe rescan parameter can be set to false if the key was never used to create transactions. If it is set to false,\nbut the key was used to create transactions, rescanblockchain needs to be called with the appropriate block range.\nNote: Use \&#34;getwalletinfo\&#34; to query the scanning progress.\nNote: This command is only compatible with legacy wallets. Use \&#34;importdescriptors\&#34; for descriptor wallets.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;requests&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;desc&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Descriptor to import. If using descriptor, do not also provide address/scriptPubKey, scripts, or pubkeys&#34;
+            },
+            &#34;scriptPubKey&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;x-bitcoin-type-override&#34;: &#34;string / json&#34;,
+              &#34;description&#34;: &#34;Type of scriptPubKey (string for script, json for address). Should not be provided if using a descriptor&#34;
+            },
+            &#34;timestamp&#34;: {
+              &#34;oneOf&#34;: [
+                {
+                  &#34;type&#34;: &#34;number&#34;
+                },
+                {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              ],
+              &#34;description&#34;: &#34;Creation time of the key expressed in UNIX epoch time,\nor the string \&#34;now\&#34; to substitute the current synced blockchain time. The timestamp of the oldest\nkey will determine how far back blockchain rescans need to begin for missing wallet transactions.\n\&#34;now\&#34; can be specified to bypass scanning, for keys which are known to never have been used, and\n0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest key\ncreation time of all keys being imported by the importmulti call will be scanned.&#34;
+            },
+            &#34;redeemscript&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Allowed only if the scriptPubKey is a P2SH or P2SH-P2WSH address/scriptPubKey&#34;
+            },
+            &#34;witnessscript&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Allowed only if the scriptPubKey is a P2SH-P2WSH or P2WSH address/scriptPubKey&#34;
+            },
+            &#34;pubkeys&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;string&#34;
+              },
+              &#34;default&#34;: [],
+              &#34;description&#34;: &#34;Array of strings giving pubkeys to import. They must occur in P2PKH or P2WPKH scripts. They are not required when the private key is also provided (see the \&#34;keys\&#34; argument).&#34;
+            },
+            &#34;keys&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;string&#34;
+              },
+              &#34;default&#34;: [],
+              &#34;description&#34;: &#34;Array of strings giving private keys to import. The corresponding public keys must occur in the output or redeemscript.&#34;
+            },
+            &#34;range&#34;: {
+              &#34;oneOf&#34;: [
+                {
+                  &#34;type&#34;: &#34;number&#34;
+                },
+                {
+                  &#34;type&#34;: &#34;array&#34;,
+                  &#34;prefixItems&#34;: [
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    },
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    }
+                  ],
+                  &#34;minItems&#34;: 2,
+                  &#34;maxItems&#34;: 2
+                }
+              ],
+              &#34;description&#34;: &#34;If a ranged descriptor is used, this specifies the end or the range (in the form [begin,end]) to import&#34;
+            },
+            &#34;internal&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;default&#34;: false,
+              &#34;description&#34;: &#34;Stating whether matching outputs should be treated as not incoming payments (also known as change)&#34;
+            },
+            &#34;watchonly&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;default&#34;: false,
+              &#34;description&#34;: &#34;Stating whether matching outputs should be considered watchonly.&#34;
+            },
+            &#34;label&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;default&#34;: &#34;&#34;,
+              &#34;description&#34;: &#34;Label to assign to the address, only allowed with internal=false&#34;
+            },
+            &#34;keypool&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;default&#34;: false,
+              &#34;description&#34;: &#34;Stating whether imported public keys should be added to the keypool for when users request new addresses. Only allowed when wallet private keys are disabled&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;scriptPubKey&#34;,
+            &#34;timestamp&#34;
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;Data to be imported&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;rescan&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: true,
+            &#34;description&#34;: &#34;Scan the chain and mempool for wallet transactions after all imports.&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;success&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;
+          },
+          &#34;warnings&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            }
+          },
+          &#34;error&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {},
+            &#34;additionalProperties&#34;: true
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;success&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

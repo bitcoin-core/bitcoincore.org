@@ -1,0 +1,44 @@
+---
+name: gettxoutsetinfo
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/gettxoutsetinfo/raw/
+rawpage: true
+---
+
+gettxoutsetinfo ( "hash_type" ) ( hash_or_height ) ( use_index )
+
+Returns statistics about the unspent transaction output set.
+Note this call may take some time if you are not using coinstatsindex.
+
+Arguments:
+1. hash_type (string, optional, default="hash_serialized_3")  Which UTXO set hash should be calculated. Options: 'hash_serialized_3' (the legacy algorithm), 'muhash', 'none'.
+2. hash_or_height (one of, optional, default: the current best block)  The block hash or height of the target height (only available with coinstatsindex).
+  option 1: (number)
+  option 2: (string)
+3. use_index (boolean, optional, default=true)  Use coinstatsindex, if available.
+
+Result: (object)
+  height (number)  The block height (index) of the returned statistics
+  bestblock (string)  The hash of the block at which these statistics are calculated
+  txouts (number)  The number of unspent transaction outputs
+  bogosize (number)  Database-independent, meaningless metric indicating the UTXO set size
+  hash_serialized_3 (string, optional)  The serialized hash (only present if 'hash_serialized_3' hash_type is chosen)
+  muhash (string, optional)  The serialized hash (only present if 'muhash' hash_type is chosen)
+  transactions (number, optional)  The number of transactions with unspent outputs (not available when coinstatsindex is used)
+  disk_size (number, optional)  The estimated size of the chainstate on disk (not available when coinstatsindex is used)
+  total_amount (string, amount)  The total amount of coins in the UTXO set
+  total_unspendable_amount (string, amount, optional)  The total amount of coins permanently excluded from the UTXO set (only available if coinstatsindex is used)
+  block_info (object, optional)  Info on amounts in the block at this block height (only available if coinstatsindex is used)
+    prevout_spent (string, amount)  Total amount of all prevouts spent in this block
+    coinbase (string, amount)  Coinbase subsidy amount of this block
+    new_outputs_ex_coinbase (string, amount)  Total amount of new outputs created by this block
+    unspendable (string, amount)  Total amount of unspendable outputs created in this block
+    unspendables (object)  Detailed view of the unspendable categories
+      genesis_block (string, amount)  The unspendable amount of the Genesis block subsidy
+      bip30 (string, amount)  Transactions overridden by duplicates (no longer possible with BIP30)
+      scripts (string, amount)  Amounts sent to scripts that are unspendable (for example OP_RETURN outputs)
+      unclaimed_rewards (string, amount)  Fee rewards that miners did not claim in their coinbase transaction
+
+
+

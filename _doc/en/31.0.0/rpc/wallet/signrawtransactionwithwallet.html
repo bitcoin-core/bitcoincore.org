@@ -3,60 +3,56 @@ name: signrawtransactionwithwallet
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/signrawtransactionwithwallet/
+openrpc: true
 ---
 
-signrawtransactionwithwallet "hexstring" ( [{"txid":"hex","vout":n,"scriptPubKey":"hex","redeemScript":"hex","witnessScript":"hex","amount":amount},...] "sighashtype" )
-
-Sign inputs for raw transaction (serialized, hex-encoded).
-The second optional argument (may be null) is an array of previous transaction outputs that
-this transaction depends on but may not yet be in the block chain.
-Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
-
-Arguments:
-1. hexstring                        (string, required) The transaction hex string
-2. prevtxs                          (json array, optional) The previous dependent transaction outputs
-     [
-       {                            (json object)
-         "txid": "hex",             (string, required) The transaction id
-         "vout": n,                 (numeric, required) The output number
-         "scriptPubKey": "hex",     (string, required) The output script
-         "redeemScript": "hex",     (string, optional) (required for P2SH) redeem script
-         "witnessScript": "hex",    (string, optional) (required for P2WSH or P2SH-P2WSH) witness script
-         "amount": amount,          (numeric or string, optional) (required for Segwit inputs) the amount spent
-       },
-       ...
-     ]
-3. sighashtype                      (string, optional, default="DEFAULT for Taproot, ALL otherwise") The signature hash type. Must be one of
-                                    "DEFAULT"
-                                    "ALL"
-                                    "NONE"
-                                    "SINGLE"
-                                    "ALL|ANYONECANPAY"
-                                    "NONE|ANYONECANPAY"
-                                    "SINGLE|ANYONECANPAY"
-
-Result:
-{                             (json object)
-  "hex" : "hex",              (string) The hex-encoded raw transaction with signature(s)
-  "complete" : true|false,    (boolean) If the transaction has a complete set of signatures
-  "errors" : [                (json array, optional) Script verification errors (if there are any)
-    {                         (json object)
-      "txid" : "hex",         (string) The hash of the referenced, previous transaction
-      "vout" : n,             (numeric) The index of the output to spent and used as input
-      "witness" : [           (json array)
-        "hex",                (string)
-        ...
-      ],
-      "scriptSig" : "hex",    (string) The hex-encoded signature script
-      "sequence" : n,         (numeric) Script sequence number
-      "error" : "str"         (string) Verification or signing error related to the input
-    },
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli signrawtransactionwithwallet "myhex"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "signrawtransactionwithwallet", "params": ["myhex"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">signrawtransactionwithwallet &#34;hexstring&#34; ( prevtxs ) ( &#34;sighashtype&#34; )</pre>
+  <div class="rpc-description"><p>Sign inputs for raw transaction (serialized, hex-encoded). The second optional argument (may be null) is an array of previous transaction outputs that this transaction depends on but may not yet be in the block chain. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexstring</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The transaction hex string</td></tr>
+  <tr><td>2</td><td><code>prevtxs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no</td><td>The previous dependent transaction outputs
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+        <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The output number</span></li>
+        <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The output script</span></li>
+        <li><code class="rpc-key">redeemScript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">(required for P2SH) redeem script</span></li>
+        <li><code class="rpc-key">witnessScript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">(required for P2WSH or P2SH-P2WSH) witness script</span></li>
+        <li><code class="rpc-key">amount</code> <span class="rpc-type">(one of, optional)</span> <span class="rpc-desc">(required for Segwit inputs) the amount spent</span>
+          <ul class="rpc-schema rpc-variants">
+            <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+            <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>sighashtype</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;DEFAULT for Taproot, ALL otherwise&#34;</small></td><td>The signature hash type. Must be one of<br>       &#34;DEFAULT&#34;<br>       &#34;ALL&#34;<br>       &#34;NONE&#34;<br>       &#34;SINGLE&#34;<br>       &#34;ALL|ANYONECANPAY&#34;<br>       &#34;NONE|ANYONECANPAY&#34;<br>       &#34;SINGLE|ANYONECANPAY&#34;</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex-encoded raw transaction with signature(s)</span></li>
+  <li><code class="rpc-key">complete</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">If the transaction has a complete set of signatures</span></li>
+  <li><code class="rpc-key">errors</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Script verification errors (if there are any)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash of the referenced, previous transaction</span></li>
+          <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The index of the output to spent and used as input</span></li>
+          <li><code class="rpc-key">witness</code> <span class="rpc-type">(array)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">scriptSig</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex-encoded signature script</span></li>
+          <li><code class="rpc-key">sequence</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Script sequence number</span></li>
+          <li><code class="rpc-key">error</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Verification or signing error related to the input</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli signrawtransactionwithwallet &#34;myhex&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;signrawtransactionwithwallet&#34;, &#34;params&#34;: [&#34;myhex&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

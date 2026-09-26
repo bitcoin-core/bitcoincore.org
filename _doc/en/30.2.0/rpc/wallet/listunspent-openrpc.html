@@ -1,0 +1,213 @@
+---
+name: listunspent
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/listunspent/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;listunspent&#34;,
+  &#34;description&#34;: &#34;Returns array of unspent transaction outputs\nwith between minconf and maxconf (inclusive) confirmations.\nOptionally filter to only include txouts paid to specified addresses.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;minconf&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 1
+      },
+      &#34;description&#34;: &#34;The minimum confirmations to filter&#34;
+    },
+    {
+      &#34;name&#34;: &#34;maxconf&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 9999999
+      },
+      &#34;description&#34;: &#34;The maximum confirmations to filter&#34;
+    },
+    {
+      &#34;name&#34;: &#34;addresses&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;string&#34;
+        },
+        &#34;default&#34;: []
+      },
+      &#34;description&#34;: &#34;The bitcoin addresses to filter&#34;
+    },
+    {
+      &#34;name&#34;: &#34;include_unsafe&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Include outputs that are not safe to spend\nSee description of \&#34;safe\&#34; attribute below.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;query_options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;minimumAmount&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            ],
+            &#34;default&#34;: &#34;0.00&#34;,
+            &#34;description&#34;: &#34;Minimum value of each UTXO in BTC&#34;
+          },
+          &#34;maximumAmount&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            ],
+            &#34;x-bitcoin-default-hint&#34;: &#34;unlimited&#34;,
+            &#34;description&#34;: &#34;Maximum value of each UTXO in BTC&#34;
+          },
+          &#34;maximumCount&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;unlimited&#34;,
+            &#34;description&#34;: &#34;Maximum number of UTXOs&#34;
+          },
+          &#34;minimumSumAmount&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            ],
+            &#34;x-bitcoin-default-hint&#34;: &#34;unlimited&#34;,
+            &#34;description&#34;: &#34;Minimum sum value of all UTXOs in BTC&#34;
+          },
+          &#34;include_immature_coinbase&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;Include immature coinbase UTXOs&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;txid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;the transaction id&#34;
+          },
+          &#34;vout&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;the vout value&#34;
+          },
+          &#34;address&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;the bitcoin address&#34;
+          },
+          &#34;label&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;The associated label, or \&#34;\&#34; for the default label&#34;
+          },
+          &#34;scriptPubKey&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;the output script&#34;
+          },
+          &#34;amount&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+            &#34;description&#34;: &#34;the transaction output amount in BTC&#34;
+          },
+          &#34;confirmations&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The number of confirmations&#34;
+          },
+          &#34;ancestorcount&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The number of in-mempool ancestor transactions, including this one (if transaction is in the mempool)&#34;
+          },
+          &#34;ancestorsize&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The virtual transaction size of in-mempool ancestors, including this one (if transaction is in the mempool)&#34;
+          },
+          &#34;ancestorfees&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+            &#34;description&#34;: &#34;The total fees of in-mempool ancestors (including this one) with fee deltas used for mining priority in sat (if transaction is in the mempool)&#34;
+          },
+          &#34;redeemScript&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;The redeem script if the output script is P2SH&#34;
+          },
+          &#34;witnessScript&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;witness script if the output script is P2WSH or P2SH-P2WSH&#34;
+          },
+          &#34;spendable&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;(DEPRECATED) Always true&#34;
+          },
+          &#34;solvable&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether we know how to spend this output, ignoring the lack of keys&#34;
+          },
+          &#34;reused&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;(only present if avoid_reuse is set) Whether this output is reused/dirty (sent to an address that was previously spent from)&#34;
+          },
+          &#34;desc&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;(only when solvable) A descriptor for spending this output&#34;
+          },
+          &#34;parent_descs&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            &#34;description&#34;: &#34;List of parent descriptors for the output script of this coin.&#34;
+          },
+          &#34;safe&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether this output is considered safe to spend. Unconfirmed transactions\nfrom outside keys and unconfirmed replacement transactions are considered unsafe\nand are not eligible for spending by fundrawtransaction and sendtoaddress.&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;txid&#34;,
+          &#34;vout&#34;,
+          &#34;scriptPubKey&#34;,
+          &#34;amount&#34;,
+          &#34;confirmations&#34;,
+          &#34;spendable&#34;,
+          &#34;solvable&#34;,
+          &#34;parent_descs&#34;,
+          &#34;safe&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

@@ -1,0 +1,24 @@
+---
+name: getblockfilter
+btcversion: 26.2.0
+btcgroup: blockchain
+permalink: en/doc/26.2.0/rpc/blockchain/getblockfilter/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getblockfilter &#34;blockhash&#34; ( &#34;filtertype&#34; )</pre>
+  <div class="rpc-description"><p>Retrieve a BIP 157 content filter for a particular block.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The hash of the block</td></tr>
+  <tr><td>2</td><td><code>filtertype</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;basic&#34;</small></td><td>The type name of the filter</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">filter</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the hex-encoded filter data</span></li>
+  <li><code class="rpc-key">header</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the hex-encoded filter header</span></li>
+</ul>
+</div>

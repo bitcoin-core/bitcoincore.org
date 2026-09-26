@@ -1,0 +1,64 @@
+---
+name: decoderawtransaction
+btcversion: 28.2.0
+btcgroup: rawtransactions
+permalink: en/doc/28.2.0/rpc/rawtransactions/decoderawtransaction/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">decoderawtransaction &#34;hexstring&#34; ( iswitness )</pre>
+  <div class="rpc-description"><p>Return a JSON object representing the serialized, hex-encoded transaction.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexstring</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The transaction hex string</td></tr>
+  <tr><td>2</td><td><code>iswitness</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: depends on heuristic tests</small></td><td>Whether the transaction hex is a serialized witness transaction.<br>If iswitness is not present, heuristic tests will be used in decoding.<br>If true, only witness deserialization will be tried.<br>If false, only non-witness deserialization will be tried.<br>This boolean should reflect whether the transaction has inputs<br>(e.g. fully valid, or on-chain transactions), if known by the caller.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+  <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction hash (differs from txid for witness transactions)</span></li>
+  <li><code class="rpc-key">size</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The serialized transaction size</span></li>
+  <li><code class="rpc-key">vsize</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The virtual transaction size (differs from size for witness transactions)</span></li>
+  <li><code class="rpc-key">weight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The transaction&#39;s weight (between vsize*4-3 and vsize*4)</span></li>
+  <li><code class="rpc-key">version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The version</span></li>
+  <li><code class="rpc-key">locktime</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The lock time</span></li>
+  <li><code class="rpc-key">vin</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">coinbase</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The coinbase value (only if coinbase transaction)</span></li>
+          <li><code class="rpc-key">txid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The transaction id (if not coinbase transaction)</span></li>
+          <li><code class="rpc-key">vout</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The output number (if not coinbase transaction)</span></li>
+          <li><code class="rpc-key">scriptSig</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">The script (if not coinbase transaction)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the signature script</span></li>
+              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw signature script bytes, hex-encoded</span></li>
+            </ul></li>
+          <li><code class="rpc-key">txinwitness</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">sequence</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The script sequence number</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">vout</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">value</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The value in BTC</span></li>
+          <li><code class="rpc-key">n</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">index</span></li>
+          <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the output script</span></li>
+              <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the output</span></li>
+              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw output script bytes, hex-encoded</span></li>
+              <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)</span></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

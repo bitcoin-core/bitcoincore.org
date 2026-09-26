@@ -3,103 +3,99 @@ name: walletcreatefundedpsbt
 btcversion: 27.0.0
 btcgroup: wallet
 permalink: en/doc/27.0.0/rpc/wallet/walletcreatefundedpsbt/
+openrpc: true
 ---
 
-walletcreatefundedpsbt ( [{"txid":"hex","vout":n,"sequence":n,"weight":n},...] ) [{"address":amount,...},{"data":"hex"},...] ( locktime options bip32derivs )
-
-Creates and funds a transaction in the Partially Signed Transaction format.
-Implements the Creator and Updater roles.
-All existing inputs must either have their previous output transaction be in the wallet
-or be in the UTXO set. Solving data must be provided for non-wallet inputs.
-
-Arguments:
-1. inputs                      (json array, optional) Leave empty to add inputs automatically. See add_inputs option.
-     [
-       {                       (json object)
-         "txid": "hex",        (string, required) The transaction id
-         "vout": n,            (numeric, required) The output number
-         "sequence": n,        (numeric, optional, default=depends on the value of the 'locktime' and 'options.replaceable' arguments) The sequence number
-         "weight": n,          (numeric, optional, default=Calculated from wallet and solving data) The maximum weight for this input, including the weight of the outpoint and sequence number. Note that signature sizes are not guaranteed to be consistent, so the maximum DER signatures size of 73 bytes should be used when considering ECDSA signatures.Remember to convert serialized sizes to weight units when necessary.
-       },
-       ...
-     ]
-2. outputs                     (json array, required) The outputs specified as key-value pairs.
-                               Each key may only appear once, i.e. there can only be one 'data' output, and no address may be duplicated.
-                               At least one output of either type must be specified.
-                               For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also
-                               accepted as second parameter.
-     [
-       {                       (json object)
-         "address": amount,    (numeric or string, required) A key-value pair. The key (string) is the bitcoin address,
-                               the value (float or string) is the amount in BTC
-         ...
-       },
-       {                       (json object)
-         "data": "hex",        (string, required) A key-value pair. The key must be "data", the value is hex-encoded data
-       },
-       ...
-     ]
-3. locktime                    (numeric, optional, default=0) Raw locktime. Non-0 value also locktime-activates inputs
-4. options                     (json object, optional) Options object that can be used to pass named arguments, listed below.
-5. bip32derivs                 (boolean, optional, default=true) Include BIP 32 derivation paths for public keys if we know them
-
-Named Arguments:
-add_inputs                 (boolean, optional, default=false when "inputs" are specified, true otherwise) Automatically include coins from the wallet to cover the target amount.
-                           
-include_unsafe             (boolean, optional, default=false) Include inputs that are not safe to spend (unconfirmed transactions from outside keys and unconfirmed replacement transactions).
-                           Warning: the resulting transaction may become invalid if one of the unsafe inputs disappears.
-                           If that happens, you will need to fund the transaction with different inputs and republish it.
-minconf                    (numeric, optional, default=0) If add_inputs is specified, require inputs with at least this many confirmations.
-maxconf                    (numeric, optional) If add_inputs is specified, require inputs with at most this many confirmations.
-changeAddress              (string, optional, default=automatic) The bitcoin address to receive the change
-changePosition             (numeric, optional, default=random) The index of the change output
-change_type                (string, optional, default=set by -changetype) The output type to use. Only valid if changeAddress is not specified. Options are "legacy", "p2sh-segwit", "bech32", and "bech32m".
-includeWatching            (boolean, optional, default=true for watch-only wallets, otherwise false) Also select inputs which are watch only
-lockUnspents               (boolean, optional, default=false) Lock selected unspent outputs
-fee_rate                   (numeric or string, optional, default=not set, fall back to wallet fee estimation) Specify a fee rate in sat/vB.
-feeRate                    (numeric or string, optional, default=not set, fall back to wallet fee estimation) Specify a fee rate in BTC/kvB.
-subtractFeeFromOutputs     (json array, optional, default=[]) The outputs to subtract the fee from.
-                           The fee will be equally deducted from the amount of each specified output.
-                           Those recipients will receive less bitcoins than you enter in their corresponding amount field.
-                           If no outputs are specified here, the sender pays the fee.
-     [
-       vout_index,         (numeric) The zero-based output index, before a change output is added.
-       ...
-     ]
-conf_target                (numeric, optional, default=wallet -txconfirmtarget) Confirmation target in blocks
-estimate_mode              (string, optional, default="unset") The fee estimate mode, must be one of (case insensitive):
-                           "unset"
-                           "economical"
-                           "conservative"
-replaceable                (boolean, optional, default=wallet default) Marks this transaction as BIP125-replaceable.
-                           Allows this transaction to be replaced by a transaction with higher fees
-solving_data               (json object, optional) Keys and scripts needed for producing a final transaction with a dummy signature.
-                           Used for fee estimation during coin selection.
-     {
-       "pubkeys": [        (json array, optional, default=[]) Public keys involved in this transaction.
-         "pubkey",         (string) A public key
-         ...
-       ],
-       "scripts": [        (json array, optional, default=[]) Scripts involved in this transaction.
-         "script",         (string) A script
-         ...
-       ],
-       "descriptors": [    (json array, optional, default=[]) Descriptors that provide solving data for this transaction.
-         "descriptor",     (string) A descriptor
-         ...
-       ],
-     }
-
-Result:
-{                     (json object)
-  "psbt" : "str",     (string) The resulting raw transaction (base64-encoded string)
-  "fee" : n,          (numeric) Fee in BTC the resulting transaction pays
-  "changepos" : n     (numeric) The position of the added change output, or -1
-}
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">walletcreatefundedpsbt ( inputs ) outputs ( locktime ) ( options ) ( bip32derivs )</pre>
+  <div class="rpc-description"><p>Creates and funds a transaction in the Partially Signed Transaction format. Implements the Creator and Updater roles. All existing inputs must either have their previous output transaction be in the wallet or be in the UTXO set. Solving data must be provided for non-wallet inputs.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>inputs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no</td><td>Leave empty to add inputs automatically. See add_inputs option.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+        <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The output number</span></li>
+        <li><code class="rpc-key">sequence</code> <span class="rpc-type">(number, optional, default: depends on the value of the &#39;locktime&#39; and &#39;options.replaceable&#39; arguments)</span> <span class="rpc-desc">The sequence number</span></li>
+        <li><code class="rpc-key">weight</code> <span class="rpc-type">(number, optional, default: Calculated from wallet and solving data)</span> <span class="rpc-desc">The maximum weight for this input, including the weight of the outpoint and sequence number. Note that signature sizes are not guaranteed to be consistent, so the maximum DER signatures size of 73 bytes should be used when considering ECDSA signatures.Remember to convert serialized sizes to weight units when necessary.</span></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>outputs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The outputs specified as key-value pairs.<br>Each key may only appear once, i.e. there can only be one &#39;data&#39; output, and no address may be duplicated.<br>At least one output of either type must be specified.<br>For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also<br>accepted as second parameter.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">…</code> <span class="rpc-type">(one of, optional)</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+              </ul></li>
+          </ul></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">data</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">A key-value pair. The key must be &#34;data&#34;, the value is hex-encoded data</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>locktime</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 0</small></td><td>Raw locktime. Non-0 value also locktime-activates inputs</td></tr>
+  <tr><td>4</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">add_inputs</code> <span class="rpc-type">(boolean, optional, default: false when &#34;inputs&#34; are specified, true otherwise)</span> <span class="rpc-desc">Automatically include coins from the wallet to cover the target amount.</span></li>
+    <li><code class="rpc-key">include_unsafe</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Include inputs that are not safe to spend (unconfirmed transactions from outside keys and unconfirmed replacement transactions).<br>Warning: the resulting transaction may become invalid if one of the unsafe inputs disappears.<br>If that happens, you will need to fund the transaction with different inputs and republish it.</span></li>
+    <li><code class="rpc-key">minconf</code> <span class="rpc-type">(number, optional, default=0)</span> <span class="rpc-desc">If add_inputs is specified, require inputs with at least this many confirmations.</span></li>
+    <li><code class="rpc-key">maxconf</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">If add_inputs is specified, require inputs with at most this many confirmations.</span></li>
+    <li><code class="rpc-key">changeAddress</code> <span class="rpc-type">(string, optional, default: automatic)</span> <span class="rpc-desc">The bitcoin address to receive the change</span></li>
+    <li><code class="rpc-key">changePosition</code> <span class="rpc-type">(number, optional, default: random)</span> <span class="rpc-desc">The index of the change output</span></li>
+    <li><code class="rpc-key">change_type</code> <span class="rpc-type">(string, optional, default: set by -changetype)</span> <span class="rpc-desc">The output type to use. Only valid if changeAddress is not specified. Options are &#34;legacy&#34;, &#34;p2sh-segwit&#34;, &#34;bech32&#34;, and &#34;bech32m&#34;.</span></li>
+    <li><code class="rpc-key">includeWatching</code> <span class="rpc-type">(boolean, optional, default: true for watch-only wallets, otherwise false)</span> <span class="rpc-desc">Also select inputs which are watch only</span></li>
+    <li><code class="rpc-key">lockUnspents</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Lock selected unspent outputs</span></li>
+    <li><code class="rpc-key">fee_rate</code> <span class="rpc-type">(one of, optional, default: not set, fall back to wallet fee estimation)</span> <span class="rpc-desc">Specify a fee rate in sat/vB.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">feeRate</code> <span class="rpc-type">(one of, optional, default: not set, fall back to wallet fee estimation)</span> <span class="rpc-desc">Specify a fee rate in BTC/kvB.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">subtractFeeFromOutputs</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">The outputs to subtract the fee from.<br>The fee will be equally deducted from the amount of each specified output.<br>Those recipients will receive less bitcoins than you enter in their corresponding amount field.<br>If no outputs are specified here, the sender pays the fee.</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(number)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">conf_target</code> <span class="rpc-type">(number, optional, default: wallet -txconfirmtarget)</span> <span class="rpc-desc">Confirmation target in blocks</span></li>
+    <li><code class="rpc-key">estimate_mode</code> <span class="rpc-type">(string, optional, default=&#34;unset&#34;)</span> <span class="rpc-desc">The fee estimate mode, must be one of (case insensitive):<br>&#34;unset&#34;<br>&#34;economical&#34;<br>&#34;conservative&#34;</span></li>
+    <li><code class="rpc-key">replaceable</code> <span class="rpc-type">(boolean, optional, default: wallet default)</span> <span class="rpc-desc">Marks this transaction as BIP125-replaceable.<br>Allows this transaction to be replaced by a transaction with higher fees</span></li>
+    <li><code class="rpc-key">solving_data</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Keys and scripts needed for producing a final transaction with a dummy signature.<br>Used for fee estimation during coin selection.</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">pubkeys</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Public keys involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">scripts</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Scripts involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Descriptors that provide solving data for this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>5</td><td><code>bip32derivs</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Include BIP 32 derivation paths for public keys if we know them</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">psbt</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The resulting raw transaction (base64-encoded string)</span></li>
+  <li><code class="rpc-key">fee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Fee in BTC the resulting transaction pays</span></li>
+  <li><code class="rpc-key">changepos</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The position of the added change output, or -1</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Create a transaction with no inputs
-> bitcoin-cli walletcreatefundedpsbt "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"data\":\"00010203\"}]"
-
-
+&gt; bitcoin-cli walletcreatefundedpsbt &#34;[{\&#34;txid\&#34;:\&#34;myid\&#34;,\&#34;vout\&#34;:0}]&#34; &#34;[{\&#34;data\&#34;:\&#34;00010203\&#34;}]&#34;</pre>
+</div>

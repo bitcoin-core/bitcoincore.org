@@ -1,0 +1,30 @@
+---
+name: getmempoolinfo
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/getmempoolinfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getmempoolinfo</pre>
+  <div class="rpc-description"><p>Returns details on the active state of the TX memory pool.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">loaded</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">True if the initial load attempt of the persisted mempool finished</span></li>
+  <li><code class="rpc-key">size</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Current tx count</span></li>
+  <li><code class="rpc-key">bytes</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Sum of all virtual transaction sizes as defined in BIP 141. Differs from actual serialized size because witness data is discounted</span></li>
+  <li><code class="rpc-key">usage</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Total memory usage for the mempool</span></li>
+  <li><code class="rpc-key">total_fee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Total fees for the mempool in BTC, ignoring modified fees through prioritisetransaction</span></li>
+  <li><code class="rpc-key">maxmempool</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Maximum memory usage for the mempool</span></li>
+  <li><code class="rpc-key">mempoolminfee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Minimum fee rate in BTC/kvB for tx to be accepted. Is the maximum of minrelaytxfee and minimum mempool fee</span></li>
+  <li><code class="rpc-key">minrelaytxfee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Current minimum relay fee for transactions</span></li>
+  <li><code class="rpc-key">incrementalrelayfee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">minimum fee rate increment for mempool limiting or replacement in BTC/kvB</span></li>
+  <li><code class="rpc-key">unbroadcastcount</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Current number of transactions that haven&#39;t passed initial broadcast yet</span></li>
+  <li><code class="rpc-key">fullrbf</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">True if the mempool accepts RBF without replaceability signaling inspection</span></li>
+</ul>
+</div>

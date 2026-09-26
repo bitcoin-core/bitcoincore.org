@@ -1,0 +1,127 @@
+---
+name: descriptorprocesspsbt
+btcversion: 27.0.0
+btcgroup: rawtransactions
+permalink: en/doc/27.0.0/rpc/rawtransactions/descriptorprocesspsbt/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;descriptorprocesspsbt&#34;,
+  &#34;description&#34;: &#34;Update all segwit inputs in a PSBT with information from output descriptors, the UTXO set or the mempool. \nThen, sign the inputs we are able to with information from the output descriptors.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;psbt&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The transaction base64 string&#34;
+    },
+    {
+      &#34;name&#34;: &#34;descriptors&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;oneOf&#34;: [
+            {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;desc&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;An output descriptor&#34;
+                },
+                &#34;range&#34;: {
+                  &#34;oneOf&#34;: [
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    },
+                    {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;prefixItems&#34;: [
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        },
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        }
+                      ],
+                      &#34;minItems&#34;: 2,
+                      &#34;maxItems&#34;: 2
+                    }
+                  ],
+                  &#34;default&#34;: 1000,
+                  &#34;description&#34;: &#34;Up to what index HD chains should be explored (either end or [begin,end])&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;desc&#34;
+              ]
+            }
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;An array of either strings or objects&#34;
+    },
+    {
+      &#34;name&#34;: &#34;sighashtype&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;DEFAULT for Taproot, ALL otherwise&#34;
+      },
+      &#34;description&#34;: &#34;The signature hash type to sign with if not specified by the PSBT. Must be one of\n       \&#34;DEFAULT\&#34;\n       \&#34;ALL\&#34;\n       \&#34;NONE\&#34;\n       \&#34;SINGLE\&#34;\n       \&#34;ALL|ANYONECANPAY\&#34;\n       \&#34;NONE|ANYONECANPAY\&#34;\n       \&#34;SINGLE|ANYONECANPAY\&#34;&#34;
+    },
+    {
+      &#34;name&#34;: &#34;bip32derivs&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Include BIP 32 derivation paths for public keys if we know them&#34;
+    },
+    {
+      &#34;name&#34;: &#34;finalize&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Also finalize inputs if possible&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;psbt&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The base64-encoded partially signed transaction&#34;
+        },
+        &#34;complete&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;If the transaction has a complete set of signatures&#34;
+        },
+        &#34;hex&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The hex-encoded network transaction if complete&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;psbt&#34;,
+        &#34;complete&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>
