@@ -17,7 +17,9 @@ test-slow:
 	contrib/qa/test-binary-availability.sh && echo "SUCCESS checking URLs for binaries"
 
 test-fast:
+	## Fail with a clear message instead of silently passing when there is no build
+	@test -f _site/index.html || { echo "error: _site/index.html not found; run 'make build' first" >&2; exit 1; }
 	## Check for broken Markdown reference-style links that are displayed in text unchanged, e.g. [broken][broken link]
-	! find _site/ -name '*.html' -exec grep ']\[' {} \; | grep -v skip-test | grep .
+	! find _site/ -name '*.html' -exec grep -H -n ']\[' {} + | grep -v skip-test | grep .
 	## Ensure that no template strings leak through liquid rendering
-	! find _site/ -name '*.html' -exec grep -P '\$$\((?!package).+?\)' {} \; | grep .
+	! find _site/ -name '*.html' -exec grep -E -H -o -n '\$$\([^)]+\)' {} + | grep -vE ':\$$\(package' | grep .
