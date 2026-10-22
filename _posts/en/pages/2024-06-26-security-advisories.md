@@ -99,12 +99,21 @@ We differentiate between 4 classes of vulnerabilities:
 
   </details>
 
+The public disclosure timeline will depend on whether we classify a reported vulnerability as
+**easily discoverable**. This classification applies to vulnerabilities that can be discovered with
+minimal effort, such as through a simple LLM prompt.
+
+For **easily discoverable** vulnerabilities, we will publish a point release containing the fix for
+each maintained major version as soon as possible, along with a security advisory, without applying
+the standard severity-dependent embargo periods. Otherwise, disclosure follows the
+severity-dependent timelines detailed below.
+
 **Low** severity vulnerabilities will be disclosed 2 weeks after the release of a major version
 containing the fix. **Medium** and **High** severity vulnerabilities will be disclosed 2 weeks after
 the last affected release goes [End of Life](/en/lifecycle/) (approximately a year after a major
 version containing the fix was first released).
 
-A pre-announcement will be made two weeks prior to releasing the details of a vulnerability. This
+A pre-announcement will be made two weeks prior to releasing the details of an embargoed vulnerability. This
 pre-announcement will coincide with the release of a new major version and contain the number of
 fixed vulnerabilities and their severity levels.
 
