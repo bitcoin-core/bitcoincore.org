@@ -3,20 +3,20 @@ name: backupwallet
 btcversion: 27.0.0
 btcgroup: wallet
 permalink: en/doc/27.0.0/rpc/wallet/backupwallet/
+openrpc: true
 ---
 
-backupwallet "destination"
-
-Safely copies the current wallet file to the specified destination, which can either be a directory or a path with a filename.
-
-Arguments:
-1. destination    (string, required) The destination directory or file
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli backupwallet "backup.dat"
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "backupwallet", "params": ["backup.dat"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">backupwallet &#34;destination&#34;</pre>
+  <div class="rpc-description"><p>Safely copies the current wallet file to the specified destination, which can either be a directory or a path with a filename.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>destination</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The destination directory or file</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli backupwallet &#34;backup.dat&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;backupwallet&#34;, &#34;params&#34;: [&#34;backup.dat&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -3,25 +3,25 @@ name: abortrescan
 btcversion: 30.0.0
 btcgroup: wallet
 permalink: en/doc/30.0.0/rpc/wallet/abortrescan/
+openrpc: true
 ---
 
-abortrescan
-
-Stops current wallet rescan triggered by an RPC call, e.g. by a rescanblockchain call.
-Note: Use "getwalletinfo" to query the scanning progress.
-
-Result:
-true|false    (boolean) Whether the abort was successful
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">abortrescan</pre>
+  <div class="rpc-description"><p>Stops current wallet rescan triggered by an RPC call, e.g. by a rescanblockchain call. Note: Use &#34;getwalletinfo&#34; to query the scanning progress.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(boolean)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Import a private key
-> bitcoin-cli rescanblockchain 
+&gt; bitcoin-cli rescanblockchain 
 
 Abort the running wallet rescan
-> bitcoin-cli abortrescan 
+&gt; bitcoin-cli abortrescan 
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "abortrescan", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;abortrescan&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

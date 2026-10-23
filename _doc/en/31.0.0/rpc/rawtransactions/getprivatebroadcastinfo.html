@@ -3,34 +3,38 @@ name: getprivatebroadcastinfo
 btcversion: 31.0.0
 btcgroup: rawtransactions
 permalink: en/doc/31.0.0/rpc/rawtransactions/getprivatebroadcastinfo/
+openrpc: true
 ---
 
-getprivatebroadcastinfo
-
-Returns information about transactions that are currently being privately broadcast.
-
-Result:
-{                               (json object)
-  "transactions" : [            (json array)
-    {                           (json object)
-      "txid" : "hex",           (string) The transaction hash in hex
-      "wtxid" : "hex",          (string) The transaction witness hash in hex
-      "hex" : "hex",            (string) The serialized, hex-encoded transaction data
-      "peers" : [               (json array) Per-peer send and acknowledgment information for this transaction
-        {                       (json object)
-          "address" : "str",    (string) The address of the peer to which the transaction was sent
-          "sent" : xxx,         (numeric) The time this transaction was picked for sending to this peer via private broadcast (seconds since epoch)
-          "received" : xxx      (numeric, optional) The time this peer acknowledged reception of the transaction (seconds since epoch)
-        },
-        ...
-      ]
-    },
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli getprivatebroadcastinfo 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getprivatebroadcastinfo", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">getprivatebroadcastinfo</pre>
+  <div class="rpc-description"><p>Returns information about transactions that are currently being privately broadcast.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">transactions</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction hash in hex</span></li>
+          <li><code class="rpc-key">wtxid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction witness hash in hex</span></li>
+          <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The serialized, hex-encoded transaction data</span></li>
+          <li><code class="rpc-key">peers</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Per-peer send and acknowledgment information for this transaction</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The address of the peer to which the transaction was sent</span></li>
+                  <li><code class="rpc-key">sent</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The time this transaction was picked for sending to this peer via private broadcast (seconds since epoch)</span></li>
+                  <li><code class="rpc-key">received</code> <span class="rpc-type">(number, unix-time, optional)</span> <span class="rpc-desc">The time this peer acknowledged reception of the transaction (seconds since epoch)</span></li>
+                </ul></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getprivatebroadcastinfo 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getprivatebroadcastinfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

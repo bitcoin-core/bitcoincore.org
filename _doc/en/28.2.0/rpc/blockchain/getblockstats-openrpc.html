@@ -1,0 +1,196 @@
+---
+name: getblockstats
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getblockstats/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getblockstats&#34;,
+  &#34;description&#34;: &#34;Compute per block statistics for a given window. All amounts are in satoshis.\nIt won&#39;t work for some heights with pruning.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hash_or_height&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;oneOf&#34;: [
+          {
+            &#34;type&#34;: &#34;number&#34;
+          },
+          {
+            &#34;type&#34;: &#34;string&#34;
+          }
+        ]
+      },
+      &#34;description&#34;: &#34;The block hash or height of the target block&#34;
+    },
+    {
+      &#34;name&#34;: &#34;stats&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;string&#34;
+        },
+        &#34;x-bitcoin-default-hint&#34;: &#34;all values&#34;
+      },
+      &#34;description&#34;: &#34;Values to plot (see result below)&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;avgfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Average fee in the block&#34;
+        },
+        &#34;avgfeerate&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Average feerate (in satoshis per virtual byte)&#34;
+        },
+        &#34;avgtxsize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Average transaction size&#34;
+        },
+        &#34;blockhash&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The block hash (to check for potential reorgs)&#34;
+        },
+        &#34;feerate_percentiles&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;prefixItems&#34;: [
+            {
+              &#34;type&#34;: &#34;number&#34;
+            },
+            {
+              &#34;type&#34;: &#34;number&#34;
+            },
+            {
+              &#34;type&#34;: &#34;number&#34;
+            },
+            {
+              &#34;type&#34;: &#34;number&#34;
+            },
+            {
+              &#34;type&#34;: &#34;number&#34;
+            }
+          ],
+          &#34;minItems&#34;: 5,
+          &#34;maxItems&#34;: 5,
+          &#34;description&#34;: &#34;Feerates at the 10th, 25th, 50th, 75th, and 90th percentile weight unit (in satoshis per virtual byte)&#34;
+        },
+        &#34;height&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The height of the block&#34;
+        },
+        &#34;ins&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of inputs (excluding coinbase)&#34;
+        },
+        &#34;maxfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Maximum fee in the block&#34;
+        },
+        &#34;maxfeerate&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Maximum feerate (in satoshis per virtual byte)&#34;
+        },
+        &#34;maxtxsize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Maximum transaction size&#34;
+        },
+        &#34;medianfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Truncated median fee in the block&#34;
+        },
+        &#34;mediantime&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The block median time past&#34;
+        },
+        &#34;mediantxsize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Truncated median transaction size&#34;
+        },
+        &#34;minfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Minimum fee in the block&#34;
+        },
+        &#34;minfeerate&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Minimum feerate (in satoshis per virtual byte)&#34;
+        },
+        &#34;mintxsize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Minimum transaction size&#34;
+        },
+        &#34;outs&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of outputs&#34;
+        },
+        &#34;subsidy&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The block subsidy&#34;
+        },
+        &#34;swtotal_size&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total size of all segwit transactions&#34;
+        },
+        &#34;swtotal_weight&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total weight of all segwit transactions&#34;
+        },
+        &#34;swtxs&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of segwit transactions&#34;
+        },
+        &#34;time&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The block time&#34;
+        },
+        &#34;total_out&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total amount in all outputs (excluding coinbase and thus reward [ie subsidy + totalfee])&#34;
+        },
+        &#34;total_size&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total size of all non-coinbase transactions&#34;
+        },
+        &#34;total_weight&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total weight of all non-coinbase transactions&#34;
+        },
+        &#34;totalfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The fee total&#34;
+        },
+        &#34;txs&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of transactions (including coinbase)&#34;
+        },
+        &#34;utxo_increase&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The increase/decrease in the number of unspent outputs (not discounting op_return and similar)&#34;
+        },
+        &#34;utxo_size_inc&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The increase/decrease in size for the utxo index (not discounting op_return and similar)&#34;
+        },
+        &#34;utxo_increase_actual&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The increase/decrease in the number of unspent outputs, not counting unspendables&#34;
+        },
+        &#34;utxo_size_inc_actual&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The increase/decrease in size for the utxo index, not counting unspendables&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

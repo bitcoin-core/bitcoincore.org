@@ -1,0 +1,32 @@
+---
+name: lockunspent
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/lockunspent/raw/
+rawpage: true
+---
+
+lockunspent unlock ( transactions ) ( persistent )
+
+Updates list of temporarily unspendable outputs.
+Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.
+If no transaction outputs are specified when unlocking then all current locked transaction outputs are unlocked.
+A locked transaction output will not be chosen by automatic coin selection, when spending bitcoins.
+Manually selected coins are automatically unlocked.
+Locks are stored in memory only, unless persistent=true, in which case they will be written to the
+wallet database and loaded on node start. Unwritten (persistent=false) locks are always cleared
+(by virtue of process exit) when a node stops or fails. Unlocking will clear both persistent and not.
+Also see the listunspent call
+
+Arguments:
+1. unlock (boolean)  Whether to unlock (true) or lock (false) the specified transactions
+2. transactions (array, optional, default=[])  The transaction outputs and within each, the txid (string) vout (numeric).
+  each item (object)
+    txid (string)  The transaction id
+    vout (number)  The output number
+3. persistent (boolean, optional, default=false)  Whether to write/erase this lock in the wallet database, or keep the change in memory only. Ignored for unlocking.
+
+Result: (boolean)
+
+
+

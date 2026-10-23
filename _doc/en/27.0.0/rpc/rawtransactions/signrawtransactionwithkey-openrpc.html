@@ -1,0 +1,168 @@
+---
+name: signrawtransactionwithkey
+btcversion: 27.0.0
+btcgroup: rawtransactions
+permalink: en/doc/27.0.0/rpc/rawtransactions/signrawtransactionwithkey/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;signrawtransactionwithkey&#34;,
+  &#34;description&#34;: &#34;Sign inputs for raw transaction (serialized, hex-encoded).\nThe second argument is an array of base58-encoded private\nkeys that will be the only keys used to sign the transaction.\nThe third optional argument (may be null) is an array of previous transaction outputs that\nthis transaction depends on but may not yet be in the block chain.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hexstring&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The transaction hex string&#34;
+    },
+    {
+      &#34;name&#34;: &#34;privkeys&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+        }
+      },
+      &#34;description&#34;: &#34;The base58-encoded private keys for signing&#34;
+    },
+    {
+      &#34;name&#34;: &#34;prevtxs&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;txid&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The transaction id&#34;
+            },
+            &#34;vout&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The output number&#34;
+            },
+            &#34;scriptPubKey&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;script key&#34;
+            },
+            &#34;redeemScript&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;(required for P2SH) redeem script&#34;
+            },
+            &#34;witnessScript&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;(required for P2WSH or P2SH-P2WSH) witness script&#34;
+            },
+            &#34;amount&#34;: {
+              &#34;oneOf&#34;: [
+                {
+                  &#34;type&#34;: &#34;number&#34;
+                },
+                {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              ],
+              &#34;description&#34;: &#34;(required for Segwit inputs) the amount spent&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;txid&#34;,
+            &#34;vout&#34;,
+            &#34;scriptPubKey&#34;
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;The previous dependent transaction outputs&#34;
+    },
+    {
+      &#34;name&#34;: &#34;sighashtype&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;DEFAULT for Taproot, ALL otherwise&#34;
+      },
+      &#34;description&#34;: &#34;The signature hash type. Must be one of:\n       \&#34;DEFAULT\&#34;\n       \&#34;ALL\&#34;\n       \&#34;NONE\&#34;\n       \&#34;SINGLE\&#34;\n       \&#34;ALL|ANYONECANPAY\&#34;\n       \&#34;NONE|ANYONECANPAY\&#34;\n       \&#34;SINGLE|ANYONECANPAY\&#34;\n&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;hex&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The hex-encoded raw transaction with signature(s)&#34;
+        },
+        &#34;complete&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;If the transaction has a complete set of signatures&#34;
+        },
+        &#34;errors&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;txid&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hash of the referenced, previous transaction&#34;
+              },
+              &#34;vout&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;The index of the output to spent and used as input&#34;
+              },
+              &#34;witness&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                }
+              },
+              &#34;scriptSig&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hex-encoded signature script&#34;
+              },
+              &#34;sequence&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;Script sequence number&#34;
+              },
+              &#34;error&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;Verification or signing error related to the input&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;txid&#34;,
+              &#34;vout&#34;,
+              &#34;witness&#34;,
+              &#34;scriptSig&#34;,
+              &#34;sequence&#34;,
+              &#34;error&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;Script verification errors (if there are any)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;hex&#34;,
+        &#34;complete&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

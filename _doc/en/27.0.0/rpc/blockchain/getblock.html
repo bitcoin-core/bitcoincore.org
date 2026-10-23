@@ -3,90 +3,88 @@ name: getblock
 btcversion: 27.0.0
 btcgroup: blockchain
 permalink: en/doc/27.0.0/rpc/blockchain/getblock/
+openrpc: true
 ---
 
-getblock "blockhash" ( verbosity )
-
-If verbosity is 0, returns a string that is serialized, hex-encoded data for block 'hash'.
-If verbosity is 1, returns an Object with information about block <hash>.
-If verbosity is 2, returns an Object with information about block <hash> and information about each transaction.
-If verbosity is 3, returns an Object with information about block <hash> and information about each transaction, including prevout information for inputs (only for unpruned blocks in the current best chain).
-
-Arguments:
-1. blockhash    (string, required) The block hash
-2. verbosity    (numeric, optional, default=1) 0 for hex-encoded data, 1 for a JSON object, 2 for JSON object with transaction data, and 3 for JSON object with transaction data including prevout information for inputs
-
-Result (for verbosity = 0):
-"hex"    (string) A string that is serialized, hex-encoded data for block 'hash'
-
-Result (for verbosity = 1):
-{                                 (json object)
-  "hash" : "hex",                 (string) the block hash (same as provided)
-  "confirmations" : n,            (numeric) The number of confirmations, or -1 if the block is not on the main chain
-  "size" : n,                     (numeric) The block size
-  "strippedsize" : n,             (numeric) The block size excluding witness data
-  "weight" : n,                   (numeric) The block weight as defined in BIP 141
-  "height" : n,                   (numeric) The block height or index
-  "version" : n,                  (numeric) The block version
-  "versionHex" : "hex",           (string) The block version formatted in hexadecimal
-  "merkleroot" : "hex",           (string) The merkle root
-  "tx" : [                        (json array) The transaction ids
-    "hex",                        (string) The transaction id
-    ...
-  ],
-  "time" : xxx,                   (numeric) The block time expressed in UNIX epoch time
-  "mediantime" : xxx,             (numeric) The median block time expressed in UNIX epoch time
-  "nonce" : n,                    (numeric) The nonce
-  "bits" : "hex",                 (string) The bits
-  "difficulty" : n,               (numeric) The difficulty
-  "chainwork" : "hex",            (string) Expected number of hashes required to produce the chain up to this block (in hex)
-  "nTx" : n,                      (numeric) The number of transactions in the block
-  "previousblockhash" : "hex",    (string, optional) The hash of the previous block (if available)
-  "nextblockhash" : "hex"         (string, optional) The hash of the next block (if available)
-}
-
-Result (for verbosity = 2):
-{                   (json object)
-  ...,              Same output as verbosity = 1
-  "tx" : [          (json array)
-    {               (json object)
-      ...,          The transactions in the format of the getrawtransaction RPC. Different from verbosity = 1 "tx" result
-      "fee" : n     (numeric) The transaction fee in BTC, omitted if block undo data is not available
-    },
-    ...
-  ]
-}
-
-Result (for verbosity = 3):
-{                                        (json object)
-  ...,                                   Same output as verbosity = 2
-  "tx" : [                               (json array)
-    {                                    (json object)
-      "vin" : [                          (json array)
-        {                                (json object)
-          ...,                           The same output as verbosity = 2
-          "prevout" : {                  (json object) (Only if undo information is available)
-            "generated" : true|false,    (boolean) Coinbase or not
-            "height" : n,                (numeric) The height of the prevout
-            "value" : n,                 (numeric) The value in BTC
-            "scriptPubKey" : {           (json object)
-              "asm" : "str",             (string) Disassembly of the public key script
-              "desc" : "str",            (string) Inferred descriptor for the output
-              "hex" : "hex",             (string) The raw public key script bytes, hex-encoded
-              "address" : "str",         (string, optional) The Bitcoin address (only if a well-defined address exists)
-              "type" : "str"             (string) The type (one of: nonstandard, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
-            }
-          }
-        },
-        ...
-      ]
-    },
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli getblock "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getblock &#34;blockhash&#34; ( verbosity )</pre>
+  <div class="rpc-description"><p>If verbosity is 0, returns a string that is serialized, hex-encoded data for block &#39;hash&#39;. If verbosity is 1, returns an Object with information about block &lt;hash&gt;. If verbosity is 2, returns an Object with information about block &lt;hash&gt; and information about each transaction. If verbosity is 3, returns an Object with information about block &lt;hash&gt; and information about each transaction, including prevout information for inputs (only for unpruned blocks in the current best chain).</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The block hash</td></tr>
+  <tr><td>2</td><td><code>verbosity</code><br><small class="rpc-note">alias: verbose</small></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 1</small></td><td>0 for hex-encoded data, 1 for a JSON object, 2 for JSON object with transaction data, and 3 for JSON object with transaction data including prevout information for inputs</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span> <span class="rpc-desc">for verbosity = 0</span></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">for verbosity = 1</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the block hash (same as provided)</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations, or -1 if the block is not on the main chain</span></li>
+      <li><code class="rpc-key">size</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block size</span></li>
+      <li><code class="rpc-key">strippedsize</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block size excluding witness data</span></li>
+      <li><code class="rpc-key">weight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block weight as defined in BIP 141</span></li>
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block height or index</span></li>
+      <li><code class="rpc-key">version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block version</span></li>
+      <li><code class="rpc-key">versionHex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The block version formatted in hexadecimal</span></li>
+      <li><code class="rpc-key">merkleroot</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The merkle root</span></li>
+      <li><code class="rpc-key">tx</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">The transaction ids</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The block time expressed in UNIX epoch time</span></li>
+      <li><code class="rpc-key">mediantime</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The median block time expressed in UNIX epoch time</span></li>
+      <li><code class="rpc-key">nonce</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The nonce</span></li>
+      <li><code class="rpc-key">bits</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The bits</span></li>
+      <li><code class="rpc-key">difficulty</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The difficulty</span></li>
+      <li><code class="rpc-key">chainwork</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Expected number of hashes required to produce the chain up to this block (in hex)</span></li>
+      <li><code class="rpc-key">nTx</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of transactions in the block</span></li>
+      <li><code class="rpc-key">previousblockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hash of the previous block (if available)</span></li>
+      <li><code class="rpc-key">nextblockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hash of the next block (if available)</span></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 3</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">for verbosity = 2</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">tx</code> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">fee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The transaction fee in BTC, omitted if block undo data is not available</span></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 4</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">for verbosity = 3</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">tx</code> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">vin</code> <span class="rpc-type">(array)</span>
+                <ul class="rpc-schema rpc-array">
+                  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                    <ul class="rpc-schema">
+                      <li><code class="rpc-key">prevout</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">(Only if undo information is available)</span>
+                        <ul class="rpc-schema">
+                          <li><code class="rpc-key">generated</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Coinbase or not</span></li>
+                          <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The height of the prevout</span></li>
+                          <li><code class="rpc-key">value</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The value in BTC</span></li>
+                          <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(object)</span>
+                            <ul class="rpc-schema">
+                              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the public key script</span></li>
+                              <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the output</span></li>
+                              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw public key script bytes, hex-encoded</span></li>
+                              <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+                              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type (one of: nonstandard, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)</span></li>
+                            </ul></li>
+                        </ul></li>
+                    </ul></li>
+                </ul></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getblock &#34;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getblock&#34;, &#34;params&#34;: [&#34;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

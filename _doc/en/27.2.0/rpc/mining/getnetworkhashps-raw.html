@@ -1,0 +1,22 @@
+---
+name: getnetworkhashps
+btcversion: 27.2.0
+btcgroup: mining
+permalink: en/doc/27.2.0/rpc/mining/getnetworkhashps/raw/
+rawpage: true
+---
+
+getnetworkhashps ( nblocks ) ( height )
+
+Returns the estimated network hashes per second based on the last n blocks.
+Pass in [blocks] to override # of blocks, -1 specifies since last difficulty change.
+Pass in [height] to estimate the network speed at the time when a certain block was found.
+
+Arguments:
+1. nblocks (number, optional, default=120)  The number of previous blocks to calculate estimate from, or -1 for blocks since last difficulty change.
+2. height (number, optional, default=-1)  To estimate at the time of the given height.
+
+Result: (number)
+
+
+

@@ -1,0 +1,241 @@
+---
+name: getpeerinfo
+btcversion: 27.0.0
+btcgroup: network
+permalink: en/doc/27.0.0/rpc/network/getpeerinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getpeerinfo&#34;,
+  &#34;description&#34;: &#34;Returns data about each connected network peer as a json array of objects.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;id&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;Peer index&#34;
+          },
+          &#34;addr&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;(host:port) The IP address and port of the peer&#34;
+          },
+          &#34;addrbind&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;(ip:port) Bind address of the connection to the peer&#34;
+          },
+          &#34;addrlocal&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;(ip:port) Local address as reported by the peer&#34;
+          },
+          &#34;network&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;Network (ipv4, ipv6, onion, i2p, cjdns, not_publicly_routable)&#34;
+          },
+          &#34;mapped_as&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The AS in the BGP route to the peer used for diversifying\npeer selection (only available if the asmap config flag is set)&#34;
+          },
+          &#34;services&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;The services offered&#34;
+          },
+          &#34;servicesnames&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            &#34;description&#34;: &#34;the services offered, in human-readable form&#34;
+          },
+          &#34;relaytxes&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether we relay transactions to this peer&#34;
+          },
+          &#34;lastsend&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The UNIX epoch time of the last send&#34;
+          },
+          &#34;lastrecv&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The UNIX epoch time of the last receive&#34;
+          },
+          &#34;last_transaction&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The UNIX epoch time of the last valid transaction received from this peer&#34;
+          },
+          &#34;last_block&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The UNIX epoch time of the last block received from this peer&#34;
+          },
+          &#34;bytessent&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The total bytes sent&#34;
+          },
+          &#34;bytesrecv&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The total bytes received&#34;
+          },
+          &#34;conntime&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The UNIX epoch time of the connection&#34;
+          },
+          &#34;timeoffset&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The time offset in seconds&#34;
+          },
+          &#34;pingtime&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The last ping time in milliseconds (ms), if any&#34;
+          },
+          &#34;minping&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The minimum observed ping time in milliseconds (ms), if any&#34;
+          },
+          &#34;pingwait&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The duration in milliseconds (ms) of an outstanding ping (if non-zero)&#34;
+          },
+          &#34;version&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The peer version, such as 70001&#34;
+          },
+          &#34;subver&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;The string version&#34;
+          },
+          &#34;inbound&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Inbound (true) or Outbound (false)&#34;
+          },
+          &#34;bip152_hb_to&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether we selected peer as (compact blocks) high-bandwidth peer&#34;
+          },
+          &#34;bip152_hb_from&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether peer selected us as (compact blocks) high-bandwidth peer&#34;
+          },
+          &#34;startingheight&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The starting height (block) of the peer&#34;
+          },
+          &#34;presynced_headers&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The current height of header pre-synchronization with this peer, or -1 if no low-work sync is in progress&#34;
+          },
+          &#34;synced_headers&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The last header we have in common with this peer&#34;
+          },
+          &#34;synced_blocks&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The last block we have in common with this peer&#34;
+          },
+          &#34;inflight&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;number&#34;
+            }
+          },
+          &#34;addr_relay_enabled&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether we participate in address relay with this peer&#34;
+          },
+          &#34;addr_processed&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The total number of addresses processed, excluding those dropped due to rate limiting&#34;
+          },
+          &#34;addr_rate_limited&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The total number of addresses dropped due to rate limiting&#34;
+          },
+          &#34;permissions&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            &#34;description&#34;: &#34;Any special permissions that have been granted to this peer&#34;
+          },
+          &#34;minfeefilter&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The minimum fee rate for transactions this peer accepts&#34;
+          },
+          &#34;bytessent_per_msg&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;additionalProperties&#34;: {
+              &#34;type&#34;: &#34;number&#34;
+            }
+          },
+          &#34;bytesrecv_per_msg&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;additionalProperties&#34;: {
+              &#34;type&#34;: &#34;number&#34;
+            }
+          },
+          &#34;connection_type&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;Type of connection: \noutbound-full-relay (default automatic connections),\nblock-relay-only (does not relay transactions or addresses),\ninbound (initiated by the peer),\nmanual (added via addnode RPC or -addnode/-connect configuration options),\naddr-fetch (short-lived automatic connection for soliciting addresses),\nfeeler (short-lived automatic connection for testing addresses).\nPlease note this output is unlikely to be stable in upcoming releases as we iterate to\nbest capture connection behaviors.&#34;
+          },
+          &#34;transport_protocol_type&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;Type of transport protocol: \ndetecting (peer could be v1 or v2),\nv1 (plaintext transport protocol),\nv2 (BIP324 encrypted transport protocol).\n&#34;
+          },
+          &#34;session_id&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;The session ID for this connection, or \&#34;\&#34; if there is none (\&#34;v2\&#34; transport protocol only).\n&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;id&#34;,
+          &#34;addr&#34;,
+          &#34;network&#34;,
+          &#34;services&#34;,
+          &#34;servicesnames&#34;,
+          &#34;relaytxes&#34;,
+          &#34;lastsend&#34;,
+          &#34;lastrecv&#34;,
+          &#34;last_transaction&#34;,
+          &#34;last_block&#34;,
+          &#34;bytessent&#34;,
+          &#34;bytesrecv&#34;,
+          &#34;conntime&#34;,
+          &#34;timeoffset&#34;,
+          &#34;version&#34;,
+          &#34;subver&#34;,
+          &#34;inbound&#34;,
+          &#34;bip152_hb_to&#34;,
+          &#34;bip152_hb_from&#34;,
+          &#34;startingheight&#34;,
+          &#34;presynced_headers&#34;,
+          &#34;synced_headers&#34;,
+          &#34;synced_blocks&#34;,
+          &#34;inflight&#34;,
+          &#34;addr_relay_enabled&#34;,
+          &#34;addr_processed&#34;,
+          &#34;addr_rate_limited&#34;,
+          &#34;permissions&#34;,
+          &#34;minfeefilter&#34;,
+          &#34;bytessent_per_msg&#34;,
+          &#34;bytesrecv_per_msg&#34;,
+          &#34;connection_type&#34;,
+          &#34;transport_protocol_type&#34;,
+          &#34;session_id&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

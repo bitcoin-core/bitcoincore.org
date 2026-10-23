@@ -1,0 +1,55 @@
+---
+name: loadwallet
+btcversion: 30.0.0
+btcgroup: wallet
+permalink: en/doc/30.0.0/rpc/wallet/loadwallet/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;loadwallet&#34;,
+  &#34;description&#34;: &#34;Loads a wallet from a wallet file or directory.\nNote that all wallet command-line options used when starting bitcoind will be\napplied to the new wallet.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;filename&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The path to the directory of the wallet to be loaded, either absolute or relative to the \&#34;wallets\&#34; directory. The \&#34;wallets\&#34; directory is set by the -walletdir option and defaults to the \&#34;wallets\&#34; folder within the data directory.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;load_on_startup&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;
+      },
+      &#34;description&#34;: &#34;Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;name&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The wallet name if loaded successfully.&#34;
+        },
+        &#34;warnings&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;Warning messages, if any, related to loading the wallet.&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;name&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

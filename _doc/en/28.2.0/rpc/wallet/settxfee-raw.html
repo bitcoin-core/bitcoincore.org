@@ -1,0 +1,22 @@
+---
+name: settxfee
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/settxfee/raw/
+rawpage: true
+---
+
+settxfee amount
+
+Set the transaction fee rate in BTC/kvB for this wallet. Overrides the global -paytxfee command line parameter.
+Can be deactivated by passing 0 as the fee. In that case automatic fee selection will be used by default.
+
+Arguments:
+1. amount (one of)  The transaction fee rate in BTC/kvB
+  option 1: (number)
+  option 2: (string)
+
+Result: (boolean)
+
+
+

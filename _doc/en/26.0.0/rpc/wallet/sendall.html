@@ -3,105 +3,103 @@ name: sendall
 btcversion: 26.0.0
 btcgroup: wallet
 permalink: en/doc/26.0.0/rpc/wallet/sendall/
+openrpc: true
 ---
 
-sendall ["address",{"address":amount,...},...] ( conf_target "estimate_mode" fee_rate options )
-
-EXPERIMENTAL warning: this call may be changed in future releases.
-
-Spend the value of all (or specific) confirmed UTXOs in the wallet to one or more recipients.
-Unconfirmed inbound UTXOs and locked UTXOs will not be spent. Sendall will respect the avoid_reuse wallet flag.
-If your wallet contains many small inputs, either because it received tiny payments or as a result of accumulating change, consider using `send_max` to exclude inputs that are worth less than the fees needed to spend them.
-
-Arguments:
-1. recipients                  (json array, required) The sendall destinations. Each address may only appear once.
-                               Optionally some recipients can be specified with an amount to perform payments, but at least one address must appear without a specified amount.
-                               
-     [
-       "address",              (string, required) A bitcoin address which receives an equal share of the unspecified amount.
-       {                       (json object)
-         "address": amount,    (numeric or string, required) A key-value pair. The key (string) is the bitcoin address, the value (float or string) is the amount in BTC
-         ...
-       },
-       ...
-     ]
-2. conf_target                 (numeric, optional, default=wallet -txconfirmtarget) Confirmation target in blocks
-3. estimate_mode               (string, optional, default="unset") The fee estimate mode, must be one of (case insensitive):
-                               "unset"
-                               "economical"
-                               "conservative"
-4. fee_rate                    (numeric or string, optional, default=not set, fall back to wallet fee estimation) Specify a fee rate in sat/vB.
-5. options                     (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-add_to_wallet              (boolean, optional, default=true) When false, returns the serialized transaction without broadcasting or adding it to the wallet
-fee_rate                   (numeric or string, optional, default=not set, fall back to wallet fee estimation) Specify a fee rate in sat/vB.
-include_watching           (boolean, optional, default=true for watch-only wallets, otherwise false) Also select inputs which are watch-only.
-                           Only solvable inputs can be used. Watch-only destinations are solvable if the public key and/or output script was imported,
-                           e.g. with 'importpubkey' or 'importmulti' with the 'pubkeys' or 'desc' field.
-inputs                     (json array, optional, default=[]) Use exactly the specified inputs to build the transaction. Specifying inputs is incompatible with the send_max, minconf, and maxconf options.
-     [
-       {                   (json object)
-         "txid": "hex",    (string, required) The transaction id
-         "vout": n,        (numeric, required) The output number
-         "sequence": n,    (numeric, optional, default=depends on the value of the 'replaceable' and 'locktime' arguments) The sequence number
-       },
-       ...
-     ]
-locktime                   (numeric, optional, default=0) Raw locktime. Non-0 value also locktime-activates inputs
-lock_unspents              (boolean, optional, default=false) Lock selected unspent outputs
-psbt                       (boolean, optional, default=automatic) Always return a PSBT, implies add_to_wallet=false.
-send_max                   (boolean, optional, default=false) When true, only use UTXOs that can pay for their own fees to maximize the output amount. When 'false' (default), no UTXO is left behind. send_max is incompatible with providing specific inputs.
-minconf                    (numeric, optional, default=0) Require inputs with at least this many confirmations.
-maxconf                    (numeric, optional) Require inputs with at most this many confirmations.
-conf_target                (numeric, optional, default=wallet -txconfirmtarget) Confirmation target in blocks
-estimate_mode              (string, optional, default="unset") The fee estimate mode, must be one of (case insensitive):
-                           "unset"
-                           "economical"
-                           "conservative"
-replaceable                (boolean, optional, default=wallet default) Marks this transaction as BIP125-replaceable.
-                           Allows this transaction to be replaced by a transaction with higher fees
-solving_data               (json object, optional) Keys and scripts needed for producing a final transaction with a dummy signature.
-                           Used for fee estimation during coin selection.
-     {
-       "pubkeys": [        (json array, optional, default=[]) Public keys involved in this transaction.
-         "pubkey",         (string) A public key
-         ...
-       ],
-       "scripts": [        (json array, optional, default=[]) Scripts involved in this transaction.
-         "script",         (string) A script
-         ...
-       ],
-       "descriptors": [    (json array, optional, default=[]) Descriptors that provide solving data for this transaction.
-         "descriptor",     (string) A descriptor
-         ...
-       ],
-     }
-
-Result:
-{                             (json object)
-  "complete" : true|false,    (boolean) If the transaction has a complete set of signatures
-  "txid" : "hex",             (string, optional) The transaction id for the send. Only 1 transaction is created regardless of the number of addresses.
-  "hex" : "hex",              (string, optional) If add_to_wallet is false, the hex-encoded raw transaction with signature(s)
-  "psbt" : "str"              (string, optional) If more signatures are needed, or if add_to_wallet is false, the base64-encoded (partially) signed transaction
-}
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">sendall recipients ( conf_target ) ( &#34;estimate_mode&#34; ) ( fee_rate ) ( options )</pre>
+  <div class="rpc-description"><p>EXPERIMENTAL warning: this call may be changed in future releases.</p><p>Spend the value of all (or specific) confirmed UTXOs in the wallet to one or more recipients. Unconfirmed inbound UTXOs and locked UTXOs will not be spent. Sendall will respect the avoid_reuse wallet flag. If your wallet contains many small inputs, either because it received tiny payments or as a result of accumulating change, consider using `send_max` to exclude inputs that are worth less than the fees needed to spend them.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>recipients</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The sendall destinations. Each address may only appear once.<br>Optionally some recipients can be specified with an amount to perform payments, but at least one address must appear without a specified amount.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">…</code> <span class="rpc-type">(one of, optional)</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+              </ul></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>conf_target</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: wallet -txconfirmtarget</small></td><td>Confirmation target in blocks</td></tr>
+  <tr><td>3</td><td><code>estimate_mode</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;unset&#34;</small></td><td>The fee estimate mode, must be one of (case insensitive):<br>&#34;unset&#34;<br>&#34;economical&#34;<br>&#34;conservative&#34;</td></tr>
+  <tr><td>4</td><td><code>fee_rate</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: not set, fall back to wallet fee estimation</small></td><td>Specify a fee rate in sat/vB.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>5</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">add_to_wallet</code> <span class="rpc-type">(boolean, optional, default=true)</span> <span class="rpc-desc">When false, returns the serialized transaction without broadcasting or adding it to the wallet</span></li>
+    <li><code class="rpc-key">fee_rate</code> <span class="rpc-type">(one of, optional, default: not set, fall back to wallet fee estimation)</span> <span class="rpc-desc">Specify a fee rate in sat/vB.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">include_watching</code> <span class="rpc-type">(boolean, optional, default: true for watch-only wallets, otherwise false)</span> <span class="rpc-desc">Also select inputs which are watch-only.<br>Only solvable inputs can be used. Watch-only destinations are solvable if the public key and/or output script was imported,<br>e.g. with &#39;importpubkey&#39; or &#39;importmulti&#39; with the &#39;pubkeys&#39; or &#39;desc&#39; field.</span></li>
+    <li><code class="rpc-key">inputs</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Use exactly the specified inputs to build the transaction. Specifying inputs is incompatible with the send_max, minconf, and maxconf options.</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+            <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The output number</span></li>
+            <li><code class="rpc-key">sequence</code> <span class="rpc-type">(number, optional, default: depends on the value of the &#39;replaceable&#39; and &#39;locktime&#39; arguments)</span> <span class="rpc-desc">The sequence number</span></li>
+          </ul></li>
+      </ul></li>
+    <li><code class="rpc-key">locktime</code> <span class="rpc-type">(number, optional, default=0)</span> <span class="rpc-desc">Raw locktime. Non-0 value also locktime-activates inputs</span></li>
+    <li><code class="rpc-key">lock_unspents</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Lock selected unspent outputs</span></li>
+    <li><code class="rpc-key">psbt</code> <span class="rpc-type">(boolean, optional, default: automatic)</span> <span class="rpc-desc">Always return a PSBT, implies add_to_wallet=false.</span></li>
+    <li><code class="rpc-key">send_max</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">When true, only use UTXOs that can pay for their own fees to maximize the output amount. When &#39;false&#39; (default), no UTXO is left behind. send_max is incompatible with providing specific inputs.</span></li>
+    <li><code class="rpc-key">minconf</code> <span class="rpc-type">(number, optional, default=0)</span> <span class="rpc-desc">Require inputs with at least this many confirmations.</span></li>
+    <li><code class="rpc-key">maxconf</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Require inputs with at most this many confirmations.</span></li>
+    <li><code class="rpc-key">conf_target</code> <span class="rpc-type">(number, optional, default: wallet -txconfirmtarget)</span> <span class="rpc-desc">Confirmation target in blocks</span></li>
+    <li><code class="rpc-key">estimate_mode</code> <span class="rpc-type">(string, optional, default=&#34;unset&#34;)</span> <span class="rpc-desc">The fee estimate mode, must be one of (case insensitive):<br>&#34;unset&#34;<br>&#34;economical&#34;<br>&#34;conservative&#34;</span></li>
+    <li><code class="rpc-key">replaceable</code> <span class="rpc-type">(boolean, optional, default: wallet default)</span> <span class="rpc-desc">Marks this transaction as BIP125-replaceable.<br>Allows this transaction to be replaced by a transaction with higher fees</span></li>
+    <li><code class="rpc-key">solving_data</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Keys and scripts needed for producing a final transaction with a dummy signature.<br>Used for fee estimation during coin selection.</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">pubkeys</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Public keys involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">scripts</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Scripts involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Descriptors that provide solving data for this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">complete</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">If the transaction has a complete set of signatures</span></li>
+  <li><code class="rpc-key">txid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The transaction id for the send. Only 1 transaction is created regardless of the number of addresses.</span></li>
+  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">If add_to_wallet is false, the hex-encoded raw transaction with signature(s)</span></li>
+  <li><code class="rpc-key">psbt</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">If more signatures are needed, or if add_to_wallet is false, the base64-encoded (partially) signed transaction</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Spend all UTXOs from the wallet with a fee rate of 1 sat/vB using named arguments
-> bitcoin-cli -named sendall recipients='["bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl"]' fee_rate=1
+&gt; bitcoin-cli -named sendall recipients=&#39;[&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;]&#39; fee_rate=1
 
 Spend all UTXOs with a fee rate of 1.1 sat/vB using positional arguments
-> bitcoin-cli sendall '["bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl"]' null "unset" 1.1
+&gt; bitcoin-cli sendall &#39;[&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;]&#39; null &#34;unset&#34; 1.1
 
 Spend all UTXOs split into equal amounts to two addresses with a fee rate of 1.5 sat/vB using the options argument
-> bitcoin-cli sendall '["bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl", "bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3"]' null "unset" null '{"fee_rate": 1.5}'
+&gt; bitcoin-cli sendall &#39;[&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;, &#34;bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3&#34;]&#39; null &#34;unset&#34; null &#39;{&#34;fee_rate&#34;: 1.5}&#39;
 
 Leave dust UTXOs in wallet, spend only UTXOs with positive effective value with a fee rate of 10 sat/vB using the options argument
-> bitcoin-cli sendall '["bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl"]' null "unset" null '{"fee_rate": 10, "send_max": true}'
+&gt; bitcoin-cli sendall &#39;[&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;]&#39; null &#34;unset&#34; null &#39;{&#34;fee_rate&#34;: 10, &#34;send_max&#34;: true}&#39;
 
 Spend all UTXOs with a fee rate of 1.3 sat/vB using named arguments and sending a 0.25 BTC to another recipient
-> bitcoin-cli -named sendall recipients='[{"bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3": 0.25}, "bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl"]' fee_rate=1.3
-
-
-
+&gt; bitcoin-cli -named sendall recipients=&#39;[{&#34;bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3&#34;: 0.25}, &#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;]&#39; fee_rate=1.3</pre>
+</div>

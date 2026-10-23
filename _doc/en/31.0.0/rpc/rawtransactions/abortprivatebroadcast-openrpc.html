@@ -1,0 +1,67 @@
+---
+name: abortprivatebroadcast
+btcversion: 31.0.0
+btcgroup: rawtransactions
+permalink: en/doc/31.0.0/rpc/rawtransactions/abortprivatebroadcast/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;abortprivatebroadcast&#34;,
+  &#34;description&#34;: &#34;Abort private broadcast attempts for a transaction currently being privately broadcast.\nThe transaction will be removed from the private broadcast queue.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;id&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;A transaction identifier to abort. It will be matched against both txid and wtxid for all transactions in the private broadcast queue.\nIf the provided id matches a txid that corresponds to multiple transactions with different wtxids, multiple transactions will be removed and returned.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;removed_transactions&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;txid&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The transaction hash in hex&#34;
+              },
+              &#34;wtxid&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The transaction witness hash in hex&#34;
+              },
+              &#34;hex&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The serialized, hex-encoded transaction data&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;txid&#34;,
+              &#34;wtxid&#34;,
+              &#34;hex&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;Transactions removed from the private broadcast queue&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;removed_transactions&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

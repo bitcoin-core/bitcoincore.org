@@ -1,0 +1,22 @@
+---
+name: dumpwallet
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/dumpwallet/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">dumpwallet &#34;filename&#34;</pre>
+  <div class="rpc-description"><p>Dumps all wallet keys in a human-readable format to a server-side file. This does not allow overwriting existing files. Imported scripts are included in the dumpfile, but corresponding BIP173 addresses, etc. may not be added automatically by importwallet. Note that if your wallet contains keys which are not derived from your HD seed (e.g. imported keys), these are not covered by only backing up the seed itself, and must be backed up too (e.g. ensure you back up the whole dumpfile). Note: This command is only compatible with legacy wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>filename</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The filename with path (absolute path recommended)</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">filename</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The filename with full absolute path</span></li>
+</ul>
+</div>

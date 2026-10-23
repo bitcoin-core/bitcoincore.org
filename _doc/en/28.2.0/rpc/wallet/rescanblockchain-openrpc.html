@@ -1,0 +1,54 @@
+---
+name: rescanblockchain
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/rescanblockchain/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;rescanblockchain&#34;,
+  &#34;description&#34;: &#34;Rescan the local blockchain for wallet related transactions.\nNote: Use \&#34;getwalletinfo\&#34; to query the scanning progress.\nThe rescan is significantly faster when used on a descriptor wallet\nand block filters are available (using startup option \&#34;-blockfilterindex=1\&#34;).&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;start_height&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 0
+      },
+      &#34;description&#34;: &#34;block height where the rescan should start&#34;
+    },
+    {
+      &#34;name&#34;: &#34;stop_height&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;
+      },
+      &#34;description&#34;: &#34;the last block height that should be scanned. If none is provided it will rescan up to the tip at return time of this call.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;start_height&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The block height where the rescan started (the requested height or 0)&#34;
+        },
+        &#34;stop_height&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The height of the last rescanned block. May be null in rare cases if there was a reorg and the call didn&#39;t scan any blocks because they were already scanned in the background.&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;start_height&#34;,
+        &#34;stop_height&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

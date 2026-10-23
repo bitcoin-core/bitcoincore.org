@@ -3,39 +3,40 @@ name: listreceivedbyaddress
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/listreceivedbyaddress/
+openrpc: true
 ---
 
-listreceivedbyaddress ( minconf include_empty include_watchonly "address_filter" include_immature_coinbase )
-
-List balances by receiving address.
-
-Arguments:
-1. minconf                      (numeric, optional, default=1) The minimum number of confirmations before payments are included.
-2. include_empty                (boolean, optional, default=false) Whether to include addresses that haven't received any payments.
-3. include_watchonly            (boolean, optional, default=false) (DEPRECATED) No longer used
-4. address_filter               (string, optional) If present and non-empty, only return information on this address.
-5. include_immature_coinbase    (boolean, optional, default=false) Include immature coinbase transactions.
-
-Result:
-[                           (json array)
-  {                         (json object)
-    "address" : "str",      (string) The receiving address
-    "amount" : n,           (numeric) The total amount in BTC received by the address
-    "confirmations" : n,    (numeric) The number of confirmations of the most recent transaction included
-    "label" : "str",        (string) The label of the receiving address. The default label is ""
-    "txids" : [             (json array)
-      "hex",                (string) The ids of transactions received with the address
-      ...
-    ]
-  },
-  ...
-]
-
-Examples:
-> bitcoin-cli listreceivedbyaddress 
-> bitcoin-cli listreceivedbyaddress 6 true
-> bitcoin-cli listreceivedbyaddress 6 true true "" true
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "listreceivedbyaddress", "params": [6, true, true]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "listreceivedbyaddress", "params": [6, true, true, "bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl", true]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listreceivedbyaddress ( minconf ) ( include_empty ) ( include_watchonly ) ( &#34;address_filter&#34; ) ( include_immature_coinbase )</pre>
+  <div class="rpc-description"><p>List balances by receiving address.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>minconf</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 1</small></td><td>The minimum number of confirmations before payments are included.</td></tr>
+  <tr><td>2</td><td><code>include_empty</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Whether to include addresses that haven&#39;t received any payments.</td></tr>
+  <tr><td>3</td><td><code>include_watchonly</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>(DEPRECATED) No longer used</td></tr>
+  <tr><td>4</td><td><code>address_filter</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>If present and non-empty, only return information on this address.</td></tr>
+  <tr><td>5</td><td><code>include_immature_coinbase</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Include immature coinbase transactions.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The receiving address</span></li>
+      <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount in BTC received by the address</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations of the most recent transaction included</span></li>
+      <li><code class="rpc-key">label</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The label of the receiving address. The default label is &#34;&#34;</span></li>
+      <li><code class="rpc-key">txids</code> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli listreceivedbyaddress 
+&gt; bitcoin-cli listreceivedbyaddress 6 true
+&gt; bitcoin-cli listreceivedbyaddress 6 true true &#34;&#34; true
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;listreceivedbyaddress&#34;, &#34;params&#34;: [6, true, true]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;listreceivedbyaddress&#34;, &#34;params&#34;: [6, true, true, &#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;, true]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

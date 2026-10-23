@@ -3,6 +3,10 @@ name: {{.Name}}
 btcversion: {{.Version}}
 btcgroup: {{.Group}}
 permalink: {{.Permalink}}
----
+{{if .Structured}}openrpc: true
+{{end}}{{if .Raw}}rawpage: true
+{{end}}{{if .Openrpc}}openrpc: true
+openrpcpage: true
+{{end}}---
 
 {{.Description}}

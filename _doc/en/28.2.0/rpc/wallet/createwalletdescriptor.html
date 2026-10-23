@@ -1,0 +1,30 @@
+---
+name: createwalletdescriptor
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/createwalletdescriptor/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">createwalletdescriptor &#34;type&#34; ( options )</pre>
+  <div class="rpc-description"><p>Creates the wallet&#39;s descriptor for the given address type. The address type must be one that the wallet does not already have a descriptor for. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>type</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The address type the descriptor will produce. Options are &#34;legacy&#34;, &#34;p2sh-segwit&#34;, &#34;bech32&#34;, and &#34;bech32m&#34;.</td></tr>
+  <tr><td>2</td><td><code>options</code></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">internal</code> <span class="rpc-type">(boolean, optional, default: Both external and internal will be generated unless this parameter is specified)</span> <span class="rpc-desc">Whether to only make one descriptor that is internal (if parameter is true) or external (if parameter is false)</span></li>
+    <li><code class="rpc-key">hdkey</code> <span class="rpc-type">(string, optional, default: The HD key used by all other active descriptors)</span> <span class="rpc-desc">The HD key that the wallet knows the private key of, listed using &#39;gethdkeys&#39;, to use for this descriptor&#39;s key</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">descs</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">The public descriptors that were added to the wallet</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+</div>

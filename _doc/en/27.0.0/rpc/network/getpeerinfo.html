@@ -3,102 +3,78 @@ name: getpeerinfo
 btcversion: 27.0.0
 btcgroup: network
 permalink: en/doc/27.0.0/rpc/network/getpeerinfo/
+openrpc: true
 ---
 
-getpeerinfo
-
-Returns data about each connected network peer as a json array of objects.
-
-Result:
-[                                         (json array)
-  {                                       (json object)
-    "id" : n,                             (numeric) Peer index
-    "addr" : "str",                       (string) (host:port) The IP address and port of the peer
-    "addrbind" : "str",                   (string, optional) (ip:port) Bind address of the connection to the peer
-    "addrlocal" : "str",                  (string, optional) (ip:port) Local address as reported by the peer
-    "network" : "str",                    (string) Network (ipv4, ipv6, onion, i2p, cjdns, not_publicly_routable)
-    "mapped_as" : n,                      (numeric, optional) The AS in the BGP route to the peer used for diversifying
-                                          peer selection (only available if the asmap config flag is set)
-    "services" : "hex",                   (string) The services offered
-    "servicesnames" : [                   (json array) the services offered, in human-readable form
-      "str",                              (string) the service name if it is recognised
-      ...
-    ],
-    "relaytxes" : true|false,             (boolean) Whether we relay transactions to this peer
-    "lastsend" : xxx,                     (numeric) The UNIX epoch time of the last send
-    "lastrecv" : xxx,                     (numeric) The UNIX epoch time of the last receive
-    "last_transaction" : xxx,             (numeric) The UNIX epoch time of the last valid transaction received from this peer
-    "last_block" : xxx,                   (numeric) The UNIX epoch time of the last block received from this peer
-    "bytessent" : n,                      (numeric) The total bytes sent
-    "bytesrecv" : n,                      (numeric) The total bytes received
-    "conntime" : xxx,                     (numeric) The UNIX epoch time of the connection
-    "timeoffset" : n,                     (numeric) The time offset in seconds
-    "pingtime" : n,                       (numeric, optional) The last ping time in milliseconds (ms), if any
-    "minping" : n,                        (numeric, optional) The minimum observed ping time in milliseconds (ms), if any
-    "pingwait" : n,                       (numeric, optional) The duration in milliseconds (ms) of an outstanding ping (if non-zero)
-    "version" : n,                        (numeric) The peer version, such as 70001
-    "subver" : "str",                     (string) The string version
-    "inbound" : true|false,               (boolean) Inbound (true) or Outbound (false)
-    "bip152_hb_to" : true|false,          (boolean) Whether we selected peer as (compact blocks) high-bandwidth peer
-    "bip152_hb_from" : true|false,        (boolean) Whether peer selected us as (compact blocks) high-bandwidth peer
-    "startingheight" : n,                 (numeric) The starting height (block) of the peer
-    "presynced_headers" : n,              (numeric) The current height of header pre-synchronization with this peer, or -1 if no low-work sync is in progress
-    "synced_headers" : n,                 (numeric) The last header we have in common with this peer
-    "synced_blocks" : n,                  (numeric) The last block we have in common with this peer
-    "inflight" : [                        (json array)
-      n,                                  (numeric) The heights of blocks we're currently asking from this peer
-      ...
-    ],
-    "addr_relay_enabled" : true|false,    (boolean) Whether we participate in address relay with this peer
-    "addr_processed" : n,                 (numeric) The total number of addresses processed, excluding those dropped due to rate limiting
-    "addr_rate_limited" : n,              (numeric) The total number of addresses dropped due to rate limiting
-    "permissions" : [                     (json array) Any special permissions that have been granted to this peer
-      "str",                              (string) bloomfilter (allow requesting BIP37 filtered blocks and transactions),
-                                          noban (do not ban for misbehavior; implies download),
-                                          forcerelay (relay transactions that are already in the mempool; implies relay),
-                                          relay (relay even in -blocksonly mode, and unlimited transaction announcements),
-                                          mempool (allow requesting BIP35 mempool contents),
-                                          download (allow getheaders during IBD, no disconnect after maxuploadtarget limit),
-                                          addr (responses to GETADDR avoid hitting the cache and contain random records with the most up-to-date info).
-                                          
-      ...
-    ],
-    "minfeefilter" : n,                   (numeric) The minimum fee rate for transactions this peer accepts
-    "bytessent_per_msg" : {               (json object)
-      "msg" : n,                          (numeric) The total bytes sent aggregated by message type
-                                          When a message type is not listed in this json object, the bytes sent are 0.
-                                          Only known message types can appear as keys in the object.
-      ...
-    },
-    "bytesrecv_per_msg" : {               (json object)
-      "msg" : n,                          (numeric) The total bytes received aggregated by message type
-                                          When a message type is not listed in this json object, the bytes received are 0.
-                                          Only known message types can appear as keys in the object and all bytes received
-                                          of unknown message types are listed under '*other*'.
-      ...
-    },
-    "connection_type" : "str",            (string) Type of connection: 
-                                          outbound-full-relay (default automatic connections),
-                                          block-relay-only (does not relay transactions or addresses),
-                                          inbound (initiated by the peer),
-                                          manual (added via addnode RPC or -addnode/-connect configuration options),
-                                          addr-fetch (short-lived automatic connection for soliciting addresses),
-                                          feeler (short-lived automatic connection for testing addresses).
-                                          Please note this output is unlikely to be stable in upcoming releases as we iterate to
-                                          best capture connection behaviors.
-    "transport_protocol_type" : "str",    (string) Type of transport protocol: 
-                                          detecting (peer could be v1 or v2),
-                                          v1 (plaintext transport protocol),
-                                          v2 (BIP324 encrypted transport protocol).
-                                          
-    "session_id" : "str"                  (string) The session ID for this connection, or "" if there is none ("v2" transport protocol only).
-                                          
-  },
-  ...
-]
-
-Examples:
-> bitcoin-cli getpeerinfo 
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getpeerinfo", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">getpeerinfo</pre>
+  <div class="rpc-description"><p>Returns data about each connected network peer as a json array of objects.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">id</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Peer index</span></li>
+      <li><code class="rpc-key">addr</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">(host:port) The IP address and port of the peer</span></li>
+      <li><code class="rpc-key">addrbind</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">(ip:port) Bind address of the connection to the peer</span></li>
+      <li><code class="rpc-key">addrlocal</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">(ip:port) Local address as reported by the peer</span></li>
+      <li><code class="rpc-key">network</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Network (ipv4, ipv6, onion, i2p, cjdns, not_publicly_routable)</span></li>
+      <li><code class="rpc-key">mapped_as</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The AS in the BGP route to the peer used for diversifying<br>peer selection (only available if the asmap config flag is set)</span></li>
+      <li><code class="rpc-key">services</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The services offered</span></li>
+      <li><code class="rpc-key">servicesnames</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">the services offered, in human-readable form</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">relaytxes</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether we relay transactions to this peer</span></li>
+      <li><code class="rpc-key">lastsend</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The UNIX epoch time of the last send</span></li>
+      <li><code class="rpc-key">lastrecv</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The UNIX epoch time of the last receive</span></li>
+      <li><code class="rpc-key">last_transaction</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The UNIX epoch time of the last valid transaction received from this peer</span></li>
+      <li><code class="rpc-key">last_block</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The UNIX epoch time of the last block received from this peer</span></li>
+      <li><code class="rpc-key">bytessent</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The total bytes sent</span></li>
+      <li><code class="rpc-key">bytesrecv</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The total bytes received</span></li>
+      <li><code class="rpc-key">conntime</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The UNIX epoch time of the connection</span></li>
+      <li><code class="rpc-key">timeoffset</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The time offset in seconds</span></li>
+      <li><code class="rpc-key">pingtime</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The last ping time in milliseconds (ms), if any</span></li>
+      <li><code class="rpc-key">minping</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The minimum observed ping time in milliseconds (ms), if any</span></li>
+      <li><code class="rpc-key">pingwait</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The duration in milliseconds (ms) of an outstanding ping (if non-zero)</span></li>
+      <li><code class="rpc-key">version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The peer version, such as 70001</span></li>
+      <li><code class="rpc-key">subver</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The string version</span></li>
+      <li><code class="rpc-key">inbound</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Inbound (true) or Outbound (false)</span></li>
+      <li><code class="rpc-key">bip152_hb_to</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether we selected peer as (compact blocks) high-bandwidth peer</span></li>
+      <li><code class="rpc-key">bip152_hb_from</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether peer selected us as (compact blocks) high-bandwidth peer</span></li>
+      <li><code class="rpc-key">startingheight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The starting height (block) of the peer</span></li>
+      <li><code class="rpc-key">presynced_headers</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The current height of header pre-synchronization with this peer, or -1 if no low-work sync is in progress</span></li>
+      <li><code class="rpc-key">synced_headers</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The last header we have in common with this peer</span></li>
+      <li><code class="rpc-key">synced_blocks</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The last block we have in common with this peer</span></li>
+      <li><code class="rpc-key">inflight</code> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(number)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">addr_relay_enabled</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether we participate in address relay with this peer</span></li>
+      <li><code class="rpc-key">addr_processed</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The total number of addresses processed, excluding those dropped due to rate limiting</span></li>
+      <li><code class="rpc-key">addr_rate_limited</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The total number of addresses dropped due to rate limiting</span></li>
+      <li><code class="rpc-key">permissions</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Any special permissions that have been granted to this peer</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">minfeefilter</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The minimum fee rate for transactions this peer accepts</span></li>
+      <li><code class="rpc-key">bytessent_per_msg</code> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">…</code> <span class="rpc-type">(number, optional)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">bytesrecv_per_msg</code> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">…</code> <span class="rpc-type">(number, optional)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">connection_type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Type of connection: <br>outbound-full-relay (default automatic connections),<br>block-relay-only (does not relay transactions or addresses),<br>inbound (initiated by the peer),<br>manual (added via addnode RPC or -addnode/-connect configuration options),<br>addr-fetch (short-lived automatic connection for soliciting addresses),<br>feeler (short-lived automatic connection for testing addresses).<br>Please note this output is unlikely to be stable in upcoming releases as we iterate to<br>best capture connection behaviors.</span></li>
+      <li><code class="rpc-key">transport_protocol_type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Type of transport protocol: <br>detecting (peer could be v1 or v2),<br>v1 (plaintext transport protocol),<br>v2 (BIP324 encrypted transport protocol).</span></li>
+      <li><code class="rpc-key">session_id</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The session ID for this connection, or &#34;&#34; if there is none (&#34;v2&#34; transport protocol only).</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getpeerinfo 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getpeerinfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

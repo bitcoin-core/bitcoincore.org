@@ -1,0 +1,100 @@
+---
+name: send
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/send/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">send outputs ( conf_target ) ( &#34;estimate_mode&#34; ) ( fee_rate ) ( options )</pre>
+  <div class="rpc-description"><p>EXPERIMENTAL warning: this call may be changed in future releases.</p><p>Send a transaction.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>outputs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The outputs specified as key-value pairs.<br>Each key may only appear once, i.e. there can only be one &#39;data&#39; output, and no address may be duplicated.<br>At least one output of either type must be specified.<br>For convenience, a dictionary, which holds the key-value pairs directly, is also accepted.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">…</code> <span class="rpc-type">(one of, optional)</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+              </ul></li>
+          </ul></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">data</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">A key-value pair. The key must be &#34;data&#34;, the value is hex-encoded data</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>conf_target</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: wallet -txconfirmtarget</small></td><td>Confirmation target in blocks</td></tr>
+  <tr><td>3</td><td><code>estimate_mode</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;unset&#34;</small></td><td>The fee estimate mode, must be one of (case insensitive):<br>&#34;unset&#34;<br>&#34;economical&#34;<br>&#34;conservative&#34;</td></tr>
+  <tr><td>4</td><td><code>fee_rate</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: not set, fall back to wallet fee estimation</small></td><td>Specify a fee rate in sat/vB.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>5</td><td><code>options</code></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">add_inputs</code> <span class="rpc-type">(boolean, optional, default: false when &#34;inputs&#34; are specified, true otherwise)</span> <span class="rpc-desc">Automatically include coins from the wallet to cover the target amount.</span></li>
+    <li><code class="rpc-key">include_unsafe</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Include inputs that are not safe to spend (unconfirmed transactions from outside keys and unconfirmed replacement transactions).<br>Warning: the resulting transaction may become invalid if one of the unsafe inputs disappears.<br>If that happens, you will need to fund the transaction with different inputs and republish it.</span></li>
+    <li><code class="rpc-key">minconf</code> <span class="rpc-type">(number, optional, default=0)</span> <span class="rpc-desc">If add_inputs is specified, require inputs with at least this many confirmations.</span></li>
+    <li><code class="rpc-key">maxconf</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">If add_inputs is specified, require inputs with at most this many confirmations.</span></li>
+    <li><code class="rpc-key">add_to_wallet</code> <span class="rpc-type">(boolean, optional, default=true)</span> <span class="rpc-desc">When false, returns a serialized transaction which will not be added to the wallet or broadcast</span></li>
+    <li><code class="rpc-key">change_address</code> <span class="rpc-type">(string, optional, default: automatic)</span> <span class="rpc-desc">The bitcoin address to receive the change</span></li>
+    <li><code class="rpc-key">change_position</code> <span class="rpc-type">(number, optional, default: random)</span> <span class="rpc-desc">The index of the change output</span></li>
+    <li><code class="rpc-key">change_type</code> <span class="rpc-type">(string, optional, default: set by -changetype)</span> <span class="rpc-desc">The output type to use. Only valid if change_address is not specified. Options are &#34;legacy&#34;, &#34;p2sh-segwit&#34;, &#34;bech32&#34; and &#34;bech32m&#34;.</span></li>
+    <li><code class="rpc-key">fee_rate</code> <span class="rpc-type">(one of, optional, default: not set, fall back to wallet fee estimation)</span> <span class="rpc-desc">Specify a fee rate in sat/vB.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">include_watching</code> <span class="rpc-type">(boolean, optional, default: true for watch-only wallets, otherwise false)</span> <span class="rpc-desc">Also select inputs which are watch only.<br>Only solvable inputs can be used. Watch-only destinations are solvable if the public key and/or output script was imported,<br>e.g. with &#39;importpubkey&#39; or &#39;importmulti&#39; with the &#39;pubkeys&#39; or &#39;desc&#39; field.</span></li>
+    <li><code class="rpc-key">inputs</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Specify inputs instead of adding them automatically. A JSON array of JSON objects</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+          <ul class="rpc-schema rpc-variants">
+            <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span></li>
+            <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(number)</span></li>
+            <li><span class="rpc-variant">option 3</span> <span class="rpc-type">(number, default: Calculated from wallet and solving data)</span></li>
+          </ul></li>
+      </ul></li>
+    <li><code class="rpc-key">locktime</code> <span class="rpc-type">(number, optional, default=0)</span> <span class="rpc-desc">Raw locktime. Non-0 value also locktime-activates inputs</span></li>
+    <li><code class="rpc-key">lock_unspents</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Lock selected unspent outputs</span></li>
+    <li><code class="rpc-key">psbt</code> <span class="rpc-type">(boolean, optional, default: automatic)</span> <span class="rpc-desc">Always return a PSBT, implies add_to_wallet=false.</span></li>
+    <li><code class="rpc-key">subtract_fee_from_outputs</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Outputs to subtract the fee from, specified as integer indices.<br>The fee will be equally deducted from the amount of each specified output.<br>Those recipients will receive less bitcoins than you enter in their corresponding amount field.<br>If no outputs are specified here, the sender pays the fee.</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(number)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">conf_target</code> <span class="rpc-type">(number, optional, default: wallet -txconfirmtarget)</span> <span class="rpc-desc">Confirmation target in blocks</span></li>
+    <li><code class="rpc-key">estimate_mode</code> <span class="rpc-type">(string, optional, default=&#34;unset&#34;)</span> <span class="rpc-desc">The fee estimate mode, must be one of (case insensitive):<br>&#34;unset&#34;<br>&#34;economical&#34;<br>&#34;conservative&#34;</span></li>
+    <li><code class="rpc-key">replaceable</code> <span class="rpc-type">(boolean, optional, default: wallet default)</span> <span class="rpc-desc">Marks this transaction as BIP125-replaceable.<br>Allows this transaction to be replaced by a transaction with higher fees</span></li>
+    <li><code class="rpc-key">solving_data</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Keys and scripts needed for producing a final transaction with a dummy signature.<br>Used for fee estimation during coin selection.</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">pubkeys</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Public keys involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">scripts</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Scripts involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Descriptors that provide solving data for this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">complete</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">If the transaction has a complete set of signatures</span></li>
+  <li><code class="rpc-key">txid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The transaction id for the send. Only 1 transaction is created regardless of the number of addresses.</span></li>
+  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">If add_to_wallet is false, the hex-encoded raw transaction with signature(s)</span></li>
+  <li><code class="rpc-key">psbt</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">If more signatures are needed, or if add_to_wallet is false, the base64-encoded (partially) signed transaction</span></li>
+</ul>
+</div>

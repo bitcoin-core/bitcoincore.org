@@ -1,0 +1,44 @@
+---
+name: getzmqnotifications
+btcversion: 28.2.0
+btcgroup: zmq
+permalink: en/doc/28.2.0/rpc/zmq/getzmqnotifications/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getzmqnotifications&#34;,
+  &#34;description&#34;: &#34;Returns information about the active ZeroMQ notifications.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;type&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;Type of notification&#34;
+          },
+          &#34;address&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;Address of the publisher&#34;
+          },
+          &#34;hwm&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;Outbound message high water mark&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;type&#34;,
+          &#34;address&#34;,
+          &#34;hwm&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;zmq&#34;
+}</pre>

@@ -355,7 +355,7 @@ li.lang:hover {
 			}
 		}
 }
-	
+
 .nav li:hover ul li:hover ul li {
 	color: $black;
 	a {
@@ -373,7 +373,7 @@ li.lang:hover {
 		}
 	}
 }
-	
+
 // Style the toggle menu link and hide it
 .nav .navtoggle {
 	@include font-rem(18);
@@ -669,12 +669,23 @@ li.lang:hover {
 	li > a {
 		text-decoration: underline;
 	}
+
+	/* On narrow page, grid collapses to 0 so RPC
+	   column fits */
+	&:has(> .toc) {
+		padding: 0 12px;
+		@media #{$large} {
+			padding: 0;
+		}
+	}
 }
 
 /* Table of contents */
 .toc {
 	font-size: 95%;
+	margin-top: 1em;
 	@media #{$large} {
+		margin-top: 0;
 		display: block;
 		@include grid(12,2);
 		@include prefix(12,0.5);
@@ -745,6 +756,10 @@ li.lang:hover {
 .doc pre {
   word-break: break-word;
   white-space: pre-wrap;
+}
+
+.doc > .highlight {
+  margin-top: 1em;
 }
 
 /* Image grid - not used */
@@ -942,7 +957,7 @@ li.lang:hover {
 #mailregform
 {
 	@include clearfix;
-	
+
 	input {
 		padding: 0.5em 0.5em;
 		float: left;

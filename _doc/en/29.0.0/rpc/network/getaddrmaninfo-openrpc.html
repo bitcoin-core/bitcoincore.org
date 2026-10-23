@@ -1,0 +1,44 @@
+---
+name: getaddrmaninfo
+btcversion: 29.0.0
+btcgroup: network
+permalink: en/doc/29.0.0/rpc/network/getaddrmaninfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getaddrmaninfo&#34;,
+  &#34;description&#34;: &#34;Provides information about the node&#39;s address manager by returning the number of addresses in the `new` and `tried` tables and their sum for all networks.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;additionalProperties&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;new&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;number of addresses in the new table, which represent potential peers the node has discovered but hasn&#39;t yet successfully connected to.&#34;
+          },
+          &#34;tried&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;number of addresses in the tried table, which represent peers the node has successfully connected to in the past.&#34;
+          },
+          &#34;total&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;total number of addresses in both new/tried tables&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;new&#34;,
+          &#34;tried&#34;,
+          &#34;total&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

@@ -3,51 +3,49 @@ name: submitpackage
 btcversion: 27.0.0
 btcgroup: rawtransactions
 permalink: en/doc/27.0.0/rpc/rawtransactions/submitpackage/
+openrpc: true
 ---
 
-submitpackage ["rawtx",...]
-
-Submit a package of raw transactions (serialized, hex-encoded) to local node.
-The package must consist of a child with its parents, and none of the parents may depend on one another.
-The package will be validated according to consensus and mempool policy rules. If any transaction passes, it will be accepted to mempool.
-This RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies.
-Warning: successful submission does not mean the transactions will propagate throughout the network.
-
-Arguments:
-1. package         (json array, required) An array of raw transactions.
-     [
-       "rawtx",    (string)
-       ...
-     ]
-
-Result:
-{                                   (json object)
-  "package_msg" : "str",            (string) The transaction package result message. "success" indicates all transactions were accepted into or are already in the mempool.
-  "tx-results" : {                  (json object) transaction results keyed by wtxid
-    "wtxid" : {                     (json object) transaction wtxid
-      "txid" : "hex",               (string) The transaction hash in hex
-      "other-wtxid" : "hex",        (string, optional) The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.
-      "vsize" : n,                  (numeric, optional) Sigops-adjusted virtual transaction size.
-      "fees" : {                    (json object, optional) Transaction fees
-        "base" : n,                 (numeric) transaction fee in BTC
-        "effective-feerate" : n,    (numeric, optional) if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.
-        "effective-includes" : [    (json array, optional) if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.
-          "hex",                    (string) transaction wtxid in hex
-          ...
-        ]
-      },
-      "error" : "str"               (string, optional) The transaction error string, if it was rejected by the mempool
-    },
-    ...
-  },
-  "replaced-transactions" : [       (json array, optional) List of txids of replaced transactions
-    "hex",                          (string) The transaction id
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli testmempoolaccept [rawtx1, rawtx2]
-> bitcoin-cli submitpackage [rawtx1, rawtx2]
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">submitpackage package</pre>
+  <div class="rpc-description"><p>Submit a package of raw transactions (serialized, hex-encoded) to local node. The package must consist of a child with its parents, and none of the parents may depend on one another. The package will be validated according to consensus and mempool policy rules. If any transaction passes, it will be accepted to mempool. This RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies. Warning: successful submission does not mean the transactions will propagate throughout the network.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>package</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>An array of raw transactions.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">package_msg</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction package result message. &#34;success&#34; indicates all transactions were accepted into or are already in the mempool.</span></li>
+  <li><code class="rpc-key">tx-results</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">transaction results keyed by wtxid</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction hash in hex</span></li>
+          <li><code class="rpc-key">other-wtxid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.</span></li>
+          <li><code class="rpc-key">vsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Sigops-adjusted virtual transaction size.</span></li>
+          <li><code class="rpc-key">fees</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Transaction fees</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">base</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">transaction fee in BTC</span></li>
+              <li><code class="rpc-key">effective-feerate</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.</span></li>
+              <li><code class="rpc-key">effective-includes</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.</span>
+                <ul class="rpc-schema rpc-array">
+                  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">error</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The transaction error string, if it was rejected by the mempool</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">replaced-transactions</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">List of txids of replaced transactions</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli testmempoolaccept [rawtx1, rawtx2]
+&gt; bitcoin-cli submitpackage [rawtx1, rawtx2]</pre>
+</div>

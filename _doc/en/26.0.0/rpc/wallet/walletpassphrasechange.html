@@ -3,21 +3,21 @@ name: walletpassphrasechange
 btcversion: 26.0.0
 btcgroup: wallet
 permalink: en/doc/26.0.0/rpc/wallet/walletpassphrasechange/
+openrpc: true
 ---
 
-walletpassphrasechange "oldpassphrase" "newpassphrase"
-
-Changes the wallet passphrase from 'oldpassphrase' to 'newpassphrase'.
-
-Arguments:
-1. oldpassphrase    (string, required) The current passphrase
-2. newpassphrase    (string, required) The new passphrase
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli walletpassphrasechange "old one" "new one"
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "walletpassphrasechange", "params": ["old one", "new one"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">walletpassphrasechange &#34;oldpassphrase&#34; &#34;newpassphrase&#34;</pre>
+  <div class="rpc-description"><p>Changes the wallet passphrase from &#39;oldpassphrase&#39; to &#39;newpassphrase&#39;.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>oldpassphrase</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The current passphrase</td></tr>
+  <tr><td>2</td><td><code>newpassphrase</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The new passphrase</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli walletpassphrasechange &#34;old one&#34; &#34;new one&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;walletpassphrasechange&#34;, &#34;params&#34;: [&#34;old one&#34;, &#34;new one&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

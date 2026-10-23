@@ -1,0 +1,23 @@
+---
+name: gettxoutproof
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/gettxoutproof/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">gettxoutproof txids ( &#34;blockhash&#34; )</pre>
+  <div class="rpc-description"><p>Returns a hex-encoded proof that &#34;txid&#34; was included in a block.</p><p>NOTE: By default this function only works sometimes. This is when there is an unspent output in the utxo for this transaction. To make it always work, you need to maintain a transaction index, using the -txindex command line option or specify the block in which the transaction is included manually (by blockhash).</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txids</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The txids to filter
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>If specified, looks for txid in the block with this hash</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+</div>

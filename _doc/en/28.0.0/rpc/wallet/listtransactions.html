@@ -3,83 +3,71 @@ name: listtransactions
 btcversion: 28.0.0
 btcgroup: wallet
 permalink: en/doc/28.0.0/rpc/wallet/listtransactions/
+openrpc: true
 ---
 
-listtransactions ( "label" count skip include_watchonly )
-
-If a label name is provided, this will return only incoming transactions paying to addresses with the specified label.
-
-Returns up to 'count' most recent transactions skipping the first 'from' transactions.
-
-Arguments:
-1. label                (string, optional) If set, should be a valid label name to return only incoming transactions
-                        with the specified label, or "*" to disable filtering and return all transactions.
-2. count                (numeric, optional, default=10) The number of transactions to return
-3. skip                 (numeric, optional, default=0) The number of transactions to skip
-4. include_watchonly    (boolean, optional, default=true for watch-only wallets, otherwise false) Include transactions to watch-only addresses (see 'importaddress')
-
-Result:
-[                                        (json array)
-  {                                      (json object)
-    "involvesWatchonly" : true|false,    (boolean, optional) Only returns true if imported addresses were involved in transaction.
-    "address" : "str",                   (string, optional) The bitcoin address of the transaction (not returned if the output does not have an address, e.g. OP_RETURN null data).
-    "category" : "str",                  (string) The transaction category.
-                                         "send"                  Transactions sent.
-                                         "receive"               Non-coinbase transactions received.
-                                         "generate"              Coinbase transactions received with more than 100 confirmations.
-                                         "immature"              Coinbase transactions received with 100 or fewer confirmations.
-                                         "orphan"                Orphaned coinbase transactions received.
-    "amount" : n,                        (numeric) The amount in BTC. This is negative for the 'send' category, and is positive
-                                         for all other categories
-    "label" : "str",                     (string, optional) A comment for the address/transaction, if any
-    "vout" : n,                          (numeric) the vout value
-    "fee" : n,                           (numeric, optional) The amount of the fee in BTC. This is negative and only available for the
-                                         'send' category of transactions.
-    "confirmations" : n,                 (numeric) The number of confirmations for the transaction. Negative confirmations means the
-                                         transaction conflicted that many blocks ago.
-    "generated" : true|false,            (boolean, optional) Only present if the transaction's only input is a coinbase one.
-    "trusted" : true|false,              (boolean, optional) Whether we consider the transaction to be trusted and safe to spend from.
-                                         Only present when the transaction has 0 confirmations (or negative confirmations, if conflicted).
-    "blockhash" : "hex",                 (string, optional) The block hash containing the transaction.
-    "blockheight" : n,                   (numeric, optional) The block height containing the transaction.
-    "blockindex" : n,                    (numeric, optional) The index of the transaction in the block that includes it.
-    "blocktime" : xxx,                   (numeric, optional) The block time expressed in UNIX epoch time.
-    "txid" : "hex",                      (string) The transaction id.
-    "wtxid" : "hex",                     (string) The hash of serialized transaction, including witness data.
-    "walletconflicts" : [                (json array) Confirmed transactions that have been detected by the wallet to conflict with this transaction.
-      "hex",                             (string) The transaction id.
-      ...
-    ],
-    "replaced_by_txid" : "hex",          (string, optional) Only if 'category' is 'send'. The txid if this tx was replaced.
-    "replaces_txid" : "hex",             (string, optional) Only if 'category' is 'send'. The txid if this tx replaces another.
-    "mempoolconflicts" : [               (json array) Transactions in the mempool that directly conflict with either this transaction or an ancestor transaction
-      "hex",                             (string) The transaction id.
-      ...
-    ],
-    "to" : "str",                        (string, optional) If a comment to is associated with the transaction.
-    "time" : xxx,                        (numeric) The transaction time expressed in UNIX epoch time.
-    "timereceived" : xxx,                (numeric) The time received expressed in UNIX epoch time.
-    "comment" : "str",                   (string, optional) If a comment is associated with the transaction, only present if not empty.
-    "bip125-replaceable" : "str",        (string) ("yes|no|unknown") Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability.
-                                         May be unknown for unconfirmed transactions not in the mempool because their unconfirmed ancestors are unknown.
-    "parent_descs" : [                   (json array, optional) Only if 'category' is 'received'. List of parent descriptors for the output script of this coin.
-      "str",                             (string) The descriptor string.
-      ...
-    ],
-    "abandoned" : true|false             (boolean) 'true' if the transaction has been abandoned (inputs are respendable).
-  },
-  ...
-]
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listtransactions ( &#34;label&#34; ) ( count ) ( skip ) ( include_watchonly )</pre>
+  <div class="rpc-description"><p>If a label name is provided, this will return only incoming transactions paying to addresses with the specified label.</p><p>Returns up to &#39;count&#39; most recent transactions skipping the first &#39;from&#39; transactions.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>label</code><br><small class="rpc-note">alias: dummy</small></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>If set, should be a valid label name to return only incoming transactions<br>with the specified label, or &#34;*&#34; to disable filtering and return all transactions.</td></tr>
+  <tr><td>2</td><td><code>count</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 10</small></td><td>The number of transactions to return</td></tr>
+  <tr><td>3</td><td><code>skip</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 0</small></td><td>The number of transactions to skip</td></tr>
+  <tr><td>4</td><td><code>include_watchonly</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true for watch-only wallets, otherwise false</small></td><td>Include transactions to watch-only addresses (see &#39;importaddress&#39;)</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">involvesWatchonly</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">Only returns true if imported addresses were involved in transaction.</span></li>
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The bitcoin address of the transaction (not returned if the output does not have an address, e.g. OP_RETURN null data).</span></li>
+      <li><code class="rpc-key">category</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction category.<br>&#34;send&#34;                  Transactions sent.<br>&#34;receive&#34;               Non-coinbase transactions received.<br>&#34;generate&#34;              Coinbase transactions received with more than 100 confirmations.<br>&#34;immature&#34;              Coinbase transactions received with 100 or fewer confirmations.<br>&#34;orphan&#34;                Orphaned coinbase transactions received.</span></li>
+      <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The amount in BTC. This is negative for the &#39;send&#39; category, and is positive<br>for all other categories</span></li>
+      <li><code class="rpc-key">label</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">A comment for the address/transaction, if any</span></li>
+      <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the vout value</span></li>
+      <li><code class="rpc-key">fee</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">The amount of the fee in BTC. This is negative and only available for the<br>&#39;send&#39; category of transactions.</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations for the transaction. Negative confirmations means the<br>transaction conflicted that many blocks ago.</span></li>
+      <li><code class="rpc-key">generated</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">Only present if the transaction&#39;s only input is a coinbase one.</span></li>
+      <li><code class="rpc-key">trusted</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">Whether we consider the transaction to be trusted and safe to spend from.<br>Only present when the transaction has 0 confirmations (or negative confirmations, if conflicted).</span></li>
+      <li><code class="rpc-key">blockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The block hash containing the transaction.</span></li>
+      <li><code class="rpc-key">blockheight</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The block height containing the transaction.</span></li>
+      <li><code class="rpc-key">blockindex</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The index of the transaction in the block that includes it.</span></li>
+      <li><code class="rpc-key">blocktime</code> <span class="rpc-type">(number, unix-time, optional)</span> <span class="rpc-desc">The block time expressed in UNIX epoch time.</span></li>
+      <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id.</span></li>
+      <li><code class="rpc-key">wtxid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash of serialized transaction, including witness data.</span></li>
+      <li><code class="rpc-key">walletconflicts</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Confirmed transactions that have been detected by the wallet to conflict with this transaction.</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">replaced_by_txid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Only if &#39;category&#39; is &#39;send&#39;. The txid if this tx was replaced.</span></li>
+      <li><code class="rpc-key">replaces_txid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Only if &#39;category&#39; is &#39;send&#39;. The txid if this tx replaces another.</span></li>
+      <li><code class="rpc-key">mempoolconflicts</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Transactions in the mempool that directly conflict with either this transaction or an ancestor transaction</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">to</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">If a comment to is associated with the transaction.</span></li>
+      <li><code class="rpc-key">time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The transaction time expressed in UNIX epoch time.</span></li>
+      <li><code class="rpc-key">timereceived</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The time received expressed in UNIX epoch time.</span></li>
+      <li><code class="rpc-key">comment</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">If a comment is associated with the transaction, only present if not empty.</span></li>
+      <li><code class="rpc-key">bip125-replaceable</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">(&#34;yes|no|unknown&#34;) Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability.<br>May be unknown for unconfirmed transactions not in the mempool because their unconfirmed ancestors are unknown.</span></li>
+      <li><code class="rpc-key">parent_descs</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Only if &#39;category&#39; is &#39;received&#39;. List of parent descriptors for the output script of this coin.</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">abandoned</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">&#39;true&#39; if the transaction has been abandoned (inputs are respendable).</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 List the most recent 10 transactions in the systems
-> bitcoin-cli listtransactions 
+&gt; bitcoin-cli listtransactions 
 
 List transactions 100 to 120
-> bitcoin-cli listtransactions "*" 20 100
+&gt; bitcoin-cli listtransactions &#34;*&#34; 20 100
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "listtransactions", "params": ["*", 20, 100]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;listtransactions&#34;, &#34;params&#34;: [&#34;*&#34;, 20, 100]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

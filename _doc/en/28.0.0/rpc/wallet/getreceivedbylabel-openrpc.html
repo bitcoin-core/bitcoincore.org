@@ -1,0 +1,49 @@
+---
+name: getreceivedbylabel
+btcversion: 28.0.0
+btcgroup: wallet
+permalink: en/doc/28.0.0/rpc/wallet/getreceivedbylabel/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getreceivedbylabel&#34;,
+  &#34;description&#34;: &#34;Returns the total amount received by addresses with &lt;label&gt; in transactions with at least [minconf] confirmations.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;label&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The selected label, may be the default label using \&#34;\&#34;.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;minconf&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 1
+      },
+      &#34;description&#34;: &#34;Only include transactions confirmed at least this many times.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;include_immature_coinbase&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Include immature coinbase transactions.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;x-bitcoin-unit&#34;: &#34;amount&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

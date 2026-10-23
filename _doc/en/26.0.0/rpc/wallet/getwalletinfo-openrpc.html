@@ -1,0 +1,160 @@
+---
+name: getwalletinfo
+btcversion: 26.0.0
+btcgroup: wallet
+permalink: en/doc/26.0.0/rpc/wallet/getwalletinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getwalletinfo&#34;,
+  &#34;description&#34;: &#34;Returns an object containing various wallet state info.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;walletname&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;the wallet name&#34;
+        },
+        &#34;walletversion&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the wallet version&#34;
+        },
+        &#34;format&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;the database format (bdb or sqlite)&#34;
+        },
+        &#34;balance&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;DEPRECATED. Identical to getbalances().mine.trusted&#34;
+        },
+        &#34;unconfirmed_balance&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;DEPRECATED. Identical to getbalances().mine.untrusted_pending&#34;
+        },
+        &#34;immature_balance&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;DEPRECATED. Identical to getbalances().mine.immature&#34;
+        },
+        &#34;txcount&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the total number of transactions in the wallet&#34;
+        },
+        &#34;keypoololdest&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+          &#34;description&#34;: &#34;the UNIX epoch time of the oldest pre-generated key in the key pool. Legacy wallets only.&#34;
+        },
+        &#34;keypoolsize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;how many new keys are pre-generated (only counts external keys)&#34;
+        },
+        &#34;keypoolsize_hd_internal&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;how many new keys are pre-generated for internal use (used for change outputs, only appears if the wallet is using this feature, otherwise external keys are used)&#34;
+        },
+        &#34;unlocked_until&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+          &#34;description&#34;: &#34;the UNIX epoch time until which the wallet is unlocked for transfers, or 0 if the wallet is locked (only present for passphrase-encrypted wallets)&#34;
+        },
+        &#34;paytxfee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;the transaction fee configuration, set in BTC/kvB&#34;
+        },
+        &#34;hdseedid&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;the Hash160 of the HD seed (only present when HD is enabled)&#34;
+        },
+        &#34;private_keys_enabled&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;false if privatekeys are disabled for this wallet (enforced watch-only wallet)&#34;
+        },
+        &#34;avoid_reuse&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;whether this wallet tracks clean/dirty coins in terms of reuse&#34;
+        },
+        &#34;scanning&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;duration&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;elapsed seconds since scan start&#34;
+            },
+            &#34;progress&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;scanning progress percentage [0.0, 1.0]&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;duration&#34;,
+            &#34;progress&#34;
+          ],
+          &#34;description&#34;: &#34;current scanning details, or false if no scan is in progress&#34;
+        },
+        &#34;descriptors&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;whether this wallet uses descriptors for scriptPubKey management&#34;
+        },
+        &#34;external_signer&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;whether this wallet is configured to use an external signer such as a hardware wallet&#34;
+        },
+        &#34;blank&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;Whether this wallet intentionally does not contain any keys, scripts, or descriptors&#34;
+        },
+        &#34;lastprocessedblock&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;hash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;hash of the block this information was generated on&#34;
+            },
+            &#34;height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;height of the block this information was generated on&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;hash&#34;,
+            &#34;height&#34;
+          ],
+          &#34;description&#34;: &#34;hash and height of the block this information was generated on&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;walletname&#34;,
+        &#34;walletversion&#34;,
+        &#34;format&#34;,
+        &#34;balance&#34;,
+        &#34;unconfirmed_balance&#34;,
+        &#34;immature_balance&#34;,
+        &#34;txcount&#34;,
+        &#34;keypoolsize&#34;,
+        &#34;paytxfee&#34;,
+        &#34;private_keys_enabled&#34;,
+        &#34;avoid_reuse&#34;,
+        &#34;scanning&#34;,
+        &#34;descriptors&#34;,
+        &#34;external_signer&#34;,
+        &#34;blank&#34;,
+        &#34;lastprocessedblock&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

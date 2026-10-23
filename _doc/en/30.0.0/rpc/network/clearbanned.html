@@ -3,17 +3,18 @@ name: clearbanned
 btcversion: 30.0.0
 btcgroup: network
 permalink: en/doc/30.0.0/rpc/network/clearbanned/
+openrpc: true
 ---
 
-clearbanned
-
-Clear all banned IPs.
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli clearbanned 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "clearbanned", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">clearbanned</pre>
+  <div class="rpc-description"><p>Clear all banned IPs.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli clearbanned 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;clearbanned&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

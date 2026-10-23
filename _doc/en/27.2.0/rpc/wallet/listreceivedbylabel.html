@@ -1,0 +1,31 @@
+---
+name: listreceivedbylabel
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/listreceivedbylabel/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listreceivedbylabel ( minconf ) ( include_empty ) ( include_watchonly ) ( include_immature_coinbase )</pre>
+  <div class="rpc-description"><p>List received transactions by label.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>minconf</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 1</small></td><td>The minimum number of confirmations before payments are included.</td></tr>
+  <tr><td>2</td><td><code>include_empty</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Whether to include labels that haven&#39;t received any payments.</td></tr>
+  <tr><td>3</td><td><code>include_watchonly</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true for watch-only wallets, otherwise false</small></td><td>Whether to include watch-only addresses (see &#39;importaddress&#39;)</td></tr>
+  <tr><td>4</td><td><code>include_immature_coinbase</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Include immature coinbase transactions.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">involvesWatchonly</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">Only returns true if imported addresses were involved in transaction</span></li>
+      <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount received by addresses with this label</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations of the most recent transaction included</span></li>
+      <li><code class="rpc-key">label</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The label of the receiving address. The default label is &#34;&#34;</span></li>
+    </ul></li>
+</ul>
+</div>

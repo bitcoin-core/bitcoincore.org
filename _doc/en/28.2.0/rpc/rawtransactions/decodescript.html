@@ -1,0 +1,35 @@
+---
+name: decodescript
+btcversion: 28.2.0
+btcgroup: rawtransactions
+permalink: en/doc/28.2.0/rpc/rawtransactions/decodescript/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">decodescript &#34;hexstring&#34;</pre>
+  <div class="rpc-description"><p>Decode a hex-encoded script.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexstring</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>the hex-encoded script</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the script</span></li>
+  <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the script</span></li>
+  <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The output type (e.g. nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)</span></li>
+  <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+  <li><code class="rpc-key">p2sh</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">address of P2SH script wrapping this redeem script (not returned for types that should not be wrapped)</span></li>
+  <li><code class="rpc-key">segwit</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Result of a witness output script wrapping this redeem script (not returned for types that should not be wrapped)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the output script</span></li>
+      <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw output script bytes, hex-encoded</span></li>
+      <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type of the output script (e.g. witness_v0_keyhash or witness_v0_scripthash)</span></li>
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+      <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the script</span></li>
+      <li><code class="rpc-key">p2sh-segwit</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">address of the P2SH script wrapping this witness redeem script</span></li>
+    </ul></li>
+</ul>
+</div>

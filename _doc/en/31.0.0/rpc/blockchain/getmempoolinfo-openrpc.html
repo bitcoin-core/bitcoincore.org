@@ -1,0 +1,109 @@
+---
+name: getmempoolinfo
+btcversion: 31.0.0
+btcgroup: blockchain
+permalink: en/doc/31.0.0/rpc/blockchain/getmempoolinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getmempoolinfo&#34;,
+  &#34;description&#34;: &#34;Returns details on the active state of the TX memory pool.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;loaded&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;True if the initial load attempt of the persisted mempool finished&#34;
+        },
+        &#34;size&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Current tx count&#34;
+        },
+        &#34;bytes&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Sum of all virtual transaction sizes as defined in BIP 141. Differs from actual serialized size because witness data is discounted&#34;
+        },
+        &#34;usage&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Total memory usage for the mempool&#34;
+        },
+        &#34;total_fee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;Total fees for the mempool in BTC, ignoring modified fees through prioritisetransaction&#34;
+        },
+        &#34;maxmempool&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Maximum memory usage for the mempool&#34;
+        },
+        &#34;mempoolminfee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;Minimum fee rate in BTC/kvB for tx to be accepted. Is the maximum of minrelaytxfee and minimum mempool fee&#34;
+        },
+        &#34;minrelaytxfee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;Current minimum relay fee for transactions&#34;
+        },
+        &#34;incrementalrelayfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;minimum fee rate increment for mempool limiting or replacement in BTC/kvB&#34;
+        },
+        &#34;unbroadcastcount&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Current number of transactions that haven&#39;t passed initial broadcast yet&#34;
+        },
+        &#34;fullrbf&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;True if the mempool accepts RBF without replaceability signaling inspection (DEPRECATED)&#34;
+        },
+        &#34;permitbaremultisig&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;True if the mempool accepts transactions with bare multisig outputs&#34;
+        },
+        &#34;maxdatacarriersize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Maximum number of bytes that can be used by OP_RETURN outputs in the mempool&#34;
+        },
+        &#34;limitclustercount&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Maximum number of transactions that can be in a cluster (configured by -limitclustercount)&#34;
+        },
+        &#34;limitclustersize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Maximum size of a cluster in virtual bytes (configured by -limitclustersize)&#34;
+        },
+        &#34;optimal&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;If the mempool is in a known-optimal transaction ordering&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;loaded&#34;,
+        &#34;size&#34;,
+        &#34;bytes&#34;,
+        &#34;usage&#34;,
+        &#34;total_fee&#34;,
+        &#34;maxmempool&#34;,
+        &#34;mempoolminfee&#34;,
+        &#34;minrelaytxfee&#34;,
+        &#34;incrementalrelayfee&#34;,
+        &#34;unbroadcastcount&#34;,
+        &#34;fullrbf&#34;,
+        &#34;permitbaremultisig&#34;,
+        &#34;maxdatacarriersize&#34;,
+        &#34;limitclustercount&#34;,
+        &#34;limitclustersize&#34;,
+        &#34;optimal&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

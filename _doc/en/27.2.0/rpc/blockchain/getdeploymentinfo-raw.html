@@ -1,0 +1,41 @@
+---
+name: getdeploymentinfo
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/getdeploymentinfo/raw/
+rawpage: true
+---
+
+getdeploymentinfo ( "blockhash" )
+
+Returns an object containing various state info regarding deployments of consensus changes.
+
+Arguments:
+1. blockhash (string, optional, default="hash of current chain tip")  The block hash at which to query deployment state
+
+Result: (object)
+  hash (string)  requested block hash (or tip)
+  height (number)  requested block height (or tip)
+  deployments (object)
+    ... (object)
+      type (string)  one of "buried", "bip9"
+      height (number, optional)  height of the first block which the rules are or will be enforced (only for "buried" type, or "bip9" type with "active" status)
+      active (boolean)  true if the rules are enforced for the mempool and the next block
+      bip9 (object, optional)  status of bip9 softforks (only for "bip9" type)
+        bit (number, optional)  the bit (0-28) in the block version field used to signal this softfork (only for "started" and "locked_in" status)
+        start_time (number, unix-time)  the minimum median time past of a block at which the bit gains its meaning
+        timeout (number, unix-time)  the median time past of a block at which the deployment is considered failed if not yet locked in
+        min_activation_height (number)  minimum height of blocks for which the rules may be enforced
+        status (string)  status of deployment at specified block (one of "defined", "started", "locked_in", "active", "failed")
+        since (number)  height of the first block to which the status applies
+        status_next (string)  status of deployment at the next block
+        statistics (object, optional)  numeric statistics about signalling for a softfork (only for "started" and "locked_in" status)
+          period (number)  the length in blocks of the signalling period
+          threshold (number, optional)  the number of blocks with the version bit set required to activate the feature (only for "started" status)
+          elapsed (number)  the number of blocks elapsed since the beginning of the current period
+          count (number)  the number of blocks with the version bit set in the current period
+          possible (boolean, optional)  returns false if there are not enough blocks left in this period to pass activation threshold (only for "started" status)
+        signalling (string, optional)  indicates blocks that signalled with a # and blocks that did not with a -
+
+
+
