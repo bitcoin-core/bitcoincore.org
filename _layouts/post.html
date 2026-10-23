@@ -46,7 +46,25 @@
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
       <div class="e-content">
-        {{ content }}
+        {% assign rendered_content = content %}
+        {% if page.name and page.name contains 'blog-release-' %}
+          {% assign release_version = page.name | remove: 'blog-release-' | replace: '-', '.' %}
+          {% assign download_lang = 'en' %}
+          {% if page.lang == 'ja' %}
+            {% assign download_lang = 'ja' %}
+          {% endif %}
+          {% capture localized_download_path %}/{{ download_lang }}/download{% endcapture %}
+          {% capture localized_download_path_slash %}{{ localized_download_path }}/{% endcapture %}
+          {% capture release_download_path %}{{ localized_download_path }}/?version={{ release_version }}{% endcapture %}
+          {% assign release_download_token = '__RELEASE_DOWNLOAD_LINK__' %}
+          {% assign rendered_content = rendered_content | replace: 'https://bitcoin.org/en/download', release_download_token %}
+          {% assign rendered_content = rendered_content | replace: localized_download_path_slash, release_download_token %}
+          {% assign rendered_content = rendered_content | replace: localized_download_path, release_download_token %}
+          {% assign rendered_content = rendered_content | replace: '/en/download/', release_download_token %}
+          {% assign rendered_content = rendered_content | replace: '/en/download', release_download_token %}
+          {% assign rendered_content = rendered_content | replace: release_download_token, release_download_path %}
+        {% endif %}
+        {{ rendered_content }}
       </div>
       <hr />
 {% include posted-date.html %}
