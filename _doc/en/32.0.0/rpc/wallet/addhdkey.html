@@ -1,0 +1,24 @@
+---
+name: addhdkey
+btcversion: 32.0.0
+btcgroup: wallet
+permalink: en/doc/32.0.0/rpc/wallet/addhdkey/
+---
+
+addhdkey ( "hdkey" )
+
+Add a BIP 32 HD key to the wallet that can be used with 'createwalletdescriptor'
+
+Arguments:
+1. hdkey    (string, optional, default=Automatically generated new key) The BIP 32 extended private key to add. If none is provided, a randomly generated one will be added.
+
+Result:
+{                    (json object)
+  "xpub" : "str"     (string) The xpub of the HD key that was added to the wallet
+}
+
+Examples:
+> bitcoin-cli addhdkey xprv
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "addhdkey", "params": ["xprv"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+
+
