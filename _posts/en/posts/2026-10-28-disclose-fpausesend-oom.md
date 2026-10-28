@@ -5,6 +5,9 @@ id: en-blog-disclose-fpausesend-oom
 lang: en
 type: advisory
 layout: post
+redirect_from:
+  - /en/2026/10/28/disclose-fpausesend-oom
+
 
 ## If this is a new post, reset this counter to 1.
 version: 1
@@ -53,7 +56,8 @@ This issue was independently re-discovered by L0rinc.
 - 2026-10-26 Antoine Poinsot opens PR [#36667](https://github.com/bitcoin/bitcoin/pull/36667) to
   mitigate the vulnerability.
 - 2026-10-26 PR #36667 is merged and backported to versions 29, 30, 31, and 32.
-- 2026-10-27 Bitcoin Core 29.5, 30.4, 31.2 and 32.1 are released with a fix.
-- 2026-10-27 Public disclosure.
+- 2026-10-27 Bitcoin Core 31.2 and 32.1 are released with a fix
+- 2026-10-28 Bitcoin Core 29.5, 30.4 are released with a fix
+- 2026-10-28 Public disclosure.
 
 {% include references.md %}

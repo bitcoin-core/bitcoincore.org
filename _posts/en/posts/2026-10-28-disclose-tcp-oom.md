@@ -5,6 +5,8 @@ id: en-blog-disclose-tcp-oom
 lang: en
 type: advisory
 layout: post
+redirect_from:
+  - /en/2026/10/28/disclose-tcp-oom
 
 ## If this is a new post, reset this counter to 1.
 version: 1
@@ -51,7 +53,8 @@ surfaced to the Bitcoin Core team by Gregory Sanders.
 - 2026-10-26 Antoine Poinsot opens PR [#36665](https://github.com/bitcoin/bitcoin/pull/36665) to fix
   this issue.
 - 2026-10-26 PR #36665 is merged and backported to versions 29, 30, 31, and 32.
-- 2026-10-27 Bitcoin Core 29.5, 30.4, 31.2 and 32.1 are released with a fix.
-- 2026-10-27 Public disclosure.
+- 2026-10-27 Bitcoin Core 31.2 and 32.1 are released with a fix
+- 2026-10-28 Bitcoin Core 29.5, 30.4 are released with a fix
+- 2026-10-28 Public disclosure.
 
 {% include references.md %}

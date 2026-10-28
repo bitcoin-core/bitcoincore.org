@@ -6,7 +6,7 @@ lang: en
 type: advisory
 layout: post
 redirect_from:
-  - /en/2026/10/27/disclose-undo-overflow
+  - /en/2026/10/28/disclose-undo-overflow
 
 ## If this is a new post, reset this counter to 1.
 version: 1
@@ -83,7 +83,8 @@ surfaced to the Bitcoin Core team by Gregory Sanders.
   [#36664](https://github.com/bitcoin/bitcoin/pull/36664)
 - 2026-10-26 - The fix is backported to the 29.x branch in PR
   [#36666](https://github.com/bitcoin/bitcoin/pull/36666)
-- 2026-10-27 - Bitcoin Core 29.5, 30.4, 31.2 and 32.1 are released with a fix
-- 2026-10-27 - Public disclosure
+- 2026-10-27 - Bitcoin Core 31.2 and 32.1 are released with a fix
+- 2026-10-28 - Bitcoin Core 29.5, 30.4 are released with a fix
+- 2026-10-28 - Public disclosure
 
 {% include references.md %}
