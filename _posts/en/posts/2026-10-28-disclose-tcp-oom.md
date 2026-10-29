@@ -1,5 +1,5 @@
 ---
-title: Unbounded memory growth through TCP urgent data on non-Linux systems
+title: CVE-2026-117350 - Unbounded memory growth through TCP urgent data on non-Linux systems
 name: blog-disclose-tcp-oom
 id: en-blog-disclose-tcp-oom
 lang: en
@@ -7,6 +7,7 @@ type: advisory
 layout: post
 redirect_from:
   - /en/2026/10/28/disclose-tcp-oom
+  - /en/2026/10/28/disclose-cve-2026-117350
 
 ## If this is a new post, reset this counter to 1.
 version: 1

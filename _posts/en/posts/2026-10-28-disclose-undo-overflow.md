@@ -1,5 +1,5 @@
 ---
-title: Undo file overflow under extreme conditions
+title: CVE-2026-117346 - Undo file overflow under extreme conditions
 name: blog-disclose-undo-overflow
 id: en-blog-disclose-undo-overflow
 lang: en
@@ -7,6 +7,7 @@ type: advisory
 layout: post
 redirect_from:
   - /en/2026/10/28/disclose-undo-overflow
+  - /en/2026/10/28/disclose-cve-2026-117346
 
 ## If this is a new post, reset this counter to 1.
 version: 1
