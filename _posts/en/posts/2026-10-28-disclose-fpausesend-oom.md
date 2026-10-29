@@ -1,5 +1,5 @@
 ---
-title: Slow unbounded memory growth on paused pre-BIP31 peers
+title: CVE-2026-117349 - Slow unbounded memory growth on paused pre-BIP31 peers
 name: blog-disclose-fpausesend-oom
 id: en-blog-disclose-fpausesend-oom
 lang: en
@@ -7,6 +7,7 @@ type: advisory
 layout: post
 redirect_from:
   - /en/2026/10/28/disclose-fpausesend-oom
+  - /en/2026/10/28/disclose-cve-2026-117349
 
 
 ## If this is a new post, reset this counter to 1.
