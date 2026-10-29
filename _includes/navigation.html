@@ -37,9 +37,28 @@
                               {% assign groups = site.doc | group_by:"btcversion" | sort_by: "btcversion" | reverse %}
                               <ul>
                                 {% for group in groups %}
-                                  {% if group.name != "index" %}
+                                  {% if group.name != "index" and group.name != "ipc-index" %}
                                     {% for article in group.items %}
                                       {% if article.name == "index" %}
+                                        <li><a href="{{article.url}}">{{group.name}}</a></li>
+                                      {% endif %}
+                                    {% endfor %}
+                                  {% endif %}
+                                {% endfor %}
+                              </ul>
+                            </li>
+                            <li>
+                              {% for article in site.doc %}
+                                {% if article.name == "ipcdocsindex" %}
+                                  <a href="{{article.url}}">IPC Docs</a>
+                                {% endif %}
+                              {% endfor %}
+                              {% assign ipc_groups = site.doc | group_by:"btcversion" | sort_by: "btcversion" | reverse %}
+                              <ul>
+                                {% for group in ipc_groups %}
+                                  {% if group.name != "index" and group.name != "ipc-index" %}
+                                    {% for article in group.items %}
+                                      {% if article.name == "ipcindex" %}
                                         <li><a href="{{article.url}}">{{group.name}}</a></li>
                                       {% endif %}
                                     {% endfor %}

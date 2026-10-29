@@ -1,0 +1,26 @@
+---
+name: waitNext
+btcversion: 31.0.0
+btcgroup: blocktemplate
+btcdoctype: IPC
+btchtml: true
+permalink: en/doc/31.0.0/ipc/blocktemplate/waitNext/
+---
+
+<p class="ipc-context">Method on interface <a href="../"><code>BlockTemplate</code></a>.</p>
+<div class="highlight"><pre><code><span class="nv">waitNext</span> <span class="nd">@8</span> <span class="p">(</span>
+  <span class="nv">context</span> <span class="p">:</span><span class="nc">Context</span><span class="p">,</span>
+  <span class="nv">options</span> <span class="p">:</span><a class="nc" href="../../structs/#BlockWaitOptions">BlockWaitOptions</a>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+  <span class="nv">result</span> <span class="p">:</span><a class="nc" href="../../blocktemplate/">BlockTemplate</a>
+<span class="p">)</span><span class="p">;</span></code></pre></div>
+<div class="ipc-doc">
+<p>Waits for fees in the next block to rise, a new tip or the timeout.</p>
+<dl class="ipc-doc-tags">
+  <dt><strong>param [in]</strong> <code>options</code></dt>
+  <dd>Control the timeout (default forever) and by how much total fees for the next block should rise (default infinite).</dd>
+  <dt><strong>returns</strong></dt>
+  <dd>a new <a href="../../blocktemplate/">BlockTemplate</a> or nothing if the timeout occurs.  On testnet this will additionally return a template with difficulty 1 if the tip is more than 20 minutes old.</dd>
+</dl>
+</div>
+

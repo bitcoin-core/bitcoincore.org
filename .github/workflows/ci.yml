@@ -55,6 +55,23 @@ jobs:
           rm Gemfile.lock
           make all
 
+  doc-gen:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:bookworm
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install packages
+        run: |
+          apt-get update
+          apt-get install -y capnproto golang
+      - name: Vet and build doc generator
+        working-directory: contrib/doc-gen
+        run: |
+          go vet ./...
+          go build ./...
+
   verify-commits:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'

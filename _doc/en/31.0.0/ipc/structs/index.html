@@ -1,0 +1,48 @@
+---
+name: structs
+btcversion: 31.0.0
+btcgroup: structs
+btcdoctype: IPC
+btchtml: true
+btcstructs:
+  - BlockCheckOptions
+  - BlockCreateOptions
+  - BlockRef
+  - BlockWaitOptions
+  - CoinbaseTx
+permalink: en/doc/31.0.0/ipc/structs/
+---
+
+<p>Shared Cap'n Proto structs used by the IPC interfaces.</p>
+<h2 id="BlockCheckOptions">BlockCheckOptions</h2>
+<div class="highlight"><pre><code><span class="kd">struct</span> <span class="nc">BlockCheckOptions</span> <span class="p">{</span>
+  <span class="nv">checkMerkleRoot</span> <span class="nd">@0</span> <span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="nv">checkPow</span> <span class="nd">@1</span> <span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="BlockCreateOptions">BlockCreateOptions</h2>
+<div class="highlight"><pre><code><span class="kd">struct</span> <span class="nc">BlockCreateOptions</span> <span class="p">{</span>
+  <span class="nv">useMempool</span> <span class="nd">@0</span> <span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="nv">blockReservedWeight</span> <span class="nd">@1</span> <span class="p">:</span><span class="kt">UInt64</span> <span class="o">=</span> <span class="mi">8000</span><span class="p">;</span>
+  <span class="nv">coinbaseOutputMaxAdditionalSigops</span> <span class="nd">@2</span> <span class="p">:</span><span class="kt">UInt64</span> <span class="o">=</span> <span class="mi">400</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="BlockRef">BlockRef</h2>
+<div class="highlight"><pre><code><span class="kd">struct</span> <span class="nc">BlockRef</span> <span class="p">{</span>
+  <span class="nv">hash</span> <span class="nd">@0</span> <span class="p">:</span><span class="kt">Data</span><span class="p">;</span>
+  <span class="nv">height</span> <span class="nd">@1</span> <span class="p">:</span><span class="kt">Int32</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="BlockWaitOptions">BlockWaitOptions</h2>
+<div class="highlight"><pre><code><span class="kd">struct</span> <span class="nc">BlockWaitOptions</span> <span class="p">{</span>
+  <span class="nv">timeout</span> <span class="nd">@0</span> <span class="p">:</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">1.7976931348623157e308</span><span class="p">;</span>
+  <span class="nv">feeThreshold</span> <span class="nd">@1</span> <span class="p">:</span><span class="kt">Int64</span> <span class="o">=</span> <span class="mi">2100000000000000</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="CoinbaseTx">CoinbaseTx</h2>
+<div class="highlight"><pre><code><span class="kd">struct</span> <span class="nc">CoinbaseTx</span> <span class="p">{</span>
+  <span class="nv">version</span> <span class="nd">@0</span> <span class="p">:</span><span class="kt">UInt32</span><span class="p">;</span>
+  <span class="nv">sequence</span> <span class="nd">@1</span> <span class="p">:</span><span class="kt">UInt32</span><span class="p">;</span>
+  <span class="nv">scriptSigPrefix</span> <span class="nd">@2</span> <span class="p">:</span><span class="kt">Data</span><span class="p">;</span>
+  <span class="nv">witness</span> <span class="nd">@3</span> <span class="p">:</span><span class="kt">Data</span><span class="p">;</span>
+  <span class="nv">blockRewardRemaining</span> <span class="nd">@4</span> <span class="p">:</span><span class="kt">Int64</span><span class="p">;</span>
+  <span class="nv">requiredOutputs</span> <span class="nd">@5</span> <span class="p">:</span><span class="kt">List</span><span class="p">(</span><span class="kt">Data</span><span class="p">)</span><span class="p">;</span>
+  <span class="nv">lockTime</span> <span class="nd">@6</span> <span class="p">:</span><span class="kt">UInt32</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
