@@ -1,0 +1,26 @@
+---
+name: exportasmap
+btcversion: 32.0.0
+btcgroup: network
+permalink: en/doc/32.0.0/rpc/network/exportasmap/
+---
+
+exportasmap "path"
+
+Export the embedded ASMap data to a file. Any existing file at the path will be overwritten.
+
+Arguments:
+1. path    (string, required) Path to the output file. If relative, will be prefixed by datadir.
+
+Result:
+{                         (json object)
+  "path" : "str",         (string) the absolute path that the ASMap data was written to
+  "bytes_written" : n,    (numeric) the number of bytes written to the file
+  "file_hash" : "hex"     (string) the SHA256 hash of the exported ASMap data
+}
+
+Examples:
+> bitcoin-cli exportasmap "asmap.dat"
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "exportasmap", "params": ["asmap.dat"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+
+

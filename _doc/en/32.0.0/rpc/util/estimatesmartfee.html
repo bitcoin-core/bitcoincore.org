@@ -1,0 +1,61 @@
+---
+name: estimatesmartfee
+btcversion: 32.0.0
+btcgroup: util
+permalink: en/doc/32.0.0/rpc/util/estimatesmartfee/
+---
+
+estimatesmartfee conf_target ( "estimate_mode" {"fee_rate_estimator":"str","verbosity":n} )
+
+Estimates the approximate fee per kilobyte needed for a transaction to begin
+confirmation within conf_target blocks if possible and return the number of blocks
+for which the estimate is valid. Uses virtual transaction size as defined
+in BIP 141 (witness data is discounted).
+
+Arguments:
+1. conf_target                         (numeric, required) Confirmation target in blocks (1 - 1008)
+2. estimate_mode                       (string, optional, default="economical") The fee estimate mode.
+                                       unset, economical, conservative 
+                                       unset means no mode set (default mode will be used). 
+                                       economical mode potentially returns a lower fee rate estimate.
+                                       conservative potentially returns a higher fee rate estimate.
+                                       
+3. options                             (json object, optional)
+     {
+       "fee_rate_estimator": "str",    (string, optional, default="auto") Selects which fee rate estimator to use.
+                                       "auto" (the default) combines both estimators, returning the lower of the block policy and
+                                       mempool fee rate estimates. If the mempool fee rate estimator cannot produce an estimate, the
+                                       block policy fee rate estimate is returned instead. An error is returned only if the block
+                                       policy fee rate estimate is unavailable.
+                                       "block_policy" uses only the block policy fee rate estimator.
+                                       "mempool_policy" uses only the mempool fee rate estimator.
+       "verbosity": n,                 (numeric, optional, default=1) 1 returns feerate or errors. 2 also returns "mempool_health_statistics".
+     }
+
+Result:
+{                                    (json object)
+  "feerate" : n,                     (numeric, optional) estimate fee rate in BTC/kvB (only present if no errors were encountered)
+  "estimator" : "str",               (string, optional) the fee estimator used to produce the result (only present for successful estimates when fee_rate_estimator is "auto")
+  "errors" : [                       (json array, optional) Errors encountered during processing (if there are any)
+    "str",                           (string) error
+    ...
+  ],
+  "blocks" : n,                      (numeric) the confirmation target in blocks for the returned fee rate estimate.
+                                     For the block policy fee rate estimator, this is the target the estimate was found at, clamped to at
+                                     least 2 and at most the estimator's maximum usable target. For the mempool fee rate
+                                     estimator, it is always 2.
+  "mempool_health_statistics" : [    (json array, optional) Health statistics for the most recently mined blocks tracked by the mempool fee rate estimator (only present when verbosity >= 2)
+    {                                (json object)
+      "block_height" : n,            (numeric) Block height
+      "block_weight" : n,            (numeric) Total weight of non-coinbase transactions in the block
+      "mempool_txs_weight" : n       (numeric) Total weight of transactions removed from the mempool for this block
+    },
+    ...
+  ]
+}
+
+Examples:
+> bitcoin-cli estimatesmartfee 6
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "estimatesmartfee", "params": [6]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+
+

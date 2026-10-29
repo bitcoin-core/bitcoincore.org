@@ -1,0 +1,24 @@
+---
+name: exportwatchonlywallet
+btcversion: 32.0.0
+btcgroup: wallet
+permalink: en/doc/32.0.0/rpc/wallet/exportwatchonlywallet/
+---
+
+exportwatchonlywallet "destination"
+
+Creates a wallet file at the specified destination containing a watchonly version of the current wallet. This watchonly wallet contains the wallet's public descriptors, its transactions, and address book data. Descriptors that use hardened derivation will only have a limited number of derived keys included in the export due to hardened derivation requiring private keys. Descriptors with unhardened derivation do not have this limitation. The watchonly wallet can be imported into another node using 'restorewallet'.
+
+Arguments:
+1. destination    (string, required) The path to the filename the exported watchonly wallet will be saved to
+
+Result:
+{                             (json object)
+  "exported_file" : "str"     (string) The full path that the file has been exported to
+}
+
+Examples:
+> bitcoin-cli exportwatchonlywallet "/path/to/export.dat"
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "exportwatchonlywallet", "params": ["/path/to/export.dat"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+
+
