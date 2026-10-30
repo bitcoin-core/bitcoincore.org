@@ -1,11 +1,13 @@
 ---
-title: 極端な条件下におけるundoファイルのオーバーフロー
+title: CVE-2026-117346 - 極端な条件下におけるundoファイルのオーバーフロー
 name: blog-disclose-undo-overflow
 id: ja-blog-disclose-undo-overflow
 lang: ja
 permalink: /ja/2026/10/28/disclose-undo-overflow/
 type: advisory
 layout: post
+redirect_from:
+  - /ja/2026/10/28/disclose-cve-2026-117346
 
 ## If this is a new post, reset this counter to 1.
 version: 1

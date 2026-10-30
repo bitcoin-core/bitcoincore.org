@@ -1,11 +1,13 @@
 ---
-title: Linux以外のシステムにおけるTCP緊急データによる無制限なメモリ増加
+title: CVE-2026-117350 - Linux以外のシステムにおけるTCP緊急データによる無制限なメモリ増加
 name: blog-disclose-tcp-oom
 id: ja-blog-disclose-tcp-oom
 lang: ja
 permalink: /ja/2026/10/28/disclose-tcp-oom/
 type: advisory
 layout: post
+redirect_from:
+  - /ja/2026/10/28/disclose-cve-2026-117350
 
 ## If this is a new post, reset this counter to 1.
 version: 1
