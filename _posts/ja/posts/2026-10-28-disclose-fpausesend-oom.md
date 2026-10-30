@@ -1,11 +1,13 @@
 ---
-title: 送信一時停止中のBIP 31非対応ピアによる緩やかで無制限なメモリ増加
+title: CVE-2026-117349 - 送信一時停止中のBIP 31非対応ピアによる緩やかで無制限なメモリ増加
 name: blog-disclose-fpausesend-oom
 id: ja-blog-disclose-fpausesend-oom
 lang: ja
 permalink: /ja/2026/10/28/disclose-fpausesend-oom/
 type: advisory
 layout: post
+redirect_from:
+  - /ja/2026/10/28/disclose-cve-2026-117349
 
 ## If this is a new post, reset this counter to 1.
 version: 1
