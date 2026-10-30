@@ -1,0 +1,20 @@
+---
+name: sethdseed
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/sethdseed/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">sethdseed ( newkeypool ) ( &#34;seed&#34; )</pre>
+  <div class="rpc-description"><p>Set or generate a new HD wallet seed. Non-HD wallets will not be upgraded to being a HD wallet. Wallets that are already HD will have a new HD seed set so that new keys added to the keypool will be derived from this new seed.</p><p>Note that you will need to MAKE A NEW BACKUP of your wallet after setting the HD wallet seed. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted. Note: This command is only compatible with legacy wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>newkeypool</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Whether to flush old unused addresses, including change addresses, from the keypool and regenerate it.<br>If true, the next address from getnewaddress and change address from getrawchangeaddress will be from this new seed.<br>If false, addresses (including change addresses if the wallet already had HD Chain Split enabled) from the existing<br>keypool will be used until it has been depleted.</td></tr>
+  <tr><td>2</td><td><code>seed</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: random seed</small></td><td>The WIF private key to use as the new HD seed.<br>The seed value can be retrieved using the dumpwallet command. It is the private key marked hdseed=1</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

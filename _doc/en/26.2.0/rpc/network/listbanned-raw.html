@@ -1,0 +1,25 @@
+---
+name: listbanned
+btcversion: 26.2.0
+btcgroup: network
+permalink: en/doc/26.2.0/rpc/network/listbanned/raw/
+rawpage: true
+---
+
+listbanned
+
+List all manually banned IPs/Subnets.
+
+Arguments:
+none
+
+Result: (array)
+  each item (object)
+    address (string)  The IP/Subnet of the banned node
+    ban_created (number, unix-time)  The UNIX epoch time the ban was created
+    banned_until (number, unix-time)  The UNIX epoch time the ban expires
+    ban_duration (number, unix-time)  The ban duration, in seconds
+    time_remaining (number, unix-time)  The time remaining until the ban expires, in seconds
+
+
+

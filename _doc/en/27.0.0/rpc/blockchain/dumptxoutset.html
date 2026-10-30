@@ -3,26 +3,27 @@ name: dumptxoutset
 btcversion: 27.0.0
 btcgroup: blockchain
 permalink: en/doc/27.0.0/rpc/blockchain/dumptxoutset/
+openrpc: true
 ---
 
-dumptxoutset "path"
-
-Write the serialized UTXO set to a file.
-
-Arguments:
-1. path    (string, required) Path to the output file. If relative, will be prefixed by datadir.
-
-Result:
-{                             (json object)
-  "coins_written" : n,        (numeric) the number of coins written in the snapshot
-  "base_hash" : "hex",        (string) the hash of the base of the snapshot
-  "base_height" : n,          (numeric) the height of the base of the snapshot
-  "path" : "str",             (string) the absolute path that the snapshot was written to
-  "txoutset_hash" : "hex",    (string) the hash of the UTXO set contents
-  "nchaintx" : n              (numeric) the number of transactions in the chain up to and including the base block
-}
-
-Examples:
-> bitcoin-cli dumptxoutset utxo.dat
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">dumptxoutset &#34;path&#34;</pre>
+  <div class="rpc-description"><p>Write the serialized UTXO set to a file.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>path</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>Path to the output file. If relative, will be prefixed by datadir.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">coins_written</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of coins written in the snapshot</span></li>
+  <li><code class="rpc-key">base_hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the hash of the base of the snapshot</span></li>
+  <li><code class="rpc-key">base_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the height of the base of the snapshot</span></li>
+  <li><code class="rpc-key">path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the absolute path that the snapshot was written to</span></li>
+  <li><code class="rpc-key">txoutset_hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the hash of the UTXO set contents</span></li>
+  <li><code class="rpc-key">nchaintx</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of transactions in the chain up to and including the base block</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli dumptxoutset utxo.dat</pre>
+</div>

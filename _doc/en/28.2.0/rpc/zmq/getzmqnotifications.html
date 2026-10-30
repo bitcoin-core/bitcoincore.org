@@ -1,0 +1,25 @@
+---
+name: getzmqnotifications
+btcversion: 28.2.0
+btcgroup: zmq
+permalink: en/doc/28.2.0/rpc/zmq/getzmqnotifications/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">zmq</span></p>
+  <pre class="rpc-synopsis">getzmqnotifications</pre>
+  <div class="rpc-description"><p>Returns information about the active ZeroMQ notifications.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Type of notification</span></li>
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Address of the publisher</span></li>
+      <li><code class="rpc-key">hwm</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Outbound message high water mark</span></li>
+    </ul></li>
+</ul>
+</div>

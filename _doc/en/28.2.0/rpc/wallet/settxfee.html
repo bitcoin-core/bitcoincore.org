@@ -1,0 +1,23 @@
+---
+name: settxfee
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/settxfee/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">settxfee amount</pre>
+  <div class="rpc-description"><p>Set the transaction fee rate in BTC/kvB for this wallet. Overrides the global -paytxfee command line parameter. Can be deactivated by passing 0 as the fee. In that case automatic fee selection will be used by default.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>amount</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-yes">yes</td><td>The transaction fee rate in BTC/kvB
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(boolean)</span></p>
+</div>

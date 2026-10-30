@@ -1,0 +1,21 @@
+---
+name: prioritisetransaction
+btcversion: 26.2.0
+btcgroup: mining
+permalink: en/doc/26.2.0/rpc/mining/prioritisetransaction/raw/
+rawpage: true
+---
+
+prioritisetransaction "txid" ( dummy ) fee_delta
+
+Accepts the transaction into mined blocks at a higher (or lower) priority
+
+Arguments:
+1. txid (string)  The transaction id.
+2. dummy (number, optional)  API-Compatibility for previous API. Must be zero or null. DEPRECATED. For forward compatibility use named arguments and omit this parameter.
+3. fee_delta (number)  The fee value (in satoshis) to add (or subtract, if negative). Note, that this value is not a fee rate. It is a value to modify absolute fee of the TX. The fee is not actually paid, only the algorithm for selecting transactions into a block considers the transaction as it would have paid a higher (or lower) fee.
+
+Result: (boolean)
+
+
+

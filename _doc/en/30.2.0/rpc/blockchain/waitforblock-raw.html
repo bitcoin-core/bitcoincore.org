@@ -1,0 +1,26 @@
+---
+name: waitforblock
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/waitforblock/raw/
+rawpage: true
+---
+
+waitforblock "blockhash" ( timeout )
+
+Waits for a specific new block and returns useful info about it.
+
+Returns the current block on timeout or exit.
+
+Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)
+
+Arguments:
+1. blockhash (string)  Block hash to wait for.
+2. timeout (number, optional, default=0)  Time in milliseconds to wait for a response. 0 indicates no timeout.
+
+Result: (object)
+  hash (string)  The blockhash
+  height (number)  Block height
+
+
+

@@ -1,0 +1,20 @@
+---
+name: getnewaddress
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/getnewaddress/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">getnewaddress ( &#34;label&#34; ) ( &#34;address_type&#34; )</pre>
+  <div class="rpc-description"><p>Returns a new Bitcoin address for receiving payments. If &#39;label&#39; is specified, it is added to the address book so payments received with the address will be associated with &#39;label&#39;.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>label</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;&#34;</small></td><td>The label name for the address to be linked to. It can also be set to the empty string &#34;&#34; to represent the default label. The label does not need to exist, it will be created if there is no label by the given name.</td></tr>
+  <tr><td>2</td><td><code>address_type</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: set by -addresstype</small></td><td>The address type to use. Options are &#34;legacy&#34;, &#34;p2sh-segwit&#34;, &#34;bech32&#34;, and &#34;bech32m&#34;.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+</div>

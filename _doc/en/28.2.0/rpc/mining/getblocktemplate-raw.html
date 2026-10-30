@@ -1,0 +1,71 @@
+---
+name: getblocktemplate
+btcversion: 28.2.0
+btcgroup: mining
+permalink: en/doc/28.2.0/rpc/mining/getblocktemplate/raw/
+rawpage: true
+---
+
+getblocktemplate template_request
+
+If the request parameters include a 'mode' key, that is used to explicitly select between the default 'template' request or a 'proposal'.
+It returns data needed to construct a block to work on.
+For full specification, see BIPs 22, 23, 9, and 145:
+    https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki
+    https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki
+    https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes
+    https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki
+
+Arguments:
+1. template_request (object)  Format of the template
+  mode (string, optional)  This must be set to "template", "proposal" (see BIP 23), or omitted
+  capabilities (array, optional)  A list of strings
+    each item (string)
+  rules (array)  A list of strings
+    each item (string)
+  longpollid (string, optional)  delay processing request until the result would vary significantly from the "longpollid" of a prior template
+  data (string, optional)  proposed block data to check, encoded in hexadecimal; valid only for mode="proposal"
+
+Result: (one of)
+  option 1: (null)  If the proposal was accepted with mode=='proposal'
+  option 2: (string)  If the proposal was not accepted with mode=='proposal'
+  option 3: (object)  Otherwise
+    version (number)  The preferred block version
+    rules (array)  specific block rules that are to be enforced
+      each item (string)
+    vbavailable (object)  set of pending, supported versionbit (BIP 9) softfork deployments
+      ... (number)
+    capabilities (array)
+      each item (string)
+    vbrequired (number)  bit mask of versionbits the server requires set in submissions
+    previousblockhash (string)  The hash of current highest block
+    transactions (array)  contents of non-coinbase transactions that should be included in the next block
+      each item (object)
+        data (string)  transaction data encoded in hexadecimal (byte-for-byte)
+        txid (string)  transaction id encoded in little-endian hexadecimal
+        hash (string)  hash encoded in little-endian hexadecimal (including witness data)
+        depends (array)  array of numbers
+          each item (number)
+        fee (number)  difference in value between transaction inputs and outputs (in satoshis); for coinbase transactions, this is a negative Number of the total collected block fees (ie, not including the block subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn't one
+        sigops (number)  total SigOps cost, as counted for purposes of block limits; if key is not present, sigop cost is unknown and clients MUST NOT assume it is zero
+        weight (number)  total transaction weight, as counted for purposes of block limits
+    coinbaseaux (object)  data that should be included in the coinbase's scriptSig content
+      ... (string)
+    coinbasevalue (number)  maximum allowable input to coinbase transaction, including the generation award and transaction fees (in satoshis)
+    longpollid (string)  an id to include with a request to longpoll on an update to this template
+    target (string)  The hash target
+    mintime (number, unix-time)  The minimum timestamp appropriate for the next block time, expressed in UNIX epoch time
+    mutable (array)  list of ways the block template may be changed
+      each item (string)
+    noncerange (string)  A range of valid nonces
+    sigoplimit (number)  limit of sigops in blocks
+    sizelimit (number)  limit of block size
+    weightlimit (number, optional)  limit of block weight
+    curtime (number, unix-time)  current timestamp in UNIX epoch time
+    bits (string)  compressed target of next block
+    height (number)  The height of the next block
+    signet_challenge (string, optional)  Only on signet
+    default_witness_commitment (string, optional)  a valid witness commitment for the unmodified block template
+
+
+

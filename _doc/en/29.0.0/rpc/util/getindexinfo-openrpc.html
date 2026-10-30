@@ -1,0 +1,48 @@
+---
+name: getindexinfo
+btcversion: 29.0.0
+btcgroup: util
+permalink: en/doc/29.0.0/rpc/util/getindexinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getindexinfo&#34;,
+  &#34;description&#34;: &#34;Returns the status of one or all available indices currently running in the node.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;index_name&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;Filter results for an index with a specific name.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;additionalProperties&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;synced&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether the index is synced or not&#34;
+          },
+          &#34;best_block_height&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The block height to which the index is synced&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;synced&#34;,
+          &#34;best_block_height&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;util&#34;
+}</pre>

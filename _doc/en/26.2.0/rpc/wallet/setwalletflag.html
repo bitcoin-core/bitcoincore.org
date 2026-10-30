@@ -1,0 +1,25 @@
+---
+name: setwalletflag
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/setwalletflag/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">setwalletflag &#34;flag&#34; ( value )</pre>
+  <div class="rpc-description"><p>Change the state of the given wallet flag for a wallet.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>flag</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The name of the flag to change. Current available flags: avoid_reuse</td></tr>
+  <tr><td>2</td><td><code>value</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>The new state.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">flag_name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The name of the flag that was modified</span></li>
+  <li><code class="rpc-key">flag_state</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">The new state of the flag</span></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Any warnings associated with the change</span></li>
+</ul>
+</div>

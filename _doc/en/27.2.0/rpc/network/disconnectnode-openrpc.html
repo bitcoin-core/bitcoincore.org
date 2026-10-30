@@ -1,0 +1,40 @@
+---
+name: disconnectnode
+btcversion: 27.2.0
+btcgroup: network
+permalink: en/doc/27.2.0/rpc/network/disconnectnode/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;disconnectnode&#34;,
+  &#34;description&#34;: &#34;Immediately disconnects from the specified peer node.\n\nStrictly one out of &#39;address&#39; and &#39;nodeid&#39; can be provided to identify the node.\n\nTo disconnect by nodeid, either set &#39;address&#39; to the empty string, or call using the named &#39;nodeid&#39; argument only.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;address&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;fallback to nodeid&#34;
+      },
+      &#34;description&#34;: &#34;The IP address/port of the node&#34;
+    },
+    {
+      &#34;name&#34;: &#34;nodeid&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;fallback to address&#34;
+      },
+      &#34;description&#34;: &#34;The node ID (see getpeerinfo for node IDs)&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

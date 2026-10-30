@@ -1,0 +1,27 @@
+---
+name: getmininginfo
+btcversion: 27.2.0
+btcgroup: mining
+permalink: en/doc/27.2.0/rpc/mining/getmininginfo/raw/
+rawpage: true
+---
+
+getmininginfo
+
+Returns a json object containing mining-related information.
+
+Arguments:
+none
+
+Result: (object)
+  blocks (number)  The current block
+  currentblockweight (number, optional)  The block weight of the last assembled block (only present if a block was ever assembled)
+  currentblocktx (number, optional)  The number of block transactions of the last assembled block (only present if a block was ever assembled)
+  difficulty (number)  The current difficulty
+  networkhashps (number)  The network hashes per second
+  pooledtx (number)  The size of the mempool
+  chain (string)  current network name (main, test, signet, regtest)
+  warnings (string)  any network and blockchain warnings
+
+
+

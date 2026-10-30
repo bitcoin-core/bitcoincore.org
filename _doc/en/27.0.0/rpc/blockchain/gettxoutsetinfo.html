@@ -3,53 +3,59 @@ name: gettxoutsetinfo
 btcversion: 27.0.0
 btcgroup: blockchain
 permalink: en/doc/27.0.0/rpc/blockchain/gettxoutsetinfo/
+openrpc: true
 ---
 
-gettxoutsetinfo ( "hash_type" hash_or_height use_index )
-
-Returns statistics about the unspent transaction output set.
-Note this call may take some time if you are not using coinstatsindex.
-
-Arguments:
-1. hash_type         (string, optional, default="hash_serialized_3") Which UTXO set hash should be calculated. Options: 'hash_serialized_3' (the legacy algorithm), 'muhash', 'none'.
-2. hash_or_height    (string or numeric, optional, default=the current best block) The block hash or height of the target height (only available with coinstatsindex).
-3. use_index         (boolean, optional, default=true) Use coinstatsindex, if available.
-
-Result:
-{                                     (json object)
-  "height" : n,                       (numeric) The block height (index) of the returned statistics
-  "bestblock" : "hex",                (string) The hash of the block at which these statistics are calculated
-  "txouts" : n,                       (numeric) The number of unspent transaction outputs
-  "bogosize" : n,                     (numeric) Database-independent, meaningless metric indicating the UTXO set size
-  "hash_serialized_3" : "hex",        (string, optional) The serialized hash (only present if 'hash_serialized_3' hash_type is chosen)
-  "muhash" : "hex",                   (string, optional) The serialized hash (only present if 'muhash' hash_type is chosen)
-  "transactions" : n,                 (numeric, optional) The number of transactions with unspent outputs (not available when coinstatsindex is used)
-  "disk_size" : n,                    (numeric, optional) The estimated size of the chainstate on disk (not available when coinstatsindex is used)
-  "total_amount" : n,                 (numeric) The total amount of coins in the UTXO set
-  "total_unspendable_amount" : n,     (numeric, optional) The total amount of coins permanently excluded from the UTXO set (only available if coinstatsindex is used)
-  "block_info" : {                    (json object, optional) Info on amounts in the block at this block height (only available if coinstatsindex is used)
-    "prevout_spent" : n,              (numeric) Total amount of all prevouts spent in this block
-    "coinbase" : n,                   (numeric) Coinbase subsidy amount of this block
-    "new_outputs_ex_coinbase" : n,    (numeric) Total amount of new outputs created by this block
-    "unspendable" : n,                (numeric) Total amount of unspendable outputs created in this block
-    "unspendables" : {                (json object) Detailed view of the unspendable categories
-      "genesis_block" : n,            (numeric) The unspendable amount of the Genesis block subsidy
-      "bip30" : n,                    (numeric) Transactions overridden by duplicates (no longer possible with BIP30)
-      "scripts" : n,                  (numeric) Amounts sent to scripts that are unspendable (for example OP_RETURN outputs)
-      "unclaimed_rewards" : n         (numeric) Fee rewards that miners did not claim in their coinbase transaction
-    }
-  }
-}
-
-Examples:
-> bitcoin-cli gettxoutsetinfo 
-> bitcoin-cli gettxoutsetinfo "none"
-> bitcoin-cli gettxoutsetinfo "none" 1000
-> bitcoin-cli gettxoutsetinfo "none" '"00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"'
-> bitcoin-cli -named gettxoutsetinfo hash_type='muhash' use_index='false'
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "gettxoutsetinfo", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "gettxoutsetinfo", "params": ["none"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "gettxoutsetinfo", "params": ["none", 1000]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "gettxoutsetinfo", "params": ["none", "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">gettxoutsetinfo ( &#34;hash_type&#34; ) ( hash_or_height ) ( use_index )</pre>
+  <div class="rpc-description"><p>Returns statistics about the unspent transaction output set. Note this call may take some time if you are not using coinstatsindex.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hash_type</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;hash_serialized_3&#34;</small></td><td>Which UTXO set hash should be calculated. Options: &#39;hash_serialized_3&#39; (the legacy algorithm), &#39;muhash&#39;, &#39;none&#39;.</td></tr>
+  <tr><td>2</td><td><code>hash_or_height</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: the current best block</small></td><td>The block hash or height of the target height (only available with coinstatsindex).
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>use_index</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Use coinstatsindex, if available.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block height (index) of the returned statistics</span></li>
+  <li><code class="rpc-key">bestblock</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash of the block at which these statistics are calculated</span></li>
+  <li><code class="rpc-key">txouts</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of unspent transaction outputs</span></li>
+  <li><code class="rpc-key">bogosize</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Database-independent, meaningless metric indicating the UTXO set size</span></li>
+  <li><code class="rpc-key">hash_serialized_3</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The serialized hash (only present if &#39;hash_serialized_3&#39; hash_type is chosen)</span></li>
+  <li><code class="rpc-key">muhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The serialized hash (only present if &#39;muhash&#39; hash_type is chosen)</span></li>
+  <li><code class="rpc-key">transactions</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of transactions with unspent outputs (not available when coinstatsindex is used)</span></li>
+  <li><code class="rpc-key">disk_size</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The estimated size of the chainstate on disk (not available when coinstatsindex is used)</span></li>
+  <li><code class="rpc-key">total_amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount of coins in the UTXO set</span></li>
+  <li><code class="rpc-key">total_unspendable_amount</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">The total amount of coins permanently excluded from the UTXO set (only available if coinstatsindex is used)</span></li>
+  <li><code class="rpc-key">block_info</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Info on amounts in the block at this block height (only available if coinstatsindex is used)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">prevout_spent</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Total amount of all prevouts spent in this block</span></li>
+      <li><code class="rpc-key">coinbase</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Coinbase subsidy amount of this block</span></li>
+      <li><code class="rpc-key">new_outputs_ex_coinbase</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Total amount of new outputs created by this block</span></li>
+      <li><code class="rpc-key">unspendable</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Total amount of unspendable outputs created in this block</span></li>
+      <li><code class="rpc-key">unspendables</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">Detailed view of the unspendable categories</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">genesis_block</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The unspendable amount of the Genesis block subsidy</span></li>
+          <li><code class="rpc-key">bip30</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Transactions overridden by duplicates (no longer possible with BIP30)</span></li>
+          <li><code class="rpc-key">scripts</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Amounts sent to scripts that are unspendable (for example OP_RETURN outputs)</span></li>
+          <li><code class="rpc-key">unclaimed_rewards</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Fee rewards that miners did not claim in their coinbase transaction</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli gettxoutsetinfo 
+&gt; bitcoin-cli gettxoutsetinfo &#34;none&#34;
+&gt; bitcoin-cli gettxoutsetinfo &#34;none&#34; 1000
+&gt; bitcoin-cli gettxoutsetinfo &#34;none&#34; &#39;&#34;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&#34;&#39;
+&gt; bitcoin-cli -named gettxoutsetinfo hash_type=&#39;muhash&#39; use_index=&#39;false&#39;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;gettxoutsetinfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;gettxoutsetinfo&#34;, &#34;params&#34;: [&#34;none&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;gettxoutsetinfo&#34;, &#34;params&#34;: [&#34;none&#34;, 1000]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;gettxoutsetinfo&#34;, &#34;params&#34;: [&#34;none&#34;, &#34;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

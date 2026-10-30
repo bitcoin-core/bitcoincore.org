@@ -1,0 +1,28 @@
+---
+name: createmultisig
+btcversion: 28.2.0
+btcgroup: util
+permalink: en/doc/28.2.0/rpc/util/createmultisig/raw/
+rawpage: true
+---
+
+createmultisig nrequired keys ( "address_type" )
+
+Creates a multi-signature address with n signature of m keys required.
+It returns a json object with the address and redeemScript.
+
+Arguments:
+1. nrequired (number)  The number of required signatures out of the n keys.
+2. keys (array)  The hex-encoded public keys.
+  each item (string)
+3. address_type (string, optional, default="legacy")  The address type to use. Options are "legacy", "p2sh-segwit", and "bech32".
+
+Result: (object)
+  address (string)  The value of the new multisig address.
+  redeemScript (string)  The string value of the hex-encoded redemption script.
+  descriptor (string)  The descriptor for this multisig
+  warnings (array, optional)  Any warnings resulting from the creation of this multisig
+    each item (string)
+
+
+

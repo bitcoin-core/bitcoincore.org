@@ -1,0 +1,283 @@
+---
+name: getblock
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getblock/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getblock&#34;,
+  &#34;description&#34;: &#34;If verbosity is 0, returns a string that is serialized, hex-encoded data for block &#39;hash&#39;.\nIf verbosity is 1, returns an Object with information about block &lt;hash&gt;.\nIf verbosity is 2, returns an Object with information about block &lt;hash&gt; and information about each transaction.\nIf verbosity is 3, returns an Object with information about block &lt;hash&gt; and information about each transaction, including prevout information for inputs (only for unpruned blocks in the current best chain).&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;blockhash&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The block hash&#34;
+    },
+    {
+      &#34;name&#34;: &#34;verbosity&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 1
+      },
+      &#34;x-bitcoin-aliases&#34;: [
+        &#34;verbose&#34;
+      ],
+      &#34;description&#34;: &#34;0 for hex-encoded data, 1 for a JSON object, 2 for JSON object with transaction data, and 3 for JSON object with transaction data including prevout information for inputs&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;for verbosity = 0&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;hash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;the block hash (same as provided)&#34;
+            },
+            &#34;confirmations&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The number of confirmations, or -1 if the block is not on the main chain&#34;
+            },
+            &#34;size&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block size&#34;
+            },
+            &#34;strippedsize&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block size excluding witness data&#34;
+            },
+            &#34;weight&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block weight as defined in BIP 141&#34;
+            },
+            &#34;height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block height or index&#34;
+            },
+            &#34;version&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block version&#34;
+            },
+            &#34;versionHex&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The block version formatted in hexadecimal&#34;
+            },
+            &#34;merkleroot&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The merkle root&#34;
+            },
+            &#34;tx&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+              },
+              &#34;description&#34;: &#34;The transaction ids&#34;
+            },
+            &#34;time&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;The block time expressed in UNIX epoch time&#34;
+            },
+            &#34;mediantime&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;The median block time expressed in UNIX epoch time&#34;
+            },
+            &#34;nonce&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The nonce&#34;
+            },
+            &#34;bits&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The bits&#34;
+            },
+            &#34;difficulty&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The difficulty&#34;
+            },
+            &#34;chainwork&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;Expected number of hashes required to produce the chain up to this block (in hex)&#34;
+            },
+            &#34;nTx&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The number of transactions in the block&#34;
+            },
+            &#34;previousblockhash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The hash of the previous block (if available)&#34;
+            },
+            &#34;nextblockhash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The hash of the next block (if available)&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;hash&#34;,
+            &#34;confirmations&#34;,
+            &#34;size&#34;,
+            &#34;strippedsize&#34;,
+            &#34;weight&#34;,
+            &#34;height&#34;,
+            &#34;version&#34;,
+            &#34;versionHex&#34;,
+            &#34;merkleroot&#34;,
+            &#34;tx&#34;,
+            &#34;time&#34;,
+            &#34;mediantime&#34;,
+            &#34;nonce&#34;,
+            &#34;bits&#34;,
+            &#34;difficulty&#34;,
+            &#34;chainwork&#34;,
+            &#34;nTx&#34;
+          ],
+          &#34;description&#34;: &#34;for verbosity = 1&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;tx&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;fee&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The transaction fee in BTC, omitted if block undo data is not available&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: true,
+                &#34;required&#34;: [
+                  &#34;fee&#34;
+                ]
+              }
+            }
+          },
+          &#34;additionalProperties&#34;: true,
+          &#34;required&#34;: [
+            &#34;tx&#34;
+          ],
+          &#34;description&#34;: &#34;for verbosity = 2&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;tx&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;vin&#34;: {
+                    &#34;type&#34;: &#34;array&#34;,
+                    &#34;items&#34;: {
+                      &#34;type&#34;: &#34;object&#34;,
+                      &#34;properties&#34;: {
+                        &#34;prevout&#34;: {
+                          &#34;type&#34;: &#34;object&#34;,
+                          &#34;properties&#34;: {
+                            &#34;generated&#34;: {
+                              &#34;type&#34;: &#34;boolean&#34;,
+                              &#34;description&#34;: &#34;Coinbase or not&#34;
+                            },
+                            &#34;height&#34;: {
+                              &#34;type&#34;: &#34;number&#34;,
+                              &#34;description&#34;: &#34;The height of the prevout&#34;
+                            },
+                            &#34;value&#34;: {
+                              &#34;type&#34;: &#34;string&#34;,
+                              &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                              &#34;description&#34;: &#34;The value in BTC&#34;
+                            },
+                            &#34;scriptPubKey&#34;: {
+                              &#34;type&#34;: &#34;object&#34;,
+                              &#34;properties&#34;: {
+                                &#34;asm&#34;: {
+                                  &#34;type&#34;: &#34;string&#34;,
+                                  &#34;description&#34;: &#34;Disassembly of the output script&#34;
+                                },
+                                &#34;desc&#34;: {
+                                  &#34;type&#34;: &#34;string&#34;,
+                                  &#34;description&#34;: &#34;Inferred descriptor for the output&#34;
+                                },
+                                &#34;hex&#34;: {
+                                  &#34;type&#34;: &#34;string&#34;,
+                                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                                  &#34;description&#34;: &#34;The raw output script bytes, hex-encoded&#34;
+                                },
+                                &#34;address&#34;: {
+                                  &#34;type&#34;: &#34;string&#34;,
+                                  &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+                                },
+                                &#34;type&#34;: {
+                                  &#34;type&#34;: &#34;string&#34;,
+                                  &#34;description&#34;: &#34;The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)&#34;
+                                }
+                              },
+                              &#34;additionalProperties&#34;: false,
+                              &#34;required&#34;: [
+                                &#34;asm&#34;,
+                                &#34;desc&#34;,
+                                &#34;hex&#34;,
+                                &#34;type&#34;
+                              ]
+                            }
+                          },
+                          &#34;additionalProperties&#34;: false,
+                          &#34;required&#34;: [
+                            &#34;generated&#34;,
+                            &#34;height&#34;,
+                            &#34;value&#34;,
+                            &#34;scriptPubKey&#34;
+                          ],
+                          &#34;description&#34;: &#34;(Only if undo information is available)&#34;
+                        }
+                      },
+                      &#34;additionalProperties&#34;: true,
+                      &#34;required&#34;: [
+                        &#34;prevout&#34;
+                      ]
+                    }
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;vin&#34;
+                ]
+              }
+            }
+          },
+          &#34;additionalProperties&#34;: true,
+          &#34;required&#34;: [
+            &#34;tx&#34;
+          ],
+          &#34;description&#34;: &#34;for verbosity = 3&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

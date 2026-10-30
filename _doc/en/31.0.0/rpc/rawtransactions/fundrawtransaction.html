@@ -3,118 +3,90 @@ name: fundrawtransaction
 btcversion: 31.0.0
 btcgroup: rawtransactions
 permalink: en/doc/31.0.0/rpc/rawtransactions/fundrawtransaction/
+openrpc: true
 ---
 
-fundrawtransaction "hexstring" ( options iswitness )
-
-If the transaction has no inputs, they will be automatically selected to meet its out value.
-It will add at most one change output to the outputs.
-No existing outputs will be modified unless "subtractFeeFromOutputs" is specified.
-Note that inputs which were signed may need to be resigned after completion since in/outputs have been added.
-The inputs added will not be signed, use signrawtransactionwithkey
-or signrawtransactionwithwallet for that.
-All existing inputs must either have their previous output transaction be in the wallet
-or be in the UTXO set. Solving data must be provided for non-wallet inputs.
-Note that all inputs selected must be of standard form and P2SH scripts must be
-in the wallet using importdescriptors (to calculate fees).
-You can see whether this is the case by checking the "solvable" field in the listunspent output.
-Note that if specifying an exact fee rate, the resulting transaction may have a higher fee rate
-if the transaction has unconfirmed inputs. This is because the wallet will attempt to make the
-entire package have the given fee rate, not the resulting transaction.
-
-Arguments:
-1. hexstring    (string, required) The hex string of the raw transaction
-2. options      (json object, optional) Options object that can be used to pass named arguments, listed below.
-3. iswitness    (boolean, optional, default=depends on heuristic tests) Whether the transaction hex is a serialized witness transaction.
-                If iswitness is not present, heuristic tests will be used in decoding.
-                If true, only witness deserialization will be tried.
-                If false, only non-witness deserialization will be tried.
-                This boolean should reflect whether the transaction has inputs
-                (e.g. fully valid, or on-chain transactions), if known by the caller.
-
-Named Arguments:
-add_inputs                 (boolean, optional, default=true) For a transaction with existing inputs, automatically include more if they are not enough.
-include_unsafe             (boolean, optional, default=false) Include inputs that are not safe to spend (unconfirmed transactions from outside keys and unconfirmed replacement transactions).
-                           Warning: the resulting transaction may become invalid if one of the unsafe inputs disappears.
-                           If that happens, you will need to fund the transaction with different inputs and republish it.
-minconf                    (numeric, optional, default=0) If add_inputs is specified, require inputs with at least this many confirmations.
-maxconf                    (numeric, optional) If add_inputs is specified, require inputs with at most this many confirmations.
-changeAddress              (string, optional, default=automatic) The bitcoin address to receive the change
-changePosition             (numeric, optional, default=random) The index of the change output
-change_type                (string, optional, default=set by -changetype) The output type to use. Only valid if changeAddress is not specified. Options are "legacy", "p2sh-segwit", "bech32", "bech32m".
-includeWatching            (boolean, optional, default=false) (DEPRECATED) No longer used
-lockUnspents               (boolean, optional, default=false) Lock selected unspent outputs
-fee_rate                   (numeric or string, optional, default=not set, fall back to wallet fee estimation) Specify a fee rate in sat/vB.
-feeRate                    (numeric or string, optional, default=not set, fall back to wallet fee estimation) Specify a fee rate in BTC/kvB.
-subtractFeeFromOutputs     (json array, optional, default=[]) The integers.
-                           The fee will be equally deducted from the amount of each specified output.
-                           Those recipients will receive less bitcoins than you enter in their corresponding amount field.
-                           If no outputs are specified here, the sender pays the fee.
-     [
-       vout_index,         (numeric) The zero-based output index, before a change output is added.
-       ...
-     ]
-input_weights              (json array, optional) Inputs and their corresponding weights
-     [
-       {                   (json object)
-         "txid": "hex",    (string, required) The transaction id
-         "vout": n,        (numeric, required) The output index
-         "weight": n,      (numeric, required) The maximum weight for this input, including the weight of the outpoint and sequence number. Note that serialized signature sizes are not guaranteed to be consistent, so the maximum DER signatures size of 73 bytes should be used when considering ECDSA signatures.Remember to convert serialized sizes to weight units when necessary.
-       },
-       ...
-     ]
-max_tx_weight              (numeric, optional, default=400000) The maximum acceptable transaction weight.
-                           Transaction building will fail if this can not be satisfied.
-conf_target                (numeric, optional, default=wallet -txconfirmtarget) Confirmation target in blocks
-estimate_mode              (string, optional, default="unset") The fee estimate mode, must be one of (case insensitive):
-                           unset, economical, conservative 
-                           unset means no mode set (economical mode is used if the transaction is replaceable;
-                           otherwise, conservative mode is used). 
-                           economical estimates use a shorter time horizon, making them more
-                           responsive to short-term drops in the prevailing fee market. This mode
-                           potentially returns a lower fee rate estimate.
-                           conservative estimates use a longer time horizon, making them
-                           less responsive to short-term drops in the prevailing fee market. This mode
-                           potentially returns a higher fee rate estimate.
-                           
-replaceable                (boolean, optional, default=wallet default) Marks this transaction as BIP125-replaceable.
-                           Allows this transaction to be replaced by a transaction with higher fees
-solving_data               (json object, optional) Keys and scripts needed for producing a final transaction with a dummy signature.
-                           Used for fee estimation during coin selection.
-     {
-       "pubkeys": [        (json array, optional, default=[]) Public keys involved in this transaction.
-         "pubkey",         (string) A public key
-         ...
-       ],
-       "scripts": [        (json array, optional, default=[]) Scripts involved in this transaction.
-         "script",         (string) A script
-         ...
-       ],
-       "descriptors": [    (json array, optional, default=[]) Descriptors that provide solving data for this transaction.
-         "descriptor",     (string) A descriptor
-         ...
-       ],
-     }
-
-Result:
-{                     (json object)
-  "hex" : "hex",      (string) The resulting raw transaction (hex-encoded string)
-  "fee" : n,          (numeric) Fee in BTC the resulting transaction pays
-  "changepos" : n     (numeric) The position of the added change output, or -1
-}
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">fundrawtransaction &#34;hexstring&#34; ( options ) ( iswitness )</pre>
+  <div class="rpc-description"><p>If the transaction has no inputs, they will be automatically selected to meet its out value. It will add at most one change output to the outputs. No existing outputs will be modified unless &#34;subtractFeeFromOutputs&#34; is specified. Note that inputs which were signed may need to be resigned after completion since in/outputs have been added. The inputs added will not be signed, use signrawtransactionwithkey or signrawtransactionwithwallet for that. All existing inputs must either have their previous output transaction be in the wallet or be in the UTXO set. Solving data must be provided for non-wallet inputs. Note that all inputs selected must be of standard form and P2SH scripts must be in the wallet using importdescriptors (to calculate fees). You can see whether this is the case by checking the &#34;solvable&#34; field in the listunspent output. Note that if specifying an exact fee rate, the resulting transaction may have a higher fee rate if the transaction has unconfirmed inputs. This is because the wallet will attempt to make the entire package have the given fee rate, not the resulting transaction.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexstring</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The hex string of the raw transaction</td></tr>
+  <tr><td>2</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">add_inputs</code> <span class="rpc-type">(boolean, optional, default=true)</span> <span class="rpc-desc">For a transaction with existing inputs, automatically include more if they are not enough.</span></li>
+    <li><code class="rpc-key">include_unsafe</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Include inputs that are not safe to spend (unconfirmed transactions from outside keys and unconfirmed replacement transactions).<br>Warning: the resulting transaction may become invalid if one of the unsafe inputs disappears.<br>If that happens, you will need to fund the transaction with different inputs and republish it.</span></li>
+    <li><code class="rpc-key">minconf</code> <span class="rpc-type">(number, optional, default=0)</span> <span class="rpc-desc">If add_inputs is specified, require inputs with at least this many confirmations.</span></li>
+    <li><code class="rpc-key">maxconf</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">If add_inputs is specified, require inputs with at most this many confirmations.</span></li>
+    <li><code class="rpc-key">changeAddress</code> <span class="rpc-type">(string, optional, default: automatic)</span> <span class="rpc-desc">The bitcoin address to receive the change</span></li>
+    <li><code class="rpc-key">changePosition</code> <span class="rpc-type">(number, optional, default: random)</span> <span class="rpc-desc">The index of the change output</span></li>
+    <li><code class="rpc-key">change_type</code> <span class="rpc-type">(string, optional, default: set by -changetype)</span> <span class="rpc-desc">The output type to use. Only valid if changeAddress is not specified. Options are &#34;legacy&#34;, &#34;p2sh-segwit&#34;, &#34;bech32&#34;, &#34;bech32m&#34;.</span></li>
+    <li><code class="rpc-key">includeWatching</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">(DEPRECATED) No longer used</span></li>
+    <li><code class="rpc-key">lockUnspents</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Lock selected unspent outputs</span></li>
+    <li><code class="rpc-key">fee_rate</code> <span class="rpc-type">(one of, optional, default: not set, fall back to wallet fee estimation)</span> <span class="rpc-desc">Specify a fee rate in sat/vB.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">feeRate</code> <span class="rpc-type">(one of, optional, default: not set, fall back to wallet fee estimation)</span> <span class="rpc-desc">Specify a fee rate in BTC/kvB.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">subtractFeeFromOutputs</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">The integers.<br>The fee will be equally deducted from the amount of each specified output.<br>Those recipients will receive less bitcoins than you enter in their corresponding amount field.<br>If no outputs are specified here, the sender pays the fee.</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(number)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">input_weights</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Inputs and their corresponding weights</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+            <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The output index</span></li>
+            <li><code class="rpc-key">weight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The maximum weight for this input, including the weight of the outpoint and sequence number. Note that serialized signature sizes are not guaranteed to be consistent, so the maximum DER signatures size of 73 bytes should be used when considering ECDSA signatures.Remember to convert serialized sizes to weight units when necessary.</span></li>
+          </ul></li>
+      </ul></li>
+    <li><code class="rpc-key">max_tx_weight</code> <span class="rpc-type">(number, optional, default=400000)</span> <span class="rpc-desc">The maximum acceptable transaction weight.<br>Transaction building will fail if this can not be satisfied.</span></li>
+    <li><code class="rpc-key">conf_target</code> <span class="rpc-type">(number, optional, default: wallet -txconfirmtarget)</span> <span class="rpc-desc">Confirmation target in blocks</span></li>
+    <li><code class="rpc-key">estimate_mode</code> <span class="rpc-type">(string, optional, default=&#34;unset&#34;)</span> <span class="rpc-desc">The fee estimate mode, must be one of (case insensitive):<br>unset, economical, conservative <br>unset means no mode set (economical mode is used if the transaction is replaceable;<br>otherwise, conservative mode is used). <br>economical estimates use a shorter time horizon, making them more<br>responsive to short-term drops in the prevailing fee market. This mode<br>potentially returns a lower fee rate estimate.<br>conservative estimates use a longer time horizon, making them<br>less responsive to short-term drops in the prevailing fee market. This mode<br>potentially returns a higher fee rate estimate.</span></li>
+    <li><code class="rpc-key">replaceable</code> <span class="rpc-type">(boolean, optional, default: wallet default)</span> <span class="rpc-desc">Marks this transaction as BIP125-replaceable.<br>Allows this transaction to be replaced by a transaction with higher fees</span></li>
+    <li><code class="rpc-key">solving_data</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Keys and scripts needed for producing a final transaction with a dummy signature.<br>Used for fee estimation during coin selection.</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">pubkeys</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Public keys involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">scripts</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Scripts involved in this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Descriptors that provide solving data for this transaction.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>iswitness</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: depends on heuristic tests</small></td><td>Whether the transaction hex is a serialized witness transaction.<br>If iswitness is not present, heuristic tests will be used in decoding.<br>If true, only witness deserialization will be tried.<br>If false, only non-witness deserialization will be tried.<br>This boolean should reflect whether the transaction has inputs<br>(e.g. fully valid, or on-chain transactions), if known by the caller.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The resulting raw transaction (hex-encoded string)</span></li>
+  <li><code class="rpc-key">fee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Fee in BTC the resulting transaction pays</span></li>
+  <li><code class="rpc-key">changepos</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The position of the added change output, or -1</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Create a transaction with no inputs
-> bitcoin-cli createrawtransaction "[]" "{\"myaddress\":0.01}"
+&gt; bitcoin-cli createrawtransaction &#34;[]&#34; &#34;{\&#34;myaddress\&#34;:0.01}&#34;
 
 Add sufficient unsigned inputs to meet the output value
-> bitcoin-cli fundrawtransaction "rawtransactionhex"
+&gt; bitcoin-cli fundrawtransaction &#34;rawtransactionhex&#34;
 
 Sign the transaction
-> bitcoin-cli signrawtransactionwithwallet "fundedtransactionhex"
+&gt; bitcoin-cli signrawtransactionwithwallet &#34;fundedtransactionhex&#34;
 
 Send the transaction
-> bitcoin-cli sendrawtransaction "signedtransactionhex"
-
-
+&gt; bitcoin-cli sendrawtransaction &#34;signedtransactionhex&#34;</pre>
+</div>

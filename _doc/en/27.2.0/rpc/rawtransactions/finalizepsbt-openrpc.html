@@ -1,0 +1,58 @@
+---
+name: finalizepsbt
+btcversion: 27.2.0
+btcgroup: rawtransactions
+permalink: en/doc/27.2.0/rpc/rawtransactions/finalizepsbt/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;finalizepsbt&#34;,
+  &#34;description&#34;: &#34;Finalize the inputs of a PSBT. If the transaction is fully signed, it will produce a\nnetwork serialized transaction which can be broadcast with sendrawtransaction. Otherwise a PSBT will be\ncreated which has the final_scriptSig and final_scriptWitness fields filled for inputs that are complete.\nImplements the Finalizer and Extractor roles.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;psbt&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;A base64 string of a PSBT&#34;
+    },
+    {
+      &#34;name&#34;: &#34;extract&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;If true and the transaction is complete,\n                             extract and return the complete transaction in normal network serialization instead of the PSBT.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;psbt&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The base64-encoded partially signed transaction if not extracted&#34;
+        },
+        &#34;hex&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The hex-encoded network transaction if extracted&#34;
+        },
+        &#34;complete&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;If the transaction has a complete set of signatures&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;complete&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

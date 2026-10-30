@@ -1,0 +1,22 @@
+---
+name: getblockfrompeer
+btcversion: 26.2.0
+btcgroup: blockchain
+permalink: en/doc/26.2.0/rpc/blockchain/getblockfrompeer/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getblockfrompeer &#34;blockhash&#34; peer_id</pre>
+  <div class="rpc-description"><p>Attempt to fetch block from a given peer.</p><p>We must have the header for this block, e.g. using submitheader. Subsequent calls for the same block may cause the response from the previous peer to be ignored. Peers generally ignore requests for a stale block that they never fully verified, or one that is more than a month old. When a peer does not respond with a block, we will disconnect. Note: The block could be re-pruned as soon as it is received.</p><p>Returns an empty JSON object if the request was successfully scheduled.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The block hash to try to fetch</td></tr>
+  <tr><td>2</td><td><code>peer_id</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>The peer to fetch it from (see getpeerinfo for peer IDs)</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+</ul>
+</div>

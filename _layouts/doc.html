@@ -37,7 +37,24 @@
     </div>
   </div>
   <article class="page">
-    <h1>{{ custom_title | xml_escape }}</h1>
+    <div class="rpc-titlebar">
+      <h1>{{ custom_title | xml_escape }}</h1>
+      {% assign active = '' %}
+      {% if page.rawpage %}
+        {% assign base = page.url | remove_first: 'raw/' %}{% assign active = 'raw' %}
+      {% elsif page.openrpcpage %}
+        {% assign base = page.url | remove_first: 'openrpc/' %}{% assign active = 'openrpc' %}
+      {% elsif page.openrpc and page.name != "index" and page.name != "rpcindex" %}
+        {% assign base = page.url %}{% assign active = 'structured' %}
+      {% endif %}
+      {% if active != '' %}
+        <span class="rpc-toggle">
+          {% if active == 'structured' %}<span class="rpc-toggle-active">Structured</span>{% else %}<a href="{{ base }}">Structured</a>{% endif %}
+          {% if active == 'raw' %}<span class="rpc-toggle-active">Plain text</span>{% else %}<a href="{{ base }}raw/">Plain text</a>{% endif %}
+          {% if active == 'openrpc' %}<span class="rpc-toggle-active">OpenRPC</span>{% else %}<a href="{{ base }}openrpc/">OpenRPC</a>{% endif %}
+        </span>
+      {% endif %}
+    </div>
     <div class="article-wrap">
       {% if page.btcversion != "index" %}
         {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
@@ -53,7 +70,9 @@
               <div class="toc-drawer js-hide-on-start">
                 <ul>
                   {% for article in group.items %}
+                    {% unless article.rawpage or article.openrpcpage %}
                     <li class="leaf-article"><a href="{{article.url}}">{{article.name}}</a></li>
+                    {% endunless %}
                   {% endfor %}
                 </ul>
               </div>
@@ -64,9 +83,13 @@
       {% endif %}
 
       {% if page.name != "index" and page.name != "rpcindex" %}
+        {% if page.openrpc %}
+{{ content }}
+        {% else %}
 <span class="doc">
 {% highlight text %}{{ content }}{% endhighlight %}
 </span>
+        {% endif %}
       {% else %}
         {% if page.btcversion != "index" %}
           Select a command group in the menu.
@@ -97,6 +120,8 @@
 </div><!-- /.footer-wrap -->
 
 {% include scripts.html %}
+<script src="/assets/js/rpc-fold.js"></script>
+<script src="/assets/js/rpc-copy.js"></script>
 
 </body>
 </html>

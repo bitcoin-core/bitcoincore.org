@@ -1,0 +1,57 @@
+---
+name: listunspent
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/listunspent/raw/
+rawpage: true
+---
+
+listunspent ( minconf ) ( maxconf ) ( addresses ) ( include_unsafe ) ( query_options )
+
+Returns array of unspent transaction outputs
+with between minconf and maxconf (inclusive) confirmations.
+Optionally filter to only include txouts paid to specified addresses.
+
+Arguments:
+1. minconf (number, optional, default=1)  The minimum confirmations to filter
+2. maxconf (number, optional, default=9999999)  The maximum confirmations to filter
+3. addresses (array, optional, default=[])  The bitcoin addresses to filter
+  each item (string)
+4. include_unsafe (boolean, optional, default=true)  Include outputs that are not safe to spend See description of "safe" attribute below.
+5. query_options (object, optional)
+  minimumAmount (one of, optional, default="0.00")  Minimum value of each UTXO in BTC
+    option 1: (number)
+    option 2: (string)
+  maximumAmount (one of, optional, default: unlimited)  Maximum value of each UTXO in BTC
+    option 1: (number)
+    option 2: (string)
+  maximumCount (number, optional, default: unlimited)  Maximum number of UTXOs
+  minimumSumAmount (one of, optional, default: unlimited)  Minimum sum value of all UTXOs in BTC
+    option 1: (number)
+    option 2: (string)
+  include_immature_coinbase (boolean, optional, default=false)  Include immature coinbase UTXOs
+
+Result: (array)
+  each item (object)
+    txid (string)  the transaction id
+    vout (number)  the vout value
+    address (string, optional)  the bitcoin address
+    label (string, optional)  The associated label, or "" for the default label
+    scriptPubKey (string)  the script key
+    amount (string, amount)  the transaction output amount in BTC
+    confirmations (number)  The number of confirmations
+    ancestorcount (number, optional)  The number of in-mempool ancestor transactions, including this one (if transaction is in the mempool)
+    ancestorsize (number, optional)  The virtual transaction size of in-mempool ancestors, including this one (if transaction is in the mempool)
+    ancestorfees (string, amount, optional)  The total fees of in-mempool ancestors (including this one) with fee deltas used for mining priority in sat (if transaction is in the mempool)
+    redeemScript (string, optional)  The redeemScript if scriptPubKey is P2SH
+    witnessScript (string, optional)  witnessScript if the scriptPubKey is P2WSH or P2SH-P2WSH
+    spendable (boolean)  Whether we have the private keys to spend this output
+    solvable (boolean)  Whether we know how to spend this output, ignoring the lack of keys
+    reused (boolean, optional)  (only present if avoid_reuse is set) Whether this output is reused/dirty (sent to an address that was previously spent from)
+    desc (string, optional)  (only when solvable) A descriptor for spending this output
+    parent_descs (array)  List of parent descriptors for the scriptPubKey of this coin.
+      each item (string)
+    safe (boolean)  Whether this output is considered safe to spend. Unconfirmed transactions from outside keys and unconfirmed replacement transactions are considered unsafe and are not eligible for spending by fundrawtransaction and sendtoaddress.
+
+
+

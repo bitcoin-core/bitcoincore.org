@@ -1,0 +1,65 @@
+---
+name: getpeerinfo
+btcversion: 26.2.0
+btcgroup: network
+permalink: en/doc/26.2.0/rpc/network/getpeerinfo/raw/
+rawpage: true
+---
+
+getpeerinfo
+
+Returns data about each connected network peer as a json array of objects.
+
+Arguments:
+none
+
+Result: (array)
+  each item (object)
+    id (number)  Peer index
+    addr (string)  (host:port) The IP address and port of the peer
+    addrbind (string, optional)  (ip:port) Bind address of the connection to the peer
+    addrlocal (string, optional)  (ip:port) Local address as reported by the peer
+    network (string)  Network (ipv4, ipv6, onion, i2p, cjdns, not_publicly_routable)
+    mapped_as (number, optional)  The AS in the BGP route to the peer used for diversifying peer selection (only available if the asmap config flag is set)
+    services (string)  The services offered
+    servicesnames (array)  the services offered, in human-readable form
+      each item (string)
+    relaytxes (boolean)  Whether we relay transactions to this peer
+    lastsend (number, unix-time)  The UNIX epoch time of the last send
+    lastrecv (number, unix-time)  The UNIX epoch time of the last receive
+    last_transaction (number, unix-time)  The UNIX epoch time of the last valid transaction received from this peer
+    last_block (number, unix-time)  The UNIX epoch time of the last block received from this peer
+    bytessent (number)  The total bytes sent
+    bytesrecv (number)  The total bytes received
+    conntime (number, unix-time)  The UNIX epoch time of the connection
+    timeoffset (number)  The time offset in seconds
+    pingtime (number, optional)  The last ping time in milliseconds (ms), if any
+    minping (number, optional)  The minimum observed ping time in milliseconds (ms), if any
+    pingwait (number, optional)  The duration in milliseconds (ms) of an outstanding ping (if non-zero)
+    version (number)  The peer version, such as 70001
+    subver (string)  The string version
+    inbound (boolean)  Inbound (true) or Outbound (false)
+    bip152_hb_to (boolean)  Whether we selected peer as (compact blocks) high-bandwidth peer
+    bip152_hb_from (boolean)  Whether peer selected us as (compact blocks) high-bandwidth peer
+    startingheight (number)  The starting height (block) of the peer
+    presynced_headers (number)  The current height of header pre-synchronization with this peer, or -1 if no low-work sync is in progress
+    synced_headers (number)  The last header we have in common with this peer
+    synced_blocks (number)  The last block we have in common with this peer
+    inflight (array)
+      each item (number)
+    addr_relay_enabled (boolean)  Whether we participate in address relay with this peer
+    addr_processed (number)  The total number of addresses processed, excluding those dropped due to rate limiting
+    addr_rate_limited (number)  The total number of addresses dropped due to rate limiting
+    permissions (array)  Any special permissions that have been granted to this peer
+      each item (string)
+    minfeefilter (number)  The minimum fee rate for transactions this peer accepts
+    bytessent_per_msg (object)
+      ... (number)
+    bytesrecv_per_msg (object)
+      ... (number)
+    connection_type (string)  Type of connection: outbound-full-relay (default automatic connections), block-relay-only (does not relay transactions or addresses), inbound (initiated by the peer), manual (added via addnode RPC or -addnode/-connect configuration options), addr-fetch (short-lived automatic connection for soliciting addresses), feeler (short-lived automatic connection for testing addresses). Please note this output is unlikely to be stable in upcoming releases as we iterate to best capture connection behaviors.
+    transport_protocol_type (string)  Type of transport protocol: detecting (peer could be v1 or v2), v1 (plaintext transport protocol), v2 (BIP324 encrypted transport protocol).
+    session_id (string)  The session ID for this connection, or "" if there is none ("v2" transport protocol only).
+
+
+

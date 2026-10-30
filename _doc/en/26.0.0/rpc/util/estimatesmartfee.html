@@ -3,43 +3,29 @@ name: estimatesmartfee
 btcversion: 26.0.0
 btcgroup: util
 permalink: en/doc/26.0.0/rpc/util/estimatesmartfee/
+openrpc: true
 ---
 
-estimatesmartfee conf_target ( "estimate_mode" )
-
-Estimates the approximate fee per kilobyte needed for a transaction to begin
-confirmation within conf_target blocks if possible and return the number of blocks
-for which the estimate is valid. Uses virtual transaction size as defined
-in BIP 141 (witness data is discounted).
-
-Arguments:
-1. conf_target      (numeric, required) Confirmation target in blocks (1 - 1008)
-2. estimate_mode    (string, optional, default="conservative") The fee estimate mode.
-                    Whether to return a more conservative estimate which also satisfies
-                    a longer history. A conservative estimate potentially returns a
-                    higher feerate and is more likely to be sufficient for the desired
-                    target, but is not as responsive to short term drops in the
-                    prevailing fee market. Must be one of (case insensitive):
-                    "unset"
-                    "economical"
-                    "conservative"
-
-Result:
-{                   (json object)
-  "feerate" : n,    (numeric, optional) estimate fee rate in BTC/kvB (only present if no errors were encountered)
-  "errors" : [      (json array, optional) Errors encountered during processing (if there are any)
-    "str",          (string) error
-    ...
-  ],
-  "blocks" : n      (numeric) block number where estimate was found
-                    The request target will be clamped between 2 and the highest target
-                    fee estimation is able to return based on how long it has been running.
-                    An error is returned if not enough transactions and blocks
-                    have been observed to make an estimate for any number of blocks.
-}
-
-Examples:
-> bitcoin-cli estimatesmartfee 6
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "estimatesmartfee", "params": [6]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">util</span></p>
+  <pre class="rpc-synopsis">estimatesmartfee conf_target ( &#34;estimate_mode&#34; )</pre>
+  <div class="rpc-description"><p>Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks if possible and return the number of blocks for which the estimate is valid. Uses virtual transaction size as defined in BIP 141 (witness data is discounted).</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>conf_target</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>Confirmation target in blocks (1 - 1008)</td></tr>
+  <tr><td>2</td><td><code>estimate_mode</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;conservative&#34;</small></td><td>The fee estimate mode.<br>Whether to return a more conservative estimate which also satisfies<br>a longer history. A conservative estimate potentially returns a<br>higher feerate and is more likely to be sufficient for the desired<br>target, but is not as responsive to short term drops in the<br>prevailing fee market. Must be one of (case insensitive):<br>&#34;unset&#34;<br>&#34;economical&#34;<br>&#34;conservative&#34;</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">feerate</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">estimate fee rate in BTC/kvB (only present if no errors were encountered)</span></li>
+  <li><code class="rpc-key">errors</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Errors encountered during processing (if there are any)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+  <li><code class="rpc-key">blocks</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">block number where estimate was found<br>The request target will be clamped between 2 and the highest target<br>fee estimation is able to return based on how long it has been running.<br>An error is returned if not enough transactions and blocks<br>have been observed to make an estimate for any number of blocks.</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli estimatesmartfee 6
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;estimatesmartfee&#34;, &#34;params&#34;: [6]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

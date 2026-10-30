@@ -1,0 +1,78 @@
+---
+name: getmempoolcluster
+btcversion: 31.0.0
+btcgroup: blockchain
+permalink: en/doc/31.0.0/rpc/blockchain/getmempoolcluster/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getmempoolcluster&#34;,
+  &#34;description&#34;: &#34;Returns mempool data for given cluster&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;txid&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The txid of a transaction in the cluster&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;clusterweight&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;total sigops-adjusted weight (as defined in BIP 141 and modified by &#39;-bytespersigop&#39;)&#34;
+        },
+        &#34;txcount&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;number of transactions&#34;
+        },
+        &#34;chunks&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;chunkfee&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;fees of the transactions in this chunk&#34;
+              },
+              &#34;chunkweight&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;sigops-adjusted weight of all transactions in this chunk&#34;
+              },
+              &#34;txs&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;description&#34;: &#34;transactions in this chunk in mining order&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;chunkfee&#34;,
+              &#34;chunkweight&#34;,
+              &#34;txs&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;chunks in this cluster (in mining order)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;clusterweight&#34;,
+        &#34;txcount&#34;,
+        &#34;chunks&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

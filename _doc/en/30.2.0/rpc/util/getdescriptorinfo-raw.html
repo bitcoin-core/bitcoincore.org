@@ -1,0 +1,26 @@
+---
+name: getdescriptorinfo
+btcversion: 30.2.0
+btcgroup: util
+permalink: en/doc/30.2.0/rpc/util/getdescriptorinfo/raw/
+rawpage: true
+---
+
+getdescriptorinfo "descriptor"
+
+Analyses a descriptor.
+
+Arguments:
+1. descriptor (string)  The descriptor.
+
+Result: (object)
+  descriptor (string)  The descriptor in canonical form, without private keys. For a multipath descriptor, only the first will be returned.
+  multipath_expansion (array, optional)  All descriptors produced by expanding multipath derivation elements. Only if the provided descriptor specifies multipath derivation elements.
+    each item (string)
+  checksum (string)  The checksum for the input descriptor
+  isrange (boolean)  Whether the descriptor is ranged
+  issolvable (boolean)  Whether the descriptor is solvable
+  hasprivatekeys (boolean)  Whether the input descriptor contained at least one private key
+
+
+

@@ -1,0 +1,31 @@
+---
+name: abandontransaction
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/abandontransaction/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;abandontransaction&#34;,
+  &#34;description&#34;: &#34;Mark in-wallet transaction &lt;txid&gt; as abandoned\nThis will mark this transaction and all its in-wallet descendants as abandoned which will allow\nfor their inputs to be respent.  It can be used to replace \&#34;stuck\&#34; or evicted transactions.\nIt only works on transactions which are not included in a block and are not currently in the mempool.\nIt has no effect on transactions which are already abandoned.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;txid&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The transaction id&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

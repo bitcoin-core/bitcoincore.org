@@ -1,0 +1,20 @@
+---
+name: getnetworkhashps
+btcversion: 26.2.0
+btcgroup: mining
+permalink: en/doc/26.2.0/rpc/mining/getnetworkhashps/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">mining</span></p>
+  <pre class="rpc-synopsis">getnetworkhashps ( nblocks ) ( height )</pre>
+  <div class="rpc-description"><p>Returns the estimated network hashes per second based on the last n blocks. Pass in [blocks] to override # of blocks, -1 specifies since last difficulty change. Pass in [height] to estimate the network speed at the time when a certain block was found.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>nblocks</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 120</small></td><td>The number of previous blocks to calculate estimate from, or -1 for blocks since last difficulty change.</td></tr>
+  <tr><td>2</td><td><code>height</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: -1</small></td><td>To estimate at the time of the given height.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(number)</span></p>
+</div>

@@ -1,0 +1,169 @@
+---
+name: getmempooldescendants
+btcversion: 27.0.0
+btcgroup: blockchain
+permalink: en/doc/27.0.0/rpc/blockchain/getmempooldescendants/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getmempooldescendants&#34;,
+  &#34;description&#34;: &#34;If txid is in the mempool, returns all in-mempool descendants.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;txid&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The transaction id (must be in mempool)&#34;
+    },
+    {
+      &#34;name&#34;: &#34;verbose&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;True for a json object, false for array of transaction ids&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+          },
+          &#34;description&#34;: &#34;for verbose = false&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;additionalProperties&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;vsize&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted.&#34;
+              },
+              &#34;weight&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;transaction weight as defined in BIP 141.&#34;
+              },
+              &#34;time&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+                &#34;description&#34;: &#34;local time transaction entered pool in seconds since 1 Jan 1970 GMT&#34;
+              },
+              &#34;height&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;block height when transaction entered pool&#34;
+              },
+              &#34;descendantcount&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;number of in-mempool descendant transactions (including this one)&#34;
+              },
+              &#34;descendantsize&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;virtual transaction size of in-mempool descendants (including this one)&#34;
+              },
+              &#34;ancestorcount&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;number of in-mempool ancestor transactions (including this one)&#34;
+              },
+              &#34;ancestorsize&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;virtual transaction size of in-mempool ancestors (including this one)&#34;
+              },
+              &#34;wtxid&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;hash of serialized transaction, including witness data&#34;
+              },
+              &#34;fees&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;base&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;transaction fee, denominated in BTC&#34;
+                  },
+                  &#34;modified&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;transaction fee with fee deltas used for mining priority, denominated in BTC&#34;
+                  },
+                  &#34;ancestor&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;transaction fees of in-mempool ancestors (including this one) with fee deltas used for mining priority, denominated in BTC&#34;
+                  },
+                  &#34;descendant&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;transaction fees of in-mempool descendants (including this one) with fee deltas used for mining priority, denominated in BTC&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;base&#34;,
+                  &#34;modified&#34;,
+                  &#34;ancestor&#34;,
+                  &#34;descendant&#34;
+                ]
+              },
+              &#34;depends&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;description&#34;: &#34;unconfirmed transactions used as inputs for this transaction&#34;
+              },
+              &#34;spentby&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;description&#34;: &#34;unconfirmed transactions spending outputs from this transaction&#34;
+              },
+              &#34;bip125-replaceable&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability.\n&#34;
+              },
+              &#34;unbroadcast&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;Whether this transaction is currently unbroadcast (initial broadcast not yet acknowledged by any peers)&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;vsize&#34;,
+              &#34;weight&#34;,
+              &#34;time&#34;,
+              &#34;height&#34;,
+              &#34;descendantcount&#34;,
+              &#34;descendantsize&#34;,
+              &#34;ancestorcount&#34;,
+              &#34;ancestorsize&#34;,
+              &#34;wtxid&#34;,
+              &#34;fees&#34;,
+              &#34;depends&#34;,
+              &#34;spentby&#34;,
+              &#34;bip125-replaceable&#34;,
+              &#34;unbroadcast&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;for verbose = true&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

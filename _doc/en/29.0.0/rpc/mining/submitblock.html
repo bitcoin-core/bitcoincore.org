@@ -3,25 +3,25 @@ name: submitblock
 btcversion: 29.0.0
 btcgroup: mining
 permalink: en/doc/29.0.0/rpc/mining/submitblock/
+openrpc: true
 ---
 
-submitblock "hexdata" ( "dummy" )
-
-Attempts to submit new block to network.
-See https://en.bitcoin.it/wiki/BIP_0022 for full specification.
-
-Arguments:
-1. hexdata    (string, required) the hex-encoded block data to submit
-2. dummy      (string, optional, default=ignored) dummy value, for compatibility with BIP22. This value is ignored.
-
-Result (If the block was accepted):
-null    (json null)
-
-Result (Otherwise):
-"str"    (string) According to BIP22
-
-Examples:
-> bitcoin-cli submitblock "mydata"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "submitblock", "params": ["mydata"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">mining</span></p>
+  <pre class="rpc-synopsis">submitblock &#34;hexdata&#34; ( &#34;dummy&#34; )</pre>
+  <div class="rpc-description"><p>Attempts to submit new block to network. See <a href="https://en.bitcoin.it/wiki/BIP_0022">https://en.bitcoin.it/wiki/BIP_0022</a> for full specification.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexdata</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>the hex-encoded block data to submit</td></tr>
+  <tr><td>2</td><td><code>dummy</code><br><small class="rpc-note">positional placeholder</small></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: ignored</small></td><td>dummy value, for compatibility with BIP22. This value is ignored.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(null)</span> <span class="rpc-desc">If the block was accepted</span></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span> <span class="rpc-desc">Otherwise</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli submitblock &#34;mydata&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;submitblock&#34;, &#34;params&#34;: [&#34;mydata&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

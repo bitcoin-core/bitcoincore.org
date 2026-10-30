@@ -1,0 +1,59 @@
+---
+name: upgradewallet
+btcversion: 29.0.0
+btcgroup: wallet
+permalink: en/doc/29.0.0/rpc/wallet/upgradewallet/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;upgradewallet&#34;,
+  &#34;description&#34;: &#34;Upgrade the wallet. Upgrades to the latest version if no version number is specified.\nNew keys may be generated and a new wallet backup will need to be made.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;version&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 169900
+      },
+      &#34;description&#34;: &#34;The version number to upgrade to. Default is the latest wallet version.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;wallet_name&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Name of wallet this operation was performed on&#34;
+        },
+        &#34;previous_version&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Version of wallet before this operation&#34;
+        },
+        &#34;current_version&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Version of wallet after this operation&#34;
+        },
+        &#34;result&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Description of result, if no error&#34;
+        },
+        &#34;error&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Error message (if there is one)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;wallet_name&#34;,
+        &#34;previous_version&#34;,
+        &#34;current_version&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

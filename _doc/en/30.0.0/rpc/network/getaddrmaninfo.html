@@ -3,24 +3,26 @@ name: getaddrmaninfo
 btcversion: 30.0.0
 btcgroup: network
 permalink: en/doc/30.0.0/rpc/network/getaddrmaninfo/
+openrpc: true
 ---
 
-getaddrmaninfo
-
-Provides information about the node's address manager by returning the number of addresses in the `new` and `tried` tables and their sum for all networks.
-
-Result:
-{                   (json object) json object with network type as keys
-  "network" : {     (json object) the network (ipv4, ipv6, onion, i2p, cjdns, all_networks)
-    "new" : n,      (numeric) number of addresses in the new table, which represent potential peers the node has discovered but hasn't yet successfully connected to.
-    "tried" : n,    (numeric) number of addresses in the tried table, which represent peers the node has successfully connected to in the past.
-    "total" : n     (numeric) total number of addresses in both new/tried tables
-  },
-  ...
-}
-
-Examples:
-> bitcoin-cli getaddrmaninfo 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getaddrmaninfo", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">getaddrmaninfo</pre>
+  <div class="rpc-description"><p>Provides information about the node&#39;s address manager by returning the number of addresses in the `new` and `tried` tables and their sum for all networks.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">new</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of addresses in the new table, which represent potential peers the node has discovered but hasn&#39;t yet successfully connected to.</span></li>
+      <li><code class="rpc-key">tried</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of addresses in the tried table, which represent peers the node has successfully connected to in the past.</span></li>
+      <li><code class="rpc-key">total</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">total number of addresses in both new/tried tables</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getaddrmaninfo 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getaddrmaninfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>
