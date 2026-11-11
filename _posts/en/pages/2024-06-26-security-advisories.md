@@ -108,8 +108,11 @@ each maintained major version as soon as possible, along with a security advisor
 the standard severity-dependent embargo periods. Otherwise, disclosure follows the
 severity-dependent timelines detailed below.
 
-**Low** severity vulnerabilities will be disclosed 2 weeks after the release of a major version
-containing the fix. **Medium** and **High** severity vulnerabilities will be disclosed 2 weeks after
+**Low** severity vulnerabilities will be disclosed two weeks after the release of a major version
+containing the fix. **Medium** severity vulnerabilities will be disclosed two weeks after the
+second major version containing the fix is released (approximately half a year after a major
+version containing the fix was first released).
+**High** severity vulnerabilities will be disclosed two weeks after
 the last affected release goes [End of Life](/en/lifecycle/) (approximately a year after a major
 version containing the fix was first released).
 
