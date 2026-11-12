@@ -1,0 +1,31 @@
+---
+name: createNewBlock
+btcversion: 31.0.0
+btcgroup: mining
+btcdoctype: IPC
+btchtml: true
+permalink: en/doc/31.0.0/ipc/mining/createNewBlock/
+---
+
+<p class="ipc-context">Method on interface <a href="../"><code>Mining</code></a>.</p>
+<div class="highlight"><pre><code><span class="nv">createNewBlock</span> <span class="nd">@4</span> <span class="p">(</span>
+  <span class="nv">context</span> <span class="p">:</span><span class="nc">Context</span><span class="p">,</span>
+  <span class="nv">options</span> <span class="p">:</span><a class="nc" href="../../structs/#BlockCreateOptions">BlockCreateOptions</a><span class="p">,</span>
+  <span class="nv">cooldown</span> <span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+  <span class="nv">result</span> <span class="p">:</span><a class="nc" href="../../blocktemplate/">BlockTemplate</a>
+<span class="p">)</span><span class="p">;</span></code></pre></div>
+<div class="ipc-doc">
+<p>Construct a new block template.</p>
+<dl class="ipc-doc-tags">
+  <dt><strong>param [in]</strong> <code>options</code></dt>
+  <dd>options for creating the block</dd>
+  <dt><strong>param [in]</strong> <code>cooldown</code></dt>
+  <dd>wait for tip to be connected and IBD to complete. If the best header is ahead of the tip, wait for the tip to catch up. It&#39;s recommended to disable this on regtest and signets with only one miner, as these could stall.</dd>
+  <dt><strong>returns</strong> <code><a href="../../blocktemplate/">BlockTemplate</a></code></dt>
+  <dd>a block template.</dd>
+  <dt><strong>returns</strong> <code>std::nullptr</code></dt>
+  <dd>if the node is shut down or interrupt() is called.</dd>
+</dl>
+</div>
+

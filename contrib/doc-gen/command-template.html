@@ -2,7 +2,12 @@
 name: {{.Name}}
 btcversion: {{.Version}}
 btcgroup: {{.Group}}
-permalink: {{.Permalink}}
+{{if .DocType}}btcdoctype: {{.DocType}}
+{{end}}{{if .HTML}}btchtml: true
+{{end}}{{if .IfaceIndex}}btcifaceindex: true
+{{end}}{{if .Structs}}btcstructs:
+{{range .Structs}}  - {{.}}
+{{end}}{{end}}permalink: {{.Permalink}}
 ---
 
 {{.Description}}

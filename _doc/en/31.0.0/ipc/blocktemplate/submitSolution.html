@@ -1,0 +1,35 @@
+---
+name: submitSolution
+btcversion: 31.0.0
+btcgroup: blocktemplate
+btcdoctype: IPC
+btchtml: true
+permalink: en/doc/31.0.0/ipc/blocktemplate/submitSolution/
+---
+
+<p class="ipc-context">Method on interface <a href="../"><code>BlockTemplate</code></a>.</p>
+<div class="highlight"><pre><code><span class="nv">submitSolution</span> <span class="nd">@7</span> <span class="p">(</span>
+  <span class="nv">context</span> <span class="p">:</span><span class="nc">Context</span><span class="p">,</span>
+  <span class="nv">version</span> <span class="p">:</span><span class="kt">UInt32</span><span class="p">,</span>
+  <span class="nv">timestamp</span> <span class="p">:</span><span class="kt">UInt32</span><span class="p">,</span>
+  <span class="nv">nonce</span> <span class="p">:</span><span class="kt">UInt32</span><span class="p">,</span>
+  <span class="nv">coinbase</span> <span class="p">:</span><span class="kt">Data</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+  <span class="nv">result</span> <span class="p">:</span><span class="kt">Bool</span>
+<span class="p">)</span><span class="p">;</span></code></pre></div>
+<div class="ipc-doc">
+<p>Construct and broadcast the block. Modifies the template in place, updating the fields listed below as well as the merkle root.</p>
+<dl class="ipc-doc-tags">
+  <dt><strong>param [in]</strong> <code>version</code></dt>
+  <dd>version block header field</dd>
+  <dt><strong>param [in]</strong> <code>timestamp</code></dt>
+  <dd>time block header field (unix timestamp)</dd>
+  <dt><strong>param [in]</strong> <code>nonce</code></dt>
+  <dd>nonce block header field</dd>
+  <dt><strong>param [in]</strong> <code>coinbase</code></dt>
+  <dd>complete coinbase transaction (including witness)  @note unlike the submitblock RPC, this method does NOT add the coinbase witness automatically.</dd>
+  <dt><strong>returns</strong></dt>
+  <dd>if the block was processed, does not necessarily indicate validity.  @note Returns true if the block is already known, which can happen if the solved block is constructed and broadcast by multiple nodes (e.g. both the miner who constructed the template and the pool).</dd>
+</dl>
+</div>
+

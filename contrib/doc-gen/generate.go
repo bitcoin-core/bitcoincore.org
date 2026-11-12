@@ -1,152 +1,71 @@
-// This is a golang script, needed for generating the RPC bitcoin documentation
+// Generates Bitcoin Core's RPC and IPC documentation.
 //
 // What is necessary to run this:
-// (1) install golang
-// (2) install bitcoin core, set it up to use regtest
-// (3) run bitcoind
-// (4) run this script with `go run generate.go` while being in contrib/doc-gen, and with bitcoin-cli in PATH
-// (5) add the generated files to git
+//   (1) install golang
+//   (2) install Cap'n Proto (`capnp` in PATH)
+//   (3) install bitcoin core, set it up to use regtest
+//   (4) run bitcoind
+//   (5) checkout Bitcoin Core source matching the running node
+//   (6) from contrib/doc-gen, with bitcoin-cli in PATH:
+//         go run . -bitcoin /path/to/bitcoin
+//   (7) add the generated files to git
+//
+// IPC docs are only generated for Bitcoin Core v31.0 and newer (the
+// libmultiprocess capnp schemas were not previously stable).
 package main
 
 import (
-	"encoding/json"
-	"fmt"
+	"flag"
 	"io"
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
-	"text/template"
 )
-
-const BITCOIN_COMMAND = "bitcoin-cli"
-const BITCOIN_CHAINOPTION = "-regtest"
-
-type Command struct {
-	Name        string
-	Description string
-}
-
-type Group struct {
-	Index    int
-	Name     string
-	Commands []Command
-}
 
 type CommandData struct {
 	Version     string
 	Name        string
 	Description string
 	Group       string
+	DocType     string
+	HTML        bool
+	IfaceIndex  bool     // per-IPC-interface landing page (sidebar hides it)
+	Structs     []string // populated for the IPC structs index page
 	Permalink   string
 }
 
-func getVersion() string {
-	allInfo := run("getnetworkinfo")
-	var f interface{}
-	err := json.Unmarshal([]byte(allInfo), &f)
-	if err != nil {
-		panic("Cannot read network info as JSON")
-	}
-	m := f.(map[string]interface{})
+func main() {
+	bitcoin := flag.String("bitcoin", "", "Path to a Bitcoin Core source checkout (required for IPC docs)")
+	flag.Parse()
 
-	numv := int(m["version"].(float64))
-	v := fmt.Sprintf("%d.%d.%d", (numv/10000)%100, (numv/100)%100, numv%100)
-	return v
+	version := generateRPC()
+
+	if _, err := exec.LookPath("capnp"); err != nil {
+		log.Fatalf("`capnp` not found in PATH: install Cap'n Proto to generate IPC docs")
+	}
+	if *bitcoin == "" {
+		log.Fatalf("-bitcoin <path> is required (points at a Bitcoin Core source checkout matching the running node)")
+	}
+	if !ipcSupported(version) {
+		log.Printf("Skipping IPC docs: not supported before v31.0 (running %s)", version)
+		return
+	}
+	generateIPC(*bitcoin, version)
 }
 
-func main() {
-	version := getVersion()
-
-	first := run("help")
-	split := strings.Split(first, "\n")
-
-	groups := make([]Group, 0)
-	commands := make([]Command, 0)
-	lastGroupName := ""
-
-	for _, line := range split {
-		if len(line) > 0 {
-			if strings.HasPrefix(line, "== ") {
-				if len(commands) != 0 {
-					g := Group{
-						Name:     lastGroupName,
-						Commands: commands,
-						Index:    len(groups),
-					}
-					groups = append(groups, g)
-					commands = make([]Command, 0)
-				}
-				lastGroupName = strings.ToLower(line[3 : len(line)-3])
-			} else {
-				name := strings.Split(line, " ")[0]
-				desc := run("help", name)
-				comm := Command{
-					Name:        name,
-					Description: desc,
-				}
-				commands = append(commands, comm)
-			}
-		}
+// ipcSupported reports whether the given X.Y.Z version string is >= 31.0.
+func ipcSupported(version string) bool {
+	parts := strings.SplitN(version, ".", 3)
+	if len(parts) < 1 {
+		return false
 	}
-
-	g := Group{
-		Name:     lastGroupName,
-		Commands: commands,
-		Index:    len(groups),
+	major, err := strconv.Atoi(parts[0])
+	if err != nil {
+		return false
 	}
-	groups = append(groups, g)
-
-	tmpl := template.Must(template.ParseFiles("command-template.html"))
-
-	for _, group := range groups {
-		groupname := group.Name
-		dirname := fmt.Sprintf("../../_doc/en/%s/rpc/%s/", version, groupname)
-		err := os.MkdirAll(dirname, 0777)
-		if err != nil {
-			log.Fatalf("Cannot make directory %s: %s", dirname, err.Error())
-		}
-		for _, command := range group.Commands {
-			name := command.Name
-			address := fmt.Sprintf("%s%s.html", dirname, name)
-			permalink := fmt.Sprintf("en/doc/%s/rpc/%s/%s/", version, groupname, name)
-			err = tmpl.Execute(open(address), CommandData{
-				Version:     version,
-				Name:        name,
-				Description: command.Description,
-				Group:       groupname,
-				Permalink:   permalink,
-			})
-			if err != nil {
-				log.Fatalf("Cannot make command file %s: %s", name, err.Error())
-			}
-		}
-		address := fmt.Sprintf("../../_doc/en/%s/rpc/index.html", version)
-		permalink := fmt.Sprintf("en/doc/%s/rpc/", version)
-		err = tmpl.Execute(open(address), CommandData{
-			Version:     version,
-			Name:        "rpcindex",
-			Description: "",
-			Group:       "index",
-			Permalink:   permalink,
-		})
-		if err != nil {
-			log.Fatalf("Cannot make index file: %s", err.Error())
-		}
-
-		address = fmt.Sprintf("../../_doc/en/%s/index.html", version)
-		permalink = fmt.Sprintf("en/doc/%s/", version)
-		err = tmpl.Execute(open(address), CommandData{
-			Version:     version,
-			Name:        "index",
-			Description: "",
-			Group:       "index",
-			Permalink:   permalink,
-		})
-		if err != nil {
-			log.Fatalf("Cannot make index file: %s", err.Error())
-		}
-	}
+	return major >= 31
 }
 
 func open(path string) io.Writer {
@@ -156,14 +75,4 @@ func open(path string) io.Writer {
 		log.Fatalf("Cannot open file %s: %s", path, err.Error())
 	}
 	return f
-}
-
-func run(args ...string) string {
-	args = append([]string{BITCOIN_CHAINOPTION}, args...)
-	out, err := exec.Command(BITCOIN_COMMAND, args...).CombinedOutput()
-	if err != nil {
-		log.Fatalf("Cannot run bitcoin-cli: %s, is bitcoind (regtest) running?", err.Error())
-	}
-
-	return string(out)
 }
