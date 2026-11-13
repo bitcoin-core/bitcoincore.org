@@ -29,11 +29,7 @@
                           {% endfor %}
                           {% if link[0] == 'dev' %}
                             <li>
-                              {% for article in site.doc %}
-                                {% if article.btcversion == "index" %}
-                                  <a href="{{article.url}}">RPC Docs</a>
-                                {% endif %}
-                              {% endfor %}
+                              <a href="/en/doc/latest/">RPC Docs</a>
                               {% assign groups = site.doc | group_by:"btcversion" | sort_by: "btcversion" | reverse %}
                               <ul>
                                 {% for group in groups %}
