@@ -307,7 +307,7 @@ else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
 else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
 var but = document.getElementById('downloadbutton');
 var linkwinexe = document.getElementById('downloadwinexe');
-var linkwinzip = document.getElementById('downloadwinzip');
+var linkwinzip = document.getElementById('win64zip');
 var hrefwin64exe = document.getElementById('win64exe').href;
 var hrefwin64zip = document.getElementById('win64zip').href;
 var hrefmaczip = document.getElementById('macarmzip').href;
@@ -322,7 +322,15 @@ break;
 case 'linux64':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
 	but.href = hreflin64;
-	linklin.href = hreflin64;
+	// User agent strings do not distinguish x86 from arm on Linux. Client
+	// hints do, on browsers that support them; elsewhere stay with x86.
+	if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+		navigator.userAgentData.getHighEntropyValues(['architecture', 'bitness']).then(function (hints) {
+			if (hints.architecture === 'arm' && hints.bitness === '64') {
+				but.href = document.getElementById('lin64arm').href;
+			}
+		}).catch(function () {});
+	}
 break;
 case 'mac':
 	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
