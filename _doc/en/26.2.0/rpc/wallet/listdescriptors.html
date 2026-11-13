@@ -1,0 +1,39 @@
+---
+name: listdescriptors
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/listdescriptors/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listdescriptors ( private )</pre>
+  <div class="rpc-description"><p>List descriptors imported into a descriptor-enabled wallet.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>private</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Show private descriptors.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">wallet_name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Name of wallet this operation was performed on</span></li>
+  <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Array of descriptor objects (sorted by descriptor string representation)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Descriptor string representation</span></li>
+          <li><code class="rpc-key">timestamp</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The creation time of the descriptor</span></li>
+          <li><code class="rpc-key">active</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this descriptor is currently used to generate new addresses</span></li>
+          <li><code class="rpc-key">internal</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">True if this descriptor is used to generate change addresses. False if this descriptor is used to generate receiving addresses; defined only for active descriptors</span></li>
+          <li><code class="rpc-key">range</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Defined only for ranged descriptors</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+              <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">next</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Same as next_index field. Kept for compatibility reason.</span></li>
+          <li><code class="rpc-key">next_index</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The next index to generate addresses from; defined only for ranged descriptors</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

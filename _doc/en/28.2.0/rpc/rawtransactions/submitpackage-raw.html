@@ -1,0 +1,43 @@
+---
+name: submitpackage
+btcversion: 28.2.0
+btcgroup: rawtransactions
+permalink: en/doc/28.2.0/rpc/rawtransactions/submitpackage/raw/
+rawpage: true
+---
+
+submitpackage package ( maxfeerate ) ( maxburnamount )
+
+Submit a package of raw transactions (serialized, hex-encoded) to local node.
+The package will be validated according to consensus and mempool policy rules. If any transaction passes, it will be accepted to mempool.
+This RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies.
+Warning: successful submission does not mean the transactions will propagate throughout the network.
+
+Arguments:
+1. package (array)  An array of raw transactions. The package must solely consist of a child and its parents. None of the parents may depend on each other. The package must be topologically sorted, with the child being the last element in the array.
+  each item (string)
+2. maxfeerate (one of, optional, default="0.10")  Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB. Fee rates larger than 1BTC/kvB are rejected. Set to 0 to accept any fee rate.
+  option 1: (number)
+  option 2: (string)
+3. maxburnamount (one of, optional, default="0.00")  Reject transactions with provably unspendable outputs (e.g. 'datacarrier' outputs that use the OP_RETURN opcode) greater than the specified value, expressed in BTC. If burning funds through unspendable outputs is desired, increase this value. This check is based on heuristics and does not guarantee spendability of outputs.
+  option 1: (number)
+  option 2: (string)
+
+Result: (object)
+  package_msg (string)  The transaction package result message. "success" indicates all transactions were accepted into or are already in the mempool.
+  tx-results (object)  transaction results keyed by wtxid
+    ... (object)
+      txid (string)  The transaction hash in hex
+      other-wtxid (string, optional)  The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.
+      vsize (number, optional)  Sigops-adjusted virtual transaction size.
+      fees (object, optional)  Transaction fees
+        base (string, amount)  transaction fee in BTC
+        effective-feerate (string, amount, optional)  if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.
+        effective-includes (array, optional)  if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.
+          each item (string)
+      error (string, optional)  The transaction error string, if it was rejected by the mempool
+  replaced-transactions (array, optional)  List of txids of replaced transactions
+    each item (string)
+
+
+

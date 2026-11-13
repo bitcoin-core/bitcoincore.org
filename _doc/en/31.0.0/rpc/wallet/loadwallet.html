@@ -3,39 +3,38 @@ name: loadwallet
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/loadwallet/
+openrpc: true
 ---
 
-loadwallet "filename" ( load_on_startup )
-
-Loads a wallet from a wallet file or directory.
-Note that all wallet command-line options used when starting bitcoind will be
-applied to the new wallet.
-
-Arguments:
-1. filename           (string, required) The path to the directory of the wallet to be loaded, either absolute or relative to the "wallets" directory. The "wallets" directory is set by the -walletdir option and defaults to the "wallets" folder within the data directory.
-2. load_on_startup    (boolean, optional) Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.
-
-Result:
-{                    (json object)
-  "name" : "str",    (string) The wallet name if loaded successfully.
-  "warnings" : [     (json array, optional) Warning messages, if any, related to loading the wallet.
-    "str",           (string)
-    ...
-  ]
-}
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">loadwallet &#34;filename&#34; ( load_on_startup )</pre>
+  <div class="rpc-description"><p>Loads a wallet from a wallet file or directory. Note that all wallet command-line options used when starting bitcoind will be applied to the new wallet.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>filename</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The path to the directory of the wallet to be loaded, either absolute or relative to the &#34;wallets&#34; directory. The &#34;wallets&#34; directory is set by the -walletdir option and defaults to the &#34;wallets&#34; folder within the data directory.</td></tr>
+  <tr><td>2</td><td><code>load_on_startup</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no</td><td>Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The wallet name if loaded successfully.</span></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Warning messages, if any, related to loading the wallet.</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Load wallet from the wallet dir:
-> bitcoin-cli loadwallet "walletname"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "loadwallet", "params": ["walletname"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+&gt; bitcoin-cli loadwallet &#34;walletname&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;loadwallet&#34;, &#34;params&#34;: [&#34;walletname&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
 
 Load wallet using absolute path (Unix):
-> bitcoin-cli loadwallet "/path/to/walletname/"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "loadwallet", "params": ["/path/to/walletname/"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+&gt; bitcoin-cli loadwallet &#34;/path/to/walletname/&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;loadwallet&#34;, &#34;params&#34;: [&#34;/path/to/walletname/&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
 
 Load wallet using absolute path (Windows):
-> bitcoin-cli loadwallet "DriveLetter:\path\to\walletname\"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "loadwallet", "params": ["DriveLetter:\path\to\walletname\"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; bitcoin-cli loadwallet &#34;DriveLetter:\path\to\walletname\&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;loadwallet&#34;, &#34;params&#34;: [&#34;DriveLetter:\path\to\walletname\&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

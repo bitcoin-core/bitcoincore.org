@@ -1,0 +1,62 @@
+---
+name: migratewallet
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/migratewallet/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;migratewallet&#34;,
+  &#34;description&#34;: &#34;Migrate the wallet to a descriptor wallet.\nA new wallet backup will need to be made.\n\nThe migration process will create a backup of the wallet before migrating. This backup\nfile will be named &lt;wallet name&gt;-&lt;timestamp&gt;.legacy.bak and can be found in the directory\nfor this wallet. In the event of an incorrect migration, the backup can be restored using restorewallet.\nEncrypted wallets must have the passphrase provided as an argument to this call.\n\nThis RPC may take a long time to complete. Increasing the RPC client timeout is recommended.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;wallet_name&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;the wallet name from the RPC endpoint&#34;
+      },
+      &#34;description&#34;: &#34;The name of the wallet to migrate. If provided both here and in the RPC endpoint, the two must be identical.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;passphrase&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The wallet passphrase&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;wallet_name&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The name of the primary migrated wallet&#34;
+        },
+        &#34;watchonly_name&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The name of the migrated wallet containing the watchonly scripts&#34;
+        },
+        &#34;solvables_name&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The name of the migrated wallet containing solvable but not watched scripts&#34;
+        },
+        &#34;backup_path&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The location of the backup of the original wallet&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;wallet_name&#34;,
+        &#34;backup_path&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

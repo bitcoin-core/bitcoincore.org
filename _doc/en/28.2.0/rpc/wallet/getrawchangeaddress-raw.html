@@ -1,0 +1,20 @@
+---
+name: getrawchangeaddress
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/getrawchangeaddress/raw/
+rawpage: true
+---
+
+getrawchangeaddress ( "address_type" )
+
+Returns a new Bitcoin address, for receiving change.
+This is for use with raw transactions, NOT normal use.
+
+Arguments:
+1. address_type (string, optional, default: set by -changetype)  The address type to use. Options are "legacy", "p2sh-segwit", "bech32", and "bech32m".
+
+Result: (string)
+
+
+

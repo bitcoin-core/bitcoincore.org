@@ -3,17 +3,18 @@ name: uptime
 btcversion: 30.0.0
 btcgroup: control
 permalink: en/doc/30.0.0/rpc/control/uptime/
+openrpc: true
 ---
 
-uptime
-
-Returns the total uptime of the server.
-
-Result:
-n    (numeric) The number of seconds that the server has been running
-
-Examples:
-> bitcoin-cli uptime 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "uptime", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">control</span></p>
+  <pre class="rpc-synopsis">uptime</pre>
+  <div class="rpc-description"><p>Returns the total uptime of the server.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(number)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli uptime 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;uptime&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

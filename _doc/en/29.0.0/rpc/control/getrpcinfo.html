@@ -3,26 +3,29 @@ name: getrpcinfo
 btcversion: 29.0.0
 btcgroup: control
 permalink: en/doc/29.0.0/rpc/control/getrpcinfo/
+openrpc: true
 ---
 
-getrpcinfo
-
-Returns details of the RPC server.
-
-Result:
-{                          (json object)
-  "active_commands" : [    (json array) All active commands
-    {                      (json object) Information about an active command
-      "method" : "str",    (string) The name of the RPC command
-      "duration" : n       (numeric) The running time in microseconds
-    },
-    ...
-  ],
-  "logpath" : "str"        (string) The complete file path to the debug log
-}
-
-Examples:
-> bitcoin-cli getrpcinfo 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getrpcinfo", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">control</span></p>
+  <pre class="rpc-synopsis">getrpcinfo</pre>
+  <div class="rpc-description"><p>Returns details of the RPC server.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">active_commands</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">All active commands</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">method</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The name of the RPC command</span></li>
+          <li><code class="rpc-key">duration</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The running time in microseconds</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">logpath</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The complete file path to the debug log</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getrpcinfo 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getrpcinfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

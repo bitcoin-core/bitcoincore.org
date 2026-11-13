@@ -3,17 +3,18 @@ name: importprunedfunds
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/importprunedfunds/
+openrpc: true
 ---
 
-importprunedfunds "rawtransaction" "txoutproof"
-
-Imports funds without rescan. Corresponding address or script must previously be included in wallet. Aimed towards pruned wallets. The end-user is responsible to import additional transactions that subsequently spend the imported outputs or rescan after the point in the blockchain the transaction is included.
-
-Arguments:
-1. rawtransaction    (string, required) A raw transaction in hex funding an already-existing address in wallet
-2. txoutproof        (string, required) The hex output from gettxoutproof that contains the transaction
-
-Result:
-null    (json null)
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">importprunedfunds &#34;rawtransaction&#34; &#34;txoutproof&#34;</pre>
+  <div class="rpc-description"><p>Imports funds without rescan. Corresponding address or script must previously be included in wallet. Aimed towards pruned wallets. The end-user is responsible to import additional transactions that subsequently spend the imported outputs or rescan after the point in the blockchain the transaction is included.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>rawtransaction</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>A raw transaction in hex funding an already-existing address in wallet</td></tr>
+  <tr><td>2</td><td><code>txoutproof</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The hex output from gettxoutproof that contains the transaction</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

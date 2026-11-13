@@ -1,0 +1,38 @@
+---
+name: walletpassphrase
+btcversion: 29.0.0
+btcgroup: wallet
+permalink: en/doc/29.0.0/rpc/wallet/walletpassphrase/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;walletpassphrase&#34;,
+  &#34;description&#34;: &#34;Stores the wallet decryption key in memory for &#39;timeout&#39; seconds.\nThis is needed prior to performing transactions related to private keys such as sending bitcoins\n\nNote:\nIssuing the walletpassphrase command while the wallet is already unlocked will set a new unlock\ntime that overrides the old one.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;passphrase&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The wallet passphrase&#34;
+    },
+    {
+      &#34;name&#34;: &#34;timeout&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;
+      },
+      &#34;description&#34;: &#34;The time to keep the decryption key in seconds; capped at 100000000 (~3 years).&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

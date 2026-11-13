@@ -1,0 +1,21 @@
+---
+name: getreceivedbyaddress
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/getreceivedbyaddress/raw/
+rawpage: true
+---
+
+getreceivedbyaddress "address" ( minconf ) ( include_immature_coinbase )
+
+Returns the total amount received by the given address in transactions with at least minconf confirmations.
+
+Arguments:
+1. address (string)  The bitcoin address for transactions.
+2. minconf (number, optional, default=1)  Only include transactions confirmed at least this many times.
+3. include_immature_coinbase (boolean, optional, default=false)  Include immature coinbase transactions.
+
+Result: (string, amount)
+
+
+

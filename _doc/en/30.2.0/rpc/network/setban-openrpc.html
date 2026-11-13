@@ -1,0 +1,56 @@
+---
+name: setban
+btcversion: 30.2.0
+btcgroup: network
+permalink: en/doc/30.2.0/rpc/network/setban/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;setban&#34;,
+  &#34;description&#34;: &#34;Attempts to add or remove an IP/Subnet from the banned list.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;subnet&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The IP/Subnet (see getpeerinfo for nodes IP) with an optional netmask (default is /32 = single IP)&#34;
+    },
+    {
+      &#34;name&#34;: &#34;command&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;&#39;add&#39; to add an IP/Subnet to the list, &#39;remove&#39; to remove an IP/Subnet from the list&#34;
+    },
+    {
+      &#34;name&#34;: &#34;bantime&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 0
+      },
+      &#34;description&#34;: &#34;time in seconds how long (or until when if [absolute] is set) the IP is banned (0 or empty means using the default time of 24h which can also be overwritten by the -bantime startup argument)&#34;
+    },
+    {
+      &#34;name&#34;: &#34;absolute&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;If set, the bantime must be an absolute timestamp expressed in UNIX epoch time&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

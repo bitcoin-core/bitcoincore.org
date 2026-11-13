@@ -3,68 +3,75 @@ name: listunspent
 btcversion: 26.0.0
 btcgroup: wallet
 permalink: en/doc/26.0.0/rpc/wallet/listunspent/
+openrpc: true
 ---
 
-listunspent ( minconf maxconf ["address",...] include_unsafe query_options )
-
-Returns array of unspent transaction outputs
-with between minconf and maxconf (inclusive) confirmations.
-Optionally filter to only include txouts paid to specified addresses.
-
-Arguments:
-1. minconf           (numeric, optional, default=1) The minimum confirmations to filter
-2. maxconf           (numeric, optional, default=9999999) The maximum confirmations to filter
-3. addresses         (json array, optional, default=[]) The bitcoin addresses to filter
-     [
-       "address",    (string) bitcoin address
-       ...
-     ]
-4. include_unsafe    (boolean, optional, default=true) Include outputs that are not safe to spend
-                     See description of "safe" attribute below.
-5. query_options     (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-minimumAmount                (numeric or string, optional, default="0.00") Minimum value of each UTXO in BTC
-maximumAmount                (numeric or string, optional, default=unlimited) Maximum value of each UTXO in BTC
-maximumCount                 (numeric, optional, default=unlimited) Maximum number of UTXOs
-minimumSumAmount             (numeric or string, optional, default=unlimited) Minimum sum value of all UTXOs in BTC
-include_immature_coinbase    (boolean, optional, default=false) Include immature coinbase UTXOs
-
-Result:
-[                                (json array)
-  {                              (json object)
-    "txid" : "hex",              (string) the transaction id
-    "vout" : n,                  (numeric) the vout value
-    "address" : "str",           (string, optional) the bitcoin address
-    "label" : "str",             (string, optional) The associated label, or "" for the default label
-    "scriptPubKey" : "str",      (string) the script key
-    "amount" : n,                (numeric) the transaction output amount in BTC
-    "confirmations" : n,         (numeric) The number of confirmations
-    "ancestorcount" : n,         (numeric, optional) The number of in-mempool ancestor transactions, including this one (if transaction is in the mempool)
-    "ancestorsize" : n,          (numeric, optional) The virtual transaction size of in-mempool ancestors, including this one (if transaction is in the mempool)
-    "ancestorfees" : n,          (numeric, optional) The total fees of in-mempool ancestors (including this one) with fee deltas used for mining priority in sat (if transaction is in the mempool)
-    "redeemScript" : "hex",      (string, optional) The redeemScript if scriptPubKey is P2SH
-    "witnessScript" : "str",     (string, optional) witnessScript if the scriptPubKey is P2WSH or P2SH-P2WSH
-    "spendable" : true|false,    (boolean) Whether we have the private keys to spend this output
-    "solvable" : true|false,     (boolean) Whether we know how to spend this output, ignoring the lack of keys
-    "reused" : true|false,       (boolean, optional) (only present if avoid_reuse is set) Whether this output is reused/dirty (sent to an address that was previously spent from)
-    "desc" : "str",              (string, optional) (only when solvable) A descriptor for spending this output
-    "parent_descs" : [           (json array) List of parent descriptors for the scriptPubKey of this coin.
-      "str",                     (string) The descriptor string.
-      ...
-    ],
-    "safe" : true|false          (boolean) Whether this output is considered safe to spend. Unconfirmed transactions
-                                 from outside keys and unconfirmed replacement transactions are considered unsafe
-                                 and are not eligible for spending by fundrawtransaction and sendtoaddress.
-  },
-  ...
-]
-
-Examples:
-> bitcoin-cli listunspent 
-> bitcoin-cli listunspent 6 9999999 "[\"bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\",\"bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\"]"
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "listunspent", "params": [6, 9999999 "[\"bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\",\"bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\"]"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-> bitcoin-cli listunspent 6 9999999 '[]' true '{ "minimumAmount": 0.005 }'
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "listunspent", "params": [6, 9999999, [] , true, { "minimumAmount": 0.005 } ]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listunspent ( minconf ) ( maxconf ) ( addresses ) ( include_unsafe ) ( query_options )</pre>
+  <div class="rpc-description"><p>Returns array of unspent transaction outputs with between minconf and maxconf (inclusive) confirmations. Optionally filter to only include txouts paid to specified addresses.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>minconf</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 1</small></td><td>The minimum confirmations to filter</td></tr>
+  <tr><td>2</td><td><code>maxconf</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 9999999</small></td><td>The maximum confirmations to filter</td></tr>
+  <tr><td>3</td><td><code>addresses</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: []</small></td><td>The bitcoin addresses to filter
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>4</td><td><code>include_unsafe</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Include outputs that are not safe to spend<br>See description of &#34;safe&#34; attribute below.</td></tr>
+  <tr><td>5</td><td><code>query_options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">minimumAmount</code> <span class="rpc-type">(one of, optional, default=&#34;0.00&#34;)</span> <span class="rpc-desc">Minimum value of each UTXO in BTC</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">maximumAmount</code> <span class="rpc-type">(one of, optional, default: unlimited)</span> <span class="rpc-desc">Maximum value of each UTXO in BTC</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">maximumCount</code> <span class="rpc-type">(number, optional, default: unlimited)</span> <span class="rpc-desc">Maximum number of UTXOs</span></li>
+    <li><code class="rpc-key">minimumSumAmount</code> <span class="rpc-type">(one of, optional, default: unlimited)</span> <span class="rpc-desc">Minimum sum value of all UTXOs in BTC</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">include_immature_coinbase</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Include immature coinbase UTXOs</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the transaction id</span></li>
+      <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the vout value</span></li>
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">the bitcoin address</span></li>
+      <li><code class="rpc-key">label</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The associated label, or &#34;&#34; for the default label</span></li>
+      <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the script key</span></li>
+      <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">the transaction output amount in BTC</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations</span></li>
+      <li><code class="rpc-key">ancestorcount</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of in-mempool ancestor transactions, including this one (if transaction is in the mempool)</span></li>
+      <li><code class="rpc-key">ancestorsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The virtual transaction size of in-mempool ancestors, including this one (if transaction is in the mempool)</span></li>
+      <li><code class="rpc-key">ancestorfees</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">The total fees of in-mempool ancestors (including this one) with fee deltas used for mining priority in sat (if transaction is in the mempool)</span></li>
+      <li><code class="rpc-key">redeemScript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The redeemScript if scriptPubKey is P2SH</span></li>
+      <li><code class="rpc-key">witnessScript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">witnessScript if the scriptPubKey is P2WSH or P2SH-P2WSH</span></li>
+      <li><code class="rpc-key">spendable</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether we have the private keys to spend this output</span></li>
+      <li><code class="rpc-key">solvable</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether we know how to spend this output, ignoring the lack of keys</span></li>
+      <li><code class="rpc-key">reused</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">(only present if avoid_reuse is set) Whether this output is reused/dirty (sent to an address that was previously spent from)</span></li>
+      <li><code class="rpc-key">desc</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">(only when solvable) A descriptor for spending this output</span></li>
+      <li><code class="rpc-key">parent_descs</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">List of parent descriptors for the scriptPubKey of this coin.</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">safe</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this output is considered safe to spend. Unconfirmed transactions<br>from outside keys and unconfirmed replacement transactions are considered unsafe<br>and are not eligible for spending by fundrawtransaction and sendtoaddress.</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli listunspent 
+&gt; bitcoin-cli listunspent 6 9999999 &#34;[\&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\&#34;,\&#34;bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\&#34;]&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;listunspent&#34;, &#34;params&#34;: [6, 9999999 &#34;[\&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\&#34;,\&#34;bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\&#34;]&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/
+&gt; bitcoin-cli listunspent 6 9999999 &#39;[]&#39; true &#39;{ &#34;minimumAmount&#34;: 0.005 }&#39;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;listunspent&#34;, &#34;params&#34;: [6, 9999999, [] , true, { &#34;minimumAmount&#34;: 0.005 } ]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

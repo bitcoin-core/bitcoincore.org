@@ -3,33 +3,28 @@ name: walletpassphrase
 btcversion: 28.0.0
 btcgroup: wallet
 permalink: en/doc/28.0.0/rpc/wallet/walletpassphrase/
+openrpc: true
 ---
 
-walletpassphrase "passphrase" timeout
-
-Stores the wallet decryption key in memory for 'timeout' seconds.
-This is needed prior to performing transactions related to private keys such as sending bitcoins
-
-Note:
-Issuing the walletpassphrase command while the wallet is already unlocked will set a new unlock
-time that overrides the old one.
-
-Arguments:
-1. passphrase    (string, required) The wallet passphrase
-2. timeout       (numeric, required) The time to keep the decryption key in seconds; capped at 100000000 (~3 years).
-
-Result:
-null    (json null)
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">walletpassphrase &#34;passphrase&#34; timeout</pre>
+  <div class="rpc-description"><p>Stores the wallet decryption key in memory for &#39;timeout&#39; seconds. This is needed prior to performing transactions related to private keys such as sending bitcoins</p><p>Note: Issuing the walletpassphrase command while the wallet is already unlocked will set a new unlock time that overrides the old one.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>passphrase</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The wallet passphrase</td></tr>
+  <tr><td>2</td><td><code>timeout</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>The time to keep the decryption key in seconds; capped at 100000000 (~3 years).</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Unlock the wallet for 60 seconds
-> bitcoin-cli walletpassphrase "my pass phrase" 60
+&gt; bitcoin-cli walletpassphrase &#34;my pass phrase&#34; 60
 
 Lock the wallet again (before 60 seconds)
-> bitcoin-cli walletlock 
+&gt; bitcoin-cli walletlock 
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "walletpassphrase", "params": ["my pass phrase", 60]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;walletpassphrase&#34;, &#34;params&#34;: [&#34;my pass phrase&#34;, 60]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

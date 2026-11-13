@@ -1,0 +1,41 @@
+---
+name: getwalletinfo
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/getwalletinfo/raw/
+rawpage: true
+---
+
+getwalletinfo
+
+Returns an object containing various wallet state info.
+
+Arguments:
+none
+
+Result: (object)
+  walletname (string)  the wallet name
+  walletversion (number)  (DEPRECATED) only related to unsupported legacy wallet, returns the latest version 169900 for backwards compatibility
+  format (string)  the database format (only sqlite)
+  txcount (number)  the total number of transactions in the wallet
+  keypoolsize (number)  how many new keys are pre-generated (only counts external keys)
+  keypoolsize_hd_internal (number, optional)  how many new keys are pre-generated for internal use (used for change outputs, only appears if the wallet is using this feature, otherwise external keys are used)
+  unlocked_until (number, unix-time, optional)  the UNIX epoch time until which the wallet is unlocked for transfers, or 0 if the wallet is locked (only present for passphrase-encrypted wallets)
+  paytxfee (string, amount)  the transaction fee configuration, set in BTC/kvB
+  private_keys_enabled (boolean)  false if privatekeys are disabled for this wallet (enforced watch-only wallet)
+  avoid_reuse (boolean)  whether this wallet tracks clean/dirty coins in terms of reuse
+  scanning (object)  current scanning details, or false if no scan is in progress
+    duration (number)  elapsed seconds since scan start
+    progress (number)  scanning progress percentage [0.0, 1.0]
+  descriptors (boolean)  whether this wallet uses descriptors for output script management
+  external_signer (boolean)  whether this wallet is configured to use an external signer such as a hardware wallet
+  blank (boolean)  Whether this wallet intentionally does not contain any keys, scripts, or descriptors
+  birthtime (number, unix-time, optional)  The start time for blocks scanning. It could be modified by (re)importing any descriptor with an earlier timestamp.
+  flags (array)  The flags currently set on the wallet
+    each item (string)
+  lastprocessedblock (object)  hash and height of the block this information was generated on
+    hash (string)  hash of the block this information was generated on
+    height (number)  height of the block this information was generated on
+
+
+

@@ -1,0 +1,34 @@
+---
+name: getchainstates
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/getchainstates/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getchainstates</pre>
+  <div class="rpc-description"><p>Return information about chainstates.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">headers</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of headers seen so far</span></li>
+  <li><code class="rpc-key">chainstates</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">list of the chainstates ordered by work, with the most-work (active) chainstate last</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">blocks</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of blocks in this chainstate</span></li>
+          <li><code class="rpc-key">bestblockhash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">blockhash of the tip</span></li>
+          <li><code class="rpc-key">difficulty</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">difficulty of the tip</span></li>
+          <li><code class="rpc-key">verificationprogress</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">progress towards the network tip</span></li>
+          <li><code class="rpc-key">snapshot_blockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">the base block of the snapshot this chainstate is based on, if any</span></li>
+          <li><code class="rpc-key">coins_db_cache_bytes</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">size of the coinsdb cache</span></li>
+          <li><code class="rpc-key">coins_tip_cache_bytes</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">size of the coinstip cache</span></li>
+          <li><code class="rpc-key">validated</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">whether the chainstate is fully validated. True if all blocks in the chainstate were validated, false if the chain is based on a snapshot and the snapshot has not yet been validated.</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

@@ -1,0 +1,65 @@
+---
+name: getblock
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/getblock/raw/
+rawpage: true
+---
+
+getblock "blockhash" ( verbosity )
+
+If verbosity is 0, returns a string that is serialized, hex-encoded data for block 'hash'.
+If verbosity is 1, returns an Object with information about block <hash>.
+If verbosity is 2, returns an Object with information about block <hash> and information about each transaction.
+If verbosity is 3, returns an Object with information about block <hash> and information about each transaction, including prevout information for inputs (only for unpruned blocks in the current best chain).
+
+Arguments:
+1. blockhash (string)  The block hash
+2. verbosity (number, optional, default=1)  0 for hex-encoded data, 1 for a JSON object, 2 for JSON object with transaction data, and 3 for JSON object with transaction data including prevout information for inputs
+
+Result: (one of)
+  option 1: (string)  for verbosity = 0
+  option 2: (object)  for verbosity = 1
+    hash (string)  the block hash (same as provided)
+    confirmations (number)  The number of confirmations, or -1 if the block is not on the main chain
+    size (number)  The block size
+    strippedsize (number)  The block size excluding witness data
+    weight (number)  The block weight as defined in BIP 141
+    height (number)  The block height or index
+    version (number)  The block version
+    versionHex (string)  The block version formatted in hexadecimal
+    merkleroot (string)  The merkle root
+    tx (array)  The transaction ids
+      each item (string)
+    time (number, unix-time)  The block time expressed in UNIX epoch time
+    mediantime (number, unix-time)  The median block time expressed in UNIX epoch time
+    nonce (number)  The nonce
+    bits (string)  nBits: compact representation of the block difficulty target
+    target (string)  The difficulty target
+    difficulty (number)  The difficulty
+    chainwork (string)  Expected number of hashes required to produce the chain up to this block (in hex)
+    nTx (number)  The number of transactions in the block
+    previousblockhash (string, optional)  The hash of the previous block (if available)
+    nextblockhash (string, optional)  The hash of the next block (if available)
+  option 3: (object)  for verbosity = 2
+    tx (array)
+      each item (object)
+        fee (number)  The transaction fee in BTC, omitted if block undo data is not available
+  option 4: (object)  for verbosity = 3
+    tx (array)
+      each item (object)
+        vin (array)
+          each item (object)
+            prevout (object)  (Only if undo information is available)
+              generated (boolean)  Coinbase or not
+              height (number)  The height of the prevout
+              value (string, amount)  The value in BTC
+              scriptPubKey (object)
+                asm (string)  Disassembly of the output script
+                desc (string)  Inferred descriptor for the output
+                hex (string)  The raw output script bytes, hex-encoded
+                address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+                type (string)  The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
+
+
+

@@ -1,0 +1,31 @@
+---
+name: listdescriptors
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/listdescriptors/raw/
+rawpage: true
+---
+
+listdescriptors ( private )
+
+List descriptors imported into a descriptor-enabled wallet.
+
+Arguments:
+1. private (boolean, optional, default=false)  Show private descriptors.
+
+Result: (object)
+  wallet_name (string)  Name of wallet this operation was performed on
+  descriptors (array)  Array of descriptor objects (sorted by descriptor string representation)
+    each item (object)
+      desc (string)  Descriptor string representation
+      timestamp (number)  The creation time of the descriptor
+      active (boolean)  Whether this descriptor is currently used to generate new addresses
+      internal (boolean, optional)  True if this descriptor is used to generate change addresses. False if this descriptor is used to generate receiving addresses; defined only for active descriptors
+      range (array, optional)  Defined only for ranged descriptors
+        [0] (number)
+        [1] (number)
+      next (number, optional)  Same as next_index field. Kept for compatibility reason.
+      next_index (number, optional)  The next index to generate addresses from; defined only for ranged descriptors
+
+
+

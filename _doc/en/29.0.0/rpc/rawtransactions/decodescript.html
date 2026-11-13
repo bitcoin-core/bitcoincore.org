@@ -3,34 +3,36 @@ name: decodescript
 btcversion: 29.0.0
 btcgroup: rawtransactions
 permalink: en/doc/29.0.0/rpc/rawtransactions/decodescript/
+openrpc: true
 ---
 
-decodescript "hexstring"
-
-Decode a hex-encoded script.
-
-Arguments:
-1. hexstring    (string, required) the hex-encoded script
-
-Result:
-{                             (json object)
-  "asm" : "str",              (string) Disassembly of the script
-  "desc" : "str",             (string) Inferred descriptor for the script
-  "type" : "str",             (string) The output type (e.g. nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
-  "address" : "str",          (string, optional) The Bitcoin address (only if a well-defined address exists)
-  "p2sh" : "str",             (string, optional) address of P2SH script wrapping this redeem script (not returned for types that should not be wrapped)
-  "segwit" : {                (json object, optional) Result of a witness output script wrapping this redeem script (not returned for types that should not be wrapped)
-    "asm" : "str",            (string) Disassembly of the output script
-    "hex" : "hex",            (string) The raw output script bytes, hex-encoded
-    "type" : "str",           (string) The type of the output script (e.g. witness_v0_keyhash or witness_v0_scripthash)
-    "address" : "str",        (string, optional) The Bitcoin address (only if a well-defined address exists)
-    "desc" : "str",           (string) Inferred descriptor for the script
-    "p2sh-segwit" : "str"     (string) address of the P2SH script wrapping this witness redeem script
-  }
-}
-
-Examples:
-> bitcoin-cli decodescript "hexstring"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "decodescript", "params": ["hexstring"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">decodescript &#34;hexstring&#34;</pre>
+  <div class="rpc-description"><p>Decode a hex-encoded script.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexstring</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>the hex-encoded script</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the script</span></li>
+  <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the script</span></li>
+  <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The output type (e.g. nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)</span></li>
+  <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+  <li><code class="rpc-key">p2sh</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">address of P2SH script wrapping this redeem script (not returned for types that should not be wrapped)</span></li>
+  <li><code class="rpc-key">segwit</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Result of a witness output script wrapping this redeem script (not returned for types that should not be wrapped)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the output script</span></li>
+      <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw output script bytes, hex-encoded</span></li>
+      <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type of the output script (e.g. witness_v0_keyhash or witness_v0_scripthash)</span></li>
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+      <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the script</span></li>
+      <li><code class="rpc-key">p2sh-segwit</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">address of the P2SH script wrapping this witness redeem script</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli decodescript &#34;hexstring&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;decodescript&#34;, &#34;params&#34;: [&#34;hexstring&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

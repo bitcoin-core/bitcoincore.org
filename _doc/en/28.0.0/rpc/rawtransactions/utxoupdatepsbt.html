@@ -3,28 +3,39 @@ name: utxoupdatepsbt
 btcversion: 28.0.0
 btcgroup: rawtransactions
 permalink: en/doc/28.0.0/rpc/rawtransactions/utxoupdatepsbt/
+openrpc: true
 ---
 
-utxoupdatepsbt "psbt" ( ["",{"desc":"str","range":n or [n,n]},...] )
-
-Updates all segwit inputs and outputs in a PSBT with data from output descriptors, the UTXO set, txindex, or the mempool.
-
-Arguments:
-1. psbt                          (string, required) A base64 string of a PSBT
-2. descriptors                   (json array, optional) An array of either strings or objects
-     [
-       "",                       (string) An output descriptor
-       {                         (json object) An object with an output descriptor and extra information
-         "desc": "str",          (string, required) An output descriptor
-         "range": n or [n,n],    (numeric or array, optional, default=1000) Up to what index HD chains should be explored (either end or [begin,end])
-       },
-       ...
-     ]
-
-Result:
-"str"    (string) The base64-encoded partially signed transaction with inputs updated
-
-Examples:
-> bitcoin-cli utxoupdatepsbt "psbt"
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">utxoupdatepsbt &#34;psbt&#34; ( descriptors )</pre>
+  <div class="rpc-description"><p>Updates all segwit inputs and outputs in a PSBT with data from output descriptors, the UTXO set, txindex, or the mempool.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>psbt</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>A base64 string of a PSBT</td></tr>
+  <tr><td>2</td><td><code>descriptors</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no</td><td>An array of either strings or objects
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">An output descriptor</span></li>
+            <li><code class="rpc-key">range</code> <span class="rpc-type">(one of, optional, default=1000)</span> <span class="rpc-desc">Up to what index HD chains should be explored (either end or [begin,end])</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+                  <ul class="rpc-schema">
+                    <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+                    <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+                  </ul></li>
+              </ul></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli utxoupdatepsbt &#34;psbt&#34;</pre>
+</div>

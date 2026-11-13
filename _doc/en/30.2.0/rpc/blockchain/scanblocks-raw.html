@@ -1,0 +1,46 @@
+---
+name: scanblocks
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/scanblocks/raw/
+rawpage: true
+---
+
+scanblocks "action" ( scanobjects ) ( start_height ) ( stop_height ) ( "filtertype" ) ( options )
+
+Return relevant blockhashes for given descriptors (requires blockfilterindex).
+This call may take several minutes. Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)
+
+Arguments:
+1. action (string)  The action to execute "start" for starting a scan "abort" for aborting the current scan (returns true when abort was successful) "status" for progress report (in %) of the current scan
+2. scanobjects (array, optional)  Array of scan objects. Required for "start" action Every scan object is either a string descriptor or an object:
+  each item (one of)
+    option 1: (string)
+    option 2: (object)
+      desc (string)  An output descriptor
+      range (one of, optional, default=1000)  The range of HD chain indexes to explore (either end or [begin,end])
+        option 1: (number)
+        option 2: (array)
+          [0] (number)
+          [1] (number)
+3. start_height (number, optional, default=0)  Height to start to scan from
+4. stop_height (number, optional, default: chain tip)  Height to stop to scan
+5. filtertype (string, optional, default="basic")  The type name of the filter
+6. options (object, optional)
+  filter_false_positives (boolean, optional, default=false)  Filter false positives (slower and may fail on pruned nodes). Otherwise they may occur at a rate of 1/M
+
+Result: (one of)
+  option 1: (null)  when action=='status' and no scan is in progress - possibly already completed
+  option 2: (object)  When action=='start'; only returns after scan completes
+    from_height (number)  The height we started the scan from
+    to_height (number)  The height we ended the scan at
+    relevant_blocks (array)  Blocks that may have matched a scanobject.
+      each item (string)
+    completed (boolean)  true if the scan process was not aborted
+  option 3: (object)  when action=='status' and a scan is currently in progress
+    progress (number)  Approximate percent complete
+    current_height (number)  Height of the block currently being scanned
+  option 4: (boolean)  when action=='abort'
+
+
+

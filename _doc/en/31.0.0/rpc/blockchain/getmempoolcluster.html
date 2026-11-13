@@ -3,34 +3,36 @@ name: getmempoolcluster
 btcversion: 31.0.0
 btcgroup: blockchain
 permalink: en/doc/31.0.0/rpc/blockchain/getmempoolcluster/
+openrpc: true
 ---
 
-getmempoolcluster "txid"
-
-Returns mempool data for given cluster
-
-Arguments:
-1. txid    (string, required) The txid of a transaction in the cluster
-
-Result:
-{                           (json object)
-  "clusterweight" : n,      (numeric) total sigops-adjusted weight (as defined in BIP 141 and modified by '-bytespersigop')
-  "txcount" : n,            (numeric) number of transactions
-  "chunks" : [              (json array) chunks in this cluster (in mining order)
-    {                       (json object)
-      "chunkfee" : n,       (numeric) fees of the transactions in this chunk
-      "chunkweight" : n,    (numeric) sigops-adjusted weight of all transactions in this chunk
-      "txs" : [             (json array) transactions in this chunk in mining order
-        "hex",              (string) transaction id
-        ...
-      ]
-    },
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli getmempoolcluster txid
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getmempoolcluster", "params": [txid]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getmempoolcluster &#34;txid&#34;</pre>
+  <div class="rpc-description"><p>Returns mempool data for given cluster</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txid</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The txid of a transaction in the cluster</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">clusterweight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">total sigops-adjusted weight (as defined in BIP 141 and modified by &#39;-bytespersigop&#39;)</span></li>
+  <li><code class="rpc-key">txcount</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of transactions</span></li>
+  <li><code class="rpc-key">chunks</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">chunks in this cluster (in mining order)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">chunkfee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">fees of the transactions in this chunk</span></li>
+          <li><code class="rpc-key">chunkweight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">sigops-adjusted weight of all transactions in this chunk</span></li>
+          <li><code class="rpc-key">txs</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">transactions in this chunk in mining order</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getmempoolcluster txid
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getmempoolcluster&#34;, &#34;params&#34;: [txid]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -1,0 +1,35 @@
+---
+name: getblockchaininfo
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/getblockchaininfo/raw/
+rawpage: true
+---
+
+getblockchaininfo
+
+Returns an object containing various state info regarding blockchain processing.
+
+Arguments:
+none
+
+Result: (object)
+  chain (string)  current network name (main, test, signet, regtest)
+  blocks (number)  the height of the most-work fully-validated chain. The genesis block has height 0
+  headers (number)  the current number of headers we have validated
+  bestblockhash (string)  the hash of the currently best block
+  difficulty (number)  the current difficulty
+  time (number, unix-time)  The block time expressed in UNIX epoch time
+  mediantime (number, unix-time)  The median block time expressed in UNIX epoch time
+  verificationprogress (number)  estimate of verification progress [0..1]
+  initialblockdownload (boolean)  (debug information) estimate of whether this node is in Initial Block Download mode
+  chainwork (string)  total amount of work in active chain, in hexadecimal
+  size_on_disk (number)  the estimated size of the block and undo files on disk
+  pruned (boolean)  if the blocks are subject to pruning
+  pruneheight (number, optional)  height of the last block pruned, plus one (only present if pruning is enabled)
+  automatic_pruning (boolean, optional)  whether automatic pruning is enabled (only present if pruning is enabled)
+  prune_target_size (number, optional)  the target size used by pruning (only present if automatic pruning is enabled)
+  warnings (string)  any network and blockchain warnings
+
+
+

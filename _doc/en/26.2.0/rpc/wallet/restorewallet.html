@@ -1,0 +1,28 @@
+---
+name: restorewallet
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/restorewallet/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">restorewallet &#34;wallet_name&#34; &#34;backup_file&#34; ( load_on_startup )</pre>
+  <div class="rpc-description"><p>Restores and loads a wallet from backup.</p><p>The rescan is significantly faster if a descriptor wallet is restored and block filters are available (using startup option &#34;-blockfilterindex=1&#34;).</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>wallet_name</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The name that will be applied to the restored wallet</td></tr>
+  <tr><td>2</td><td><code>backup_file</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The backup file that will be used to restore the wallet.</td></tr>
+  <tr><td>3</td><td><code>load_on_startup</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no</td><td>Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The wallet name if restored successfully.</span></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Warning messages, if any, related to restoring and loading the wallet.</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+</div>

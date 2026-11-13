@@ -1,0 +1,33 @@
+---
+name: listlabels
+btcversion: 31.0.0
+btcgroup: wallet
+permalink: en/doc/31.0.0/rpc/wallet/listlabels/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;listlabels&#34;,
+  &#34;description&#34;: &#34;Returns the list of all labels, or labels that are assigned to addresses with a specific purpose.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;purpose&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;Address purpose to list labels for (&#39;send&#39;,&#39;receive&#39;). An empty string is the same as not providing this argument.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

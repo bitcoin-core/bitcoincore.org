@@ -1,0 +1,91 @@
+---
+name: getblocktemplate
+btcversion: 30.2.0
+btcgroup: mining
+permalink: en/doc/30.2.0/rpc/mining/getblocktemplate/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">mining</span></p>
+  <pre class="rpc-synopsis">getblocktemplate template_request</pre>
+  <div class="rpc-description"><p>If the request parameters include a &#39;mode&#39; key, that is used to explicitly select between the default &#39;template&#39; request or a &#39;proposal&#39;. It returns data needed to construct a block to work on. For full specification, see BIPs 22, 23, 9, and 145:<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes">https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki</a></p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>template_request</code></td><td><span class="rpc-type">object</span></td><td class="rpc-req-yes">yes</td><td>Format of the template
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">mode</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">This must be set to &#34;template&#34;, &#34;proposal&#34; (see BIP 23), or omitted</span></li>
+    <li><code class="rpc-key">capabilities</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">A list of strings</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">rules</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">A list of strings</span>
+      <ul class="rpc-schema rpc-array">
+        <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+    <li><code class="rpc-key">longpollid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">delay processing request until the result would vary significantly from the &#34;longpollid&#34; of a prior template</span></li>
+    <li><code class="rpc-key">data</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">proposed block data to check, encoded in hexadecimal; valid only for mode=&#34;proposal&#34;</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(null)</span> <span class="rpc-desc">If the proposal was accepted with mode==&#39;proposal&#39;</span></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span> <span class="rpc-desc">If the proposal was not accepted with mode==&#39;proposal&#39;</span></li>
+  <li><span class="rpc-variant">option 3</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">Otherwise</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The preferred block version</span></li>
+      <li><code class="rpc-key">rules</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">specific block rules that are to be enforced</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">vbavailable</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">set of pending, supported versionbit (BIP 9) softfork deployments</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">…</code> <span class="rpc-type">(number, optional)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">capabilities</code> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">vbrequired</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">bit mask of versionbits the server requires set in submissions</span></li>
+      <li><code class="rpc-key">previousblockhash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash of current highest block</span></li>
+      <li><code class="rpc-key">transactions</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">contents of non-coinbase transactions that should be included in the next block</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">data</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">transaction data encoded in hexadecimal (byte-for-byte)</span></li>
+              <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">transaction hash excluding witness data, shown in byte-reversed hex</span></li>
+              <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">transaction hash including witness data, shown in byte-reversed hex</span></li>
+              <li><code class="rpc-key">depends</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">array of numbers</span>
+                <ul class="rpc-schema rpc-array">
+                  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(number)</span></li>
+                </ul></li>
+              <li><code class="rpc-key">fee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">difference in value between transaction inputs and outputs (in satoshis); for coinbase transactions, this is a negative Number of the total collected block fees (ie, not including the block subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn&#39;t one</span></li>
+              <li><code class="rpc-key">sigops</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">total SigOps cost, as counted for purposes of block limits; if key is not present, sigop cost is unknown and clients MUST NOT assume it is zero</span></li>
+              <li><code class="rpc-key">weight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">total transaction weight, as counted for purposes of block limits</span></li>
+            </ul></li>
+        </ul></li>
+      <li><code class="rpc-key">coinbaseaux</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">data that should be included in the coinbase&#39;s scriptSig content</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">coinbasevalue</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">maximum allowable input to coinbase transaction, including the generation award and transaction fees (in satoshis)</span></li>
+      <li><code class="rpc-key">longpollid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">an id to include with a request to longpoll on an update to this template</span></li>
+      <li><code class="rpc-key">target</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash target</span></li>
+      <li><code class="rpc-key">mintime</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The minimum timestamp appropriate for the next block time, expressed in UNIX epoch time. Adjusted for the proposed BIP94 timewarp rule.</span></li>
+      <li><code class="rpc-key">mutable</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">list of ways the block template may be changed</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">noncerange</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">A range of valid nonces</span></li>
+      <li><code class="rpc-key">sigoplimit</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">limit of sigops in blocks</span></li>
+      <li><code class="rpc-key">sizelimit</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">limit of block size</span></li>
+      <li><code class="rpc-key">weightlimit</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">limit of block weight</span></li>
+      <li><code class="rpc-key">curtime</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">current timestamp in UNIX epoch time. Adjusted for the proposed BIP94 timewarp rule.</span></li>
+      <li><code class="rpc-key">bits</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">compressed target of next block</span></li>
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The height of the next block</span></li>
+      <li><code class="rpc-key">signet_challenge</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Only on signet</span></li>
+      <li><code class="rpc-key">default_witness_commitment</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">a valid witness commitment for the unmodified block template</span></li>
+    </ul></li>
+</ul>
+</div>

@@ -1,0 +1,254 @@
+---
+name: sendall
+btcversion: 30.0.0
+btcgroup: wallet
+permalink: en/doc/30.0.0/rpc/wallet/sendall/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;sendall&#34;,
+  &#34;description&#34;: &#34;EXPERIMENTAL warning: this call may be changed in future releases.\n\nSpend the value of all (or specific) confirmed UTXOs and unconfirmed change in the wallet to one or more recipients.\nUnconfirmed inbound UTXOs and locked UTXOs will not be spent. Sendall will respect the avoid_reuse wallet flag.\nIf your wallet contains many small inputs, either because it received tiny payments or as a result of accumulating change, consider using `send_max` to exclude inputs that are worth less than the fees needed to spend them.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;recipients&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;oneOf&#34;: [
+            {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;additionalProperties&#34;: {
+                &#34;oneOf&#34;: [
+                  {
+                    &#34;type&#34;: &#34;number&#34;
+                  },
+                  {
+                    &#34;type&#34;: &#34;string&#34;
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;The sendall destinations. Each address may only appear once.\nOptionally some recipients can be specified with an amount to perform payments, but at least one address must appear without a specified amount.\n&#34;
+    },
+    {
+      &#34;name&#34;: &#34;conf_target&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;wallet -txconfirmtarget&#34;
+      },
+      &#34;description&#34;: &#34;Confirmation target in blocks&#34;
+    },
+    {
+      &#34;name&#34;: &#34;estimate_mode&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;unset&#34;
+      },
+      &#34;description&#34;: &#34;The fee estimate mode, must be one of (case insensitive):\nunset, economical, conservative \nunset means no mode set (economical mode is used if the transaction is replaceable;\notherwise, conservative mode is used). \neconomical estimates use a shorter time horizon, making them more\nresponsive to short-term drops in the prevailing fee market. This mode\npotentially returns a lower fee rate estimate.\nconservative estimates use a longer time horizon, making them\nless responsive to short-term drops in the prevailing fee market. This mode\npotentially returns a higher fee rate estimate.\n&#34;
+    },
+    {
+      &#34;name&#34;: &#34;fee_rate&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;oneOf&#34;: [
+          {
+            &#34;type&#34;: &#34;number&#34;
+          },
+          {
+            &#34;type&#34;: &#34;string&#34;
+          }
+        ],
+        &#34;x-bitcoin-default-hint&#34;: &#34;not set, fall back to wallet fee estimation&#34;
+      },
+      &#34;description&#34;: &#34;Specify a fee rate in sat/vB.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;add_to_wallet&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: true,
+            &#34;description&#34;: &#34;When false, returns the serialized transaction without broadcasting or adding it to the wallet&#34;
+          },
+          &#34;fee_rate&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            ],
+            &#34;x-bitcoin-default-hint&#34;: &#34;not set, fall back to wallet fee estimation&#34;,
+            &#34;description&#34;: &#34;Specify a fee rate in sat/vB.&#34;,
+            &#34;x-bitcoin-also-positional&#34;: true
+          },
+          &#34;include_watching&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;(DEPRECATED) No longer used&#34;
+          },
+          &#34;inputs&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;txid&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                  &#34;description&#34;: &#34;The transaction id&#34;
+                },
+                &#34;vout&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;The output number&#34;
+                },
+                &#34;sequence&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;x-bitcoin-default-hint&#34;: &#34;depends on the value of the &#39;replaceable&#39; and &#39;locktime&#39; arguments&#34;,
+                  &#34;description&#34;: &#34;The sequence number&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;txid&#34;,
+                &#34;vout&#34;
+              ]
+            },
+            &#34;default&#34;: [],
+            &#34;description&#34;: &#34;Use exactly the specified inputs to build the transaction. Specifying inputs is incompatible with the send_max, minconf, and maxconf options.&#34;
+          },
+          &#34;locktime&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;locktime close to block height to prevent fee sniping&#34;,
+            &#34;description&#34;: &#34;Raw locktime. Non-0 value also locktime-activates inputs&#34;
+          },
+          &#34;lock_unspents&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;Lock selected unspent outputs&#34;
+          },
+          &#34;psbt&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;automatic&#34;,
+            &#34;description&#34;: &#34;Always return a PSBT, implies add_to_wallet=false.&#34;
+          },
+          &#34;send_max&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;When true, only use UTXOs that can pay for their own fees to maximize the output amount. When &#39;false&#39; (default), no UTXO is left behind. send_max is incompatible with providing specific inputs.&#34;
+          },
+          &#34;minconf&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;default&#34;: 0,
+            &#34;description&#34;: &#34;Require inputs with at least this many confirmations.&#34;
+          },
+          &#34;maxconf&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;Require inputs with at most this many confirmations.&#34;
+          },
+          &#34;version&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;default&#34;: 2,
+            &#34;description&#34;: &#34;Transaction version&#34;
+          },
+          &#34;conf_target&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;wallet -txconfirmtarget&#34;,
+            &#34;description&#34;: &#34;Confirmation target in blocks&#34;,
+            &#34;x-bitcoin-also-positional&#34;: true
+          },
+          &#34;estimate_mode&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;unset&#34;,
+            &#34;description&#34;: &#34;The fee estimate mode, must be one of (case insensitive):\nunset, economical, conservative \nunset means no mode set (economical mode is used if the transaction is replaceable;\notherwise, conservative mode is used). \neconomical estimates use a shorter time horizon, making them more\nresponsive to short-term drops in the prevailing fee market. This mode\npotentially returns a lower fee rate estimate.\nconservative estimates use a longer time horizon, making them\nless responsive to short-term drops in the prevailing fee market. This mode\npotentially returns a higher fee rate estimate.\n&#34;,
+            &#34;x-bitcoin-also-positional&#34;: true
+          },
+          &#34;replaceable&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;wallet default&#34;,
+            &#34;description&#34;: &#34;Marks this transaction as BIP125-replaceable.\nAllows this transaction to be replaced by a transaction with higher fees&#34;
+          },
+          &#34;solving_data&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;pubkeys&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;default&#34;: [],
+                &#34;description&#34;: &#34;Public keys involved in this transaction.&#34;
+              },
+              &#34;scripts&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;default&#34;: [],
+                &#34;description&#34;: &#34;Scripts involved in this transaction.&#34;
+              },
+              &#34;descriptors&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;
+                },
+                &#34;default&#34;: [],
+                &#34;description&#34;: &#34;Descriptors that provide solving data for this transaction.&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;description&#34;: &#34;Keys and scripts needed for producing a final transaction with a dummy signature.\nUsed for fee estimation during coin selection.&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;complete&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;If the transaction has a complete set of signatures&#34;
+        },
+        &#34;txid&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The transaction id for the send. Only 1 transaction is created regardless of the number of addresses.&#34;
+        },
+        &#34;hex&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;If add_to_wallet is false, the hex-encoded raw transaction with signature(s)&#34;
+        },
+        &#34;psbt&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;If more signatures are needed, or if add_to_wallet is false, the base64-encoded (partially) signed transaction&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;complete&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

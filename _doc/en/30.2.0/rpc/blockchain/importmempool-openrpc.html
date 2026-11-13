@@ -1,0 +1,57 @@
+---
+name: importmempool
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/importmempool/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;importmempool&#34;,
+  &#34;description&#34;: &#34;Import a mempool.dat file and attempt to add its contents to the mempool.\nWarning: Importing untrusted files is dangerous, especially if metadata from the file is taken over.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;filepath&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The mempool file&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;use_current_time&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: true,
+            &#34;description&#34;: &#34;Whether to use the current system time or use the entry time metadata from the mempool file.\nWarning: Importing untrusted metadata may lead to unexpected issues and undesirable behavior.&#34;
+          },
+          &#34;apply_fee_delta_priority&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;Whether to apply the fee delta metadata from the mempool file.\nIt will be added to any existing fee deltas.\nThe fee delta can be set by the prioritisetransaction RPC.\nWarning: Importing untrusted metadata may lead to unexpected issues and undesirable behavior.\nOnly set this bool if you understand what it does.&#34;
+          },
+          &#34;apply_unbroadcast_set&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;Whether to apply the unbroadcast set metadata from the mempool file.\nWarning: Importing untrusted metadata may lead to unexpected issues and undesirable behavior.&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {},
+      &#34;additionalProperties&#34;: false
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

@@ -1,0 +1,23 @@
+---
+name: preciousblock
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/preciousblock/raw/
+rawpage: true
+---
+
+preciousblock "blockhash"
+
+Treats a block as if it were received before others with the same work.
+
+A later preciousblock call can override the effect of an earlier one.
+
+The effects of preciousblock are not retained across restarts.
+
+Arguments:
+1. blockhash (string)  the hash of the block to mark as precious
+
+Result: (null)
+
+
+

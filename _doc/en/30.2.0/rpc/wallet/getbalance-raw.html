@@ -1,0 +1,24 @@
+---
+name: getbalance
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/getbalance/raw/
+rawpage: true
+---
+
+getbalance ( "dummy" ) ( minconf ) ( include_watchonly ) ( avoid_reuse )
+
+Returns the total available balance.
+The available balance is what the wallet considers currently spendable, and is
+thus affected by options which limit spendability such as -spendzeroconfchange.
+
+Arguments:
+1. dummy (string, optional)  Remains for backward compatibility. Must be excluded or set to "*".
+2. minconf (number, optional, default=0)  Only include transactions confirmed at least this many times.
+3. include_watchonly (boolean, optional, default=false)  No longer used
+4. avoid_reuse (boolean, optional, default=true)  (only available if avoid_reuse wallet flag is set) Do not include balance in dirty outputs; addresses are considered dirty if they have previously been used in a transaction.
+
+Result: (string, amount)
+
+
+

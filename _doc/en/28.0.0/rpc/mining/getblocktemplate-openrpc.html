@@ -1,0 +1,257 @@
+---
+name: getblocktemplate
+btcversion: 28.0.0
+btcgroup: mining
+permalink: en/doc/28.0.0/rpc/mining/getblocktemplate/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getblocktemplate&#34;,
+  &#34;description&#34;: &#34;If the request parameters include a &#39;mode&#39; key, that is used to explicitly select between the default &#39;template&#39; request or a &#39;proposal&#39;.\nIt returns data needed to construct a block to work on.\nFor full specification, see BIPs 22, 23, 9, and 145:\n    https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki\n    https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki\n    https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes\n    https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;template_request&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;mode&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;This must be set to \&#34;template\&#34;, \&#34;proposal\&#34; (see BIP 23), or omitted&#34;
+          },
+          &#34;capabilities&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            &#34;description&#34;: &#34;A list of strings&#34;
+          },
+          &#34;rules&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            &#34;description&#34;: &#34;A list of strings&#34;
+          },
+          &#34;longpollid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;delay processing request until the result would vary significantly from the \&#34;longpollid\&#34; of a prior template&#34;
+          },
+          &#34;data&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;proposed block data to check, encoded in hexadecimal; valid only for mode=\&#34;proposal\&#34;&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;rules&#34;
+        ]
+      },
+      &#34;description&#34;: &#34;Format of the template&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;null&#34;,
+          &#34;description&#34;: &#34;If the proposal was accepted with mode==&#39;proposal&#39;&#34;
+        },
+        {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;If the proposal was not accepted with mode==&#39;proposal&#39;&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;version&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The preferred block version&#34;
+            },
+            &#34;rules&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;string&#34;
+              },
+              &#34;description&#34;: &#34;specific block rules that are to be enforced&#34;
+            },
+            &#34;vbavailable&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;additionalProperties&#34;: {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              &#34;description&#34;: &#34;set of pending, supported versionbit (BIP 9) softfork deployments&#34;
+            },
+            &#34;capabilities&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            },
+            &#34;vbrequired&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;bit mask of versionbits the server requires set in submissions&#34;
+            },
+            &#34;previousblockhash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;The hash of current highest block&#34;
+            },
+            &#34;transactions&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;data&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;transaction data encoded in hexadecimal (byte-for-byte)&#34;
+                  },
+                  &#34;txid&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;transaction id encoded in little-endian hexadecimal&#34;
+                  },
+                  &#34;hash&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;hash encoded in little-endian hexadecimal (including witness data)&#34;
+                  },
+                  &#34;depends&#34;: {
+                    &#34;type&#34;: &#34;array&#34;,
+                    &#34;items&#34;: {
+                      &#34;type&#34;: &#34;number&#34;
+                    },
+                    &#34;description&#34;: &#34;array of numbers&#34;
+                  },
+                  &#34;fee&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;difference in value between transaction inputs and outputs (in satoshis); for coinbase transactions, this is a negative Number of the total collected block fees (ie, not including the block subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn&#39;t one&#34;
+                  },
+                  &#34;sigops&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;total SigOps cost, as counted for purposes of block limits; if key is not present, sigop cost is unknown and clients MUST NOT assume it is zero&#34;
+                  },
+                  &#34;weight&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;total transaction weight, as counted for purposes of block limits&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;data&#34;,
+                  &#34;txid&#34;,
+                  &#34;hash&#34;,
+                  &#34;depends&#34;,
+                  &#34;fee&#34;,
+                  &#34;sigops&#34;,
+                  &#34;weight&#34;
+                ]
+              },
+              &#34;description&#34;: &#34;contents of non-coinbase transactions that should be included in the next block&#34;
+            },
+            &#34;coinbaseaux&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;additionalProperties&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+              },
+              &#34;description&#34;: &#34;data that should be included in the coinbase&#39;s scriptSig content&#34;
+            },
+            &#34;coinbasevalue&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;maximum allowable input to coinbase transaction, including the generation award and transaction fees (in satoshis)&#34;
+            },
+            &#34;longpollid&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;an id to include with a request to longpoll on an update to this template&#34;
+            },
+            &#34;target&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;The hash target&#34;
+            },
+            &#34;mintime&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;The minimum timestamp appropriate for the next block time, expressed in UNIX epoch time&#34;
+            },
+            &#34;mutable&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;string&#34;
+              },
+              &#34;description&#34;: &#34;list of ways the block template may be changed&#34;
+            },
+            &#34;noncerange&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;A range of valid nonces&#34;
+            },
+            &#34;sigoplimit&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;limit of sigops in blocks&#34;
+            },
+            &#34;sizelimit&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;limit of block size&#34;
+            },
+            &#34;weightlimit&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;limit of block weight&#34;
+            },
+            &#34;curtime&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;current timestamp in UNIX epoch time&#34;
+            },
+            &#34;bits&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;compressed target of next block&#34;
+            },
+            &#34;height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The height of the next block&#34;
+            },
+            &#34;signet_challenge&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;Only on signet&#34;
+            },
+            &#34;default_witness_commitment&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;a valid witness commitment for the unmodified block template&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;version&#34;,
+            &#34;rules&#34;,
+            &#34;vbavailable&#34;,
+            &#34;capabilities&#34;,
+            &#34;vbrequired&#34;,
+            &#34;previousblockhash&#34;,
+            &#34;transactions&#34;,
+            &#34;coinbaseaux&#34;,
+            &#34;coinbasevalue&#34;,
+            &#34;longpollid&#34;,
+            &#34;target&#34;,
+            &#34;mintime&#34;,
+            &#34;mutable&#34;,
+            &#34;noncerange&#34;,
+            &#34;sigoplimit&#34;,
+            &#34;sizelimit&#34;,
+            &#34;curtime&#34;,
+            &#34;bits&#34;,
+            &#34;height&#34;
+          ],
+          &#34;description&#34;: &#34;Otherwise&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;mining&#34;
+}</pre>

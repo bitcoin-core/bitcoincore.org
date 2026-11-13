@@ -1,0 +1,20 @@
+---
+name: pruneblockchain
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/pruneblockchain/raw/
+rawpage: true
+---
+
+pruneblockchain height
+
+Attempts to delete block and undo data up to a specified height or timestamp, if eligible for pruning.
+Requires `-prune` to be enabled at startup. While pruned data may be re-fetched in some cases (e.g., via `getblockfrompeer`), local deletion is irreversible.
+
+Arguments:
+1. height (number)  The block height to prune up to. May be set to a discrete height, or to a UNIX epoch time to prune blocks whose block time is at least 2 hours older than the provided timestamp.
+
+Result: (number)
+
+
+

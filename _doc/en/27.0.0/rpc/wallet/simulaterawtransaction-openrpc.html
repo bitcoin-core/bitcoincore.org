@@ -1,0 +1,60 @@
+---
+name: simulaterawtransaction
+btcversion: 27.0.0
+btcgroup: wallet
+permalink: en/doc/27.0.0/rpc/wallet/simulaterawtransaction/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;simulaterawtransaction&#34;,
+  &#34;description&#34;: &#34;Calculate the balance change resulting in the signing and broadcasting of the given transaction(s).&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;rawtxs&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+        }
+      },
+      &#34;description&#34;: &#34;An array of hex strings of raw transactions.\n&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;include_watchonly&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;true for watch-only wallets, otherwise false&#34;,
+            &#34;description&#34;: &#34;Whether to include watch-only addresses (see RPC importaddress)&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;balance_change&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;The wallet balance change (negative means decrease).&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;balance_change&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

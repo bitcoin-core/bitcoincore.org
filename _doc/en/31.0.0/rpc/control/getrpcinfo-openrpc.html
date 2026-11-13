@@ -1,0 +1,54 @@
+---
+name: getrpcinfo
+btcversion: 31.0.0
+btcgroup: control
+permalink: en/doc/31.0.0/rpc/control/getrpcinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getrpcinfo&#34;,
+  &#34;description&#34;: &#34;Returns details of the RPC server.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;active_commands&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;method&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;The name of the RPC command&#34;
+              },
+              &#34;duration&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;The running time in microseconds&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;method&#34;,
+              &#34;duration&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;All active commands&#34;
+        },
+        &#34;logpath&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The complete file path to the debug log&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;active_commands&#34;,
+        &#34;logpath&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;control&#34;
+}</pre>

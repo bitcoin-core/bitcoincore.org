@@ -3,16 +3,17 @@ name: help
 btcversion: 27.0.0
 btcgroup: control
 permalink: en/doc/27.0.0/rpc/control/help/
+openrpc: true
 ---
 
-help ( "command" )
-
-List all commands, or get help for a specified command.
-
-Arguments:
-1. command    (string, optional, default=all commands) The command to get help on
-
-Result:
-"str"    (string) The help text
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">control</span></p>
+  <pre class="rpc-synopsis">help ( &#34;command&#34; )</pre>
+  <div class="rpc-description"><p>List all commands, or get help for a specified command.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>command</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: all commands</small></td><td>The command to get help on</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+</div>

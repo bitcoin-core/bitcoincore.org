@@ -1,0 +1,47 @@
+---
+name: addnode
+btcversion: 26.2.0
+btcgroup: network
+permalink: en/doc/26.2.0/rpc/network/addnode/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;addnode&#34;,
+  &#34;description&#34;: &#34;Attempts to add or remove a node from the addnode list.\nOr try a connection to a node once.\nNodes added using addnode (or -connect) are protected from DoS disconnection and are not required to be\nfull nodes/support SegWit as other outbound peers are (though such peers will not be synced from).\nAddnode connections are limited to 8 at a time and are counted separately from the -maxconnections limit.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;node&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The address of the peer to connect to&#34;
+    },
+    {
+      &#34;name&#34;: &#34;command&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;&#39;add&#39; to add a node to the list, &#39;remove&#39; to remove a node from the list, &#39;onetry&#39; to try a connection to the node once&#34;
+    },
+    {
+      &#34;name&#34;: &#34;v2transport&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Attempt to connect using BIP324 v2 transport protocol (ignored for &#39;remove&#39; command)&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

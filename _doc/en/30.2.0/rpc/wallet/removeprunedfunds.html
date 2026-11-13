@@ -1,0 +1,19 @@
+---
+name: removeprunedfunds
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/removeprunedfunds/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">removeprunedfunds &#34;txid&#34;</pre>
+  <div class="rpc-description"><p>Deletes the specified transaction from the wallet. Meant for use with pruned wallets and as a companion to importprunedfunds. This will affect wallet balances.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txid</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The hex-encoded id of the transaction you are deleting</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

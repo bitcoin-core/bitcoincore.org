@@ -1,0 +1,33 @@
+---
+name: gettxout
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/gettxout/raw/
+rawpage: true
+---
+
+gettxout "txid" n ( include_mempool )
+
+Returns details about an unspent transaction output.
+
+Arguments:
+1. txid (string)  The transaction id
+2. n (number)  vout number
+3. include_mempool (boolean, optional, default=true)  Whether to include the mempool. Note that an unspent output that is spent in the mempool won't appear.
+
+Result: (one of)
+  option 1: (null)  If the UTXO was not found
+  option 2: (object)  Otherwise
+    bestblock (string)  The hash of the block at the tip of the chain
+    confirmations (number)  The number of confirmations
+    value (string, amount)  The transaction value in BTC
+    scriptPubKey (object)
+      asm (string)  Disassembly of the output script
+      desc (string)  Inferred descriptor for the output
+      hex (string)  The raw output script bytes, hex-encoded
+      type (string)  The type, eg pubkeyhash
+      address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+    coinbase (boolean)  Coinbase or not
+
+
+

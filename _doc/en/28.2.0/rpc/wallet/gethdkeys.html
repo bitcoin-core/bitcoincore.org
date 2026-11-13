@@ -1,0 +1,39 @@
+---
+name: gethdkeys
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/gethdkeys/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">gethdkeys ( options )</pre>
+  <div class="rpc-description"><p>List all BIP 32 HD keys in the wallet and which descriptors use them.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>options</code></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">active_only</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Show the keys for only active descriptors</span></li>
+    <li><code class="rpc-key">private</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Show private keys</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">xpub</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The extended public key</span></li>
+      <li><code class="rpc-key">has_private</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the wallet has the private key for this xpub</span></li>
+      <li><code class="rpc-key">xprv</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The extended private key if &#34;private&#34; is true</span></li>
+      <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">Array of descriptor objects that use this HD key</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Descriptor string representation</span></li>
+              <li><code class="rpc-key">active</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this descriptor is currently used to generate new addresses</span></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

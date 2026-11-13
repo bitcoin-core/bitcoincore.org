@@ -1,0 +1,87 @@
+---
+name: getdescriptoractivity
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/getdescriptoractivity/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getdescriptoractivity blockhashes scanobjects ( include_mempool )</pre>
+  <div class="rpc-description"><p>Get spend and receive activity associated with a set of descriptors for a set of blocks. This command pairs well with the `relevant_blocks` output of `scanblocks()`. This call may take several minutes. If you encounter timeouts, try specifying no RPC timeout (bitcoin-cli -rpcclienttimeout=0)</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>blockhashes</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The list of blockhashes to examine for activity. Order doesn&#39;t matter. Must be along main chain or an error is thrown.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>scanobjects</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The list of descriptors (scan objects) to examine for activity. Every scan object is either a string descriptor or an object:
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">An output descriptor</span></li>
+            <li><code class="rpc-key">range</code> <span class="rpc-type">(one of, optional, default=1000)</span> <span class="rpc-desc">The range of HD chain indexes to explore (either end or [begin,end])</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+                  <ul class="rpc-schema">
+                    <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+                    <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+                  </ul></li>
+              </ul></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>include_mempool</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Whether to include unconfirmed activity</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">activity</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">events</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+        <ul class="rpc-schema rpc-variants">
+          <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">always &#39;spend&#39;</span></li>
+              <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount in BTC of the spent output</span></li>
+              <li><code class="rpc-key">blockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The blockhash this spend appears in (omitted if unconfirmed)</span></li>
+              <li><code class="rpc-key">height</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Height of the spend (omitted if unconfirmed)</span></li>
+              <li><code class="rpc-key">spend_txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The txid of the spending transaction</span></li>
+              <li><code class="rpc-key">spend_vin</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The input index of the spend</span></li>
+              <li><code class="rpc-key">prevout_txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The txid of the prevout</span></li>
+              <li><code class="rpc-key">prevout_vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The vout of the prevout</span></li>
+              <li><code class="rpc-key">prevout_spk</code> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the output script</span></li>
+                  <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the output</span></li>
+                  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw output script bytes, hex-encoded</span></li>
+                  <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+                  <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)</span></li>
+                </ul></li>
+            </ul></li>
+          <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">always &#39;receive&#39;</span></li>
+              <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount in BTC of the new output</span></li>
+              <li><code class="rpc-key">blockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The block that this receive is in (omitted if unconfirmed)</span></li>
+              <li><code class="rpc-key">height</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The height of the receive (omitted if unconfirmed)</span></li>
+              <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The txid of the receiving transaction</span></li>
+              <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The vout of the receiving output</span></li>
+              <li><code class="rpc-key">output_spk</code> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the output script</span></li>
+                  <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the output</span></li>
+                  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw output script bytes, hex-encoded</span></li>
+                  <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+                  <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)</span></li>
+                </ul></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

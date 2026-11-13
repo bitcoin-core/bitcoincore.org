@@ -1,0 +1,23 @@
+---
+name: setwalletflag
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/setwalletflag/raw/
+rawpage: true
+---
+
+setwalletflag "flag" ( value )
+
+Change the state of the given wallet flag for a wallet.
+
+Arguments:
+1. flag (string)  The name of the flag to change. Current available flags: avoid_reuse
+2. value (boolean, optional, default=true)  The new state.
+
+Result: (object)
+  flag_name (string)  The name of the flag that was modified
+  flag_state (boolean)  The new state of the flag
+  warnings (string, optional)  Any warnings associated with the change
+
+
+

@@ -1,0 +1,44 @@
+---
+name: getmempooldescendants
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/getmempooldescendants/raw/
+rawpage: true
+---
+
+getmempooldescendants "txid" ( verbose )
+
+If txid is in the mempool, returns all in-mempool descendants.
+
+Arguments:
+1. txid (string)  The transaction id (must be in mempool)
+2. verbose (boolean, optional, default=false)  True for a json object, false for array of transaction ids
+
+Result: (one of)
+  option 1: (array)  for verbose = false
+    each item (string)
+  option 2: (object)  for verbose = true
+    ... (object)
+      vsize (number)  virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted.
+      weight (number)  transaction weight as defined in BIP 141.
+      time (number, unix-time)  local time transaction entered pool in seconds since 1 Jan 1970 GMT
+      height (number)  block height when transaction entered pool
+      descendantcount (number)  number of in-mempool descendant transactions (including this one)
+      descendantsize (number)  virtual transaction size of in-mempool descendants (including this one)
+      ancestorcount (number)  number of in-mempool ancestor transactions (including this one)
+      ancestorsize (number)  virtual transaction size of in-mempool ancestors (including this one)
+      wtxid (string)  hash of serialized transaction, including witness data
+      fees (object)
+        base (string, amount)  transaction fee, denominated in BTC
+        modified (string, amount)  transaction fee with fee deltas used for mining priority, denominated in BTC
+        ancestor (string, amount)  transaction fees of in-mempool ancestors (including this one) with fee deltas used for mining priority, denominated in BTC
+        descendant (string, amount)  transaction fees of in-mempool descendants (including this one) with fee deltas used for mining priority, denominated in BTC
+      depends (array)  unconfirmed transactions used as inputs for this transaction
+        each item (string)
+      spentby (array)  unconfirmed transactions spending outputs from this transaction
+        each item (string)
+      bip125-replaceable (boolean)  Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability.
+      unbroadcast (boolean)  Whether this transaction is currently unbroadcast (initial broadcast not yet acknowledged by any peers)
+
+
+

@@ -1,0 +1,45 @@
+---
+name: testmempoolaccept
+btcversion: 26.2.0
+btcgroup: rawtransactions
+permalink: en/doc/26.2.0/rpc/rawtransactions/testmempoolaccept/raw/
+rawpage: true
+---
+
+testmempoolaccept rawtxs ( maxfeerate )
+
+Returns result of mempool acceptance tests indicating if raw transaction(s) (serialized, hex-encoded) would be accepted by mempool.
+
+If multiple transactions are passed in, parents must come before children and package policies apply: the transactions cannot conflict with any mempool transactions or each other.
+
+If one transaction fails, other transactions may not be fully validated (the 'allowed' key will be blank).
+
+The maximum number of transactions allowed is 25.
+
+This checks if transactions violate the consensus or policy rules.
+
+See sendrawtransaction call.
+
+Arguments:
+1. rawtxs (array)  An array of hex strings of raw transactions.
+  each item (string)
+2. maxfeerate (one of, optional, default="0.10")  Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB
+  option 1: (number)
+  option 2: (string)
+
+Result: (array)
+  each item (object)
+    txid (string)  The transaction hash in hex
+    wtxid (string)  The transaction witness hash in hex
+    package-error (string, optional)  Package validation error, if any (only possible if rawtxs had more than 1 transaction).
+    allowed (boolean, optional)  Whether this tx would be accepted to the mempool and pass client-specified maxfeerate. If not present, the tx was not fully validated due to a failure in another tx in the list.
+    vsize (number, optional)  Virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted (only present when 'allowed' is true)
+    fees (object, optional)  Transaction fees (only present if 'allowed' is true)
+      base (string, amount)  transaction fee in BTC
+      effective-feerate (string, amount)  the effective feerate in BTC per KvB. May differ from the base feerate if, for example, there are modified fees from prioritisetransaction or a package feerate was used.
+      effective-includes (array)  transactions whose fees and vsizes are included in effective-feerate.
+        each item (string)
+    reject-reason (string, optional)  Rejection string (only present when 'allowed' is false)
+
+
+

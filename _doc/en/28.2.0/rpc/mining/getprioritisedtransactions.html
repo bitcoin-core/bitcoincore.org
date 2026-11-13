@@ -1,0 +1,25 @@
+---
+name: getprioritisedtransactions
+btcversion: 28.2.0
+btcgroup: mining
+permalink: en/doc/28.2.0/rpc/mining/getprioritisedtransactions/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">mining</span></p>
+  <pre class="rpc-synopsis">getprioritisedtransactions</pre>
+  <div class="rpc-description"><p>Returns a map of all user-created (see prioritisetransaction) fee deltas by txid, and whether the tx is present in mempool.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">fee_delta</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">transaction fee delta in satoshis</span></li>
+      <li><code class="rpc-key">in_mempool</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">whether this transaction is currently in mempool</span></li>
+      <li><code class="rpc-key">modified_fee</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">modified fee in satoshis. Only returned if in_mempool=true</span></li>
+    </ul></li>
+</ul>
+</div>

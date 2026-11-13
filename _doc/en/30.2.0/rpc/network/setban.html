@@ -1,0 +1,22 @@
+---
+name: setban
+btcversion: 30.2.0
+btcgroup: network
+permalink: en/doc/30.2.0/rpc/network/setban/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">setban &#34;subnet&#34; &#34;command&#34; ( bantime ) ( absolute )</pre>
+  <div class="rpc-description"><p>Attempts to add or remove an IP/Subnet from the banned list.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>subnet</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The IP/Subnet (see getpeerinfo for nodes IP) with an optional netmask (default is /32 = single IP)</td></tr>
+  <tr><td>2</td><td><code>command</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>&#39;add&#39; to add an IP/Subnet to the list, &#39;remove&#39; to remove an IP/Subnet from the list</td></tr>
+  <tr><td>3</td><td><code>bantime</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 0</small></td><td>time in seconds how long (or until when if [absolute] is set) the IP is banned (0 or empty means using the default time of 24h which can also be overwritten by the -bantime startup argument)</td></tr>
+  <tr><td>4</td><td><code>absolute</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>If set, the bantime must be an absolute timestamp expressed in UNIX epoch time</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

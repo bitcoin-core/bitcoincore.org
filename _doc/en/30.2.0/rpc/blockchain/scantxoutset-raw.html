@@ -1,0 +1,66 @@
+---
+name: scantxoutset
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/scantxoutset/raw/
+rawpage: true
+---
+
+scantxoutset "action" ( scanobjects )
+
+Scans the unspent transaction output set for entries that match certain output descriptors.
+Examples of output descriptors are:
+    addr(<address>)                      Outputs whose output script corresponds to the specified address (does not include P2PK)
+    raw(<hex script>)                    Outputs whose output script equals the specified hex-encoded bytes
+    combo(<pubkey>)                      P2PK, P2PKH, P2WPKH, and P2SH-P2WPKH outputs for the given pubkey
+    pkh(<pubkey>)                        P2PKH outputs for the given pubkey
+    sh(multi(<n>,<pubkey>,<pubkey>,...)) P2SH-multisig outputs for the given threshold and pubkeys
+    tr(<pubkey>)                         P2TR
+    tr(<pubkey>,{pk(<pubkey>)})          P2TR with single fallback pubkey in tapscript
+    rawtr(<pubkey>)                      P2TR with the specified key as output key rather than inner
+    wsh(and_v(v:pk(<pubkey>),after(2)))  P2WSH miniscript with mandatory pubkey and a timelock
+
+In the above, <pubkey> either refers to a fixed public key in hexadecimal notation, or to an xpub/xprv optionally followed by one
+or more path elements separated by "/", and optionally ending in "/*" (unhardened), or "/*'" or "/*h" (hardened) to specify all
+unhardened or hardened child keys.
+In the latter case, a range needs to be specified by below if different from 1000.
+For more information on output descriptors, see the documentation in the doc/descriptors.md file.
+
+Arguments:
+1. action (string)  The action to execute "start" for starting a scan "abort" for aborting the current scan (returns true when abort was successful) "status" for progress report (in %) of the current scan
+2. scanobjects (array, optional)  Array of scan objects. Required for "start" action Every scan object is either a string descriptor or an object:
+  each item (one of)
+    option 1: (string)
+    option 2: (object)
+      desc (string)  An output descriptor
+      range (one of, optional, default=1000)  The range of HD chain indexes to explore (either end or [begin,end])
+        option 1: (number)
+        option 2: (array)
+          [0] (number)
+          [1] (number)
+
+Result: (one of)
+  option 1: (object)  when action=='start'; only returns after scan completes
+    success (boolean)  Whether the scan was completed
+    txouts (number)  The number of unspent transaction outputs scanned
+    height (number)  The block height at which the scan was done
+    bestblock (string)  The hash of the block at the tip of the chain
+    unspents (array)
+      each item (object)
+        txid (string)  The transaction id
+        vout (number)  The vout value
+        scriptPubKey (string)  The output script
+        desc (string)  A specialized descriptor for the matched output script
+        amount (string, amount)  The total amount in BTC of the unspent output
+        coinbase (boolean)  Whether this is a coinbase output
+        height (number)  Height of the unspent transaction output
+        blockhash (string)  Blockhash of the unspent transaction output
+        confirmations (number)  Number of confirmations of the unspent transaction output when the scan was done
+    total_amount (string, amount)  The total amount of all found unspent outputs in BTC
+  option 2: (boolean)  when action=='abort'
+  option 3: (object)  when action=='status' and a scan is currently in progress
+    progress (number)  Approximate percent complete
+  option 4: (null)  when action=='status' and no scan is in progress - possibly already completed
+
+
+

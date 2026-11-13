@@ -1,0 +1,31 @@
+---
+name: decodescript
+btcversion: 30.2.0
+btcgroup: rawtransactions
+permalink: en/doc/30.2.0/rpc/rawtransactions/decodescript/raw/
+rawpage: true
+---
+
+decodescript "hexstring"
+
+Decode a hex-encoded script.
+
+Arguments:
+1. hexstring (string)  the hex-encoded script
+
+Result: (object)
+  asm (string)  Disassembly of the script
+  desc (string)  Inferred descriptor for the script
+  type (string)  The output type (e.g. nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
+  address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+  p2sh (string, optional)  address of P2SH script wrapping this redeem script (not returned for types that should not be wrapped)
+  segwit (object, optional)  Result of a witness output script wrapping this redeem script (not returned for types that should not be wrapped)
+    asm (string)  Disassembly of the output script
+    hex (string)  The raw output script bytes, hex-encoded
+    type (string)  The type of the output script (e.g. witness_v0_keyhash or witness_v0_scripthash)
+    address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+    desc (string)  Inferred descriptor for the script
+    p2sh-segwit (string)  address of the P2SH script wrapping this witness redeem script
+
+
+

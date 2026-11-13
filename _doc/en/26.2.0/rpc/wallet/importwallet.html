@@ -1,0 +1,19 @@
+---
+name: importwallet
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/importwallet/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">importwallet &#34;filename&#34;</pre>
+  <div class="rpc-description"><p>Imports keys from a wallet dump file (see dumpwallet). Requires a new wallet backup to include imported keys. Note: Blockchain and Mempool will be rescanned after a successful import. Use &#34;getwalletinfo&#34; to query the scanning progress. Note: This command is only compatible with legacy wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>filename</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The wallet file</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

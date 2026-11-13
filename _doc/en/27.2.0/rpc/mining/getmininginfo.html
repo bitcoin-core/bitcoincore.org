@@ -1,0 +1,27 @@
+---
+name: getmininginfo
+btcversion: 27.2.0
+btcgroup: mining
+permalink: en/doc/27.2.0/rpc/mining/getmininginfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">mining</span></p>
+  <pre class="rpc-synopsis">getmininginfo</pre>
+  <div class="rpc-description"><p>Returns a json object containing mining-related information.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">blocks</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The current block</span></li>
+  <li><code class="rpc-key">currentblockweight</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The block weight of the last assembled block (only present if a block was ever assembled)</span></li>
+  <li><code class="rpc-key">currentblocktx</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of block transactions of the last assembled block (only present if a block was ever assembled)</span></li>
+  <li><code class="rpc-key">difficulty</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The current difficulty</span></li>
+  <li><code class="rpc-key">networkhashps</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The network hashes per second</span></li>
+  <li><code class="rpc-key">pooledtx</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The size of the mempool</span></li>
+  <li><code class="rpc-key">chain</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">current network name (main, test, signet, regtest)</span></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">any network and blockchain warnings</span></li>
+</ul>
+</div>

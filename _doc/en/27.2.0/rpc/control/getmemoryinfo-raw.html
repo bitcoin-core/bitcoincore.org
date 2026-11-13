@@ -1,0 +1,28 @@
+---
+name: getmemoryinfo
+btcversion: 27.2.0
+btcgroup: control
+permalink: en/doc/27.2.0/rpc/control/getmemoryinfo/raw/
+rawpage: true
+---
+
+getmemoryinfo ( "mode" )
+
+Returns an object containing information about memory usage.
+
+Arguments:
+1. mode (string, optional, default="stats")  determines what kind of information is returned. - "stats" returns general statistics about memory usage in the daemon. - "mallocinfo" returns an XML string describing low-level heap state (only available if compiled with glibc).
+
+Result: (one of)
+  option 1: (object)  mode "stats"
+    locked (object)  Information about locked memory manager
+      used (number)  Number of bytes used
+      free (number)  Number of bytes available in current arenas
+      total (number)  Total number of bytes managed
+      locked (number)  Amount of bytes that succeeded locking. If this number is smaller than total, locking pages failed at some point and key data could be swapped to disk.
+      chunks_used (number)  Number allocated chunks
+      chunks_free (number)  Number unused chunks
+  option 2: (string)  mode "mallocinfo"
+
+
+

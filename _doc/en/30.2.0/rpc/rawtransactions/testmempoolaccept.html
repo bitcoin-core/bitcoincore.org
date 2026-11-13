@@ -1,0 +1,48 @@
+---
+name: testmempoolaccept
+btcversion: 30.2.0
+btcgroup: rawtransactions
+permalink: en/doc/30.2.0/rpc/rawtransactions/testmempoolaccept/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">testmempoolaccept rawtxs ( maxfeerate )</pre>
+  <div class="rpc-description"><p>Returns result of mempool acceptance tests indicating if raw transaction(s) (serialized, hex-encoded) would be accepted by mempool.</p><p>If multiple transactions are passed in, parents must come before children and package policies apply: the transactions cannot conflict with any mempool transactions or each other.</p><p>If one transaction fails, other transactions may not be fully validated (the &#39;allowed&#39; key will be blank).</p><p>The maximum number of transactions allowed is 25.</p><p>This checks if transactions violate the consensus or policy rules.</p><p>See sendrawtransaction call.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>rawtxs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>An array of hex strings of raw transactions.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>maxfeerate</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;0.10&#34;</small></td><td>Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB.<br>Fee rates larger than 1BTC/kvB are rejected.<br>Set to 0 to accept any fee rate.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction hash in hex</span></li>
+      <li><code class="rpc-key">wtxid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction witness hash in hex</span></li>
+      <li><code class="rpc-key">package-error</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Package validation error, if any (only possible if rawtxs had more than 1 transaction).</span></li>
+      <li><code class="rpc-key">allowed</code> <span class="rpc-type">(boolean, optional)</span> <span class="rpc-desc">Whether this tx would be accepted to the mempool and pass client-specified maxfeerate. If not present, the tx was not fully validated due to a failure in another tx in the list.</span></li>
+      <li><code class="rpc-key">vsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted (only present when &#39;allowed&#39; is true)</span></li>
+      <li><code class="rpc-key">fees</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Transaction fees (only present if &#39;allowed&#39; is true)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">base</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">transaction fee in BTC</span></li>
+          <li><code class="rpc-key">effective-feerate</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">the effective feerate in BTC per KvB. May differ from the base feerate if, for example, there are modified fees from prioritisetransaction or a package feerate was used.</span></li>
+          <li><code class="rpc-key">effective-includes</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">transactions whose fees and vsizes are included in effective-feerate.</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+            </ul></li>
+        </ul></li>
+      <li><code class="rpc-key">reject-reason</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Rejection reason (only present when &#39;allowed&#39; is false)</span></li>
+      <li><code class="rpc-key">reject-details</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Rejection details (only present when &#39;allowed&#39; is false and rejection details exist)</span></li>
+    </ul></li>
+</ul>
+</div>

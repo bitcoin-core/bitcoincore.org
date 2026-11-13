@@ -1,0 +1,95 @@
+---
+name: listdescriptors
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/listdescriptors/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;listdescriptors&#34;,
+  &#34;description&#34;: &#34;List descriptors imported into a descriptor-enabled wallet.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;private&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;Show private descriptors.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;wallet_name&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Name of wallet this operation was performed on&#34;
+        },
+        &#34;descriptors&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;desc&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;Descriptor string representation&#34;
+              },
+              &#34;timestamp&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;The creation time of the descriptor&#34;
+              },
+              &#34;active&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;Whether this descriptor is currently used to generate new addresses&#34;
+              },
+              &#34;internal&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;True if this descriptor is used to generate change addresses. False if this descriptor is used to generate receiving addresses; defined only for active descriptors&#34;
+              },
+              &#34;range&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;prefixItems&#34;: [
+                  {
+                    &#34;type&#34;: &#34;number&#34;
+                  },
+                  {
+                    &#34;type&#34;: &#34;number&#34;
+                  }
+                ],
+                &#34;minItems&#34;: 2,
+                &#34;maxItems&#34;: 2,
+                &#34;description&#34;: &#34;Defined only for ranged descriptors&#34;
+              },
+              &#34;next&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;Same as next_index field. Kept for compatibility reason.&#34;
+              },
+              &#34;next_index&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;The next index to generate addresses from; defined only for ranged descriptors&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;desc&#34;,
+              &#34;timestamp&#34;,
+              &#34;active&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;Array of descriptor objects (sorted by descriptor string representation)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;wallet_name&#34;,
+        &#34;descriptors&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

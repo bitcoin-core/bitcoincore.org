@@ -1,0 +1,35 @@
+---
+name: deriveaddresses
+btcversion: 28.2.0
+btcgroup: util
+permalink: en/doc/28.2.0/rpc/util/deriveaddresses/raw/
+rawpage: true
+---
+
+deriveaddresses "descriptor" ( range )
+
+Derives one or more addresses corresponding to an output descriptor.
+Examples of output descriptors are:
+    pkh(<pubkey>)                                     P2PKH outputs for the given pubkey
+    wpkh(<pubkey>)                                    Native segwit P2PKH outputs for the given pubkey
+    sh(multi(<n>,<pubkey>,<pubkey>,...))              P2SH-multisig outputs for the given threshold and pubkeys
+    raw(<hex script>)                                 Outputs whose output script equals the specified hex-encoded bytes
+    tr(<pubkey>,multi_a(<n>,<pubkey>,<pubkey>,...))   P2TR-multisig outputs for the given threshold and pubkeys
+
+In the above, <pubkey> either refers to a fixed public key in hexadecimal notation, or to an xpub/xprv optionally followed by one
+or more path elements separated by "/", where "h" represents a hardened child key.
+For more information on output descriptors, see the documentation in the doc/descriptors.md file.
+
+Arguments:
+1. descriptor (string)  The descriptor.
+2. range (one of, optional)  If a ranged descriptor is used, this specifies the end or the range (in [begin,end] notation) to derive.
+  option 1: (number)
+  option 2: (array)
+    [0] (number)
+    [1] (number)
+
+Result: (array)
+  each item (string)
+
+
+

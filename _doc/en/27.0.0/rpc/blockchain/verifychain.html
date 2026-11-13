@@ -3,27 +3,21 @@ name: verifychain
 btcversion: 27.0.0
 btcgroup: blockchain
 permalink: en/doc/27.0.0/rpc/blockchain/verifychain/
+openrpc: true
 ---
 
-verifychain ( checklevel nblocks )
-
-Verifies blockchain database.
-
-Arguments:
-1. checklevel    (numeric, optional, default=3, range=0-4) How thorough the block verification is:
-                 - level 0 reads the blocks from disk
-                 - level 1 verifies block validity
-                 - level 2 verifies undo data
-                 - level 3 checks disconnection of tip blocks
-                 - level 4 tries to reconnect the blocks
-                 - each level includes the checks of the previous levels
-2. nblocks       (numeric, optional, default=6, 0=all) The number of blocks to check.
-
-Result:
-true|false    (boolean) Verification finished successfully. If false, check debug.log for reason.
-
-Examples:
-> bitcoin-cli verifychain 
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "verifychain", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">verifychain ( checklevel ) ( nblocks )</pre>
+  <div class="rpc-description"><p>Verifies blockchain database.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>checklevel</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 3, range=0-4</small></td><td>How thorough the block verification is:<br>- level 0 reads the blocks from disk<br>- level 1 verifies block validity<br>- level 2 verifies undo data<br>- level 3 checks disconnection of tip blocks<br>- level 4 tries to reconnect the blocks<br>- each level includes the checks of the previous levels</td></tr>
+  <tr><td>2</td><td><code>nblocks</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 6, 0=all</small></td><td>The number of blocks to check.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(boolean)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli verifychain 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;verifychain&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

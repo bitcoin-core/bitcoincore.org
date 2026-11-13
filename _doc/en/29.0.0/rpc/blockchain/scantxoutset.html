@@ -3,84 +3,75 @@ name: scantxoutset
 btcversion: 29.0.0
 btcgroup: blockchain
 permalink: en/doc/29.0.0/rpc/blockchain/scantxoutset/
+openrpc: true
 ---
 
-scantxoutset "action" ( [scanobjects,...] )
-
-Scans the unspent transaction output set for entries that match certain output descriptors.
-Examples of output descriptors are:
-    addr(<address>)                      Outputs whose output script corresponds to the specified address (does not include P2PK)
-    raw(<hex script>)                    Outputs whose output script equals the specified hex-encoded bytes
-    combo(<pubkey>)                      P2PK, P2PKH, P2WPKH, and P2SH-P2WPKH outputs for the given pubkey
-    pkh(<pubkey>)                        P2PKH outputs for the given pubkey
-    sh(multi(<n>,<pubkey>,<pubkey>,...)) P2SH-multisig outputs for the given threshold and pubkeys
-    tr(<pubkey>)                         P2TR
-    tr(<pubkey>,{pk(<pubkey>)})          P2TR with single fallback pubkey in tapscript
-    rawtr(<pubkey>)                      P2TR with the specified key as output key rather than inner
-    wsh(and_v(v:pk(<pubkey>),after(2)))  P2WSH miniscript with mandatory pubkey and a timelock
-
-In the above, <pubkey> either refers to a fixed public key in hexadecimal notation, or to an xpub/xprv optionally followed by one
-or more path elements separated by "/", and optionally ending in "/*" (unhardened), or "/*'" or "/*h" (hardened) to specify all
-unhardened or hardened child keys.
-In the latter case, a range needs to be specified by below if different from 1000.
-For more information on output descriptors, see the documentation in the doc/descriptors.md file.
-
-Arguments:
-1. action                        (string, required) The action to execute
-                                 "start" for starting a scan
-                                 "abort" for aborting the current scan (returns true when abort was successful)
-                                 "status" for progress report (in %) of the current scan
-2. scanobjects                   (json array, optional) Array of scan objects. Required for "start" action
-                                 Every scan object is either a string descriptor or an object:
-     [
-       "descriptor",             (string) An output descriptor
-       {                         (json object) An object with output descriptor and metadata
-         "desc": "str",          (string, required) An output descriptor
-         "range": n or [n,n],    (numeric or array, optional, default=1000) The range of HD chain indexes to explore (either end or [begin,end])
-       },
-       ...
-     ]
-
-Result (when action=='start'; only returns after scan completes):
-{                                 (json object)
-  "success" : true|false,         (boolean) Whether the scan was completed
-  "txouts" : n,                   (numeric) The number of unspent transaction outputs scanned
-  "height" : n,                   (numeric) The block height at which the scan was done
-  "bestblock" : "hex",            (string) The hash of the block at the tip of the chain
-  "unspents" : [                  (json array)
-    {                             (json object)
-      "txid" : "hex",             (string) The transaction id
-      "vout" : n,                 (numeric) The vout value
-      "scriptPubKey" : "hex",     (string) The output script
-      "desc" : "str",             (string) A specialized descriptor for the matched output script
-      "amount" : n,               (numeric) The total amount in BTC of the unspent output
-      "coinbase" : true|false,    (boolean) Whether this is a coinbase output
-      "height" : n,               (numeric) Height of the unspent transaction output
-      "blockhash" : "hex",        (string) Blockhash of the unspent transaction output
-      "confirmations" : n         (numeric) Number of confirmations of the unspent transaction output when the scan was done
-    },
-    ...
-  ],
-  "total_amount" : n              (numeric) The total amount of all found unspent outputs in BTC
-}
-
-Result (when action=='abort'):
-true|false    (boolean) True if scan will be aborted (not necessarily before this RPC returns), or false if there is no scan to abort
-
-Result (when action=='status' and a scan is currently in progress):
-{                    (json object)
-  "progress" : n     (numeric) Approximate percent complete
-}
-
-Result (when action=='status' and no scan is in progress - possibly already completed):
-null    (json null)
-
-Examples:
-> bitcoin-cli scantxoutset start '["raw(76a91411b366edfc0a8b66feebae5c2e25a7b6a5d1cf3188ac)#fm24fxxy"]'
-> bitcoin-cli scantxoutset status
-> bitcoin-cli scantxoutset abort
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scantxoutset", "params": ["start", ["raw(76a91411b366edfc0a8b66feebae5c2e25a7b6a5d1cf3188ac)#fm24fxxy"]]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scantxoutset", "params": ["status"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "scantxoutset", "params": ["abort"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">scantxoutset &#34;action&#34; ( scanobjects )</pre>
+  <div class="rpc-description"><p>Scans the unspent transaction output set for entries that match certain output descriptors. Examples of output descriptors are:<br>&nbsp;&nbsp;&nbsp;&nbsp;addr(&lt;address&gt;)                      Outputs whose output script corresponds to the specified address (does not include P2PK)<br>&nbsp;&nbsp;&nbsp;&nbsp;raw(&lt;hex script&gt;)                    Outputs whose output script equals the specified hex-encoded bytes<br>&nbsp;&nbsp;&nbsp;&nbsp;combo(&lt;pubkey&gt;)                      P2PK, P2PKH, P2WPKH, and P2SH-P2WPKH outputs for the given pubkey<br>&nbsp;&nbsp;&nbsp;&nbsp;pkh(&lt;pubkey&gt;)                        P2PKH outputs for the given pubkey<br>&nbsp;&nbsp;&nbsp;&nbsp;sh(multi(&lt;n&gt;,&lt;pubkey&gt;,&lt;pubkey&gt;,...)) P2SH-multisig outputs for the given threshold and pubkeys<br>&nbsp;&nbsp;&nbsp;&nbsp;tr(&lt;pubkey&gt;)                         P2TR<br>&nbsp;&nbsp;&nbsp;&nbsp;tr(&lt;pubkey&gt;,{pk(&lt;pubkey&gt;)})          P2TR with single fallback pubkey in tapscript<br>&nbsp;&nbsp;&nbsp;&nbsp;rawtr(&lt;pubkey&gt;)                      P2TR with the specified key as output key rather than inner<br>&nbsp;&nbsp;&nbsp;&nbsp;wsh(and_v(v:pk(&lt;pubkey&gt;),after(2)))  P2WSH miniscript with mandatory pubkey and a timelock</p><p>In the above, &lt;pubkey&gt; either refers to a fixed public key in hexadecimal notation, or to an xpub/xprv optionally followed by one or more path elements separated by &#34;/&#34;, and optionally ending in &#34;/*&#34; (unhardened), or &#34;/*&#39;&#34; or &#34;/*h&#34; (hardened) to specify all unhardened or hardened child keys. In the latter case, a range needs to be specified by below if different from 1000. For more information on output descriptors, see the documentation in the doc/descriptors.md file.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>action</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The action to execute<br>&#34;start&#34; for starting a scan<br>&#34;abort&#34; for aborting the current scan (returns true when abort was successful)<br>&#34;status&#34; for progress report (in %) of the current scan</td></tr>
+  <tr><td>2</td><td><code>scanobjects</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no</td><td>Array of scan objects. Required for &#34;start&#34; action<br>Every scan object is either a string descriptor or an object:
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">An output descriptor</span></li>
+            <li><code class="rpc-key">range</code> <span class="rpc-type">(one of, optional, default=1000)</span> <span class="rpc-desc">The range of HD chain indexes to explore (either end or [begin,end])</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+                  <ul class="rpc-schema">
+                    <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+                    <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+                  </ul></li>
+              </ul></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">when action==&#39;start&#39;; only returns after scan completes</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">success</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the scan was completed</span></li>
+      <li><code class="rpc-key">txouts</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of unspent transaction outputs scanned</span></li>
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block height at which the scan was done</span></li>
+      <li><code class="rpc-key">bestblock</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash of the block at the tip of the chain</span></li>
+      <li><code class="rpc-key">unspents</code> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+              <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The vout value</span></li>
+              <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The output script</span></li>
+              <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">A specialized descriptor for the matched output script</span></li>
+              <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount in BTC of the unspent output</span></li>
+              <li><code class="rpc-key">coinbase</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this is a coinbase output</span></li>
+              <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Height of the unspent transaction output</span></li>
+              <li><code class="rpc-key">blockhash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Blockhash of the unspent transaction output</span></li>
+              <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Number of confirmations of the unspent transaction output when the scan was done</span></li>
+            </ul></li>
+        </ul></li>
+      <li><code class="rpc-key">total_amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount of all found unspent outputs in BTC</span></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">when action==&#39;abort&#39;</span></li>
+  <li><span class="rpc-variant">option 3</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">when action==&#39;status&#39; and a scan is currently in progress</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">progress</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Approximate percent complete</span></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 4</span> <span class="rpc-type">(null)</span> <span class="rpc-desc">when action==&#39;status&#39; and no scan is in progress - possibly already completed</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli scantxoutset start &#39;[&#34;raw(76a91411b366edfc0a8b66feebae5c2e25a7b6a5d1cf3188ac)#fm24fxxy&#34;]&#39;
+&gt; bitcoin-cli scantxoutset status
+&gt; bitcoin-cli scantxoutset abort
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;scantxoutset&#34;, &#34;params&#34;: [&#34;start&#34;, [&#34;raw(76a91411b366edfc0a8b66feebae5c2e25a7b6a5d1cf3188ac)#fm24fxxy&#34;]]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;scantxoutset&#34;, &#34;params&#34;: [&#34;status&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;scantxoutset&#34;, &#34;params&#34;: [&#34;abort&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

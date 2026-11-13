@@ -1,0 +1,25 @@
+---
+name: upgradewallet
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/upgradewallet/raw/
+rawpage: true
+---
+
+upgradewallet ( version )
+
+Upgrade the wallet. Upgrades to the latest version if no version number is specified.
+New keys may be generated and a new wallet backup will need to be made.
+
+Arguments:
+1. version (number, optional, default=169900)  The version number to upgrade to. Default is the latest wallet version.
+
+Result: (object)
+  wallet_name (string)  Name of wallet this operation was performed on
+  previous_version (number)  Version of wallet before this operation
+  current_version (number)  Version of wallet after this operation
+  result (string, optional)  Description of result, if no error
+  error (string, optional)  Error message (if there is one)
+
+
+

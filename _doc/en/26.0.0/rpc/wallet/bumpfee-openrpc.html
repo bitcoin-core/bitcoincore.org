@@ -1,0 +1,140 @@
+---
+name: bumpfee
+btcversion: 26.0.0
+btcgroup: wallet
+permalink: en/doc/26.0.0/rpc/wallet/bumpfee/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;bumpfee&#34;,
+  &#34;description&#34;: &#34;Bumps the fee of an opt-in-RBF transaction T, replacing it with a new transaction B.\nAn opt-in RBF transaction with the given txid must be in the wallet.\nThe command will pay the additional fee by reducing change outputs or adding inputs when necessary.\nIt may add a new change output if one does not already exist.\nAll inputs in the original transaction will be included in the replacement transaction.\nThe command will fail if the wallet or mempool contains a transaction that spends one of T&#39;s outputs.\nBy default, the new fee will be calculated automatically using the estimatesmartfee RPC.\nThe user can specify a confirmation target for estimatesmartfee.\nAlternatively, the user can specify a fee rate in sat/vB for the new transaction.\nAt a minimum, the new fee rate must be high enough to pay an additional new relay fee (incrementalfee\nreturned by getnetworkinfo) to enter the node&#39;s mempool.\n* WARNING: before version 0.21, fee_rate was in BTC/kvB. As of 0.21, fee_rate is in sat/vB. *&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;txid&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The txid to be bumped&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;conf_target&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;wallet -txconfirmtarget&#34;,
+            &#34;description&#34;: &#34;Confirmation target in blocks\n&#34;
+          },
+          &#34;fee_rate&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            ],
+            &#34;x-bitcoin-default-hint&#34;: &#34;not set, fall back to wallet fee estimation&#34;,
+            &#34;description&#34;: &#34;\nSpecify a fee rate in sat/vB instead of relying on the built-in fee estimator.\nMust be at least 1.000 sat/vB higher than the current transaction fee rate.\nWARNING: before version 0.21, fee_rate was in BTC/kvB. As of 0.21, fee_rate is in sat/vB.\n&#34;
+          },
+          &#34;replaceable&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: true,
+            &#34;description&#34;: &#34;Whether the new transaction should still be\nmarked bip-125 replaceable. If true, the sequence numbers in the transaction will\nbe left unchanged from the original. If false, any input sequence numbers in the\noriginal transaction that were less than 0xfffffffe will be increased to 0xfffffffe\nso the new transaction will not be explicitly bip-125 replaceable (though it may\nstill be replaceable in practice, for example if it has unconfirmed ancestors which\nare replaceable).\n&#34;
+          },
+          &#34;estimate_mode&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;unset&#34;,
+            &#34;description&#34;: &#34;The fee estimate mode, must be one of (case insensitive):\n\&#34;unset\&#34;\n\&#34;economical\&#34;\n\&#34;conservative\&#34;&#34;
+          },
+          &#34;outputs&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;oneOf&#34;: [
+                {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;additionalProperties&#34;: {
+                    &#34;oneOf&#34;: [
+                      {
+                        &#34;type&#34;: &#34;number&#34;
+                      },
+                      {
+                        &#34;type&#34;: &#34;string&#34;
+                      }
+                    ]
+                  }
+                },
+                {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;data&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;A key-value pair. The key must be \&#34;data\&#34;, the value is hex-encoded data&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;data&#34;
+                  ]
+                }
+              ]
+            },
+            &#34;default&#34;: [],
+            &#34;description&#34;: &#34;The outputs specified as key-value pairs.\nEach key may only appear once, i.e. there can only be one &#39;data&#39; output, and no address may be duplicated.\nAt least one output of either type must be specified.\nCannot be provided if &#39;original_change_index&#39; is specified.&#34;
+          },
+          &#34;original_change_index&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;not set, detect change automatically&#34;,
+            &#34;description&#34;: &#34;The 0-based index of the change output on the original transaction. The indicated output will be recycled into the new change output on the bumped transaction. The remainder after paying the recipients and fees will be sent to the output script of the original change output. The change output\u2019s amount can increase if bumping the transaction adds new inputs, otherwise it will decrease. Cannot be used in combination with the &#39;outputs&#39; option.&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      }
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;txid&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The id of the new transaction.&#34;
+        },
+        &#34;origfee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;The fee of the replaced transaction.&#34;
+        },
+        &#34;fee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;The fee of the new transaction.&#34;
+        },
+        &#34;errors&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;Errors encountered during processing (may be empty).&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;txid&#34;,
+        &#34;origfee&#34;,
+        &#34;fee&#34;,
+        &#34;errors&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

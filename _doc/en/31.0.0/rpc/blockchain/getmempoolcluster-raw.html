@@ -1,0 +1,42 @@
+---
+name: getmempoolcluster
+btcversion: 31.0.0
+btcgroup: blockchain
+permalink: en/doc/31.0.0/rpc/blockchain/getmempoolcluster/raw/
+rawpage: true
+---
+
+getmempoolcluster "txid"
+
+Returns mempool data for given cluster
+
+Arguments:
+1. txid    (string, required) The txid of a transaction in the cluster
+
+Result:
+{                           (json object)
+  "clusterweight" : n,      (numeric) total sigops-adjusted weight (as defined in BIP 141 and modified by '-bytespersigop')
+  "txcount" : n,            (numeric) number of transactions
+  "chunks" : [              (json array) chunks in this cluster (in mining order)
+    {                       (json object)
+      "chunkfee" : n,       (numeric) fees of the transactions in this chunk
+      "chunkweight" : n,    (numeric) sigops-adjusted weight of all transactions in this chunk
+      "txs" : [             (json array) transactions in this chunk in mining order
+        "hex",              (string) transaction id
+        ...
+      ]
+    },
+    ...
+  ]
+}
+
+Examples:
+> bitcoin-cli getmempoolcluster txid
+> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getmempoolcluster", "params": [txid]}' -H 'content-type: application/json' http://127.0.0.1:8332/
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+---
+name: listaddressgroupings
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/listaddressgroupings/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listaddressgroupings</pre>
+  <div class="rpc-description"><p>Lists groups of addresses which have had their common ownership made public by common use as inputs or as the resulting change in past transactions</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">[0]</code> <span class="rpc-type">(string)</span></li>
+          <li><code class="rpc-key">[1]</code> <span class="rpc-type">(string, amount)</span></li>
+          <li><code class="rpc-key">[2]</code> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

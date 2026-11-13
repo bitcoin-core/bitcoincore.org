@@ -3,27 +3,27 @@ name: unloadwallet
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/unloadwallet/
+openrpc: true
 ---
 
-unloadwallet ( "wallet_name" load_on_startup )
-
-Unloads the wallet referenced by the request endpoint or the wallet_name argument.
-If both are specified, they must be identical.
-
-Arguments:
-1. wallet_name        (string, optional, default=the wallet name from the RPC endpoint) The name of the wallet to unload. If provided both here and in the RPC endpoint, the two must be identical.
-2. load_on_startup    (boolean, optional) Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.
-
-Result:
-{                   (json object)
-  "warnings" : [    (json array, optional) Warning messages, if any, related to unloading the wallet.
-    "str",          (string)
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli unloadwallet wallet_name
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "unloadwallet", "params": [wallet_name]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">unloadwallet ( &#34;wallet_name&#34; ) ( load_on_startup )</pre>
+  <div class="rpc-description"><p>Unloads the wallet referenced by the request endpoint or the wallet_name argument. If both are specified, they must be identical.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>wallet_name</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: the wallet name from the RPC endpoint</small></td><td>The name of the wallet to unload. If provided both here and in the RPC endpoint, the two must be identical.</td></tr>
+  <tr><td>2</td><td><code>load_on_startup</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no</td><td>Save wallet name to persistent settings and load on startup. True to add wallet to startup list, false to remove, null to leave unchanged.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Warning messages, if any, related to unloading the wallet.</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli unloadwallet wallet_name
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;unloadwallet&#34;, &#34;params&#34;: [wallet_name]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

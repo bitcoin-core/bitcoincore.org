@@ -1,0 +1,26 @@
+---
+name: getindexinfo
+btcversion: 30.2.0
+btcgroup: util
+permalink: en/doc/30.2.0/rpc/util/getindexinfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">util</span></p>
+  <pre class="rpc-synopsis">getindexinfo ( &#34;index_name&#34; )</pre>
+  <div class="rpc-description"><p>Returns the status of one or all available indices currently running in the node.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>index_name</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>Filter results for an index with a specific name.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">synced</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the index is synced or not</span></li>
+      <li><code class="rpc-key">best_block_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block height to which the index is synced</span></li>
+    </ul></li>
+</ul>
+</div>

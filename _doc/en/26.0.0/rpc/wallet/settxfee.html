@@ -3,21 +3,24 @@ name: settxfee
 btcversion: 26.0.0
 btcgroup: wallet
 permalink: en/doc/26.0.0/rpc/wallet/settxfee/
+openrpc: true
 ---
 
-settxfee amount
-
-Set the transaction fee rate in BTC/kvB for this wallet. Overrides the global -paytxfee command line parameter.
-Can be deactivated by passing 0 as the fee. In that case automatic fee selection will be used by default.
-
-Arguments:
-1. amount    (numeric or string, required) The transaction fee rate in BTC/kvB
-
-Result:
-true|false    (boolean) Returns true if successful
-
-Examples:
-> bitcoin-cli settxfee 0.00001
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "settxfee", "params": [0.00001]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">settxfee amount</pre>
+  <div class="rpc-description"><p>Set the transaction fee rate in BTC/kvB for this wallet. Overrides the global -paytxfee command line parameter. Can be deactivated by passing 0 as the fee. In that case automatic fee selection will be used by default.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>amount</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-yes">yes</td><td>The transaction fee rate in BTC/kvB
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(boolean)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli settxfee 0.00001
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;settxfee&#34;, &#34;params&#34;: [0.00001]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -1,0 +1,85 @@
+---
+name: getchaintxstats
+btcversion: 26.0.0
+btcgroup: blockchain
+permalink: en/doc/26.0.0/rpc/blockchain/getchaintxstats/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getchaintxstats&#34;,
+  &#34;description&#34;: &#34;Compute statistics about the total number and rate of transactions in the chain.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;nblocks&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;one month&#34;
+      },
+      &#34;description&#34;: &#34;Size of the window in number of blocks&#34;
+    },
+    {
+      &#34;name&#34;: &#34;blockhash&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;chain tip&#34;
+      },
+      &#34;description&#34;: &#34;The hash of the block that ends the window.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;time&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+          &#34;description&#34;: &#34;The timestamp for the final block in the window, expressed in UNIX epoch time&#34;
+        },
+        &#34;txcount&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The total number of transactions in the chain up to that point&#34;
+        },
+        &#34;window_final_block_hash&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The hash of the final block in the window&#34;
+        },
+        &#34;window_final_block_height&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The height of the final block in the window.&#34;
+        },
+        &#34;window_block_count&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Size of the window in number of blocks&#34;
+        },
+        &#34;window_tx_count&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of transactions in the window. Only returned if \&#34;window_block_count\&#34; is &gt; 0&#34;
+        },
+        &#34;window_interval&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The elapsed time in the window in seconds. Only returned if \&#34;window_block_count\&#34; is &gt; 0&#34;
+        },
+        &#34;txrate&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The average rate of transactions per second in the window. Only returned if \&#34;window_interval\&#34; is &gt; 0&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;time&#34;,
+        &#34;txcount&#34;,
+        &#34;window_final_block_hash&#34;,
+        &#34;window_final_block_height&#34;,
+        &#34;window_block_count&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

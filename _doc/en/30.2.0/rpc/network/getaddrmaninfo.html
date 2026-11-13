@@ -1,0 +1,25 @@
+---
+name: getaddrmaninfo
+btcversion: 30.2.0
+btcgroup: network
+permalink: en/doc/30.2.0/rpc/network/getaddrmaninfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">getaddrmaninfo</pre>
+  <div class="rpc-description"><p>Provides information about the node&#39;s address manager by returning the number of addresses in the `new` and `tried` tables and their sum for all networks.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">new</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of addresses in the new table, which represent potential peers the node has discovered but hasn&#39;t yet successfully connected to.</span></li>
+      <li><code class="rpc-key">tried</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of addresses in the tried table, which represent peers the node has successfully connected to in the past.</span></li>
+      <li><code class="rpc-key">total</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">total number of addresses in both new/tried tables</span></li>
+    </ul></li>
+</ul>
+</div>

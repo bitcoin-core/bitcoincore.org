@@ -3,31 +3,30 @@ name: simulaterawtransaction
 btcversion: 30.0.0
 btcgroup: wallet
 permalink: en/doc/30.0.0/rpc/wallet/simulaterawtransaction/
+openrpc: true
 ---
 
-simulaterawtransaction ( ["rawtx",...] {"include_watchonly":bool,...} )
-
-Calculate the balance change resulting in the signing and broadcasting of the given transaction(s).
-
-Arguments:
-1. rawtxs          (json array, optional) An array of hex strings of raw transactions.
-                   
-     [
-       "rawtx",    (string)
-       ...
-     ]
-2. options         (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-include_watchonly    (boolean, optional, default=false) (DEPRECATED) No longer used
-
-Result:
-{                          (json object)
-  "balance_change" : n     (numeric) The wallet balance change (negative means decrease).
-}
-
-Examples:
-> bitcoin-cli simulaterawtransaction ["myhex"]
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "simulaterawtransaction", "params": [["myhex"]]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">simulaterawtransaction ( rawtxs ) ( options )</pre>
+  <div class="rpc-description"><p>Calculate the balance change resulting in the signing and broadcasting of the given transaction(s).</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>rawtxs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no</td><td>An array of hex strings of raw transactions.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">include_watchonly</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">(DEPRECATED) No longer used</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">balance_change</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The wallet balance change (negative means decrease).</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli simulaterawtransaction [&#34;myhex&#34;]
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;simulaterawtransaction&#34;, &#34;params&#34;: [[&#34;myhex&#34;]]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

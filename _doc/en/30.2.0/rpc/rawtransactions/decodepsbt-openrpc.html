@@ -1,0 +1,785 @@
+---
+name: decodepsbt
+btcversion: 30.2.0
+btcgroup: rawtransactions
+permalink: en/doc/30.2.0/rpc/rawtransactions/decodepsbt/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;decodepsbt&#34;,
+  &#34;description&#34;: &#34;Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;psbt&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The PSBT base64 string&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;tx&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {},
+          &#34;additionalProperties&#34;: true,
+          &#34;description&#34;: &#34;The decoded network-serialized unsigned transaction.&#34;
+        },
+        &#34;global_xpubs&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;xpub&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;The extended public key this path corresponds to&#34;
+              },
+              &#34;master_fingerprint&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The fingerprint of the master key&#34;
+              },
+              &#34;path&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;The path&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;xpub&#34;,
+              &#34;master_fingerprint&#34;,
+              &#34;path&#34;
+            ]
+          }
+        },
+        &#34;psbt_version&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The PSBT version number. Not to be confused with the unsigned transaction version&#34;
+        },
+        &#34;proprietary&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;identifier&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hex string for the proprietary identifier&#34;
+              },
+              &#34;subtype&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;The number for the subtype&#34;
+              },
+              &#34;key&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hex for the key&#34;
+              },
+              &#34;value&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hex for the value&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;identifier&#34;,
+              &#34;subtype&#34;,
+              &#34;key&#34;,
+              &#34;value&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;The global proprietary map&#34;
+        },
+        &#34;unknown&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;additionalProperties&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+          },
+          &#34;description&#34;: &#34;The unknown global fields&#34;
+        },
+        &#34;inputs&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;non_witness_utxo&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {},
+                &#34;additionalProperties&#34;: true,
+                &#34;description&#34;: &#34;Decoded network transaction for non-witness UTXOs&#34;
+              },
+              &#34;witness_utxo&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;amount&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The value in BTC&#34;
+                  },
+                  &#34;scriptPubKey&#34;: {
+                    &#34;type&#34;: &#34;object&#34;,
+                    &#34;properties&#34;: {
+                      &#34;asm&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Disassembly of the output script&#34;
+                      },
+                      &#34;desc&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Inferred descriptor for the output&#34;
+                      },
+                      &#34;hex&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                        &#34;description&#34;: &#34;The raw output script bytes, hex-encoded&#34;
+                      },
+                      &#34;type&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The type, eg &#39;pubkeyhash&#39;&#34;
+                      },
+                      &#34;address&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+                      }
+                    },
+                    &#34;additionalProperties&#34;: false,
+                    &#34;required&#34;: [
+                      &#34;asm&#34;,
+                      &#34;desc&#34;,
+                      &#34;hex&#34;,
+                      &#34;type&#34;
+                    ]
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;amount&#34;,
+                  &#34;scriptPubKey&#34;
+                ],
+                &#34;description&#34;: &#34;Transaction output for witness UTXOs&#34;
+              },
+              &#34;partial_signatures&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;additionalProperties&#34;: {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              },
+              &#34;sighash&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;The sighash type to be used&#34;
+              },
+              &#34;redeem_script&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;asm&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;Disassembly of the redeem script&#34;
+                  },
+                  &#34;hex&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The raw redeem script bytes, hex-encoded&#34;
+                  },
+                  &#34;type&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;The type, eg &#39;pubkeyhash&#39;&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;asm&#34;,
+                  &#34;hex&#34;,
+                  &#34;type&#34;
+                ]
+              },
+              &#34;witness_script&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;asm&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;Disassembly of the witness script&#34;
+                  },
+                  &#34;hex&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The raw witness script bytes, hex-encoded&#34;
+                  },
+                  &#34;type&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;The type, eg &#39;pubkeyhash&#39;&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;asm&#34;,
+                  &#34;hex&#34;,
+                  &#34;type&#34;
+                ]
+              },
+              &#34;bip32_derivs&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The public key with the derivation path as the value.&#34;
+                    },
+                    &#34;master_fingerprint&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The fingerprint of the master key&#34;
+                    },
+                    &#34;path&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The path&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;pubkey&#34;,
+                    &#34;master_fingerprint&#34;,
+                    &#34;path&#34;
+                  ]
+                }
+              },
+              &#34;final_scriptSig&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;asm&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;Disassembly of the final signature script&#34;
+                  },
+                  &#34;hex&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The raw final signature script bytes, hex-encoded&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;asm&#34;,
+                  &#34;hex&#34;
+                ]
+              },
+              &#34;final_scriptwitness&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                }
+              },
+              &#34;ripemd160_preimages&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;additionalProperties&#34;: {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              },
+              &#34;sha256_preimages&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;additionalProperties&#34;: {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              },
+              &#34;hash160_preimages&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;additionalProperties&#34;: {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              },
+              &#34;hash256_preimages&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;additionalProperties&#34;: {
+                  &#34;type&#34;: &#34;string&#34;
+                }
+              },
+              &#34;taproot_key_path_sig&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;hex-encoded signature for the Taproot key path spend&#34;
+              },
+              &#34;taproot_script_path_sigs&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The x-only pubkey for this signature&#34;
+                    },
+                    &#34;leaf_hash&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The leaf hash for this signature&#34;
+                    },
+                    &#34;sig&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The signature itself&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;pubkey&#34;,
+                    &#34;leaf_hash&#34;,
+                    &#34;sig&#34;
+                  ]
+                }
+              },
+              &#34;taproot_scripts&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;script&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;A leaf script&#34;
+                    },
+                    &#34;leaf_ver&#34;: {
+                      &#34;type&#34;: &#34;number&#34;,
+                      &#34;description&#34;: &#34;The version number for the leaf script&#34;
+                    },
+                    &#34;control_blocks&#34;: {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;items&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                      },
+                      &#34;description&#34;: &#34;The control blocks for this script&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;script&#34;,
+                    &#34;leaf_ver&#34;,
+                    &#34;control_blocks&#34;
+                  ]
+                }
+              },
+              &#34;taproot_bip32_derivs&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The x-only public key this path corresponds to&#34;
+                    },
+                    &#34;master_fingerprint&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The fingerprint of the master key&#34;
+                    },
+                    &#34;path&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The path&#34;
+                    },
+                    &#34;leaf_hashes&#34;: {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;items&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                      },
+                      &#34;description&#34;: &#34;The hashes of the leaves this pubkey appears in&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;pubkey&#34;,
+                    &#34;master_fingerprint&#34;,
+                    &#34;path&#34;,
+                    &#34;leaf_hashes&#34;
+                  ]
+                }
+              },
+              &#34;taproot_internal_key&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hex-encoded Taproot x-only internal key&#34;
+              },
+              &#34;taproot_merkle_root&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hex-encoded Taproot merkle root&#34;
+              },
+              &#34;musig2_participant_pubkeys&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;aggregate_pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The compressed aggregate public key for which the participants create.&#34;
+                    },
+                    &#34;participant_pubkeys&#34;: {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;items&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                      }
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;aggregate_pubkey&#34;,
+                    &#34;participant_pubkeys&#34;
+                  ]
+                }
+              },
+              &#34;musig2_pubnonces&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;participant_pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The compressed public key of the participant that created this pubnonce.&#34;
+                    },
+                    &#34;aggregate_pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The compressed aggregate public key for which this pubnonce is for.&#34;
+                    },
+                    &#34;leaf_hash&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hash of the leaf script that contains the aggregate pubkey being signed for. Omitted when signing for the internal key.&#34;
+                    },
+                    &#34;pubnonce&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The public nonce itself.&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;participant_pubkey&#34;,
+                    &#34;aggregate_pubkey&#34;,
+                    &#34;pubnonce&#34;
+                  ]
+                }
+              },
+              &#34;musig2_partial_sigs&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;participant_pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The compressed public key of the participant that created this partial signature.&#34;
+                    },
+                    &#34;aggregate_pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The compressed aggregate public key for which this partial signature is for.&#34;
+                    },
+                    &#34;leaf_hash&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hash of the leaf script that contains the aggregate pubkey being signed for. Omitted when signing for the internal key.&#34;
+                    },
+                    &#34;partial_sig&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The partial signature itself.&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;participant_pubkey&#34;,
+                    &#34;aggregate_pubkey&#34;,
+                    &#34;partial_sig&#34;
+                  ]
+                }
+              },
+              &#34;unknown&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;additionalProperties&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;description&#34;: &#34;The unknown input fields&#34;
+              },
+              &#34;proprietary&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;identifier&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hex string for the proprietary identifier&#34;
+                    },
+                    &#34;subtype&#34;: {
+                      &#34;type&#34;: &#34;number&#34;,
+                      &#34;description&#34;: &#34;The number for the subtype&#34;
+                    },
+                    &#34;key&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hex for the key&#34;
+                    },
+                    &#34;value&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hex for the value&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;identifier&#34;,
+                    &#34;subtype&#34;,
+                    &#34;key&#34;,
+                    &#34;value&#34;
+                  ]
+                },
+                &#34;description&#34;: &#34;The input proprietary map&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false
+          }
+        },
+        &#34;outputs&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;redeem_script&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;asm&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;Disassembly of the redeem script&#34;
+                  },
+                  &#34;hex&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The raw redeem script bytes, hex-encoded&#34;
+                  },
+                  &#34;type&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;The type, eg &#39;pubkeyhash&#39;&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;asm&#34;,
+                  &#34;hex&#34;,
+                  &#34;type&#34;
+                ]
+              },
+              &#34;witness_script&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;asm&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;Disassembly of the witness script&#34;
+                  },
+                  &#34;hex&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The raw witness script bytes, hex-encoded&#34;
+                  },
+                  &#34;type&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;The type, eg &#39;pubkeyhash&#39;&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;asm&#34;,
+                  &#34;hex&#34;,
+                  &#34;type&#34;
+                ]
+              },
+              &#34;bip32_derivs&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The public key this path corresponds to&#34;
+                    },
+                    &#34;master_fingerprint&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The fingerprint of the master key&#34;
+                    },
+                    &#34;path&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The path&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;pubkey&#34;,
+                    &#34;master_fingerprint&#34;,
+                    &#34;path&#34;
+                  ]
+                }
+              },
+              &#34;taproot_internal_key&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The hex-encoded Taproot x-only internal key&#34;
+              },
+              &#34;taproot_tree&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;depth&#34;: {
+                      &#34;type&#34;: &#34;number&#34;,
+                      &#34;description&#34;: &#34;The depth of this element in the tree&#34;
+                    },
+                    &#34;leaf_ver&#34;: {
+                      &#34;type&#34;: &#34;number&#34;,
+                      &#34;description&#34;: &#34;The version of this leaf&#34;
+                    },
+                    &#34;script&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The hex-encoded script itself&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;depth&#34;,
+                    &#34;leaf_ver&#34;,
+                    &#34;script&#34;
+                  ]
+                },
+                &#34;description&#34;: &#34;The tuples that make up the Taproot tree, in depth first search order&#34;
+              },
+              &#34;taproot_bip32_derivs&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The x-only public key this path corresponds to&#34;
+                    },
+                    &#34;master_fingerprint&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The fingerprint of the master key&#34;
+                    },
+                    &#34;path&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;description&#34;: &#34;The path&#34;
+                    },
+                    &#34;leaf_hashes&#34;: {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;items&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                      },
+                      &#34;description&#34;: &#34;The hashes of the leaves this pubkey appears in&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;pubkey&#34;,
+                    &#34;master_fingerprint&#34;,
+                    &#34;path&#34;,
+                    &#34;leaf_hashes&#34;
+                  ]
+                }
+              },
+              &#34;musig2_participant_pubkeys&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;aggregate_pubkey&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The compressed aggregate public key for which the participants create.&#34;
+                    },
+                    &#34;participant_pubkeys&#34;: {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;items&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                      }
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;aggregate_pubkey&#34;,
+                    &#34;participant_pubkeys&#34;
+                  ]
+                }
+              },
+              &#34;unknown&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;additionalProperties&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;description&#34;: &#34;The unknown output fields&#34;
+              },
+              &#34;proprietary&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;object&#34;,
+                  &#34;properties&#34;: {
+                    &#34;identifier&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hex string for the proprietary identifier&#34;
+                    },
+                    &#34;subtype&#34;: {
+                      &#34;type&#34;: &#34;number&#34;,
+                      &#34;description&#34;: &#34;The number for the subtype&#34;
+                    },
+                    &#34;key&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hex for the key&#34;
+                    },
+                    &#34;value&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                      &#34;description&#34;: &#34;The hex for the value&#34;
+                    }
+                  },
+                  &#34;additionalProperties&#34;: false,
+                  &#34;required&#34;: [
+                    &#34;identifier&#34;,
+                    &#34;subtype&#34;,
+                    &#34;key&#34;,
+                    &#34;value&#34;
+                  ]
+                },
+                &#34;description&#34;: &#34;The output proprietary map&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false
+          }
+        },
+        &#34;fee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;The transaction fee paid if all UTXOs slots in the PSBT have been filled.&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;tx&#34;,
+        &#34;global_xpubs&#34;,
+        &#34;psbt_version&#34;,
+        &#34;proprietary&#34;,
+        &#34;unknown&#34;,
+        &#34;inputs&#34;,
+        &#34;outputs&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

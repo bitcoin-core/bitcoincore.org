@@ -3,39 +3,42 @@ name: getmininginfo
 btcversion: 31.0.0
 btcgroup: mining
 permalink: en/doc/31.0.0/rpc/mining/getmininginfo/
+openrpc: true
 ---
 
-getmininginfo
-
-Returns a json object containing mining-related information.
-
-Result:
-{                                (json object)
-  "blocks" : n,                  (numeric) The current block
-  "currentblockweight" : n,      (numeric, optional) The block weight (including reserved weight for block header, txs count and coinbase tx) of the last assembled block (only present if a block was ever assembled)
-  "currentblocktx" : n,          (numeric, optional) The number of block transactions (excluding coinbase) of the last assembled block (only present if a block was ever assembled)
-  "bits" : "hex",                (string) The current nBits, compact representation of the block difficulty target
-  "difficulty" : n,              (numeric) The current difficulty
-  "target" : "hex",              (string) The current target
-  "networkhashps" : n,           (numeric) The network hashes per second
-  "pooledtx" : n,                (numeric) The size of the mempool
-  "blockmintxfee" : n,           (numeric) Minimum feerate of packages selected for block inclusion in BTC/kvB
-  "chain" : "str",               (string) current network name (main, test, testnet4, signet, regtest)
-  "signet_challenge" : "hex",    (string, optional) The block challenge (aka. block script), in hexadecimal (only present if the current network is a signet)
-  "next" : {                     (json object) The next block
-    "height" : n,                (numeric) The next height
-    "bits" : "hex",              (string) The next target nBits
-    "difficulty" : n,            (numeric) The next difficulty
-    "target" : "hex"             (string) The next target
-  },
-  "warnings" : [                 (json array) any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)
-    "str",                       (string) warning
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli getmininginfo 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getmininginfo", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">mining</span></p>
+  <pre class="rpc-synopsis">getmininginfo</pre>
+  <div class="rpc-description"><p>Returns a json object containing mining-related information.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">blocks</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The current block</span></li>
+  <li><code class="rpc-key">currentblockweight</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The block weight (including reserved weight for block header, txs count and coinbase tx) of the last assembled block (only present if a block was ever assembled)</span></li>
+  <li><code class="rpc-key">currentblocktx</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of block transactions (excluding coinbase) of the last assembled block (only present if a block was ever assembled)</span></li>
+  <li><code class="rpc-key">bits</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The current nBits, compact representation of the block difficulty target</span></li>
+  <li><code class="rpc-key">difficulty</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The current difficulty</span></li>
+  <li><code class="rpc-key">target</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The current target</span></li>
+  <li><code class="rpc-key">networkhashps</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The network hashes per second</span></li>
+  <li><code class="rpc-key">pooledtx</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The size of the mempool</span></li>
+  <li><code class="rpc-key">blockmintxfee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">Minimum feerate of packages selected for block inclusion in BTC/kvB</span></li>
+  <li><code class="rpc-key">chain</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">current network name (main, test, testnet4, signet, regtest)</span></li>
+  <li><code class="rpc-key">signet_challenge</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The block challenge (aka. block script), in hexadecimal (only present if the current network is a signet)</span></li>
+  <li><code class="rpc-key">next</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">The next block</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The next height</span></li>
+      <li><code class="rpc-key">bits</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The next target nBits</span></li>
+      <li><code class="rpc-key">difficulty</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The next difficulty</span></li>
+      <li><code class="rpc-key">target</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The next target</span></li>
+    </ul></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getmininginfo 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getmininginfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -1,0 +1,24 @@
+---
+name: listlockunspent
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/listlockunspent/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listlockunspent</pre>
+  <div class="rpc-description"><p>Returns list of temporarily unspendable outputs. See the lockunspent call to lock and unlock transactions for spending.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id locked</span></li>
+      <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The vout value</span></li>
+    </ul></li>
+</ul>
+</div>

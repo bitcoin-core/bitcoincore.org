@@ -1,0 +1,227 @@
+---
+name: fundrawtransaction
+btcversion: 26.0.0
+btcgroup: rawtransactions
+permalink: en/doc/26.0.0/rpc/rawtransactions/fundrawtransaction/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;fundrawtransaction&#34;,
+  &#34;description&#34;: &#34;If the transaction has no inputs, they will be automatically selected to meet its out value.\nIt will add at most one change output to the outputs.\nNo existing outputs will be modified unless \&#34;subtractFeeFromOutputs\&#34; is specified.\nNote that inputs which were signed may need to be resigned after completion since in/outputs have been added.\nThe inputs added will not be signed, use signrawtransactionwithkey\nor signrawtransactionwithwallet for that.\nAll existing inputs must either have their previous output transaction be in the wallet\nor be in the UTXO set. Solving data must be provided for non-wallet inputs.\nNote that all inputs selected must be of standard form and P2SH scripts must be\nin the wallet using importaddress or addmultisigaddress (to calculate fees).\nYou can see whether this is the case by checking the \&#34;solvable\&#34; field in the listunspent output.\nOnly pay-to-pubkey, multisig, and P2SH versions thereof are currently supported for watch-only&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hexstring&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The hex string of the raw transaction&#34;
+    },
+    {
+      &#34;name&#34;: &#34;options&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;add_inputs&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: true,
+            &#34;description&#34;: &#34;For a transaction with existing inputs, automatically include more if they are not enough.&#34;
+          },
+          &#34;include_unsafe&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;Include inputs that are not safe to spend (unconfirmed transactions from outside keys and unconfirmed replacement transactions).\nWarning: the resulting transaction may become invalid if one of the unsafe inputs disappears.\nIf that happens, you will need to fund the transaction with different inputs and republish it.&#34;
+          },
+          &#34;minconf&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;default&#34;: 0,
+            &#34;description&#34;: &#34;If add_inputs is specified, require inputs with at least this many confirmations.&#34;
+          },
+          &#34;maxconf&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;If add_inputs is specified, require inputs with at most this many confirmations.&#34;
+          },
+          &#34;changeAddress&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;automatic&#34;,
+            &#34;description&#34;: &#34;The bitcoin address to receive the change&#34;
+          },
+          &#34;changePosition&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;random&#34;,
+            &#34;description&#34;: &#34;The index of the change output&#34;
+          },
+          &#34;change_type&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;set by -changetype&#34;,
+            &#34;description&#34;: &#34;The output type to use. Only valid if changeAddress is not specified. Options are \&#34;legacy\&#34;, \&#34;p2sh-segwit\&#34;, \&#34;bech32\&#34;, and \&#34;bech32m\&#34;.&#34;
+          },
+          &#34;includeWatching&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;true for watch-only wallets, otherwise false&#34;,
+            &#34;description&#34;: &#34;Also select inputs which are watch only.\nOnly solvable inputs can be used. Watch-only destinations are solvable if the public key and/or output script was imported,\ne.g. with &#39;importpubkey&#39; or &#39;importmulti&#39; with the &#39;pubkeys&#39; or &#39;desc&#39; field.&#34;
+          },
+          &#34;lockUnspents&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;default&#34;: false,
+            &#34;description&#34;: &#34;Lock selected unspent outputs&#34;
+          },
+          &#34;fee_rate&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            ],
+            &#34;x-bitcoin-default-hint&#34;: &#34;not set, fall back to wallet fee estimation&#34;,
+            &#34;description&#34;: &#34;Specify a fee rate in sat/vB.&#34;
+          },
+          &#34;feeRate&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;number&#34;
+              },
+              {
+                &#34;type&#34;: &#34;string&#34;
+              }
+            ],
+            &#34;x-bitcoin-default-hint&#34;: &#34;not set, fall back to wallet fee estimation&#34;,
+            &#34;description&#34;: &#34;Specify a fee rate in BTC/kvB.&#34;
+          },
+          &#34;subtractFeeFromOutputs&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;number&#34;
+            },
+            &#34;default&#34;: [],
+            &#34;description&#34;: &#34;The integers.\nThe fee will be equally deducted from the amount of each specified output.\nThose recipients will receive less bitcoins than you enter in their corresponding amount field.\nIf no outputs are specified here, the sender pays the fee.&#34;
+          },
+          &#34;input_weights&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;txid&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                  &#34;description&#34;: &#34;The transaction id&#34;
+                },
+                &#34;vout&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;The output index&#34;
+                },
+                &#34;weight&#34;: {
+                  &#34;type&#34;: &#34;number&#34;,
+                  &#34;description&#34;: &#34;The maximum weight for this input, including the weight of the outpoint and sequence number. Note that serialized signature sizes are not guaranteed to be consistent, so the maximum DER signatures size of 73 bytes should be used when considering ECDSA signatures.Remember to convert serialized sizes to weight units when necessary.&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;txid&#34;,
+                &#34;vout&#34;,
+                &#34;weight&#34;
+              ]
+            },
+            &#34;description&#34;: &#34;Inputs and their corresponding weights&#34;
+          },
+          &#34;conf_target&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;wallet -txconfirmtarget&#34;,
+            &#34;description&#34;: &#34;Confirmation target in blocks&#34;,
+            &#34;x-bitcoin-also-positional&#34;: true
+          },
+          &#34;estimate_mode&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;default&#34;: &#34;unset&#34;,
+            &#34;description&#34;: &#34;The fee estimate mode, must be one of (case insensitive):\n\&#34;unset\&#34;\n\&#34;economical\&#34;\n\&#34;conservative\&#34;&#34;,
+            &#34;x-bitcoin-also-positional&#34;: true
+          },
+          &#34;replaceable&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;x-bitcoin-default-hint&#34;: &#34;wallet default&#34;,
+            &#34;description&#34;: &#34;Marks this transaction as BIP125-replaceable.\nAllows this transaction to be replaced by a transaction with higher fees&#34;
+          },
+          &#34;solving_data&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;pubkeys&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;default&#34;: [],
+                &#34;description&#34;: &#34;Public keys involved in this transaction.&#34;
+              },
+              &#34;scripts&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                },
+                &#34;default&#34;: [],
+                &#34;description&#34;: &#34;Scripts involved in this transaction.&#34;
+              },
+              &#34;descriptors&#34;: {
+                &#34;type&#34;: &#34;array&#34;,
+                &#34;items&#34;: {
+                  &#34;type&#34;: &#34;string&#34;
+                },
+                &#34;default&#34;: [],
+                &#34;description&#34;: &#34;Descriptors that provide solving data for this transaction.&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;description&#34;: &#34;Keys and scripts needed for producing a final transaction with a dummy signature.\nUsed for fee estimation during coin selection.&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false
+      },
+      &#34;description&#34;: &#34;For backward compatibility: passing in a true instead of an object will result in {\&#34;includeWatching\&#34;:true}&#34;
+    },
+    {
+      &#34;name&#34;: &#34;iswitness&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;depends on heuristic tests&#34;
+      },
+      &#34;description&#34;: &#34;Whether the transaction hex is a serialized witness transaction.\nIf iswitness is not present, heuristic tests will be used in decoding.\nIf true, only witness deserialization will be tried.\nIf false, only non-witness deserialization will be tried.\nThis boolean should reflect whether the transaction has inputs\n(e.g. fully valid, or on-chain transactions), if known by the caller.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;hex&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The resulting raw transaction (hex-encoded string)&#34;
+        },
+        &#34;fee&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;Fee in BTC the resulting transaction pays&#34;
+        },
+        &#34;changepos&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The position of the added change output, or -1&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;hex&#34;,
+        &#34;fee&#34;,
+        &#34;changepos&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

@@ -1,0 +1,50 @@
+---
+name: getchaintips
+btcversion: 31.0.0
+btcgroup: blockchain
+permalink: en/doc/31.0.0/rpc/blockchain/getchaintips/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getchaintips&#34;,
+  &#34;description&#34;: &#34;Return information about all known tips in the block tree, including the main chain as well as orphaned branches.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;height&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;height of the chain tip&#34;
+          },
+          &#34;hash&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;block hash of the tip&#34;
+          },
+          &#34;branchlen&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;zero for main chain, otherwise length of branch connecting the tip to the main chain&#34;
+          },
+          &#34;status&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;status of the chain, \&#34;active\&#34; for the main chain\nPossible values for status:\n1.  \&#34;invalid\&#34;               This branch contains at least one invalid block\n2.  \&#34;headers-only\&#34;          Not all blocks for this branch are available, but the headers are valid\n3.  \&#34;valid-headers\&#34;         All blocks are available for this branch, but they were never fully validated\n4.  \&#34;valid-fork\&#34;            This branch is not part of the active chain, but is fully validated\n5.  \&#34;active\&#34;                This is the tip of the active main chain, which is certainly valid&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;height&#34;,
+          &#34;hash&#34;,
+          &#34;branchlen&#34;,
+          &#34;status&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

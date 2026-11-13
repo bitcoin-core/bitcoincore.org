@@ -1,0 +1,144 @@
+---
+name: submitpackage
+btcversion: 30.0.0
+btcgroup: rawtransactions
+permalink: en/doc/30.0.0/rpc/rawtransactions/submitpackage/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;submitpackage&#34;,
+  &#34;description&#34;: &#34;Submit a package of raw transactions (serialized, hex-encoded) to local node.\nThe package will be validated according to consensus and mempool policy rules. If any transaction passes, it will be accepted to mempool.\nThis RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies.\nWarning: successful submission does not mean the transactions will propagate throughout the network.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;package&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+        }
+      },
+      &#34;description&#34;: &#34;An array of raw transactions.\nThe package must solely consist of a child transaction and all of its unconfirmed parents, if any. None of the parents may depend on each other.\nThe package must be topologically sorted, with the child being the last element in the array.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;maxfeerate&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;oneOf&#34;: [
+          {
+            &#34;type&#34;: &#34;number&#34;
+          },
+          {
+            &#34;type&#34;: &#34;string&#34;
+          }
+        ],
+        &#34;default&#34;: &#34;0.10&#34;
+      },
+      &#34;description&#34;: &#34;Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB.\nFee rates larger than 1BTC/kvB are rejected.\nSet to 0 to accept any fee rate.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;maxburnamount&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;oneOf&#34;: [
+          {
+            &#34;type&#34;: &#34;number&#34;
+          },
+          {
+            &#34;type&#34;: &#34;string&#34;
+          }
+        ],
+        &#34;default&#34;: &#34;0.00&#34;
+      },
+      &#34;description&#34;: &#34;Reject transactions with provably unspendable outputs (e.g. &#39;datacarrier&#39; outputs that use the OP_RETURN opcode) greater than the specified value, expressed in BTC.\nIf burning funds through unspendable outputs is desired, increase this value.\nThis check is based on heuristics and does not guarantee spendability of outputs.\n&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;package_msg&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The transaction package result message. \&#34;success\&#34; indicates all transactions were accepted into or are already in the mempool.&#34;
+        },
+        &#34;tx-results&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;additionalProperties&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;txid&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The transaction hash in hex&#34;
+              },
+              &#34;other-wtxid&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                &#34;description&#34;: &#34;The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.&#34;
+              },
+              &#34;vsize&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;Sigops-adjusted virtual transaction size.&#34;
+              },
+              &#34;fees&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;base&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;transaction fee in BTC&#34;
+                  },
+                  &#34;effective-feerate&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.&#34;
+                  },
+                  &#34;effective-includes&#34;: {
+                    &#34;type&#34;: &#34;array&#34;,
+                    &#34;items&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                    },
+                    &#34;description&#34;: &#34;if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;base&#34;
+                ],
+                &#34;description&#34;: &#34;Transaction fees&#34;
+              },
+              &#34;error&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;The transaction error string, if it was rejected by the mempool&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;txid&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;transaction results keyed by wtxid&#34;
+        },
+        &#34;replaced-transactions&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+          },
+          &#34;description&#34;: &#34;List of txids of replaced transactions&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;package_msg&#34;,
+        &#34;tx-results&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

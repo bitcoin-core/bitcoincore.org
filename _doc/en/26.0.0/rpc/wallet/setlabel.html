@@ -3,21 +3,21 @@ name: setlabel
 btcversion: 26.0.0
 btcgroup: wallet
 permalink: en/doc/26.0.0/rpc/wallet/setlabel/
+openrpc: true
 ---
 
-setlabel "address" "label"
-
-Sets the label associated with the given address.
-
-Arguments:
-1. address    (string, required) The bitcoin address to be associated with a label.
-2. label      (string, required) The label to assign to the address.
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli setlabel "bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl" "tabby"
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "setlabel", "params": ["bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl", "tabby"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">setlabel &#34;address&#34; &#34;label&#34;</pre>
+  <div class="rpc-description"><p>Sets the label associated with the given address.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>address</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The bitcoin address to be associated with a label.</td></tr>
+  <tr><td>2</td><td><code>label</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The label to assign to the address.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli setlabel &#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34; &#34;tabby&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;setlabel&#34;, &#34;params&#34;: [&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl&#34;, &#34;tabby&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

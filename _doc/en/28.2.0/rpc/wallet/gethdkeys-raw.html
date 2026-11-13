@@ -1,0 +1,29 @@
+---
+name: gethdkeys
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/gethdkeys/raw/
+rawpage: true
+---
+
+gethdkeys ( options )
+
+List all BIP 32 HD keys in the wallet and which descriptors use them.
+
+Arguments:
+1. options (object, optional)
+  active_only (boolean, optional, default=false)  Show the keys for only active descriptors
+  private (boolean, optional, default=false)  Show private keys
+
+Result: (array)
+  each item (object)
+    xpub (string)  The extended public key
+    has_private (boolean)  Whether the wallet has the private key for this xpub
+    xprv (string, optional)  The extended private key if "private" is true
+    descriptors (array)  Array of descriptor objects that use this HD key
+      each item (object)
+        desc (string)  Descriptor string representation
+        active (boolean)  Whether this descriptor is currently used to generate new addresses
+
+
+

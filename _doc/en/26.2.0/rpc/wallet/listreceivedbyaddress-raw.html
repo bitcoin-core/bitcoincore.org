@@ -1,0 +1,31 @@
+---
+name: listreceivedbyaddress
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/listreceivedbyaddress/raw/
+rawpage: true
+---
+
+listreceivedbyaddress ( minconf ) ( include_empty ) ( include_watchonly ) ( "address_filter" ) ( include_immature_coinbase )
+
+List balances by receiving address.
+
+Arguments:
+1. minconf (number, optional, default=1)  The minimum number of confirmations before payments are included.
+2. include_empty (boolean, optional, default=false)  Whether to include addresses that haven't received any payments.
+3. include_watchonly (boolean, optional, default: true for watch-only wallets, otherwise false)  Whether to include watch-only addresses (see 'importaddress')
+4. address_filter (string, optional)  If present and non-empty, only return information on this address.
+5. include_immature_coinbase (boolean, optional, default=false)  Include immature coinbase transactions.
+
+Result: (array)
+  each item (object)
+    involvesWatchonly (boolean, optional)  Only returns true if imported addresses were involved in transaction
+    address (string)  The receiving address
+    amount (string, amount)  The total amount in BTC received by the address
+    confirmations (number)  The number of confirmations of the most recent transaction included
+    label (string)  The label of the receiving address. The default label is ""
+    txids (array)
+      each item (string)
+
+
+

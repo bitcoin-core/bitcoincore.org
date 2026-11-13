@@ -3,27 +3,27 @@ name: upgradewallet
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/upgradewallet/
+openrpc: true
 ---
 
-upgradewallet ( version )
-
-Upgrade the wallet. Upgrades to the latest version if no version number is specified.
-New keys may be generated and a new wallet backup will need to be made.
-
-Arguments:
-1. version    (numeric, optional, default=169900) The version number to upgrade to. Default is the latest wallet version.
-
-Result:
-{                            (json object)
-  "wallet_name" : "str",     (string) Name of wallet this operation was performed on
-  "previous_version" : n,    (numeric) Version of wallet before this operation
-  "current_version" : n,     (numeric) Version of wallet after this operation
-  "result" : "str",          (string, optional) Description of result, if no error
-  "error" : "str"            (string, optional) Error message (if there is one)
-}
-
-Examples:
-> bitcoin-cli upgradewallet 169900
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "upgradewallet", "params": [169900]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">upgradewallet ( version )</pre>
+  <div class="rpc-description"><p>Upgrade the wallet. Upgrades to the latest version if no version number is specified. New keys may be generated and a new wallet backup will need to be made.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>version</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 169900</small></td><td>The version number to upgrade to. Default is the latest wallet version.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">wallet_name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Name of wallet this operation was performed on</span></li>
+  <li><code class="rpc-key">previous_version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Version of wallet before this operation</span></li>
+  <li><code class="rpc-key">current_version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Version of wallet after this operation</span></li>
+  <li><code class="rpc-key">result</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Description of result, if no error</span></li>
+  <li><code class="rpc-key">error</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Error message (if there is one)</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli upgradewallet 169900
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;upgradewallet&#34;, &#34;params&#34;: [169900]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -1,0 +1,23 @@
+---
+name: getzmqnotifications
+btcversion: 30.2.0
+btcgroup: zmq
+permalink: en/doc/30.2.0/rpc/zmq/getzmqnotifications/raw/
+rawpage: true
+---
+
+getzmqnotifications
+
+Returns information about the active ZeroMQ notifications.
+
+Arguments:
+none
+
+Result: (array)
+  each item (object)
+    type (string)  Type of notification
+    address (string)  Address of the publisher
+    hwm (number)  Outbound message high water mark
+
+
+

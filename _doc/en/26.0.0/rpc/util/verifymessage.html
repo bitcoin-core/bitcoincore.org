@@ -3,32 +3,32 @@ name: verifymessage
 btcversion: 26.0.0
 btcgroup: util
 permalink: en/doc/26.0.0/rpc/util/verifymessage/
+openrpc: true
 ---
 
-verifymessage "address" "signature" "message"
-
-Verify a signed message.
-
-Arguments:
-1. address      (string, required) The bitcoin address to use for the signature.
-2. signature    (string, required) The signature provided by the signer in base 64 encoding (see signmessage).
-3. message      (string, required) The message that was signed.
-
-Result:
-true|false    (boolean) If the signature is verified or not.
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">util</span></p>
+  <pre class="rpc-synopsis">verifymessage &#34;address&#34; &#34;signature&#34; &#34;message&#34;</pre>
+  <div class="rpc-description"><p>Verify a signed message.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>address</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The bitcoin address to use for the signature.</td></tr>
+  <tr><td>2</td><td><code>signature</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The signature provided by the signer in base 64 encoding (see signmessage).</td></tr>
+  <tr><td>3</td><td><code>message</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The message that was signed.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(boolean)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Unlock the wallet for 30 seconds
-> bitcoin-cli walletpassphrase "mypassphrase" 30
+&gt; bitcoin-cli walletpassphrase &#34;mypassphrase&#34; 30
 
 Create the signature
-> bitcoin-cli signmessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "my message"
+&gt; bitcoin-cli signmessage &#34;1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX&#34; &#34;my message&#34;
 
 Verify the signature
-> bitcoin-cli verifymessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "signature" "my message"
+&gt; bitcoin-cli verifymessage &#34;1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX&#34; &#34;signature&#34; &#34;my message&#34;
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "verifymessage", "params": ["1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX", "signature", "my message"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;verifymessage&#34;, &#34;params&#34;: [&#34;1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX&#34;, &#34;signature&#34;, &#34;my message&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

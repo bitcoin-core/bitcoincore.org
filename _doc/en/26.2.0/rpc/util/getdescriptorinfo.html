@@ -1,0 +1,26 @@
+---
+name: getdescriptorinfo
+btcversion: 26.2.0
+btcgroup: util
+permalink: en/doc/26.2.0/rpc/util/getdescriptorinfo/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">util</span></p>
+  <pre class="rpc-synopsis">getdescriptorinfo &#34;descriptor&#34;</pre>
+  <div class="rpc-description"><p>Analyses a descriptor.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>descriptor</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The descriptor.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">descriptor</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The descriptor in canonical form, without private keys</span></li>
+  <li><code class="rpc-key">checksum</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The checksum for the input descriptor</span></li>
+  <li><code class="rpc-key">isrange</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the descriptor is ranged</span></li>
+  <li><code class="rpc-key">issolvable</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the descriptor is solvable</span></li>
+  <li><code class="rpc-key">hasprivatekeys</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the input descriptor contained at least one private key</span></li>
+</ul>
+</div>

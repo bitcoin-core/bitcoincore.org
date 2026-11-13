@@ -1,0 +1,43 @@
+---
+name: getprioritisedtransactions
+btcversion: 28.2.0
+btcgroup: mining
+permalink: en/doc/28.2.0/rpc/mining/getprioritisedtransactions/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getprioritisedtransactions&#34;,
+  &#34;description&#34;: &#34;Returns a map of all user-created (see prioritisetransaction) fee deltas by txid, and whether the tx is present in mempool.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;additionalProperties&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;fee_delta&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;transaction fee delta in satoshis&#34;
+          },
+          &#34;in_mempool&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;whether this transaction is currently in mempool&#34;
+          },
+          &#34;modified_fee&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;modified fee in satoshis. Only returned if in_mempool=true&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;fee_delta&#34;,
+          &#34;in_mempool&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;mining&#34;
+}</pre>

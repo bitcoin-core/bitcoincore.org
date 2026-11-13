@@ -1,0 +1,38 @@
+---
+name: setlabel
+btcversion: 27.0.0
+btcgroup: wallet
+permalink: en/doc/27.0.0/rpc/wallet/setlabel/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;setlabel&#34;,
+  &#34;description&#34;: &#34;Sets the label associated with the given address.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;address&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The bitcoin address to be associated with a label.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;label&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The label to assign to the address.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

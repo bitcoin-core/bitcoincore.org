@@ -1,0 +1,26 @@
+---
+name: migratewallet
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/migratewallet/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">migratewallet ( &#34;wallet_name&#34; ) ( &#34;passphrase&#34; )</pre>
+  <div class="rpc-description"><p>EXPERIMENTAL warning: This call may not work as expected and may be changed in future releases</p><p>Migrate the wallet to a descriptor wallet. A new wallet backup will need to be made.</p><p>The migration process will create a backup of the wallet before migrating. This backup file will be named &lt;wallet name&gt;-&lt;timestamp&gt;.legacy.bak and can be found in the directory for this wallet. In the event of an incorrect migration, the backup can be restored using restorewallet. Encrypted wallets must have the passphrase provided as an argument to this call.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>wallet_name</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: the wallet name from the RPC endpoint</small></td><td>The name of the wallet to migrate. If provided both here and in the RPC endpoint, the two must be identical.</td></tr>
+  <tr><td>2</td><td><code>passphrase</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>The wallet passphrase</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">wallet_name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The name of the primary migrated wallet</span></li>
+  <li><code class="rpc-key">watchonly_name</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The name of the migrated wallet containing the watchonly scripts</span></li>
+  <li><code class="rpc-key">solvables_name</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The name of the migrated wallet containing solvable but not watched scripts</span></li>
+  <li><code class="rpc-key">backup_path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The location of the backup of the original wallet</span></li>
+</ul>
+</div>

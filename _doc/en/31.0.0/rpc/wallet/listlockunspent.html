@@ -3,37 +3,38 @@ name: listlockunspent
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/listlockunspent/
+openrpc: true
 ---
 
-listlockunspent
-
-Returns list of temporarily unspendable outputs.
-See the lockunspent call to lock and unlock transactions for spending.
-
-Result:
-[                      (json array)
-  {                    (json object)
-    "txid" : "hex",    (string) The transaction id locked
-    "vout" : n         (numeric) The vout value
-  },
-  ...
-]
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listlockunspent</pre>
+  <div class="rpc-description"><p>Returns list of temporarily unspendable outputs. See the lockunspent call to lock and unlock transactions for spending.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id locked</span></li>
+      <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The vout value</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 List the unspent transactions
-> bitcoin-cli listunspent 
+&gt; bitcoin-cli listunspent 
 
 Lock an unspent transaction
-> bitcoin-cli lockunspent false "[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":1}]"
+&gt; bitcoin-cli lockunspent false &#34;[{\&#34;txid\&#34;:\&#34;a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\&#34;,\&#34;vout\&#34;:1}]&#34;
 
 List the locked transactions
-> bitcoin-cli listlockunspent 
+&gt; bitcoin-cli listlockunspent 
 
 Unlock the transaction again
-> bitcoin-cli lockunspent true "[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":1}]"
+&gt; bitcoin-cli lockunspent true &#34;[{\&#34;txid\&#34;:\&#34;a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\&#34;,\&#34;vout\&#34;:1}]&#34;
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "listlockunspent", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;listlockunspent&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>
