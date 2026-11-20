@@ -1,0 +1,18 @@
+---
+layout: redirect
+permalink: /en/doc/latest/
+---
+{%- assign indexes = site.doc | where: "name", "index" | where_exp: "p", "p.btcversion != 'index'" -%}
+{%- assign latest = indexes | sort: "btcversion" | last -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bitcoin Core RPC documentation (latest)</title>
+<link rel="canonical" href="{{ site.url }}{{ latest.url }}">
+<meta http-equiv="refresh" content="0; url={{ site.url }}{{ latest.url }}">
+</head>
+<body>
+<p>Redirecting to <a href="{{ latest.url }}">{{ latest.url }}</a>.</p>
+</body>
+</html>
