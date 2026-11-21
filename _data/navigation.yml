@@ -270,8 +270,8 @@ pt_BR:
     submenu: true
     tree:
       contact_us:
-        title: "Fale conosco"  # XXX
-        url: "/en/contact/"  # XXX
+        title: "Fale conosco"
+        url: "/pt_BR/contact/"
       announcements:
         title: "Comunicados"  # XXX
         url: "/en/list/announcements/join/"  # XXX
