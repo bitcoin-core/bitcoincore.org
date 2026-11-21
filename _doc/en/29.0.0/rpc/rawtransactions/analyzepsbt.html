@@ -3,45 +3,48 @@ name: analyzepsbt
 btcversion: 29.0.0
 btcgroup: rawtransactions
 permalink: en/doc/29.0.0/rpc/rawtransactions/analyzepsbt/
+openrpc: true
 ---
 
-analyzepsbt "psbt"
-
-Analyzes and provides information about the current status of a PSBT and its inputs
-
-Arguments:
-1. psbt    (string, required) A base64 string of a PSBT
-
-Result:
-{                                   (json object)
-  "inputs" : [                      (json array, optional)
-    {                               (json object)
-      "has_utxo" : true|false,      (boolean) Whether a UTXO is provided
-      "is_final" : true|false,      (boolean) Whether the input is finalized
-      "missing" : {                 (json object, optional) Things that are missing that are required to complete this input
-        "pubkeys" : [               (json array, optional)
-          "hex",                    (string) Public key ID, hash160 of the public key, of a public key whose BIP 32 derivation path is missing
-          ...
-        ],
-        "signatures" : [            (json array, optional)
-          "hex",                    (string) Public key ID, hash160 of the public key, of a public key whose signature is missing
-          ...
-        ],
-        "redeemscript" : "hex",     (string, optional) Hash160 of the redeem script that is missing
-        "witnessscript" : "hex"     (string, optional) SHA256 of the witness script that is missing
-      },
-      "next" : "str"                (string, optional) Role of the next person that this input needs to go to
-    },
-    ...
-  ],
-  "estimated_vsize" : n,            (numeric, optional) Estimated vsize of the final signed transaction
-  "estimated_feerate" : n,          (numeric, optional) Estimated feerate of the final signed transaction in BTC/kvB. Shown only if all UTXO slots in the PSBT have been filled
-  "fee" : n,                        (numeric, optional) The transaction fee paid. Shown only if all UTXO slots in the PSBT have been filled
-  "next" : "str",                   (string) Role of the next person that this psbt needs to go to
-  "error" : "str"                   (string, optional) Error message (if there is one)
-}
-
-Examples:
-> bitcoin-cli analyzepsbt "psbt"
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">analyzepsbt &#34;psbt&#34;</pre>
+  <div class="rpc-description"><p>Analyzes and provides information about the current status of a PSBT and its inputs</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>psbt</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>A base64 string of a PSBT</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">inputs</code> <span class="rpc-type">(array, optional)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">has_utxo</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether a UTXO is provided</span></li>
+          <li><code class="rpc-key">is_final</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether the input is finalized</span></li>
+          <li><code class="rpc-key">missing</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Things that are missing that are required to complete this input</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">pubkeys</code> <span class="rpc-type">(array, optional)</span>
+                <ul class="rpc-schema rpc-array">
+                  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+                </ul></li>
+              <li><code class="rpc-key">signatures</code> <span class="rpc-type">(array, optional)</span>
+                <ul class="rpc-schema rpc-array">
+                  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+                </ul></li>
+              <li><code class="rpc-key">redeemscript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Hash160 of the redeem script that is missing</span></li>
+              <li><code class="rpc-key">witnessscript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">SHA256 of the witness script that is missing</span></li>
+            </ul></li>
+          <li><code class="rpc-key">next</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Role of the next person that this input needs to go to</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">estimated_vsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Estimated vsize of the final signed transaction</span></li>
+  <li><code class="rpc-key">estimated_feerate</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">Estimated feerate of the final signed transaction in BTC/kvB. Shown only if all UTXO slots in the PSBT have been filled</span></li>
+  <li><code class="rpc-key">fee</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">The transaction fee paid. Shown only if all UTXO slots in the PSBT have been filled</span></li>
+  <li><code class="rpc-key">next</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Role of the next person that this psbt needs to go to</span></li>
+  <li><code class="rpc-key">error</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Error message (if there is one)</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli analyzepsbt &#34;psbt&#34;</pre>
+</div>

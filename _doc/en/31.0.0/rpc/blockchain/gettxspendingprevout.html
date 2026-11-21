@@ -3,42 +3,43 @@ name: gettxspendingprevout
 btcversion: 31.0.0
 btcgroup: blockchain
 permalink: en/doc/31.0.0/rpc/blockchain/gettxspendingprevout/
+openrpc: true
 ---
 
-gettxspendingprevout [{"txid":"hex","vout":n},...] ( {"mempool_only":bool,"return_spending_tx":bool,...} )
-
-Scans the mempool (and the txospenderindex, if available) to find transactions spending any of the given outputs
-
-Arguments:
-1. outputs                 (json array, required) The transaction outputs that we want to check, and within each, the txid (string) vout (numeric).
-     [
-       {                   (json object)
-         "txid": "hex",    (string, required) The transaction id
-         "vout": n,        (numeric, required) The output number
-       },
-       ...
-     ]
-2. options                 (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-mempool_only          (boolean, optional, default=true if txospenderindex unavailable, otherwise false) If false and mempool lacks a relevant spend, use txospenderindex (throws an exception if not available).
-return_spending_tx    (boolean, optional, default=false) If true, return the full spending tx.
-
-Result:
-[                              (json array)
-  {                            (json object)
-    "txid" : "hex",            (string) the transaction id of the checked output
-    "vout" : n,                (numeric) the vout value of the checked output
-    "spendingtxid" : "hex",    (string, optional) the transaction id of the mempool transaction spending this output (omitted if unspent)
-    "spendingtx" : "hex",      (string, optional) the transaction spending this output (only if return_spending_tx is set, omitted if unspent)
-    "blockhash" : "hex"        (string, optional) the hash of the spending block (omitted if unspent or the spending tx is not confirmed)
-  },
-  ...
-]
-
-Examples:
-> bitcoin-cli gettxspendingprevout "[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":3}]"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "gettxspendingprevout", "params": ["[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":3}]"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> bitcoin-cli -named gettxspendingprevout outputs='[{"txid":"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0","vout":3}]' return_spending_tx=true
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">gettxspendingprevout outputs ( options )</pre>
+  <div class="rpc-description"><p>Scans the mempool (and the txospenderindex, if available) to find transactions spending any of the given outputs</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>outputs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The transaction outputs that we want to check, and within each, the txid (string) vout (numeric).
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction id</span></li>
+        <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The output number</span></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">mempool_only</code> <span class="rpc-type">(boolean, optional, default: true if txospenderindex unavailable, otherwise false)</span> <span class="rpc-desc">If false and mempool lacks a relevant spend, use txospenderindex (throws an exception if not available).</span></li>
+    <li><code class="rpc-key">return_spending_tx</code> <span class="rpc-type">(boolean, optional, default: false)</span> <span class="rpc-desc">If true, return the full spending tx.</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the transaction id of the checked output</span></li>
+      <li><code class="rpc-key">vout</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the vout value of the checked output</span></li>
+      <li><code class="rpc-key">spendingtxid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">the transaction id of the mempool transaction spending this output (omitted if unspent)</span></li>
+      <li><code class="rpc-key">spendingtx</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">the transaction spending this output (only if return_spending_tx is set, omitted if unspent)</span></li>
+      <li><code class="rpc-key">blockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">the hash of the spending block (omitted if unspent or the spending tx is not confirmed)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli gettxspendingprevout &#34;[{\&#34;txid\&#34;:\&#34;a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\&#34;,\&#34;vout\&#34;:3}]&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;gettxspendingprevout&#34;, &#34;params&#34;: [&#34;[{\&#34;txid\&#34;:\&#34;a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\&#34;,\&#34;vout\&#34;:3}]&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; bitcoin-cli -named gettxspendingprevout outputs=&#39;[{&#34;txid&#34;:&#34;a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0&#34;,&#34;vout&#34;:3}]&#39; return_spending_tx=true</pre>
+</div>

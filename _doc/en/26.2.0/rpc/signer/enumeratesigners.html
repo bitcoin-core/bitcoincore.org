@@ -1,0 +1,27 @@
+---
+name: enumeratesigners
+btcversion: 26.2.0
+btcgroup: signer
+permalink: en/doc/26.2.0/rpc/signer/enumeratesigners/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">signer</span></p>
+  <pre class="rpc-synopsis">enumeratesigners</pre>
+  <div class="rpc-description"><p>Returns a list of external signers from -signer.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">signers</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">fingerprint</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Master key fingerprint</span></li>
+          <li><code class="rpc-key">name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Device name</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

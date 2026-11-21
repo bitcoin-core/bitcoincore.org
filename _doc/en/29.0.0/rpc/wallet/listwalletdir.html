@@ -3,24 +3,27 @@ name: listwalletdir
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/listwalletdir/
+openrpc: true
 ---
 
-listwalletdir
-
-Returns a list of wallets in the wallet directory.
-
-Result:
-{                        (json object)
-  "wallets" : [          (json array)
-    {                    (json object)
-      "name" : "str"     (string) The wallet name
-    },
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli listwalletdir 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "listwalletdir", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listwalletdir</pre>
+  <div class="rpc-description"><p>Returns a list of wallets in the wallet directory.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">wallets</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The wallet name</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli listwalletdir 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;listwalletdir&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

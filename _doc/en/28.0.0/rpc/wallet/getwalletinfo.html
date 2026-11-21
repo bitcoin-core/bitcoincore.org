@@ -3,45 +3,49 @@ name: getwalletinfo
 btcversion: 28.0.0
 btcgroup: wallet
 permalink: en/doc/28.0.0/rpc/wallet/getwalletinfo/
+openrpc: true
 ---
 
-getwalletinfo
-
-Returns an object containing various wallet state info.
-
-Result:
-{                                         (json object)
-  "walletname" : "str",                   (string) the wallet name
-  "walletversion" : n,                    (numeric) the wallet version
-  "format" : "str",                       (string) the database format (bdb or sqlite)
-  "balance" : n,                          (numeric) DEPRECATED. Identical to getbalances().mine.trusted
-  "unconfirmed_balance" : n,              (numeric) DEPRECATED. Identical to getbalances().mine.untrusted_pending
-  "immature_balance" : n,                 (numeric) DEPRECATED. Identical to getbalances().mine.immature
-  "txcount" : n,                          (numeric) the total number of transactions in the wallet
-  "keypoololdest" : xxx,                  (numeric, optional) the UNIX epoch time of the oldest pre-generated key in the key pool. Legacy wallets only.
-  "keypoolsize" : n,                      (numeric) how many new keys are pre-generated (only counts external keys)
-  "keypoolsize_hd_internal" : n,          (numeric, optional) how many new keys are pre-generated for internal use (used for change outputs, only appears if the wallet is using this feature, otherwise external keys are used)
-  "unlocked_until" : xxx,                 (numeric, optional) the UNIX epoch time until which the wallet is unlocked for transfers, or 0 if the wallet is locked (only present for passphrase-encrypted wallets)
-  "paytxfee" : n,                         (numeric) the transaction fee configuration, set in BTC/kvB
-  "hdseedid" : "hex",                     (string, optional) the Hash160 of the HD seed (only present when HD is enabled)
-  "private_keys_enabled" : true|false,    (boolean) false if privatekeys are disabled for this wallet (enforced watch-only wallet)
-  "avoid_reuse" : true|false,             (boolean) whether this wallet tracks clean/dirty coins in terms of reuse
-  "scanning" : {                          (json object) current scanning details, or false if no scan is in progress
-    "duration" : n,                       (numeric) elapsed seconds since scan start
-    "progress" : n                        (numeric) scanning progress percentage [0.0, 1.0]
-  },
-  "descriptors" : true|false,             (boolean) whether this wallet uses descriptors for output script management
-  "external_signer" : true|false,         (boolean) whether this wallet is configured to use an external signer such as a hardware wallet
-  "blank" : true|false,                   (boolean) Whether this wallet intentionally does not contain any keys, scripts, or descriptors
-  "birthtime" : xxx,                      (numeric, optional) The start time for blocks scanning. It could be modified by (re)importing any descriptor with an earlier timestamp.
-  "lastprocessedblock" : {                (json object) hash and height of the block this information was generated on
-    "hash" : "hex",                       (string) hash of the block this information was generated on
-    "height" : n                          (numeric) height of the block this information was generated on
-  }
-}
-
-Examples:
-> bitcoin-cli getwalletinfo 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getwalletinfo", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">getwalletinfo</pre>
+  <div class="rpc-description"><p>Returns an object containing various wallet state info.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">walletname</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the wallet name</span></li>
+  <li><code class="rpc-key">walletversion</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the wallet version</span></li>
+  <li><code class="rpc-key">format</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the database format (bdb or sqlite)</span></li>
+  <li><code class="rpc-key">balance</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">DEPRECATED. Identical to getbalances().mine.trusted</span></li>
+  <li><code class="rpc-key">unconfirmed_balance</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">DEPRECATED. Identical to getbalances().mine.untrusted_pending</span></li>
+  <li><code class="rpc-key">immature_balance</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">DEPRECATED. Identical to getbalances().mine.immature</span></li>
+  <li><code class="rpc-key">txcount</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the total number of transactions in the wallet</span></li>
+  <li><code class="rpc-key">keypoololdest</code> <span class="rpc-type">(number, unix-time, optional)</span> <span class="rpc-desc">the UNIX epoch time of the oldest pre-generated key in the key pool. Legacy wallets only.</span></li>
+  <li><code class="rpc-key">keypoolsize</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">how many new keys are pre-generated (only counts external keys)</span></li>
+  <li><code class="rpc-key">keypoolsize_hd_internal</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">how many new keys are pre-generated for internal use (used for change outputs, only appears if the wallet is using this feature, otherwise external keys are used)</span></li>
+  <li><code class="rpc-key">unlocked_until</code> <span class="rpc-type">(number, unix-time, optional)</span> <span class="rpc-desc">the UNIX epoch time until which the wallet is unlocked for transfers, or 0 if the wallet is locked (only present for passphrase-encrypted wallets)</span></li>
+  <li><code class="rpc-key">paytxfee</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">the transaction fee configuration, set in BTC/kvB</span></li>
+  <li><code class="rpc-key">hdseedid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">the Hash160 of the HD seed (only present when HD is enabled)</span></li>
+  <li><code class="rpc-key">private_keys_enabled</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">false if privatekeys are disabled for this wallet (enforced watch-only wallet)</span></li>
+  <li><code class="rpc-key">avoid_reuse</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">whether this wallet tracks clean/dirty coins in terms of reuse</span></li>
+  <li><code class="rpc-key">scanning</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">current scanning details, or false if no scan is in progress</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">duration</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">elapsed seconds since scan start</span></li>
+      <li><code class="rpc-key">progress</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">scanning progress percentage [0.0, 1.0]</span></li>
+    </ul></li>
+  <li><code class="rpc-key">descriptors</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">whether this wallet uses descriptors for output script management</span></li>
+  <li><code class="rpc-key">external_signer</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">whether this wallet is configured to use an external signer such as a hardware wallet</span></li>
+  <li><code class="rpc-key">blank</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this wallet intentionally does not contain any keys, scripts, or descriptors</span></li>
+  <li><code class="rpc-key">birthtime</code> <span class="rpc-type">(number, unix-time, optional)</span> <span class="rpc-desc">The start time for blocks scanning. It could be modified by (re)importing any descriptor with an earlier timestamp.</span></li>
+  <li><code class="rpc-key">lastprocessedblock</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">hash and height of the block this information was generated on</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">hash of the block this information was generated on</span></li>
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">height of the block this information was generated on</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getwalletinfo 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getwalletinfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

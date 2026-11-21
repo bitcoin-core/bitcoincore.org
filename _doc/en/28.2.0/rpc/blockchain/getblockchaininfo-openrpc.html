@@ -1,0 +1,109 @@
+---
+name: getblockchaininfo
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getblockchaininfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getblockchaininfo&#34;,
+  &#34;description&#34;: &#34;Returns an object containing various state info regarding blockchain processing.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;chain&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;current network name (main, test, testnet4, signet, regtest)&#34;
+        },
+        &#34;blocks&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the height of the most-work fully-validated chain. The genesis block has height 0&#34;
+        },
+        &#34;headers&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the current number of headers we have validated&#34;
+        },
+        &#34;bestblockhash&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;the hash of the currently best block&#34;
+        },
+        &#34;difficulty&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the current difficulty&#34;
+        },
+        &#34;time&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+          &#34;description&#34;: &#34;The block time expressed in UNIX epoch time&#34;
+        },
+        &#34;mediantime&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+          &#34;description&#34;: &#34;The median block time expressed in UNIX epoch time&#34;
+        },
+        &#34;verificationprogress&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;estimate of verification progress [0..1]&#34;
+        },
+        &#34;initialblockdownload&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;(debug information) estimate of whether this node is in Initial Block Download mode&#34;
+        },
+        &#34;chainwork&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;total amount of work in active chain, in hexadecimal&#34;
+        },
+        &#34;size_on_disk&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the estimated size of the block and undo files on disk&#34;
+        },
+        &#34;pruned&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;if the blocks are subject to pruning&#34;
+        },
+        &#34;pruneheight&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;height of the last block pruned, plus one (only present if pruning is enabled)&#34;
+        },
+        &#34;automatic_pruning&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;whether automatic pruning is enabled (only present if pruning is enabled)&#34;
+        },
+        &#34;prune_target_size&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the target size used by pruning (only present if automatic pruning is enabled)&#34;
+        },
+        &#34;warnings&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;chain&#34;,
+        &#34;blocks&#34;,
+        &#34;headers&#34;,
+        &#34;bestblockhash&#34;,
+        &#34;difficulty&#34;,
+        &#34;time&#34;,
+        &#34;mediantime&#34;,
+        &#34;verificationprogress&#34;,
+        &#34;initialblockdownload&#34;,
+        &#34;chainwork&#34;,
+        &#34;size_on_disk&#34;,
+        &#34;pruned&#34;,
+        &#34;warnings&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

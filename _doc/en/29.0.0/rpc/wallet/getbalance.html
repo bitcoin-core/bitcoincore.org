@@ -3,32 +3,30 @@ name: getbalance
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/getbalance/
+openrpc: true
 ---
 
-getbalance ( "dummy" minconf include_watchonly avoid_reuse )
-
-Returns the total available balance.
-The available balance is what the wallet considers currently spendable, and is
-thus affected by options which limit spendability such as -spendzeroconfchange.
-
-Arguments:
-1. dummy                (string, optional) Remains for backward compatibility. Must be excluded or set to "*".
-2. minconf              (numeric, optional, default=0) Only include transactions confirmed at least this many times.
-3. include_watchonly    (boolean, optional, default=true for watch-only wallets, otherwise false) Also include balance in watch-only addresses (see 'importaddress')
-4. avoid_reuse          (boolean, optional, default=true) (only available if avoid_reuse wallet flag is set) Do not include balance in dirty outputs; addresses are considered dirty if they have previously been used in a transaction.
-
-Result:
-n    (numeric) The total amount in BTC received for this wallet.
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">getbalance ( &#34;dummy&#34; ) ( minconf ) ( include_watchonly ) ( avoid_reuse )</pre>
+  <div class="rpc-description"><p>Returns the total available balance. The available balance is what the wallet considers currently spendable, and is thus affected by options which limit spendability such as -spendzeroconfchange.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>dummy</code><br><small class="rpc-note">positional placeholder</small></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>Remains for backward compatibility. Must be excluded or set to &#34;*&#34;.</td></tr>
+  <tr><td>2</td><td><code>minconf</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 0</small></td><td>Only include transactions confirmed at least this many times.</td></tr>
+  <tr><td>3</td><td><code>include_watchonly</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true for watch-only wallets, otherwise false</small></td><td>Also include balance in watch-only addresses (see &#39;importaddress&#39;)</td></tr>
+  <tr><td>4</td><td><code>avoid_reuse</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>(only available if avoid_reuse wallet flag is set) Do not include balance in dirty outputs; addresses are considered dirty if they have previously been used in a transaction.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string, amount)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 The total amount in the wallet with 0 or more confirmations
-> bitcoin-cli getbalance 
+&gt; bitcoin-cli getbalance 
 
 The total amount in the wallet with at least 6 confirmations
-> bitcoin-cli getbalance "*" 6
+&gt; bitcoin-cli getbalance &#34;*&#34; 6
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getbalance", "params": ["*", 6]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getbalance&#34;, &#34;params&#34;: [&#34;*&#34;, 6]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -1,0 +1,21 @@
+---
+name: converttopsbt
+btcversion: 28.2.0
+btcgroup: rawtransactions
+permalink: en/doc/28.2.0/rpc/rawtransactions/converttopsbt/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">converttopsbt &#34;hexstring&#34; ( permitsigdata ) ( iswitness )</pre>
+  <div class="rpc-description"><p>Converts a network serialized transaction to a PSBT. This should be used only with createrawtransaction and fundrawtransaction createpsbt and walletcreatefundedpsbt should be used for new applications.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hexstring</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The hex string of a raw transaction</td></tr>
+  <tr><td>2</td><td><code>permitsigdata</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>If true, any signatures in the input will be discarded and conversion<br>                              will continue. If false, RPC will fail if any signatures are present.</td></tr>
+  <tr><td>3</td><td><code>iswitness</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: depends on heuristic tests</small></td><td>Whether the transaction hex is a serialized witness transaction.<br>If iswitness is not present, heuristic tests will be used in decoding.<br>If true, only witness deserialization will be tried.<br>If false, only non-witness deserialization will be tried.<br>This boolean should reflect whether the transaction has inputs<br>(e.g. fully valid, or on-chain transactions), if known by the caller.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+</div>

@@ -1,0 +1,67 @@
+---
+name: getmininginfo
+btcversion: 28.0.0
+btcgroup: mining
+permalink: en/doc/28.0.0/rpc/mining/getmininginfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getmininginfo&#34;,
+  &#34;description&#34;: &#34;Returns a json object containing mining-related information.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;blocks&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The current block&#34;
+        },
+        &#34;currentblockweight&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The block weight of the last assembled block (only present if a block was ever assembled)&#34;
+        },
+        &#34;currentblocktx&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of block transactions of the last assembled block (only present if a block was ever assembled)&#34;
+        },
+        &#34;difficulty&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The current difficulty&#34;
+        },
+        &#34;networkhashps&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The network hashes per second&#34;
+        },
+        &#34;pooledtx&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The size of the mempool&#34;
+        },
+        &#34;chain&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;current network name (main, test, testnet4, signet, regtest)&#34;
+        },
+        &#34;warnings&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;blocks&#34;,
+        &#34;difficulty&#34;,
+        &#34;networkhashps&#34;,
+        &#34;pooledtx&#34;,
+        &#34;chain&#34;,
+        &#34;warnings&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;mining&#34;
+}</pre>

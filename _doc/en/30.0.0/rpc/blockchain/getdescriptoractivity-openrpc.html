@@ -1,0 +1,264 @@
+---
+name: getdescriptoractivity
+btcversion: 30.0.0
+btcgroup: blockchain
+permalink: en/doc/30.0.0/rpc/blockchain/getdescriptoractivity/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getdescriptoractivity&#34;,
+  &#34;description&#34;: &#34;Get spend and receive activity associated with a set of descriptors for a set of blocks. This command pairs well with the `relevant_blocks` output of `scanblocks()`.\nThis call may take several minutes. If you encounter timeouts, try specifying no RPC timeout (bitcoin-cli -rpcclienttimeout=0)&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;blockhashes&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+        }
+      },
+      &#34;description&#34;: &#34;The list of blockhashes to examine for activity. Order doesn&#39;t matter. Must be along main chain or an error is thrown.\n&#34;
+    },
+    {
+      &#34;name&#34;: &#34;scanobjects&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;oneOf&#34;: [
+            {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;desc&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;An output descriptor&#34;
+                },
+                &#34;range&#34;: {
+                  &#34;oneOf&#34;: [
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    },
+                    {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;prefixItems&#34;: [
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        },
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        }
+                      ],
+                      &#34;minItems&#34;: 2,
+                      &#34;maxItems&#34;: 2
+                    }
+                  ],
+                  &#34;default&#34;: 1000,
+                  &#34;description&#34;: &#34;The range of HD chain indexes to explore (either end or [begin,end])&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;desc&#34;
+              ]
+            }
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;The list of descriptors (scan objects) to examine for activity. Every scan object is either a string descriptor or an object:&#34;
+    },
+    {
+      &#34;name&#34;: &#34;include_mempool&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Whether to include unconfirmed activity&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;activity&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;oneOf&#34;: [
+              {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;type&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;always &#39;spend&#39;&#34;
+                  },
+                  &#34;amount&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;The total amount in BTC of the spent output&#34;
+                  },
+                  &#34;blockhash&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The blockhash this spend appears in (omitted if unconfirmed)&#34;
+                  },
+                  &#34;height&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;Height of the spend (omitted if unconfirmed)&#34;
+                  },
+                  &#34;spend_txid&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The txid of the spending transaction&#34;
+                  },
+                  &#34;spend_vin&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The input index of the spend&#34;
+                  },
+                  &#34;prevout_txid&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The txid of the prevout&#34;
+                  },
+                  &#34;prevout_vout&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The vout of the prevout&#34;
+                  },
+                  &#34;prevout_spk&#34;: {
+                    &#34;type&#34;: &#34;object&#34;,
+                    &#34;properties&#34;: {
+                      &#34;asm&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Disassembly of the output script&#34;
+                      },
+                      &#34;desc&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Inferred descriptor for the output&#34;
+                      },
+                      &#34;hex&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                        &#34;description&#34;: &#34;The raw output script bytes, hex-encoded&#34;
+                      },
+                      &#34;address&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+                      },
+                      &#34;type&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)&#34;
+                      }
+                    },
+                    &#34;additionalProperties&#34;: false,
+                    &#34;required&#34;: [
+                      &#34;asm&#34;,
+                      &#34;desc&#34;,
+                      &#34;hex&#34;,
+                      &#34;type&#34;
+                    ]
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;type&#34;,
+                  &#34;amount&#34;,
+                  &#34;spend_txid&#34;,
+                  &#34;spend_vin&#34;,
+                  &#34;prevout_txid&#34;,
+                  &#34;prevout_vout&#34;,
+                  &#34;prevout_spk&#34;
+                ]
+              },
+              {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;type&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;always &#39;receive&#39;&#34;
+                  },
+                  &#34;amount&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;The total amount in BTC of the new output&#34;
+                  },
+                  &#34;blockhash&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The block that this receive is in (omitted if unconfirmed)&#34;
+                  },
+                  &#34;height&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The height of the receive (omitted if unconfirmed)&#34;
+                  },
+                  &#34;txid&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The txid of the receiving transaction&#34;
+                  },
+                  &#34;vout&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The vout of the receiving output&#34;
+                  },
+                  &#34;output_spk&#34;: {
+                    &#34;type&#34;: &#34;object&#34;,
+                    &#34;properties&#34;: {
+                      &#34;asm&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Disassembly of the output script&#34;
+                      },
+                      &#34;desc&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Inferred descriptor for the output&#34;
+                      },
+                      &#34;hex&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                        &#34;description&#34;: &#34;The raw output script bytes, hex-encoded&#34;
+                      },
+                      &#34;address&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+                      },
+                      &#34;type&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)&#34;
+                      }
+                    },
+                    &#34;additionalProperties&#34;: false,
+                    &#34;required&#34;: [
+                      &#34;asm&#34;,
+                      &#34;desc&#34;,
+                      &#34;hex&#34;,
+                      &#34;type&#34;
+                    ]
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;type&#34;,
+                  &#34;amount&#34;,
+                  &#34;txid&#34;,
+                  &#34;vout&#34;,
+                  &#34;output_spk&#34;
+                ]
+              }
+            ]
+          },
+          &#34;description&#34;: &#34;events&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;activity&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

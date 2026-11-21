@@ -1,0 +1,140 @@
+---
+name: decodepsbt
+btcversion: 28.2.0
+btcgroup: rawtransactions
+permalink: en/doc/28.2.0/rpc/rawtransactions/decodepsbt/raw/
+rawpage: true
+---
+
+decodepsbt "psbt"
+
+Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.
+
+Arguments:
+1. psbt (string)  The PSBT base64 string
+
+Result: (object)
+  tx (object)  The decoded network-serialized unsigned transaction.
+  global_xpubs (array)
+    each item (object)
+      xpub (string)  The extended public key this path corresponds to
+      master_fingerprint (string)  The fingerprint of the master key
+      path (string)  The path
+  psbt_version (number)  The PSBT version number. Not to be confused with the unsigned transaction version
+  proprietary (array)  The global proprietary map
+    each item (object)
+      identifier (string)  The hex string for the proprietary identifier
+      subtype (number)  The number for the subtype
+      key (string)  The hex for the key
+      value (string)  The hex for the value
+  unknown (object)  The unknown global fields
+    ... (string)
+  inputs (array)
+    each item (object)
+      non_witness_utxo (object, optional)  Decoded network transaction for non-witness UTXOs
+      witness_utxo (object, optional)  Transaction output for witness UTXOs
+        amount (number)  The value in BTC
+        scriptPubKey (object)
+          asm (string)  Disassembly of the output script
+          desc (string)  Inferred descriptor for the output
+          hex (string)  The raw output script bytes, hex-encoded
+          type (string)  The type, eg 'pubkeyhash'
+          address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+      partial_signatures (object, optional)
+        ... (string)
+      sighash (string, optional)  The sighash type to be used
+      redeem_script (object, optional)
+        asm (string)  Disassembly of the redeem script
+        hex (string)  The raw redeem script bytes, hex-encoded
+        type (string)  The type, eg 'pubkeyhash'
+      witness_script (object, optional)
+        asm (string)  Disassembly of the witness script
+        hex (string)  The raw witness script bytes, hex-encoded
+        type (string)  The type, eg 'pubkeyhash'
+      bip32_derivs (array, optional)
+        each item (object)
+          pubkey (string)  The public key with the derivation path as the value.
+          master_fingerprint (string)  The fingerprint of the master key
+          path (string)  The path
+      final_scriptSig (object, optional)
+        asm (string)  Disassembly of the final signature script
+        hex (string)  The raw final signature script bytes, hex-encoded
+      final_scriptwitness (array, optional)
+        each item (string)
+      ripemd160_preimages (object, optional)
+        ... (string)
+      sha256_preimages (object, optional)
+        ... (string)
+      hash160_preimages (object, optional)
+        ... (string)
+      hash256_preimages (object, optional)
+        ... (string)
+      taproot_key_path_sig (string, optional)  hex-encoded signature for the Taproot key path spend
+      taproot_script_path_sigs (array, optional)
+        each item (object)
+          pubkey (string)  The x-only pubkey for this signature
+          leaf_hash (string)  The leaf hash for this signature
+          sig (string)  The signature itself
+      taproot_scripts (array, optional)
+        each item (object)
+          script (string)  A leaf script
+          leaf_ver (number)  The version number for the leaf script
+          control_blocks (array)  The control blocks for this script
+            each item (string)
+      taproot_bip32_derivs (array, optional)
+        each item (object)
+          pubkey (string)  The x-only public key this path corresponds to
+          master_fingerprint (string)  The fingerprint of the master key
+          path (string)  The path
+          leaf_hashes (array)  The hashes of the leaves this pubkey appears in
+            each item (string)
+      taproot_internal_key (string, optional)  The hex-encoded Taproot x-only internal key
+      taproot_merkle_root (string, optional)  The hex-encoded Taproot merkle root
+      unknown (object, optional)  The unknown input fields
+        ... (string)
+      proprietary (array, optional)  The input proprietary map
+        each item (object)
+          identifier (string)  The hex string for the proprietary identifier
+          subtype (number)  The number for the subtype
+          key (string)  The hex for the key
+          value (string)  The hex for the value
+  outputs (array)
+    each item (object)
+      redeem_script (object, optional)
+        asm (string)  Disassembly of the redeem script
+        hex (string)  The raw redeem script bytes, hex-encoded
+        type (string)  The type, eg 'pubkeyhash'
+      witness_script (object, optional)
+        asm (string)  Disassembly of the witness script
+        hex (string)  The raw witness script bytes, hex-encoded
+        type (string)  The type, eg 'pubkeyhash'
+      bip32_derivs (array, optional)
+        each item (object)
+          pubkey (string)  The public key this path corresponds to
+          master_fingerprint (string)  The fingerprint of the master key
+          path (string)  The path
+      taproot_internal_key (string, optional)  The hex-encoded Taproot x-only internal key
+      taproot_tree (array, optional)  The tuples that make up the Taproot tree, in depth first search order
+        each item (object)
+          depth (number)  The depth of this element in the tree
+          leaf_ver (number)  The version of this leaf
+          script (string)  The hex-encoded script itself
+      taproot_bip32_derivs (array, optional)
+        each item (object)
+          pubkey (string)  The x-only public key this path corresponds to
+          master_fingerprint (string)  The fingerprint of the master key
+          path (string)  The path
+          leaf_hashes (array)  The hashes of the leaves this pubkey appears in
+            each item (string)
+      unknown (object, optional)  The unknown output fields
+        ... (string)
+      proprietary (array, optional)  The output proprietary map
+        each item (object)
+          identifier (string)  The hex string for the proprietary identifier
+          subtype (number)  The number for the subtype
+          key (string)  The hex for the key
+          value (string)  The hex for the value
+  fee (string, amount, optional)  The transaction fee paid if all UTXOs slots in the PSBT have been filled.
+
+
+

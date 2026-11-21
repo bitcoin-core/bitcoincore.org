@@ -1,0 +1,26 @@
+---
+name: upgradewallet
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/upgradewallet/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">upgradewallet ( version )</pre>
+  <div class="rpc-description"><p>Upgrade the wallet. Upgrades to the latest version if no version number is specified. New keys may be generated and a new wallet backup will need to be made.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>version</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 169900</small></td><td>The version number to upgrade to. Default is the latest wallet version.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">wallet_name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Name of wallet this operation was performed on</span></li>
+  <li><code class="rpc-key">previous_version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Version of wallet before this operation</span></li>
+  <li><code class="rpc-key">current_version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Version of wallet after this operation</span></li>
+  <li><code class="rpc-key">result</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Description of result, if no error</span></li>
+  <li><code class="rpc-key">error</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Error message (if there is one)</span></li>
+</ul>
+</div>

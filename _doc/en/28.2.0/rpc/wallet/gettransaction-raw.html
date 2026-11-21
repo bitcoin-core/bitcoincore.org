@@ -1,0 +1,62 @@
+---
+name: gettransaction
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/gettransaction/raw/
+rawpage: true
+---
+
+gettransaction "txid" ( include_watchonly ) ( verbose )
+
+Get detailed information about in-wallet transaction <txid>
+
+Arguments:
+1. txid (string)  The transaction id
+2. include_watchonly (boolean, optional, default: true for watch-only wallets, otherwise false)  Whether to include watch-only addresses in balance calculation and details[]
+3. verbose (boolean, optional, default=false)  Whether to include a `decoded` field containing the decoded transaction (equivalent to RPC decoderawtransaction)
+
+Result: (object)
+  amount (string, amount)  The amount in BTC
+  fee (string, amount, optional)  The amount of the fee in BTC. This is negative and only available for the 'send' category of transactions.
+  confirmations (number)  The number of confirmations for the transaction. Negative confirmations means the transaction conflicted that many blocks ago.
+  generated (boolean, optional)  Only present if the transaction's only input is a coinbase one.
+  trusted (boolean, optional)  Whether we consider the transaction to be trusted and safe to spend from. Only present when the transaction has 0 confirmations (or negative confirmations, if conflicted).
+  blockhash (string, optional)  The block hash containing the transaction.
+  blockheight (number, optional)  The block height containing the transaction.
+  blockindex (number, optional)  The index of the transaction in the block that includes it.
+  blocktime (number, unix-time, optional)  The block time expressed in UNIX epoch time.
+  txid (string)  The transaction id.
+  wtxid (string)  The hash of serialized transaction, including witness data.
+  walletconflicts (array)  Confirmed transactions that have been detected by the wallet to conflict with this transaction.
+    each item (string)
+  replaced_by_txid (string, optional)  Only if 'category' is 'send'. The txid if this tx was replaced.
+  replaces_txid (string, optional)  Only if 'category' is 'send'. The txid if this tx replaces another.
+  mempoolconflicts (array)  Transactions in the mempool that directly conflict with either this transaction or an ancestor transaction
+    each item (string)
+  to (string, optional)  If a comment to is associated with the transaction.
+  time (number, unix-time)  The transaction time expressed in UNIX epoch time.
+  timereceived (number, unix-time)  The time received expressed in UNIX epoch time.
+  comment (string, optional)  If a comment is associated with the transaction, only present if not empty.
+  bip125-replaceable (string)  ("yes|no|unknown") Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability. May be unknown for unconfirmed transactions not in the mempool because their unconfirmed ancestors are unknown.
+  parent_descs (array, optional)  Only if 'category' is 'received'. List of parent descriptors for the output script of this coin.
+    each item (string)
+  details (array)
+    each item (object)
+      involvesWatchonly (boolean, optional)  Only returns true if imported addresses were involved in transaction.
+      address (string, optional)  The bitcoin address involved in the transaction.
+      category (string)  The transaction category. "send" Transactions sent. "receive" Non-coinbase transactions received. "generate" Coinbase transactions received with more than 100 confirmations. "immature" Coinbase transactions received with 100 or fewer confirmations. "orphan" Orphaned coinbase transactions received.
+      amount (string, amount)  The amount in BTC
+      label (string, optional)  A comment for the address/transaction, if any
+      vout (number)  the vout value
+      fee (string, amount, optional)  The amount of the fee in BTC. This is negative and only available for the 'send' category of transactions.
+      abandoned (boolean)  'true' if the transaction has been abandoned (inputs are respendable).
+      parent_descs (array, optional)  Only if 'category' is 'received'. List of parent descriptors for the output script of this coin.
+        each item (string)
+  hex (string)  Raw data for transaction
+  decoded (object, optional)  The decoded transaction (only present when `verbose` is passed)
+  lastprocessedblock (object)  hash and height of the block this information was generated on
+    hash (string)  hash of the block this information was generated on
+    height (number)  height of the block this information was generated on
+
+
+

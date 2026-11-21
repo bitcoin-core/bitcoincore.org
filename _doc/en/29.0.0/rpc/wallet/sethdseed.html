@@ -3,32 +3,23 @@ name: sethdseed
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/sethdseed/
+openrpc: true
 ---
 
-sethdseed ( newkeypool "seed" )
-
-Set or generate a new HD wallet seed. Non-HD wallets will not be upgraded to being a HD wallet. Wallets that are already
-HD will have a new HD seed set so that new keys added to the keypool will be derived from this new seed.
-
-Note that you will need to MAKE A NEW BACKUP of your wallet after setting the HD wallet seed.
-Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
-Note: This command is only compatible with legacy wallets.
-
-Arguments:
-1. newkeypool    (boolean, optional, default=true) Whether to flush old unused addresses, including change addresses, from the keypool and regenerate it.
-                 If true, the next address from getnewaddress and change address from getrawchangeaddress will be from this new seed.
-                 If false, addresses (including change addresses if the wallet already had HD Chain Split enabled) from the existing
-                 keypool will be used until it has been depleted.
-2. seed          (string, optional, default=random seed) The WIF private key to use as the new HD seed.
-                 The seed value can be retrieved using the dumpwallet command. It is the private key marked hdseed=1
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli sethdseed 
-> bitcoin-cli sethdseed false
-> bitcoin-cli sethdseed true "wifkey"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "sethdseed", "params": [true, "wifkey"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">sethdseed ( newkeypool ) ( &#34;seed&#34; )</pre>
+  <div class="rpc-description"><p>Set or generate a new HD wallet seed. Non-HD wallets will not be upgraded to being a HD wallet. Wallets that are already HD will have a new HD seed set so that new keys added to the keypool will be derived from this new seed.</p><p>Note that you will need to MAKE A NEW BACKUP of your wallet after setting the HD wallet seed. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted. Note: This command is only compatible with legacy wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>newkeypool</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Whether to flush old unused addresses, including change addresses, from the keypool and regenerate it.<br>If true, the next address from getnewaddress and change address from getrawchangeaddress will be from this new seed.<br>If false, addresses (including change addresses if the wallet already had HD Chain Split enabled) from the existing<br>keypool will be used until it has been depleted.</td></tr>
+  <tr><td>2</td><td><code>seed</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: random seed</small></td><td>The WIF private key to use as the new HD seed.<br>The seed value can be retrieved using the dumpwallet command. It is the private key marked hdseed=1</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli sethdseed 
+&gt; bitcoin-cli sethdseed false
+&gt; bitcoin-cli sethdseed true &#34;wifkey&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;sethdseed&#34;, &#34;params&#34;: [true, &#34;wifkey&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

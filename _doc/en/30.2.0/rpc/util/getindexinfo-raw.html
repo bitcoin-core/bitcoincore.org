@@ -1,0 +1,22 @@
+---
+name: getindexinfo
+btcversion: 30.2.0
+btcgroup: util
+permalink: en/doc/30.2.0/rpc/util/getindexinfo/raw/
+rawpage: true
+---
+
+getindexinfo ( "index_name" )
+
+Returns the status of one or all available indices currently running in the node.
+
+Arguments:
+1. index_name (string, optional)  Filter results for an index with a specific name.
+
+Result: (object)
+  ... (object)
+    synced (boolean)  Whether the index is synced or not
+    best_block_height (number)  The block height to which the index is synced
+
+
+

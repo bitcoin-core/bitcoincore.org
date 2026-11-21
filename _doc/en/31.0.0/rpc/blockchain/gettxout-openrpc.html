@@ -1,0 +1,117 @@
+---
+name: gettxout
+btcversion: 31.0.0
+btcgroup: blockchain
+permalink: en/doc/31.0.0/rpc/blockchain/gettxout/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;gettxout&#34;,
+  &#34;description&#34;: &#34;Returns details about an unspent transaction output.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;txid&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The transaction id&#34;
+    },
+    {
+      &#34;name&#34;: &#34;n&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;
+      },
+      &#34;description&#34;: &#34;vout number&#34;
+    },
+    {
+      &#34;name&#34;: &#34;include_mempool&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Whether to include the mempool. Note that an unspent output that is spent in the mempool won&#39;t appear.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;null&#34;,
+          &#34;description&#34;: &#34;If the UTXO was not found&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;bestblock&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The hash of the block at the tip of the chain&#34;
+            },
+            &#34;confirmations&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The number of confirmations&#34;
+            },
+            &#34;value&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+              &#34;description&#34;: &#34;The transaction value in BTC&#34;
+            },
+            &#34;scriptPubKey&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;asm&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;Disassembly of the output script&#34;
+                },
+                &#34;desc&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;Inferred descriptor for the output&#34;
+                },
+                &#34;hex&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                  &#34;description&#34;: &#34;The raw output script bytes, hex-encoded&#34;
+                },
+                &#34;type&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;The type, eg pubkeyhash&#34;
+                },
+                &#34;address&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;asm&#34;,
+                &#34;desc&#34;,
+                &#34;hex&#34;,
+                &#34;type&#34;
+              ]
+            },
+            &#34;coinbase&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;description&#34;: &#34;Coinbase or not&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;bestblock&#34;,
+            &#34;confirmations&#34;,
+            &#34;value&#34;,
+            &#34;scriptPubKey&#34;,
+            &#34;coinbase&#34;
+          ],
+          &#34;description&#34;: &#34;Otherwise&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

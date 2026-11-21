@@ -1,0 +1,31 @@
+---
+name: submitheader
+btcversion: 29.0.0
+btcgroup: mining
+permalink: en/doc/29.0.0/rpc/mining/submitheader/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;submitheader&#34;,
+  &#34;description&#34;: &#34;Decode the given hexdata as a header and submit it as a candidate chain tip if valid.\nThrows when the header is invalid.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hexdata&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;the hex-encoded block header data&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;mining&#34;
+}</pre>

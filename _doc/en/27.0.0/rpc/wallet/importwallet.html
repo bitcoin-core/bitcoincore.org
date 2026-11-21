@@ -3,29 +3,27 @@ name: importwallet
 btcversion: 27.0.0
 btcgroup: wallet
 permalink: en/doc/27.0.0/rpc/wallet/importwallet/
+openrpc: true
 ---
 
-importwallet "filename"
-
-Imports keys from a wallet dump file (see dumpwallet). Requires a new wallet backup to include imported keys.
-Note: Blockchain and Mempool will be rescanned after a successful import. Use "getwalletinfo" to query the scanning progress.
-Note: This command is only compatible with legacy wallets.
-
-Arguments:
-1. filename    (string, required) The wallet file
-
-Result:
-null    (json null)
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">importwallet &#34;filename&#34;</pre>
+  <div class="rpc-description"><p>Imports keys from a wallet dump file (see dumpwallet). Requires a new wallet backup to include imported keys. Note: Blockchain and Mempool will be rescanned after a successful import. Use &#34;getwalletinfo&#34; to query the scanning progress. Note: This command is only compatible with legacy wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>filename</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The wallet file</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Dump the wallet
-> bitcoin-cli dumpwallet "test"
+&gt; bitcoin-cli dumpwallet &#34;test&#34;
 
 Import the wallet
-> bitcoin-cli importwallet "test"
+&gt; bitcoin-cli importwallet &#34;test&#34;
 
 Import using the json rpc call
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "importwallet", "params": ["test"]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;importwallet&#34;, &#34;params&#34;: [&#34;test&#34;]}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -1,0 +1,28 @@
+---
+name: getnodeaddresses
+btcversion: 26.2.0
+btcgroup: network
+permalink: en/doc/26.2.0/rpc/network/getnodeaddresses/raw/
+rawpage: true
+---
+
+getnodeaddresses ( count ) ( "network" )
+
+Return known addresses, after filtering for quality and recency.
+These can potentially be used to find new peers in the network.
+The total number of addresses known to the node may be higher.
+
+Arguments:
+1. count (number, optional, default=1)  The maximum number of addresses to return. Specify 0 to return all known addresses.
+2. network (string, optional, default: all networks)  Return only addresses of the specified network. Can be one of: ipv4, ipv6, onion, i2p, cjdns.
+
+Result: (array)
+  each item (object)
+    time (number, unix-time)  The UNIX epoch time when the node was last seen
+    services (number)  The services offered by the node
+    address (string)  The address of the node
+    port (number)  The port number of the node
+    network (string)  The network (ipv4, ipv6, onion, i2p, cjdns) the node connected through
+
+
+

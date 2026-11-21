@@ -1,0 +1,80 @@
+---
+name: getrawtransaction
+btcversion: 28.2.0
+btcgroup: rawtransactions
+permalink: en/doc/28.2.0/rpc/rawtransactions/getrawtransaction/raw/
+rawpage: true
+---
+
+getrawtransaction "txid" ( verbosity ) ( "blockhash" )
+
+By default, this call only returns a transaction if it is in the mempool. If -txindex is enabled
+and no blockhash argument is passed, it will return the transaction if it is in the mempool or any block.
+If a blockhash argument is passed, it will return the transaction if
+the specified block is available and the transaction is in that block.
+
+Hint: Use gettransaction for wallet transactions.
+
+If verbosity is 0 or omitted, returns the serialized transaction as a hex-encoded string.
+If verbosity is 1, returns a JSON Object with information about the transaction.
+If verbosity is 2, returns a JSON Object with information about the transaction, including fee and prevout information.
+
+Arguments:
+1. txid (string)  The transaction id
+2. verbosity (number, optional, default=0)  0 for hex-encoded data, 1 for a JSON object, and 2 for JSON object with fee and prevout
+3. blockhash (string, optional)  The block in which to look for the transaction
+
+Result: (one of)
+  option 1: (string)  if verbosity is not set or set to 0
+  option 2: (object)  if verbosity is set to 1
+    in_active_chain (boolean, optional)  Whether specified block is in the active chain or not (only present with explicit "blockhash" argument)
+    blockhash (string, optional)  the block hash
+    confirmations (number, optional)  The confirmations
+    blocktime (number, unix-time, optional)  The block time expressed in UNIX epoch time
+    time (number, optional)  Same as "blocktime"
+    hex (string)  The serialized, hex-encoded data for 'txid'
+    txid (string)  The transaction id (same as provided)
+    hash (string)  The transaction hash (differs from txid for witness transactions)
+    size (number)  The serialized transaction size
+    vsize (number)  The virtual transaction size (differs from size for witness transactions)
+    weight (number)  The transaction's weight (between vsize*4-3 and vsize*4)
+    version (number)  The version
+    locktime (number, unix-time)  The lock time
+    vin (array)
+      each item (object)
+        coinbase (string, optional)  The coinbase value (only if coinbase transaction)
+        txid (string, optional)  The transaction id (if not coinbase transaction)
+        vout (number, optional)  The output number (if not coinbase transaction)
+        scriptSig (object, optional)  The script (if not coinbase transaction)
+          asm (string)  Disassembly of the signature script
+          hex (string)  The raw signature script bytes, hex-encoded
+        txinwitness (array, optional)
+          each item (string)
+        sequence (number)  The script sequence number
+    vout (array)
+      each item (object)
+        value (string, amount)  The value in BTC
+        n (number)  index
+        scriptPubKey (object)
+          asm (string)  Disassembly of the output script
+          desc (string)  Inferred descriptor for the output
+          hex (string)  The raw output script bytes, hex-encoded
+          address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+          type (string)  The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
+  option 3: (object)  for verbosity = 2
+    fee (number, optional)  transaction fee in BTC, omitted if block undo data is not available
+    vin (array)
+      each item (object)
+        prevout (object, optional)  The previous output, omitted if block undo data is not available
+          generated (boolean)  Coinbase or not
+          height (number)  The height of the prevout
+          value (string, amount)  The value in BTC
+          scriptPubKey (object)
+            asm (string)  Disassembly of the output script
+            desc (string)  Inferred descriptor for the output
+            hex (string)  The raw output script bytes, hex-encoded
+            address (string, optional)  The Bitcoin address (only if a well-defined address exists)
+            type (string)  The type (one of: nonstandard, anchor, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)
+
+
+

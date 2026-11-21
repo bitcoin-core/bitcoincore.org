@@ -1,0 +1,60 @@
+---
+name: getblockstats
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getblockstats/raw/
+rawpage: true
+---
+
+getblockstats hash_or_height ( stats )
+
+Compute per block statistics for a given window. All amounts are in satoshis.
+It won't work for some heights with pruning.
+
+Arguments:
+1. hash_or_height (one of)  The block hash or height of the target block
+  option 1: (number)
+  option 2: (string)
+2. stats (array, optional, default: all values)  Values to plot (see result below)
+  each item (string)
+
+Result: (object)
+  avgfee (number, optional)  Average fee in the block
+  avgfeerate (number, optional)  Average feerate (in satoshis per virtual byte)
+  avgtxsize (number, optional)  Average transaction size
+  blockhash (string, optional)  The block hash (to check for potential reorgs)
+  feerate_percentiles (array, optional)  Feerates at the 10th, 25th, 50th, 75th, and 90th percentile weight unit (in satoshis per virtual byte)
+    [0] (number)
+    [1] (number)
+    [2] (number)
+    [3] (number)
+    [4] (number)
+  height (number, optional)  The height of the block
+  ins (number, optional)  The number of inputs (excluding coinbase)
+  maxfee (number, optional)  Maximum fee in the block
+  maxfeerate (number, optional)  Maximum feerate (in satoshis per virtual byte)
+  maxtxsize (number, optional)  Maximum transaction size
+  medianfee (number, optional)  Truncated median fee in the block
+  mediantime (number, optional)  The block median time past
+  mediantxsize (number, optional)  Truncated median transaction size
+  minfee (number, optional)  Minimum fee in the block
+  minfeerate (number, optional)  Minimum feerate (in satoshis per virtual byte)
+  mintxsize (number, optional)  Minimum transaction size
+  outs (number, optional)  The number of outputs
+  subsidy (number, optional)  The block subsidy
+  swtotal_size (number, optional)  Total size of all segwit transactions
+  swtotal_weight (number, optional)  Total weight of all segwit transactions
+  swtxs (number, optional)  The number of segwit transactions
+  time (number, optional)  The block time
+  total_out (number, optional)  Total amount in all outputs (excluding coinbase and thus reward [ie subsidy + totalfee])
+  total_size (number, optional)  Total size of all non-coinbase transactions
+  total_weight (number, optional)  Total weight of all non-coinbase transactions
+  totalfee (number, optional)  The fee total
+  txs (number, optional)  The number of transactions (including coinbase)
+  utxo_increase (number, optional)  The increase/decrease in the number of unspent outputs (not discounting op_return and similar)
+  utxo_size_inc (number, optional)  The increase/decrease in size for the utxo index (not discounting op_return and similar)
+  utxo_increase_actual (number, optional)  The increase/decrease in the number of unspent outputs, not counting unspendables
+  utxo_size_inc_actual (number, optional)  The increase/decrease in size for the utxo index, not counting unspendables
+
+
+

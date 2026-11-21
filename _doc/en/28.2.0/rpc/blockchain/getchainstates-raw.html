@@ -1,0 +1,30 @@
+---
+name: getchainstates
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getchainstates/raw/
+rawpage: true
+---
+
+getchainstates
+
+Return information about chainstates.
+
+Arguments:
+none
+
+Result: (object)
+  headers (number)  the number of headers seen so far
+  chainstates (array)  list of the chainstates ordered by work, with the most-work (active) chainstate last
+    each item (object)
+      blocks (number)  number of blocks in this chainstate
+      bestblockhash (string)  blockhash of the tip
+      difficulty (number)  difficulty of the tip
+      verificationprogress (number)  progress towards the network tip
+      snapshot_blockhash (string, optional)  the base block of the snapshot this chainstate is based on, if any
+      coins_db_cache_bytes (number)  size of the coinsdb cache
+      coins_tip_cache_bytes (number)  size of the coinstip cache
+      validated (boolean)  whether the chainstate is fully validated. True if all blocks in the chainstate were validated, false if the chain is based on a snapshot and the snapshot has not yet been validated.
+
+
+

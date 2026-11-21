@@ -1,0 +1,21 @@
+---
+name: importprivkey
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/importprivkey/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">importprivkey &#34;privkey&#34; ( &#34;label&#34; ) ( rescan )</pre>
+  <div class="rpc-description"><p>Adds a private key (as returned by dumpprivkey) to your wallet. Requires a new wallet backup. Hint: use importmulti to import more than one private key.</p><p>Note: This call can take over an hour to complete if rescan is true, during that time, other rpc calls may report that the imported key exists but related transactions are still missing, leading to temporarily incorrect/bogus balances and unspent outputs until rescan completes. The rescan parameter can be set to false if the key was never used to create transactions. If it is set to false, but the key was used to create transactions, rescanblockchain needs to be called with the appropriate block range. Note: Use &#34;getwalletinfo&#34; to query the scanning progress. Note: This command is only compatible with legacy wallets. Use &#34;importdescriptors&#34; with &#34;combo(X)&#34; for descriptor wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>privkey</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The private key (see dumpprivkey)</td></tr>
+  <tr><td>2</td><td><code>label</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: current label if address exists, otherwise &#34;&#34;</small></td><td>An optional label</td></tr>
+  <tr><td>3</td><td><code>rescan</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Scan the chain and mempool for wallet transactions.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

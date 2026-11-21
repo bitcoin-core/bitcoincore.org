@@ -1,0 +1,21 @@
+---
+name: importwallet
+btcversion: 27.2.0
+btcgroup: wallet
+permalink: en/doc/27.2.0/rpc/wallet/importwallet/raw/
+rawpage: true
+---
+
+importwallet "filename"
+
+Imports keys from a wallet dump file (see dumpwallet). Requires a new wallet backup to include imported keys.
+Note: Blockchain and Mempool will be rescanned after a successful import. Use "getwalletinfo" to query the scanning progress.
+Note: This command is only compatible with legacy wallets.
+
+Arguments:
+1. filename (string)  The wallet file
+
+Result: (null)
+
+
+

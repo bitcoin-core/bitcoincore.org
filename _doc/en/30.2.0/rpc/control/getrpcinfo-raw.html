@@ -1,0 +1,24 @@
+---
+name: getrpcinfo
+btcversion: 30.2.0
+btcgroup: control
+permalink: en/doc/30.2.0/rpc/control/getrpcinfo/raw/
+rawpage: true
+---
+
+getrpcinfo
+
+Returns details of the RPC server.
+
+Arguments:
+none
+
+Result: (object)
+  active_commands (array)  All active commands
+    each item (object)
+      method (string)  The name of the RPC command
+      duration (number)  The running time in microseconds
+  logpath (string)  The complete file path to the debug log
+
+
+

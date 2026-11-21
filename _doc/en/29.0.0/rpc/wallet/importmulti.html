@@ -3,73 +3,72 @@ name: importmulti
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/importmulti/
+openrpc: true
 ---
 
-importmulti requests ( options )
-
-Import addresses/scripts (with private or public keys, redeem script (P2SH)), optionally rescanning the blockchain from the earliest creation time of the imported scripts. Requires a new wallet backup.
-If an address/script is imported without all of the private keys required to spend from that address, it will be watchonly. The 'watchonly' option must be set to true in this case or a warning will be returned.
-Conversely, if all the private keys are provided and the address/script is spendable, the watchonly option must be set to false, or a warning will be returned.
-
-Note: This call can take over an hour to complete if rescan is true, during that time, other rpc calls
-may report that the imported keys, addresses or scripts exist but related transactions are still missing.
-The rescan parameter can be set to false if the key was never used to create transactions. If it is set to false,
-but the key was used to create transactions, rescanblockchain needs to be called with the appropriate block range.
-Note: Use "getwalletinfo" to query the scanning progress.
-Note: This command is only compatible with legacy wallets. Use "importdescriptors" for descriptor wallets.
-
-Arguments:
-1. requests                                                         (json array, required) Data to be imported
-     [
-       {                                                            (json object)
-         "desc": "str",                                             (string, optional) Descriptor to import. If using descriptor, do not also provide address/scriptPubKey, scripts, or pubkeys
-         "scriptPubKey": "<script>" | { "address":"<address>" },    (string / json, required) Type of scriptPubKey (string for script, json for address). Should not be provided if using a descriptor
-         "timestamp": timestamp | "now",                            (integer / string, required) Creation time of the key expressed in UNIX epoch time,
-                                                                    or the string "now" to substitute the current synced blockchain time. The timestamp of the oldest
-                                                                    key will determine how far back blockchain rescans need to begin for missing wallet transactions.
-                                                                    "now" can be specified to bypass scanning, for keys which are known to never have been used, and
-                                                                    0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest key
-                                                                    creation time of all keys being imported by the importmulti call will be scanned.
-         "redeemscript": "str",                                     (string, optional) Allowed only if the scriptPubKey is a P2SH or P2SH-P2WSH address/scriptPubKey
-         "witnessscript": "str",                                    (string, optional) Allowed only if the scriptPubKey is a P2SH-P2WSH or P2WSH address/scriptPubKey
-         "pubkeys": [                                               (json array, optional, default=[]) Array of strings giving pubkeys to import. They must occur in P2PKH or P2WPKH scripts. They are not required when the private key is also provided (see the "keys" argument).
-           "pubKey",                                                (string)
-           ...
-         ],
-         "keys": [                                                  (json array, optional, default=[]) Array of strings giving private keys to import. The corresponding public keys must occur in the output or redeemscript.
-           "key",                                                   (string)
-           ...
-         ],
-         "range": n or [n,n],                                       (numeric or array, optional) If a ranged descriptor is used, this specifies the end or the range (in the form [begin,end]) to import
-         "internal": bool,                                          (boolean, optional, default=false) Stating whether matching outputs should be treated as not incoming payments (also known as change)
-         "watchonly": bool,                                         (boolean, optional, default=false) Stating whether matching outputs should be considered watchonly.
-         "label": "str",                                            (string, optional, default="") Label to assign to the address, only allowed with internal=false
-         "keypool": bool,                                           (boolean, optional, default=false) Stating whether imported public keys should be added to the keypool for when users request new addresses. Only allowed when wallet private keys are disabled
-       },
-       ...
-     ]
-2. options                                                          (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-rescan    (boolean, optional, default=true) Scan the chain and mempool for wallet transactions after all imports.
-
-Result:
-[                              (json array) Response is an array with the same size as the input that has the execution result
-  {                            (json object)
-    "success" : true|false,    (boolean)
-    "warnings" : [             (json array, optional)
-      "str",                   (string)
-      ...
-    ],
-    "error" : {                (json object, optional)
-      ...                      JSONRPC error
-    }
-  },
-  ...
-]
-
-Examples:
-> bitcoin-cli importmulti '[{ "scriptPubKey": { "address": "<my address>" }, "timestamp":1455191478 }, { "scriptPubKey": { "address": "<my 2nd address>" }, "label": "example 2", "timestamp": 1455191480 }]'
-> bitcoin-cli importmulti '[{ "scriptPubKey": { "address": "<my address>" }, "timestamp":1455191478 }]' '{ "rescan": false}'
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">importmulti requests ( options )</pre>
+  <div class="rpc-description"><p>Import addresses/scripts (with private or public keys, redeem script (P2SH)), optionally rescanning the blockchain from the earliest creation time of the imported scripts. Requires a new wallet backup. If an address/script is imported without all of the private keys required to spend from that address, it will be watchonly. The &#39;watchonly&#39; option must be set to true in this case or a warning will be returned. Conversely, if all the private keys are provided and the address/script is spendable, the watchonly option must be set to false, or a warning will be returned.</p><p>Note: This call can take over an hour to complete if rescan is true, during that time, other rpc calls may report that the imported keys, addresses or scripts exist but related transactions are still missing. The rescan parameter can be set to false if the key was never used to create transactions. If it is set to false, but the key was used to create transactions, rescanblockchain needs to be called with the appropriate block range. Note: Use &#34;getwalletinfo&#34; to query the scanning progress. Note: This command is only compatible with legacy wallets. Use &#34;importdescriptors&#34; for descriptor wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>requests</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>Data to be imported
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+      <ul class="rpc-schema">
+        <li><code class="rpc-key">desc</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Descriptor to import. If using descriptor, do not also provide address/scriptPubKey, scripts, or pubkeys</span></li>
+        <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(string / json)</span> <span class="rpc-desc">Type of scriptPubKey (string for script, json for address). Should not be provided if using a descriptor</span></li>
+        <li><code class="rpc-key">timestamp</code> <span class="rpc-type">(one of)</span> <span class="rpc-desc">Creation time of the key expressed in UNIX epoch time,<br>or the string &#34;now&#34; to substitute the current synced blockchain time. The timestamp of the oldest<br>key will determine how far back blockchain rescans need to begin for missing wallet transactions.<br>&#34;now&#34; can be specified to bypass scanning, for keys which are known to never have been used, and<br>0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest key<br>creation time of all keys being imported by the importmulti call will be scanned.</span>
+          <ul class="rpc-schema rpc-variants">
+            <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+            <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">redeemscript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Allowed only if the scriptPubKey is a P2SH or P2SH-P2WSH address/scriptPubKey</span></li>
+        <li><code class="rpc-key">witnessscript</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">Allowed only if the scriptPubKey is a P2SH-P2WSH or P2WSH address/scriptPubKey</span></li>
+        <li><code class="rpc-key">pubkeys</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Array of strings giving pubkeys to import. They must occur in P2PKH or P2WPKH scripts. They are not required when the private key is also provided (see the &#34;keys&#34; argument).</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">keys</code> <span class="rpc-type">(array, optional, default=[])</span> <span class="rpc-desc">Array of strings giving private keys to import. The corresponding public keys must occur in the output or redeemscript.</span>
+          <ul class="rpc-schema rpc-array">
+            <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+          </ul></li>
+        <li><code class="rpc-key">range</code> <span class="rpc-type">(one of, optional)</span> <span class="rpc-desc">If a ranged descriptor is used, this specifies the end or the range (in the form [begin,end]) to import</span>
+          <ul class="rpc-schema rpc-variants">
+            <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+            <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+              <ul class="rpc-schema">
+                <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+                <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+              </ul></li>
+          </ul></li>
+        <li><code class="rpc-key">internal</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Stating whether matching outputs should be treated as not incoming payments (also known as change)</span></li>
+        <li><code class="rpc-key">watchonly</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Stating whether matching outputs should be considered watchonly.</span></li>
+        <li><code class="rpc-key">label</code> <span class="rpc-type">(string, optional, default=&#34;&#34;)</span> <span class="rpc-desc">Label to assign to the address, only allowed with internal=false</span></li>
+        <li><code class="rpc-key">keypool</code> <span class="rpc-type">(boolean, optional, default=false)</span> <span class="rpc-desc">Stating whether imported public keys should be added to the keypool for when users request new addresses. Only allowed when wallet private keys are disabled</span></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">rescan</code> <span class="rpc-type">(boolean, optional, default=true)</span> <span class="rpc-desc">Scan the chain and mempool for wallet transactions after all imports.</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">success</code> <span class="rpc-type">(boolean)</span></li>
+      <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">error</code> <span class="rpc-type">(object, optional)</span>
+        <ul class="rpc-schema">
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli importmulti &#39;[{ &#34;scriptPubKey&#34;: { &#34;address&#34;: &#34;&lt;my address&gt;&#34; }, &#34;timestamp&#34;:1455191478 }, { &#34;scriptPubKey&#34;: { &#34;address&#34;: &#34;&lt;my 2nd address&gt;&#34; }, &#34;label&#34;: &#34;example 2&#34;, &#34;timestamp&#34;: 1455191480 }]&#39;
+&gt; bitcoin-cli importmulti &#39;[{ &#34;scriptPubKey&#34;: { &#34;address&#34;: &#34;&lt;my address&gt;&#34; }, &#34;timestamp&#34;:1455191478 }]&#39; &#39;{ &#34;rescan&#34;: false}&#39;</pre>
+</div>

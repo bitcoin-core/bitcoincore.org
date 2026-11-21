@@ -1,0 +1,49 @@
+---
+name: converttopsbt
+btcversion: 31.0.0
+btcgroup: rawtransactions
+permalink: en/doc/31.0.0/rpc/rawtransactions/converttopsbt/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;converttopsbt&#34;,
+  &#34;description&#34;: &#34;Converts a network serialized transaction to a PSBT. This should be used only with createrawtransaction and fundrawtransaction\ncreatepsbt and walletcreatefundedpsbt should be used for new applications.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hexstring&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The hex string of a raw transaction&#34;
+    },
+    {
+      &#34;name&#34;: &#34;permitsigdata&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;If true, any signatures in the input will be discarded and conversion\n                              will continue. If false, RPC will fail if any signatures are present.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;iswitness&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;depends on heuristic tests&#34;
+      },
+      &#34;description&#34;: &#34;Whether the transaction hex is a serialized witness transaction.\nIf iswitness is not present, heuristic tests will be used in decoding.\nIf true, only witness deserialization will be tried.\nIf false, only non-witness deserialization will be tried.\nThis boolean should reflect whether the transaction has inputs\n(e.g. fully valid, or on-chain transactions), if known by the caller.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;string&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

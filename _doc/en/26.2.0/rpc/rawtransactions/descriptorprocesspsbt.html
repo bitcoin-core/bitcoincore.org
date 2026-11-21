@@ -1,0 +1,47 @@
+---
+name: descriptorprocesspsbt
+btcversion: 26.2.0
+btcgroup: rawtransactions
+permalink: en/doc/26.2.0/rpc/rawtransactions/descriptorprocesspsbt/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">descriptorprocesspsbt &#34;psbt&#34; descriptors ( &#34;sighashtype&#34; ) ( bip32derivs ) ( finalize )</pre>
+  <div class="rpc-description"><p>Update all segwit inputs in a PSBT with information from output descriptors, the UTXO set or the mempool. Then, sign the inputs we are able to with information from the output descriptors.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>psbt</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The transaction base64 string</td></tr>
+  <tr><td>2</td><td><code>descriptors</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>An array of either strings or objects
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(one of)</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(string)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span>
+          <ul class="rpc-schema">
+            <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">An output descriptor</span></li>
+            <li><code class="rpc-key">range</code> <span class="rpc-type">(one of, optional, default=1000)</span> <span class="rpc-desc">Up to what index HD chains should be explored (either end or [begin,end])</span>
+              <ul class="rpc-schema rpc-variants">
+                <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+                <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(array)</span>
+                  <ul class="rpc-schema">
+                    <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+                    <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+                  </ul></li>
+              </ul></li>
+          </ul></li>
+      </ul></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>sighashtype</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;DEFAULT for Taproot, ALL otherwise&#34;</small></td><td>The signature hash type to sign with if not specified by the PSBT. Must be one of<br>       &#34;DEFAULT&#34;<br>       &#34;ALL&#34;<br>       &#34;NONE&#34;<br>       &#34;SINGLE&#34;<br>       &#34;ALL|ANYONECANPAY&#34;<br>       &#34;NONE|ANYONECANPAY&#34;<br>       &#34;SINGLE|ANYONECANPAY&#34;</td></tr>
+  <tr><td>4</td><td><code>bip32derivs</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Include BIP 32 derivation paths for public keys if we know them</td></tr>
+  <tr><td>5</td><td><code>finalize</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Also finalize inputs if possible</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">psbt</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The base64-encoded partially signed transaction</span></li>
+  <li><code class="rpc-key">complete</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">If the transaction has a complete set of signatures</span></li>
+  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hex-encoded network transaction if complete</span></li>
+</ul>
+</div>

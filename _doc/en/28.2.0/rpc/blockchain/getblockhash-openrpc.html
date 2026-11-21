@@ -1,0 +1,31 @@
+---
+name: getblockhash
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getblockhash/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getblockhash&#34;,
+  &#34;description&#34;: &#34;Returns hash of block in best-block-chain at height provided.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;height&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;
+      },
+      &#34;description&#34;: &#34;The height index&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

@@ -1,0 +1,47 @@
+---
+name: signrawtransactionwithkey
+btcversion: 30.2.0
+btcgroup: rawtransactions
+permalink: en/doc/30.2.0/rpc/rawtransactions/signrawtransactionwithkey/raw/
+rawpage: true
+---
+
+signrawtransactionwithkey "hexstring" privkeys ( prevtxs ) ( "sighashtype" )
+
+Sign inputs for raw transaction (serialized, hex-encoded).
+The second argument is an array of base58-encoded private
+keys that will be the only keys used to sign the transaction.
+The third optional argument (may be null) is an array of previous transaction outputs that
+this transaction depends on but may not yet be in the block chain.
+
+Arguments:
+1. hexstring (string)  The transaction hex string
+2. privkeys (array)  The base58-encoded private keys for signing
+  each item (string)
+3. prevtxs (array, optional)  The previous dependent transaction outputs
+  each item (object)
+    txid (string)  The transaction id
+    vout (number)  The output number
+    scriptPubKey (string)  output script
+    redeemScript (string, optional)  (required for P2SH) redeem script
+    witnessScript (string, optional)  (required for P2WSH or P2SH-P2WSH) witness script
+    amount (one of, optional)  (required for Segwit inputs) the amount spent
+      option 1: (number)
+      option 2: (string)
+4. sighashtype (string, optional, default="DEFAULT for Taproot, ALL otherwise")  The signature hash type. Must be one of: "DEFAULT" "ALL" "NONE" "SINGLE" "ALL|ANYONECANPAY" "NONE|ANYONECANPAY" "SINGLE|ANYONECANPAY"
+
+Result: (object)
+  hex (string)  The hex-encoded raw transaction with signature(s)
+  complete (boolean)  If the transaction has a complete set of signatures
+  errors (array, optional)  Script verification errors (if there are any)
+    each item (object)
+      txid (string)  The hash of the referenced, previous transaction
+      vout (number)  The index of the output to spent and used as input
+      witness (array)
+        each item (string)
+      scriptSig (string)  The hex-encoded signature script
+      sequence (number)  Script sequence number
+      error (string)  Verification or signing error related to the input
+
+
+

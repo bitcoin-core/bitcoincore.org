@@ -3,22 +3,22 @@ name: removeprunedfunds
 btcversion: 31.0.0
 btcgroup: wallet
 permalink: en/doc/31.0.0/rpc/wallet/removeprunedfunds/
+openrpc: true
 ---
 
-removeprunedfunds "txid"
-
-Deletes the specified transaction from the wallet. Meant for use with pruned wallets and as a companion to importprunedfunds. This will affect wallet balances.
-
-Arguments:
-1. txid    (string, required) The hex-encoded id of the transaction you are deleting
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli removeprunedfunds "a8d0c0184dde994a09ec054286f1ce581bebf46446a512166eae7628734ea0a5"
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">removeprunedfunds &#34;txid&#34;</pre>
+  <div class="rpc-description"><p>Deletes the specified transaction from the wallet. Meant for use with pruned wallets and as a companion to importprunedfunds. This will affect wallet balances.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txid</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The hex-encoded id of the transaction you are deleting</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli removeprunedfunds &#34;a8d0c0184dde994a09ec054286f1ce581bebf46446a512166eae7628734ea0a5&#34;
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "removeprunedfunds", "params": ["a8d0c0184dde994a09ec054286f1ce581bebf46446a512166eae7628734ea0a5"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;removeprunedfunds&#34;, &#34;params&#34;: [&#34;a8d0c0184dde994a09ec054286f1ce581bebf46446a512166eae7628734ea0a5&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

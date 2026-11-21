@@ -1,0 +1,50 @@
+---
+name: submitblock
+btcversion: 30.0.0
+btcgroup: mining
+permalink: en/doc/30.0.0/rpc/mining/submitblock/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;submitblock&#34;,
+  &#34;description&#34;: &#34;Attempts to submit new block to network.\nSee https://en.bitcoin.it/wiki/BIP_0022 for full specification.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hexdata&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;the hex-encoded block data to submit&#34;
+    },
+    {
+      &#34;name&#34;: &#34;dummy&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;ignored&#34;
+      },
+      &#34;x-bitcoin-placeholder&#34;: true,
+      &#34;description&#34;: &#34;dummy value, for compatibility with BIP22. This value is ignored.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;null&#34;,
+          &#34;description&#34;: &#34;If the block was accepted&#34;
+        },
+        {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Otherwise&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;mining&#34;
+}</pre>

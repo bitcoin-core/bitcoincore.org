@@ -1,0 +1,73 @@
+---
+name: gettxspendingprevout
+btcversion: 30.0.0
+btcgroup: blockchain
+permalink: en/doc/30.0.0/rpc/blockchain/gettxspendingprevout/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;gettxspendingprevout&#34;,
+  &#34;description&#34;: &#34;Scans the mempool to find transactions spending any of the given outputs&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;outputs&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;txid&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The transaction id&#34;
+            },
+            &#34;vout&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The output number&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;txid&#34;,
+            &#34;vout&#34;
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;The transaction outputs that we want to check, and within each, the txid (string) vout (numeric).&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;txid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;the transaction id of the checked output&#34;
+          },
+          &#34;vout&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;the vout value of the checked output&#34;
+          },
+          &#34;spendingtxid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;the transaction id of the mempool transaction spending this output (omitted if unspent)&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;txid&#34;,
+          &#34;vout&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

@@ -1,0 +1,19 @@
+---
+name: preciousblock
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/preciousblock/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">preciousblock &#34;blockhash&#34;</pre>
+  <div class="rpc-description"><p>Treats a block as if it were received before others with the same work.</p><p>A later preciousblock call can override the effect of an earlier one.</p><p>The effects of preciousblock are not retained across restarts.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>the hash of the block to mark as precious</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

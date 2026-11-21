@@ -1,0 +1,30 @@
+---
+name: getnettotals
+btcversion: 26.2.0
+btcgroup: network
+permalink: en/doc/26.2.0/rpc/network/getnettotals/raw/
+rawpage: true
+---
+
+getnettotals
+
+Returns information about network traffic, including bytes in, bytes out,
+and current system time.
+
+Arguments:
+none
+
+Result: (object)
+  totalbytesrecv (number)  Total bytes received
+  totalbytessent (number)  Total bytes sent
+  timemillis (number, unix-time)  Current system UNIX epoch time in milliseconds
+  uploadtarget (object)
+    timeframe (number)  Length of the measuring timeframe in seconds
+    target (number)  Target in bytes
+    target_reached (boolean)  True if target is reached
+    serve_historical_blocks (boolean)  True if serving historical blocks
+    bytes_left_in_cycle (number)  Bytes left in current time cycle
+    time_left_in_cycle (number)  Seconds left in current time cycle
+
+
+

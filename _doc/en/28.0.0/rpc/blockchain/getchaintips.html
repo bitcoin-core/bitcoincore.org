@@ -3,31 +3,27 @@ name: getchaintips
 btcversion: 28.0.0
 btcgroup: blockchain
 permalink: en/doc/28.0.0/rpc/blockchain/getchaintips/
+openrpc: true
 ---
 
-getchaintips
-
-Return information about all known tips in the block tree, including the main chain as well as orphaned branches.
-
-Result:
-[                        (json array)
-  {                      (json object)
-    "height" : n,        (numeric) height of the chain tip
-    "hash" : "hex",      (string) block hash of the tip
-    "branchlen" : n,     (numeric) zero for main chain, otherwise length of branch connecting the tip to the main chain
-    "status" : "str"     (string) status of the chain, "active" for the main chain
-                         Possible values for status:
-                         1.  "invalid"               This branch contains at least one invalid block
-                         2.  "headers-only"          Not all blocks for this branch are available, but the headers are valid
-                         3.  "valid-headers"         All blocks are available for this branch, but they were never fully validated
-                         4.  "valid-fork"            This branch is not part of the active chain, but is fully validated
-                         5.  "active"                This is the tip of the active main chain, which is certainly valid
-  },
-  ...
-]
-
-Examples:
-> bitcoin-cli getchaintips 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getchaintips", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getchaintips</pre>
+  <div class="rpc-description"><p>Return information about all known tips in the block tree, including the main chain as well as orphaned branches.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">height of the chain tip</span></li>
+      <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">block hash of the tip</span></li>
+      <li><code class="rpc-key">branchlen</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">zero for main chain, otherwise length of branch connecting the tip to the main chain</span></li>
+      <li><code class="rpc-key">status</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">status of the chain, &#34;active&#34; for the main chain<br>Possible values for status:<br>1.  &#34;invalid&#34;               This branch contains at least one invalid block<br>2.  &#34;headers-only&#34;          Not all blocks for this branch are available, but the headers are valid<br>3.  &#34;valid-headers&#34;         All blocks are available for this branch, but they were never fully validated<br>4.  &#34;valid-fork&#34;            This branch is not part of the active chain, but is fully validated<br>5.  &#34;active&#34;                This is the tip of the active main chain, which is certainly valid</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getchaintips 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getchaintips&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

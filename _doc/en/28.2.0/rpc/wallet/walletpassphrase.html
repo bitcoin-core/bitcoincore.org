@@ -1,0 +1,20 @@
+---
+name: walletpassphrase
+btcversion: 28.2.0
+btcgroup: wallet
+permalink: en/doc/28.2.0/rpc/wallet/walletpassphrase/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">walletpassphrase &#34;passphrase&#34; timeout</pre>
+  <div class="rpc-description"><p>Stores the wallet decryption key in memory for &#39;timeout&#39; seconds. This is needed prior to performing transactions related to private keys such as sending bitcoins</p><p>Note: Issuing the walletpassphrase command while the wallet is already unlocked will set a new unlock time that overrides the old one.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>passphrase</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The wallet passphrase</td></tr>
+  <tr><td>2</td><td><code>timeout</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>The time to keep the decryption key in seconds; capped at 100000000 (~3 years).</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

@@ -1,0 +1,21 @@
+---
+name: ping
+btcversion: 30.2.0
+btcgroup: network
+permalink: en/doc/30.2.0/rpc/network/ping/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;ping&#34;,
+  &#34;description&#34;: &#34;Requests that a ping be sent to all other nodes, to measure ping time.\nResults are provided in getpeerinfo.\nPing command is handled in queue with all other commands, so it measures processing backlog, not just network ping.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;null&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

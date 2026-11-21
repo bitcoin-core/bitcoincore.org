@@ -3,27 +3,23 @@ name: disconnectnode
 btcversion: 31.0.0
 btcgroup: network
 permalink: en/doc/31.0.0/rpc/network/disconnectnode/
+openrpc: true
 ---
 
-disconnectnode ( "address" nodeid )
-
-Immediately disconnects from the specified peer node.
-
-Strictly one out of 'address' and 'nodeid' can be provided to identify the node.
-
-To disconnect by nodeid, either set 'address' to the empty string, or call using the named 'nodeid' argument only.
-
-Arguments:
-1. address    (string, optional, default=fallback to nodeid) The IP address/port of the node
-2. nodeid     (numeric, optional, default=fallback to address) The node ID (see getpeerinfo for node IDs)
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli disconnectnode "192.168.0.6:8333"
-> bitcoin-cli disconnectnode "" 1
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "disconnectnode", "params": ["192.168.0.6:8333"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "disconnectnode", "params": ["", 1]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">disconnectnode ( &#34;address&#34; ) ( nodeid )</pre>
+  <div class="rpc-description"><p>Immediately disconnects from the specified peer node.</p><p>Strictly one out of &#39;address&#39; and &#39;nodeid&#39; can be provided to identify the node.</p><p>To disconnect by nodeid, either set &#39;address&#39; to the empty string, or call using the named &#39;nodeid&#39; argument only.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>address</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: fallback to nodeid</small></td><td>The IP address/port of the node</td></tr>
+  <tr><td>2</td><td><code>nodeid</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: fallback to address</small></td><td>The node ID (see getpeerinfo for node IDs)</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli disconnectnode &#34;192.168.0.6:8333&#34;
+&gt; bitcoin-cli disconnectnode &#34;&#34; 1
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;disconnectnode&#34;, &#34;params&#34;: [&#34;192.168.0.6:8333&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;disconnectnode&#34;, &#34;params&#34;: [&#34;&#34;, 1]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -1,0 +1,18 @@
+---
+name: pruneblockchain
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/pruneblockchain/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">pruneblockchain height</pre>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>height</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>The block height to prune up to. May be set to a discrete height, or to a UNIX epoch time<br>                  to prune blocks whose block time is at least 2 hours older than the provided timestamp.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(number)</span></p>
+</div>

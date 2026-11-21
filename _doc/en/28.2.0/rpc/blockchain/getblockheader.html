@@ -1,0 +1,41 @@
+---
+name: getblockheader
+btcversion: 28.2.0
+btcgroup: blockchain
+permalink: en/doc/28.2.0/rpc/blockchain/getblockheader/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getblockheader &#34;blockhash&#34; ( verbose )</pre>
+  <div class="rpc-description"><p>If verbose is false, returns a string that is serialized, hex-encoded data for blockheader &#39;hash&#39;. If verbose is true, returns an Object with information about blockheader &lt;hash&gt;.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>blockhash</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The block hash</td></tr>
+  <tr><td>2</td><td><code>verbose</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>true for a json object, false for the hex-encoded data</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">for verbose = true</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the block hash (same as provided)</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations, or -1 if the block is not on the main chain</span></li>
+      <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block height or index</span></li>
+      <li><code class="rpc-key">version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The block version</span></li>
+      <li><code class="rpc-key">versionHex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The block version formatted in hexadecimal</span></li>
+      <li><code class="rpc-key">merkleroot</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The merkle root</span></li>
+      <li><code class="rpc-key">time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The block time expressed in UNIX epoch time</span></li>
+      <li><code class="rpc-key">mediantime</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">The median block time expressed in UNIX epoch time</span></li>
+      <li><code class="rpc-key">nonce</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The nonce</span></li>
+      <li><code class="rpc-key">bits</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The bits</span></li>
+      <li><code class="rpc-key">difficulty</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The difficulty</span></li>
+      <li><code class="rpc-key">chainwork</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Expected number of hashes required to produce the current chain</span></li>
+      <li><code class="rpc-key">nTx</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of transactions in the block</span></li>
+      <li><code class="rpc-key">previousblockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hash of the previous block (if available)</span></li>
+      <li><code class="rpc-key">nextblockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hash of the next block (if available)</span></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span> <span class="rpc-desc">for verbose=false</span></li>
+</ul>
+</div>

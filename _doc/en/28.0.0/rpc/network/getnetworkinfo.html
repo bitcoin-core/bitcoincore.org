@@ -3,56 +3,60 @@ name: getnetworkinfo
 btcversion: 28.0.0
 btcgroup: network
 permalink: en/doc/28.0.0/rpc/network/getnetworkinfo/
+openrpc: true
 ---
 
-getnetworkinfo
-
-Returns an object containing various state info regarding P2P networking.
-
-Result:
-{                                                    (json object)
-  "version" : n,                                     (numeric) the server version
-  "subversion" : "str",                              (string) the server subversion string
-  "protocolversion" : n,                             (numeric) the protocol version
-  "localservices" : "hex",                           (string) the services we offer to the network
-  "localservicesnames" : [                           (json array) the services we offer to the network, in human-readable form
-    "str",                                           (string) the service name
-    ...
-  ],
-  "localrelay" : true|false,                         (boolean) true if transaction relay is requested from peers
-  "timeoffset" : n,                                  (numeric) the time offset
-  "connections" : n,                                 (numeric) the total number of connections
-  "connections_in" : n,                              (numeric) the number of inbound connections
-  "connections_out" : n,                             (numeric) the number of outbound connections
-  "networkactive" : true|false,                      (boolean) whether p2p networking is enabled
-  "networks" : [                                     (json array) information per network
-    {                                                (json object)
-      "name" : "str",                                (string) network (ipv4, ipv6, onion, i2p, cjdns)
-      "limited" : true|false,                        (boolean) is the network limited using -onlynet?
-      "reachable" : true|false,                      (boolean) is the network reachable?
-      "proxy" : "str",                               (string) ("host:port") the proxy that is used for this network, or empty if none
-      "proxy_randomize_credentials" : true|false     (boolean) Whether randomized credentials are used
-    },
-    ...
-  ],
-  "relayfee" : n,                                    (numeric) minimum relay fee rate for transactions in BTC/kvB
-  "incrementalfee" : n,                              (numeric) minimum fee rate increment for mempool limiting or replacement in BTC/kvB
-  "localaddresses" : [                               (json array) list of local addresses
-    {                                                (json object)
-      "address" : "str",                             (string) network address
-      "port" : n,                                    (numeric) network port
-      "score" : n                                    (numeric) relative score
-    },
-    ...
-  ],
-  "warnings" : [                                     (json array) any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)
-    "str",                                           (string) warning
-    ...
-  ]
-}
-
-Examples:
-> bitcoin-cli getnetworkinfo 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getnetworkinfo", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">getnetworkinfo</pre>
+  <div class="rpc-description"><p>Returns an object containing various state info regarding P2P networking.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the server version</span></li>
+  <li><code class="rpc-key">subversion</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the server subversion string</span></li>
+  <li><code class="rpc-key">protocolversion</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the protocol version</span></li>
+  <li><code class="rpc-key">localservices</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the services we offer to the network</span></li>
+  <li><code class="rpc-key">localservicesnames</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">the services we offer to the network, in human-readable form</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+  <li><code class="rpc-key">localrelay</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">true if transaction relay is requested from peers</span></li>
+  <li><code class="rpc-key">timeoffset</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the time offset</span></li>
+  <li><code class="rpc-key">connections</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the total number of connections</span></li>
+  <li><code class="rpc-key">connections_in</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of inbound connections</span></li>
+  <li><code class="rpc-key">connections_out</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of outbound connections</span></li>
+  <li><code class="rpc-key">networkactive</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">whether p2p networking is enabled</span></li>
+  <li><code class="rpc-key">networks</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">information per network</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">name</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">network (ipv4, ipv6, onion, i2p, cjdns)</span></li>
+          <li><code class="rpc-key">limited</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">is the network limited using -onlynet?</span></li>
+          <li><code class="rpc-key">reachable</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">is the network reachable?</span></li>
+          <li><code class="rpc-key">proxy</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">(&#34;host:port&#34;) the proxy that is used for this network, or empty if none</span></li>
+          <li><code class="rpc-key">proxy_randomize_credentials</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether randomized credentials are used</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">relayfee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">minimum relay fee rate for transactions in BTC/kvB</span></li>
+  <li><code class="rpc-key">incrementalfee</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">minimum fee rate increment for mempool limiting or replacement in BTC/kvB</span></li>
+  <li><code class="rpc-key">localaddresses</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">list of local addresses</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">network address</span></li>
+          <li><code class="rpc-key">port</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">network port</span></li>
+          <li><code class="rpc-key">score</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">relative score</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getnetworkinfo 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getnetworkinfo&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

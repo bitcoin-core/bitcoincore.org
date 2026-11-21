@@ -1,0 +1,22 @@
+---
+name: combinepsbt
+btcversion: 28.2.0
+btcgroup: rawtransactions
+permalink: en/doc/28.2.0/rpc/rawtransactions/combinepsbt/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">combinepsbt txs</pre>
+  <div class="rpc-description"><p>Combine multiple partially signed Bitcoin transactions into one transaction. Implements the Combiner role.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The base64 strings of partially signed transactions
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+</div>

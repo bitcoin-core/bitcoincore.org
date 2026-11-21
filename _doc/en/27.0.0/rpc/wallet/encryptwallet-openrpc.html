@@ -1,0 +1,30 @@
+---
+name: encryptwallet
+btcversion: 27.0.0
+btcgroup: wallet
+permalink: en/doc/27.0.0/rpc/wallet/encryptwallet/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;encryptwallet&#34;,
+  &#34;description&#34;: &#34;Encrypts the wallet with &#39;passphrase&#39;. This is for first time encryption.\nAfter this, any calls that interact with private keys such as sending or signing \nwill require the passphrase to be set prior the making these calls.\nUse the walletpassphrase call for this, and then walletlock call.\nIf the wallet is already encrypted, use the walletpassphrasechange call.\n** IMPORTANT **\nFor security reasons, the encryption process will generate a new HD seed, resulting\nin the creation of a fresh set of active descriptors. Therefore, it is crucial to\nsecurely back up the newly generated wallet file using the backupwallet RPC.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;passphrase&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;string&#34;
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

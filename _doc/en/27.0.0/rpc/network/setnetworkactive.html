@@ -3,16 +3,17 @@ name: setnetworkactive
 btcversion: 27.0.0
 btcgroup: network
 permalink: en/doc/27.0.0/rpc/network/setnetworkactive/
+openrpc: true
 ---
 
-setnetworkactive state
-
-Disable/enable all p2p network activity.
-
-Arguments:
-1. state    (boolean, required) true to enable networking, false to disable
-
-Result:
-true|false    (boolean) The value that was passed in
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">setnetworkactive state</pre>
+  <div class="rpc-description"><p>Disable/enable all p2p network activity.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>state</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-yes">yes</td><td>true to enable networking, false to disable</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(boolean)</span></p>
+</div>

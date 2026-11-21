@@ -3,24 +3,22 @@ name: combinepsbt
 btcversion: 26.0.0
 btcgroup: rawtransactions
 permalink: en/doc/26.0.0/rpc/rawtransactions/combinepsbt/
+openrpc: true
 ---
 
-combinepsbt ["psbt",...]
-
-Combine multiple partially signed Bitcoin transactions into one transaction.
-Implements the Combiner role.
-
-Arguments:
-1. txs            (json array, required) The base64 strings of partially signed transactions
-     [
-       "psbt",    (string) A base64 string of a PSBT
-       ...
-     ]
-
-Result:
-"str"    (string) The base64-encoded partially signed transaction
-
-Examples:
-> bitcoin-cli combinepsbt '["mybase64_1", "mybase64_2", "mybase64_3"]'
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">combinepsbt txs</pre>
+  <div class="rpc-description"><p>Combine multiple partially signed Bitcoin transactions into one transaction. Implements the Combiner role.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The base64 strings of partially signed transactions
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli combinepsbt &#39;[&#34;mybase64_1&#34;, &#34;mybase64_2&#34;, &#34;mybase64_3&#34;]&#39;</pre>
+</div>

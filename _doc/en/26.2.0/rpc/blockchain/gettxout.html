@@ -1,0 +1,39 @@
+---
+name: gettxout
+btcversion: 26.2.0
+btcgroup: blockchain
+permalink: en/doc/26.2.0/rpc/blockchain/gettxout/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">gettxout &#34;txid&#34; n ( include_mempool )</pre>
+  <div class="rpc-description"><p>Returns details about an unspent transaction output.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txid</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The transaction id</td></tr>
+  <tr><td>2</td><td><code>n</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>vout number</td></tr>
+  <tr><td>3</td><td><code>include_mempool</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: true</small></td><td>Whether to include the mempool. Note that an unspent output that is spent in the mempool won&#39;t appear.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(null)</span> <span class="rpc-desc">If the UTXO was not found</span></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">Otherwise</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">bestblock</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hash of the block at the tip of the chain</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations</span></li>
+      <li><code class="rpc-key">value</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The transaction value in BTC</span></li>
+      <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the public key script</span></li>
+          <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the output</span></li>
+          <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw public key script bytes, hex-encoded</span></li>
+          <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type, eg pubkeyhash</span></li>
+          <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+        </ul></li>
+      <li><code class="rpc-key">coinbase</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Coinbase or not</span></li>
+    </ul></li>
+</ul>
+</div>

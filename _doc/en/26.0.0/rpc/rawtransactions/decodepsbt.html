@@ -3,215 +3,236 @@ name: decodepsbt
 btcversion: 26.0.0
 btcgroup: rawtransactions
 permalink: en/doc/26.0.0/rpc/rawtransactions/decodepsbt/
+openrpc: true
 ---
 
-decodepsbt "psbt"
-
-Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.
-
-Arguments:
-1. psbt    (string, required) The PSBT base64 string
-
-Result:
-{                                          (json object)
-  "tx" : {                                 (json object) The decoded network-serialized unsigned transaction.
-    ...                                    The layout is the same as the output of decoderawtransaction.
-  },
-  "global_xpubs" : [                       (json array)
-    {                                      (json object)
-      "xpub" : "str",                      (string) The extended public key this path corresponds to
-      "master_fingerprint" : "hex",        (string) The fingerprint of the master key
-      "path" : "str"                       (string) The path
-    },
-    ...
-  ],
-  "psbt_version" : n,                      (numeric) The PSBT version number. Not to be confused with the unsigned transaction version
-  "proprietary" : [                        (json array) The global proprietary map
-    {                                      (json object)
-      "identifier" : "hex",                (string) The hex string for the proprietary identifier
-      "subtype" : n,                       (numeric) The number for the subtype
-      "key" : "hex",                       (string) The hex for the key
-      "value" : "hex"                      (string) The hex for the value
-    },
-    ...
-  ],
-  "unknown" : {                            (json object) The unknown global fields
-    "key" : "hex",                         (string) (key-value pair) An unknown key-value pair
-    ...
-  },
-  "inputs" : [                             (json array)
-    {                                      (json object)
-      "non_witness_utxo" : {               (json object, optional) Decoded network transaction for non-witness UTXOs
-        ...
-      },
-      "witness_utxo" : {                   (json object, optional) Transaction output for witness UTXOs
-        "amount" : n,                      (numeric) The value in BTC
-        "scriptPubKey" : {                 (json object)
-          "asm" : "str",                   (string) Disassembly of the public key script
-          "desc" : "str",                  (string) Inferred descriptor for the output
-          "hex" : "hex",                   (string) The raw public key script bytes, hex-encoded
-          "type" : "str",                  (string) The type, eg 'pubkeyhash'
-          "address" : "str"                (string, optional) The Bitcoin address (only if a well-defined address exists)
-        }
-      },
-      "partial_signatures" : {             (json object, optional)
-        "pubkey" : "str",                  (string) The public key and signature that corresponds to it.
-        ...
-      },
-      "sighash" : "str",                   (string, optional) The sighash type to be used
-      "redeem_script" : {                  (json object, optional)
-        "asm" : "str",                     (string) Disassembly of the redeem script
-        "hex" : "hex",                     (string) The raw redeem script bytes, hex-encoded
-        "type" : "str"                     (string) The type, eg 'pubkeyhash'
-      },
-      "witness_script" : {                 (json object, optional)
-        "asm" : "str",                     (string) Disassembly of the witness script
-        "hex" : "hex",                     (string) The raw witness script bytes, hex-encoded
-        "type" : "str"                     (string) The type, eg 'pubkeyhash'
-      },
-      "bip32_derivs" : [                   (json array, optional)
-        {                                  (json object)
-          "pubkey" : "str",                (string) The public key with the derivation path as the value.
-          "master_fingerprint" : "str",    (string) The fingerprint of the master key
-          "path" : "str"                   (string) The path
-        },
-        ...
-      ],
-      "final_scriptSig" : {                (json object, optional)
-        "asm" : "str",                     (string) Disassembly of the final signature script
-        "hex" : "hex"                      (string) The raw final signature script bytes, hex-encoded
-      },
-      "final_scriptwitness" : [            (json array, optional)
-        "hex",                             (string) hex-encoded witness data (if any)
-        ...
-      ],
-      "ripemd160_preimages" : {            (json object, optional)
-        "hash" : "str",                    (string) The hash and preimage that corresponds to it.
-        ...
-      },
-      "sha256_preimages" : {               (json object, optional)
-        "hash" : "str",                    (string) The hash and preimage that corresponds to it.
-        ...
-      },
-      "hash160_preimages" : {              (json object, optional)
-        "hash" : "str",                    (string) The hash and preimage that corresponds to it.
-        ...
-      },
-      "hash256_preimages" : {              (json object, optional)
-        "hash" : "str",                    (string) The hash and preimage that corresponds to it.
-        ...
-      },
-      "taproot_key_path_sig" : "hex",      (string, optional) hex-encoded signature for the Taproot key path spend
-      "taproot_script_path_sigs" : [       (json array, optional)
-        {                                  (json object, optional) The signature for the pubkey and leaf hash combination
-          "pubkey" : "str",                (string) The x-only pubkey for this signature
-          "leaf_hash" : "str",             (string) The leaf hash for this signature
-          "sig" : "str"                    (string) The signature itself
-        },
-        ...
-      ],
-      "taproot_scripts" : [                (json array, optional)
-        {                                  (json object)
-          "script" : "hex",                (string) A leaf script
-          "leaf_ver" : n,                  (numeric) The version number for the leaf script
-          "control_blocks" : [             (json array) The control blocks for this script
-            "hex",                         (string) A hex-encoded control block for this script
-            ...
-          ]
-        },
-        ...
-      ],
-      "taproot_bip32_derivs" : [           (json array, optional)
-        {                                  (json object)
-          "pubkey" : "str",                (string) The x-only public key this path corresponds to
-          "master_fingerprint" : "str",    (string) The fingerprint of the master key
-          "path" : "str",                  (string) The path
-          "leaf_hashes" : [                (json array) The hashes of the leaves this pubkey appears in
-            "hex",                         (string) The hash of a leaf this pubkey appears in
-            ...
-          ]
-        },
-        ...
-      ],
-      "taproot_internal_key" : "hex",      (string, optional) The hex-encoded Taproot x-only internal key
-      "taproot_merkle_root" : "hex",       (string, optional) The hex-encoded Taproot merkle root
-      "unknown" : {                        (json object, optional) The unknown input fields
-        "key" : "hex",                     (string) (key-value pair) An unknown key-value pair
-        ...
-      },
-      "proprietary" : [                    (json array, optional) The input proprietary map
-        {                                  (json object)
-          "identifier" : "hex",            (string) The hex string for the proprietary identifier
-          "subtype" : n,                   (numeric) The number for the subtype
-          "key" : "hex",                   (string) The hex for the key
-          "value" : "hex"                  (string) The hex for the value
-        },
-        ...
-      ]
-    },
-    ...
-  ],
-  "outputs" : [                            (json array)
-    {                                      (json object)
-      "redeem_script" : {                  (json object, optional)
-        "asm" : "str",                     (string) Disassembly of the redeem script
-        "hex" : "hex",                     (string) The raw redeem script bytes, hex-encoded
-        "type" : "str"                     (string) The type, eg 'pubkeyhash'
-      },
-      "witness_script" : {                 (json object, optional)
-        "asm" : "str",                     (string) Disassembly of the witness script
-        "hex" : "hex",                     (string) The raw witness script bytes, hex-encoded
-        "type" : "str"                     (string) The type, eg 'pubkeyhash'
-      },
-      "bip32_derivs" : [                   (json array, optional)
-        {                                  (json object)
-          "pubkey" : "str",                (string) The public key this path corresponds to
-          "master_fingerprint" : "str",    (string) The fingerprint of the master key
-          "path" : "str"                   (string) The path
-        },
-        ...
-      ],
-      "taproot_internal_key" : "hex",      (string, optional) The hex-encoded Taproot x-only internal key
-      "taproot_tree" : [                   (json array, optional) The tuples that make up the Taproot tree, in depth first search order
-        {                                  (json object, optional) A single leaf script in the taproot tree
-          "depth" : n,                     (numeric) The depth of this element in the tree
-          "leaf_ver" : n,                  (numeric) The version of this leaf
-          "script" : "str"                 (string) The hex-encoded script itself
-        },
-        ...
-      ],
-      "taproot_bip32_derivs" : [           (json array, optional)
-        {                                  (json object)
-          "pubkey" : "str",                (string) The x-only public key this path corresponds to
-          "master_fingerprint" : "str",    (string) The fingerprint of the master key
-          "path" : "str",                  (string) The path
-          "leaf_hashes" : [                (json array) The hashes of the leaves this pubkey appears in
-            "hex",                         (string) The hash of a leaf this pubkey appears in
-            ...
-          ]
-        },
-        ...
-      ],
-      "unknown" : {                        (json object, optional) The unknown output fields
-        "key" : "hex",                     (string) (key-value pair) An unknown key-value pair
-        ...
-      },
-      "proprietary" : [                    (json array, optional) The output proprietary map
-        {                                  (json object)
-          "identifier" : "hex",            (string) The hex string for the proprietary identifier
-          "subtype" : n,                   (numeric) The number for the subtype
-          "key" : "hex",                   (string) The hex for the key
-          "value" : "hex"                  (string) The hex for the value
-        },
-        ...
-      ]
-    },
-    ...
-  ],
-  "fee" : n                                (numeric, optional) The transaction fee paid if all UTXOs slots in the PSBT have been filled.
-}
-
-Examples:
-> bitcoin-cli decodepsbt "psbt"
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">decodepsbt &#34;psbt&#34;</pre>
+  <div class="rpc-description"><p>Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>psbt</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The PSBT base64 string</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">tx</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">The decoded network-serialized unsigned transaction.</span>
+    <ul class="rpc-schema">
+    </ul></li>
+  <li><code class="rpc-key">global_xpubs</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">xpub</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The extended public key this path corresponds to</span></li>
+          <li><code class="rpc-key">master_fingerprint</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The fingerprint of the master key</span></li>
+          <li><code class="rpc-key">path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The path</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">psbt_version</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The PSBT version number. Not to be confused with the unsigned transaction version</span></li>
+  <li><code class="rpc-key">proprietary</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">The global proprietary map</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">identifier</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex string for the proprietary identifier</span></li>
+          <li><code class="rpc-key">subtype</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number for the subtype</span></li>
+          <li><code class="rpc-key">key</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex for the key</span></li>
+          <li><code class="rpc-key">value</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex for the value</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">unknown</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">The unknown global fields</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+    </ul></li>
+  <li><code class="rpc-key">inputs</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">non_witness_utxo</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Decoded network transaction for non-witness UTXOs</span>
+            <ul class="rpc-schema">
+            </ul></li>
+          <li><code class="rpc-key">witness_utxo</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Transaction output for witness UTXOs</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">amount</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The value in BTC</span></li>
+              <li><code class="rpc-key">scriptPubKey</code> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the public key script</span></li>
+                  <li><code class="rpc-key">desc</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Inferred descriptor for the output</span></li>
+                  <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw public key script bytes, hex-encoded</span></li>
+                  <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type, eg &#39;pubkeyhash&#39;</span></li>
+                  <li><code class="rpc-key">address</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The Bitcoin address (only if a well-defined address exists)</span></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">partial_signatures</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">sighash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The sighash type to be used</span></li>
+          <li><code class="rpc-key">redeem_script</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the redeem script</span></li>
+              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw redeem script bytes, hex-encoded</span></li>
+              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type, eg &#39;pubkeyhash&#39;</span></li>
+            </ul></li>
+          <li><code class="rpc-key">witness_script</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the witness script</span></li>
+              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw witness script bytes, hex-encoded</span></li>
+              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type, eg &#39;pubkeyhash&#39;</span></li>
+            </ul></li>
+          <li><code class="rpc-key">bip32_derivs</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">pubkey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The public key with the derivation path as the value.</span></li>
+                  <li><code class="rpc-key">master_fingerprint</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The fingerprint of the master key</span></li>
+                  <li><code class="rpc-key">path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The path</span></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">final_scriptSig</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the final signature script</span></li>
+              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw final signature script bytes, hex-encoded</span></li>
+            </ul></li>
+          <li><code class="rpc-key">final_scriptwitness</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">ripemd160_preimages</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">sha256_preimages</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">hash160_preimages</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">hash256_preimages</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">taproot_key_path_sig</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">hex-encoded signature for the Taproot key path spend</span></li>
+          <li><code class="rpc-key">taproot_script_path_sigs</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">pubkey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The x-only pubkey for this signature</span></li>
+                  <li><code class="rpc-key">leaf_hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The leaf hash for this signature</span></li>
+                  <li><code class="rpc-key">sig</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The signature itself</span></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">taproot_scripts</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">script</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">A leaf script</span></li>
+                  <li><code class="rpc-key">leaf_ver</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The version number for the leaf script</span></li>
+                  <li><code class="rpc-key">control_blocks</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">The control blocks for this script</span>
+                    <ul class="rpc-schema rpc-array">
+                      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+                    </ul></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">taproot_bip32_derivs</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">pubkey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The x-only public key this path corresponds to</span></li>
+                  <li><code class="rpc-key">master_fingerprint</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The fingerprint of the master key</span></li>
+                  <li><code class="rpc-key">path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The path</span></li>
+                  <li><code class="rpc-key">leaf_hashes</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">The hashes of the leaves this pubkey appears in</span>
+                    <ul class="rpc-schema rpc-array">
+                      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+                    </ul></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">taproot_internal_key</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hex-encoded Taproot x-only internal key</span></li>
+          <li><code class="rpc-key">taproot_merkle_root</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hex-encoded Taproot merkle root</span></li>
+          <li><code class="rpc-key">unknown</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">The unknown input fields</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">proprietary</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">The input proprietary map</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">identifier</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex string for the proprietary identifier</span></li>
+                  <li><code class="rpc-key">subtype</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number for the subtype</span></li>
+                  <li><code class="rpc-key">key</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex for the key</span></li>
+                  <li><code class="rpc-key">value</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex for the value</span></li>
+                </ul></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">outputs</code> <span class="rpc-type">(array)</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">redeem_script</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the redeem script</span></li>
+              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw redeem script bytes, hex-encoded</span></li>
+              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type, eg &#39;pubkeyhash&#39;</span></li>
+            </ul></li>
+          <li><code class="rpc-key">witness_script</code> <span class="rpc-type">(object, optional)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">asm</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">Disassembly of the witness script</span></li>
+              <li><code class="rpc-key">hex</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The raw witness script bytes, hex-encoded</span></li>
+              <li><code class="rpc-key">type</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The type, eg &#39;pubkeyhash&#39;</span></li>
+            </ul></li>
+          <li><code class="rpc-key">bip32_derivs</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">pubkey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The public key this path corresponds to</span></li>
+                  <li><code class="rpc-key">master_fingerprint</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The fingerprint of the master key</span></li>
+                  <li><code class="rpc-key">path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The path</span></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">taproot_internal_key</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The hex-encoded Taproot x-only internal key</span></li>
+          <li><code class="rpc-key">taproot_tree</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">The tuples that make up the Taproot tree, in depth first search order</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">depth</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The depth of this element in the tree</span></li>
+                  <li><code class="rpc-key">leaf_ver</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The version of this leaf</span></li>
+                  <li><code class="rpc-key">script</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex-encoded script itself</span></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">taproot_bip32_derivs</code> <span class="rpc-type">(array, optional)</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">pubkey</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The x-only public key this path corresponds to</span></li>
+                  <li><code class="rpc-key">master_fingerprint</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The fingerprint of the master key</span></li>
+                  <li><code class="rpc-key">path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The path</span></li>
+                  <li><code class="rpc-key">leaf_hashes</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">The hashes of the leaves this pubkey appears in</span>
+                    <ul class="rpc-schema rpc-array">
+                      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+                    </ul></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">unknown</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">The unknown output fields</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">…</code> <span class="rpc-type">(string, optional)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">proprietary</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">The output proprietary map</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+                <ul class="rpc-schema">
+                  <li><code class="rpc-key">identifier</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex string for the proprietary identifier</span></li>
+                  <li><code class="rpc-key">subtype</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number for the subtype</span></li>
+                  <li><code class="rpc-key">key</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex for the key</span></li>
+                  <li><code class="rpc-key">value</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The hex for the value</span></li>
+                </ul></li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">fee</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">The transaction fee paid if all UTXOs slots in the PSBT have been filled.</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli decodepsbt &#34;psbt&#34;</pre>
+</div>

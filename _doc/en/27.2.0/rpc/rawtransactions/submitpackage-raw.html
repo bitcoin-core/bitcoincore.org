@@ -1,0 +1,38 @@
+---
+name: submitpackage
+btcversion: 27.2.0
+btcgroup: rawtransactions
+permalink: en/doc/27.2.0/rpc/rawtransactions/submitpackage/raw/
+rawpage: true
+---
+
+submitpackage package
+
+Submit a package of raw transactions (serialized, hex-encoded) to local node.
+The package must consist of a child with its parents, and none of the parents may depend on one another.
+The package will be validated according to consensus and mempool policy rules. If any transaction passes, it will be accepted to mempool.
+This RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies.
+Warning: successful submission does not mean the transactions will propagate throughout the network.
+
+Arguments:
+1. package (array)  An array of raw transactions.
+  each item (string)
+
+Result: (object)
+  package_msg (string)  The transaction package result message. "success" indicates all transactions were accepted into or are already in the mempool.
+  tx-results (object)  transaction results keyed by wtxid
+    ... (object)
+      txid (string)  The transaction hash in hex
+      other-wtxid (string, optional)  The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.
+      vsize (number, optional)  Sigops-adjusted virtual transaction size.
+      fees (object, optional)  Transaction fees
+        base (string, amount)  transaction fee in BTC
+        effective-feerate (string, amount, optional)  if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.
+        effective-includes (array, optional)  if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.
+          each item (string)
+      error (string, optional)  The transaction error string, if it was rejected by the mempool
+  replaced-transactions (array, optional)  List of txids of replaced transactions
+    each item (string)
+
+
+

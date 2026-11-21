@@ -1,0 +1,169 @@
+---
+name: getnetworkinfo
+btcversion: 28.0.0
+btcgroup: network
+permalink: en/doc/28.0.0/rpc/network/getnetworkinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getnetworkinfo&#34;,
+  &#34;description&#34;: &#34;Returns an object containing various state info regarding P2P networking.&#34;,
+  &#34;params&#34;: [],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;version&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the server version&#34;
+        },
+        &#34;subversion&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;the server subversion string&#34;
+        },
+        &#34;protocolversion&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the protocol version&#34;
+        },
+        &#34;localservices&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;the services we offer to the network&#34;
+        },
+        &#34;localservicesnames&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;the services we offer to the network, in human-readable form&#34;
+        },
+        &#34;localrelay&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;true if transaction relay is requested from peers&#34;
+        },
+        &#34;timeoffset&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the time offset&#34;
+        },
+        &#34;connections&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the total number of connections&#34;
+        },
+        &#34;connections_in&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the number of inbound connections&#34;
+        },
+        &#34;connections_out&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;the number of outbound connections&#34;
+        },
+        &#34;networkactive&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;whether p2p networking is enabled&#34;
+        },
+        &#34;networks&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;name&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;network (ipv4, ipv6, onion, i2p, cjdns)&#34;
+              },
+              &#34;limited&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;is the network limited using -onlynet?&#34;
+              },
+              &#34;reachable&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;is the network reachable?&#34;
+              },
+              &#34;proxy&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;(\&#34;host:port\&#34;) the proxy that is used for this network, or empty if none&#34;
+              },
+              &#34;proxy_randomize_credentials&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;Whether randomized credentials are used&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;name&#34;,
+              &#34;limited&#34;,
+              &#34;reachable&#34;,
+              &#34;proxy&#34;,
+              &#34;proxy_randomize_credentials&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;information per network&#34;
+        },
+        &#34;relayfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;minimum relay fee rate for transactions in BTC/kvB&#34;
+        },
+        &#34;incrementalfee&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;minimum fee rate increment for mempool limiting or replacement in BTC/kvB&#34;
+        },
+        &#34;localaddresses&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;address&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;network address&#34;
+              },
+              &#34;port&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;network port&#34;
+              },
+              &#34;score&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;relative score&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;address&#34;,
+              &#34;port&#34;,
+              &#34;score&#34;
+            ]
+          },
+          &#34;description&#34;: &#34;list of local addresses&#34;
+        },
+        &#34;warnings&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;any network and blockchain warnings (run with `-deprecatedrpc=warnings` to return the latest warning as a single string)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;version&#34;,
+        &#34;subversion&#34;,
+        &#34;protocolversion&#34;,
+        &#34;localservices&#34;,
+        &#34;localservicesnames&#34;,
+        &#34;localrelay&#34;,
+        &#34;timeoffset&#34;,
+        &#34;connections&#34;,
+        &#34;connections_in&#34;,
+        &#34;connections_out&#34;,
+        &#34;networkactive&#34;,
+        &#34;networks&#34;,
+        &#34;relayfee&#34;,
+        &#34;incrementalfee&#34;,
+        &#34;localaddresses&#34;,
+        &#34;warnings&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

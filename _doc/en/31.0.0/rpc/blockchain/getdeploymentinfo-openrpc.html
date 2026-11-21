@@ -1,0 +1,162 @@
+---
+name: getdeploymentinfo
+btcversion: 31.0.0
+btcgroup: blockchain
+permalink: en/doc/31.0.0/rpc/blockchain/getdeploymentinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getdeploymentinfo&#34;,
+  &#34;description&#34;: &#34;Returns an object containing various state info regarding deployments of consensus changes.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;blockhash&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+        &#34;default&#34;: &#34;hash of current chain tip&#34;
+      },
+      &#34;description&#34;: &#34;The block hash at which to query deployment state&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;hash&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;requested block hash (or tip)&#34;
+        },
+        &#34;height&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;requested block height (or tip)&#34;
+        },
+        &#34;script_flags&#34;: {
+          &#34;type&#34;: &#34;array&#34;,
+          &#34;items&#34;: {
+            &#34;type&#34;: &#34;string&#34;
+          },
+          &#34;description&#34;: &#34;script verify flags for the block&#34;
+        },
+        &#34;deployments&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;additionalProperties&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+              &#34;type&#34;: {
+                &#34;type&#34;: &#34;string&#34;,
+                &#34;description&#34;: &#34;one of \&#34;buried\&#34;, \&#34;bip9\&#34;&#34;
+              },
+              &#34;height&#34;: {
+                &#34;type&#34;: &#34;number&#34;,
+                &#34;description&#34;: &#34;height of the first block which the rules are or will be enforced (only for \&#34;buried\&#34; type, or \&#34;bip9\&#34; type with \&#34;active\&#34; status)&#34;
+              },
+              &#34;active&#34;: {
+                &#34;type&#34;: &#34;boolean&#34;,
+                &#34;description&#34;: &#34;true if the rules are enforced for the mempool and the next block&#34;
+              },
+              &#34;bip9&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;bit&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;the bit (0-28) in the block version field used to signal this softfork (only for \&#34;started\&#34; and \&#34;locked_in\&#34; status)&#34;
+                  },
+                  &#34;start_time&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+                    &#34;description&#34;: &#34;the minimum median time past of a block at which the bit gains its meaning&#34;
+                  },
+                  &#34;timeout&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+                    &#34;description&#34;: &#34;the median time past of a block at which the deployment is considered failed if not yet locked in&#34;
+                  },
+                  &#34;min_activation_height&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;minimum height of blocks for which the rules may be enforced&#34;
+                  },
+                  &#34;status&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;status of deployment at specified block (one of \&#34;defined\&#34;, \&#34;started\&#34;, \&#34;locked_in\&#34;, \&#34;active\&#34;, \&#34;failed\&#34;)&#34;
+                  },
+                  &#34;since&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;height of the first block to which the status applies&#34;
+                  },
+                  &#34;status_next&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;status of deployment at the next block&#34;
+                  },
+                  &#34;statistics&#34;: {
+                    &#34;type&#34;: &#34;object&#34;,
+                    &#34;properties&#34;: {
+                      &#34;period&#34;: {
+                        &#34;type&#34;: &#34;number&#34;,
+                        &#34;description&#34;: &#34;the length in blocks of the signalling period&#34;
+                      },
+                      &#34;threshold&#34;: {
+                        &#34;type&#34;: &#34;number&#34;,
+                        &#34;description&#34;: &#34;the number of blocks with the version bit set required to activate the feature (only for \&#34;started\&#34; status)&#34;
+                      },
+                      &#34;elapsed&#34;: {
+                        &#34;type&#34;: &#34;number&#34;,
+                        &#34;description&#34;: &#34;the number of blocks elapsed since the beginning of the current period&#34;
+                      },
+                      &#34;count&#34;: {
+                        &#34;type&#34;: &#34;number&#34;,
+                        &#34;description&#34;: &#34;the number of blocks with the version bit set in the current period&#34;
+                      },
+                      &#34;possible&#34;: {
+                        &#34;type&#34;: &#34;boolean&#34;,
+                        &#34;description&#34;: &#34;returns false if there are not enough blocks left in this period to pass activation threshold (only for \&#34;started\&#34; status)&#34;
+                      }
+                    },
+                    &#34;additionalProperties&#34;: false,
+                    &#34;required&#34;: [
+                      &#34;period&#34;,
+                      &#34;elapsed&#34;,
+                      &#34;count&#34;
+                    ],
+                    &#34;description&#34;: &#34;numeric statistics about signalling for a softfork (only for \&#34;started\&#34; and \&#34;locked_in\&#34; status)&#34;
+                  },
+                  &#34;signalling&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;indicates blocks that signalled with a # and blocks that did not with a -&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;start_time&#34;,
+                  &#34;timeout&#34;,
+                  &#34;min_activation_height&#34;,
+                  &#34;status&#34;,
+                  &#34;since&#34;,
+                  &#34;status_next&#34;
+                ],
+                &#34;description&#34;: &#34;status of bip9 softforks (only for \&#34;bip9\&#34; type)&#34;
+              }
+            },
+            &#34;additionalProperties&#34;: false,
+            &#34;required&#34;: [
+              &#34;type&#34;,
+              &#34;active&#34;
+            ]
+          }
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;hash&#34;,
+        &#34;height&#34;,
+        &#34;script_flags&#34;,
+        &#34;deployments&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

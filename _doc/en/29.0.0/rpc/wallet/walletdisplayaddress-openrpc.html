@@ -1,0 +1,40 @@
+---
+name: walletdisplayaddress
+btcversion: 29.0.0
+btcgroup: wallet
+permalink: en/doc/29.0.0/rpc/wallet/walletdisplayaddress/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;walletdisplayaddress&#34;,
+  &#34;description&#34;: &#34;Display address on an external signer for verification.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;address&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;bitcoin address to display&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;address&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The address as confirmed by the signer&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;address&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

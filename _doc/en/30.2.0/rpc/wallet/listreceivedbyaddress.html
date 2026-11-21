@@ -1,0 +1,36 @@
+---
+name: listreceivedbyaddress
+btcversion: 30.2.0
+btcgroup: wallet
+permalink: en/doc/30.2.0/rpc/wallet/listreceivedbyaddress/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">listreceivedbyaddress ( minconf ) ( include_empty ) ( include_watchonly ) ( &#34;address_filter&#34; ) ( include_immature_coinbase )</pre>
+  <div class="rpc-description"><p>List balances by receiving address.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>minconf</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 1</small></td><td>The minimum number of confirmations before payments are included.</td></tr>
+  <tr><td>2</td><td><code>include_empty</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Whether to include addresses that haven&#39;t received any payments.</td></tr>
+  <tr><td>3</td><td><code>include_watchonly</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>(DEPRECATED) No longer used</td></tr>
+  <tr><td>4</td><td><code>address_filter</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>If present and non-empty, only return information on this address.</td></tr>
+  <tr><td>5</td><td><code>include_immature_coinbase</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>Include immature coinbase transactions.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(array)</span></p>
+<ul class="rpc-schema rpc-array">
+  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(object)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The receiving address</span></li>
+      <li><code class="rpc-key">amount</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">The total amount in BTC received by the address</span></li>
+      <li><code class="rpc-key">confirmations</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">The number of confirmations of the most recent transaction included</span></li>
+      <li><code class="rpc-key">label</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The label of the receiving address. The default label is &#34;&#34;</span></li>
+      <li><code class="rpc-key">txids</code> <span class="rpc-type">(array)</span>
+        <ul class="rpc-schema rpc-array">
+          <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+</div>

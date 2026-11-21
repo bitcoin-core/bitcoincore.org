@@ -3,24 +3,22 @@ name: joinpsbts
 btcversion: 30.0.0
 btcgroup: rawtransactions
 permalink: en/doc/30.0.0/rpc/rawtransactions/joinpsbts/
+openrpc: true
 ---
 
-joinpsbts ["psbt",...]
-
-Joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs
-No input in any of the PSBTs can be in more than one of the PSBTs.
-
-Arguments:
-1. txs            (json array, required) The base64 strings of partially signed transactions
-     [
-       "psbt",    (string, required) A base64 string of a PSBT
-       ...
-     ]
-
-Result:
-"str"    (string) The base64-encoded partially signed transaction
-
-Examples:
-> bitcoin-cli joinpsbts "psbt"
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">joinpsbts txs</pre>
+  <div class="rpc-description"><p>Joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs No input in any of the PSBTs can be in more than one of the PSBTs.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txs</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The base64 strings of partially signed transactions
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli joinpsbts &#34;psbt&#34;</pre>
+</div>

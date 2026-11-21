@@ -1,0 +1,67 @@
+---
+name: getblockstats
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/getblockstats/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getblockstats hash_or_height ( stats )</pre>
+  <div class="rpc-description"><p>Compute per block statistics for a given window. All amounts are in satoshis. It won&#39;t work for some heights with pruning.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>hash_or_height</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-yes">yes</td><td>The block hash or height of the target block
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>stats</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: all values</small></td><td>Values to plot (see result below)
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">avgfee</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Average fee in the block</span></li>
+  <li><code class="rpc-key">avgfeerate</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Average feerate (in satoshis per virtual byte)</span></li>
+  <li><code class="rpc-key">avgtxsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Average transaction size</span></li>
+  <li><code class="rpc-key">blockhash</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The block hash (to check for potential reorgs)</span></li>
+  <li><code class="rpc-key">feerate_percentiles</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Feerates at the 10th, 25th, 50th, 75th, and 90th percentile weight unit (in satoshis per virtual byte)</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">[0]</code> <span class="rpc-type">(number)</span></li>
+      <li><code class="rpc-key">[1]</code> <span class="rpc-type">(number)</span></li>
+      <li><code class="rpc-key">[2]</code> <span class="rpc-type">(number)</span></li>
+      <li><code class="rpc-key">[3]</code> <span class="rpc-type">(number)</span></li>
+      <li><code class="rpc-key">[4]</code> <span class="rpc-type">(number)</span></li>
+    </ul></li>
+  <li><code class="rpc-key">height</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The height of the block</span></li>
+  <li><code class="rpc-key">ins</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of inputs (excluding coinbase)</span></li>
+  <li><code class="rpc-key">maxfee</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Maximum fee in the block</span></li>
+  <li><code class="rpc-key">maxfeerate</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Maximum feerate (in satoshis per virtual byte)</span></li>
+  <li><code class="rpc-key">maxtxsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Maximum transaction size</span></li>
+  <li><code class="rpc-key">medianfee</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Truncated median fee in the block</span></li>
+  <li><code class="rpc-key">mediantime</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The block median time past</span></li>
+  <li><code class="rpc-key">mediantxsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Truncated median transaction size</span></li>
+  <li><code class="rpc-key">minfee</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Minimum fee in the block</span></li>
+  <li><code class="rpc-key">minfeerate</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Minimum feerate (in satoshis per virtual byte)</span></li>
+  <li><code class="rpc-key">mintxsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Minimum transaction size</span></li>
+  <li><code class="rpc-key">outs</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of outputs</span></li>
+  <li><code class="rpc-key">subsidy</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The block subsidy</span></li>
+  <li><code class="rpc-key">swtotal_size</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Total size of all segwit transactions</span></li>
+  <li><code class="rpc-key">swtotal_weight</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Total weight of all segwit transactions</span></li>
+  <li><code class="rpc-key">swtxs</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of segwit transactions</span></li>
+  <li><code class="rpc-key">time</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The block time</span></li>
+  <li><code class="rpc-key">total_out</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Total amount in all outputs (excluding coinbase and thus reward [ie subsidy + totalfee])</span></li>
+  <li><code class="rpc-key">total_size</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Total size of all non-coinbase transactions</span></li>
+  <li><code class="rpc-key">total_weight</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Total weight of all non-coinbase transactions</span></li>
+  <li><code class="rpc-key">totalfee</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The fee total</span></li>
+  <li><code class="rpc-key">txs</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The number of transactions (including coinbase)</span></li>
+  <li><code class="rpc-key">utxo_increase</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The increase/decrease in the number of unspent outputs (not discounting op_return and similar)</span></li>
+  <li><code class="rpc-key">utxo_size_inc</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The increase/decrease in size for the utxo index (not discounting op_return and similar)</span></li>
+  <li><code class="rpc-key">utxo_increase_actual</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The increase/decrease in the number of unspent outputs, not counting unspendables</span></li>
+  <li><code class="rpc-key">utxo_size_inc_actual</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">The increase/decrease in size for the utxo index, not counting unspendables</span></li>
+</ul>
+</div>

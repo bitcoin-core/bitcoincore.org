@@ -3,59 +3,59 @@ name: submitpackage
 btcversion: 29.0.0
 btcgroup: rawtransactions
 permalink: en/doc/29.0.0/rpc/rawtransactions/submitpackage/
+openrpc: true
 ---
 
-submitpackage ["rawtx",...] ( maxfeerate maxburnamount )
-
-Submit a package of raw transactions (serialized, hex-encoded) to local node.
-The package will be validated according to consensus and mempool policy rules. If any transaction passes, it will be accepted to mempool.
-This RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies.
-Warning: successful submission does not mean the transactions will propagate throughout the network.
-
-Arguments:
-1. package          (json array, required) An array of raw transactions.
-                    The package must solely consist of a child transaction and all of its unconfirmed parents, if any. None of the parents may depend on each other.
-                    The package must be topologically sorted, with the child being the last element in the array.
-     [
-       "rawtx",     (string)
-       ...
-     ]
-2. maxfeerate       (numeric or string, optional, default="0.10") Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB.
-                    Fee rates larger than 1BTC/kvB are rejected.
-                    Set to 0 to accept any fee rate.
-3. maxburnamount    (numeric or string, optional, default="0.00") Reject transactions with provably unspendable outputs (e.g. 'datacarrier' outputs that use the OP_RETURN opcode) greater than the specified value, expressed in BTC.
-                    If burning funds through unspendable outputs is desired, increase this value.
-                    This check is based on heuristics and does not guarantee spendability of outputs.
-                    
-
-Result:
-{                                   (json object)
-  "package_msg" : "str",            (string) The transaction package result message. "success" indicates all transactions were accepted into or are already in the mempool.
-  "tx-results" : {                  (json object) transaction results keyed by wtxid
-    "wtxid" : {                     (json object) transaction wtxid
-      "txid" : "hex",               (string) The transaction hash in hex
-      "other-wtxid" : "hex",        (string, optional) The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.
-      "vsize" : n,                  (numeric, optional) Sigops-adjusted virtual transaction size.
-      "fees" : {                    (json object, optional) Transaction fees
-        "base" : n,                 (numeric) transaction fee in BTC
-        "effective-feerate" : n,    (numeric, optional) if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.
-        "effective-includes" : [    (json array, optional) if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.
-          "hex",                    (string) transaction wtxid in hex
-          ...
-        ]
-      },
-      "error" : "str"               (string, optional) The transaction error string, if it was rejected by the mempool
-    },
-    ...
-  },
-  "replaced-transactions" : [       (json array, optional) List of txids of replaced transactions
-    "hex",                          (string) The transaction id
-    ...
-  ]
-}
-
-Examples:
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "submitpackage", "params": [["raw-parent-tx-1", "raw-parent-tx-2", "raw-child-tx"]]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-> bitcoin-cli submitpackage '["raw-tx-without-unconfirmed-parents"]'
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">rawtransactions</span></p>
+  <pre class="rpc-synopsis">submitpackage package ( maxfeerate ) ( maxburnamount )</pre>
+  <div class="rpc-description"><p>Submit a package of raw transactions (serialized, hex-encoded) to local node. The package will be validated according to consensus and mempool policy rules. If any transaction passes, it will be accepted to mempool. This RPC is experimental and the interface may be unstable. Refer to doc/policy/packages.md for documentation on package policies. Warning: successful submission does not mean the transactions will propagate throughout the network.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>package</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>An array of raw transactions.<br>The package must solely consist of a child transaction and all of its unconfirmed parents, if any. None of the parents may depend on each other.<br>The package must be topologically sorted, with the child being the last element in the array.
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>2</td><td><code>maxfeerate</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;0.10&#34;</small></td><td>Reject transactions whose fee rate is higher than the specified value, expressed in BTC/kvB.<br>Fee rates larger than 1BTC/kvB are rejected.<br>Set to 0 to accept any fee rate.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>maxburnamount</code></td><td><span class="rpc-type">one of</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;0.00&#34;</small></td><td>Reject transactions with provably unspendable outputs (e.g. &#39;datacarrier&#39; outputs that use the OP_RETURN opcode) greater than the specified value, expressed in BTC.<br>If burning funds through unspendable outputs is desired, increase this value.<br>This check is based on heuristics and does not guarantee spendability of outputs.
+  <ul class="rpc-schema rpc-variants">
+    <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+    <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">package_msg</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction package result message. &#34;success&#34; indicates all transactions were accepted into or are already in the mempool.</span></li>
+  <li><code class="rpc-key">tx-results</code> <span class="rpc-type">(object)</span> <span class="rpc-desc">transaction results keyed by wtxid</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">txid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The transaction hash in hex</span></li>
+          <li><code class="rpc-key">other-wtxid</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The wtxid of a different transaction with the same txid but different witness found in the mempool. This means the submitted transaction was ignored.</span></li>
+          <li><code class="rpc-key">vsize</code> <span class="rpc-type">(number, optional)</span> <span class="rpc-desc">Sigops-adjusted virtual transaction size.</span></li>
+          <li><code class="rpc-key">fees</code> <span class="rpc-type">(object, optional)</span> <span class="rpc-desc">Transaction fees</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">base</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">transaction fee in BTC</span></li>
+              <li><code class="rpc-key">effective-feerate</code> <span class="rpc-type">(string, amount, optional)</span> <span class="rpc-desc">if the transaction was not already in the mempool, the effective feerate in BTC per KvB. For example, the package feerate and/or feerate with modified fees from prioritisetransaction.</span></li>
+              <li><code class="rpc-key">effective-includes</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">if effective-feerate is provided, the wtxids of the transactions whose fees and vsizes are included in effective-feerate.</span>
+                <ul class="rpc-schema rpc-array">
+                  <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+                </ul></li>
+            </ul></li>
+          <li><code class="rpc-key">error</code> <span class="rpc-type">(string, optional)</span> <span class="rpc-desc">The transaction error string, if it was rejected by the mempool</span></li>
+        </ul></li>
+    </ul></li>
+  <li><code class="rpc-key">replaced-transactions</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">List of txids of replaced transactions</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;submitpackage&#34;, &#34;params&#34;: [[&#34;raw-parent-tx-1&#34;, &#34;raw-parent-tx-2&#34;, &#34;raw-child-tx&#34;]]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/
+&gt; bitcoin-cli submitpackage &#39;[&#34;raw-tx-without-unconfirmed-parents&#34;]&#39;</pre>
+</div>

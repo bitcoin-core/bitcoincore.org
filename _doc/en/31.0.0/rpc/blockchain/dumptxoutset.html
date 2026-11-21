@@ -3,37 +3,38 @@ name: dumptxoutset
 btcversion: 31.0.0
 btcgroup: blockchain
 permalink: en/doc/31.0.0/rpc/blockchain/dumptxoutset/
+openrpc: true
 ---
 
-dumptxoutset "path" ( "type" {"rollback":n,...} )
-
-Write the serialized UTXO set to a file. This can be used in loadtxoutset afterwards if this snapshot height is supported in the chainparams as well.
-
-Unless the "latest" type is requested, the node will roll back to the requested height and network activity will be suspended during this process. Because of this it is discouraged to interact with the node in any other way during the execution of this call to avoid inconsistent results and race conditions, particularly RPCs that interact with blockstorage.
-
-This call may take several minutes. Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)
-
-Arguments:
-1. path       (string, required) Path to the output file. If relative, will be prefixed by datadir.
-2. type       (string, optional, default="") The type of snapshot to create. Can be "latest" to create a snapshot of the current UTXO set or "rollback" to temporarily roll back the state of the node to a historical block before creating the snapshot of a historical UTXO set. This parameter can be omitted if a separate "rollback" named parameter is specified indicating the height or hash of a specific historical block. If "rollback" is specified and separate "rollback" named parameter is not specified, this will roll back to the latest valid snapshot block that can currently be loaded with loadtxoutset.
-3. options    (json object, optional) Options object that can be used to pass named arguments, listed below.
-
-Named Arguments:
-rollback    (string or numeric, optional) Height or hash of the block to roll back to before creating the snapshot. Note: The further this number is from the tip, the longer this process will take. Consider setting a higher -rpcclienttimeout value in this case.
-
-Result:
-{                             (json object)
-  "coins_written" : n,        (numeric) the number of coins written in the snapshot
-  "base_hash" : "hex",        (string) the hash of the base of the snapshot
-  "base_height" : n,          (numeric) the height of the base of the snapshot
-  "path" : "str",             (string) the absolute path that the snapshot was written to
-  "txoutset_hash" : "hex",    (string) the hash of the UTXO set contents
-  "nchaintx" : n              (numeric) the number of transactions in the chain up to and including the base block
-}
-
-Examples:
-> bitcoin-cli -rpcclienttimeout=0 dumptxoutset utxo.dat latest
-> bitcoin-cli -rpcclienttimeout=0 dumptxoutset utxo.dat rollback
-> bitcoin-cli -rpcclienttimeout=0 -named dumptxoutset utxo.dat rollback=853456
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">dumptxoutset &#34;path&#34; ( &#34;type&#34; ) ( options )</pre>
+  <div class="rpc-description"><p>Write the serialized UTXO set to a file. This can be used in loadtxoutset afterwards if this snapshot height is supported in the chainparams as well.</p><p>Unless the &#34;latest&#34; type is requested, the node will roll back to the requested height and network activity will be suspended during this process. Because of this it is discouraged to interact with the node in any other way during the execution of this call to avoid inconsistent results and race conditions, particularly RPCs that interact with blockstorage.</p><p>This call may take several minutes. Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>path</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>Path to the output file. If relative, will be prefixed by datadir.</td></tr>
+  <tr><td>2</td><td><code>type</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: &#34;&#34;</small></td><td>The type of snapshot to create. Can be &#34;latest&#34; to create a snapshot of the current UTXO set or &#34;rollback&#34; to temporarily roll back the state of the node to a historical block before creating the snapshot of a historical UTXO set. This parameter can be omitted if a separate &#34;rollback&#34; named parameter is specified indicating the height or hash of a specific historical block. If &#34;rollback&#34; is specified and separate &#34;rollback&#34; named parameter is not specified, this will roll back to the latest valid snapshot block that can currently be loaded with loadtxoutset.</td></tr>
+  <tr><td>3</td><td><code>options</code><br><small class="rpc-note">fields may also be passed as named arguments</small></td><td><span class="rpc-type">object</span></td><td class="rpc-req-no">no</td><td>
+  <ul class="rpc-schema">
+    <li><code class="rpc-key">rollback</code> <span class="rpc-type">(one of, optional)</span> <span class="rpc-desc">Height or hash of the block to roll back to before creating the snapshot. Note: The further this number is from the tip, the longer this process will take. Consider setting a higher -rpcclienttimeout value in this case.</span>
+      <ul class="rpc-schema rpc-variants">
+        <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(number)</span></li>
+        <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(string)</span></li>
+      </ul></li>
+  </ul></td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">coins_written</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of coins written in the snapshot</span></li>
+  <li><code class="rpc-key">base_hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the hash of the base of the snapshot</span></li>
+  <li><code class="rpc-key">base_height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the height of the base of the snapshot</span></li>
+  <li><code class="rpc-key">path</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the absolute path that the snapshot was written to</span></li>
+  <li><code class="rpc-key">txoutset_hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">the hash of the UTXO set contents</span></li>
+  <li><code class="rpc-key">nchaintx</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">the number of transactions in the chain up to and including the base block</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli -rpcclienttimeout=0 dumptxoutset utxo.dat latest
+&gt; bitcoin-cli -rpcclienttimeout=0 dumptxoutset utxo.dat rollback
+&gt; bitcoin-cli -rpcclienttimeout=0 -named dumptxoutset utxo.dat rollback=853456</pre>
+</div>

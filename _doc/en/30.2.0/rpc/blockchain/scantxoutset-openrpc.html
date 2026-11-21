@@ -1,0 +1,200 @@
+---
+name: scantxoutset
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/scantxoutset/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;scantxoutset&#34;,
+  &#34;description&#34;: &#34;Scans the unspent transaction output set for entries that match certain output descriptors.\nExamples of output descriptors are:\n    addr(&lt;address&gt;)                      Outputs whose output script corresponds to the specified address (does not include P2PK)\n    raw(&lt;hex script&gt;)                    Outputs whose output script equals the specified hex-encoded bytes\n    combo(&lt;pubkey&gt;)                      P2PK, P2PKH, P2WPKH, and P2SH-P2WPKH outputs for the given pubkey\n    pkh(&lt;pubkey&gt;)                        P2PKH outputs for the given pubkey\n    sh(multi(&lt;n&gt;,&lt;pubkey&gt;,&lt;pubkey&gt;,...)) P2SH-multisig outputs for the given threshold and pubkeys\n    tr(&lt;pubkey&gt;)                         P2TR\n    tr(&lt;pubkey&gt;,{pk(&lt;pubkey&gt;)})          P2TR with single fallback pubkey in tapscript\n    rawtr(&lt;pubkey&gt;)                      P2TR with the specified key as output key rather than inner\n    wsh(and_v(v:pk(&lt;pubkey&gt;),after(2)))  P2WSH miniscript with mandatory pubkey and a timelock\n\nIn the above, &lt;pubkey&gt; either refers to a fixed public key in hexadecimal notation, or to an xpub/xprv optionally followed by one\nor more path elements separated by \&#34;/\&#34;, and optionally ending in \&#34;/*\&#34; (unhardened), or \&#34;/*&#39;\&#34; or \&#34;/*h\&#34; (hardened) to specify all\nunhardened or hardened child keys.\nIn the latter case, a range needs to be specified by below if different from 1000.\nFor more information on output descriptors, see the documentation in the doc/descriptors.md file.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;action&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The action to execute\n\&#34;start\&#34; for starting a scan\n\&#34;abort\&#34; for aborting the current scan (returns true when abort was successful)\n\&#34;status\&#34; for progress report (in %) of the current scan&#34;
+    },
+    {
+      &#34;name&#34;: &#34;scanobjects&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;array&#34;,
+        &#34;items&#34;: {
+          &#34;oneOf&#34;: [
+            {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;desc&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;An output descriptor&#34;
+                },
+                &#34;range&#34;: {
+                  &#34;oneOf&#34;: [
+                    {
+                      &#34;type&#34;: &#34;number&#34;
+                    },
+                    {
+                      &#34;type&#34;: &#34;array&#34;,
+                      &#34;prefixItems&#34;: [
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        },
+                        {
+                          &#34;type&#34;: &#34;number&#34;
+                        }
+                      ],
+                      &#34;minItems&#34;: 2,
+                      &#34;maxItems&#34;: 2
+                    }
+                  ],
+                  &#34;default&#34;: 1000,
+                  &#34;description&#34;: &#34;The range of HD chain indexes to explore (either end or [begin,end])&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;desc&#34;
+              ]
+            }
+          ]
+        }
+      },
+      &#34;description&#34;: &#34;Array of scan objects. Required for \&#34;start\&#34; action\nEvery scan object is either a string descriptor or an object:&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;success&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;description&#34;: &#34;Whether the scan was completed&#34;
+            },
+            &#34;txouts&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The number of unspent transaction outputs scanned&#34;
+            },
+            &#34;height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block height at which the scan was done&#34;
+            },
+            &#34;bestblock&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The hash of the block at the tip of the chain&#34;
+            },
+            &#34;unspents&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;txid&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The transaction id&#34;
+                  },
+                  &#34;vout&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The vout value&#34;
+                  },
+                  &#34;scriptPubKey&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The output script&#34;
+                  },
+                  &#34;desc&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;description&#34;: &#34;A specialized descriptor for the matched output script&#34;
+                  },
+                  &#34;amount&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;The total amount in BTC of the unspent output&#34;
+                  },
+                  &#34;coinbase&#34;: {
+                    &#34;type&#34;: &#34;boolean&#34;,
+                    &#34;description&#34;: &#34;Whether this is a coinbase output&#34;
+                  },
+                  &#34;height&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;Height of the unspent transaction output&#34;
+                  },
+                  &#34;blockhash&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;Blockhash of the unspent transaction output&#34;
+                  },
+                  &#34;confirmations&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;Number of confirmations of the unspent transaction output when the scan was done&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;txid&#34;,
+                  &#34;vout&#34;,
+                  &#34;scriptPubKey&#34;,
+                  &#34;desc&#34;,
+                  &#34;amount&#34;,
+                  &#34;coinbase&#34;,
+                  &#34;height&#34;,
+                  &#34;blockhash&#34;,
+                  &#34;confirmations&#34;
+                ]
+              }
+            },
+            &#34;total_amount&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+              &#34;description&#34;: &#34;The total amount of all found unspent outputs in BTC&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;success&#34;,
+            &#34;txouts&#34;,
+            &#34;height&#34;,
+            &#34;bestblock&#34;,
+            &#34;unspents&#34;,
+            &#34;total_amount&#34;
+          ],
+          &#34;description&#34;: &#34;when action==&#39;start&#39;; only returns after scan completes&#34;
+        },
+        {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;when action==&#39;abort&#39;&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;progress&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Approximate percent complete&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;progress&#34;
+          ],
+          &#34;description&#34;: &#34;when action==&#39;status&#39; and a scan is currently in progress&#34;
+        },
+        {
+          &#34;type&#34;: &#34;null&#34;,
+          &#34;description&#34;: &#34;when action==&#39;status&#39; and no scan is in progress - possibly already completed&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

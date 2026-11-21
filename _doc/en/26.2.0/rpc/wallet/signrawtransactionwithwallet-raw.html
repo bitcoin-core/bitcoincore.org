@@ -1,0 +1,44 @@
+---
+name: signrawtransactionwithwallet
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/signrawtransactionwithwallet/raw/
+rawpage: true
+---
+
+signrawtransactionwithwallet "hexstring" ( prevtxs ) ( "sighashtype" )
+
+Sign inputs for raw transaction (serialized, hex-encoded).
+The second optional argument (may be null) is an array of previous transaction outputs that
+this transaction depends on but may not yet be in the block chain.
+Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
+
+Arguments:
+1. hexstring (string)  The transaction hex string
+2. prevtxs (array, optional)  The previous dependent transaction outputs
+  each item (object)
+    txid (string)  The transaction id
+    vout (number)  The output number
+    scriptPubKey (string)  script key
+    redeemScript (string, optional)  (required for P2SH) redeem script
+    witnessScript (string, optional)  (required for P2WSH or P2SH-P2WSH) witness script
+    amount (one of, optional)  (required for Segwit inputs) the amount spent
+      option 1: (number)
+      option 2: (string)
+3. sighashtype (string, optional, default="DEFAULT for Taproot, ALL otherwise")  The signature hash type. Must be one of "DEFAULT" "ALL" "NONE" "SINGLE" "ALL|ANYONECANPAY" "NONE|ANYONECANPAY" "SINGLE|ANYONECANPAY"
+
+Result: (object)
+  hex (string)  The hex-encoded raw transaction with signature(s)
+  complete (boolean)  If the transaction has a complete set of signatures
+  errors (array, optional)  Script verification errors (if there are any)
+    each item (object)
+      txid (string)  The hash of the referenced, previous transaction
+      vout (number)  The index of the output to spent and used as input
+      witness (array)
+        each item (string)
+      scriptSig (string)  The hex-encoded signature script
+      sequence (number)  Script sequence number
+      error (string)  Verification or signing error related to the input
+
+
+

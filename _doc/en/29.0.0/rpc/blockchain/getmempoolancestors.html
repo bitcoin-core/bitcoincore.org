@@ -3,57 +3,59 @@ name: getmempoolancestors
 btcversion: 29.0.0
 btcgroup: blockchain
 permalink: en/doc/29.0.0/rpc/blockchain/getmempoolancestors/
+openrpc: true
 ---
 
-getmempoolancestors "txid" ( verbose )
-
-If txid is in the mempool, returns all in-mempool ancestors.
-
-Arguments:
-1. txid       (string, required) The transaction id (must be in mempool)
-2. verbose    (boolean, optional, default=false) True for a json object, false for array of transaction ids
-
-Result (for verbose = false):
-[           (json array)
-  "hex",    (string) The transaction id of an in-mempool ancestor transaction
-  ...
-]
-
-Result (for verbose = true):
-{                                         (json object)
-  "transactionid" : {                     (json object)
-    "vsize" : n,                          (numeric) virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted.
-    "weight" : n,                         (numeric) transaction weight as defined in BIP 141.
-    "time" : xxx,                         (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT
-    "height" : n,                         (numeric) block height when transaction entered pool
-    "descendantcount" : n,                (numeric) number of in-mempool descendant transactions (including this one)
-    "descendantsize" : n,                 (numeric) virtual transaction size of in-mempool descendants (including this one)
-    "ancestorcount" : n,                  (numeric) number of in-mempool ancestor transactions (including this one)
-    "ancestorsize" : n,                   (numeric) virtual transaction size of in-mempool ancestors (including this one)
-    "wtxid" : "hex",                      (string) hash of serialized transaction, including witness data
-    "fees" : {                            (json object)
-      "base" : n,                         (numeric) transaction fee, denominated in BTC
-      "modified" : n,                     (numeric) transaction fee with fee deltas used for mining priority, denominated in BTC
-      "ancestor" : n,                     (numeric) transaction fees of in-mempool ancestors (including this one) with fee deltas used for mining priority, denominated in BTC
-      "descendant" : n                    (numeric) transaction fees of in-mempool descendants (including this one) with fee deltas used for mining priority, denominated in BTC
-    },
-    "depends" : [                         (json array) unconfirmed transactions used as inputs for this transaction
-      "hex",                              (string) parent transaction id
-      ...
-    ],
-    "spentby" : [                         (json array) unconfirmed transactions spending outputs from this transaction
-      "hex",                              (string) child transaction id
-      ...
-    ],
-    "bip125-replaceable" : true|false,    (boolean) Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability. (DEPRECATED)
-                                          
-    "unbroadcast" : true|false            (boolean) Whether this transaction is currently unbroadcast (initial broadcast not yet acknowledged by any peers)
-  },
-  ...
-}
-
-Examples:
-> bitcoin-cli getmempoolancestors "mytxid"
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "getmempoolancestors", "params": ["mytxid"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getmempoolancestors &#34;txid&#34; ( verbose )</pre>
+  <div class="rpc-description"><p>If txid is in the mempool, returns all in-mempool ancestors.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>txid</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The transaction id (must be in mempool)</td></tr>
+  <tr><td>2</td><td><code>verbose</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: false</small></td><td>True for a json object, false for array of transaction ids</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(one of)</span></p>
+<ul class="rpc-schema rpc-variants">
+  <li><span class="rpc-variant">option 1</span> <span class="rpc-type">(array)</span> <span class="rpc-desc">for verbose = false</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+  <li><span class="rpc-variant">option 2</span> <span class="rpc-type">(object)</span> <span class="rpc-desc">for verbose = true</span>
+    <ul class="rpc-schema">
+      <li><code class="rpc-key">…</code> <span class="rpc-type">(object, optional)</span>
+        <ul class="rpc-schema">
+          <li><code class="rpc-key">vsize</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted.</span></li>
+          <li><code class="rpc-key">weight</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">transaction weight as defined in BIP 141.</span></li>
+          <li><code class="rpc-key">time</code> <span class="rpc-type">(number, unix-time)</span> <span class="rpc-desc">local time transaction entered pool in seconds since 1 Jan 1970 GMT</span></li>
+          <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">block height when transaction entered pool</span></li>
+          <li><code class="rpc-key">descendantcount</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of in-mempool descendant transactions (including this one)</span></li>
+          <li><code class="rpc-key">descendantsize</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">virtual transaction size of in-mempool descendants (including this one)</span></li>
+          <li><code class="rpc-key">ancestorcount</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">number of in-mempool ancestor transactions (including this one)</span></li>
+          <li><code class="rpc-key">ancestorsize</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">virtual transaction size of in-mempool ancestors (including this one)</span></li>
+          <li><code class="rpc-key">wtxid</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">hash of serialized transaction, including witness data</span></li>
+          <li><code class="rpc-key">fees</code> <span class="rpc-type">(object)</span>
+            <ul class="rpc-schema">
+              <li><code class="rpc-key">base</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">transaction fee, denominated in BTC</span></li>
+              <li><code class="rpc-key">modified</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">transaction fee with fee deltas used for mining priority, denominated in BTC</span></li>
+              <li><code class="rpc-key">ancestor</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">transaction fees of in-mempool ancestors (including this one) with fee deltas used for mining priority, denominated in BTC</span></li>
+              <li><code class="rpc-key">descendant</code> <span class="rpc-type">(string, amount)</span> <span class="rpc-desc">transaction fees of in-mempool descendants (including this one) with fee deltas used for mining priority, denominated in BTC</span></li>
+            </ul></li>
+          <li><code class="rpc-key">depends</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">unconfirmed transactions used as inputs for this transaction</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">spentby</code> <span class="rpc-type">(array)</span> <span class="rpc-desc">unconfirmed transactions spending outputs from this transaction</span>
+            <ul class="rpc-schema rpc-array">
+              <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+            </ul></li>
+          <li><code class="rpc-key">bip125-replaceable</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability. (DEPRECATED)</span></li>
+          <li><code class="rpc-key">unbroadcast</code> <span class="rpc-type">(boolean)</span> <span class="rpc-desc">Whether this transaction is currently unbroadcast (initial broadcast not yet acknowledged by any peers)</span></li>
+        </ul></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getmempoolancestors &#34;mytxid&#34;
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getmempoolancestors&#34;, &#34;params&#34;: [&#34;mytxid&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

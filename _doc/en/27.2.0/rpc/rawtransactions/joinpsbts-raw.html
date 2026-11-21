@@ -1,0 +1,21 @@
+---
+name: joinpsbts
+btcversion: 27.2.0
+btcgroup: rawtransactions
+permalink: en/doc/27.2.0/rpc/rawtransactions/joinpsbts/raw/
+rawpage: true
+---
+
+joinpsbts txs
+
+Joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs
+No input in any of the PSBTs can be in more than one of the PSBTs.
+
+Arguments:
+1. txs (array)  The base64 strings of partially signed transactions
+  each item (string)
+
+Result: (string)
+
+
+

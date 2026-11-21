@@ -1,0 +1,86 @@
+---
+name: walletprocesspsbt
+btcversion: 26.2.0
+btcgroup: wallet
+permalink: en/doc/26.2.0/rpc/wallet/walletprocesspsbt/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;walletprocesspsbt&#34;,
+  &#34;description&#34;: &#34;Update a PSBT with input information from our wallet and then sign inputs\nthat we can sign for.\nRequires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;psbt&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;The transaction base64 string&#34;
+    },
+    {
+      &#34;name&#34;: &#34;sign&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Also sign the transaction when updating (requires wallet to be unlocked)&#34;
+    },
+    {
+      &#34;name&#34;: &#34;sighashtype&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;DEFAULT for Taproot, ALL otherwise&#34;
+      },
+      &#34;description&#34;: &#34;The signature hash type to sign with if not specified by the PSBT. Must be one of\n       \&#34;DEFAULT\&#34;\n       \&#34;ALL\&#34;\n       \&#34;NONE\&#34;\n       \&#34;SINGLE\&#34;\n       \&#34;ALL|ANYONECANPAY\&#34;\n       \&#34;NONE|ANYONECANPAY\&#34;\n       \&#34;SINGLE|ANYONECANPAY\&#34;&#34;
+    },
+    {
+      &#34;name&#34;: &#34;bip32derivs&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Include BIP 32 derivation paths for public keys if we know them&#34;
+    },
+    {
+      &#34;name&#34;: &#34;finalize&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Also finalize inputs if possible&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;psbt&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;The base64-encoded partially signed transaction&#34;
+        },
+        &#34;complete&#34;: {
+          &#34;type&#34;: &#34;boolean&#34;,
+          &#34;description&#34;: &#34;If the transaction has a complete set of signatures&#34;
+        },
+        &#34;hex&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The hex-encoded network transaction if complete&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;psbt&#34;,
+        &#34;complete&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

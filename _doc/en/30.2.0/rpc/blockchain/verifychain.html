@@ -1,0 +1,20 @@
+---
+name: verifychain
+btcversion: 30.2.0
+btcgroup: blockchain
+permalink: en/doc/30.2.0/rpc/blockchain/verifychain/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">verifychain ( checklevel ) ( nblocks )</pre>
+  <div class="rpc-description"><p>Verifies blockchain database.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>checklevel</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 3, range=0-4</small></td><td>How thorough the block verification is:<br>- level 0 reads the blocks from disk<br>- level 1 verifies block validity<br>- level 2 verifies undo data<br>- level 3 checks disconnection of tip blocks<br>- level 4 tries to reconnect the blocks<br>- each level includes the checks of the previous levels</td></tr>
+  <tr><td>2</td><td><code>nblocks</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 6, 0=all</small></td><td>The number of blocks to check.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(boolean)</span></p>
+</div>

@@ -1,0 +1,72 @@
+---
+name: getaddednodeinfo
+btcversion: 27.0.0
+btcgroup: network
+permalink: en/doc/27.0.0/rpc/network/getaddednodeinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getaddednodeinfo&#34;,
+  &#34;description&#34;: &#34;Returns information about the given added node, or all added nodes\n(note that onetry addnodes are not listed here)&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;node&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;x-bitcoin-default-hint&#34;: &#34;all nodes&#34;
+      },
+      &#34;description&#34;: &#34;If provided, return information about this specific node, otherwise all nodes are returned.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;addednode&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;The node IP address or name (as provided to addnode)&#34;
+          },
+          &#34;connected&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;If connected&#34;
+          },
+          &#34;addresses&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;address&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;The bitcoin server IP and port we&#39;re connected to&#34;
+                },
+                &#34;connected&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;description&#34;: &#34;connection, inbound or outbound&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;address&#34;,
+                &#34;connected&#34;
+              ]
+            },
+            &#34;description&#34;: &#34;Only when connected = true&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;addednode&#34;,
+          &#34;connected&#34;,
+          &#34;addresses&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;network&#34;
+}</pre>

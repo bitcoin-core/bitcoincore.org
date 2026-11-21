@@ -1,0 +1,178 @@
+---
+name: gettxoutsetinfo
+btcversion: 27.2.0
+btcgroup: blockchain
+permalink: en/doc/27.2.0/rpc/blockchain/gettxoutsetinfo/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;gettxoutsetinfo&#34;,
+  &#34;description&#34;: &#34;Returns statistics about the unspent transaction output set.\nNote this call may take some time if you are not using coinstatsindex.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;hash_type&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;default&#34;: &#34;hash_serialized_3&#34;
+      },
+      &#34;description&#34;: &#34;Which UTXO set hash should be calculated. Options: &#39;hash_serialized_3&#39; (the legacy algorithm), &#39;muhash&#39;, &#39;none&#39;.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;hash_or_height&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;oneOf&#34;: [
+          {
+            &#34;type&#34;: &#34;number&#34;
+          },
+          {
+            &#34;type&#34;: &#34;string&#34;
+          }
+        ],
+        &#34;x-bitcoin-default-hint&#34;: &#34;the current best block&#34;
+      },
+      &#34;description&#34;: &#34;The block hash or height of the target height (only available with coinstatsindex).&#34;
+    },
+    {
+      &#34;name&#34;: &#34;use_index&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;Use coinstatsindex, if available.&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;height&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The block height (index) of the returned statistics&#34;
+        },
+        &#34;bestblock&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The hash of the block at which these statistics are calculated&#34;
+        },
+        &#34;txouts&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of unspent transaction outputs&#34;
+        },
+        &#34;bogosize&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;Database-independent, meaningless metric indicating the UTXO set size&#34;
+        },
+        &#34;hash_serialized_3&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The serialized hash (only present if &#39;hash_serialized_3&#39; hash_type is chosen)&#34;
+        },
+        &#34;muhash&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;The serialized hash (only present if &#39;muhash&#39; hash_type is chosen)&#34;
+        },
+        &#34;transactions&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The number of transactions with unspent outputs (not available when coinstatsindex is used)&#34;
+        },
+        &#34;disk_size&#34;: {
+          &#34;type&#34;: &#34;number&#34;,
+          &#34;description&#34;: &#34;The estimated size of the chainstate on disk (not available when coinstatsindex is used)&#34;
+        },
+        &#34;total_amount&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;The total amount of coins in the UTXO set&#34;
+        },
+        &#34;total_unspendable_amount&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+          &#34;description&#34;: &#34;The total amount of coins permanently excluded from the UTXO set (only available if coinstatsindex is used)&#34;
+        },
+        &#34;block_info&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;prevout_spent&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+              &#34;description&#34;: &#34;Total amount of all prevouts spent in this block&#34;
+            },
+            &#34;coinbase&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+              &#34;description&#34;: &#34;Coinbase subsidy amount of this block&#34;
+            },
+            &#34;new_outputs_ex_coinbase&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+              &#34;description&#34;: &#34;Total amount of new outputs created by this block&#34;
+            },
+            &#34;unspendable&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+              &#34;description&#34;: &#34;Total amount of unspendable outputs created in this block&#34;
+            },
+            &#34;unspendables&#34;: {
+              &#34;type&#34;: &#34;object&#34;,
+              &#34;properties&#34;: {
+                &#34;genesis_block&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                  &#34;description&#34;: &#34;The unspendable amount of the Genesis block subsidy&#34;
+                },
+                &#34;bip30&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                  &#34;description&#34;: &#34;Transactions overridden by duplicates (no longer possible with BIP30)&#34;
+                },
+                &#34;scripts&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                  &#34;description&#34;: &#34;Amounts sent to scripts that are unspendable (for example OP_RETURN outputs)&#34;
+                },
+                &#34;unclaimed_rewards&#34;: {
+                  &#34;type&#34;: &#34;string&#34;,
+                  &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                  &#34;description&#34;: &#34;Fee rewards that miners did not claim in their coinbase transaction&#34;
+                }
+              },
+              &#34;additionalProperties&#34;: false,
+              &#34;required&#34;: [
+                &#34;genesis_block&#34;,
+                &#34;bip30&#34;,
+                &#34;scripts&#34;,
+                &#34;unclaimed_rewards&#34;
+              ],
+              &#34;description&#34;: &#34;Detailed view of the unspendable categories&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;prevout_spent&#34;,
+            &#34;coinbase&#34;,
+            &#34;new_outputs_ex_coinbase&#34;,
+            &#34;unspendable&#34;,
+            &#34;unspendables&#34;
+          ],
+          &#34;description&#34;: &#34;Info on amounts in the block at this block height (only available if coinstatsindex is used)&#34;
+        }
+      },
+      &#34;additionalProperties&#34;: false,
+      &#34;required&#34;: [
+        &#34;height&#34;,
+        &#34;bestblock&#34;,
+        &#34;txouts&#34;,
+        &#34;bogosize&#34;,
+        &#34;total_amount&#34;
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>

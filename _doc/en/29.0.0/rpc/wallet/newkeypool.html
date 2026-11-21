@@ -3,23 +3,18 @@ name: newkeypool
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/newkeypool/
+openrpc: true
 ---
 
-newkeypool
-
-Entirely clears and refills the keypool.
-WARNING: On non-HD wallets, this will require a new backup immediately, to include the new keys.
-When restoring a backup of an HD wallet created before the newkeypool command is run, funds received to
-new addresses may not appear automatically. They have not been lost, but the wallet may not find them.
-This can be fixed by running the newkeypool command on the backup and then rescanning, so the wallet
-re-generates the required keys.
-Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
-
-Result:
-null    (json null)
-
-Examples:
-> bitcoin-cli newkeypool 
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "newkeypool", "params": []}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">newkeypool</pre>
+  <div class="rpc-description"><p>Entirely clears and refills the keypool. WARNING: On non-HD wallets, this will require a new backup immediately, to include the new keys. When restoring a backup of an HD wallet created before the newkeypool command is run, funds received to new addresses may not appear automatically. They have not been lost, but the wallet may not find them. This can be fixed by running the newkeypool command on the backup and then rescanning, so the wallet re-generates the required keys. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli newkeypool 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;newkeypool&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

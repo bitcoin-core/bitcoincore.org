@@ -1,0 +1,363 @@
+/* ==========================================================================
+   OpenRPC-generated RPC documentation pages
+   ========================================================================== */
+
+.rpc-doc {
+	font-family: $code-font;
+	font-size: 13px;
+	line-height: 1.55;
+	color: $textcolor;
+
+	a {
+		color: $linkcolor;
+		text-decoration: underline;
+	}
+
+	h2.rpc-section {
+		font-family: $heading-font;
+		font-size: 20px;
+		margin: 1.6em 0 0.6em;
+		padding-bottom: 0.2em;
+		border-bottom: 1px solid lighten($basecolor, 60%);
+	}
+
+	.rpc-meta {
+		margin: 1em 0;
+	}
+
+	.rpc-badge {
+		display: inline-block;
+		padding: 3px 10px;
+		border-radius: 3px;
+		background-color: $basecolor;
+		color: $white;
+		text-decoration: none;
+		font-family: $heading-font;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	a.rpc-badge:hover {
+		background-color: lighten($basecolor, 18%);
+		color: $white;
+	}
+
+	.rpc-badge-deprecated {
+		background-color: $danger;
+	}
+
+	.rpc-synopsis {
+		font-family: $code-font;
+		font-size: 14px;
+		margin: 0.6em 0;
+		padding: 10px 12px;
+		background-color: lighten($basecolor, 73%);
+		border-left: 3px solid $basecolor;
+		overflow-x: auto;
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	.rpc-description {
+		font-family: $code-font;
+		font-size: 13px;
+		margin: 0.6em 0 1.5em;
+		padding: 2px 12px 2px 14px;
+		border-left: 3px solid lighten($basecolor, 58%);
+		color: $textcolor;
+
+		p {
+			text-indent: 0;
+			margin: 0 0 0.8em;
+			line-height: 1.5;
+			word-break: break-word;
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.rpc-empty {
+		color: lighten($textcolor, 30%);
+	}
+
+	.rpc-key {
+		font-weight: bold;
+		color: $textcolor;
+		background: none;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		font-size: inherit;
+		white-space: normal;
+	}
+
+	.rpc-type {
+		color: lighten($textcolor, 34%);
+		white-space: nowrap;
+		background-color: lighten($basecolor, 71%);
+		border-radius: 3px;
+		padding: 0 5px;
+	}
+
+	.rpc-desc {
+		color: lighten($textcolor, 22%);
+	}
+
+	.rpc-note {
+		color: lighten($textcolor, 30%);
+	}
+
+	.rpc-variant {
+		display: inline-block;
+		color: lighten($textcolor, 12%);
+		background-color: lighten($basecolor, 66%);
+		text-transform: uppercase;
+		font-size: 10px;
+		font-weight: bold;
+		letter-spacing: 0.05em;
+		padding: 1px 6px;
+		border-radius: 3px;
+		margin-right: 0.35em;
+		vertical-align: 1px;
+	}
+
+	table.rpc-args {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 0.5em 0 1em;
+
+		th {
+			background-color: lighten($basecolor, 73%);
+			text-align: left;
+			font-family: $heading-font;
+			font-weight: normal;
+			letter-spacing: 0.02em;
+		}
+
+		td, th {
+			padding: 6px 9px;
+			border: 1px solid lighten($basecolor, 58%);
+			vertical-align: top;
+		}
+
+		td:first-child, th:first-child {
+			width: 2em;
+			text-align: right;
+			color: lighten($textcolor, 35%);
+		}
+
+		code {
+			font-weight: bold;
+		}
+	}
+
+	.rpc-req-yes {
+		color: $textcolor;
+	}
+
+	.rpc-req-no {
+		color: lighten($textcolor, 35%);
+	}
+
+	.rpc-examples {
+		font-family: $code-font;
+		font-size: 13px;
+		line-height: 1.5;
+		margin: 0.6em 0;
+		padding: 10px 12px;
+		background-color: lighten($basecolor, 73%);
+		border-left: 3px solid $basecolor;
+		white-space: pre-wrap;
+		word-break: break-word;
+		overflow-x: auto;
+	}
+
+	.rpc-result-head {
+		margin: 0.5em 0 0.75em;
+	}
+
+	.rpc-key {
+		margin-right: 0.15em;
+	}
+
+	.rpc-type + .rpc-desc,
+	.rpc-variant + .rpc-type {
+		margin-left: 0.1em;
+	}
+
+	ul.rpc-schema {
+		list-style: none;
+		margin: 0.3em 0 0.3em 0.4em;
+		padding-left: 1.1em;
+		border-left: 2px solid lighten($basecolor, 62%);
+
+		li {
+			margin: 0;
+			padding: 0.28em 0.45em 0.28em 1.3em;
+			border-radius: 3px;
+			position: relative;
+		}
+
+		li:not(:has(> ul)):hover {
+			background-color: lighten($basecolor, 74%);
+		}
+
+		ul.rpc-schema {
+			margin: 0.15em 0 0.2em 0.1em;
+			border-left-color: lighten($basecolor, 68%);
+		}
+	}
+
+	/* Editor-style fold toggle, added by rpc-fold.js to rows with children.
+	   Sits in the row's left gutter; the triangle points down when expanded
+	   and right when collapsed. */
+	.rpc-fold {
+		position: absolute;
+		left: 0.15em;
+		top: 0.34em;
+		width: 1em;
+		height: 1em;
+		padding: 0;
+		border: 0;
+		background: none;
+		cursor: pointer;
+	}
+
+	.rpc-fold::before {
+		content: "";
+		position: absolute;
+		left: 0.3em;
+		top: 0.25em;
+		border-left: 0.35em solid lighten($textcolor, 40%);
+		border-top: 0.28em solid transparent;
+		border-bottom: 0.28em solid transparent;
+		transform: rotate(90deg);
+		transition: transform 0.1s ease-in-out;
+	}
+
+	.rpc-fold:hover::before {
+		border-left-color: $textcolor;
+	}
+
+	li.rpc-collapsed > .rpc-fold::before {
+		transform: none;
+	}
+
+	li.rpc-collapsed > ul.rpc-schema {
+		display: none;
+	}
+
+	/* The "one of" variant list: give each option header a little more room so
+	   the alternatives read as distinct branches, not just more fields. */
+	ul.rpc-variants > li {
+		margin-top: 0.15em;
+	}
+
+}
+
+.rpc-titlebar {
+	container-type: inline-size;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 0.8em 1.2em;
+}
+
+article.page:has(.toc) .rpc-titlebar {
+	padding: 0 12px;
+
+	@media #{$large} {
+		padding: 0;
+	}
+}
+
+.rpc-toggle {
+	display: inline-flex;
+	align-items: stretch;
+	border: 1px solid lighten($basecolor, 50%);
+	border-radius: 4px;
+	overflow: hidden;
+	font-family: $heading-font;
+	font-size: 14px;
+	white-space: nowrap;
+
+	a,
+	.rpc-toggle-active {
+		padding: 4px 12px;
+		text-decoration: none;
+		color: $linkcolor;
+	}
+
+	a:hover {
+		background-color: lighten($basecolor, 70%);
+	}
+
+	.rpc-toggle-active {
+		background-color: $basecolor;
+		color: $white;
+	}
+
+	> * + * {
+		border-left: 1px solid lighten($basecolor, 50%);
+	}
+}
+
+@container (max-width: 34em) {
+	.rpc-toggle {
+		display: flex;
+		width: 100%;
+
+		a,
+		.rpc-toggle-active {
+			flex: 1;
+			text-align: center;
+		}
+	}
+}
+
+.rpc-json {
+	font-family: $code-font;
+	font-size: 13px;
+	line-height: 1.5;
+	white-space: pre;
+	padding: 12px 14px;
+	background-color: lighten($basecolor, 73%);
+	border-left: 3px solid $basecolor;
+	overflow-x: auto;
+}
+
+.rpc-copy-host {
+	position: relative;
+}
+
+.doc > .rpc-copy-host {
+	margin-top: 1em;
+}
+
+.rpc-copy {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	padding: 4px 8px;
+	border: 1px solid lighten($basecolor, 50%);
+	border-radius: 3px;
+	background-color: lighten($basecolor, 73%);
+	color: lighten($textcolor, 20%);
+	font-size: 13px;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0.75;
+
+	.fa {
+		margin-right: 0;
+	}
+
+	&:hover {
+		opacity: 1;
+		color: $textcolor;
+	}
+}

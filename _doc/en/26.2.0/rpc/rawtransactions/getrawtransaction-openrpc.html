@@ -1,0 +1,329 @@
+---
+name: getrawtransaction
+btcversion: 26.2.0
+btcgroup: rawtransactions
+permalink: en/doc/26.2.0/rpc/rawtransactions/getrawtransaction/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getrawtransaction&#34;,
+  &#34;description&#34;: &#34;By default, this call only returns a transaction if it is in the mempool. If -txindex is enabled\nand no blockhash argument is passed, it will return the transaction if it is in the mempool or any block.\nIf a blockhash argument is passed, it will return the transaction if\nthe specified block is available and the transaction is in that block.\n\nHint: Use gettransaction for wallet transactions.\n\nIf verbosity is 0 or omitted, returns the serialized transaction as a hex-encoded string.\nIf verbosity is 1, returns a JSON Object with information about the transaction.\nIf verbosity is 2, returns a JSON Object with information about the transaction, including fee and prevout information.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;txid&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The transaction id&#34;
+    },
+    {
+      &#34;name&#34;: &#34;verbosity&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 0
+      },
+      &#34;x-bitcoin-aliases&#34;: [
+        &#34;verbose&#34;
+      ],
+      &#34;description&#34;: &#34;0 for hex-encoded data, 1 for a JSON object, and 2 for JSON object with fee and prevout&#34;
+    },
+    {
+      &#34;name&#34;: &#34;blockhash&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The block in which to look for the transaction&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;if verbosity is not set or set to 0&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;in_active_chain&#34;: {
+              &#34;type&#34;: &#34;boolean&#34;,
+              &#34;description&#34;: &#34;Whether specified block is in the active chain or not (only present with explicit \&#34;blockhash\&#34; argument)&#34;
+            },
+            &#34;blockhash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;the block hash&#34;
+            },
+            &#34;confirmations&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The confirmations&#34;
+            },
+            &#34;blocktime&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;The block time expressed in UNIX epoch time&#34;
+            },
+            &#34;time&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;Same as \&#34;blocktime\&#34;&#34;
+            },
+            &#34;hex&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The serialized, hex-encoded data for &#39;txid&#39;&#34;
+            },
+            &#34;txid&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The transaction id (same as provided)&#34;
+            },
+            &#34;hash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The transaction hash (differs from txid for witness transactions)&#34;
+            },
+            &#34;size&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The serialized transaction size&#34;
+            },
+            &#34;vsize&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The virtual transaction size (differs from size for witness transactions)&#34;
+            },
+            &#34;weight&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The transaction&#39;s weight (between vsize*4-3 and vsize*4)&#34;
+            },
+            &#34;version&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The version&#34;
+            },
+            &#34;locktime&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;The lock time&#34;
+            },
+            &#34;vin&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;coinbase&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The coinbase value (only if coinbase transaction)&#34;
+                  },
+                  &#34;txid&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                    &#34;description&#34;: &#34;The transaction id (if not coinbase transaction)&#34;
+                  },
+                  &#34;vout&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The output number (if not coinbase transaction)&#34;
+                  },
+                  &#34;scriptSig&#34;: {
+                    &#34;type&#34;: &#34;object&#34;,
+                    &#34;properties&#34;: {
+                      &#34;asm&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Disassembly of the signature script&#34;
+                      },
+                      &#34;hex&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                        &#34;description&#34;: &#34;The raw signature script bytes, hex-encoded&#34;
+                      }
+                    },
+                    &#34;additionalProperties&#34;: false,
+                    &#34;required&#34;: [
+                      &#34;asm&#34;,
+                      &#34;hex&#34;
+                    ],
+                    &#34;description&#34;: &#34;The script (if not coinbase transaction)&#34;
+                  },
+                  &#34;txinwitness&#34;: {
+                    &#34;type&#34;: &#34;array&#34;,
+                    &#34;items&#34;: {
+                      &#34;type&#34;: &#34;string&#34;,
+                      &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+                    }
+                  },
+                  &#34;sequence&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;The script sequence number&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;sequence&#34;
+                ]
+              }
+            },
+            &#34;vout&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;value&#34;: {
+                    &#34;type&#34;: &#34;string&#34;,
+                    &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                    &#34;description&#34;: &#34;The value in BTC&#34;
+                  },
+                  &#34;n&#34;: {
+                    &#34;type&#34;: &#34;number&#34;,
+                    &#34;description&#34;: &#34;index&#34;
+                  },
+                  &#34;scriptPubKey&#34;: {
+                    &#34;type&#34;: &#34;object&#34;,
+                    &#34;properties&#34;: {
+                      &#34;asm&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Disassembly of the public key script&#34;
+                      },
+                      &#34;desc&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;Inferred descriptor for the output&#34;
+                      },
+                      &#34;hex&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                        &#34;description&#34;: &#34;The raw public key script bytes, hex-encoded&#34;
+                      },
+                      &#34;address&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+                      },
+                      &#34;type&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;description&#34;: &#34;The type (one of: nonstandard, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)&#34;
+                      }
+                    },
+                    &#34;additionalProperties&#34;: false,
+                    &#34;required&#34;: [
+                      &#34;asm&#34;,
+                      &#34;desc&#34;,
+                      &#34;hex&#34;,
+                      &#34;type&#34;
+                    ]
+                  }
+                },
+                &#34;additionalProperties&#34;: false,
+                &#34;required&#34;: [
+                  &#34;value&#34;,
+                  &#34;n&#34;,
+                  &#34;scriptPubKey&#34;
+                ]
+              }
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;hex&#34;,
+            &#34;txid&#34;,
+            &#34;hash&#34;,
+            &#34;size&#34;,
+            &#34;vsize&#34;,
+            &#34;weight&#34;,
+            &#34;version&#34;,
+            &#34;locktime&#34;,
+            &#34;vin&#34;,
+            &#34;vout&#34;
+          ],
+          &#34;description&#34;: &#34;if verbosity is set to 1&#34;
+        },
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;fee&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;transaction fee in BTC, omitted if block undo data is not available&#34;
+            },
+            &#34;vin&#34;: {
+              &#34;type&#34;: &#34;array&#34;,
+              &#34;items&#34;: {
+                &#34;type&#34;: &#34;object&#34;,
+                &#34;properties&#34;: {
+                  &#34;prevout&#34;: {
+                    &#34;type&#34;: &#34;object&#34;,
+                    &#34;properties&#34;: {
+                      &#34;generated&#34;: {
+                        &#34;type&#34;: &#34;boolean&#34;,
+                        &#34;description&#34;: &#34;Coinbase or not&#34;
+                      },
+                      &#34;height&#34;: {
+                        &#34;type&#34;: &#34;number&#34;,
+                        &#34;description&#34;: &#34;The height of the prevout&#34;
+                      },
+                      &#34;value&#34;: {
+                        &#34;type&#34;: &#34;string&#34;,
+                        &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+                        &#34;description&#34;: &#34;The value in BTC&#34;
+                      },
+                      &#34;scriptPubKey&#34;: {
+                        &#34;type&#34;: &#34;object&#34;,
+                        &#34;properties&#34;: {
+                          &#34;asm&#34;: {
+                            &#34;type&#34;: &#34;string&#34;,
+                            &#34;description&#34;: &#34;Disassembly of the public key script&#34;
+                          },
+                          &#34;desc&#34;: {
+                            &#34;type&#34;: &#34;string&#34;,
+                            &#34;description&#34;: &#34;Inferred descriptor for the output&#34;
+                          },
+                          &#34;hex&#34;: {
+                            &#34;type&#34;: &#34;string&#34;,
+                            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+                            &#34;description&#34;: &#34;The raw public key script bytes, hex-encoded&#34;
+                          },
+                          &#34;address&#34;: {
+                            &#34;type&#34;: &#34;string&#34;,
+                            &#34;description&#34;: &#34;The Bitcoin address (only if a well-defined address exists)&#34;
+                          },
+                          &#34;type&#34;: {
+                            &#34;type&#34;: &#34;string&#34;,
+                            &#34;description&#34;: &#34;The type (one of: nonstandard, pubkey, pubkeyhash, scripthash, multisig, nulldata, witness_v0_scripthash, witness_v0_keyhash, witness_v1_taproot, witness_unknown)&#34;
+                          }
+                        },
+                        &#34;additionalProperties&#34;: false,
+                        &#34;required&#34;: [
+                          &#34;asm&#34;,
+                          &#34;desc&#34;,
+                          &#34;hex&#34;,
+                          &#34;type&#34;
+                        ]
+                      }
+                    },
+                    &#34;additionalProperties&#34;: false,
+                    &#34;required&#34;: [
+                      &#34;generated&#34;,
+                      &#34;height&#34;,
+                      &#34;value&#34;,
+                      &#34;scriptPubKey&#34;
+                    ],
+                    &#34;description&#34;: &#34;The previous output, omitted if block undo data is not available&#34;
+                  }
+                },
+                &#34;additionalProperties&#34;: true
+              }
+            }
+          },
+          &#34;additionalProperties&#34;: true,
+          &#34;required&#34;: [
+            &#34;vin&#34;
+          ],
+          &#34;description&#34;: &#34;for verbosity = 2&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;rawtransactions&#34;
+}</pre>

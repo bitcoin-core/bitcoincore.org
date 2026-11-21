@@ -1,0 +1,21 @@
+---
+name: addnode
+btcversion: 30.2.0
+btcgroup: network
+permalink: en/doc/30.2.0/rpc/network/addnode/
+openrpc: true
+---
+
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">network</span></p>
+  <pre class="rpc-synopsis">addnode &#34;node&#34; &#34;command&#34; ( v2transport )</pre>
+  <div class="rpc-description"><p>Attempts to add or remove a node from the addnode list. Or try a connection to a node once. Nodes added using addnode (or -connect) are protected from DoS disconnection and are not required to be full nodes/support SegWit as other outbound peers are (though such peers will not be synced from). Addnode connections are limited to 8 at a time and are counted separately from the -maxconnections limit.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>node</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>The address of the peer to connect to</td></tr>
+  <tr><td>2</td><td><code>command</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-yes">yes</td><td>&#39;add&#39; to add a node to the list, &#39;remove&#39; to remove a node from the list, &#39;onetry&#39; to try a connection to the node once</td></tr>
+  <tr><td>3</td><td><code>v2transport</code></td><td><span class="rpc-type">boolean</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: set by -v2transport</small></td><td>Attempt to connect using BIP324 v2 transport protocol (ignored for &#39;remove&#39; command)</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(null)</span></p>
+</div>

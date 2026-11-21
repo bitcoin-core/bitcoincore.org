@@ -3,28 +3,25 @@ name: waitfornewblock
 btcversion: 30.0.0
 btcgroup: blockchain
 permalink: en/doc/30.0.0/rpc/blockchain/waitfornewblock/
+openrpc: true
 ---
 
-waitfornewblock ( timeout "current_tip" )
-
-Waits for any new block and returns useful info about it.
-
-Returns the current block on timeout or exit.
-
-Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)
-
-Arguments:
-1. timeout        (numeric, optional, default=0) Time in milliseconds to wait for a response. 0 indicates no timeout.
-2. current_tip    (string, optional) Method waits for the chain tip to differ from this.
-
-Result:
-{                    (json object)
-  "hash" : "hex",    (string) The blockhash
-  "height" : n       (numeric) Block height
-}
-
-Examples:
-> bitcoin-cli waitfornewblock 1000
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "waitfornewblock", "params": [1000]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">waitfornewblock ( timeout ) ( &#34;current_tip&#34; )</pre>
+  <div class="rpc-description"><p>Waits for any new block and returns useful info about it.</p><p>Returns the current block on timeout or exit.</p><p>Make sure to use no RPC timeout (bitcoin-cli -rpcclienttimeout=0)</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>timeout</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: 0</small></td><td>Time in milliseconds to wait for a response. 0 indicates no timeout.</td></tr>
+  <tr><td>2</td><td><code>current_tip</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>Method waits for the chain tip to differ from this.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">hash</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The blockhash</span></li>
+  <li><code class="rpc-key">height</code> <span class="rpc-type">(number)</span> <span class="rpc-desc">Block height</span></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli waitfornewblock 1000
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;waitfornewblock&#34;, &#34;params&#34;: [1000]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

@@ -3,44 +3,39 @@ name: addmultisigaddress
 btcversion: 29.0.0
 btcgroup: wallet
 permalink: en/doc/29.0.0/rpc/wallet/addmultisigaddress/
+openrpc: true
 ---
 
-addmultisigaddress nrequired ["key",...] ( "label" "address_type" )
-
-Add an nrequired-to-sign multisignature address to the wallet. Requires a new wallet backup.
-Each key is a Bitcoin address or hex-encoded public key.
-This functionality is only intended for use with non-watchonly addresses.
-See `importaddress` for watchonly p2sh address support.
-If 'label' is specified, assign address to that label.
-Note: This command is only compatible with legacy wallets.
-
-Arguments:
-1. nrequired       (numeric, required) The number of required signatures out of the n keys or addresses.
-2. keys            (json array, required) The bitcoin addresses or hex-encoded public keys
-     [
-       "key",      (string) bitcoin address or hex-encoded public key
-       ...
-     ]
-3. label           (string, optional) A label to assign the addresses to.
-4. address_type    (string, optional, default=set by -addresstype) The address type to use. Options are "legacy", "p2sh-segwit", and "bech32".
-
-Result:
-{                            (json object)
-  "address" : "str",         (string) The value of the new multisig address
-  "redeemScript" : "hex",    (string) The string value of the hex-encoded redemption script
-  "descriptor" : "str",      (string) The descriptor for this multisig
-  "warnings" : [             (json array, optional) Any warnings resulting from the creation of this multisig
-    "str",                   (string)
-    ...
-  ]
-}
-
-Examples:
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">wallet</span></p>
+  <pre class="rpc-synopsis">addmultisigaddress nrequired keys ( &#34;label&#34; ) ( &#34;address_type&#34; )</pre>
+  <div class="rpc-description"><p>Add an nrequired-to-sign multisignature address to the wallet. Requires a new wallet backup. Each key is a Bitcoin address or hex-encoded public key. This functionality is only intended for use with non-watchonly addresses. See `importaddress` for watchonly p2sh address support. If &#39;label&#39; is specified, assign address to that label. Note: This command is only compatible with legacy wallets.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <table class="rpc-args"><thead><tr><th>#</th><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td>1</td><td><code>nrequired</code></td><td><span class="rpc-type">number</span></td><td class="rpc-req-yes">yes</td><td>The number of required signatures out of the n keys or addresses.</td></tr>
+  <tr><td>2</td><td><code>keys</code></td><td><span class="rpc-type">array</span></td><td class="rpc-req-yes">yes</td><td>The bitcoin addresses or hex-encoded public keys
+  <ul class="rpc-schema rpc-array">
+    <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+  </ul></td></tr>
+  <tr><td>3</td><td><code>label</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no</td><td>A label to assign the addresses to.</td></tr>
+  <tr><td>4</td><td><code>address_type</code></td><td><span class="rpc-type">string</span></td><td class="rpc-req-no">no<br><small class="rpc-note">default: set by -addresstype</small></td><td>The address type to use. Options are &#34;legacy&#34;, &#34;p2sh-segwit&#34;, and &#34;bech32&#34;.</td></tr>
+</tbody></table>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(object)</span></p>
+<ul class="rpc-schema">
+  <li><code class="rpc-key">address</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The value of the new multisig address</span></li>
+  <li><code class="rpc-key">redeemScript</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The string value of the hex-encoded redemption script</span></li>
+  <li><code class="rpc-key">descriptor</code> <span class="rpc-type">(string)</span> <span class="rpc-desc">The descriptor for this multisig</span></li>
+  <li><code class="rpc-key">warnings</code> <span class="rpc-type">(array, optional)</span> <span class="rpc-desc">Any warnings resulting from the creation of this multisig</span>
+    <ul class="rpc-schema rpc-array">
+      <li><span class="rpc-variant">each item</span> <span class="rpc-type">(string)</span></li>
+    </ul></li>
+</ul>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">
 Add a multisig address from 2 addresses
-> bitcoin-cli addmultisigaddress 2 "[\"bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\",\"bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\"]"
+&gt; bitcoin-cli addmultisigaddress 2 &#34;[\&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\&#34;,\&#34;bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\&#34;]&#34;
 
 As a JSON-RPC call
-> curl --user myusername --data-binary '{"jsonrpc": "2.0", "id": "curltest", "method": "addmultisigaddress", "params": [2, "[\"bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\",\"bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\"]"]}' -H 'content-type: application/json' http://127.0.0.1:8332/
-
-
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;2.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;addmultisigaddress&#34;, &#34;params&#34;: [2, &#34;[\&#34;bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl\&#34;,\&#34;bc1q02ad21edsxd23d32dfgqqsz4vv4nmtfzuklhy3\&#34;]&#34;]}&#39; -H &#39;content-type: application/json&#39; http://127.0.0.1:8332/</pre>
+</div>

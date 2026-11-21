@@ -3,17 +3,18 @@ name: getbestblockhash
 btcversion: 27.0.0
 btcgroup: blockchain
 permalink: en/doc/27.0.0/rpc/blockchain/getbestblockhash/
+openrpc: true
 ---
 
-getbestblockhash
-
-Returns the hash of the best (tip) block in the most-work fully-validated chain.
-
-Result:
-"hex"    (string) the block hash, hex-encoded
-
-Examples:
-> bitcoin-cli getbestblockhash 
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getbestblockhash", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getbestblockhash</pre>
+  <div class="rpc-description"><p>Returns the hash of the best (tip) block in the most-work fully-validated chain.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(string)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getbestblockhash 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getbestblockhash&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

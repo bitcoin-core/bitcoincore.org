@@ -3,17 +3,18 @@ name: getdifficulty
 btcversion: 27.0.0
 btcgroup: blockchain
 permalink: en/doc/27.0.0/rpc/blockchain/getdifficulty/
+openrpc: true
 ---
 
-getdifficulty
-
-Returns the proof-of-work difficulty as a multiple of the minimum difficulty.
-
-Result:
-n    (numeric) the proof-of-work difficulty as a multiple of the minimum difficulty.
-
-Examples:
-> bitcoin-cli getdifficulty 
-> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getdifficulty", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-
-
+<div class="rpc-doc">
+  <p class="rpc-meta"><span class="rpc-badge">blockchain</span></p>
+  <pre class="rpc-synopsis">getdifficulty</pre>
+  <div class="rpc-description"><p>Returns the proof-of-work difficulty as a multiple of the minimum difficulty.</p></div>
+  <h2 class="rpc-section">Arguments</h2>
+  <p class="rpc-empty">None.</p>
+  <h2 class="rpc-section">Result</h2>
+  <p class="rpc-result-head"><span class="rpc-type">(number)</span></p>
+  <h2 class="rpc-section">Examples</h2>
+  <pre class="rpc-examples">&gt; bitcoin-cli getdifficulty 
+&gt; curl --user myusername --data-binary &#39;{&#34;jsonrpc&#34;: &#34;1.0&#34;, &#34;id&#34;: &#34;curltest&#34;, &#34;method&#34;: &#34;getdifficulty&#34;, &#34;params&#34;: []}&#39; -H &#39;content-type: text/plain;&#39; http://127.0.0.1:8332/</pre>
+</div>

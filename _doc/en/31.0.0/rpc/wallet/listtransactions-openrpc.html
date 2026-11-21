@@ -1,0 +1,202 @@
+---
+name: listtransactions
+btcversion: 31.0.0
+btcgroup: wallet
+permalink: en/doc/31.0.0/rpc/wallet/listtransactions/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;listtransactions&#34;,
+  &#34;description&#34;: &#34;If a label name is provided, this will return only incoming transactions paying to addresses with the specified label.\nReturns up to &#39;count&#39; most recent transactions ordered from oldest to newest while skipping the first number of \ntransactions specified in the &#39;skip&#39; argument. A transaction can have multiple entries in this RPC response. \nFor instance, a wallet transaction that pays three addresses \u2014 one wallet-owned and two external \u2014 will produce \nfour entries. The payment to the wallet-owned address appears both as a send entry and as a receive entry. \nAs a result, the RPC response will contain one entry in the receive category and three entries in the send category.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;label&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;
+      },
+      &#34;description&#34;: &#34;If set, should be a valid label name to return only incoming transactions\nwith the specified label, or \&#34;*\&#34; to disable filtering and return all transactions.&#34;
+    },
+    {
+      &#34;name&#34;: &#34;count&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 10
+      },
+      &#34;description&#34;: &#34;The number of transactions to return&#34;
+    },
+    {
+      &#34;name&#34;: &#34;skip&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;number&#34;,
+        &#34;default&#34;: 0
+      },
+      &#34;description&#34;: &#34;The number of transactions to skip&#34;
+    },
+    {
+      &#34;name&#34;: &#34;include_watchonly&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: false
+      },
+      &#34;description&#34;: &#34;(DEPRECATED) No longer used&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;type&#34;: &#34;array&#34;,
+      &#34;items&#34;: {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;properties&#34;: {
+          &#34;address&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;The bitcoin address of the transaction (not returned if the output does not have an address, e.g. OP_RETURN null data).&#34;
+          },
+          &#34;category&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;The transaction category.\n\&#34;send\&#34;                  Transactions sent.\n\&#34;receive\&#34;               Non-coinbase transactions received.\n\&#34;generate\&#34;              Coinbase transactions received with more than 100 confirmations.\n\&#34;immature\&#34;              Coinbase transactions received with 100 or fewer confirmations.\n\&#34;orphan\&#34;                Orphaned coinbase transactions received.&#34;
+          },
+          &#34;amount&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+            &#34;description&#34;: &#34;The amount in BTC. This is negative for the &#39;send&#39; category, and is positive\nfor all other categories&#34;
+          },
+          &#34;label&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;A comment for the address/transaction, if any&#34;
+          },
+          &#34;vout&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;the vout value&#34;
+          },
+          &#34;fee&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;amount&#34;,
+            &#34;description&#34;: &#34;The amount of the fee in BTC. This is negative and only available for the\n&#39;send&#39; category of transactions.&#34;
+          },
+          &#34;confirmations&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The number of confirmations for the transaction. Negative confirmations means the\ntransaction conflicted that many blocks ago.&#34;
+          },
+          &#34;generated&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Only present if the transaction&#39;s only input is a coinbase one.&#34;
+          },
+          &#34;trusted&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;Whether we consider the transaction to be trusted and safe to spend from.\nOnly present when the transaction has 0 confirmations (or negative confirmations, if conflicted).&#34;
+          },
+          &#34;blockhash&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;The block hash containing the transaction.&#34;
+          },
+          &#34;blockheight&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The block height containing the transaction.&#34;
+          },
+          &#34;blockindex&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;description&#34;: &#34;The index of the transaction in the block that includes it.&#34;
+          },
+          &#34;blocktime&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The block time expressed in UNIX epoch time.&#34;
+          },
+          &#34;txid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;The transaction id.&#34;
+          },
+          &#34;wtxid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;The hash of serialized transaction, including witness data.&#34;
+          },
+          &#34;walletconflicts&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+            },
+            &#34;description&#34;: &#34;Confirmed transactions that have been detected by the wallet to conflict with this transaction.&#34;
+          },
+          &#34;replaced_by_txid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;Only if &#39;category&#39; is &#39;send&#39;. The txid if this tx was replaced.&#34;
+          },
+          &#34;replaces_txid&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+            &#34;description&#34;: &#34;Only if &#39;category&#39; is &#39;send&#39;. The txid if this tx replaces another.&#34;
+          },
+          &#34;mempoolconflicts&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+            },
+            &#34;description&#34;: &#34;Transactions in the mempool that directly conflict with either this transaction or an ancestor transaction&#34;
+          },
+          &#34;to&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;If a comment to is associated with the transaction.&#34;
+          },
+          &#34;time&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The transaction time expressed in UNIX epoch time.&#34;
+          },
+          &#34;timereceived&#34;: {
+            &#34;type&#34;: &#34;number&#34;,
+            &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+            &#34;description&#34;: &#34;The time received expressed in UNIX epoch time.&#34;
+          },
+          &#34;comment&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;If a comment is associated with the transaction, only present if not empty.&#34;
+          },
+          &#34;bip125-replaceable&#34;: {
+            &#34;type&#34;: &#34;string&#34;,
+            &#34;description&#34;: &#34;(\&#34;yes|no|unknown\&#34;) Whether this transaction signals BIP125 replaceability or has an unconfirmed ancestor signaling BIP125 replaceability.\nMay be unknown for unconfirmed transactions not in the mempool because their unconfirmed ancestors are unknown.&#34;
+          },
+          &#34;parent_descs&#34;: {
+            &#34;type&#34;: &#34;array&#34;,
+            &#34;items&#34;: {
+              &#34;type&#34;: &#34;string&#34;
+            },
+            &#34;description&#34;: &#34;Only if &#39;category&#39; is &#39;received&#39;. List of parent descriptors for the output script of this coin.&#34;
+          },
+          &#34;abandoned&#34;: {
+            &#34;type&#34;: &#34;boolean&#34;,
+            &#34;description&#34;: &#34;&#39;true&#39; if the transaction has been abandoned (inputs are respendable).&#34;
+          }
+        },
+        &#34;additionalProperties&#34;: false,
+        &#34;required&#34;: [
+          &#34;category&#34;,
+          &#34;amount&#34;,
+          &#34;vout&#34;,
+          &#34;confirmations&#34;,
+          &#34;txid&#34;,
+          &#34;wtxid&#34;,
+          &#34;walletconflicts&#34;,
+          &#34;mempoolconflicts&#34;,
+          &#34;time&#34;,
+          &#34;timereceived&#34;,
+          &#34;bip125-replaceable&#34;,
+          &#34;abandoned&#34;
+        ]
+      }
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;wallet&#34;
+}</pre>

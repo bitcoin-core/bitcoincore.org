@@ -1,0 +1,143 @@
+---
+name: getblockheader
+btcversion: 31.0.0
+btcgroup: blockchain
+permalink: en/doc/31.0.0/rpc/blockchain/getblockheader/openrpc/
+openrpc: true
+openrpcpage: true
+---
+
+<pre class="rpc-json">{
+  &#34;name&#34;: &#34;getblockheader&#34;,
+  &#34;description&#34;: &#34;If verbose is false, returns a string that is serialized, hex-encoded data for blockheader &#39;hash&#39;.\nIf verbose is true, returns an Object with information about blockheader &lt;hash&gt;.&#34;,
+  &#34;params&#34;: [
+    {
+      &#34;name&#34;: &#34;blockhash&#34;,
+      &#34;required&#34;: true,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;string&#34;,
+        &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;
+      },
+      &#34;description&#34;: &#34;The block hash&#34;
+    },
+    {
+      &#34;name&#34;: &#34;verbose&#34;,
+      &#34;required&#34;: false,
+      &#34;schema&#34;: {
+        &#34;type&#34;: &#34;boolean&#34;,
+        &#34;default&#34;: true
+      },
+      &#34;description&#34;: &#34;true for a json object, false for the hex-encoded data&#34;
+    }
+  ],
+  &#34;result&#34;: {
+    &#34;name&#34;: &#34;result&#34;,
+    &#34;schema&#34;: {
+      &#34;oneOf&#34;: [
+        {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;hash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;the block hash (same as provided)&#34;
+            },
+            &#34;confirmations&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The number of confirmations, or -1 if the block is not on the main chain&#34;
+            },
+            &#34;height&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block height or index&#34;
+            },
+            &#34;version&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The block version&#34;
+            },
+            &#34;versionHex&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The block version formatted in hexadecimal&#34;
+            },
+            &#34;merkleroot&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The merkle root&#34;
+            },
+            &#34;time&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;The block time expressed in UNIX epoch time&#34;
+            },
+            &#34;mediantime&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;x-bitcoin-unit&#34;: &#34;unix-time&#34;,
+              &#34;description&#34;: &#34;The median block time expressed in UNIX epoch time&#34;
+            },
+            &#34;nonce&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The nonce&#34;
+            },
+            &#34;bits&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;nBits: compact representation of the block difficulty target&#34;
+            },
+            &#34;target&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The difficulty target&#34;
+            },
+            &#34;difficulty&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The difficulty&#34;
+            },
+            &#34;chainwork&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;Expected number of hashes required to produce the current chain&#34;
+            },
+            &#34;nTx&#34;: {
+              &#34;type&#34;: &#34;number&#34;,
+              &#34;description&#34;: &#34;The number of transactions in the block&#34;
+            },
+            &#34;previousblockhash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The hash of the previous block (if available)&#34;
+            },
+            &#34;nextblockhash&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+              &#34;description&#34;: &#34;The hash of the next block (if available)&#34;
+            }
+          },
+          &#34;additionalProperties&#34;: false,
+          &#34;required&#34;: [
+            &#34;hash&#34;,
+            &#34;confirmations&#34;,
+            &#34;height&#34;,
+            &#34;version&#34;,
+            &#34;versionHex&#34;,
+            &#34;merkleroot&#34;,
+            &#34;time&#34;,
+            &#34;mediantime&#34;,
+            &#34;nonce&#34;,
+            &#34;bits&#34;,
+            &#34;target&#34;,
+            &#34;difficulty&#34;,
+            &#34;chainwork&#34;,
+            &#34;nTx&#34;
+          ],
+          &#34;description&#34;: &#34;for verbose = true&#34;
+        },
+        {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;pattern&#34;: &#34;^[0-9a-fA-F]+$&#34;,
+          &#34;description&#34;: &#34;for verbose=false&#34;
+        }
+      ]
+    }
+  },
+  &#34;x-bitcoin-category&#34;: &#34;blockchain&#34;
+}</pre>
