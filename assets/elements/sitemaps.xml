@@ -5,20 +5,20 @@ permalink: /sitemap.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{% for collection in site.collections %}
-  {% assign en_posts = collection.docs | where: "lang", "en" %}
-  {% for post in en_posts %}
-    {% if post.id contains "404" or post.sitemap_exlude == true %}{% else %}
+{%- for collection in site.collections %}
+  {%- assign en_posts = collection.docs | where: "lang", "en" %}
+  {%- for post in en_posts %}
+    {%- if post.id contains "404" or post.sitemap_exlude == true %}{% else %}
       <url>
         <loc>{{ site.url }}{{ post.url }}</loc>
-        {% assign langs=site.posts | where:"name", post.name %}{% for version in langs %}
+        {%- assign langs=site.posts | where:"name", post.name %}{% for version in langs %}
           {% if version.lang != 'en' %}<xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{ site.url }}{{ version.url }}" />{% endif %}
-        {% endfor %}
+        {%- endfor %}
         <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-        {% if page.changefreq != null %}<changefreq>{{ page.changefreq }}</changefreq>{% endif %}
-        {% if page.priority != null %}<priority>{{ page.priority }}</priority>{% endif %}
+        {%- if page.changefreq != null %}<changefreq>{{ page.changefreq }}</changefreq>{% endif %}
+        {%- if page.priority != null %}<priority>{{ page.priority }}</priority>{% endif %}
       </url>
-    {% endif %}
-  {% endfor %}
-{% endfor %}
+    {%- endif %}
+  {%- endfor %}
+{%- endfor %}
 </urlset>

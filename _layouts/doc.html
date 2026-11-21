@@ -1,15 +1,15 @@
 <!doctype html>
 {% include browser_magic.html %}
 <head>
-{% if page.name != "index" and page.name != "rpcindex" %}
-  {% assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
-{% else %}
-  {% if page.btcversion != "index" %}
-    {% assign custom_title = "Bitcoin Core " | append: page.btcversion | append: " RPC" %}
-  {% else %}
-    {% assign custom_title = "Bitcoin Core RPC" %}
-  {% endif %}
-{% endif %}
+{%- if page.name != "index" and page.name != "rpcindex" %}
+  {%- assign custom_title = page.name | append: " (" | append: page.btcversion | append: " RPC)" %}
+{%- else %}
+  {%- if page.btcversion != "index" %}
+    {%- assign custom_title = "Bitcoin Core " | append: page.btcversion | append: " RPC" %}
+  {%- else %}
+    {%- assign custom_title = "Bitcoin Core RPC" %}
+  {%- endif %}
+{%- endif %}
 {% include head.html %}
 </head>
 
@@ -39,12 +39,12 @@
   <article class="page">
     <h1>{{ custom_title | xml_escape }}</h1>
     <div class="article-wrap">
-      {% if page.btcversion != "index" %}
-        {% assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
+      {%- if page.btcversion != "index" %}
+        {%- assign groups = site.doc | where:"btcversion", page.btcversion | group_by:"btcgroup" | sort: "name" %}
         <section class="toc">
         <input id="searchbar" type="text" value="" placeholder="Search ..."/>
-        {% for group in groups %}
-          {% if group.name != "index" %}
+        {%- for group in groups %}
+          {%- if group.name != "index" %}
             <header>
               <h3 class="toc-header">
                 <i class="fa fa-book"></i>
@@ -52,40 +52,40 @@
               </h3>
               <div class="toc-drawer js-hide-on-start">
                 <ul>
-                  {% for article in group.items %}
+                  {%- for article in group.items %}
                     <li class="leaf-article"><a href="{{article.url}}">{{article.name}}</a></li>
-                  {% endfor %}
+                  {%- endfor %}
                 </ul>
               </div>
             </header>
-          {% endif %}
-        {% endfor %}
+          {%- endif %}
+        {%- endfor %}
         </section>
-      {% endif %}
+      {%- endif %}
 
-      {% if page.name != "index" and page.name != "rpcindex" %}
+      {%- if page.name != "index" and page.name != "rpcindex" %}
 <span class="doc">
 {% highlight text %}{{ content }}{% endhighlight %}
 </span>
-      {% else %}
-        {% if page.btcversion != "index" %}
+      {%- else %}
+        {%- if page.btcversion != "index" %}
           Select a command group in the menu.
-        {% else %}
+        {%- else %}
           Following docs are available:
-          {% assign groups = site.doc | sort: "btcversion" | reverse | group_by:"btcversion" %}
+          {%- assign groups = site.doc | sort: "btcversion" | reverse | group_by:"btcversion" %}
           <ul>
-            {% for group in groups %}
-              {% if group.name != "index" %}
-                {% for article in group.items %}
-                  {% if article.name == "index" %}
+            {%- for group in groups %}
+              {%- if group.name != "index" %}
+                {%- for article in group.items %}
+                  {%- if article.name == "index" %}
                     <li><a href="{{article.url}}">{{group.name}}</a></li>
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
-            {% endfor %}
+                  {%- endif %}
+                {%- endfor %}
+              {%- endif %}
+            {%- endfor %}
           </ul>
-        {% endif %}
-      {% endif %}
+        {%- endif %}
+      {%- endif %}
     </div><!-- /.article-wrap -->
   </article>
 </div><!-- /#index -->
