@@ -1,0 +1,31 @@
+---
+name: waitTipChanged
+btcversion: 31.0.0
+btcgroup: mining
+btcdoctype: IPC
+btchtml: true
+permalink: en/doc/31.0.0/ipc/mining/waitTipChanged/
+---
+
+<p class="ipc-context">Method on interface <a href="../"><code>Mining</code></a>.</p>
+<div class="highlight"><pre><code><span class="nv">waitTipChanged</span> <span class="nd">@3</span> <span class="p">(</span>
+  <span class="nv">context</span> <span class="p">:</span><span class="nc">Context</span><span class="p">,</span>
+  <span class="nv">currentTip</span> <span class="p">:</span><span class="kt">Data</span><span class="p">,</span>
+  <span class="nv">timeout</span> <span class="p">:</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">1.7976931348623157e308</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+  <span class="nv">result</span> <span class="p">:</span><a class="nc" href="../../structs/#BlockRef">BlockRef</a>
+<span class="p">)</span><span class="p">;</span></code></pre></div>
+<div class="ipc-doc">
+<p>Waits for the connected tip to change. During node initialization, this will wait until the tip is connected (regardless of `timeout`).</p>
+<dl class="ipc-doc-tags">
+  <dt><strong>param [in]</strong> <code>current_tip</code></dt>
+  <dd>block hash of the current chain tip. Function waits for the chain tip to differ from this.</dd>
+  <dt><strong>param [in]</strong> <code>timeout</code></dt>
+  <dd>how long to wait for a new tip (default is forever)</dd>
+  <dt><strong>returns</strong> <code><a href="../../structs/#BlockRef">BlockRef</a></code></dt>
+  <dd>hash and height of the current chain tip after this call.</dd>
+  <dt><strong>returns</strong> <code>std::nullopt</code></dt>
+  <dd>if the node is shut down or interrupt() is called.</dd>
+</dl>
+</div>
+
