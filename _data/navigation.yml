@@ -254,8 +254,8 @@ pt_BR:
     submenu: true
     tree:
       contribute:
-        title: "contribuir"  # XXX
-        url:   "/en/contribute/"  # XXX
+        title: "contribuir"
+        url:   "/pt_BR/contribute/"
       contribute-code:
         title: "contribuir com código"  # XXX
         url:   "/en/faq/contributing-code/"  # XXX
