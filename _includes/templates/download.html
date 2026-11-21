@@ -31,9 +31,9 @@
 {% assign GUIX_REPOSITORY_NAME = "guix.sigs" %}
 {% assign BUILDER_KEYS_DIR = "builder-keys" %}
 {% endcapture %}
-<link rel="alternate" type="application/rss+xml" href="/en/releasesrss.xml" title="Bitcoin Core releases">
+<link rel="alternate" type="application/rss+xml" href="/{{ page.lang }}/releasesrss.xml" title="Bitcoin Core releases">
 <div class="download">
-  <h2>{{ page.latestversion }} {{CURRENT_RELEASE}} <a type="application/rss+xml" href="/en/releasesrss.xml"><img src="/assets/images/icons/icon_rss.svg" alt="rss" class="rssicon"></a></h2>
+  <h2>{{ page.latestversion }} <span id="download-version">{{CURRENT_RELEASE}}</span> <a type="application/rss+xml" href="/{{ page.lang }}/releasesrss.xml"><img src="/assets/images/icons/icon_rss.svg" alt="rss" class="rssicon"></a></h2>
   <div class="mainbutton"><a id="downloadbutton" href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}-{{ site.data.binaries.win64exe }}"><img src="/assets/images/os/but_windows.svg" alt="icon"><span>{{ page.download }}</span></a></div>
   <div class="downloadbox">
     <p>{{ page.downloados }}</p>
@@ -106,7 +106,7 @@
       <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX }}.torrent" class="dl">{{ page.downloadtorrent }}</a>
         {% if magnet %} <a href="{{ magnet | replace: '&', '\&amp;'}}" class="magnetlink" data-proofer-ignore></a>{% endif %}<br>
       <a href="{{ PATH_PREFIX }}/{{ FILE_PREFIX}}.tar.gz" class="dl">{{ page.source }}</a><br>
-      <a href="/en/releases">{{ page.versionhistory }}</a>
+      <a href="/{{ page.lang }}/releases" id="versionhistory-link">{{ page.versionhistory }}</a>
     </p>
     <p class="downloadkeys">
       {% if page.version > 2 %}<i>{{page.key_refresh}}</i><br><code>gpg{{site.strings.gpg_keyserver}} --refresh-keys</code>{% endif %}
@@ -300,34 +300,4 @@
 
 <p>{{ page.notelicense }}</p>
 
-<script type="text/javascript">
-var os = 'windows64';
-if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
-else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
-else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
-var but = document.getElementById('downloadbutton');
-var linkwinexe = document.getElementById('downloadwinexe');
-var linkwinzip = document.getElementById('downloadwinzip');
-var hrefwin64exe = document.getElementById('win64exe').href;
-var hrefwin64zip = document.getElementById('win64zip').href;
-var hrefmaczip = document.getElementById('macarmzip').href;
-var hreflin64 = document.getElementById('lin64').href;
-switch (os) {
-case 'windows64':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_windows.svg';
-	but.href = hrefwin64exe;
-	linkwinexe.href = hrefwin64exe;
-	linkwinzip.href = hrefwin64zip;
-break;
-case 'linux64':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_linux.png';
-	but.href = hreflin64;
-	linklin.href = hreflin64;
-break;
-case 'mac':
-	but.getElementsByTagName('IMG')[0].src = '/assets/images/os/but_mac.svg';
-	but.href = hrefmaczip;
-break;
-}
-
-</script>
+{% include js/download-version.html %}
