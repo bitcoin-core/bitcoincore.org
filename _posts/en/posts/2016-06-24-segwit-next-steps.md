@@ -59,7 +59,7 @@ With the original sidechains implementation of segwit having been used by a numb
 [PR#8149]: https://github.com/bitcoin/bitcoin/pull/8149
 [PR#7910]: https://github.com/bitcoin/bitcoin/pull/7910
 [may2016 core meetup]: /logs/2016-05-zurich-meeting-notes.html
-[luke-jr sfsw]: https://botbot.me/freenode/bitcoin-core-dev/2015-10-21/
+[luke-jr sfsw]: https://bitcoin-irc.chaincode.com/bitcoin-core-dev/2015-10-21
 [elements project]: http://elementsproject.org/
 
 ## Compact Blocks
